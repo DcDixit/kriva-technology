@@ -1,0 +1,96 @@
+/**
+ * Slot → real asset swap helpers + production-ready empty states.
+ * When a media host contains a real <img>, hide the placeholder .slot / .crop-ph / .feat-slot.
+ * Replacement = drop file + run apply_launch_inputs.cjs --assets
+ *   OR manually insert <img> as first child of [data-asset].
+ *
+ * Empty states stay quiet — no yellow TBD flags on buyer-facing frames.
+ */
+
+/* Hosts that wrap a single screenshot slot */
+.media:has(> img) > .slot,
+.feat-shot:has(> img) > .slot,
+.crop:has(> img) > .crop-ph,
+.feat-slot:has(+ img),
+[data-asset]:has(> img) > .slot,
+[data-asset]:has(> img) > .crop-ph,
+[data-asset]:has(> img) > .feat-slot {
+  display: none !important;
+}
+
+[data-asset] > img,
+.media > img,
+.feat-shot > img,
+.crop > img,
+.proj-media > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proj-media:has(> img) > .slot,
+.proj-media:has(> [data-asset] > img) > [data-asset] > .slot {
+  display: none !important;
+}
+
+/* Quiet empty frames (no flag.tbd noise) */
+.slot,
+.crop-ph,
+.feat-slot {
+  background:
+    linear-gradient(160deg, #161C22 0%, #0E1216 100%);
+}
+
+.slot .tagline,
+.crop-ph .tagline,
+.feat-slot .tagline {
+  font-family: var(--f-mono, "IBM Plex Mono", monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5C6670;
+}
+
+.shot-cap,
+.cap-note {
+  font-family: var(--f-mono, "IBM Plex Mono", monospace);
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--steel-2, #7A838D);
+}
+
+/* Soften leftover TBD badges if any remain in older markup */
+.flag.tbd {
+  border-color: var(--rule, #D2D2C9) !important;
+  color: var(--steel, #5C6670) !important;
+  background: transparent !important;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+/* Phase 11 — intentional empty hosts (not unfinished theater) */
+.slot--editorial,
+.cover--editorial,
+.feat-slot--editorial {
+  justify-content: space-between;
+}
+
+.proof--facts .q {
+  padding: clamp(18px, 2.2vw, 26px);
+  background: var(--white, #fff);
+  border: 1px solid var(--rule, #d2d2c9);
+  transition: border-color 0.35s ease, transform 0.45s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.proof--facts .q:hover {
+  border-color: var(--ink, #0e1216);
+  transform: translate3d(0, -3px, 0);
+}
+
+@media (max-width: 860px) {
+  .proof--facts {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -1,0 +1,1204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KRIVA — Design engineering for SaaS &amp; trucking</title>
+<meta name="description" content="Dispatch consoles, fleet dashboards, SaaS onboarding and QuickBooks/Xero sync — designed and shipped by one senior team.">
+<link rel="canonical" href="https://krivatechnologies.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KRIVA — Design engineering for SaaS &amp; trucking">
+<meta property="og:description" content="Dispatch consoles, fleet dashboards, SaaS onboarding and QuickBooks/Xero sync — designed and shipped by one senior team.">
+<meta property="og:url" content="https://krivatechnologies.com/">
+<!-- KRIVA_OG_IMAGE_START -->
+<!-- og:image withheld until brand/og-default.png is supplied (1200×630). -->
+<!-- KRIVA_OG_IMAGE_END -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* ═══════════════════════════════════════════
+   KRIVA — design tokens
+   ═══════════════════════════════════════════ */
+:root{
+  /* surface ladder: each section steps along this, never repeats twice in a row */
+  --paper:#EAEAE4;
+  --paper-2:#F1F1EC;
+  --white:#FFFFFF;
+  --ink:#0E1216;
+  --ink-2:#161C22;
+  --ink-line:#232B33;
+  --ink-dim:#8C98A4;
+
+  --steel:#5C6670;
+  --steel-2:#7A838D;
+  --rule:#D2D2C9;
+  --rule-soft:#DFDFD8;
+
+  /* signal semantics, borrowed from dispatch status language */
+  --blue:#1B44C8;      /* action / interstate */
+  --amber:#DB9B1F;     /* live, in-motion */
+  --green:#1B7A54;     /* cleared */
+  --violet:#5B44C8;    /* automation */
+
+  --f-display:'Archivo',system-ui,-apple-system,sans-serif;
+  --f-body:'Inter',system-ui,-apple-system,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;
+
+  --gutter:clamp(20px,5vw,80px);
+  --maxw:1440px;
+
+  /* one motion language, five values, used everywhere */
+  --e:cubic-bezier(.16,.84,.44,1);
+  --e-io:cubic-bezier(.62,.02,.28,1);
+  --t-fast:.32s;
+  --t-mid:.62s;
+  --t-slow:1s;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html:focus-within{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--f-body);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{max-width:100%;display:block}
+svg{display:block}
+::selection{background:var(--blue);color:#fff}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:1px}
+.cta-band :focus-visible,footer :focus-visible,.readout :focus-visible{outline-color:var(--amber)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
+.skip:focus{left:12px}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+
+/* ── type scale: 5 steps, fixed ratios, tabular numerals everywhere numbers matter ── */
+.eyebrow{
+  font-family:var(--f-mono);font-size:clamp(10px,1.1vw,11.5px);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--steel);
+  display:flex;align-items:center;gap:11px;line-height:1
+}
+.eyebrow::before{content:"";width:20px;height:1px;background:currentColor;flex:none;opacity:.6}
+.d1{font-family:var(--f-display);font-weight:900;font-size:clamp(2.55rem,6.2vw,5.35rem);line-height:.88;letter-spacing:-.03em;font-variation-settings:'wdth' 102}
+.d2{font-family:var(--f-display);font-weight:750;font-size:clamp(2.1rem,4.8vw,4.05rem);line-height:1;letter-spacing:-.032em;font-variation-settings:'wdth' 94}
+.d3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.35rem,2.15vw,1.75rem);line-height:1.16;letter-spacing:-.022em}
+.lede{font-size:clamp(1.02rem,1.25vw,1.24rem);line-height:1.62;color:var(--steel);max-width:54ch;letter-spacing:-.005em}
+.body-sm{font-size:15px;line-height:1.62;color:var(--steel);max-width:58ch}
+.mono{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}
+
+/* ═══ motion primitives — one reveal, one stagger, one mask ═══ */
+[data-r]{opacity:0;transform:translate3d(0,24px,0);transition:opacity var(--t-slow) var(--e),transform var(--t-slow) var(--e)}
+[data-r].in{opacity:1;transform:none}
+[data-s]>*{opacity:0;transform:translate3d(0,20px,0);transition:opacity var(--t-mid) var(--e),transform var(--t-mid) var(--e)}
+[data-s].in>*{opacity:1;transform:none}
+[data-s].in>*:nth-child(1){transition-delay:0ms}
+[data-s].in>*:nth-child(2){transition-delay:70ms}
+[data-s].in>*:nth-child(3){transition-delay:140ms}
+[data-s].in>*:nth-child(4){transition-delay:210ms}
+[data-s].in>*:nth-child(5){transition-delay:280ms}
+[data-s].in>*:nth-child(6){transition-delay:350ms}
+.mask span{display:block;overflow:hidden;padding-bottom:.02em}
+.mask span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
+.mask.in span i{transform:none}
+.mask.in span:nth-child(2) i{transition-delay:80ms}
+.mask.in span:nth-child(3) i{transition-delay:160ms}
+
+/* nav/sheet/footer chrome → shared/chrome.css */
+
+/* ═══════════ HERO ═══════════ */
+.hero{padding:calc(72px + clamp(24px,4.2vw,56px)) 0 clamp(40px,4.5vw,72px);position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(28px,4vw,72px);align-items:end}
+.hero-copy .d1{margin:16px 0 18px;max-width:14ch}
+.hero-copy .d1 em{font-style:normal;position:relative;white-space:nowrap}
+.hero-copy .d1 em::after{content:"";position:absolute;left:0;right:0;bottom:.1em;height:.055em;background:var(--amber);transform:scaleX(0);transform-origin:0 50%;transition:transform .9s var(--e) .75s}
+.mask.in .d1 em::after,.d1.mask.in em::after{transform:scaleX(1)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0;margin-top:36px;border-top:1px solid var(--rule);padding-top:18px}
+.fact{padding-right:clamp(20px,3vw,40px);margin-right:clamp(20px,3vw,40px);border-right:1px solid var(--rule)}
+.fact:last-child{border-right:0;margin-right:0;padding-right:0}
+.fact b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);letter-spacing:-.03em;line-height:1}
+.fact small{display:block;margin-top:7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+@media(max-width:1000px){.hero-grid{grid-template-columns:1fr;align-items:start}.hero-copy .d1{max-width:none}.hero-grid>*{min-width:0}.console{max-width:100%;overflow:hidden}}
+@media(max-width:560px){
+  .hero-copy .d1 em{white-space:normal}
+  .hero-facts{grid-template-columns:1fr;gap:14px}
+  .fact{padding-right:0;margin-right:0;border-right:0;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+  .fact:last-child{border-bottom:0;padding-bottom:0}
+  .c-head{flex-wrap:wrap}
+  .c-tabs{max-width:100%;overflow-x:auto;scrollbar-width:none}
+  .c-tabs::-webkit-scrollbar{display:none}
+}
+
+/* ── SIGNATURE: dispatch console ── */
+.console{
+  background:var(--ink);color:#DDE2E7;
+  box-shadow:0 2px 0 rgba(14,18,22,.06),0 40px 80px -46px rgba(14,18,22,.55);
+  will-change:transform
+}
+.c-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px;border-bottom:1px solid var(--ink-line)}
+.c-tabs{display:flex}
+.c-tabs button{
+  padding:13px 14px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:#6B7885;position:relative;transition:color var(--t-fast) var(--e)
+}
+.c-tabs button::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:1px;background:var(--amber);transform:scaleX(0);transition:transform .4s var(--e)}
+.c-tabs button:hover{color:#B9C3CC}
+.c-tabs button[aria-selected="true"]{color:#fff}
+.c-tabs button[aria-selected="true"]::after{transform:scaleX(1)}
+.c-live{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--amber);white-space:nowrap}
+.dot{width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:pulse 2.4s var(--e-io) infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.5)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
+
+.c-kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
+.kpi{padding:14px;border-right:1px solid var(--ink-line)}
+.kpi:last-child{border-right:0}
+.kpi span{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#6B7885}
+.kpi b{display:block;margin-top:6px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.15rem,1.7vw,1.45rem);letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
+.kpi.up b{color:#5FD3A0}
+
+.c-table{width:100%;border-collapse:collapse;font-family:var(--f-mono);font-size:11.5px}
+.c-table caption{text-align:left;padding:0;font:inherit;position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.c-table th{
+  text-align:left;padding:9px 14px;font-weight:400;font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:#6B7885;border-bottom:1px solid var(--ink-line)
+}
+.c-table td{padding:11px 14px;border-bottom:1px solid #1A2027;color:#B9C3CC;white-space:nowrap;transition:color var(--t-fast) var(--e),background var(--t-fast) var(--e)}
+.c-table td:first-child{color:#fff;position:relative;padding-left:20px}
+.c-table td:first-child::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--amber);transform:scaleY(0);transform-origin:50% 100%;transition:transform var(--t-fast) var(--e)}
+.c-table tbody tr{opacity:0;transform:translate3d(0,8px,0);transition:opacity .5s var(--e),transform .5s var(--e)}
+.c-table tbody tr.on{opacity:1;transform:none}
+.c-table tbody tr:hover td{background:var(--ink-2);color:#EDEFF1}
+.c-table tbody tr:hover td:first-child::before{transform:scaleY(1);transform-origin:50% 0}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;padding:3px 9px;
+  font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
+  border:1px solid currentColor;transition:color .5s var(--e)
+}
+.chip::before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
+.chip.s0{color:#6B7885}.chip.s1{color:var(--amber)}.chip.s2{color:#5FD3A0}
+.c-foot{display:flex;align-items:center;gap:14px;padding:13px 14px}
+.c-foot .mono{font-size:9.5px;letter-spacing:.13em;color:#6B7885;white-space:nowrap}
+.track-bar{position:relative;flex:1;height:2px;background:var(--ink-line);overflow:hidden}
+.track-bar i{position:absolute;inset:0;background:var(--amber);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.2s var(--e)}
+.spark{width:64px;height:20px;flex:none;overflow:visible}
+.spark path{fill:none;stroke:#5FD3A0;stroke-width:1.25;stroke-linecap:round;stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1.6s var(--e) .4s}
+.console.lit .spark path{stroke-dashoffset:0}
+.c-note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+.flag{border:1px solid var(--rule);padding:2px 7px;color:var(--steel);flex:none}
+.flag.tbd{border-color:var(--amber);color:#8A6200}
+
+/* mobile: table becomes stacked records — no horizontal scroll */
+@media(max-width:560px){
+  .c-kpis{grid-template-columns:1fr 1fr}
+  .kpi:nth-child(3){display:none}
+  .c-table thead{display:none}
+  .c-table,.c-table tbody,.c-table tr,.c-table td{display:block;width:100%}
+  .c-table tr{padding:10px 14px;border-bottom:1px solid #1A2027;display:grid;grid-template-columns:auto 1fr;gap:2px 12px}
+  .c-table td{border:0;padding:2px 0}
+  .c-table td:first-child{padding-left:0;grid-row:1;font-size:12.5px}
+  .c-table td:nth-child(2){grid-row:1;text-align:right}
+  .c-table td:nth-child(3){grid-row:2;color:#6B7885}
+  .c-table td:nth-child(4){grid-row:2;text-align:right}
+  .c-table td:first-child::before{display:none}
+}
+
+/* ═══════════ MANIFEST TICKER ═══════════ */
+.manifest{background:var(--ink);color:var(--ink-dim);padding-block:20px;overflow:hidden}
+.manifest-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:16px;flex-wrap:wrap}
+.manifest .eyebrow{color:var(--ink-dim)}
+.track{display:flex;width:max-content;animation:slide 48s linear infinite;will-change:transform}
+.manifest:hover .track,.manifest:focus-within .track{animation-play-state:paused}
+@keyframes slide{to{transform:translate3d(-50%,0,0)}}
+.cell{
+  display:flex;align-items:baseline;gap:11px;padding:0 clamp(20px,2.6vw,36px);
+  border-right:1px solid var(--ink-line);white-space:nowrap;
+  font-family:var(--f-mono);font-size:13px;color:#C4CCD4
+}
+.cell u{text-decoration:none;font-size:9.5px;color:#5C6670;letter-spacing:.1em}
+
+/* ═══════════ SECTION FRAME ═══════════ */
+.sect{padding-block:clamp(76px,9vw,156px);position:relative}
+.sect--tight{padding-block:clamp(60px,7vw,110px)}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,4vw,60px);flex-wrap:wrap}
+.s-head h2{margin-top:20px}
+
+/* ═══════════ SOLUTIONS — sticky viewer + panels ═══════════ */
+.sol{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(28px,5vw,88px);align-items:start;margin-top:clamp(36px,4vw,64px)}
+.sol-rail{position:sticky;top:110px}
+.sol-index{list-style:none;margin-top:30px;border-top:1px solid var(--rule)}
+.sol-index li{border-bottom:1px solid var(--rule)}
+.sol-index button{
+  display:flex;gap:14px;align-items:baseline;width:100%;text-align:left;padding:12px 0;
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.05em;color:var(--steel);
+  transition:color var(--t-fast) var(--e),padding-left .45s var(--e)
+}
+.sol-index button u{text-decoration:none;color:var(--rule);transition:color var(--t-fast)}
+.sol-index li.act button{color:var(--ink);padding-left:12px}
+.sol-index li.act button u{color:var(--acc,var(--blue))}
+.sol-index button:hover{color:var(--ink)}
+
+/* the sticky viewer: a mini system panel that changes per solution */
+.viewer{background:var(--ink);margin-top:26px;position:relative;overflow:hidden}
+.viewer-bar{display:flex;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--ink-line);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#6B7885}
+.viewer-bar b{color:#fff;font-weight:400;transition:color var(--t-fast)}
+.viewer-body{position:relative;height:190px}
+.scene{position:absolute;inset:0;padding:18px;opacity:0;transform:translate3d(0,10px,0);transition:opacity .5s var(--e),transform .5s var(--e);pointer-events:none}
+.scene.on{opacity:1;transform:none}
+/* scene 1 — route */
+.route{width:100%;height:100%}
+.route .ln{fill:none;stroke:#2C3views;stroke-width:1}
+.route .grid{stroke:#1E252C;stroke-width:1}
+.route .path{fill:none;stroke:var(--amber);stroke-width:1.5;stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset 1.4s var(--e)}
+.scene.on .route .path{stroke-dashoffset:0}
+.route .node{fill:#0E1216;stroke:#5FD3A0;stroke-width:1.25}
+/* scene 2 — funnel */
+.funnel{display:grid;gap:9px;height:100%;align-content:center}
+.frow{display:grid;grid-template-columns:76px 1fr 42px;align-items:center;gap:10px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#6B7885}
+.frow em{font-style:normal;color:#C4CCD4;text-align:right;font-variant-numeric:tabular-nums}
+.fbar{height:8px;background:#1A2027;position:relative;overflow:hidden}
+.fbar i{position:absolute;inset:0;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;transition:transform .9s var(--e)}
+.scene.on .fbar i{transform:scaleX(var(--v))}
+/* scene 3 — ledger match */
+.ledger{display:grid;gap:7px;height:100%;align-content:center;font-family:var(--f-mono);font-size:10.5px}
+.lrow{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:7px 10px;background:#141A20;color:#B9C3CC}
+.lrow small{color:#6B7885;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+.lrow.ok{border-left:2px solid var(--green)}
+.lrow.ex{border-left:2px solid var(--amber);color:#fff}
+/* scene 4 — pipeline */
+.pipe{display:flex;align-items:center;justify-content:space-between;height:100%;gap:6px}
+.node{flex:1;text-align:center;padding:14px 6px;border:1px solid #232B33;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;position:relative}
+.node.human{border-color:var(--violet);color:#B7A9FF}
+.pipe span.arw{color:#3A444E;font-size:11px;flex:none}
+
+.panels{display:grid;gap:clamp(14px,1.6vw,22px)}
+.panel{
+  --acc:var(--blue);
+  position:relative;background:var(--white);border:1px solid var(--rule);
+  padding:clamp(24px,3vw,42px);
+  transition:transform .55s var(--e),box-shadow .55s var(--e),border-color .4s var(--e)
+}
+.panel::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--acc);transform:scaleY(0);transform-origin:50% 100%;transition:transform .5s var(--e)}
+.panel:hover,.panel:focus-within{transform:translate3d(0,-5px,0);box-shadow:0 30px 60px -42px rgba(14,18,22,.5);border-color:var(--ink)}
+.panel:hover::before,.panel:focus-within::before{transform:scaleY(1);transform-origin:50% 0}
+.panel .eyebrow{color:var(--acc)}
+.panel h3{margin:16px 0 12px;max-width:20ch}
+.panel-no{position:absolute;top:clamp(22px,3vw,38px);right:clamp(22px,3vw,38px);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--rule)}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+.tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule-soft);color:var(--steel);transition:border-color var(--t-fast),color var(--t-fast)}
+.panel:hover .tag{border-color:var(--rule);color:var(--ink)}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:24px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link i{font-style:normal;transition:transform .42s var(--e)}
+.panel:hover .p-link i{transform:translateX(6px)}
+@media(max-width:1000px){
+  .sol{grid-template-columns:1fr;gap:32px}
+  .sol-rail{position:static}
+  .sol-index,.viewer{display:none}
+}
+
+/* ═══════════ READOUT (dark, full-bleed) ═══════════ */
+.readout{background:var(--ink);color:#DDE2E7}
+.readout .wrap{padding-block:clamp(64px,7.5vw,124px)}
+.readout .eyebrow{color:var(--ink-dim)}
+.readout h2{color:#fff;max-width:16ch}
+.readout-head{padding-bottom:clamp(32px,4vw,56px);border-bottom:1px solid var(--ink-line)}
+.nums{display:grid;grid-template-columns:repeat(4,1fr)}
+.nc{padding:clamp(28px,3vw,44px) clamp(16px,2vw,30px) 0 0;border-right:1px solid var(--ink-line)}
+.nc:last-child{border-right:0}
+.nc b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(2.6rem,5.6vw,4.8rem);line-height:.92;letter-spacing:-.045em;color:#fff;font-variant-numeric:tabular-nums}
+.nc span{display:block;margin-top:16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--amber)}
+.nc em{display:block;margin-top:7px;font-style:normal;font-size:13.5px;line-height:1.5;color:var(--ink-dim);max-width:22ch}
+@media(max-width:860px){
+  .nums{grid-template-columns:1fr 1fr}
+  .nc{border-bottom:1px solid var(--ink-line);padding-bottom:26px}
+  .nc:nth-child(2n){border-right:0}
+  .nc:nth-last-child(-n+2){border-bottom:0}
+}
+
+/* ═══════════ WORK — editorial rows with interface crops ═══════════ */
+.work{background:var(--paper-2);border-block:1px solid var(--rule)}
+.cases{margin-top:clamp(40px,4.5vw,72px);border-top:1px solid var(--rule)}
+.case{border-bottom:1px solid var(--rule)}
+.case-top{
+  display:grid;grid-template-columns:clamp(70px,7vw,110px) minmax(0,1.15fr) minmax(0,1.25fr) 44px;
+  gap:clamp(16px,3vw,44px);align-items:center;width:100%;text-align:left;
+  padding:clamp(22px,2.8vw,36px) 0;position:relative
+}
+.case-top::after{content:"";position:absolute;left:calc(var(--gutter)*-1);right:calc(var(--gutter)*-1);top:0;bottom:0;background:var(--white);opacity:0;transition:opacity .45s var(--e);z-index:-1}
+.case:hover .case-top::after,.case.open .case-top::after{opacity:1}
+.case-no{font-family:var(--f-display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1;transition:color .45s var(--e)}
+.case:hover .case-no,.case.open .case-no{color:var(--ink)}
+.case-title{font-family:var(--f-display);font-weight:750;font-size:clamp(1.3rem,2.5vw,2.05rem);line-height:1.06;letter-spacing:-.032em;transition:transform .5s var(--e)}
+.case:hover .case-title{transform:translateX(7px)}
+.case-kicker{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+.case-metrics{display:flex;gap:clamp(18px,2.4vw,38px);flex-wrap:wrap}
+.metric b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.45rem,2.9vw,2.2rem);letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums}
+.metric b.pos{color:var(--green)}
+.metric span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+.plus{width:36px;height:36px;border:1px solid var(--rule);position:relative;justify-self:end;flex:none;transition:border-color .4s,background .4s,transform .5s var(--e)}
+.plus::before,.plus::after{content:"";position:absolute;inset:50% 9px;height:1px;background:var(--ink);transition:transform .45s var(--e)}
+.plus::after{transform:rotate(90deg)}
+.case.open .plus{background:var(--ink);border-color:var(--ink);transform:rotate(90deg)}
+.case.open .plus::before,.case.open .plus::after{background:var(--paper)}
+.case.open .plus::after{transform:rotate(0)}
+.case-body{overflow:hidden;height:0;transition:height .6s var(--e)}
+.case-inner{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);padding:0 0 clamp(28px,3.4vw,48px)}
+.crop{position:relative;background:var(--ink);aspect-ratio:16/10;overflow:hidden}
+.crop img{width:100%;height:100%;object-fit:cover}
+.crop-ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px;background:
+  linear-gradient(180deg,#141A20,#0E1216)}
+.crop-ph .lines{display:grid;gap:6px}
+.crop-ph .lines i{display:block;height:6px;background:#1F262E}
+.crop-ph .lines i:nth-child(1){width:38%}
+.crop-ph .lines i:nth-child(2){width:64%}
+.crop-ph .lines i:nth-child(3){width:52%}
+.crop-slot{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:#5C6670}
+.case-detail h4{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
+.ba{list-style:none;display:grid;gap:10px;margin-bottom:26px}
+.ba li{display:grid;grid-template-columns:58px 1fr;gap:12px;font-size:14.5px;line-height:1.5;padding-bottom:10px;border-bottom:1px solid var(--rule-soft)}
+.ba li u{text-decoration:none;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel);padding-top:4px}
+.ba li.after{color:var(--ink)}
+.ba li.before{color:var(--steel)}
+@media(max-width:900px){
+  .case-top{grid-template-columns:auto 1fr 36px;gap:14px 16px;align-items:start}
+  .case-no{grid-row:1;font-size:1.4rem}
+  .case-head-wrap{grid-column:2}
+  .case-metrics{grid-column:1/-1;padding-top:4px}
+  .plus{grid-row:1;grid-column:3;width:32px;height:32px}
+  .case-inner{grid-template-columns:1fr}
+  .case:hover .case-title{transform:none}
+}
+
+/* ═══════════ PROOF ═══════════ */
+.proof{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,26px);margin-top:clamp(36px,4vw,60px)}
+.q{background:var(--white);border:1px solid var(--rule);padding:clamp(24px,2.8vw,40px);display:flex;flex-direction:column;justify-content:space-between;min-height:270px;transition:transform .5s var(--e),box-shadow .5s var(--e)}
+.q:hover{transform:translate3d(0,-4px,0);box-shadow:0 26px 54px -40px rgba(14,18,22,.45)}
+.q.lead{grid-column:span 2;background:var(--ink);border-color:var(--ink);color:#DDE2E7;min-height:300px}
+.q blockquote{font-family:var(--f-display);font-weight:650;font-size:clamp(1.18rem,2.1vw,1.75rem);line-height:1.26;letter-spacing:-.026em}
+.q.lead blockquote{font-size:clamp(1.5rem,3.4vw,2.7rem);max-width:20ch;color:#fff;line-height:1.15;letter-spacing:-.032em}
+.who{display:flex;align-items:center;gap:13px;margin-top:32px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em}
+.who small{display:block;color:var(--steel);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;margin-top:3px}
+.q.lead .who small{color:var(--ink-dim)}
+.av{width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--rule);font-size:10.5px;letter-spacing:.06em}
+.q.lead .av{border-color:#3A444E}
+@media(max-width:860px){.proof{grid-template-columns:1fr}.q.lead{grid-column:span 1}}
+
+/* ═══════════ PROCESS RAIL ═══════════ */
+.process{background:var(--paper)}
+.rail{position:relative;margin-top:clamp(40px,4.5vw,72px)}
+.rail-line,.rail-fill{position:absolute;left:7px;top:8px;width:1px}
+.rail-line{bottom:8px;background:var(--rule)}
+.rail-fill{background:var(--blue);height:0;transform-origin:50% 0}
+.step{display:grid;grid-template-columns:52px minmax(0,190px) minmax(0,1fr);gap:clamp(14px,2.6vw,44px);padding:clamp(18px,2.2vw,28px) 0;align-items:start}
+.dot-o{width:15px;height:15px;border-radius:50%;border:1px solid var(--rule);background:var(--paper);position:relative;transition:border-color .5s var(--e),transform .5s var(--e)}
+.dot-o::after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:transparent;transition:background .5s var(--e)}
+.step.on .dot-o{border-color:var(--blue);transform:scale(1.15)}
+.step.on .dot-o::after{background:var(--blue)}
+.step h3{color:var(--steel-2);transition:color .5s var(--e)}
+.step.on h3{color:var(--ink)}
+.when{margin-top:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.gate{font-size:9px;letter-spacing:.12em;padding:3px 7px;border:1px solid var(--amber);color:var(--amber)}
+.step p{font-size:15px;line-height:1.62;color:var(--steel);max-width:50ch}
+@media(max-width:820px){
+  .step{grid-template-columns:34px minmax(0,1fr);gap:14px}
+  .step>div:nth-child(3){grid-column:2}
+  .rail-line,.rail-fill{left:7px}
+}
+
+/* ═══════════ CTA ═══════════ */
+.cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
+.cta-band .wrap{padding-block:clamp(76px,9.5vw,150px)}
+.cta-band .eyebrow{color:var(--ink-dim)}
+.cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,8vw,6.4rem);line-height:.93}
+.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
+.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
+.assur i{font-style:normal;color:var(--amber);margin-right:7px}
+
+/* footer chrome → shared/chrome.css */
+
+
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
+  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
+  .mask span i{transform:none!important}
+  .track{animation:none;transform:none}
+  .c-table tbody tr{opacity:1;transform:none}
+}
+</style>
+<link rel="stylesheet" href="/shared/slot-assets.css">
+<link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/chrome.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav-shell">
+    <div class="wrap nav-in">
+      <a href="/" class="mark">KRIVA<sup>®</sup></a>
+      <div class="nav-primary">
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li class="nav-item" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-trucking" aria-haspopup="true">Trucking<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-trucking" role="menu">
+                <div class="mm-head"><b>Trucking &amp; logistics</b><span>Ops software</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics solutions</strong><em>Dispatch, fleet, drivers, and logistics platforms.</em></a></li>
+                  <li><a role="menuitem" href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><em>Consoles, bulk actions, supervisor oversight.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Fleet dashboards</strong><em>Route performance and exception handling.</em></a></li>
+                  <li><a role="menuitem" href="/services/mobile-applications"><strong>Driver mobile apps</strong><em>Load acceptance, status updates, documents.</em></a></li>
+                  <li><a role="menuitem" href="/solutions/car-transportation"><strong>Car transportation</strong><em>Quotes, tracking, and auto-transport ops.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/solutions/trucking-logistics">All trucking solutions <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-saas" aria-haspopup="true">SaaS<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-saas" role="menu">
+                <div class="mm-head"><b>SaaS products</b><span>UK &amp; US</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/solutions/saas"><strong>SaaS product solutions</strong><em>Onboarding, dashboards, and MVPs that stick.</em></a></li>
+                  <li><a role="menuitem" href="/services/saas-platforms"><strong>SaaS product design</strong><em>Multi-tenant UX, admin panels, permissions.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboards &amp; admin panels</strong><em>Analytics and operational views for daily use.</em></a></li>
+                  <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/solutions/saas">All SaaS solutions <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-integration" aria-haspopup="true">Integration<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-integration" role="menu">
+                <div class="mm-head"><b>Integrations</b><span>Finance &amp; APIs</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/solutions/accounting-integrations"><strong>QuickBooks &amp; Xero</strong><em>Sync and reconciliation finance teams trust.</em></a></li>
+                  <li><a role="menuitem" href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><em>Reliable connectors with clear error handling.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/solutions/accounting-integrations">Explore integrations <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-operations" aria-haspopup="true">Operations<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-operations" role="menu">
+                <div class="mm-head"><b>Operations</b><span>Tooling &amp; delivery</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/services/crm-development"><strong>CRM &amp; ops consoles</strong><em>Pipelines and internal tools matched to real desks.</em></a></li>
+                  <li><a role="menuitem" href="/services/automation-systems"><strong>Automation workflows</strong><em>Human-gated triage, docs, and internal tooling.</em></a></li>
+                  <li><a role="menuitem" href="/process"><strong>How we work</strong><em>Discovery through launch — clear gates, weekly demos.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/process">See the process <i>→</i></a></div>
+              </div>
+            </li>
+            <li><a class="nav-link" href="/services">Services</a></li>
+            <li><a class="nav-link" href="/work">Work</a></li>
+            <li><a class="nav-link" href="/about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="nav-cta">
+        <a href="/contact#book" class="btn sm"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-nav">
+    <div class="sheet-item">
+      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-trucking">Trucking<span class="plus" aria-hidden="true"></span></button>
+      <ul class="sheet-sub" id="sheet-trucking">
+        <li><a href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics</strong><span>Dispatch, fleet, drivers</span></a></li>
+        <li><a href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><span>Consoles &amp; supervisor tools</span></a></li>
+        <li><a href="/services/dashboard-design"><strong>Fleet dashboards</strong><span>Routes &amp; exceptions</span></a></li>
+        <li><a href="/services/mobile-applications"><strong>Driver mobile apps</strong><span>Status, docs, acceptance</span></a></li>
+        <li><a href="/solutions/car-transportation"><strong>Car transportation</strong><span>Quotes &amp; tracking</span></a></li>
+      </ul>
+    </div>
+    <div class="sheet-item">
+      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-saas">SaaS<span class="plus" aria-hidden="true"></span></button>
+      <ul class="sheet-sub" id="sheet-saas">
+        <li><a href="/solutions/saas"><strong>SaaS product solutions</strong><span>Onboarding &amp; MVPs</span></a></li>
+        <li><a href="/services/saas-platforms"><strong>SaaS product design</strong><span>Multi-tenant UX</span></a></li>
+        <li><a href="/services/dashboard-design"><strong>Dashboards &amp; admin</strong><span>Daily-use views</span></a></li>
+        <li><a href="/services/product-design"><strong>Product design &amp; UX</strong><span>Flows to launch UI</span></a></li>
+      </ul>
+    </div>
+    <div class="sheet-item">
+      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-integration">Integration<span class="plus" aria-hidden="true"></span></button>
+      <ul class="sheet-sub" id="sheet-integration">
+        <li><a href="/solutions/accounting-integrations"><strong>QuickBooks &amp; Xero</strong><span>Sync &amp; reconciliation</span></a></li>
+        <li><a href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><span>Connectors that hold</span></a></li>
+      </ul>
+    </div>
+    <div class="sheet-item">
+      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-operations">Operations<span class="plus" aria-hidden="true"></span></button>
+      <ul class="sheet-sub" id="sheet-operations">
+        <li><a href="/services/crm-development"><strong>CRM &amp; ops consoles</strong><span>Desk-matched tooling</span></a></li>
+        <li><a href="/services/automation-systems"><strong>Automation workflows</strong><span>Human-gated pipelines</span></a></li>
+        <li><a href="/process"><strong>How we work</strong><span>Process &amp; delivery</span></a></li>
+      </ul>
+    </div>
+    <div class="sheet-item"><a class="big" href="/services">Services</a></div>
+    <div class="sheet-item"><a class="big" href="/industries">Industries</a></div>
+    <div class="sheet-item"><a class="big" href="/work">Work</a></div>
+    <div class="sheet-item"><a class="big" href="/about">About</a></div>
+    <div class="sheet-item"><a class="big" href="/insights">Insights</a></div>
+    <div class="sheet-item"><a class="big" href="/faq">FAQ</a></div>
+    <div class="sheet-item"><a class="big" href="/careers">Careers</a></div>
+    <div class="sheet-cta">
+      <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+      <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
+    </div>
+  </div>
+  <div class="sheet-foot">
+    <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
+    <a href="tel:+919724454455">+91 97244 54455</a>
+    <span>Ahmedabad, India · Remote-first</span>
+  </div>
+</div>
+
+<main id="main">
+<div id="top"></div>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow" data-r>Design engineering · SaaS &amp; trucking</p>
+      <h1 class="d1 mask" id="h1" data-mask>
+        <span><i>We build the</i></span>
+        <span><i>dispatch board</i></span>
+        <span><i><em>nobody</em> works around.</i></span>
+      </h1>
+      <p class="lede" data-r>Dispatch consoles, fleet dashboards, SaaS onboarding and QuickBooks&nbsp;/&nbsp;Xero sync — designed and shipped by the same senior team that shows up to your kickoff call.</p>
+      <div class="hero-actions" data-r>
+        <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/work" class="btn ghost"><span>See the work</span><i>→</i></a>
+      </div>
+      <div class="hero-facts" data-s>
+        <div class="fact"><b>NDA</b><small>Before the first call</small></div>
+        <div class="fact"><b>1 team</b><small>No subcontracting</small></div>
+        <div class="fact"><b>Weekly</b><small>Demos on a shared board</small></div>
+      </div>
+    </div>
+
+    <div data-r>
+      <div class="console" id="console">
+        <div class="c-head">
+          <div class="c-tabs" role="tablist" aria-label="Console views">
+            <button type="button" role="tab" aria-selected="true" id="tab-board">Board</button>
+            <button type="button" role="tab" aria-selected="false" id="tab-lanes">Lanes</button>
+            <button type="button" role="tab" aria-selected="false" id="tab-exc">Exceptions</button>
+          </div>
+          <span class="c-live"><i class="dot" aria-hidden="true"></i><span id="clock">LIVE</span></span>
+        </div>
+
+        <div class="c-kpis">
+          <div class="kpi"><span>Active loads</span><b class="num" data-kpi="128">—</b></div>
+          <div class="kpi up"><span>On time</span><b class="num" id="ontime">—</b></div>
+          <div class="kpi"><span>Exceptions</span><b class="num" data-kpi="3">—</b></div>
+        </div>
+
+        <table class="c-table" id="board">
+          <caption>Illustrative dispatch board showing five sample loads and their status.</caption>
+          <thead><tr><th scope="col">Load</th><th scope="col">Lane</th><th scope="col">ETA</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><td>#4821</td><td>DAL → PHX</td><td>14:20</td><td><span class="chip s2" data-stage="2">Rolling</span></td></tr>
+            <tr><td>#4822</td><td>ATL → CLT</td><td>09:05</td><td><span class="chip s1" data-stage="1">Assigned</span></td></tr>
+            <tr><td>#4823</td><td>CHI → DET</td><td>16:40</td><td><span class="chip s0" data-stage="0">Pending</span></td></tr>
+            <tr><td>#4824</td><td>LAX → LAS</td><td>11:15</td><td><span class="chip s0" data-stage="0">Pending</span></td></tr>
+            <tr><td>#4825</td><td>SEA → PDX</td><td>08:30</td><td><span class="chip s1" data-stage="1">Assigned</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="c-foot">
+          <span class="mono">SLA</span>
+          <span class="track-bar" role="img" aria-label="Service level, 94 percent"><i id="sla"></i></span>
+          <span class="mono num" id="slaPct">0%</span>
+          <svg class="spark" viewBox="0 0 64 20" aria-hidden="true"><path d="M0 16 L9 12 L18 14 L27 8 L36 10 L45 5 L54 7 L64 2"/></svg>
+        </div>
+      </div>
+      <p class="c-note"><span class="flag">Demo</span> Interface pattern only — no client data shown</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ MANIFEST ══════ -->
+<section class="manifest" aria-label="Clients">
+  <div class="wrap manifest-head">
+    <p class="eyebrow">Shipped for</p>
+    <p class="mono" style="color:#5C6670">Some engagements under NDA</p>
+  </div>
+  <div class="track" id="track" aria-hidden="true"></div>
+  <p class="sr">Clients include Keep Moving Movers, XMile Auto Transport, DC Auto Transport, Extra Mile Movers, Cascadia Collection, Schwarz Logistics, EliteOne Transportation, Houzway and CareerMoon.</p>
+</section>
+
+<!-- ══════ SOLUTIONS ══════ -->
+<section class="sect" id="solutions" aria-labelledby="solH">
+  <div class="wrap">
+    <div class="sol">
+      <div class="sol-rail">
+        <p class="eyebrow" data-r>What we build</p>
+        <h2 class="d2" id="solH" data-r style="margin-top:20px">Four things.<br>Done properly.</h2>
+        <p class="body-sm" data-r style="margin-top:18px">Nothing on this list is a service category we invented to fill a menu. Each one is running in production somewhere right now.</p>
+
+        <ul class="sol-index" id="solIndex">
+          <li class="act" style="--acc:var(--amber)"><button type="button" data-go="0"><u>01</u> Trucking &amp; logistics</button></li>
+          <li style="--acc:var(--blue)"><button type="button" data-go="1"><u>02</u> SaaS products</button></li>
+          <li style="--acc:var(--green)"><button type="button" data-go="2"><u>03</u> Accounting integrations</button></li>
+          <li style="--acc:var(--violet)"><button type="button" data-go="3"><u>04</u> Workflow automation</button></li>
+        </ul>
+
+        <div class="viewer" aria-hidden="true">
+          <div class="viewer-bar"><b id="vName">Route planner</b><span id="vMeta">04 / 12 lanes</span></div>
+          <div class="viewer-body">
+            <div class="scene on" data-scene="0">
+              <svg class="route" viewBox="0 0 300 150" preserveAspectRatio="none">
+                <g class="grid" stroke="#1E252C">
+                  <line x1="0" y1="37" x2="300" y2="37"/><line x1="0" y1="75" x2="300" y2="75"/><line x1="0" y1="113" x2="300" y2="113"/>
+                  <line x1="75" y1="0" x2="75" y2="150"/><line x1="150" y1="0" x2="150" y2="150"/><line x1="225" y1="0" x2="225" y2="150"/>
+                </g>
+                <path class="path" d="M18 122 C 70 118, 84 62, 138 60 S 220 92, 282 26"/>
+                <circle class="node" cx="18" cy="122" r="4"/><circle class="node" cx="138" cy="60" r="4"/><circle class="node" cx="282" cy="26" r="4"/>
+              </svg>
+            </div>
+            <div class="scene" data-scene="1">
+              <div class="funnel">
+                <div class="frow"><span>Signup</span><span class="fbar" style="--v:1"><i></i></span><em>100%</em></div>
+                <div class="frow"><span>Verified</span><span class="fbar" style="--v:.78"><i></i></span><em>78%</em></div>
+                <div class="frow"><span>First run</span><span class="fbar" style="--v:.54"><i></i></span><em>54%</em></div>
+                <div class="frow"><span>Activated</span><span class="fbar" style="--v:.41"><i></i></span><em>41%</em></div>
+              </div>
+            </div>
+            <div class="scene" data-scene="2">
+              <div class="ledger">
+                <div class="lrow ok"><span>INV-2291</span><small>Matched</small><span>$4,120.00</span></div>
+                <div class="lrow ok"><span>INV-2292</span><small>Matched</small><span>$880.50</span></div>
+                <div class="lrow ex"><span>INV-2293</span><small>Exception</small><span>$1,204.75</span></div>
+                <div class="lrow ok"><span>INV-2294</span><small>Matched</small><span>$310.00</span></div>
+              </div>
+            </div>
+            <div class="scene" data-scene="3">
+              <div class="pipe">
+                <span class="node">Intake</span><span class="arw">→</span>
+                <span class="node">Classify</span><span class="arw">→</span>
+                <span class="node human">Human review</span><span class="arw">→</span>
+                <span class="node">Commit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panels" id="panels">
+        <article class="panel" style="--acc:var(--amber)" data-r data-v="Route planner|04 / 12 lanes">
+          <span class="panel-no">01</span>
+          <p class="eyebrow">Carriers · Brokers · Fleets</p>
+          <h3 class="d3">Dispatch boards built around the desk, not the database.</h3>
+          <p class="body-sm">Bulk assignment, SLA intelligence, supervisor overrides, and driver apps that survive a cracked Android in a truck-stop parking lot. We've sat next to dispatchers during a shift. It changes what you build.</p>
+          <div class="tags"><span class="tag">Custom TMS</span><span class="tag">Dispatch CRM</span><span class="tag">Fleet dashboards</span><span class="tag">Driver apps</span></div>
+          <a href="/solutions/trucking-logistics" class="p-link">Explore trucking solutions <i>→</i></a>
+        </article>
+
+        <article class="panel" style="--acc:var(--blue)" data-r data-v="Activation funnel|Last 30 days">
+          <span class="panel-no">02</span>
+          <p class="eyebrow">Pre-seed → Series B</p>
+          <h3 class="d3">The product works. Users aren't sticking.</h3>
+          <p class="body-sm">We fix the parts causing drop-off: first-run flows, permission screens that don't confuse admins, and dashboards that answer the question someone actually opened the app to ask.</p>
+          <div class="tags"><span class="tag">Onboarding</span><span class="tag">Dashboards</span><span class="tag">10-week MVP</span><span class="tag">Design systems</span></div>
+          <a href="/solutions/saas" class="p-link">Explore SaaS solutions <i>→</i></a>
+        </article>
+
+        <article class="panel" style="--acc:var(--green)" data-r data-v="Reconciliation|Period 08 · open">
+          <span class="panel-no">03</span>
+          <p class="eyebrow">Finance &amp; operations</p>
+          <h3 class="d3">Month-end close without the fire drill.</h3>
+          <p class="body-sm">QuickBooks and Xero sync that surfaces exceptions before they turn into reconciliation archaeology. Reliable retries, readable error states, and an audit trail your accountant will accept.</p>
+          <div class="tags"><span class="tag">QuickBooks API</span><span class="tag">Xero sync</span><span class="tag">Exception dashboards</span></div>
+          <a href="/solutions/accounting-integrations" class="p-link">Explore integrations <i>→</i></a>
+        </article>
+
+        <article class="panel" style="--acc:var(--violet)" data-r data-v="Pipeline|Human-gated">
+          <span class="panel-no">04</span>
+          <p class="eyebrow">Internal tooling</p>
+          <h3 class="d3">Automation with a person still in the loop.</h3>
+          <p class="body-sm">Ticket triage, document processing, internal tools. Every automated output is reviewed by a human before it touches production. Nothing goes near your billing data unsupervised.</p>
+          <div class="tags"><span class="tag">Ticket triage</span><span class="tag">Doc processing</span><span class="tag">Pipeline design</span></div>
+          <a href="/services/automation-systems" class="p-link">Explore automation <i>→</i></a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ READOUT ══════ -->
+<section class="readout" aria-labelledby="roH">
+  <div class="wrap">
+    <div class="readout-head">
+      <p class="eyebrow" data-r>Track record</p>
+      <h2 class="d2" id="roH" data-r style="margin-top:18px">Every number here maps to a project we can name on a call.</h2>
+    </div>
+    <div class="nums" id="nums">
+      <div class="nc"><b class="num" data-count="4" data-suffix="">0</b><span>Time zones</span><em>US &amp; UK call hours with India delivery overlap</em></div>
+      <div class="nc"><b>1</b><span>Team, no subcontracting</span><em>The people on your call build the product</em></div>
+      <div class="nc"><b>NDA</b><span>From day one</span><em>Available before the first conversation</em></div>
+      <div class="nc"><b>Weekly</b><span>Working demos</span><em>Shared board, written decisions</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WORK ══════ -->
+<section class="sect work" id="work" aria-labelledby="workH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Selected work</p>
+        <h2 class="d2" id="workH" data-r>Three we can<br>talk about.</h2>
+      </div>
+      <a href="/work" class="btn ghost"><span>Full portfolio</span><i>→</i></a>
+    </div>
+
+    <div class="cases" id="cases">
+
+      <article class="case">
+        <button class="case-top" type="button" aria-expanded="false" aria-controls="case1">
+          <span class="case-no num">01</span>
+          <span class="case-head-wrap">
+            <span class="case-kicker">Logistics · Dispatch CRM</span>
+            <span class="case-title">FleetFlow<br>dispatch console</span>
+          </span>
+          <span class="case-metrics">
+            <span class="metric"><b class="num pos">−32%</b><span>Handle time</span></span>
+            <span class="metric"><b class="num">400+</b><span>Daily routes</span></span>
+            <span class="metric"><b class="num">11 wk</b><span>To production</span></span>
+          </span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="case-body" id="case1">
+          <div class="case-inner">
+            <figure class="crop">
+              <!-- Drop a real screenshot here: <img src="/work/fleetflow-console.jpg" alt="FleetFlow dispatch console" loading="lazy" width="1600" height="1000"> -->
+              <div data-asset="/work/fleetflow/home-console.jpg" data-asset-alt="FleetFlow dispatch console" data-asset-dims="1600×1000"><div class="crop-ph"><div class="lines"><i></i><i></i><i></i></div><span class="crop-slot">FleetFlow · console reference</span></div></div>
+            </figure>
+            <div class="case-detail">
+              <h4>Before / after</h4>
+              <ul class="ba">
+                <li class="before"><u>Before</u> Dispatchers reassigned loads one row at a time, with no view of which were about to breach SLA.</li>
+                <li class="after"><u>After</u> Multi-select assignment, breach countdowns on the row, and supervisor override without leaving the board.</li>
+              </ul>
+              <h4>Scope</h4>
+              <p class="body-sm">Discovery on-site, console redesign, driver app, and a rollout phased by depot. Metrics measured by the client's ops team.</p>
+              <a href="/work/fleetflow-dispatch" class="p-link">Read the FleetFlow case study <i>→</i></a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <button class="case-top" type="button" aria-expanded="false" aria-controls="case2">
+          <span class="case-no num">02</span>
+          <span class="case-head-wrap">
+            <span class="case-kicker">B2B SaaS · Onboarding</span>
+            <span class="case-title">PayrollPro<br>first-run rebuild</span>
+          </span>
+          <span class="case-metrics">
+            <span class="metric"><b class="num">SaaS</b><span>Onboarding</span></span>
+            <span class="metric"><b class="num">UK</b><span>B2B product</span></span>
+            <span class="metric"><b class="num">6 wk</b><span>To production</span></span>
+          </span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="case-body" id="case2">
+          <div class="case-inner">
+            <figure class="crop">
+              <!-- <img src="/work/payrollpro-onboarding.jpg" alt="PayrollPro onboarding flow" loading="lazy" width="1600" height="1000"> -->
+              <div data-asset="/work/payrollpro/home-onboarding.jpg" data-asset-alt="PayrollPro onboarding flow" data-asset-dims="1600×1000"><div class="crop-ph"><div class="lines"><i></i><i></i><i></i></div><span class="crop-slot">PayrollPro · onboarding reference</span></div></div>
+            </figure>
+            <div class="case-detail">
+              <h4>Before / after</h4>
+              <ul class="ba">
+                <li class="before"><u>Before</u> An SSO rollout pushed permission setup ahead of first value. Admins stalled and opened tickets.</li>
+                <li class="after"><u>After</u> Progressive setup, deferred permissions, and a first-run path that reaches a real payroll run in one sitting.</li>
+              </ul>
+              <h4>Scope</h4>
+              <p class="body-sm">UX research with existing admins, flow redesign, component library, and instrumentation for activation tracking.</p>
+              <a href="/work/payroll-pro-saas" class="p-link">Read the PayrollPro case study <i>→</i></a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <button class="case-top" type="button" aria-expanded="false" aria-controls="case3">
+          <span class="case-no num">03</span>
+          <span class="case-head-wrap">
+            <span class="case-kicker">Integrations · Finance ops</span>
+            <span class="case-title">FinanceSync<br>reconciliation hub</span>
+          </span>
+          <span class="case-metrics">
+            <span class="metric"><b class="num">QB + Xero</b><span>Ledgers synced</span></span>
+            <span class="metric"><b class="num">Ops</b><span>Exception hub</span></span>
+            <span class="metric"><b class="num">9 wk</b><span>To production</span></span>
+          </span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="case-body" id="case3">
+          <div class="case-inner">
+            <figure class="crop">
+              <!-- <img src="/work/financesync-hub.jpg" alt="FinanceSync reconciliation dashboard" loading="lazy" width="1600" height="1000"> -->
+              <div data-asset="/work/financesync/home-reconciliation.jpg" data-asset-alt="FinanceSync reconciliation view" data-asset-dims="1600×1000"><div class="crop-ph"><div class="lines"><i></i><i></i><i></i></div><span class="crop-slot">FinanceSync · reconciliation reference</span></div></div>
+            </figure>
+            <div class="case-detail">
+              <h4>Before / after</h4>
+              <ul class="ba">
+                <li class="before"><u>Before</u> Sync failures surfaced at close, as a spreadsheet diff someone had to reverse-engineer.</li>
+                <li class="after"><u>After</u> Exceptions raised the moment they occur, with the source record, the retry history, and a one-click resolve.</li>
+              </ul>
+              <h4>Scope</h4>
+              <p class="body-sm">QuickBooks and Xero integration, exception model, operator dashboard, and handover documentation for the finance team.</p>
+              <a href="/work/finance-sync-hub" class="p-link">Read the FinanceSync case study <i>→</i></a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="c-note" style="margin-top:22px">Only FleetFlow publishes signed-off outcome metrics on this redesign. Other cases lead with verified narrative until metrics are cleared.</p>
+  </div>
+</section>
+
+<!-- ══════ PROOF ══════ -->
+<section class="sect sect--tight" id="proof" aria-labelledby="proofH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Proof you can verify</p>
+    <h2 class="d2" id="proofH" data-r style="margin-top:18px;max-width:16ch">Signed-off work, not borrowed praise.</h2>
+    <div class="proof proof--facts" data-s style="grid-template-columns:repeat(3,1fr)">
+      <a class="q lead" href="/work/fleetflow-dispatch" style="text-decoration:none;color:inherit;display:block">
+        <p class="mono" style="margin-bottom:14px;color:var(--steel)">FleetFlow · signed-off</p>
+        <p class="d3" style="margin-bottom:12px">−32% manual handle time</p>
+        <p class="body-sm">Dispatch CRM for US trucking ops. Metrics published on the case study.</p>
+        <p class="mono" style="margin-top:18px">Read FleetFlow →</p>
+      </a>
+      <a class="q" href="/work/payroll-pro-saas" style="text-decoration:none;color:inherit;display:block">
+        <p class="mono" style="margin-bottom:14px;color:var(--steel)">PayrollPro · narrative</p>
+        <p class="d3" style="margin-bottom:12px">SSO live. Activation rebuilt.</p>
+        <p class="body-sm">Role-based onboarding and permission clarity for a UK/EU payroll SaaS.</p>
+        <p class="mono" style="margin-top:18px">Read PayrollPro →</p>
+      </a>
+      <a class="q" href="/work/finance-sync-hub" style="text-decoration:none;color:inherit;display:block">
+        <p class="mono" style="margin-bottom:14px;color:var(--steel)">FinanceSync · narrative</p>
+        <p class="d3" style="margin-bottom:12px">Sync that finance can triage.</p>
+        <p class="body-sm">QuickBooks/Xero reconciliation workflows with operator-facing deltas.</p>
+        <p class="mono" style="margin-top:18px">Read FinanceSync →</p>
+      </a>
+    </div>
+    <p class="c-note" style="margin-top:20px">Client person/company bylines stay unpublished until you confirm attribution. Quotes are not shown without approved speakers.</p>
+  </div>
+</section>
+
+<!-- ══════ PROCESS ══════ -->
+<section class="sect process" id="process" aria-labelledby="procH" style="border-top:1px solid var(--rule)">
+  <div class="wrap">
+      <p class="eyebrow" data-r>Ten weeks, three approval gates</p>
+    <h2 class="d2" id="procH" data-r style="margin-top:18px;max-width:17ch">You always know what you're approving next.</h2>
+    <p class="body-sm" data-r style="margin-top:14px"><a href="/process" class="p-link" style="margin-top:0">Full process overview <i>→</i></a></p>
+
+    <div class="rail" id="rail">
+      <div class="rail-line" aria-hidden="true"></div>
+      <div class="rail-fill" id="railFill" aria-hidden="true"></div>
+
+      <div class="step"><span class="dot-o" aria-hidden="true"></span>
+        <div><h3 class="d3">Discovery</h3><p class="when">Week 1–2 <span class="gate">You sign off</span></p></div>
+        <p>Goals, users, constraints, and a written definition of success. Nothing gets designed until you've read it back to us.</p>
+      </div>
+      <div class="step"><span class="dot-o" aria-hidden="true"></span>
+        <div><h3 class="d3">UX &amp; UI</h3><p class="when">Week 2–4</p></div>
+        <p>Wireframes, a clickable prototype, then final UI — reviewed with you before a line of production code exists.</p>
+      </div>
+      <div class="step"><span class="dot-o" aria-hidden="true"></span>
+        <div><h3 class="d3">Build</h3><p class="when">Week 4–8 <span class="gate">You sign off</span></p></div>
+        <p>Weekly working demos on a real URL. Not a slide about progress — the thing itself, in your browser.</p>
+      </div>
+      <div class="step"><span class="dot-o" aria-hidden="true"></span>
+        <div><h3 class="d3">QA &amp; launch</h3><p class="when">Week 8–10</p></div>
+        <p>Cross-browser, accessibility, analytics, phased rollout, and documentation your team can actually maintain.</p>
+      </div>
+      <div class="step"><span class="dot-o" aria-hidden="true"></span>
+        <div><h3 class="d3">After</h3><p class="when">Week 10+ <span class="gate">You sign off</span></p></div>
+        <p>Fixes, iteration, roadmap support. Most clients keep going — the ones who don't leave with everything they need.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CTA ══════ -->
+<section class="cta-band" id="contact" aria-labelledby="ctaH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Next step</p>
+    <h2 class="d2" id="ctaH" data-r>Tell us what's breaking.</h2>
+    <div class="cta-row">
+      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
+      </div>
+      <p class="assur" data-r>
+        <span><i>◆</i>Reply within one business day</span>
+        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>No obligation</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h3>Get in touch</h3>
+        <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a><br>
+        <a href="tel:+919724454455">+91 97244 54455</a>
+        <p class="f-blurb">Design and engineering for US trucking ops and SaaS product teams. Ahmedabad, India · Remote-first · Global clients.</p>
+        <div class="fsocial">
+          <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+          <a href="https://dribbble.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Dribbble</a>
+          <a href="https://www.instagram.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Instagram</a>
+          <a href="https://x.com/krivatechnologies" rel="noopener noreferrer" target="_blank">X</a>
+        </div>
+      </div>
+      <nav aria-label="Trucking and logistics"><h3>Trucking &amp; logistics</h3><ul>
+        <li><a href="/solutions/trucking-logistics">Trucking &amp; logistics solutions</a></li>
+        <li><a href="/services/crm-development">Dispatch CRM &amp; TMS</a></li>
+        <li><a href="/services/dashboard-design">Fleet dashboards</a></li>
+        <li><a href="/services/mobile-applications">Driver mobile apps</a></li>
+        <li><a href="/solutions/car-transportation">Car transportation</a></li></ul></nav>
+      <nav aria-label="SaaS and integrations"><h3>SaaS &amp; integrations</h3><ul>
+        <li><a href="/solutions/saas">SaaS product solutions</a></li>
+        <li><a href="/solutions/accounting-integrations">QuickBooks &amp; Xero</a></li>
+        <li><a href="/services/saas-platforms">SaaS product design</a></li>
+        <li><a href="/services/api-integrations">Integrations &amp; APIs</a></li>
+        <li><a href="/services/automation-systems">Automation workflows</a></li></ul></nav>
+      <nav aria-label="Company"><h3>Company</h3><ul>
+        <li><a href="/solutions">Solutions</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/process">Process</a></li>
+        <li><a href="/technologies">Tools &amp; stack</a></li>
+        <li><a href="/insights">Insights</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="/contact">Contact</a></li></ul></nav>
+    </div>
+    <p class="fmark" aria-hidden="true">KRIVA</p>
+    <div class="fbase">
+      <span>© 2026 Kriva Technologies</span>
+      <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/919724454455?text=Hi%20KRIVA%2C%20I'd%20like%20to%20discuss%20a%20project." rel="noopener noreferrer" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/><path d="M12.04 2C6.5 2 2 6.48 2 12c0 1.77.46 3.42 1.27 4.86L2 22l5.29-1.39A9.96 9.96 0 0 0 12.04 22C17.6 22 22 17.52 22 12S17.6 2 12.04 2zm0 18.15c-1.57 0-3.03-.43-4.28-1.17l-.31-.18-3.14.82.84-3.06-.2-.32A8.1 8.1 0 0 1 3.9 12c0-4.47 3.65-8.1 8.14-8.1 4.48 0 8.13 3.63 8.13 8.1 0 4.47-3.65 8.15-8.13 8.15z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script src="/shared/chrome.js" defer></script>
+<script src="/shared/chrome.js" defer></script>
+<script src="/shared/chrome.js" defer></script>
+<script>
+(function(){
+'use strict';
+const mqReduce = matchMedia('(prefers-reduced-motion: reduce)');
+const mqDesk   = matchMedia('(min-width: 1001px)');
+const reduce   = () => mqReduce.matches;
+
+/* ───────── single scroll loop: every scroll-driven effect reads from here ───────── */
+const readers = [];
+let ticking = false;
+function onScroll(){ if(!ticking){ requestAnimationFrame(run); ticking = true; } }
+function run(){ const y = scrollY; for(const r of readers) r(y); ticking = false; }
+addEventListener('scroll', onScroll, {passive:true});
+addEventListener('resize', onScroll, {passive:true});
+
+/* ───────── reveals ───────── */
+const io = new IntersectionObserver((es)=>{
+  for(const e of es){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }
+},{threshold:.14, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>io.observe(el));
+
+/* nav chrome → shared/chrome.js */
+/* ───────── HERO CONSOLE ───────── */
+const con = document.getElementById('console');
+const rows = [...document.querySelectorAll('#board tbody tr')];
+const chips = [...document.querySelectorAll('#board .chip')];
+const STAGES = [['Pending','s0'],['Assigned','s1'],['Rolling','s2']];
+
+const conIO = new IntersectionObserver(es=>{
+  if(!es[0].isIntersecting) return;
+  conIO.disconnect();
+  con.classList.add('lit');
+
+  // rows deal in with an eased, non-linear stagger (fast at first, slower after)
+  rows.forEach((r,i)=>{
+    const d = reduce() ? 0 : 380 + Math.pow(i,.82) * 105;
+    setTimeout(()=>r.classList.add('on'), d);
+  });
+
+  // KPI counters + SLA fill, sequenced after the rows land
+  setTimeout(()=>{
+    document.querySelectorAll('[data-kpi]').forEach(el=>countTo(el, +el.dataset.kpi, ''));
+    countTo(document.getElementById('ontime'), 96, '%');
+    document.getElementById('sla').style.transform = 'scaleX(.94)';
+    countTo(document.getElementById('slaPct'), 94, '%');
+  }, reduce() ? 0 : 900);
+},{threshold:.3});
+conIO.observe(con);
+
+// scroll-driven state progression: statuses advance as the hero scrolls past
+if(!reduce()){
+  let stageShown = -1;
+  readers.push(()=>{
+    const r = con.getBoundingClientRect();
+    if(r.bottom < 0 || r.top > innerHeight) return;
+    const p = Math.min(1, Math.max(0, (innerHeight * .8 - r.top) / (r.height + innerHeight * .5)));
+    const step = p < .34 ? 0 : p < .67 ? 1 : 2;
+    if(step === stageShown) return;
+    stageShown = step;
+    chips.forEach((c,i)=>{
+      const base = +c.dataset.stage;
+      const s = Math.min(2, base + step);
+      setTimeout(()=>{ c.textContent = STAGES[s][0]; c.className = 'chip ' + STAGES[s][1]; }, i*70);
+    });
+  });
+
+  // live clock — cheap, one setInterval, paused when tab hidden
+  const clock = document.getElementById('clock');
+  const tickClock = ()=>{
+    if(document.hidden) return;
+    const d = new Date();
+    clock.textContent = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0') + ':' + String(d.getSeconds()).padStart(2,'0');
+  };
+  tickClock(); setInterval(tickClock, 1000);
+}
+
+// console tabs (visual state only — real routing goes here in the Next.js port)
+document.querySelectorAll('.c-tabs button').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('.c-tabs button').forEach(x=>x.setAttribute('aria-selected','false'));
+    b.setAttribute('aria-selected','true');
+  });
+});
+
+/* ───────── count-up helper ───────── */
+function countTo(el, target, suffix){
+  if(reduce()){ el.textContent = target + suffix; return; }
+  const dur = 1200, t0 = performance.now();
+  const tick = t=>{
+    const p = Math.min((t - t0)/dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3.4);
+    el.textContent = Math.round(target * eased) + suffix;
+    if(p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+/* ───────── ticker (duplicated once for a seamless -50% loop) ───────── */
+const clients = ['Keep Moving Movers','XMile Auto Transport','DC Auto Transport','Extra Mile Movers','Cascadia Collection','Schwarz Logistics','EliteOne Transportation','Houzway','CareerMoon'];
+const cells = clients.map((c,i)=>`<span class="cell"><u>${String(i+1).padStart(2,'0')}</u>${c}</span>`).join('');
+document.getElementById('track').innerHTML = cells + cells;
+
+/* ───────── readout counters ───────── */
+const numsIO = new IntersectionObserver(es=>{
+  for(const e of es){
+    if(!e.isIntersecting) continue;
+    numsIO.unobserve(e.target);
+    e.target.querySelectorAll('[data-count]').forEach((el,i)=>{
+      setTimeout(()=>countTo(el, +el.dataset.count, el.dataset.suffix || ''), reduce() ? 0 : i*110);
+    });
+  }
+},{threshold:.35});
+numsIO.observe(document.getElementById('nums'));
+
+/* ───────── solutions: index + viewer sync to the panel in view ───────── */
+const panels = [...document.querySelectorAll('#panels .panel')];
+const items  = [...document.querySelectorAll('#solIndex li')];
+const scenes = [...document.querySelectorAll('.scene')];
+const vName = document.getElementById('vName'), vMeta = document.getElementById('vMeta');
+let activeSol = -1;
+function setSolution(i){
+  if(i === activeSol || i < 0) return;
+  activeSol = i;
+  items.forEach((li,j)=>li.classList.toggle('act', j===i));
+  scenes.forEach((s,j)=>s.classList.toggle('on', j===i));
+  const [n,m] = (panels[i].dataset.v || '|').split('|');
+  vName.textContent = n; vMeta.textContent = m;
+  vName.style.color = getComputedStyle(panels[i]).getPropertyValue('--acc');
+}
+if(mqDesk.matches){
+  const pIO = new IntersectionObserver(es=>{
+    for(const e of es){ if(e.isIntersecting) setSolution(panels.indexOf(e.target)); }
+  },{rootMargin:'-42% 0px -42% 0px'});
+  panels.forEach(p=>pIO.observe(p));
+}
+document.querySelectorAll('#solIndex button').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const i = +b.dataset.go;
+    setSolution(i);
+    panels[i].scrollIntoView({behavior: reduce() ? 'auto' : 'smooth', block:'center'});
+  });
+});
+
+/* ───────── case studies: accessible height-animated expand ───────── */
+document.querySelectorAll('.case-top').forEach(btn=>{
+  const wrap = document.getElementById(btn.getAttribute('aria-controls'));
+  const card = btn.closest('.case');
+  btn.addEventListener('click', ()=>{
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    // close siblings — one open at a time keeps the section from becoming a wall
+    document.querySelectorAll('.case-top[aria-expanded="true"]').forEach(o=>{
+      if(o === btn) return;
+      o.setAttribute('aria-expanded','false');
+      o.closest('.case').classList.remove('open');
+      document.getElementById(o.getAttribute('aria-controls')).style.height = '0px';
+    });
+    btn.setAttribute('aria-expanded', String(!open));
+    card.classList.toggle('open', !open);
+    wrap.style.height = open ? '0px' : wrap.firstElementChild.offsetHeight + 'px';
+  });
+});
+addEventListener('resize', ()=>{
+  document.querySelectorAll('.case.open .case-body').forEach(b=>{
+    b.style.height = b.firstElementChild.offsetHeight + 'px';
+  });
+}, {passive:true});
+
+/* ───────── process rail ───────── */
+const rail = document.getElementById('rail'), fill = document.getElementById('railFill');
+const steps = [...document.querySelectorAll('.step')];
+readers.push(()=>{
+  const r = rail.getBoundingClientRect();
+  if(r.bottom < -200 || r.top > innerHeight + 200) return;
+  const mid = innerHeight * .58;
+  const p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
+  fill.style.height = (p * r.height) + 'px';
+  for(const s of steps) s.classList.toggle('on', s.getBoundingClientRect().top < mid);
+});
+
+run();
+})();
+</script>
+</body>
+</html>
