@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   KRIVA — canonical header / mega menu / sheet / footer
+   KRIVA · canonical header / mega menu / sheet / footer
    Source of truth for chrome across all redesign pages.
    ═══════════════════════════════════════════ */
 
@@ -23,16 +23,16 @@
   padding:9px 11px;font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
   color:var(--steel);transition:color var(--t-fast) var(--e);white-space:nowrap;background:none;border:0;cursor:pointer
 }
-.nav-link::before,.nav-trigger::before{
+.nav-link:before,.nav-trigger:before{
   content:"";position:absolute;left:11px;right:11px;bottom:4px;height:1px;background:currentColor;
   transform:scaleX(0);transform-origin:100% 50%;transition:transform .45s var(--e)
 }
 .nav-link:hover,.nav-trigger:hover,.nav-item.open > .nav-trigger{color:var(--ink)}
-.nav-link:hover::before,.nav-trigger:hover::before,.nav-item.open > .nav-trigger::before{transform:scaleX(1);transform-origin:0 50%}
+.nav-link:hover:before,.nav-trigger:hover:before,.nav-item.open > .nav-trigger:before{transform:scaleX(1);transform-origin:0 50%}
 .nav-link[aria-current="page"],.nav-item.is-active > .nav-trigger{
   color:var(--ink)
 }
-.nav-link[aria-current="page"]::before,.nav-item.is-active > .nav-trigger::before{
+.nav-link[aria-current="page"]:before,.nav-item.is-active > .nav-trigger:before{
   transform:scaleX(1);background:var(--blue)
 }
 .nav-chev{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);opacity:.55;transition:transform .35s var(--e),opacity .35s}
@@ -76,7 +76,7 @@
 .nav-item:nth-last-child(-n+2) .mm{left:auto;right:0}
 
 .nav-cta{display:flex;align-items:center;gap:12px;flex:none}
-/* Header CTA — locked to compact dark mono chip (keep this look) */
+/* Header CTA · locked to compact dark mono chip (keep this look) */
 .nav-cta .btn.sm{
   display:inline-flex;align-items:center;gap:8px;
   height:34px;padding:0 14px;box-sizing:border-box;
@@ -128,12 +128,12 @@
   width:28px;height:28px;border:1px solid #3A444E;position:relative;flex:none;
   transition:border-color .35s,transform .45s var(--e)
 }
-.sheet-toggle .plus::before,.sheet-toggle .plus::after{
+.sheet-toggle .plus:before,.sheet-toggle .plus:after{
   content:"";position:absolute;inset:50% 7px;height:1px;background:#EDEFF1;transition:transform .4s var(--e)
 }
-.sheet-toggle .plus::after{transform:rotate(90deg)}
+.sheet-toggle .plus:after{transform:rotate(90deg)}
 .sheet-item.open .sheet-toggle .plus{border-color:var(--amber);transform:rotate(90deg)}
-.sheet-item.open .sheet-toggle .plus::after{transform:rotate(0)}
+.sheet-item.open .sheet-toggle .plus:after{transform:rotate(0)}
 
 .sheet-sub{
   list-style:none;overflow:hidden;max-height:0;opacity:0;
@@ -162,7 +162,7 @@
   .sheet{display:none !important}
 }
 
-/* Compact desktop between 1100–1280 — keep CTA chip size stable */
+/* Compact desktop between 1100–1280 · keep CTA chip size stable */
 @media(min-width:1100px) and (max-width:1280px){
   .nav-link,.nav-trigger{padding:8px 8px;font-size:10.5px;letter-spacing:.07em}
   .nav-cta .btn.sm{height:34px;padding:0 12px;font-size:10px}

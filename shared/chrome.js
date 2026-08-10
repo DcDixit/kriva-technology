@@ -1,4 +1,4 @@
-/* KRIVA canonical chrome — mega menu, mobile sheet, scroll nav, WhatsApp */
+/* KRIVA canonical chrome, mega menu, mobile sheet, scroll nav, WhatsApp */
 (function () {
   'use strict';
   if (window.__KRIVA_CHROME__) return;

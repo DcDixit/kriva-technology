@@ -56,7 +56,7 @@ const server = http.createServer((req, res) => {
   const raw = req.url || "/";
   const pathOnly = decodeURIComponent(raw.split("?")[0].split("#")[0]);
   const qs = raw.includes("?") ? raw.slice(raw.indexOf("?")) : "";
-  // Match vercel.json trailingSlash:false — redirect /about/ → /about
+  // Match vercel.json trailingSlash:false, redirect /about/ → /about
   if (pathOnly.length > 1 && pathOnly.endsWith("/")) {
     res.writeHead(308, { Location: pathOnly.replace(/\/+$/, "") + qs });
     res.end();

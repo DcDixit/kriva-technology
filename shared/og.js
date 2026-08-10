@@ -16,7 +16,7 @@ const SITE = "https://krivatechnologies.com";
 const OG_PATH = "/brand/og-default.png";
 const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
-const OG_ALT = "KRIVA — Trucking & SaaS product development";
+const OG_ALT = "KRIVA · Trucking & SaaS product development";
 const OG_MARKER_START = "<!-- KRIVA_OG_IMAGE_START -->";
 const OG_MARKER_END = "<!-- KRIVA_OG_IMAGE_END -->";
 
