@@ -10,7 +10,12 @@
 <meta property="og:description" content="Start a project with KRIVA. Send a brief or reach out to book a 20-minute fit call. We respond within one business day.">
 <meta property="og:url" content="https://krivatechnologies.com/contact">
 <!-- KRIVA_OG_IMAGE_START -->
-<!-- og:image withheld until brand/og-default.png is supplied (1200×630). -->
+<meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KRIVA — Trucking & SaaS product development">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -142,6 +147,8 @@ img{max-width:100%;display:block}
 .prep li u{text-decoration:none;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel);padding-top:3px}
 .slot-note{margin-top:22px;padding:14px 16px;border-left:2px solid var(--amber);background:var(--white);font-size:14px;line-height:1.6}
 .slot-note b{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A6200;margin-bottom:7px;font-weight:400}
+.cal-embed{min-height:420px;margin-top:22px;border:1px dashed var(--rule);background:var(--white);display:grid;place-items:center;padding:24px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
+.cal-embed:not([hidden]){display:grid}
 @media(max-width:900px){.book-grid{grid-template-columns:1fr;gap:30px}}
 
 /* ══ BRIEF FORM ══ */
@@ -385,8 +392,8 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         </h1>
         <p class="lede" data-r>Send a brief, or reach out to book a 20-minute fit call. We'll get back within one business day with a clear plan and honest next steps.</p>
         <div class="hero-actions" data-r>
-          <a href="#brief" class="btn"><span>Send a project brief</span><i>↓</i></a>
-          <a href="#book" class="btn ghost"><span>Book a 20-minute fit call</span><i>↓</i></a>
+          <a href="#book" class="btn"><span>Book a 20-minute fit call</span><i>↓</i></a>
+          <a href="#brief" class="btn ghost"><span>Send a project brief</span><i>↓</i></a>
         </div>
 
         <dl class="direct" data-s>
@@ -428,18 +435,19 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 
     <div class="book-grid">
       <div data-r>
-        <p class="body-sm" style="font-size:16px">There is no self-serve calendar yet. Email or WhatsApp us and we will schedule the 20-minute fit call with you. We reply within one business day and schedule fit calls across US and UK working hours.</p>
+        <p class="body-sm" style="font-size:16px" id="bookCopy">There is no self-serve calendar yet. Email or WhatsApp us and we will schedule the 20-minute fit call with you. We reply within one business day and schedule fit calls across US and UK working hours.</p>
 
-        <div class="book-actions">
+        <div class="book-actions" id="bookFallbacks">
           <a href="mailto:hello@krivatechnologies.com?subject=Book%20a%2020-minute%20fit%20call" class="btn"><span>Email to book a call</span><i>→</i></a>
           <a href="https://wa.me/919724454455?text=Hi%20KRIVA%2C%20I'd%20like%20to%20discuss%20a%20project." class="btn ghost"><span>WhatsApp us</span><i>→</i></a>
           <a href="tel:+919724454455" class="btn ghost"><span>+91 97244 54455</span><i>→</i></a>
         </div>
 
-        <div class="slot-note">
-          <b>Integration slot</b>
-          Drop a scheduling embed here (Cal.com, Calendly, or SavvyCal) once an account exists. The email and WhatsApp routes above stay as fallbacks — they should not be removed when the calendar lands.
+        <!-- Activate: set data-cal-link="username/20min" (Cal.com event path). Leave empty until production calendar is ready. -->
+        <div class="cal-embed" id="calEmbed" hidden data-cal-link="" data-cal-ready="false" aria-label="Book a 20-minute fit call">
+          <div id="calInline" style="width:100%;min-height:420px"></div>
         </div>
+        <p class="body-sm" style="margin-top:16px;color:var(--steel)">Prefer async? <a href="#brief" style="border-bottom:1px solid var(--rule)">Send a written brief</a> — same team, same response time.</p>
       </div>
 
       <div data-r>
@@ -480,7 +488,8 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
           <ul id="summaryList"></ul>
         </div>
 
-        <form id="briefForm" novalidate action="#" method="post">
+        <!-- Activate API: set data-api-endpoint="/api/contact" (or full URL). Empty = mailto fallback. -->
+        <form id="briefForm" novalidate action="#" method="post" data-api-endpoint="">
           <!-- honeypot, mirrors the hidden field on the live form -->
           <div class="hp" aria-hidden="true">
             <label for="hp-website">Website</label>
@@ -744,6 +753,36 @@ const nextIO = new IntersectionObserver((es,o)=>{
 },{threshold:.4});
 if(steps.length) nextIO.observe(steps[0].parentElement);
 
+/* ── Cal.com: activate by setting data-cal-link on #calEmbed ── */
+const calEmbed = document.getElementById('calEmbed');
+const calLink = (calEmbed && (calEmbed.getAttribute('data-cal-link') || '').trim()) || '';
+if (calEmbed && calLink) {
+  const bookCopy = document.getElementById('bookCopy');
+  if (bookCopy) {
+    bookCopy.textContent = 'Pick a time that works across US and UK hours. The call is 20 minutes — short, specific, no pitch deck.';
+  }
+  calEmbed.hidden = false;
+  calEmbed.dataset.calReady = 'true';
+  const s = document.createElement('script');
+  s.src = 'https://app.cal.com/embed/embed.js';
+  s.async = true;
+  s.onload = () => {
+    try {
+      if (typeof Cal !== 'function') return;
+      Cal('init', { origin: 'https://app.cal.com' });
+      Cal('inline', {
+        elementOrSelector: '#calInline',
+        calLink: calLink,
+        layout: 'month_view'
+      });
+    } catch (err) {
+      calEmbed.hidden = true;
+      calEmbed.dataset.calReady = 'false';
+    }
+  };
+  document.head.appendChild(s);
+}
+
 /* ── form: validation, states, success ── */
 const form = document.getElementById('briefForm');
 const summary = document.getElementById('summary');
@@ -767,6 +806,44 @@ const mark = f => {
   return ok;
 };
 
+const showDone = (msg) => {
+  btn.classList.remove('loading');
+  btn.removeAttribute('aria-disabled');
+  label.textContent = 'Send project brief';
+  form.classList.add('sent');
+  done.classList.add('on');
+  done.focus();
+  status.textContent = msg || 'Brief received. We reply within one business day.';
+};
+
+const showFail = (msg) => {
+  btn.classList.remove('loading');
+  btn.removeAttribute('aria-disabled');
+  label.textContent = 'Send project brief';
+  summaryList.innerHTML = '<li>' + (msg || 'Something went wrong. Email hello@krivatechnologies.com or WhatsApp us.') + '</li>';
+  summary.classList.add('on');
+  summary.focus();
+  status.textContent = msg || 'Submission failed. Use email or WhatsApp as a fallback.';
+};
+
+const mailtoBrief = (fd) => {
+  const lines = [
+    'Name: ' + (fd.get('name') || ''),
+    'Email: ' + (fd.get('email') || ''),
+    'Company: ' + (fd.get('company') || ''),
+    'Project type: ' + (fd.get('ptype') || ''),
+    'Market: ' + (fd.get('market') || ''),
+    'Service: ' + (fd.get('service') || ''),
+    'Budget: ' + (fd.get('budget') || ''),
+    'Timeline: ' + (fd.get('timeline') || ''),
+    'Site: ' + (fd.get('site') || ''),
+    '',
+    (fd.get('details') || '')
+  ];
+  const subject = 'Project brief — ' + (fd.get('company') || fd.get('name') || 'KRIVA inquiry');
+  return 'mailto:hello@krivatechnologies.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+};
+
 // validate on blur, clear the error as soon as it's fixed — never mid-typing
 form.querySelectorAll('[required]').forEach(f=>{
   f.addEventListener('blur', ()=>mark(f));
@@ -778,7 +855,7 @@ form.querySelectorAll('[required]').forEach(f=>{
   });
 });
 
-form.addEventListener('submit', e=>{
+form.addEventListener('submit', async e=>{
   e.preventDefault();
   if(form.querySelector('[name="website_hp"]').value) return; // bot
 
@@ -797,18 +874,36 @@ form.addEventListener('submit', e=>{
   summary.classList.remove('on');
   btn.classList.add('loading');
   btn.setAttribute('aria-disabled','true');
-  label.textContent = 'Sending';
-  status.textContent = 'Sending your brief.';
 
-  // INTEGRATION SLOT: POST to the real endpoint here.
-  // fetch('/api/brief', {method:'POST', body:new FormData(form)}) ...
-  setTimeout(()=>{
-    btn.classList.remove('loading');
-    form.classList.add('sent');
-    done.classList.add('on');
-    done.focus();
-    status.textContent = 'Brief received. We reply within one business day.';
-  }, reduce() ? 0 : 900);
+  const fd = new FormData(form);
+  const apiEndpoint = (form.dataset.apiEndpoint || '').trim();
+
+  if (apiEndpoint) {
+    label.textContent = 'Sending';
+    status.textContent = 'Sending your brief securely.';
+    try {
+      const res = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      showDone('Brief received. We reply within one business day.');
+      return;
+    } catch (err) {
+      // Fall back to mailto so the buyer is never stuck
+      label.textContent = 'Opening email';
+      status.textContent = 'API unavailable — opening your email app as a fallback.';
+      window.location.href = mailtoBrief(fd);
+      setTimeout(() => showDone('If your email app did not open, copy the brief to hello@krivatechnologies.com or message us on WhatsApp.'), reduce() ? 0 : 600);
+      return;
+    }
+  }
+
+  label.textContent = 'Opening email';
+  status.textContent = 'Opening your email app with the brief pre-filled.';
+  window.location.href = mailtoBrief(fd);
+  setTimeout(() => showDone('If your email app did not open, copy the brief to hello@krivatechnologies.com or message us on WhatsApp.'), reduce() ? 0 : 600);
 });
 
 // clicking a summary link focuses the field it names

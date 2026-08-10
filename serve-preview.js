@@ -29,7 +29,25 @@ function resolveUrl(urlPath) {
     const f = `kriva-service-${slug}.html`;
     if (fs.existsSync(path.join(ROOT, f))) return f;
   }
+  // Media assets (two-segment paths under /work/ and /solutions/)
+  const workMedia = clean.match(/^\/work\/([^/]+)\/(.+)$/);
+  if (workMedia) {
+    const f = `media/work/${workMedia[1]}/${workMedia[2]}`;
+    if (fs.existsSync(path.join(ROOT, f))) return f;
+  }
+  const solMedia = clean.match(/^\/solutions\/([^/]+)\/(.+)$/);
+  if (solMedia) {
+    const f = `media/solutions/${solMedia[1]}/${solMedia[2]}`;
+    if (fs.existsSync(path.join(ROOT, f))) return f;
+  }
+  const insMedia = clean.match(/^\/insights\/(.+)$/);
+  if (insMedia && insMedia[1] !== "" && insMedia[1].includes(".")) {
+    const f = `media/insights/${insMedia[1]}`;
+    if (fs.existsSync(path.join(ROOT, f))) return f;
+  }
   if (clean.startsWith("/shared/")) return clean.slice(1);
+  if (clean.startsWith("/brand/")) return clean.slice(1);
+  if (clean.startsWith("/media/")) return clean.slice(1);
   if (clean.endsWith(".html") || clean.includes(".")) return clean.replace(/^\//, "");
   return null;
 }

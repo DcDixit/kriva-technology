@@ -147,7 +147,7 @@ function buildCase(c) {
   const scenes = c.beats
     .map(
       (b, i) => `<div class="story-scene${i === 0 ? " on" : ""}" data-scene="${i}">
-            <div class="slot" role="img" aria-label="${esc(b.name)}"><div class="skel"><i></i><i></i><i></i></div>
+            <div class="slot" data-visual="story-${i}" role="img" aria-label="${esc(b.name)}"><div class="skel"><i></i><i></i><i></i></div>
               <div class="tagline"><span>${esc(b.name)}</span><span>${String(i + 1).padStart(2, "0")} / ${String(c.beats.length).padStart(2, "0")}</span></div></div>
           </div>`
     )
@@ -184,10 +184,16 @@ function buildCase(c) {
 </figure>`
       : "";
 
-  const slugNote = c.slugNote
-    ? `<p class="body-sm" style="margin-top:18px">${esc(c.slugNote)}</p>`
+  const slugNote = "";
+  // Never publish internal attribution inventory notes
+  const attrNote =
+    c.attributionNote && !/Internal\s*·|do not publish|inventory/i.test(c.attributionNote)
+      ? `<p class="body-sm" style="margin-top:14px;color:var(--steel-2)"><span class="flag tbd">Attribution</span> ${esc(c.attributionNote)}</p>`
+      : "";
+  const ndaNote = c.ndaNote
+    ? `<p class="pullout">${esc(c.ndaNote)}</p>`
     : "";
-  const attrNote = "";
+  const uxH2 = c.uxH2 || "UX and UI decisions that shaped the build.";
 
   const schema = {
     "@context": "https://schema.org",
@@ -231,6 +237,8 @@ ${CASE_CSS}
   <a href="#overview"><span>Overview</span><i></i></a>
   <a href="#context"><span>Context</span><i></i></a>
   <a href="#approach"><span>Approach</span><i></i></a>
+  <a href="#ux"><span>UX / UI</span><i></i></a>
+  <a href="#solution"><span>Solution</span><i></i></a>
   <a href="#build"><span>Build</span><i></i></a>
   <a href="#outcome"><span>Outcome</span><i></i></a>
   <a href="#capabilities"><span>Capabilities</span><i></i></a>
@@ -275,15 +283,15 @@ ${CASE_CSS}
 
 <div class="wrap" style="margin-top:clamp(34px,4vw,64px)">
   <figure class="shot shot--wide" data-shot>
-    <div class="media"${c.heroAsset ? ` data-asset="${esc(c.heroAsset)}" data-asset-alt="${esc(c.shortName)} hero" data-asset-dims="2400×1029"` : ""}>
-      <div class="slot" role="img" aria-label="${esc(c.heroSlot)}">
+    <div class="media">
+      <div class="slot" data-visual="hero" role="img" aria-label="${esc(c.heroSlot)}">
         <div class="skel"><i></i><i></i><i></i></div>
-        <div class="tagline"><span>${esc(c.shortName)} · interface reference</span><span>21:9</span></div>
+        <div class="tagline"><span>${esc(c.shortName)} · interface reference</span><span>21:9 · <span class="flag">Illustrative</span></span></div>
       </div>
       ${pins}
     </div>
   </figure>
-  <figcaption class="shot-cap">Project story frame · screenshot drops into this host when supplied</figcaption>
+  <figcaption class="shot-cap"><span class="flag">Illustrative</span> Interface reference · approved screenshots replace this frame</figcaption>
 </div>
 
 <!-- Project context — not a fake metrics bar -->
@@ -350,14 +358,25 @@ ${CASE_CSS}
   </div>
 </section>
 
-<section class="sect sect--tight" aria-labelledby="baH">
+<section class="sect sect--tight" id="ux" aria-labelledby="uxH">
   <div class="wrap">
-    <div class="s-head">
+    <p class="eyebrow" data-r>UX / UI decisions</p>
+    <h2 class="d2" id="uxH" data-r style="margin-top:18px;max-width:22ch">${esc(uxH2)}</h2>
+    <div class="narr" data-r style="margin-top:clamp(32px,4vw,56px)">
+      <div class="kicker"><span class="idx num">04</span><h3 class="d3">Interface choices</h3></div>
       <div>
-        <p class="eyebrow" data-r>Before / after</p>
-        <h2 class="d2" id="baH" data-r style="margin-top:18px;max-width:22ch">${esc(c.baH2 || "Before the rebuild. After the rebuild.")}</h2>
+        <p class="body">${esc(c.ui)}</p>
+        ${ndaNote}
       </div>
     </div>
+  </div>
+</section>
+
+<section class="sect" id="solution" aria-labelledby="solH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Solution</p>
+    <h2 class="d2" id="solH" data-r style="margin-top:18px;max-width:22ch">${esc(c.baH2 || "What we shipped.")}</h2>
+    <p class="body" data-r style="margin-top:18px">${esc(c.solution)}</p>
 
     <div class="ba-cols" style="margin-top:clamp(30px,3.5vw,50px)" data-r>
       <div><h4>Before</h4><p class="body-sm">${esc(c.beforeCopy)}</p></div>
@@ -367,21 +386,21 @@ ${CASE_CSS}
     <div style="margin-top:clamp(24px,3vw,40px)" data-r>
       <div class="ba" id="ba">
         <div class="ba-layer before">
-          <div class="slot" role="img" aria-label="Before state"><div class="skel"><i></i><i></i><i></i></div>
-            <div class="tagline"><span>Before · ${esc(c.shortName)}</span><span>Compare</span></div></div>
+          <div class="slot" data-visual="before" role="img" aria-label="Before state"><div class="skel"><i></i><i></i><i></i></div>
+            <div class="tagline"><span>Before · ${esc(c.shortName)}</span><span><span class="flag">Illustrative</span></span></div></div>
           <span class="ba-label l">Before</span>
         </div>
         <div class="ba-layer after">
-          <div class="slot" style="background:linear-gradient(160deg,#1B2028,#0E1216)" role="img" aria-label="After state">
+          <div class="slot" style="background:linear-gradient(160deg,#1B2028,#0E1216)" data-visual="after" role="img" aria-label="After state">
             <div class="skel"><i style="background:#2A323B"></i><i style="background:#2A323B"></i><i style="background:#2A323B"></i></div>
-            <div class="tagline"><span>After · ${esc(c.shortName)}</span><span>Compare</span></div></div>
+            <div class="tagline"><span>After · ${esc(c.shortName)}</span><span><span class="flag">Illustrative</span></span></div></div>
           <span class="ba-label r">After</span>
         </div>
         <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" step="1"
                aria-label="Reveal before or after. Left shows before, right shows after.">
         <span class="ba-handle" aria-hidden="true"></span>
       </div>
-      <p class="shot-cap">Interactive compare · real captures replace these frames when available</p>
+      <p class="shot-cap"><span class="flag">Illustrative</span> Interactive compare · approved screenshots replace these frames</p>
     </div>
   </div>
 </section>
@@ -395,7 +414,6 @@ ${CASE_CSS}
       </div>
       <div>
         <p class="body">${esc(c.dev)}</p>
-        <p class="pullout">${esc(c.ui)}</p>
 
         <div class="spec">
           ${stackHtml(c.stack)}

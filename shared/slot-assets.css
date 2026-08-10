@@ -22,16 +22,85 @@
 .media > img,
 .feat-shot > img,
 .crop > img,
-.proj-media > img {
+.crop [data-asset] > img,
+.proj-media > img,
+.proj-media [data-asset] > img,
+.cap-media > img,
+.proof-shot > img,
+.proof-shot .slot > img,
+.slot > img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Hide placeholder chrome when a visual is present */
+[data-asset]:has(> img) > .slot,
+[data-asset]:has(> img) > .crop-ph,
+.crop:has([data-asset] > img) .crop-ph,
+.proj-media:has([data-asset] > img) > [data-asset] > .slot,
+.cap-media:has(> img) > .slot,
+.feat-shot:has(> img) > .slot,
+.proof-shot:has(> img) > .slot,
+.proof-shot:has(> img) .slot .skel,
+.proof-shot:has(> img) .slot .tagline,
+.slot:has(> img) .skel,
+.slot:has(> img) .tagline,
+.slot:has(> img) .crop-slot,
+.slot:has(> img) > .lines,
+[data-asset]:has(> img) .skel,
+[data-asset]:has(> img) .tagline,
+[data-asset]:has(> img) .crop-slot {
+  display: none !important;
+}
+
+.slot:has(> img),
+[data-asset]:has(> img) > .slot {
+  background: none;
+  padding: 0;
+  border: 0;
+}
+
 .proj-media:has(> img) > .slot,
 .proj-media:has(> [data-asset] > img) > [data-asset] > .slot {
   display: none !important;
+}
+
+/* Premium image frames — consistent sizing */
+.feat-media-frame .crop,
+.proj-media,
+.cap-media,
+.proof-shot,
+.shot .media,
+[data-asset] {
+  min-height: 0;
+}
+
+.feat-media-frame .crop [data-asset] > img,
+.feat-media-frame .crop > img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.proj-media [data-asset] > img,
+.cap-media > img,
+.proof-shot > img {
+  min-height: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.shot--wide .media > img,
+.shot--wide .slot > img {
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .feat-media-frame .crop [data-asset] > img,
+  .proj-media [data-asset] > img {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 /* Quiet empty frames (no flag.tbd noise) */

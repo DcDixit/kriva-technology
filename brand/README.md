@@ -1,13 +1,17 @@
 # Brand drop folder
 
-Place the real OG image here (do not invent a placeholder PNG):
+## Required for launch polish
 
+### OG image (already present)
 - `og-default.png` — **1200 × 630**
+- Sync tags: `node apply_launch_inputs.cjs --og`
 
-Then run:
+### Founder portrait (awaiting approved photo)
+- Drop: `founder-portrait.jpg` — **1200 × 1500** (4:5 crop)
+- Real photo only — no stock, no AI-generated people
+- Then: `node apply_proof_assets.cjs`
 
-```bash
-node apply_launch_inputs.cjs --og
-```
+The `/about` page already has a `data-proof="founder"` host sized to the current design system. When the JPG is present, the applicator injects it and clears the “Portrait pending” label.
 
-Screenshots go under `media/` mirroring public URLs (see `content/asset-manifest.cjs`).
+## Client logos
+Approved logos live in `brand/logos/clients/`. Do not invent logos.

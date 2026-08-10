@@ -11,7 +11,12 @@
 <meta property="og:description" content="Dispatch consoles, fleet dashboards, SaaS onboarding and QuickBooks/Xero sync — designed and shipped by one senior team.">
 <meta property="og:url" content="https://krivatechnologies.com/">
 <!-- KRIVA_OG_IMAGE_START -->
-<!-- og:image withheld until brand/og-default.png is supplied (1200×630). -->
+<meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KRIVA — Trucking & SaaS product development">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,6 +115,23 @@ svg{display:block}
 .mask.in span i{transform:none}
 .mask.in span:nth-child(2) i{transition-delay:80ms}
 .mask.in span:nth-child(3) i{transition-delay:160ms}
+
+.btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
+  position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
+  padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
+.btn>*{position:relative;z-index:1}
+.btn::before{content:"";position:absolute;inset:0;background:var(--btn-hover);transform:translate3d(0,101%,0);transition:transform .5s var(--e)}
+.btn:hover::before,.btn:focus-visible::before{transform:none}
+.btn:hover{color:#fff;border-color:var(--btn-hover)}
+.btn i{font-style:normal;transition:transform .42s var(--e)}
+.btn:hover i{transform:translateX(5px)}
+.btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
+.btn.sm{padding:9px 15px;font-size:11px}
+.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
+.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
+.btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
 
 /* nav/sheet/footer chrome → shared/chrome.css */
 
@@ -210,19 +232,85 @@ svg{display:block}
   .c-table td:first-child::before{display:none}
 }
 
-/* ═══════════ MANIFEST TICKER ═══════════ */
-.manifest{background:var(--ink);color:var(--ink-dim);padding-block:20px;overflow:hidden}
-.manifest-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:16px;flex-wrap:wrap}
-.manifest .eyebrow{color:var(--ink-dim)}
-.track{display:flex;width:max-content;animation:slide 48s linear infinite;will-change:transform}
-.manifest:hover .track,.manifest:focus-within .track{animation-play-state:paused}
-@keyframes slide{to{transform:translate3d(-50%,0,0)}}
-.cell{
-  display:flex;align-items:baseline;gap:11px;padding:0 clamp(20px,2.6vw,36px);
-  border-right:1px solid var(--ink-line);white-space:nowrap;
-  font-family:var(--f-mono);font-size:13px;color:#C4CCD4
+/* ═══════════ CLIENTS / MANIFEST ═══════════ */
+.manifest{
+  background:var(--paper-2);
+  border-block:1px solid var(--rule-soft);
+  padding-block:clamp(52px,6.5vw,96px) clamp(36px,4.5vw,64px);
+  overflow:hidden;
 }
-.cell u{text-decoration:none;font-size:9.5px;color:#5C6670;letter-spacing:.1em}
+.manifest-head{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,4vw,48px);
+  flex-wrap:wrap;margin-bottom:clamp(32px,4vw,56px);
+}
+.manifest-head .d2{margin-top:18px;max-width:12ch}
+.manifest-meta{
+  display:flex;flex-direction:column;align-items:flex-end;gap:10px;text-align:right;
+}
+.manifest-meta .mono{color:var(--steel-2)}
+.manifest-link{
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--blue);display:inline-flex;align-items:center;gap:8px;
+  transition:opacity var(--t-fast) var(--e);
+}
+.manifest-link:hover{opacity:.72}
+.manifest-link i{font-style:normal}
+
+/* Dual-row logo rail — full-bleed, cardless, quiet motion */
+.logo-rail{
+  position:relative;
+  border-block:1px solid var(--rule-soft);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+}
+.logo-rail__row{
+  overflow:hidden;
+  border-bottom:1px solid var(--rule-soft);
+  padding-block:clamp(20px,2.6vw,32px);
+}
+.logo-rail__row:last-child{border-bottom:0}
+.logo-rail__track{
+  display:flex;width:max-content;align-items:center;
+  animation:logo-marquee 52s linear infinite;
+  will-change:transform;
+}
+.logo-rail__row:nth-child(2) .logo-rail__track{
+  animation-duration:64s;
+  animation-delay:-22s;
+}
+.logo-rail:hover .logo-rail__track,
+.logo-rail:focus-within .logo-rail__track{animation-play-state:paused}
+.logo-rail__set{
+  list-style:none;display:flex;align-items:center;
+  gap:clamp(36px,5.5vw,80px);
+  padding-inline:clamp(18px,2.8vw,40px);
+}
+.logo-rail__set li{
+  flex:none;display:flex;align-items:center;justify-content:center;
+  min-width:clamp(112px,11vw,156px);height:44px;
+}
+.logo-rail__set img{
+  width:auto;height:auto;max-height:34px;max-width:140px;object-fit:contain;
+  filter:grayscale(1);opacity:.52;
+  transition:opacity var(--t-fast) var(--e),filter var(--t-fast) var(--e);
+}
+.logo-rail__set li:hover img,
+.logo-rail__set li:focus-within img{filter:none;opacity:1}
+.logo-rail__item--tall img{max-height:40px;max-width:108px}
+@keyframes logo-marquee{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(-50%,0,0)}
+}
+@media(max-width:700px){
+  .manifest-meta{align-items:flex-start;text-align:left;width:100%}
+  .logo-rail{
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+  }
+  .logo-rail__set{gap:clamp(28px,8vw,48px)}
+  .logo-rail__set img{max-height:30px;max-width:120px}
+  .logo-rail__item--tall img{max-height:36px;max-width:96px}
+}
 
 /* ═══════════ SECTION FRAME ═══════════ */
 .sect{padding-block:clamp(76px,9vw,156px);position:relative}
@@ -322,58 +410,194 @@ svg{display:block}
   .nc:nth-last-child(-n+2){border-bottom:0}
 }
 
-/* ═══════════ WORK — editorial rows with interface crops ═══════════ */
+/* ═══════════ WORK — featured stage + supporting index ═══════════ */
 .work{background:var(--paper-2);border-block:1px solid var(--rule)}
-.cases{margin-top:clamp(40px,4.5vw,72px);border-top:1px solid var(--rule)}
-.case{border-bottom:1px solid var(--rule)}
-.case-top{
-  display:grid;grid-template-columns:clamp(70px,7vw,110px) minmax(0,1.15fr) minmax(0,1.25fr) 44px;
-  gap:clamp(16px,3vw,44px);align-items:center;width:100%;text-align:left;
-  padding:clamp(22px,2.8vw,36px) 0;position:relative
+.work .s-head .lede{margin-top:18px;max-width:42ch}
+
+/* Featured case — dominant, always visible */
+.feat-case{
+  margin-top:clamp(40px,4.5vw,72px);
+  border-top:1px solid var(--rule);
+  padding-top:clamp(28px,3.2vw,44px);
+  position:relative
 }
-.case-top::after{content:"";position:absolute;left:calc(var(--gutter)*-1);right:calc(var(--gutter)*-1);top:0;bottom:0;background:var(--white);opacity:0;transition:opacity .45s var(--e);z-index:-1}
-.case:hover .case-top::after,.case.open .case-top::after{opacity:1}
-.case-no{font-family:var(--f-display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1;transition:color .45s var(--e)}
-.case:hover .case-no,.case.open .case-no{color:var(--ink)}
-.case-title{font-family:var(--f-display);font-weight:750;font-size:clamp(1.3rem,2.5vw,2.05rem);line-height:1.06;letter-spacing:-.032em;transition:transform .5s var(--e)}
-.case:hover .case-title{transform:translateX(7px)}
-.case-kicker{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.case-metrics{display:flex;gap:clamp(18px,2.4vw,38px);flex-wrap:wrap}
-.metric b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.45rem,2.9vw,2.2rem);letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums}
-.metric b.pos{color:var(--green)}
-.metric span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
-.plus{width:36px;height:36px;border:1px solid var(--rule);position:relative;justify-self:end;flex:none;transition:border-color .4s,background .4s,transform .5s var(--e)}
-.plus::before,.plus::after{content:"";position:absolute;inset:50% 9px;height:1px;background:var(--ink);transition:transform .45s var(--e)}
-.plus::after{transform:rotate(90deg)}
-.case.open .plus{background:var(--ink);border-color:var(--ink);transform:rotate(90deg)}
-.case.open .plus::before,.case.open .plus::after{background:var(--paper)}
-.case.open .plus::after{transform:rotate(0)}
-.case-body{overflow:hidden;height:0;transition:height .6s var(--e)}
-.case-inner{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);padding:0 0 clamp(28px,3.4vw,48px)}
+.feat-case-bar{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-bottom:clamp(22px,2.6vw,36px)
+}
+.feat-case-bar .feat-no{
+  font-family:var(--f-display);font-weight:800;font-size:clamp(1.15rem,2vw,1.45rem);
+  letter-spacing:-.03em;line-height:1;color:var(--ink)
+}
+.feat-case-bar .feat-tags{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)
+}
+.feat-case-bar .feat-tags b{
+  font-weight:500;color:var(--ink);letter-spacing:.14em
+}
+.feat-case-bar .feat-tags b::after{
+  content:"";display:inline-block;width:16px;height:1px;background:var(--rule);
+  margin-left:12px;vertical-align:middle
+}
+.feat-case-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);
+  gap:clamp(28px,4vw,64px);align-items:start
+}
+.feat-case-copy{position:relative;z-index:1;padding-bottom:4px}
+.feat-case-kicker{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:14px
+}
+.feat-case-title{
+  font-family:var(--f-display);font-weight:800;font-size:clamp(2.05rem,4.4vw,3.55rem);
+  line-height:.96;letter-spacing:-.038em;font-variation-settings:'wdth' 96;max-width:11ch
+}
+.feat-case-story{
+  margin-top:18px;font-size:clamp(1rem,1.15vw,1.12rem);line-height:1.58;color:var(--steel);max-width:38ch
+}
+.feat-outcome{
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,2.5vw,36px);
+  align-items:end;margin-top:clamp(24px,2.8vw,36px);
+  padding:clamp(18px,2vw,24px) 0;border-block:1px solid var(--rule)
+}
+.feat-outcome-lead b{
+  display:block;font-family:var(--f-display);font-weight:800;
+  font-size:clamp(2.8rem,5.5vw,4.2rem);line-height:.9;letter-spacing:-.045em;
+  color:var(--green);font-variant-numeric:tabular-nums
+}
+.feat-outcome-lead span{
+  display:block;margin-top:10px;font-family:var(--f-mono);font-size:10px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--steel);max-width:14ch
+}
+.feat-outcome-side{display:flex;gap:clamp(20px,2.8vw,40px);flex-wrap:wrap;padding-bottom:4px}
+.feat-outcome-side div b{
+  display:block;font-family:var(--f-display);font-weight:750;
+  font-size:clamp(1.35rem,2.2vw,1.7rem);letter-spacing:-.03em;line-height:1;
+  font-variant-numeric:tabular-nums
+}
+.feat-outcome-side div span{
+  display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--steel)
+}
+.feat-shift{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:clamp(20px,2.2vw,28px);
+  border:1px solid var(--rule)
+}
+.feat-shift > div{padding:clamp(14px,1.6vw,20px) clamp(14px,1.8vw,22px)}
+.feat-shift > div + div{border-left:1px solid var(--rule)}
+.feat-shift .mono{color:var(--steel-2);margin-bottom:8px}
+.feat-shift .mono.now{color:var(--blue)}
+.feat-shift p{font-size:14px;line-height:1.5;color:var(--ink);max-width:28ch}
+.feat-shift > div:first-child p{color:var(--steel)}
+.feat-case-cta{
+  display:inline-flex;align-items:center;gap:10px;margin-top:clamp(22px,2.4vw,32px);
+  padding:13px 18px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  transition:background .45s var(--e),border-color .45s var(--e),color .45s var(--e)
+}
+.feat-case-cta i{font-style:normal;transition:transform .42s var(--e)}
+.feat-case-cta:hover,.feat-case-cta:focus-visible{background:var(--blue);border-color:var(--blue);color:#fff}
+.feat-case-cta:hover i,.feat-case-cta:focus-visible i{transform:translateX(6px)}
+
+.feat-case-media{position:relative;min-width:0}
+.feat-media-link{display:block;outline-offset:4px}
+.feat-media-link:hover .feat-media-frame,
+.feat-media-link:focus-visible .feat-media-frame{transform:translate3d(0,-3px,0)}
+.feat-media-frame{
+  display:flex;flex-direction:column;position:relative;background:var(--ink);
+  overflow:hidden;border:1px solid var(--ink-line);
+  transition:transform .5s var(--e)
+}
+.feat-media-chrome{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex:none;
+  padding:11px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+}
+.feat-media-chrome b{color:#DDE2E7;font-weight:400}
+.feat-media-frame .crop{position:relative;aspect-ratio:16/10;flex:none;border:0}
 .crop{position:relative;background:var(--ink);aspect-ratio:16/10;overflow:hidden}
 .crop img{width:100%;height:100%;object-fit:cover}
-.crop-ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px;background:
-  linear-gradient(180deg,#141A20,#0E1216)}
+.crop-ph{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+  padding:14px;background:linear-gradient(180deg,#141A20,#0E1216)
+}
 .crop-ph .lines{display:grid;gap:6px}
 .crop-ph .lines i{display:block;height:6px;background:#1F262E}
 .crop-ph .lines i:nth-child(1){width:38%}
 .crop-ph .lines i:nth-child(2){width:64%}
 .crop-ph .lines i:nth-child(3){width:52%}
 .crop-slot{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:#5C6670}
-.case-detail h4{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
-.ba{list-style:none;display:grid;gap:10px;margin-bottom:26px}
-.ba li{display:grid;grid-template-columns:58px 1fr;gap:12px;font-size:14.5px;line-height:1.5;padding-bottom:10px;border-bottom:1px solid var(--rule-soft)}
-.ba li u{text-decoration:none;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel);padding-top:4px}
-.ba li.after{color:var(--ink)}
-.ba li.before{color:var(--steel)}
-@media(max-width:900px){
-  .case-top{grid-template-columns:auto 1fr 36px;gap:14px 16px;align-items:start}
-  .case-no{grid-row:1;font-size:1.4rem}
-  .case-head-wrap{grid-column:2}
-  .case-metrics{grid-column:1/-1;padding-top:4px}
-  .plus{grid-row:1;grid-column:3;width:32px;height:32px}
-  .case-inner{grid-template-columns:1fr}
-  .case:hover .case-title{transform:none}
+.feat-media-cap{
+  margin-top:12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--steel-2)
+}
+.feat-case:hover .feat-media-frame .crop-ph,
+.feat-case:focus-within .feat-media-frame .crop-ph{
+  background:linear-gradient(180deg,#1A222A,#10161C)
+}
+
+/* Supporting projects — editorial index, not cards */
+.work-more{margin-top:clamp(44px,5vw,72px)}
+.work-more > .eyebrow{margin-bottom:clamp(6px,1vw,10px)}
+.work-index{list-style:none;border-top:1px solid var(--rule)}
+.work-index li{border-bottom:1px solid var(--rule)}
+.work-index a{
+  display:grid;grid-template-columns:clamp(48px,5vw,72px) minmax(0,1.4fr) minmax(0,.9fr) auto;
+  gap:clamp(14px,2.4vw,36px);align-items:center;
+  padding:clamp(20px,2.4vw,28px) 0;position:relative;
+  transition:padding-left .45s var(--e)
+}
+.work-index a::before{
+  content:"";position:absolute;left:calc(var(--gutter)*-1);right:calc(var(--gutter)*-1);
+  top:0;bottom:0;background:var(--white);opacity:0;transition:opacity .4s var(--e);z-index:-1
+}
+.work-index a:hover::before,.work-index a:focus-visible::before{opacity:1}
+.work-index a:hover,.work-index a:focus-visible{padding-left:8px}
+.wi-no{
+  font-family:var(--f-display);font-weight:800;font-size:clamp(1.25rem,2.2vw,1.7rem);
+  letter-spacing:-.04em;color:var(--rule);line-height:1;transition:color .4s var(--e)
+}
+.work-index a:hover .wi-no,.work-index a:focus-visible .wi-no{color:var(--ink)}
+.wi-kicker{
+  display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--steel);margin-bottom:8px
+}
+.wi-title{
+  display:block;font-family:var(--f-display);font-weight:700;
+  font-size:clamp(1.15rem,1.9vw,1.45rem);line-height:1.12;letter-spacing:-.028em
+}
+.wi-hook{display:block;margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--steel);max-width:42ch}
+.wi-fact{
+  display:flex;flex-direction:column;gap:6px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel)
+}
+.wi-fact b{
+  font-family:var(--f-display);font-weight:750;font-size:clamp(1.2rem,2vw,1.55rem);
+  letter-spacing:-.03em;color:var(--ink);text-transform:none;
+  font-variant-numeric:tabular-nums
+}
+.wi-cta{
+  display:inline-flex;align-items:center;gap:8px;justify-self:end;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  border-bottom:1px solid currentColor;padding-bottom:3px;white-space:nowrap
+}
+.wi-cta i{font-style:normal;transition:transform .42s var(--e)}
+.work-index a:hover .wi-cta i,.work-index a:focus-visible .wi-cta i{transform:translateX(6px)}
+
+@media(max-width:980px){
+  .feat-case-grid{grid-template-columns:1fr;gap:28px;align-items:start}
+  .feat-outcome{grid-template-columns:1fr;gap:20px}
+  .work-index a{grid-template-columns:48px minmax(0,1fr) auto;gap:12px 16px}
+  .wi-fact{display:none}
+  .wi-cta{grid-column:2;justify-self:start;margin-top:4px}
+}
+@media(max-width:640px){
+  .feat-shift{grid-template-columns:1fr}
+  .feat-shift > div + div{border-left:0;border-top:1px solid var(--rule)}
+  .feat-outcome-side{gap:22px}
+  .work-index a{grid-template-columns:40px minmax(0,1fr);padding:18px 0}
+  .wi-cta{grid-column:2}
 }
 
 /* ═══════════ PROOF ═══════════ */
@@ -429,7 +653,20 @@ svg{display:block}
   *,*::before,*::after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
-  .track{animation:none;transform:none}
+  .logo-rail{
+    -webkit-mask-image:none;mask-image:none;border:0;
+    max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);
+  }
+  .logo-rail__row{border:0;padding-block:10px}
+  .logo-rail__track{
+    animation:none!important;width:100%;flex-wrap:wrap;justify-content:center;
+  }
+  .logo-rail__set--dup{display:none}
+  .logo-rail__set{
+    flex-wrap:wrap;justify-content:center;width:100%;
+    gap:clamp(22px,5vw,40px) clamp(28px,5vw,52px);padding:0;
+  }
+  .logo-rail__set img{filter:none;opacity:.7}
   .c-table tbody tr{opacity:1;transform:none}
 }
 </style>
@@ -633,14 +870,81 @@ svg{display:block}
   </div>
 </section>
 
-<!-- ══════ MANIFEST ══════ -->
-<section class="manifest" aria-label="Clients">
-  <div class="wrap manifest-head">
-    <p class="eyebrow">Shipped for</p>
-    <p class="mono" style="color:#5C6670">Some engagements under NDA</p>
+<!-- ══════ CLIENTS ══════ -->
+<section class="manifest" id="clients" aria-labelledby="clientsH">
+  <div class="wrap">
+    <div class="manifest-head">
+      <div>
+        <p class="eyebrow" data-r>Trusted by</p>
+        <h2 class="d2" id="clientsH" data-r>Operators we&rsquo;ve built for.</h2>
+      </div>
+      <div class="manifest-meta" data-r>
+        <p class="mono">Some engagements under NDA</p>
+        <a class="manifest-link" href="/work">Explore case studies <i>→</i></a>
+      </div>
+    </div>
   </div>
-  <div class="track" id="track" aria-hidden="true"></div>
-  <p class="sr">Clients include Keep Moving Movers, XMile Auto Transport, DC Auto Transport, Extra Mile Movers, Cascadia Collection, Schwarz Logistics, EliteOne Transportation, Houzway and CareerMoon.</p>
+
+  <ul class="sr">
+    <li>Keep Moving Movers</li>
+    <li>XmileAuto Transport</li>
+    <li>DC Auto Transport</li>
+    <li>Extra Mile Movers</li>
+    <li>EliteOne Transportation</li>
+    <li>Schwarz Logistics</li>
+    <li>Xmile Transport &amp; Moving</li>
+    <li>Houzway</li>
+    <li>CareerMoon</li>
+    <li>Script</li>
+    <li>Cascadia Collection</li>
+    <li>Keep Moving Fitness</li>
+    <li>Global Crypto Blockchain</li>
+  </ul>
+
+  <div class="logo-rail" aria-hidden="true">
+    <div class="logo-rail__row">
+      <div class="logo-rail__track">
+        <ul class="logo-rail__set">
+          <li><img src="/brand/logos/clients/keep-moving-movers.png" alt="Keep Moving Movers" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/xmileauto-transport.png" alt="XmileAuto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/dc-auto-transport.png" alt="DC Auto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/extra-mile-movers.png" alt="Extra Mile Movers" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/eliteone-transportation.png" alt="EliteOne Transportation" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/schwarz-logistics.png" alt="Schwarz Logistics" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/xmile-transport-moving.png" alt="Xmile Transport and Moving" width="176" height="64" loading="lazy" decoding="async"></li>
+        </ul>
+        <ul class="logo-rail__set logo-rail__set--dup">
+          <li><img src="/brand/logos/clients/keep-moving-movers.png" alt="Keep Moving Movers" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/xmileauto-transport.png" alt="XmileAuto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/dc-auto-transport.png" alt="DC Auto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/extra-mile-movers.png" alt="Extra Mile Movers" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/eliteone-transportation.png" alt="EliteOne Transportation" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/schwarz-logistics.png" alt="Schwarz Logistics" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/xmile-transport-moving.png" alt="Xmile Transport and Moving" width="176" height="64" loading="lazy" decoding="async"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="logo-rail__row">
+      <div class="logo-rail__track">
+        <ul class="logo-rail__set">
+          <li><img src="/brand/logos/clients/houzway.png" alt="Houzway" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/careermoon.png" alt="CareerMoon" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/script.png" alt="Script" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/cascadia-collection.png" alt="Cascadia Collection" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/keep-moving-fitness.png" alt="Keep Moving Fitness" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/global-crypto-blockchain.png" alt="Global Crypto Blockchain" width="176" height="64" loading="lazy" decoding="async"></li>
+        </ul>
+        <ul class="logo-rail__set logo-rail__set--dup">
+          <li><img src="/brand/logos/clients/houzway.png" alt="Houzway" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/careermoon.png" alt="CareerMoon" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/script.png" alt="Script" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li><img src="/brand/logos/clients/cascadia-collection.png" alt="Cascadia Collection" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/keep-moving-fitness.png" alt="Keep Moving Fitness" width="176" height="64" loading="lazy" decoding="async"></li>
+          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/global-crypto-blockchain.png" alt="Global Crypto Blockchain" width="176" height="64" loading="lazy" decoding="async"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ══════ SOLUTIONS ══════ -->
@@ -764,115 +1068,99 @@ svg{display:block}
       <div>
         <p class="eyebrow" data-r>Selected work</p>
         <h2 class="d2" id="workH" data-r>Three we can<br>talk about.</h2>
+        <p class="lede" data-r>What we designed, for whom, and the outcome that held up after launch.</p>
       </div>
       <a href="/work" class="btn ghost"><span>Full portfolio</span><i>→</i></a>
     </div>
 
-    <div class="cases" id="cases">
+    <article class="feat-case" data-r aria-labelledby="featCaseH">
+      <div class="feat-case-bar">
+        <span class="feat-no num" aria-hidden="true">01</span>
+        <div class="feat-tags">
+          <b>Featured</b>
+          <span>Logistics · Dispatch CRM</span>
+        </div>
+      </div>
 
-      <article class="case">
-        <button class="case-top" type="button" aria-expanded="false" aria-controls="case1">
-          <span class="case-no num">01</span>
-          <span class="case-head-wrap">
-            <span class="case-kicker">Logistics · Dispatch CRM</span>
-            <span class="case-title">FleetFlow<br>dispatch console</span>
-          </span>
-          <span class="case-metrics">
-            <span class="metric"><b class="num pos">−32%</b><span>Handle time</span></span>
-            <span class="metric"><b class="num">400+</b><span>Daily routes</span></span>
-            <span class="metric"><b class="num">11 wk</b><span>To production</span></span>
-          </span>
-          <span class="plus" aria-hidden="true"></span>
-        </button>
-        <div class="case-body" id="case1">
-          <div class="case-inner">
-            <figure class="crop">
-              <!-- Drop a real screenshot here: <img src="/work/fleetflow-console.jpg" alt="FleetFlow dispatch console" loading="lazy" width="1600" height="1000"> -->
-              <div data-asset="/work/fleetflow/home-console.jpg" data-asset-alt="FleetFlow dispatch console" data-asset-dims="1600×1000"><div class="crop-ph"><div class="lines"><i></i><i></i><i></i></div><span class="crop-slot">FleetFlow · console reference</span></div></div>
-            </figure>
-            <div class="case-detail">
-              <h4>Before / after</h4>
-              <ul class="ba">
-                <li class="before"><u>Before</u> Dispatchers reassigned loads one row at a time, with no view of which were about to breach SLA.</li>
-                <li class="after"><u>After</u> Multi-select assignment, breach countdowns on the row, and supervisor override without leaving the board.</li>
-              </ul>
-              <h4>Scope</h4>
-              <p class="body-sm">Discovery on-site, console redesign, driver app, and a rollout phased by depot. Metrics measured by the client's ops team.</p>
-              <a href="/work/fleetflow-dispatch" class="p-link">Read the FleetFlow case study <i>→</i></a>
+      <div class="feat-case-grid">
+        <div class="feat-case-copy">
+          <p class="feat-case-kicker">US trucking · Series A SaaS</p>
+          <h3 class="feat-case-title" id="featCaseH">FleetFlow dispatch console</h3>
+          <p class="feat-case-story">Rebuilt the dispatch board so operators reassign loads in bulk and see SLA breach risk on every row — before it becomes a call.</p>
+
+          <div class="feat-outcome" aria-label="Signed-off outcomes">
+            <div class="feat-outcome-lead">
+              <b class="num">−32%</b>
+              <span>Manual handle time</span>
+            </div>
+            <div class="feat-outcome-side">
+              <div><b class="num">400+</b><span>Daily routes</span></div>
+              <div><b class="num">11 wk</b><span>To production</span></div>
             </div>
           </div>
-        </div>
-      </article>
 
-      <article class="case">
-        <button class="case-top" type="button" aria-expanded="false" aria-controls="case2">
-          <span class="case-no num">02</span>
-          <span class="case-head-wrap">
-            <span class="case-kicker">B2B SaaS · Onboarding</span>
-            <span class="case-title">PayrollPro<br>first-run rebuild</span>
-          </span>
-          <span class="case-metrics">
-            <span class="metric"><b class="num">SaaS</b><span>Onboarding</span></span>
-            <span class="metric"><b class="num">UK</b><span>B2B product</span></span>
-            <span class="metric"><b class="num">6 wk</b><span>To production</span></span>
-          </span>
-          <span class="plus" aria-hidden="true"></span>
-        </button>
-        <div class="case-body" id="case2">
-          <div class="case-inner">
-            <figure class="crop">
-              <!-- <img src="/work/payrollpro-onboarding.jpg" alt="PayrollPro onboarding flow" loading="lazy" width="1600" height="1000"> -->
-              <div data-asset="/work/payrollpro/home-onboarding.jpg" data-asset-alt="PayrollPro onboarding flow" data-asset-dims="1600×1000"><div class="crop-ph"><div class="lines"><i></i><i></i><i></i></div><span class="crop-slot">PayrollPro · onboarding reference</span></div></div>
-            </figure>
-            <div class="case-detail">
-              <h4>Before / after</h4>
-              <ul class="ba">
-                <li class="before"><u>Before</u> An SSO rollout pushed permission setup ahead of first value. Admins stalled and opened tickets.</li>
-                <li class="after"><u>After</u> Progressive setup, deferred permissions, and a first-run path that reaches a real payroll run in one sitting.</li>
-              </ul>
-              <h4>Scope</h4>
-              <p class="body-sm">UX research with existing admins, flow redesign, component library, and instrumentation for activation tracking.</p>
-              <a href="/work/payroll-pro-saas" class="p-link">Read the PayrollPro case study <i>→</i></a>
+          <div class="feat-shift" aria-label="Before and after">
+            <div>
+              <p class="mono">Was</p>
+              <p>One-row reassignment. No view of which loads were about to breach SLA.</p>
+            </div>
+            <div>
+              <p class="mono now">Now</p>
+              <p>Multi-select assignment, breach countdowns on the row, supervisor override on the board.</p>
             </div>
           </div>
-        </div>
-      </article>
 
-      <article class="case">
-        <button class="case-top" type="button" aria-expanded="false" aria-controls="case3">
-          <span class="case-no num">03</span>
-          <span class="case-head-wrap">
-            <span class="case-kicker">Integrations · Finance ops</span>
-            <span class="case-title">FinanceSync<br>reconciliation hub</span>
-          </span>
-          <span class="case-metrics">
-            <span class="metric"><b class="num">QB + Xero</b><span>Ledgers synced</span></span>
-            <span class="metric"><b class="num">Ops</b><span>Exception hub</span></span>
-            <span class="metric"><b class="num">9 wk</b><span>To production</span></span>
-          </span>
-          <span class="plus" aria-hidden="true"></span>
-        </button>
-        <div class="case-body" id="case3">
-          <div class="case-inner">
-            <figure class="crop">
-              <!-- <img src="/work/financesync-hub.jpg" alt="FinanceSync reconciliation dashboard" loading="lazy" width="1600" height="1000"> -->
-              <div data-asset="/work/financesync/home-reconciliation.jpg" data-asset-alt="FinanceSync reconciliation view" data-asset-dims="1600×1000"><div class="crop-ph"><div class="lines"><i></i><i></i><i></i></div><span class="crop-slot">FinanceSync · reconciliation reference</span></div></div>
+          <a href="/work/fleetflow-dispatch" class="feat-case-cta">Read the FleetFlow case study <i aria-hidden="true">→</i></a>
+        </div>
+
+        <div class="feat-case-media">
+          <a href="/work/fleetflow-dispatch" class="feat-media-link" aria-label="Read the FleetFlow case study">
+            <figure class="feat-media-frame">
+              <div class="feat-media-chrome" aria-hidden="true">
+                <span><b>FleetFlow</b> · console reference</span>
+                <span>16:9</span>
+              </div>
+              <div class="crop">
+                <div data-asset="/work/fleetflow/home-console.svg" data-asset-alt="FleetFlow dispatch console" data-asset-dims="1600×1000">
+<img src="/work/fleetflow/home-console.svg" alt="FleetFlow dispatch console" width="1600" height="1000" loading="lazy" decoding="async"></div>
+              </div>
             </figure>
-            <div class="case-detail">
-              <h4>Before / after</h4>
-              <ul class="ba">
-                <li class="before"><u>Before</u> Sync failures surfaced at close, as a spreadsheet diff someone had to reverse-engineer.</li>
-                <li class="after"><u>After</u> Exceptions raised the moment they occur, with the source record, the retry history, and a one-click resolve.</li>
-              </ul>
-              <h4>Scope</h4>
-              <p class="body-sm">QuickBooks and Xero integration, exception model, operator dashboard, and handover documentation for the finance team.</p>
-              <a href="/work/finance-sync-hub" class="p-link">Read the FinanceSync case study <i>→</i></a>
-            </div>
-          </div>
+          </a>
+          <p class="feat-media-cap">Discovery on-site · console + driver app · metrics by client ops</p>
         </div>
-      </article>
+      </div>
+    </article>
 
+    <div class="work-more">
+      <p class="eyebrow" data-r>Also on the board</p>
+      <ul class="work-index" data-s>
+        <li>
+          <a href="/work/payroll-pro-saas">
+            <span class="wi-no num" aria-hidden="true">02</span>
+            <span>
+              <span class="wi-kicker">B2B SaaS · Onboarding</span>
+              <span class="wi-title">PayrollPro first-run rebuild</span>
+              <span class="wi-hook">Progressive setup that reaches a real payroll run in one sitting — permissions deferred until after first value.</span>
+            </span>
+            <span class="wi-fact"><b class="num">6 wk</b>To production</span>
+            <span class="wi-cta">Case study <i aria-hidden="true">→</i></span>
+          </a>
+        </li>
+        <li>
+          <a href="/work/finance-sync-hub">
+            <span class="wi-no num" aria-hidden="true">03</span>
+            <span>
+              <span class="wi-kicker">Integrations · Finance ops</span>
+              <span class="wi-title">FinanceSync reconciliation hub</span>
+              <span class="wi-hook">Exceptions raised the moment they occur — with the source record, retry history, and one-click resolve.</span>
+            </span>
+            <span class="wi-fact"><b class="num">QB + Xero</b>Ledgers synced</span>
+            <span class="wi-cta">Case study <i aria-hidden="true">→</i></span>
+          </a>
+        </li>
+      </ul>
     </div>
+
     <p class="c-note" style="margin-top:22px">Only FleetFlow publishes signed-off outcome metrics on this redesign. Other cases lead with verified narrative until metrics are cleared.</p>
   </div>
 </section>
@@ -902,7 +1190,7 @@ svg{display:block}
         <p class="mono" style="margin-top:18px">Read FinanceSync →</p>
       </a>
     </div>
-    <p class="c-note" style="margin-top:20px">Client person/company bylines stay unpublished until you confirm attribution. Quotes are not shown without approved speakers.</p>
+    <p class="c-note" style="margin-top:20px">Client logos represent past engagements; some work remains under NDA. Case studies lead with verifiable narrative — only FleetFlow publishes signed-off metrics.</p>
   </div>
 </section>
 
@@ -1115,11 +1403,6 @@ function countTo(el, target, suffix){
   requestAnimationFrame(tick);
 }
 
-/* ───────── ticker (duplicated once for a seamless -50% loop) ───────── */
-const clients = ['Keep Moving Movers','XMile Auto Transport','DC Auto Transport','Extra Mile Movers','Cascadia Collection','Schwarz Logistics','EliteOne Transportation','Houzway','CareerMoon'];
-const cells = clients.map((c,i)=>`<span class="cell"><u>${String(i+1).padStart(2,'0')}</u>${c}</span>`).join('');
-document.getElementById('track').innerHTML = cells + cells;
-
 /* ───────── readout counters ───────── */
 const numsIO = new IntersectionObserver(es=>{
   for(const e of es){
@@ -1160,30 +1443,6 @@ document.querySelectorAll('#solIndex button').forEach(b=>{
     panels[i].scrollIntoView({behavior: reduce() ? 'auto' : 'smooth', block:'center'});
   });
 });
-
-/* ───────── case studies: accessible height-animated expand ───────── */
-document.querySelectorAll('.case-top').forEach(btn=>{
-  const wrap = document.getElementById(btn.getAttribute('aria-controls'));
-  const card = btn.closest('.case');
-  btn.addEventListener('click', ()=>{
-    const open = btn.getAttribute('aria-expanded') === 'true';
-    // close siblings — one open at a time keeps the section from becoming a wall
-    document.querySelectorAll('.case-top[aria-expanded="true"]').forEach(o=>{
-      if(o === btn) return;
-      o.setAttribute('aria-expanded','false');
-      o.closest('.case').classList.remove('open');
-      document.getElementById(o.getAttribute('aria-controls')).style.height = '0px';
-    });
-    btn.setAttribute('aria-expanded', String(!open));
-    card.classList.toggle('open', !open);
-    wrap.style.height = open ? '0px' : wrap.firstElementChild.offsetHeight + 'px';
-  });
-});
-addEventListener('resize', ()=>{
-  document.querySelectorAll('.case.open .case-body').forEach(b=>{
-    b.style.height = b.firstElementChild.offsetHeight + 'px';
-  });
-}, {passive:true});
 
 /* ───────── process rail ───────── */
 const rail = document.getElementById('rail'), fill = document.getElementById('railFill');
