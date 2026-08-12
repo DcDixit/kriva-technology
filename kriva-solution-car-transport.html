@@ -6,6 +6,7 @@
 <title>Car Transportation Software &amp; Digital Product Design - KRIVA</title>
 <meta name="description" content="Digital product design and development for car transportation companies, booking portals, dispatch CRM, and customer tracking experiences.">
 <link rel="canonical" href="https://krivatechnologies.com/solutions/car-transportation">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Car Transportation Software &amp; Digital Product Design">
 <meta property="og:description" content="Digital product design and development for car transportation companies, booking portals, dispatch CRM, and customer tracking experiences.">
 <meta property="og:url" content="https://krivatechnologies.com/solutions/car-transportation">
@@ -101,7 +102,13 @@ img{max-width:100%;display:block}
 /* nav/sheet/footer chrome → shared/chrome.css */
 
 /* ══ HERO ══ */
-.hero{padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(40px,5vw,72px)}
+.hero{
+  padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(40px,5vw,72px);
+  background:
+    radial-gradient(110% 80% at 100% -8%, rgba(91,68,200,.07), transparent 50%),
+    radial-gradient(85% 65% at 0% 100%, rgba(91,140,255,.05), transparent 48%),
+    var(--paper);
+}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
@@ -295,6 +302,8 @@ img{max-width:100%;display:block}
 .adj a{display:flex;flex-direction:column;justify-content:space-between;gap:26px;padding:clamp(20px,2.4vw,30px);border:1px solid var(--ink-line);transition:border-color .4s var(--e),transform .5s var(--e)}
 .adj a:hover{border-color:var(--lilac);transform:translate3d(0,-4px,0)}
 .adj .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#6B7885}
+.adj .title{display:block;margin-top:12px;color:#fff}
+.adj .hook{display:block;margin-top:10px;color:#8C98A4}
 .adj .why{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--lilac);margin-top:10px;display:block}
 .adj .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8C98A4}
 .adj .arrow i{font-style:normal;transition:transform .42s var(--e)}
@@ -357,7 +366,18 @@ img{max-width:100%;display:block}
 
 .sect{padding-block:clamp(70px,8vw,132px)}
 .sect--tight{padding-block:clamp(52px,6vw,92px)}
+.sect--band{background:var(--paper-2);border-block:1px solid var(--rule)}
 .s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,4vw,60px);flex-wrap:wrap}
+.s-head .lede,.s-intro{margin-top:16px;max-width:54ch}
+.s-title{margin-top:18px;max-width:22ch}
+.cap-stack{margin-top:clamp(34px,4vw,60px)}
+.qsect .d3{margin-bottom:16px}
+.inline-link{border-bottom:1px solid var(--rule)}
+.svc-note{margin-top:26px}
+.faq-side .btn{margin-top:24px}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:42ch}
+.cta-band .follow{color:#8C98A4;margin-top:24px;max-width:60ch}
 
 /* ══ CTA + footer ══ */
 .cta-band{background:var(--ink);color:#DDE2E7}
@@ -387,13 +407,9 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 </style>
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
-<!-- Delete before launch. -->
-</div>
 
 <header class="nav" id="nav">
   <div class="nav-shell">
@@ -539,14 +555,14 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
           <span><i>Vehicle logistics software</i></span>
           <span><i>that matches how carriers actually operate.</i></span>
         </h1>
-        <p class="lede" data-r>Digital products for auto transport companies: quote flows, carrier dispatch, customer tracking, and ops automation built for vehicle logistics.</p>
+        <p class="lede" data-r>Quote flows, carrier dispatch, customer tracking, and ops automation built for vehicle logistics, brokers, carriers, and the customers shipping one car.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-          <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
+          <a href="#lifecycle" class="btn ghost"><span>See the order lifecycle</span><i>→</i></a>
         </div>
         <div class="hero-facts" data-s>
-          <div class="hf"><b>Auto transport</b><small>Focus market</small></div>
-          <div class="hf"><b>Quote · dispatch · tracking</b><small>Typical scope</small></div>
+          <div class="hf"><b>Quote · dispatch · POD</b><small>Typical product scope</small></div>
+          <div class="hf"><b>Customer · carrier · ops</b><small>Three audiences</small></div>
           <div class="hf"><b>6–14 weeks</b><small>Platform delivery</small></div>
         </div>
       </div>
@@ -587,9 +603,13 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <!-- ═══════════ SCROLL STORY: quote to proof of delivery ═══════════ -->
 <section class="sect story" id="lifecycle" aria-labelledby="lcH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Quote to proof of delivery</p>
-    <h2 class="d2" id="lcH" data-r style="margin-top:18px;max-width:22ch">One order, three audiences, eight moments that decide the review.</h2>
-    <p class="body" data-r style="margin-top:18px">Auto transport is a purchase before it's an operation. Scroll to follow a single vehicle from quote request to signed POD.</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Quote to proof of delivery</p>
+        <h2 class="d2 s-title" id="lcH" data-r>One order, three audiences, eight moments that decide the review</h2>
+        <p class="lede" data-r>Auto transport is a purchase before it is an operation. Scroll to follow a single vehicle from quote request to signed POD.</p>
+      </div>
+    </div>
 
     <div class="story-grid">
       <div class="story-stick">
@@ -720,12 +740,17 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <!-- ═══════════ QUOTE ENGINE ═══════════ -->
 <section class="qsect" id="quoting" aria-labelledby="qeH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Pricing &amp; quote engines</p>
-    <h2 class="d2" id="qeH" data-r style="margin-top:18px;max-width:22ch">Transparent breakdowns for customers and ops review.</h2>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Pricing &amp; quote engines</p>
+        <h2 class="d2 s-title" id="qeH" data-r>Transparent breakdowns for customers and ops review</h2>
+        <p class="lede" data-r>The number the customer sees has to be the number ops can honour. Itemise it once, share it both ways.</p>
+      </div>
+    </div>
 
     <div class="qgrid">
       <div data-r>
-        <h3 class="d3" style="margin-bottom:16px">What the customer sees</h3>
+        <h3 class="d3">What the customer sees</h3>
         <div class="breakdown">
           <div class="brow"><span>Base rate · 1,065 mi</span><b>$820</b></div>
           <div class="brow"><span>Open carrier</span><b>Included</b></div>
@@ -738,7 +763,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       </div>
 
       <div data-r>
-        <h3 class="d3" style="margin-bottom:16px">Why the breakdown matters</h3>
+        <h3 class="d3">Why the breakdown matters</h3>
         <ul class="qnotes">
           <li><u>Trust</u><span>A single unexplained number invites a call to a competitor. An itemised one invites a booking.</span></li>
           <li><u>Conversion</u><span>Clear pricing and trust signals throughout the quote, book, and pay flow, the difference between a lead and an order.</span></li>
@@ -753,11 +778,15 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <!-- ═══════════ CAPABILITIES ═══════════ -->
 <section class="caps" id="capabilities" aria-labelledby="capH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Capabilities</p>
-    <h2 class="d2" id="capH" data-r style="margin-top:18px;max-width:22ch">What we deliver for car transportation</h2>
-    <p class="body" data-r style="margin-top:18px">End-to-end design and development from an in-house team, no freelance marketplace handoffs.</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Capabilities</p>
+        <h2 class="d2 s-title" id="capH" data-r>What we deliver for car transportation</h2>
+        <p class="lede" data-r>End-to-end design and development from one in-house team, no freelance marketplace handoffs.</p>
+      </div>
+    </div>
 
-    <div style="margin-top:clamp(34px,4vw,60px)">
+    <div class="cap-stack">
       <article class="cap-row" data-r>
         <div class="cap-media">
           <img src="/solutions/car-transport/quote.svg" alt="Instant transport quote" width="1600" height="1000" loading="lazy" decoding="async">
@@ -820,9 +849,9 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 
       <article class="cap-row alt" data-r>
         <div class="cap-media">
-          <!-- SLOT D · driver coordination app · 1600×1000 · 16:10 · two phone frames, pickup confirmation + document capture -->
+          <!-- SLOT D · driver coordination app · intentional empty host until phone frames land -->
           <div class="slot phone"><div class="skel"><i></i><i></i><i></i></div>
-            <div class="tagline"><span>Capability reference · 04</span><span>04</span></div></div>
+            <div class="tagline"><span>Driver app · pickup + POD</span><span>04</span></div></div>
         </div>
         <div>
           <span class="cap-no num">04</span>
@@ -865,15 +894,15 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <!-- ═══════════ PROOF · stated honestly ═══════════ -->
 <section class="proof on-ink" aria-labelledby="pfH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Proof</p>
-    <h2 class="d2" id="pfH" data-r>We haven't published an auto transport case study yet.</h2>
-    <p class="proof-note" data-r>The two projects below are the closest published work, a dispatch console and a booking marketplace. Between them they cover most of what an auto transport platform needs. We're happy to walk through relevant unpublished work on a call, under NDA.</p>
+    <p class="eyebrow" data-r>Proof · stated honestly</p>
+    <h2 class="d2" id="pfH" data-r>We haven&rsquo;t published an auto transport case study yet</h2>
+    <p class="proof-note" data-r>The two projects below are the closest published work: a dispatch console and a booking marketplace. Between them they cover most of what an auto transport platform needs. We are happy to walk through relevant unpublished work on a call, under NDA.</p>
     <div class="adj" data-s>
       <a href="/work/fleetflow-dispatch">
         <div>
           <span class="k">Logistics · CRM · SaaS</span>
-          <span class="d3" style="display:block;margin-top:12px;color:#fff">FleetFlow · US trucking dispatch CRM</span>
-          <span class="body-sm" style="display:block;margin-top:10px;color:#8C98A4">Modernized a US trucking dispatch CRM with bulk actions, SLA intelligence, and supervisor controls for 400+ daily routes.</span>
+          <span class="d3 title">FleetFlow · US trucking dispatch CRM</span>
+          <span class="body-sm hook">Modernized a US trucking dispatch CRM with bulk actions, SLA intelligence, and supervisor controls for 400+ daily routes.</span>
           <span class="why">Relevance · carrier dispatch and exception handling</span>
         </div>
         <span class="arrow"><span>View case study</span><i>→</i></span>
@@ -881,8 +910,8 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       <a href="/work/marketplace-mvp">
         <div>
           <span class="k">No-Code · Marketplace · MVP</span>
-          <span class="d3" style="display:block;margin-top:12px;color:#fff">LocalServe · marketplace MVP</span>
-          <span class="body-sm" style="display:block;margin-top:10px;color:#8C98A4">No-code marketplace MVP with vendor onboarding, bookings, and admin ops, validated before custom build.</span>
+          <span class="d3 title">LocalServe · marketplace MVP</span>
+          <span class="body-sm hook">No-code marketplace MVP with vendor onboarding, bookings, and admin ops, validated before custom build.</span>
           <span class="why">Relevance · booking flow and two-sided ops</span>
         </div>
         <span class="arrow"><span>View case study</span><i>→</i></span>
@@ -894,118 +923,88 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <!-- ═══════════ PROCESS ═══════════ -->
 <section class="sect" id="process" aria-labelledby="prH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Process</p>
-    <h2 class="d2" id="prH" data-r style="margin-top:18px;max-width:18ch">How we deliver</h2>
-    <p class="body" data-r style="margin-top:18px">Structured phases with clear milestones and transparent communication.</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Process</p>
+        <h2 class="d2 s-title" id="prH" data-r>How we deliver vehicle logistics platforms</h2>
+        <p class="lede" data-r>Journey mapping through launch with written gates, weekly demos, and one team on the call and in the code.</p>
+      </div>
+      <a href="/process" class="btn ghost"><span>Full process</span><i>→</i></a>
+    </div>
 
     <div class="arc" id="arc">
       <div class="astep">
         <span class="dot" aria-hidden="true"></span>
         <span class="pn">Phase 01</span>
         <h3>Journey mapping</h3>
-        <p class="body-sm">Map customer, carrier, and ops journeys to identify friction in the quote-to-delivery process.</p>
+        <p class="body-sm">Map customer, carrier, and ops journeys to find friction in the quote-to-delivery process before UI begins.</p>
       </div>
       <div class="astep">
         <span class="dot" aria-hidden="true"></span>
         <span class="pn">Phase 02</span>
         <h3>Product design</h3>
-        <p class="body-sm">High-fidelity UX for portals, dispatch, and tracking, validated before build begins.</p>
+        <p class="body-sm">High-fidelity UX for portals, dispatch, and tracking, validated with you before a line of production code.</p>
       </div>
       <div class="astep">
         <span class="dot" aria-hidden="true"></span>
         <span class="pn">Phase 03</span>
         <h3>Platform build</h3>
-        <p class="body-sm">Next.js web apps, mobile coordination tools, and integrations with your existing stack.</p>
+        <p class="body-sm">Web apps, mobile coordination tools, and integrations with your existing TMS, CRM, or finance stack.</p>
       </div>
       <div class="astep">
         <span class="dot" aria-hidden="true"></span>
         <span class="pn">Phase 04</span>
         <h3>Launch &amp; optimize</h3>
-        <p class="body-sm">Analytics, conversion tuning, and ops feedback loops post-launch.</p>
+        <p class="body-sm">Analytics, conversion tuning on the quote flow, and ops feedback loops after go-live.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ RELATED WORK ═══════════ -->
-<section class="sect sect--tight" aria-labelledby="rwH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Proof</p>
-        <h2 class="d2" id="rwH" data-r style="margin-top:18px">Related work</h2>
-        <p class="body" data-r style="margin-top:16px">Selected anonymized case studies in this space. Client names and identifying details may be changed for confidentiality; metrics describe project outcomes.</p>
-      </div>
-      <a href="/work" class="btn ghost"><span>All case studies</span><i>→</i></a>
-    </div>
-    <div class="rel" data-s>
-      <a href="/work/fleetflow-dispatch">
-        <span class="k">Logistics · CRM · SaaS</span>
-        <span>
-          <span class="d3" style="display:block">FleetFlow · US trucking dispatch CRM</span>
-          <span class="body-sm" style="display:block;margin-top:10px">Modernized a US trucking dispatch CRM with bulk actions, SLA intelligence, and supervisor controls for 400+ daily routes.</span>
-        </span>
-        <span class="arrow"><span class="k">View case study</span><i>→</i></span>
-      </a>
-      <a href="/work/marketplace-mvp">
-        <span class="k">No-Code · Marketplace · MVP</span>
-        <span>
-          <span class="d3" style="display:block">LocalServe · marketplace MVP</span>
-          <span class="body-sm" style="display:block;margin-top:10px">No-code marketplace MVP with vendor onboarding, bookings, and admin ops, validated before custom build.</span>
-        </span>
-        <span class="arrow"><span class="k">View case study</span><i>→</i></span>
-      </a>
-      <a href="/work/finance-sync-hub">
-        <span class="k">Integrations · Dashboard · Automation</span>
-        <span>
-          <span class="d3" style="display:block">FinanceSync · QuickBooks &amp; Xero reconciliation hub</span>
-          <span class="body-sm" style="display:block;margin-top:10px">Built reliable QuickBooks/Xero reconciliation workflows with operator dashboards finance teams trust at month-end close.</span>
-        </span>
-        <span class="arrow"><span class="k">View case study</span><i>→</i></span>
-      </a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ RELATED SERVICES ═══════════ -->
-<section class="sect sect--tight" aria-labelledby="rsH">
+<section class="sect sect--tight sect--band" aria-labelledby="rsH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Services</p>
-    <h2 class="d2" id="rsH" data-r style="margin-top:18px">Related services</h2>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Services</p>
+        <h2 class="d2 s-title" id="rsH" data-r>Related services</h2>
+        <p class="lede" data-r>The building blocks most auto transport platforms pull together.</p>
+      </div>
+    </div>
     <div class="svc" data-s>
       <a href="/services/mobile-applications">
         <h3>Mobile App Design <i>→</i></h3>
-        <p class="body-sm">Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention.</p>
+        <p class="body-sm">Driver and field apps for load acceptance, status, and document capture on the road.</p>
       </a>
       <a href="/services/web-development">
         <h3>Web Design &amp; Development <i>→</i></h3>
-        <p class="body-sm">Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations.</p>
+        <p class="body-sm">Booking portals and marketing sites with quote-to-pay flows built for conversion.</p>
       </a>
       <a href="/services/crm-development">
         <h3>CRM Design <i>→</i></h3>
-        <p class="body-sm">Sales pipelines, stage models, and ops consoles teams actually trust day to day.</p>
+        <p class="body-sm">Carrier dispatch consoles and ops boards matched to how the desk actually works.</p>
       </a>
       <a href="/services/dashboard-design">
         <h3>Dashboard Design <i>→</i></h3>
-        <p class="body-sm">Analytics and operational views designed for scanability and daily use.</p>
+        <p class="body-sm">Ops and leadership views for exceptions, lane performance, and morning scans.</p>
       </a>
       <a href="/services/api-integrations">
         <h3>Integrations &amp; APIs <i>→</i></h3>
-        <p class="body-sm">Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling and monitoring.</p>
+        <p class="body-sm">Connectors between your product, CRM, ERP, and third-party tools with clear error handling.</p>
       </a>
     </div>
-    <p style="margin-top:26px" class="body-sm">Moving freight rather than vehicles? See <a href="/solutions/trucking-logistics" style="border-bottom:1px solid var(--rule)">trucking &amp; logistics solutions</a>.</p>
+    <p class="body-sm svc-note">Moving freight rather than vehicles? See <a class="inline-link" href="/solutions/trucking-logistics">trucking &amp; logistics solutions</a>.</p>
   </div>
 </section>
 
 <!-- ═══════════ FAQ ═══════════ -->
 <section class="sect faq" id="faq" aria-labelledby="faqH">
   <div class="wrap faq-grid">
-    <div>
+    <div class="faq-side">
       <p class="eyebrow" data-r>FAQ</p>
-      <h2 class="d2" id="faqH" data-r style="margin-top:18px">Common questions</h2>
-      <p class="body-sm" data-r style="margin-top:18px">Asked most often by auto transport brokers and carriers before a first call.</p>
-      <a href="/contact#book" class="btn ghost" style="margin-top:24px"><span>Ask us directly</span><i>→</i></a>
+      <h2 class="d2 s-title" id="faqH" data-r>Common questions</h2>
+      <p class="body-sm s-intro" data-r>Asked most often by auto transport brokers and carriers before a first call.</p>
+      <a href="/contact#book" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
     </div>
 
     <div class="faq-list" data-r>
@@ -1030,7 +1029,15 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
           <span class="qn num">03</span><span class="qt">How is this different from general trucking solutions?</span><span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa3"><div><div class="faq-a-in">
-          <p class="body-sm">Car transportation has unique quote, tracking, and customer communication patterns. We design specifically for vehicle logistics, not general trucking. See also <a href="/solutions/trucking-logistics" style="border-bottom:1px solid var(--rule)">trucking &amp; logistics solutions</a>.</p>
+          <p class="body-sm">Car transportation has unique quote, tracking, and customer communication patterns. We design specifically for vehicle logistics, not general trucking. See also <a class="inline-link" href="/solutions/trucking-logistics">trucking &amp; logistics solutions</a>.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa4">
+          <span class="qn num">04</span><span class="qt">Do you have a published auto transport case study?</span><span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa4"><div><div class="faq-a-in">
+          <p class="body-sm">Not yet. The closest published work is FleetFlow for dispatch and LocalServe for booking flows. We can walk through relevant unpublished work under NDA on a fit call.</p>
         </div></div></div>
       </div>
     </div>
@@ -1040,10 +1047,11 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <!-- ═══════════ CTA ═══════════ -->
 <section class="cta-band on-ink" id="contact" aria-labelledby="ctaH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Car transportation</p>
-    <h2 class="d2" id="ctaH" data-r>Ready to discuss your car transportation project?</h2>
+    <p class="eyebrow" data-r>Next step</p>
+    <h2 class="d2" id="ctaH" data-r>Tell us what is breaking in the quote-to-POD flow</h2>
+    <p class="lede" data-r>A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
     <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+      <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
@@ -1053,7 +1061,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>
-    <p class="body-sm" data-r style="color:#8C98A4;margin-top:24px;max-width:60ch">Share your goals and timeline, we'll reply within one business day with fit, scope questions, and a sensible next step.</p>
+    <p class="body-sm follow" data-r>Share your goals and timeline. We will reply within one business day with fit, scope questions, and a sensible next step.</p>
   </div>
 </section>
 
@@ -1113,7 +1121,6 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service",
 "name":"Car Transportation Software",
@@ -1149,6 +1156,14 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Car transportation has unique quote, tracking, and customer communication patterns. We design specifically for vehicle logistics, not general trucking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you have a published auto transport case study?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet. The closest published work is FleetFlow for dispatch and LocalServe for booking flows. We can walk through relevant unpublished work under NDA on a fit call."
       }
     }
   ]

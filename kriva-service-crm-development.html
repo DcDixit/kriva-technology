@@ -21,7 +21,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
 /* Shared KRIVA tokens + primitives */
@@ -114,6 +113,7 @@ img{max-width:100%;display:block}
   *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
+  .crm-board__live i{animation:none!important}
 }
 
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
@@ -133,7 +133,7 @@ img{max-width:100%;display:block}
   padding:10px 0 12px;margin:0 calc(-1 * var(--gutter));padding-inline:var(--gutter);
   background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none
 }
-.mob-chips:-webkit-scrollbar{display:none}
+.mob-chips::-webkit-scrollbar{display:none}
 .mob-chips a{
   flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   padding:7px 11px;border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
@@ -141,84 +141,122 @@ img{max-width:100%;display:block}
 .mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.hero{
+  background:
+    radial-gradient(110% 80% at 100% -8%, rgba(219,155,31,.07), transparent 50%),
+    radial-gradient(85% 65% at 0% 100%, rgba(27,68,200,.045), transparent 48%),
+    var(--paper);
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
+.s-head .lede,.s-intro{margin-top:16px;max-width:54ch}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
 .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
-.aside-card{background:var(--white);border:1px solid var(--rule);padding:clamp(18px,2.2vw,26px)}
-.aside-card h2{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:400;margin-bottom:14px}
-.aside-card ul{list-style:none;display:grid;gap:10px}
-.aside-card li{font-size:14.5px;display:flex;gap:9px;align-items:flex-start}
-.aside-card li:before{content:"·";color:var(--rule);flex:none}
-.contrast{margin-top:18px;padding:14px 16px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:14.5px;line-height:1.55;color:var(--ink);max-width:54ch}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
-.shot{position:relative;background:var(--ink);overflow:hidden;margin-top:clamp(28px,3.5vw,48px)}
-.shot .media{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden}
-.slot{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(14px,2vw,22px);background:linear-gradient(160deg,#161C22,#0E1216)}
-.slot .skel{display:grid;gap:7px}
-.slot .skel i{display:block;height:7px;background:#1F262E}
-.slot .skel i:nth-child(1){width:34%}.slot .skel i:nth-child(2){width:58%}.slot .skel i:nth-child(3){width:46%}
-.slot .tagline{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5C6670;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.shot-cap{margin-top:12px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+/* Signature · pipeline console */
+.crm-board{
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  box-shadow:0 28px 60px -42px rgba(14,18,22,.55)
+}
+.crm-board__bar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:11px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+}
+.crm-board__bar b{color:#fff;font-weight:400}
+.crm-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--amber)}
+.crm-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:crm-pulse 2.4s var(--e-io) infinite}
+@keyframes crm-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
+.crm-board__kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
+.crm-board__kpi{padding:12px 14px;border-right:1px solid var(--ink-line)}
+.crm-board__kpi:last-child{border-right:0}
+.crm-board__kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885}
+.crm-board__kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:1.2rem;letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
+.crm-board__stages{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:14px}
+.crm-stage{background:#141A20;border:1px solid #232B33;padding:10px 10px 12px;min-height:118px}
+.crm-stage__h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#6B7885}
+.crm-stage__h em{font-style:normal;color:#B9C3CC;font-variant-numeric:tabular-nums}
+.crm-card{padding:7px 8px;background:#1A2027;margin-bottom:6px;font-size:10.5px;line-height:1.3;color:#C4CCD4;border-left:2px solid #3A444E}
+.crm-card.hot{border-left-color:var(--amber);color:#fff}
+.crm-card.ok{border-left-color:var(--green)}
+.crm-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .crm-board__stages{grid-template-columns:1fr 1fr}
+  .crm-board__kpis{grid-template-columns:1fr 1fr}
+  .crm-board__kpi:nth-child(3){display:none}
+}
+
+.fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
+.fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+.fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:28ch}
+.fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
+@media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
 
 .chal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px)}
+.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px);transition:background .4s var(--e)}
+.chal article:hover{background:var(--white)}
 .chal .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:12px}
-.chal h3{margin-bottom:10px}
-.chal p{color:var(--steel);max-width:32ch}
+.chal h3{margin-bottom:12px}
+.chal p{color:var(--steel);max-width:34ch}
 @media(max-width:860px){.chal{grid-template-columns:1fr}}
 
 .approach{display:grid;gap:0;margin-top:clamp(28px,3.5vw,48px);border-top:1px solid var(--rule)}
-.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule)}
+.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,.85fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule);align-items:start}
 .ap-row .idx{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1}
-@media(max-width:640px){.ap-row{grid-template-columns:1fr;gap:8px}}
+.ap-row .body-sm{margin-top:10px}
+.ap-row .out{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-top:6px}
+.ap-row .out b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
+@media(max-width:900px){.ap-row{grid-template-columns:64px minmax(0,1fr);gap:14px}.ap-row .out{grid-column:2}}
+@media(max-width:560px){.ap-row{grid-template-columns:1fr;gap:8px}.ap-row .out{grid-column:1}}
 
-.deliv{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.deliv div{background:var(--white);padding:clamp(18px,2.2vw,26px)}
-.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.deliv p{font-size:15px;line-height:1.5;color:var(--ink)}
-@media(max-width:900px){.deliv{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.deliv{grid-template-columns:1fr}}
+.deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.deliv article{background:var(--white);padding:clamp(22px,2.6vw,34px)}
+.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
+.deliv h3{margin-bottom:10px}
+.deliv p{font-size:15px;line-height:1.58;color:var(--steel);max-width:42ch}
+@media(max-width:700px){.deliv{grid-template-columns:1fr}}
 
-.outcomes{margin-top:clamp(48px,5vw,80px);padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--rule)}
-.gain{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
-.gain ul{list-style:none;display:grid;gap:14px}
-.gain li{padding:16px 18px;background:var(--white);border:1px solid var(--rule);font-size:15.5px;line-height:1.5}
+.gain{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:start}
+.gain ul{list-style:none;display:grid;gap:12px}
+.gain li{padding:18px 20px;background:var(--white);border:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.gain li .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:4px}
+.gain li strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
+.gain li span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel)}
 @media(max-width:800px){.gain{grid-template-columns:1fr}}
 
 .faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:760px}
-.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px}
-.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none}
-.faq summary:-webkit-details-marker{display:none}
-.faq p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--steel)}
+.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
+.faq details[open]{border-color:var(--ink)}
+.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-family:var(--f-mono);font-size:14px;color:var(--steel);flex:none}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:58ch}
 
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
-.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:160px;transition:transform .5s var(--e),border-color .4s}
+.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
 .rel a:hover{transform:translate3d(0,-4px,0);border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.rel .title{display:block;margin-top:10px}
+.rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:28ch}
 .rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
 .rel a:hover .arrow i{transform:translateX(6px)}
 @media(max-width:860px){.rel{grid-template-columns:1fr}}
 
+.sib-label{margin-top:clamp(36px,4vw,56px)}
 .sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
 .sib a:hover{border-color:var(--blue);color:var(--blue)}
 
-/* Phase 11 · intentional brief board (no empty screenshot theater) */
-.brief{margin-top:clamp(28px,3.5vw,48px);border:1px solid var(--rule);background:var(--white);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
-.brief-main{padding:clamp(22px,2.8vw,36px);border-right:1px solid var(--rule)}
-.brief-side{padding:clamp(22px,2.8vw,36px);background:var(--paper-2);display:grid;align-content:space-between;gap:24px}
-.brief .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
-.brief-list{list-style:none;display:grid;gap:12px}
-.brief-list li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.45}
-.brief-list .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:3px}
-.brief-meta{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);display:grid;gap:10px}
-.brief-meta b{color:var(--ink);font-weight:500}
-@media(max-width:800px){.brief{grid-template-columns:1fr}.brief-main{border-right:0;border-bottom:1px solid var(--rule)}}
-
+.sect--band{background:var(--paper-2);border-block:1px solid var(--rule)}
+.sect--rule{border-top:1px solid var(--rule)}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:42ch}
 </style>
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body>
@@ -381,174 +419,290 @@ img{max-width:100%;display:block}
     </nav>
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" data-r>Service · Product interfaces · CRM Design</p>
+        <p class="eyebrow" data-r>Service · CRM &amp; ops consoles</p>
         <h1 class="d1 mask" data-mask>
           <span><i>A CRM the floor</i></span>
           <span><i>will trust.</i></span>
         </h1>
-        <p class="lede" data-r>Built for desks that live in the CRM, dispatch supervisors, sales leaders, and ops, not marketing-site mockups of a pipeline.</p>
-        <div class="tags" data-r><span class="tag">Pipeline UX</span><span class="tag">Custom dashboards</span><span class="tag">Data visualization</span></div>
+        <p class="lede" data-r>Pipeline stages, dispatch boards, and reporting views built around how the desk already works, on HubSpot, Salesforce, or a custom console.</p>
+        <div class="tags" data-r>
+          <span class="tag">Pipeline UX</span>
+          <span class="tag">Stage models</span>
+          <span class="tag">Ops consoles</span>
+          <span class="tag">HubSpot / Salesforce</span>
+        </div>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-          <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
+          <a href="/work/fleetflow-dispatch" class="btn ghost"><span>See FleetFlow</span><i>→</i></a>
         </div>
       </div>
-      <aside class="aside-card" data-r>
-        <h2>Where this sits</h2>
-        <ul>
-          <li>Family · Apps &amp; dashboards</li>
-          <li>Catalog · CRM Design</li>
-          <li>Sales pipelines, reporting views, and operational dashboards teams actually trust day to day.</li>
-        </ul>
-        <p class="contrast">Separate from Dashboard Design: this service owns stage models, pipeline UX, and CRM-platform fit. Dashboards own scanability and widget hierarchy for analytics views.</p>
-      </aside>
+
+      <div data-r>
+        <div class="crm-board" aria-hidden="true">
+          <div class="crm-board__bar">
+            <span><b>Pipeline</b> · ops console</span>
+            <span class="crm-board__live"><i></i>Live pattern</span>
+          </div>
+          <div class="crm-board__kpis">
+            <div class="crm-board__kpi"><span>Open deals</span><b>84</b></div>
+            <div class="crm-board__kpi"><span>At risk</span><b>6</b></div>
+            <div class="crm-board__kpi"><span>Closed wk</span><b>19</b></div>
+          </div>
+          <div class="crm-board__stages">
+            <div class="crm-stage">
+              <div class="crm-stage__h"><span>Qualify</span><em>12</em></div>
+              <div class="crm-card">ATL inbound</div>
+              <div class="crm-card">Broker intro</div>
+            </div>
+            <div class="crm-stage">
+              <div class="crm-stage__h"><span>Propose</span><em>9</em></div>
+              <div class="crm-card hot">Lane rate hold</div>
+              <div class="crm-card">SSO add-on</div>
+            </div>
+            <div class="crm-stage">
+              <div class="crm-stage__h"><span>Commit</span><em>7</em></div>
+              <div class="crm-card ok">Fleet renew</div>
+              <div class="crm-card">Ops seat pack</div>
+            </div>
+            <div class="crm-stage">
+              <div class="crm-stage__h"><span>Won</span><em>4</em></div>
+              <div class="crm-card ok">Q3 rollout</div>
+            </div>
+          </div>
+        </div>
+        <p class="crm-board__note"><span class="flag">Demo</span> Interface pattern only, no client data</p>
+      </div>
     </div>
 
-    <div class="brief" data-r>
-      <div class="brief-main">
-        <p class="k">How we run this engagement</p>
-        <ul class="brief-list"><li><span class="n">01</span><span><b>Stage reality workshop</b>: Pipeline and stage model workshop so definitions match how deals and loads actually move, not the default CRM template.</span></li><li><span class="n">02</span><span><b>Console &amp; pipeline UX</b>: Custom dashboard designs and pipeline UX for the roles that open the tool every day.</span></li><li><span class="n">03</span><span><b>Automation map</b>: Automation rule map with room for rollback, so ops trust the system after go-live.</span></li></ul>
-      </div>
-      <div class="brief-side">
-        <div>
-          <p class="k">Best for</p>
-          <p class="body-sm" style="color:var(--ink);max-width:36ch">Built for desks that live in the CRM, dispatch supervisors, sales leaders, and ops, not marketing-site mockups of a pipeline.</p>
-        </div>
-        <div class="brief-meta">
-          <span>Service · <b>CRM Design</b></span>
-          <span>Next · <b><a href="/work/fleetflow-dispatch">FleetFlow · dispatch CRM</a></b></span>
-          <span>CTA · <b><a href="/contact#book">Book a 20-minute fit call</a></b></span>
-        </div>
-      </div>
+    <div class="fit-rail" data-s>
+      <article>
+        <p class="k">Best for</p>
+        <h3>Dispatch &amp; sales desks</h3>
+        <p>Supervisors and reps who live in the CRM every shift, not leadership decks that get ignored.</p>
+      </article>
+      <article>
+        <p class="k">Platform fit</p>
+        <h3>HubSpot, Salesforce, or custom</h3>
+        <p>We design for the tool you run today, or the console you are building next.</p>
+      </article>
+      <article>
+        <p class="k">Not this service</p>
+        <h3>Analytics-first dashboards</h3>
+        <p>Widget hierarchy and drill-downs live under Dashboard Design. CRM Design owns stages, pipeline UX, and desk workflows.</p>
+        <p class="contrast">Need both? Most ops builds pair this page with Dashboard Design.</p>
+      </article>
     </div>
   </div>
 </header>
 
-<section class="sect" id="challenges" aria-labelledby="chH" style="border-top:1px solid var(--rule)">
+<section class="sect sect--rule" id="challenges" aria-labelledby="chH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Challenges</p>
-    <h2 class="d2" id="chH" data-r style="margin-top:16px;max-width:18ch">When the CRM becomes a spreadsheet again</h2>
-    <div class="chal"><article data-r>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Challenges</p>
+        <h2 class="d2" id="chH" data-r>When the CRM becomes a spreadsheet again</h2>
+        <p class="lede" data-r>The product is live. Adoption is not. These are the patterns we see before a redesign starts.</p>
+      </div>
+    </div>
+    <div class="chal">
+      <article data-r>
         <span class="n">01</span>
         <h3 class="d3">Pipeline distrust</h3>
-        <p class="body-sm">Sales team doesn't trust pipeline data</p>
+        <p class="body-sm">Stages mean different things to sales, ops, and finance. Forecast meetings become archaeology. People keep a private spreadsheet “just to be sure.”</p>
       </article>
       <article data-r>
         <span class="n">02</span>
         <h3 class="d3">Export dependency</h3>
-        <p class="body-sm">Reports take manual exports and spreadsheet work</p>
+        <p class="body-sm">Reports that should be a view become CSV dumps, pivot tables, and Slack threads. Leadership stops opening the CRM for anything but status theater.</p>
       </article>
       <article data-r>
         <span class="n">03</span>
         <h3 class="d3">UI / process mismatch</h3>
-        <p class="body-sm">CRM UI doesn't match how you actually sell</p>
-      </article></div>
+        <p class="body-sm">Default templates force clicks the desk never makes. Bulk actions, overrides, and exceptions live outside the tool, so the board never matches reality.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="sect story" id="approach" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="approach" aria-labelledby="apH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Approach</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px;max-width:20ch">Design the CRM around how the team already works.</h2>
-    <p class="body" data-r style="margin-top:16px">Usually follows discovery on stage definitions, then UI, then automation rules, reviewed before engineering commits.</p>
-    <div class="approach"><div class="ap-row" data-r>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Approach</p>
+        <h2 class="d2" id="apH" data-r>Design the CRM around how the team already works</h2>
+        <p class="lede" data-r>Stage definitions first, then console UX, then automation rules, reviewed before engineering commits.</p>
+      </div>
+    </div>
+    <div class="approach">
+      <div class="ap-row" data-r>
         <span class="idx num">01</span>
         <div>
           <h3 class="d3">Stage reality workshop</h3>
-          <p class="body-sm" style="margin-top:10px">Pipeline and stage model workshop so definitions match how deals and loads actually move, not the default CRM template.</p>
+          <p class="body-sm">We sit with the people who move deals and loads. Exit criteria, owners, and handoffs get written so the board stops arguing with the floor.</p>
         </div>
+        <p class="out"><b>You leave with</b>A stage model the desk can defend in a standup</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">02</span>
         <div>
           <h3 class="d3">Console &amp; pipeline UX</h3>
-          <p class="body-sm" style="margin-top:10px">Custom dashboard designs and pipeline UX for the roles that open the tool every day.</p>
+          <p class="body-sm">Boards, list views, and role layouts for the people who open the tool every day. Bulk actions, risk signals, and supervisor overrides where the desk needs them.</p>
         </div>
+        <p class="out"><b>You leave with</b>Clickable console patterns ready for build</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">03</span>
         <div>
           <h3 class="d3">Automation map</h3>
-          <p class="body-sm" style="margin-top:10px">Automation rule map with room for rollback, so ops trust the system after go-live.</p>
+          <p class="body-sm">Rules for assignment, reminders, and stage moves, with rollback paths. Nothing silent writes into production without an operator path back.</p>
         </div>
-      </div></div>
+        <p class="out"><b>You leave with</b>An automation map ops will actually trust</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="sect" id="deliverables" aria-labelledby="delH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Deliverables</p>
-    <h2 class="d2" id="delH" data-r style="margin-top:16px;max-width:18ch">What lands on the ops desk</h2>
-    <div class="deliv"><div data-r>
-        <b>01</b>
-        <p>Pipeline &amp; stage model workshop</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Deliverables</p>
+        <h2 class="d2" id="delH" data-r>What lands on the ops desk</h2>
+        <p class="lede" data-r>Artifacts your team can use in the next sprint, not a slide deck about CRM best practices.</p>
       </div>
-      <div data-r>
-        <b>02</b>
-        <p>Custom dashboard designs</p>
-      </div>
-      <div data-r>
-        <b>03</b>
-        <p>Automation rule map</p>
-      </div>
-      <div data-r>
-        <b>04</b>
-        <p>HubSpot / Salesforce UX improvements</p>
-      </div></div>
+    </div>
+    <div class="deliv">
+      <article data-r>
+        <b>01 · Model</b>
+        <h3 class="d3">Pipeline &amp; stage workshop</h3>
+        <p>Documented stages, exit criteria, owners, and handoffs matched to how deals and loads actually move.</p>
+      </article>
+      <article data-r>
+        <b>02 · Interface</b>
+        <h3 class="d3">Console &amp; pipeline UX</h3>
+        <p>Board and list layouts, role views, and interaction patterns for daily operators and supervisors.</p>
+      </article>
+      <article data-r>
+        <b>03 · Rules</b>
+        <h3 class="d3">Automation rule map</h3>
+        <p>Trigger, action, owner, and rollback for each rule so go-live does not become a silent failure mode.</p>
+      </article>
+      <article data-r>
+        <b>04 · Platform</b>
+        <h3 class="d3">HubSpot / Salesforce UX</h3>
+        <p>Improvements inside the CRM you already run, or a custom console brief when the platform is the product.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="sect" id="outcomes" aria-labelledby="outH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="outcomes" aria-labelledby="outH">
   <div class="wrap">
-    <div class="gain outcomes" style="margin-top:0;padding-top:0;border-top:0">
+    <div class="gain">
       <div data-r>
         <p class="eyebrow">Outcomes</p>
-        <h2 class="d2" id="outH" style="margin-top:14px;max-width:16ch">What changes on the floor</h2>
-        <p class="body-sm" style="margin-top:12px">What this engagement is meant to change in the product.</p>
+        <h2 class="d2" id="outH">What changes on the floor</h2>
+        <p class="lede">Qualitative targets we design toward. Signed-off metrics publish on case studies when clients clear them.</p>
+        <a href="/work/fleetflow-dispatch" class="p-link">FleetFlow published −32% handle time <i>→</i></a>
       </div>
       <ul data-s>
-          <li>Better forecast accuracy</li>
-          <li>Less time in spreadsheets</li>
-          <li>Dashboards leadership uses weekly</li>
+        <li>
+          <span class="n">01</span>
+          <span>
+            <strong>Forecast people defend</strong>
+            <span>Shared stage definitions so pipeline reviews stop rewriting history every Monday.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <span>
+            <strong>Fewer spreadsheet detours</strong>
+            <span>Views and exports that match the questions leadership already asks, inside the CRM.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <span>
+            <strong>Boards operators keep open</strong>
+            <span>Layouts that support bulk work, exceptions, and overrides without leaving the tool.</span>
+          </span>
+        </li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="sect sect--tight" id="proof" aria-labelledby="pfH">
+<section class="sect" id="proof" aria-labelledby="pfH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Where this shows up</p>
-    <h2 class="d2" id="pfH" data-r style="margin-top:16px">Related work and pages</h2>
-    <div class="rel" data-s><a href="/work/fleetflow-dispatch">
-        <span class="k">Work</span>
-        <span class="arrow"><span class="d3">FleetFlow · dispatch CRM</span><i>→</i></span>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Where this shows up</p>
+        <h2 class="d2" id="pfH" data-r>Related work and pages</h2>
+        <p class="lede" data-r>Live examples of CRM and console work you can open today.</p>
+      </div>
+    </div>
+    <div class="rel" data-s>
+      <a href="/work/fleetflow-dispatch">
+        <span>
+          <span class="k">Work · signed-off</span>
+          <span class="d3 title">FleetFlow · dispatch CRM</span>
+          <span class="hook">Bulk assignment and SLA risk on the board. −32% manual handle time, published on the case study.</span>
+        </span>
+        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
       </a>
       <a href="/work/crm-pulse-dashboard">
-        <span class="k">Work</span>
-        <span class="arrow"><span class="d3">CRMPulse · sales dashboard</span><i>→</i></span>
+        <span>
+          <span class="k">Work · narrative</span>
+          <span class="d3 title">CRMPulse · sales dashboard</span>
+          <span class="hook">Pipeline and forecast views built for weekly leadership use, not one-off exports.</span>
+        </span>
+        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
       </a>
       <a href="/solutions/trucking-logistics">
-        <span class="k">Solution</span>
-        <span class="arrow"><span class="d3">Trucking &amp; logistics</span><i>→</i></span>
-      </a></div>
-    <p class="eyebrow" data-r style="margin-top:clamp(36px,4vw,56px)">Also see</p>
+        <span>
+          <span class="k">Solution</span>
+          <span class="d3 title">Trucking &amp; logistics</span>
+          <span class="hook">Dispatch, fleet, and driver tooling for US carriers, brokers, and fleets.</span>
+        </span>
+        <span class="arrow"><span class="mono">Solution</span><i>→</i></span>
+      </a>
+    </div>
+    <p class="eyebrow sib-label" data-r>Also see</p>
     <div class="sib" data-r>
-        <a href="/services/dashboard-design">Dashboard Design</a>
-        <a href="/services/automation-systems">Automation Workflows</a>
-        <a href="/insights/crm-dashboard-ux-patterns">CRM dashboard UX patterns</a>
+      <a href="/services/dashboard-design">Dashboard Design</a>
+      <a href="/services/automation-systems">Automation Workflows</a>
+      <a href="/insights/crm-dashboard-ux-patterns">CRM dashboard UX patterns</a>
       <a href="/services">All services</a>
     </div>
   </div>
 </section>
 
-<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="faq" aria-labelledby="faqH">
   <div class="wrap">
-    <p class="eyebrow" data-r>FAQ</p>
-    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About CRM Design</h2>
-    <div class="faq" data-r><details>
-        <summary>Which CRM platforms?</summary>
-        <p>HubSpot, Salesforce, Pipedrive, and custom CRM builds. We design for the tool you use or the one you're building.</p>
-      </details></div>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>FAQ</p>
+        <h2 class="d2" id="faqH" data-r>About CRM Design</h2>
+      </div>
+    </div>
+    <div class="faq" data-r>
+      <details>
+        <summary>Which CRM platforms do you design for?</summary>
+        <p>HubSpot, Salesforce, Pipedrive, and custom CRM builds. We design for the tool you use or the console you are building.</p>
+      </details>
+      <details>
+        <summary>How is this different from Dashboard Design?</summary>
+        <p>CRM Design owns stage models, pipeline UX, and desk workflows. Dashboard Design owns widget hierarchy, filters, and drill-downs for analytics views. Many engagements use both.</p>
+      </details>
+      <details>
+        <summary>Do you rebuild the CRM or improve the one we have?</summary>
+        <p>Either. Platform UX improvements stay inside HubSpot or Salesforce when that is enough. Custom consoles when the desk outgrew the template and the product is the CRM itself.</p>
+      </details>
+      <details>
+        <summary>What do we need before a kickoff?</summary>
+        <p>Access to a few operators for a stage workshop, a walkthrough of the current board, and clarity on who owns forecast truth. An NDA is available before the first call.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -556,8 +710,9 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
     <h2 class="d2" id="ctaH" data-r>Need a CRM the floor will trust?</h2>
+    <p class="lede" data-r>A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
     <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+      <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
@@ -626,7 +781,6 @@ img{max-width:100%;display:block}
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -647,16 +801,39 @@ img{max-width:100%;display:block}
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Which CRM platforms?",
+      "name": "Which CRM platforms do you design for?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "HubSpot, Salesforce, Pipedrive, and custom CRM builds. We design for the tool you use or the one you're building."
+        "text": "HubSpot, Salesforce, Pipedrive, and custom CRM builds. We design for the tool you use or the console you are building."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Dashboard Design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CRM Design owns stage models, pipeline UX, and desk workflows. Dashboard Design owns widget hierarchy, filters, and drill-downs for analytics views. Many engagements use both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you rebuild the CRM or improve the one we have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Either. Platform UX improvements stay inside HubSpot or Salesforce when that is enough. Custom consoles when the desk outgrew the template and the product is the CRM itself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do we need before a kickoff?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Access to a few operators for a stage workshop, a walkthrough of the current board, and clarity on who owns forecast truth. An NDA is available before the first call."
       }
     }
   ]
 }
 </script>
-<script src="/shared/chrome.js" defer></script>
 <script>
 (function(){
 'use strict';

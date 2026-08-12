@@ -136,7 +136,13 @@ svg{display:block}
 /* nav/sheet/footer chrome → shared/chrome.css */
 
 /* ═══════════ HERO ═══════════ */
-.hero{padding:calc(72px + clamp(24px,4.2vw,56px)) 0 clamp(40px,4.5vw,72px);position:relative}
+.hero{
+  padding:calc(72px + clamp(24px,4.2vw,56px)) 0 clamp(40px,4.5vw,72px);position:relative;
+  background:
+    radial-gradient(115% 85% at 100% -10%, rgba(219,155,31,.07), transparent 52%),
+    radial-gradient(90% 70% at -5% 110%, rgba(27,68,200,.05), transparent 48%),
+    var(--paper);
+}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(28px,4vw,72px);align-items:end}
 .hero-copy .d1{margin:16px 0 18px;max-width:14ch}
 .hero-copy .d1 em{font-style:normal;position:relative;white-space:nowrap}
@@ -342,7 +348,7 @@ svg{display:block}
 .scene.on{opacity:1;transform:none}
 /* scene 1 · route */
 .route{width:100%;height:100%}
-.route .ln{fill:none;stroke:#2C3views;stroke-width:1}
+.route .ln{fill:none;stroke:#2C3640;stroke-width:1}
 .route .grid{stroke:#1E252C;stroke-width:1}
 .route .path{fill:none;stroke:var(--amber);stroke-width:1.5;stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset 1.4s var(--e)}
 .scene.on .route .path{stroke-dashoffset:0}
@@ -360,11 +366,14 @@ svg{display:block}
 .lrow small{color:#6B7885;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
 .lrow.ok{border-left:2px solid var(--green)}
 .lrow.ex{border-left:2px solid var(--amber);color:#fff}
-/* scene 4 · pipeline */
-.pipe{display:flex;align-items:center;justify-content:space-between;height:100%;gap:6px}
-.node{flex:1;text-align:center;padding:14px 6px;border:1px solid #232B33;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;position:relative}
-.node.human{border-color:var(--violet);color:#B7A9FF}
-.pipe span.arw{color:#3A444E;font-size:11px;flex:none}
+/* scene 4 · auto transport haul */
+.haul{display:grid;gap:8px;height:100%;align-content:center;font-family:var(--f-mono);font-size:10.5px}
+.hrow{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:8px 10px;background:#141A20;color:#B9C3CC;border-left:2px solid #2A3340}
+.hrow.on{border-left-color:var(--amber);color:#fff}
+.hrow.done{border-left-color:var(--green)}
+.hrow small{color:#6B7885;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+.scene.on .hrow.on small{color:var(--amber)}
+.scene.on .hrow.done small{color:#5FD3A0}
 
 .panels{display:grid;gap:clamp(14px,1.6vw,22px)}
 .panel{
@@ -395,8 +404,9 @@ svg{display:block}
 .readout{background:var(--ink);color:#DDE2E7}
 .readout .wrap{padding-block:clamp(64px,7.5vw,124px)}
 .readout .eyebrow{color:var(--ink-dim)}
-.readout h2{color:#fff;max-width:16ch}
+.readout h2{color:#fff;max-width:18ch}
 .readout-head{padding-bottom:clamp(32px,4vw,56px);border-bottom:1px solid var(--ink-line)}
+.readout-head .lede{color:#8C98A4;margin-top:18px;max-width:48ch}
 .nums{display:grid;grid-template-columns:repeat(4,1fr)}
 .nc{padding:clamp(28px,3vw,44px) clamp(16px,2vw,30px) 0 0;border-right:1px solid var(--ink-line)}
 .nc:last-child{border-right:0}
@@ -600,22 +610,48 @@ svg{display:block}
   .wi-cta{grid-column:2}
 }
 
-/* ═══════════ PROOF ═══════════ */
-.proof{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,26px);margin-top:clamp(36px,4vw,60px)}
-.q{background:var(--white);border:1px solid var(--rule);padding:clamp(24px,2.8vw,40px);display:flex;flex-direction:column;justify-content:space-between;min-height:270px;transition:transform .5s var(--e),box-shadow .5s var(--e)}
-.q:hover{transform:translate3d(0,-4px,0);box-shadow:0 26px 54px -40px rgba(14,18,22,.45)}
-.q.lead{grid-column:span 2;background:var(--ink);border-color:var(--ink);color:#DDE2E7;min-height:300px}
-.q blockquote{font-family:var(--f-display);font-weight:650;font-size:clamp(1.18rem,2.1vw,1.75rem);line-height:1.26;letter-spacing:-.026em}
-.q.lead blockquote{font-size:clamp(1.5rem,3.4vw,2.7rem);max-width:20ch;color:#fff;line-height:1.15;letter-spacing:-.032em}
-.who{display:flex;align-items:center;gap:13px;margin-top:32px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em}
-.who small{display:block;color:var(--steel);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;margin-top:3px}
-.q.lead .who small{color:var(--ink-dim)}
-.av{width:36px;height:36px;flex:none;display:grid;place-items:center;border:1px solid var(--rule);font-size:10.5px;letter-spacing:.06em}
-.q.lead .av{border-color:#3A444E}
-@media(max-width:860px){.proof{grid-template-columns:1fr}.q.lead{grid-column:span 1}}
+/* ═══════════ FIT · who this is for ═══════════ */
+.fit{background:var(--white);border-block:1px solid var(--rule-soft)}
+.fit-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;margin-top:clamp(36px,4vw,60px);
+  border:1px solid var(--rule)
+}
+.fit-card{
+  --acc:var(--blue);
+  display:flex;flex-direction:column;padding:clamp(24px,2.8vw,40px);
+  border-right:1px solid var(--rule);min-height:280px;
+  transition:background .45s var(--e),color .45s var(--e)
+}
+.fit-card:last-child{border-right:0}
+.fit-card:hover,.fit-card:focus-visible{background:var(--ink);color:#DDE2E7;outline:none}
+.fit-card .eyebrow{color:var(--acc);transition:color .45s var(--e)}
+.fit-card:hover .eyebrow,.fit-card:focus-visible .eyebrow{color:var(--amber)}
+.fit-card h3{
+  margin:16px 0 12px;font-family:var(--f-display);font-weight:700;
+  font-size:clamp(1.2rem,1.8vw,1.45rem);line-height:1.18;letter-spacing:-.025em;
+  max-width:16ch;transition:color .45s var(--e)
+}
+.fit-card:hover h3,.fit-card:focus-visible h3{color:#fff}
+.fit-card p{font-size:15px;line-height:1.6;color:var(--steel);max-width:34ch;flex:1;transition:color .45s var(--e)}
+.fit-card:hover p,.fit-card:focus-visible p{color:#A8B2BC}
+.fit-link{
+  display:inline-flex;align-items:center;gap:9px;margin-top:28px;
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  border-bottom:1px solid currentColor;padding-bottom:3px;align-self:flex-start
+}
+.fit-link i{font-style:normal;transition:transform .42s var(--e)}
+.fit-card:hover .fit-link i,.fit-card:focus-visible .fit-link i{transform:translateX(6px)}
+@media(max-width:900px){
+  .fit-grid{grid-template-columns:1fr;border:0}
+  .fit-card{border:1px solid var(--rule);border-bottom:0;min-height:0}
+  .fit-card:last-child{border-bottom:1px solid var(--rule)}
+}
 
 /* ═══════════ PROCESS RAIL ═══════════ */
-.process{background:var(--paper)}
+.process{background:var(--paper);border-top:1px solid var(--rule)}
+.process .s-head{margin-bottom:0}
+.process .s-head .lede{margin-top:18px;max-width:46ch}
 .rail{position:relative;margin-top:clamp(40px,4.5vw,72px)}
 .rail-line,.rail-fill{position:absolute;left:7px;top:8px;width:1px}
 .rail-line{bottom:8px;background:var(--rule)}
@@ -636,11 +672,17 @@ svg{display:block}
   .rail-line,.rail-fill{left:7px}
 }
 
-/* ═══════════ CTA ═══════════ */
+.work-note{
+  margin-top:clamp(22px,2.5vw,32px);
+  display:flex;gap:10px;align-items:baseline;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)
+}
 .cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
 .cta-band .wrap{padding-block:clamp(76px,9.5vw,150px)}
 .cta-band .eyebrow{color:var(--ink-dim)}
 .cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,8vw,6.4rem);line-height:.93}
+.cta-band .lede{color:#8C98A4;margin-top:18px;max-width:42ch}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
 .cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
 .assur i{font-style:normal;color:var(--amber);margin-right:7px}
@@ -671,8 +713,6 @@ svg{display:block}
 }
 </style>
 <link rel="stylesheet" href="/shared/slot-assets.css">
-<link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body>
@@ -823,9 +863,9 @@ svg{display:block}
         <a href="/work" class="btn ghost"><span>See the work</span><i>→</i></a>
       </div>
       <div class="hero-facts" data-s>
-        <div class="fact"><b>NDA</b><small>Before the first call</small></div>
-        <div class="fact"><b>1 team</b><small>No subcontracting</small></div>
-        <div class="fact"><b>Weekly</b><small>Demos on a shared board</small></div>
+        <div class="fact"><b>Trucking</b><small>Dispatch, fleet, drivers</small></div>
+        <div class="fact"><b>SaaS</b><small>UK &amp; US product teams</small></div>
+        <div class="fact"><b>Finance</b><small>QuickBooks &amp; Xero</small></div>
       </div>
     </div>
 
@@ -953,14 +993,14 @@ svg{display:block}
     <div class="sol">
       <div class="sol-rail">
         <p class="eyebrow" data-r>What we build</p>
-        <h2 class="d2" id="solH" data-r style="margin-top:20px">Four things.<br>Done properly.</h2>
-        <p class="body-sm" data-r style="margin-top:18px">Nothing on this list is a service category we invented to fill a menu. Each one is running in production somewhere right now.</p>
+        <h2 class="d2" id="solH" data-r style="margin-top:20px">Four domains.<br>Shipped in production.</h2>
+        <p class="body-sm" data-r style="margin-top:18px">Each lane maps to a live solution page. Nothing here is a filler menu item invented for coverage.</p>
 
         <ul class="sol-index" id="solIndex">
           <li class="act" style="--acc:var(--amber)"><button type="button" data-go="0"><u>01</u> Trucking &amp; logistics</button></li>
           <li style="--acc:var(--blue)"><button type="button" data-go="1"><u>02</u> SaaS products</button></li>
           <li style="--acc:var(--green)"><button type="button" data-go="2"><u>03</u> Accounting integrations</button></li>
-          <li style="--acc:var(--violet)"><button type="button" data-go="3"><u>04</u> Workflow automation</button></li>
+          <li style="--acc:var(--violet)"><button type="button" data-go="3"><u>04</u> Car transportation</button></li>
         </ul>
 
         <div class="viewer" aria-hidden="true">
@@ -993,11 +1033,11 @@ svg{display:block}
               </div>
             </div>
             <div class="scene" data-scene="3">
-              <div class="pipe">
-                <span class="node">Intake</span><span class="arw">→</span>
-                <span class="node">Classify</span><span class="arw">→</span>
-                <span class="node human">Human review</span><span class="arw">→</span>
-                <span class="node">Commit</span>
+              <div class="haul">
+                <div class="hrow done"><span>QT-1841 · Sedan · CHI→ATL</span><small>Delivered</small></div>
+                <div class="hrow on"><span>QT-1842 · SUV · DAL→PHX</span><small>In transit</small></div>
+                <div class="hrow"><span>QT-1843 · Truck · LAX→DEN</span><small>Quoted</small></div>
+                <div class="hrow"><span>QT-1844 · Van · SEA→PDX</span><small>Assigned</small></div>
               </div>
             </div>
           </div>
@@ -1032,13 +1072,13 @@ svg{display:block}
           <a href="/solutions/accounting-integrations" class="p-link">Explore integrations <i>→</i></a>
         </article>
 
-        <article class="panel" style="--acc:var(--violet)" data-r data-v="Pipeline|Human-gated">
+        <article class="panel" style="--acc:var(--violet)" data-r data-v="Haul board|04 open quotes">
           <span class="panel-no">04</span>
-          <p class="eyebrow">Internal tooling</p>
-          <h3 class="d3">Automation with a person still in the loop.</h3>
-          <p class="body-sm">Ticket triage, document processing, internal tools. Every automated output is reviewed by a human before it touches production. Nothing goes near your billing data unsupervised.</p>
-          <div class="tags"><span class="tag">Ticket triage</span><span class="tag">Doc processing</span><span class="tag">Pipeline design</span></div>
-          <a href="/services/automation-systems" class="p-link">Explore automation <i>→</i></a>
+          <p class="eyebrow">Auto transport · Brokers · Carriers</p>
+          <h3 class="d3">Quotes, hauls, and tracking that stay in one system.</h3>
+          <p class="body-sm">Quote intake that survives a busy Monday, carrier assignment without spreadsheet ping-pong, and status tracking customers can trust. Built for auto-transport desks that live on volume and exceptions.</p>
+          <div class="tags"><span class="tag">Quote workflows</span><span class="tag">Carrier matching</span><span class="tag">Load tracking</span><span class="tag">Customer portals</span></div>
+          <a href="/solutions/car-transportation" class="p-link">Explore car transport <i>→</i></a>
         </article>
       </div>
     </div>
@@ -1049,8 +1089,9 @@ svg{display:block}
 <section class="readout" aria-labelledby="roH">
   <div class="wrap">
     <div class="readout-head">
-      <p class="eyebrow" data-r>Track record</p>
-      <h2 class="d2" id="roH" data-r style="margin-top:18px">Every number here maps to a project we can name on a call.</h2>
+      <p class="eyebrow" data-r>How engagements run</p>
+      <h2 class="d2" id="roH" data-r style="margin-top:18px">Operating rules we keep on every project.</h2>
+      <p class="lede" data-r>Not vanity metrics. The constraints that decide whether a build stays usable after launch.</p>
     </div>
     <div class="nums" id="nums">
       <div class="nc"><b class="num" data-count="4" data-suffix="">0</b><span>Time zones</span><em>US &amp; UK call hours with India delivery overlap</em></div>
@@ -1161,45 +1202,56 @@ svg{display:block}
       </ul>
     </div>
 
-    <p class="c-note" style="margin-top:22px">Only FleetFlow publishes signed-off outcome metrics on this redesign. Other cases lead with verified narrative until metrics are cleared.</p>
+    <p class="work-note"><span class="flag">Note</span> Only FleetFlow publishes signed-off outcome metrics. Other cases lead with verified narrative until metrics are cleared.</p>
   </div>
 </section>
 
-<!-- ══════ PROOF ══════ -->
-<section class="sect sect--tight" id="proof" aria-labelledby="proofH">
+<!-- ══════ FIT ══════ -->
+<section class="sect fit" id="fit" aria-labelledby="fitH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Proof you can verify</p>
-    <h2 class="d2" id="proofH" data-r style="margin-top:18px;max-width:16ch">Signed-off work, not borrowed praise.</h2>
-    <div class="proof proof--facts" data-s style="grid-template-columns:repeat(3,1fr)">
-      <a class="q lead" href="/work/fleetflow-dispatch" style="text-decoration:none;color:inherit;display:block">
-        <p class="mono" style="margin-bottom:14px;color:var(--steel)">FleetFlow · signed-off</p>
-        <p class="d3" style="margin-bottom:12px">−32% manual handle time</p>
-        <p class="body-sm">Dispatch CRM for US trucking ops. Metrics published on the case study.</p>
-        <p class="mono" style="margin-top:18px">Read FleetFlow →</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Who this is for</p>
+        <h2 class="d2" id="fitH" data-r>Built for operators,<br>not for portfolios.</h2>
+        <p class="lede" data-r>If your desk runs on exceptions, handoffs, and software people work around, you are the buyer we designed this site for.</p>
+      </div>
+      <a href="/contact#book" class="btn ghost"><span>Check the fit</span><i>→</i></a>
+    </div>
+
+    <div class="fit-grid" data-s>
+      <a class="fit-card" href="/solutions/trucking-logistics" style="--acc:var(--amber)">
+        <p class="eyebrow">VP Ops · Fleet leads</p>
+        <h3>Dispatch that matches the board, not the schema.</h3>
+        <p>Bulk assignment, SLA risk on every row, driver apps that survive a cracked Android. We have sat next to the desk during a live shift.</p>
+        <span class="fit-link">Trucking solutions <i aria-hidden="true">→</i></span>
       </a>
-      <a class="q" href="/work/payroll-pro-saas" style="text-decoration:none;color:inherit;display:block">
-        <p class="mono" style="margin-bottom:14px;color:var(--steel)">PayrollPro · narrative</p>
-        <p class="d3" style="margin-bottom:12px">SSO live. Activation rebuilt.</p>
-        <p class="body-sm">Role-based onboarding and permission clarity for a UK/EU payroll SaaS.</p>
-        <p class="mono" style="margin-top:18px">Read PayrollPro →</p>
+      <a class="fit-card" href="/solutions/saas" style="--acc:var(--blue)">
+        <p class="eyebrow">Founders · Product leads</p>
+        <h3>Activation that survives first week, not first click.</h3>
+        <p>Onboarding, permissions, and dashboards that answer the question someone opened the product to ask. Built for UK and US B2B SaaS.</p>
+        <span class="fit-link">SaaS solutions <i aria-hidden="true">→</i></span>
       </a>
-      <a class="q" href="/work/finance-sync-hub" style="text-decoration:none;color:inherit;display:block">
-        <p class="mono" style="margin-bottom:14px;color:var(--steel)">FinanceSync · narrative</p>
-        <p class="d3" style="margin-bottom:12px">Sync that finance can triage.</p>
-        <p class="body-sm">QuickBooks/Xero reconciliation workflows with operator-facing deltas.</p>
-        <p class="mono" style="margin-top:18px">Read FinanceSync →</p>
+      <a class="fit-card" href="/solutions/accounting-integrations" style="--acc:var(--green)">
+        <p class="eyebrow">Finance · Ops leads</p>
+        <h3>Close without reconciliation archaeology.</h3>
+        <p>QuickBooks and Xero sync with readable exceptions, retries that hold, and an audit trail your accountant will accept.</p>
+        <span class="fit-link">Accounting integrations <i aria-hidden="true">→</i></span>
       </a>
     </div>
-    <p class="c-note" style="margin-top:20px">Client logos represent past engagements; some work remains under NDA. Case studies stick to what we can verify. Only FleetFlow publishes signed-off metrics.</p>
   </div>
 </section>
 
 <!-- ══════ PROCESS ══════ -->
-<section class="sect process" id="process" aria-labelledby="procH" style="border-top:1px solid var(--rule)">
+<section class="sect process" id="process" aria-labelledby="procH">
   <div class="wrap">
-      <p class="eyebrow" data-r>Ten weeks, three approval gates</p>
-    <h2 class="d2" id="procH" data-r style="margin-top:18px;max-width:17ch">You always know what you're approving next.</h2>
-    <p class="body-sm" data-r style="margin-top:14px"><a href="/process" class="p-link" style="margin-top:0">Full process overview <i>→</i></a></p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Ten weeks, three approval gates</p>
+        <h2 class="d2" id="procH" data-r>You always know what<br>you&rsquo;re approving next.</h2>
+        <p class="lede" data-r>Discovery through launch with written gates, weekly demos on a real URL, and a shared board for decisions.</p>
+      </div>
+      <a href="/process" class="btn ghost"><span>Full process</span><i>→</i></a>
+    </div>
 
     <div class="rail" id="rail">
       <div class="rail-line" aria-hidden="true"></div>
@@ -1233,9 +1285,10 @@ svg{display:block}
 <section class="cta-band" id="contact" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Next step</p>
-    <h2 class="d2" id="ctaH" data-r>Tell us what's breaking.</h2>
+    <h2 class="d2" id="ctaH" data-r>Tell us what&rsquo;s breaking.</h2>
+    <p class="lede" data-r>A short fit call or a written brief. Either way, you leave with a clear yes, no, or not-yet.</p>
     <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+      <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
@@ -1303,8 +1356,6 @@ svg{display:block}
   <span>WhatsApp</span>
 </a>
 
-<script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
 <script src="/shared/chrome.js" defer></script>
 <script>
 (function(){

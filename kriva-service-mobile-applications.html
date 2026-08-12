@@ -21,7 +21,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
 /* Shared KRIVA tokens + primitives */
@@ -114,6 +113,7 @@ img{max-width:100%;display:block}
   *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
+  .phone__live i{animation:none!important}
 }
 
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
@@ -133,7 +133,7 @@ img{max-width:100%;display:block}
   padding:10px 0 12px;margin:0 calc(-1 * var(--gutter));padding-inline:var(--gutter);
   background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none
 }
-.mob-chips:-webkit-scrollbar{display:none}
+.mob-chips::-webkit-scrollbar{display:none}
 .mob-chips a{
   flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   padding:7px 11px;border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
@@ -141,84 +141,129 @@ img{max-width:100%;display:block}
 .mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.hero{
+  background:
+    radial-gradient(110% 80% at 100% -8%, rgba(91,68,200,.07), transparent 50%),
+    radial-gradient(85% 65% at 0% 100%, rgba(27,68,200,.05), transparent 48%),
+    var(--paper);
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
+.s-head .lede,.s-intro{margin-top:16px;max-width:54ch}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
 .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
-.aside-card{background:var(--white);border:1px solid var(--rule);padding:clamp(18px,2.2vw,26px)}
-.aside-card h2{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:400;margin-bottom:14px}
-.aside-card ul{list-style:none;display:grid;gap:10px}
-.aside-card li{font-size:14.5px;display:flex;gap:9px;align-items:flex-start}
-.aside-card li:before{content:"·";color:var(--rule);flex:none}
-.contrast{margin-top:18px;padding:14px 16px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:14.5px;line-height:1.55;color:var(--ink);max-width:54ch}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
-.shot{position:relative;background:var(--ink);overflow:hidden;margin-top:clamp(28px,3.5vw,48px)}
-.shot .media{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden}
-.slot{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(14px,2vw,22px);background:linear-gradient(160deg,#161C22,#0E1216)}
-.slot .skel{display:grid;gap:7px}
-.slot .skel i{display:block;height:7px;background:#1F262E}
-.slot .skel i:nth-child(1){width:34%}.slot .skel i:nth-child(2){width:58%}.slot .skel i:nth-child(3){width:46%}
-.slot .tagline{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5C6670;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.shot-cap{margin-top:12px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+/* Signature · phone frame */
+.phone-stage{display:flex;flex-direction:column;align-items:center}
+.phone{
+  width:min(100%,280px);background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  border-radius:28px;overflow:hidden;box-shadow:0 28px 60px -42px rgba(14,18,22,.55);
+  position:relative
+}
+.phone:before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:72px;height:6px;border-radius:99px;background:#1A2027;z-index:2}
+.phone__bar{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:22px 14px 10px;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+}
+.phone__bar b{color:#fff;font-weight:400}
+.phone__live{display:inline-flex;align-items:center;gap:6px;color:var(--amber)}
+.phone__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:phone-pulse 2.4s var(--e-io) infinite}
+@keyframes phone-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
+.phone__hero{
+  margin:0 12px;padding:14px;background:#141A20;border:1px solid #232B33
+}
+.phone__hero .k{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885}
+.phone__hero h3{margin-top:8px;font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:-.025em;color:#fff;line-height:1.15}
+.phone__hero p{margin-top:6px;font-size:12px;line-height:1.45;color:#8C98A4}
+.phone__meta{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.phone__chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;border:1px solid #2A3340;color:#B9C3CC}
+.phone__chip.on{border-color:var(--amber);color:var(--amber)}
+.phone__actions{display:grid;gap:8px;padding:12px}
+.phone__btn{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:12px 12px;background:#1A2027;border:1px solid #232B33;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#DDE2E7
+}
+.phone__btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.phone__btn span{color:#6B7885}
+.phone__btn.primary span{color:rgba(255,255,255,.7)}
+.phone__status{padding:0 12px 14px;display:grid;gap:6px}
+.phone__status .row{display:flex;justify-content:space-between;gap:8px;padding:8px 10px;background:#141A20;font-size:11px;color:#B9C3CC;border-left:2px solid #3A444E}
+.phone__status .row.ok{border-left-color:var(--green)}
+.phone__status .row.hot{border-left-color:var(--amber);color:#fff}
+.phone__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2);align-self:stretch;justify-content:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.phone-stage{align-items:flex-start}.phone{width:min(100%,300px)}}
+
+.fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
+.fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+.fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:28ch}
+.fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
+@media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
 
 .chal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px)}
+.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px);transition:background .4s var(--e)}
+.chal article:hover{background:var(--white)}
 .chal .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:12px}
-.chal h3{margin-bottom:10px}
-.chal p{color:var(--steel);max-width:32ch}
+.chal h3{margin-bottom:12px}
+.chal p{color:var(--steel);max-width:34ch}
 @media(max-width:860px){.chal{grid-template-columns:1fr}}
 
 .approach{display:grid;gap:0;margin-top:clamp(28px,3.5vw,48px);border-top:1px solid var(--rule)}
-.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule)}
+.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,.85fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule);align-items:start}
 .ap-row .idx{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1}
-@media(max-width:640px){.ap-row{grid-template-columns:1fr;gap:8px}}
+.ap-row .body-sm{margin-top:10px}
+.ap-row .out{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-top:6px}
+.ap-row .out b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
+@media(max-width:900px){.ap-row{grid-template-columns:64px minmax(0,1fr);gap:14px}.ap-row .out{grid-column:2}}
+@media(max-width:560px){.ap-row{grid-template-columns:1fr;gap:8px}.ap-row .out{grid-column:1}}
 
-.deliv{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.deliv div{background:var(--white);padding:clamp(18px,2.2vw,26px)}
-.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.deliv p{font-size:15px;line-height:1.5;color:var(--ink)}
-@media(max-width:900px){.deliv{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.deliv{grid-template-columns:1fr}}
+.deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.deliv article{background:var(--white);padding:clamp(22px,2.6vw,34px)}
+.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
+.deliv h3{margin-bottom:10px}
+.deliv p{font-size:15px;line-height:1.58;color:var(--steel);max-width:42ch}
+@media(max-width:700px){.deliv{grid-template-columns:1fr}}
 
-.outcomes{margin-top:clamp(48px,5vw,80px);padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--rule)}
-.gain{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
-.gain ul{list-style:none;display:grid;gap:14px}
-.gain li{padding:16px 18px;background:var(--white);border:1px solid var(--rule);font-size:15.5px;line-height:1.5}
+.gain{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:start}
+.gain ul{list-style:none;display:grid;gap:12px}
+.gain li{padding:18px 20px;background:var(--white);border:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.gain li .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:4px}
+.gain li strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
+.gain li span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel)}
 @media(max-width:800px){.gain{grid-template-columns:1fr}}
 
 .faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:760px}
-.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px}
-.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none}
-.faq summary:-webkit-details-marker{display:none}
-.faq p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--steel)}
+.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
+.faq details[open]{border-color:var(--ink)}
+.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-family:var(--f-mono);font-size:14px;color:var(--steel);flex:none}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:58ch}
 
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
-.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:160px;transition:transform .5s var(--e),border-color .4s}
+.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
 .rel a:hover{transform:translate3d(0,-4px,0);border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.rel .title{display:block;margin-top:10px}
+.rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:28ch}
 .rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
 .rel a:hover .arrow i{transform:translateX(6px)}
 @media(max-width:860px){.rel{grid-template-columns:1fr}}
 
+.sib-label{margin-top:clamp(36px,4vw,56px)}
 .sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
 .sib a:hover{border-color:var(--blue);color:var(--blue)}
 
-/* Phase 11 · intentional brief board (no empty screenshot theater) */
-.brief{margin-top:clamp(28px,3.5vw,48px);border:1px solid var(--rule);background:var(--white);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
-.brief-main{padding:clamp(22px,2.8vw,36px);border-right:1px solid var(--rule)}
-.brief-side{padding:clamp(22px,2.8vw,36px);background:var(--paper-2);display:grid;align-content:space-between;gap:24px}
-.brief .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
-.brief-list{list-style:none;display:grid;gap:12px}
-.brief-list li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.45}
-.brief-list .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:3px}
-.brief-meta{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);display:grid;gap:10px}
-.brief-meta b{color:var(--ink);font-weight:500}
-@media(max-width:800px){.brief{grid-template-columns:1fr}.brief-main{border-right:0;border-bottom:1px solid var(--rule)}}
-
+.sect--band{background:var(--paper-2);border-block:1px solid var(--rule)}
+.sect--rule{border-top:1px solid var(--rule)}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:42ch}
 </style>
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body>
@@ -381,174 +426,281 @@ img{max-width:100%;display:block}
     </nav>
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" data-r>Service · Product interfaces · Mobile App Design</p>
+        <p class="eyebrow" data-r>Service · iOS &amp; Android UX</p>
         <h1 class="d1 mask" data-mask>
           <span><i>Mobile UX built for</i></span>
           <span><i>interrupted attention.</i></span>
         </h1>
-        <p class="lede" data-r>Mobile-first product UX · booking, records, load acceptance, status, designed for thumbs and interrupted attention, not shrunk desktop layouts.</p>
-        <div class="tags" data-r><span class="tag">App UX flows</span><span class="tag">iOS &amp; Android UI</span><span class="tag">Prototype testing</span></div>
+        <p class="lede" data-r>Driver, patient, and field apps designed for thumbs, glare, and one-handed use, load acceptance, status updates, records, not shrunk desktop layouts.</p>
+        <div class="tags" data-r>
+          <span class="tag">Mobile flows</span>
+          <span class="tag">iOS &amp; Android</span>
+          <span class="tag">Offline-ready paths</span>
+          <span class="tag">Store handoff</span>
+        </div>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-          <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
+          <a href="/work/healthtrack-mobile" class="btn ghost"><span>See HealthTrack</span><i>→</i></a>
         </div>
       </div>
-      <aside class="aside-card" data-r>
-        <h2>Where this sits</h2>
-        <ul>
-          <li>Family · Apps &amp; dashboards</li>
-          <li>Catalog · Mobile App Design</li>
-          <li>Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention.</li>
-        </ul>
-        <p class="contrast">UI/UX Design covers cross-platform interface systems; this service owns mobile-specific flows, store assets, and iOS/Android pattern fidelity.</p>
-      </aside>
+
+      <div class="phone-stage" data-r>
+        <div class="phone" aria-hidden="true">
+          <div class="phone__bar">
+            <span><b>Load</b> · #4821</span>
+            <span class="phone__live"><i></i>Live</span>
+          </div>
+          <div class="phone__hero">
+            <p class="k">Next stop</p>
+            <h3>DAL → PHX</h3>
+            <p>Gate 14 · ETA 14:20 · docs ready</p>
+            <div class="phone__meta">
+              <span class="phone__chip on">Assigned</span>
+              <span class="phone__chip">2 stops</span>
+            </div>
+          </div>
+          <div class="phone__actions">
+            <div class="phone__btn primary"><b>Accept load</b><span>Primary</span></div>
+            <div class="phone__btn"><b>Update status</b><span>Secondary</span></div>
+          </div>
+          <div class="phone__status">
+            <div class="row ok"><span>Pickup confirmed</span><span>09:12</span></div>
+            <div class="row hot"><span>DOC hold · photo needed</span><span>Now</span></div>
+          </div>
+        </div>
+        <p class="phone__note"><span class="flag">Demo</span> Interface pattern only, no client data</p>
+      </div>
     </div>
 
-    <div class="brief" data-r>
-      <div class="brief-main">
-        <p class="k">How we run this engagement</p>
-        <ul class="brief-list"><li><span class="n">01</span><span><b>Mobile UX flows</b>: Mobile UX flows for iOS and Android, including offline and interruption-friendly paths where the domain needs them.</span></li><li><span class="n">02</span><span><b>High-fidelity UI</b>: High-fidelity app UI with accessible typography and calm density for the audiences you serve.</span></li><li><span class="n">03</span><span><b>Prototype &amp; store kit</b>: Interactive prototype plus App Store / Play Store screenshot templates for handoff.</span></li></ul>
-      </div>
-      <div class="brief-side">
-        <div>
-          <p class="k">Best for</p>
-          <p class="body-sm" style="color:var(--ink);max-width:36ch">Mobile-first product UX · booking, records, load acceptance, status, designed for thumbs and interrupted attention, not shrunk desktop layouts.</p>
-        </div>
-        <div class="brief-meta">
-          <span>Service · <b>Mobile App Design</b></span>
-          <span>Next · <b><a href="/work/healthtrack-mobile">HealthTrack · patient mobile</a></b></span>
-          <span>CTA · <b><a href="/contact#book">Book a 20-minute fit call</a></b></span>
-        </div>
-      </div>
+    <div class="fit-rail" data-s>
+      <article>
+        <p class="k">Best for</p>
+        <h3>Drivers, patients, field teams</h3>
+        <p>People who use the product between tasks, outdoors, or with one hand free, not at a desk all day.</p>
+      </article>
+      <article>
+        <p class="k">Delivery</p>
+        <h3>Design-only or design-and-build</h3>
+        <p>React Native, Flutter, or native paths chosen with your constraints, not as a default slogan.</p>
+      </article>
+      <article>
+        <p class="k">Not this service</p>
+        <h3>Cross-platform web systems</h3>
+        <p>Shared desktop and responsive interface systems live under UI/UX Design. This page owns mobile-specific flows and store handoff.</p>
+        <p class="contrast">Need both? Pair Mobile App Design with UI/UX or Product Design.</p>
+      </article>
     </div>
   </div>
 </header>
 
-<section class="sect" id="challenges" aria-labelledby="chH" style="border-top:1px solid var(--rule)">
+<section class="sect sect--rule" id="challenges" aria-labelledby="chH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Challenges</p>
-    <h2 class="d2" id="chH" data-r style="margin-top:16px;max-width:18ch">When mobile is just a shrunk desktop</h2>
-    <div class="chal"><article data-r>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Challenges</p>
+        <h2 class="d2" id="chH" data-r>When mobile is just a shrunk desktop</h2>
+        <p class="lede" data-r>The app installs. Usage does not stick. These are the patterns we see before a redesign starts.</p>
+      </div>
+    </div>
+    <div class="chal">
+      <article data-r>
         <span class="n">01</span>
         <h3 class="d3">Desktop shrink</h3>
-        <p class="body-sm">Mobile UX copied from desktop and feels cramped</p>
+        <p class="body-sm">Screens copied from the web feel cramped, miss thumb targets, and fail outdoors. Operators abandon the app and text dispatch instead.</p>
       </article>
       <article data-r>
         <span class="n">02</span>
         <h3 class="d3">Slow time-to-value</h3>
-        <p class="body-sm">Onboarding doesn't explain value quickly</p>
+        <p class="body-sm">Onboarding asks for everything before the first useful action. Interrupted users never reach accept, book, or update status.</p>
       </article>
       <article data-r>
         <span class="n">03</span>
         <h3 class="d3">Store friction</h3>
-        <p class="body-sm">App store assets and flows aren't conversion-tuned</p>
-      </article></div>
+        <p class="body-sm">Listing screenshots and flows do not match the product promise. Installs happen; activation and reviews do not.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="sect story" id="approach" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="approach" aria-labelledby="apH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Approach</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px;max-width:20ch">Flows for the hand, not the monitor.</h2>
-    <p class="body" data-r style="margin-top:16px">Design-only or design-and-build. React Native, Flutter, or native paths are chosen with your constraints, not as a default slogan.</p>
-    <div class="approach"><div class="ap-row" data-r>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Approach</p>
+        <h2 class="d2" id="apH" data-r>Flows for the hand, not the monitor</h2>
+        <p class="lede" data-r>Design around interruption, offline moments, and primary actions first, then high-fidelity UI and store handoff.</p>
+      </div>
+    </div>
+    <div class="approach">
+      <div class="ap-row" data-r>
         <span class="idx num">01</span>
         <div>
           <h3 class="d3">Mobile UX flows</h3>
-          <p class="body-sm" style="margin-top:10px">Mobile UX flows for iOS and Android, including offline and interruption-friendly paths where the domain needs them.</p>
+          <p class="body-sm">iOS and Android flows for the jobs people open the app to finish, including offline and interruption-friendly paths where the domain needs them.</p>
         </div>
+        <p class="out"><b>You leave with</b>Task flows mapped to real field conditions</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">02</span>
         <div>
           <h3 class="d3">High-fidelity UI</h3>
-          <p class="body-sm" style="margin-top:10px">High-fidelity app UI with accessible typography and calm density for the audiences you serve.</p>
+          <p class="body-sm">Accessible type, calm density, and platform-faithful patterns so the UI survives glare, gloves, and one-handed use.</p>
         </div>
+        <p class="out"><b>You leave with</b>Production-ready screens for both platforms</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">03</span>
         <div>
           <h3 class="d3">Prototype &amp; store kit</h3>
-          <p class="body-sm" style="margin-top:10px">Interactive prototype plus App Store / Play Store screenshot templates for handoff.</p>
+          <p class="body-sm">An interactive prototype for review, plus App Store and Play Store screenshot templates so handoff includes listing presence.</p>
         </div>
-      </div></div>
+        <p class="out"><b>You leave with</b>Clickable prototype and store asset templates</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="sect" id="deliverables" aria-labelledby="delH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Deliverables</p>
-    <h2 class="d2" id="delH" data-r style="margin-top:16px;max-width:18ch">What ships to the stores</h2>
-    <div class="deliv"><div data-r>
-        <b>01</b>
-        <p>Mobile UX flows (iOS &amp; Android)</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Deliverables</p>
+        <h2 class="d2" id="delH" data-r>What ships to the stores</h2>
+        <p class="lede" data-r>Artifacts engineering and marketing can use in the same sprint, not a deck of generic mobile inspiration.</p>
       </div>
-      <div data-r>
-        <b>02</b>
-        <p>High-fidelity app UI</p>
-      </div>
-      <div data-r>
-        <b>03</b>
-        <p>Interactive prototype</p>
-      </div>
-      <div data-r>
-        <b>04</b>
-        <p>App store screenshot templates</p>
-      </div></div>
+    </div>
+    <div class="deliv">
+      <article data-r>
+        <b>01 · Flows</b>
+        <h3 class="d3">Mobile UX flows</h3>
+        <p>iOS and Android task flows for acceptance, status, booking, and records, including interruption and offline paths where needed.</p>
+      </article>
+      <article data-r>
+        <b>02 · Interface</b>
+        <h3 class="d3">High-fidelity app UI</h3>
+        <p>Screen designs with accessible typography, thumb-safe targets, and calm density for the audiences you serve.</p>
+      </article>
+      <article data-r>
+        <b>03 · Validation</b>
+        <h3 class="d3">Interactive prototype</h3>
+        <p>A clickable prototype stakeholders can walk on a phone before engineering commits to the primary paths.</p>
+      </article>
+      <article data-r>
+        <b>04 · Listing</b>
+        <h3 class="d3">Store screenshot templates</h3>
+        <p>App Store and Play Store screenshot templates aligned to the product story for handoff and listing updates.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="sect" id="outcomes" aria-labelledby="outH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="outcomes" aria-labelledby="outH">
   <div class="wrap">
-    <div class="gain outcomes" style="margin-top:0;padding-top:0;border-top:0">
+    <div class="gain">
       <div data-r>
         <p class="eyebrow">Outcomes</p>
-        <h2 class="d2" id="outH" style="margin-top:14px;max-width:16ch">What changes in the hand</h2>
-        <p class="body-sm" style="margin-top:12px">What this engagement is meant to change in the product.</p>
+        <h2 class="d2" id="outH">What changes in the hand</h2>
+        <p class="lede">Qualitative targets we design toward. Case studies publish signed-off metrics when clients clear them.</p>
+        <a href="/work/healthtrack-mobile" class="p-link">Read the HealthTrack mobile case <i>→</i></a>
       </div>
       <ul data-s>
-          <li>Higher activation and retention</li>
-          <li>Clearer dev handoff for React Native or native teams</li>
-          <li>Polished presence on App Store and Play Store</li>
+        <li>
+          <span class="n">01</span>
+          <span>
+            <strong>Faster first useful action</strong>
+            <span>Onboarding and primary paths reach accept, book, or update without forcing a desktop-shaped form first.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <span>
+            <strong>Clearer engineering handoff</strong>
+            <span>Flows and UI patterns that React Native, Flutter, or native teams can implement without guessing density and states.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <span>
+            <strong>Store presence that matches the product</strong>
+            <span>Listing screenshots and narrative aligned to the app people actually install and open.</span>
+          </span>
+        </li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="sect sect--tight" id="proof" aria-labelledby="pfH">
+<section class="sect" id="proof" aria-labelledby="pfH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Where this shows up</p>
-    <h2 class="d2" id="pfH" data-r style="margin-top:16px">Related work and pages</h2>
-    <div class="rel" data-s><a href="/work/healthtrack-mobile">
-        <span class="k">Work</span>
-        <span class="arrow"><span class="d3">HealthTrack · patient mobile</span><i>→</i></span>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Where this shows up</p>
+        <h2 class="d2" id="pfH" data-r>Related work and pages</h2>
+        <p class="lede" data-r>Live examples of mobile and field-facing work you can open today.</p>
+      </div>
+    </div>
+    <div class="rel" data-s>
+      <a href="/work/healthtrack-mobile">
+        <span>
+          <span class="k">Work · narrative</span>
+          <span class="d3 title">HealthTrack · patient mobile</span>
+          <span class="hook">Patient-facing mobile UX for records and routines designed around interrupted attention.</span>
+        </span>
+        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
       </a>
       <a href="/solutions/trucking-logistics">
-        <span class="k">Solution</span>
-        <span class="arrow"><span class="d3">Driver mobile context</span><i>→</i></span>
+        <span>
+          <span class="k">Solution</span>
+          <span class="d3 title">Driver mobile context</span>
+          <span class="hook">Load acceptance, status updates, and documents for US trucking ops that live in the cab.</span>
+        </span>
+        <span class="arrow"><span class="mono">Solution</span><i>→</i></span>
       </a>
       <a href="/services/ui-ux-design">
-        <span class="k">Service</span>
-        <span class="arrow"><span class="d3">UI/UX Design</span><i>→</i></span>
-      </a></div>
-    <p class="eyebrow" data-r style="margin-top:clamp(36px,4vw,56px)">Also see</p>
+        <span>
+          <span class="k">Service</span>
+          <span class="d3 title">UI/UX Design</span>
+          <span class="hook">Cross-platform interface systems when the product spans web and mobile together.</span>
+        </span>
+        <span class="arrow"><span class="mono">Service</span><i>→</i></span>
+      </a>
+    </div>
+    <p class="eyebrow sib-label" data-r>Also see</p>
     <div class="sib" data-r>
-        <a href="/services/ui-ux-design">UI/UX Design</a>
-        <a href="/services/product-design">Product Design</a>
-        <a href="/work/healthtrack-mobile">HealthTrack case study</a>
+      <a href="/services/ui-ux-design">UI/UX Design</a>
+      <a href="/services/product-design">Product Design</a>
+      <a href="/work/healthtrack-mobile">HealthTrack case study</a>
       <a href="/services">All services</a>
     </div>
   </div>
 </section>
 
-<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="faq" aria-labelledby="faqH">
   <div class="wrap">
-    <p class="eyebrow" data-r>FAQ</p>
-    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About Mobile App Design</h2>
-    <div class="faq" data-r><details>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>FAQ</p>
+        <h2 class="d2" id="faqH" data-r>About Mobile App Design</h2>
+      </div>
+    </div>
+    <div class="faq" data-r>
+      <details>
         <summary>Do you also build the app?</summary>
-        <p>Yes. We offer design-only or design and development with React Native, Flutter, or native paths.</p>
-      </details></div>
+        <p>Yes. We offer design-only or design and development with React Native, Flutter, or native paths, chosen with your constraints.</p>
+      </details>
+      <details>
+        <summary>How is this different from UI/UX Design?</summary>
+        <p>Mobile App Design owns mobile-specific flows, platform fidelity, and store handoff. UI/UX Design covers cross-platform interface systems across web and product surfaces. Many products need both.</p>
+      </details>
+      <details>
+        <summary>Do you design for iOS and Android separately?</summary>
+        <p>We design shared task flows with platform-faithful patterns, navigation, controls, and density, so the product feels native on each OS without inventing two products.</p>
+      </details>
+      <details>
+        <summary>What do we need before a kickoff?</summary>
+        <p>The primary mobile jobs users must finish, any offline or field constraints, and access to a few operators or patients for a walkthrough. An NDA is available before the first call.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -556,8 +708,9 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
     <h2 class="d2" id="ctaH" data-r>Need a mobile app operators will use?</h2>
+    <p class="lede" data-r>A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
     <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+      <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
@@ -626,7 +779,6 @@ img{max-width:100%;display:block}
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -650,13 +802,36 @@ img{max-width:100%;display:block}
       "name": "Do you also build the app?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We offer design-only or design and development with React Native, Flutter, or native paths."
+        "text": "Yes. We offer design-only or design and development with React Native, Flutter, or native paths, chosen with your constraints."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from UI/UX Design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mobile App Design owns mobile-specific flows, platform fidelity, and store handoff. UI/UX Design covers cross-platform interface systems across web and product surfaces. Many products need both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you design for iOS and Android separately?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We design shared task flows with platform-faithful patterns, navigation, controls, and density, so the product feels native on each OS without inventing two products."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do we need before a kickoff?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The primary mobile jobs users must finish, any offline or field constraints, and access to a few operators or patients for a walkthrough. An NDA is available before the first call."
       }
     }
   ]
 }
 </script>
-<script src="/shared/chrome.js" defer></script>
 <script>
 (function(){
 'use strict';
