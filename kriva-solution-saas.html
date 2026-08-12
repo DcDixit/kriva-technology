@@ -9,11 +9,12 @@
 <meta property="og:title" content="SaaS Product Design &amp; Development Agency UK">
 <meta property="og:description" content="Product design and development for UK B2B SaaS, onboarding UX, dashboards, MVP builds, and design systems that scale with your roadmap.">
 <meta property="og:url" content="https://krivatechnologies.com/solutions/saas">
+<meta property="og:type" content="website">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
+<meta property="og:image:alt" content="KRIVA · SaaS product design and development">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
@@ -100,7 +101,14 @@ img{max-width:100%;display:block}
 /* nav/sheet/footer chrome → shared/chrome.css */
 
 /* ══ HERO ══ */
-.hero{padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(40px,5vw,72px)}
+.hero{position:relative;padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(40px,5vw,72px);overflow:hidden}
+.hero:before{
+  content:"";position:absolute;inset:0 0 auto 0;height:min(72vh,640px);pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 55% 50% at 88% 18%, rgba(27,68,200,.10), transparent 62%),
+    radial-gradient(ellipse 40% 42% at 8% 88%, rgba(91,68,200,.07), transparent 58%);
+}
+.hero > .wrap{position:relative;z-index:1}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
@@ -351,7 +359,25 @@ img{max-width:100%;display:block}
 
 .sect{padding-block:clamp(70px,8vw,132px)}
 .sect--tight{padding-block:clamp(52px,6vw,92px)}
+.sect--band{background:var(--paper-2);border-block:1px solid var(--rule)}
 .s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,4vw,60px);flex-wrap:wrap}
+.s-head .lede,.s-intro{margin-top:16px;max-width:54ch}
+.s-title{margin-top:18px;max-width:22ch}
+.cap-stack{margin-top:clamp(34px,4vw,60px)}
+.inline-link{border-bottom:1px solid var(--rule)}
+.svc-note{margin-top:26px}
+.faq-side .btn{margin-top:24px}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:42ch}
+.cta-band .follow{color:#8C98A4;margin-top:24px;max-width:60ch}
+.proof .body{color:#B9C3CC}
+.proof-cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:24px}
+.proof-adj{margin-top:clamp(36px,4vw,56px)}
+.proof-adj .eyebrow{margin-bottom:18px}
+.rel .title{display:block}
+.rel .hook{display:block;margin-top:10px}
+.sysband .s-head{margin-bottom:0}
+.ba-sect .s-head{margin-bottom:0}
 
 /* ══ CTA + footer ══ */
 .cta-band{background:var(--ink);color:#DDE2E7}
@@ -381,13 +407,9 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 </style>
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
-<!-- Delete before launch. -->
-</div>
 
 <header class="nav" id="nav">
   <div class="nav-shell">
@@ -533,19 +555,18 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
           <span><i>SaaS products that earn demos</i></span>
           <span><i>and keep users after signup.</i></span>
         </h1>
-        <p class="lede" data-r>We partner with UK SaaS founders and product leaders to design MVPs, refine onboarding, and scale dashboards, with an in-house team that ships weekly, not just presents.</p>
+        <p class="lede" data-r>Onboarding, dashboards, MVPs, and design systems for B2B SaaS. An in-house team that ships weekly with founders and product leaders in the UK and US.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-          <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
+          <a href="#activation" class="btn ghost"><span>See the activation journey</span><i>→</i></a>
         </div>
         <div class="hero-facts" data-s>
           <div class="hf"><b>8–12 weeks</b><small>Typical MVP timeline</small></div>
           <div class="hf"><b>Design + build</b><small>Engagement model</small></div>
-          <div class="hf"><b>In-house only</b><small>Team</small></div>
+          <div class="hf"><b>In-house only</b><small>Delivery team</small></div>
         </div>
       </div>
 
-      <!-- SIGNATURE: product app shell (hero instance, activated state) -->
       <div data-r>
         <div class="app" id="heroApp" data-stage="6" aria-hidden="true">
           <div class="app-rail">
@@ -580,11 +601,331 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
             <div class="stagebar"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="on"></i><i></i></div>
           </div>
         </div>
-        
+        <p class="cap-note"><span class="flag">Demo</span> Interface pattern · illustrative workspace, no client data</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ ACTIVATION JOURNEY ═══════════ -->
+<section class="sect story" id="activation" aria-labelledby="actH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Signup to retained</p>
+        <h2 class="d2 s-title" id="actH" data-r>Seven moments that decide whether a SaaS product sticks</h2>
+        <p class="lede" data-r>Scroll to follow one workspace from landing to day-14 return. The sticky app shell updates with each beat.</p>
+      </div>
+    </div>
+
+    <div class="story-grid">
+      <div class="story-stick">
+        <div class="app" id="storyApp" data-stage="1">
+          <div class="app-rail" id="appRail">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="app-main">
+            <div class="app-top">
+              <span class="ws"><i class="sq"></i><span id="wsName">Untitled</span><em id="wsRole">Visitor</em></span>
+              <span class="who"><i class="av" id="avInit">··</i><span id="whoLbl">Not signed in</span></span>
+            </div>
+            <div class="app-progress">
+              <svg class="ring" viewBox="0 0 46 46" aria-hidden="true">
+                <circle class="bg" cx="23" cy="23" r="20"></circle>
+                <circle class="fg" id="ring" cx="23" cy="23" r="20"></circle>
+              </svg>
+              <span class="prog-copy"><b id="progMain">Setup 0% complete</b><span id="progSub">Stage 1 of 7 · Landing &amp; signup</span></span>
+            </div>
+            <div class="app-body">
+              <div class="panel on" data-panel="1">
+                <div class="field"><span>Product</span><div>Acme Ops · B2B workspace</div></div>
+                <div class="field"><span>CTA</span><div>Start free trial</div></div>
+                <span class="pill idle">Visitor · not signed in</span>
+              </div>
+              <div class="panel" data-panel="2">
+                <div class="field"><span>Email</span><div>jordan@acme.co</div></div>
+                <div class="field"><span>Password</span><div>••••••••</div></div>
+                <span class="pill act">Creating account…</span>
+              </div>
+              <div class="panel" data-panel="3">
+                <div class="field"><span>Workspace</span><div>Acme Ops</div></div>
+                <div class="field"><span>Company size</span><div>11–50</div></div>
+                <span class="pill act">Workspace named</span>
+              </div>
+              <div class="panel" data-panel="4">
+                <div class="rows">
+                  <div class="row"><span>Admin · Jordan</span><span class="pill ok">Full</span></div>
+                  <div class="row"><span>Member · invites</span><span class="pill act">Pending</span></div>
+                  <div class="row"><span>Viewer · finance</span><span class="pill idle">Read</span></div>
+                </div>
+              </div>
+              <div class="panel" data-panel="5">
+                <div class="field"><span>First action</span><div>Generate weekly ops report</div></div>
+                <span class="pill act">Value moment</span>
+                <div class="metricstrip">
+                  <div><b class="num">1</b><span>Report</span></div>
+                  <div><b class="num">0</b><span>Seats used</span></div>
+                  <div><b class="num">D0</b><span>Day</span></div>
+                </div>
+              </div>
+              <div class="panel" data-panel="6">
+                <div class="checks">
+                  <div class="check done"><i></i>Account created</div>
+                  <div class="check done"><i></i>Workspace named</div>
+                  <div class="check done"><i></i>Team invited · 6 seats</div>
+                  <div class="check done"><i></i>First report generated</div>
+                  <div class="check"><i></i>Billing added</div>
+                </div>
+                <div class="metricstrip">
+                  <div><b class="num">6</b><span>Active seats</span></div>
+                  <div><b class="num">41%</b><span>Activation</span></div>
+                  <div><b class="num">D7</b><span>Return window</span></div>
+                </div>
+              </div>
+              <div class="panel" data-panel="7">
+                <div class="rows">
+                  <div class="row gain"><span>Returned on day 14</span><span class="pill ok">Retained</span></div>
+                  <div class="row"><span>Weekly report scheduled</span><span class="pill ok">On</span></div>
+                  <div class="row"><span>Billing · Pro plan</span><span class="pill act">Active</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="stagebar" id="stagebar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <p class="sr" aria-live="polite" id="announce"></p>
+      </div>
+
+      <div id="beats">
+        <div class="beat" data-beat="1">
+          <span class="n">01 · Landing</span>
+          <h3 class="d3">Earn the signup without overselling the product</h3>
+          <p class="body-sm">Clarify who it is for, what first value looks like, and what happens after the click. Vague hero copy kills activation before onboarding starts.</p>
+          <div class="drop"><b>Design decision</b>Lead with the job-to-be-done and one primary CTA. Defer feature inventory until after account creation.</div>
+        </div>
+        <div class="beat" data-beat="2">
+          <span class="n">02 · Account</span>
+          <h3 class="d3">Make account creation feel short and reversible</h3>
+          <p class="body-sm">Collect only what you need to create a workspace. Password, SSO, and invite paths should feel like one continuous flow, not three products.</p>
+          <div class="drop"><b>Design decision</b>Progressive fields with clear error recovery. Never force billing before first value unless the model requires it.</div>
+        </div>
+        <div class="beat" data-beat="3">
+          <span class="n">03 · Workspace</span>
+          <h3 class="d3">Name the workspace and set context early</h3>
+          <p class="body-sm">Workspace setup is where multi-tenant products either feel personal or generic. Company size, role, and intent should shape the next screens.</p>
+          <div class="drop"><b>Design decision</b>Use answers to route the first-run checklist, not to stall the user in a long questionnaire.</div>
+        </div>
+        <div class="beat" data-beat="4">
+          <span class="n">04 · Permissions</span>
+          <h3 class="d3">Clarify who can do what before the team arrives</h3>
+          <p class="body-sm">SSO and role sprawl often push permission setup ahead of value. Make roles understandable in plain language and invite-ready.</p>
+          <div class="drop"><b>Design decision</b>Default safe roles, explain access in product language, and defer advanced admin until someone needs it.</div>
+        </div>
+        <div class="beat" data-beat="5">
+          <span class="n">05 · First value</span>
+          <h3 class="d3">Guide one meaningful action before the tour ends</h3>
+          <p class="body-sm">Activation is not “completed setup.” It is the first outcome the user came for: a report, a record, an invite accepted, a sync that works.</p>
+          <div class="drop"><b>Design decision</b>Design the empty state as a path to value, not a blank canvas with a tooltip tour.</div>
+        </div>
+        <div class="beat" data-beat="6">
+          <span class="n">06 · Activated</span>
+          <h3 class="d3">Show progress and make the next step obvious</h3>
+          <p class="body-sm">Checklists work when they map to real outcomes. Seat invites, first report, and billing should feel like momentum, not chores.</p>
+          <div class="drop"><b>Design decision</b>Surface completion state in the shell so returning users know what is left without hunting.</div>
+        </div>
+        <div class="beat" data-beat="7">
+          <span class="n">07 · Retained</span>
+          <h3 class="d3">Design the return path as carefully as signup</h3>
+          <p class="body-sm">Day-7 and day-14 returns depend on habit loops: scheduled value, clear notifications, and a home that reflects live work.</p>
+          <div class="drop"><b>Design decision</b>Instrument activation events early so product and design share the same definition of “working.”</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════ PROOF: PayrollPro (scope-led) ═══════════ -->
+<!-- ═══════════ FUNNEL ═══════════ -->
+<section class="funnel-sect on-ink" aria-labelledby="fnH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Where products leak users</p>
+    <h2 class="d2" id="fnH" data-r>An illustrative activation funnel we design against</h2>
+    <p class="lede" data-r style="color:#8C98A4;margin-top:16px;max-width:54ch">Not client metrics. A pattern for where B2B SaaS usually loses people, and where product work should concentrate.</p>
+
+    <div class="funnel" data-r>
+      <div class="frow">
+        <span class="lbl">Signed up</span>
+        <div class="fbar" style="--v:1"><i></i></div>
+        <span class="pct num">100</span>
+        <span class="delta">Baseline</span>
+      </div>
+      <div class="frow">
+        <span class="lbl">Workspace set</span>
+        <div class="fbar" style="--v:.72"><i></i></div>
+        <span class="pct num">72</span>
+        <span class="delta">−28 drop</span>
+      </div>
+      <div class="frow">
+        <span class="lbl">First action</span>
+        <div class="fbar" style="--v:.48"><i></i></div>
+        <span class="pct num">48</span>
+        <span class="delta">−24 drop</span>
+      </div>
+      <div class="frow">
+        <span class="lbl">Activated · D7</span>
+        <div class="fbar" style="--v:.31"><i></i></div>
+        <span class="pct num">31</span>
+        <span class="delta">−17 drop</span>
+      </div>
+      <div class="frow">
+        <span class="lbl">Retained · D30</span>
+        <div class="fbar" style="--v:.19"><i></i></div>
+        <span class="pct num">19</span>
+        <span class="delta">−12 drop</span>
+      </div>
+    </div>
+    <p class="funnel-note"><span class="flag">Illustrative</span><span>Pattern for prioritising onboarding and first-value work · not a published case metric</span></p>
+  </div>
+</section>
+
+<!-- ═══════════ BEFORE / AFTER ═══════════ -->
+<section class="sect ba-sect" aria-labelledby="baH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>First-run flow</p>
+        <h2 class="d2 s-title" id="baH" data-r>From feature dump to guided first value</h2>
+        <p class="lede" data-r>A common before state for early SaaS products, and the shape we aim for after a focused onboarding redesign.</p>
+      </div>
+    </div>
+
+    <div class="ba" data-s>
+      <div class="before">
+        <div class="h"><b>Before</b><span class="tick">Typical early product</span></div>
+        <ul class="flow">
+          <li><u>01</u>Marketing site promises everything</li>
+          <li><u>02</u>Long signup with premature billing</li>
+          <li><u>03</u>Empty dashboard and a product tour</li>
+          <li><u>04</u>Permissions buried in settings</li>
+          <li><u>05</u>Invite teammates “sometime later”</li>
+          <li><u>06</u>No shared definition of activated</li>
+        </ul>
+      </div>
+      <div class="after">
+        <div class="h"><b>After</b><span class="tick">Designed first run</span></div>
+        <ul class="flow">
+          <li><u>01</u>Clear ICP promise and one primary CTA</li>
+          <li><u>02</u>Short account creation, SSO optional</li>
+          <li><u>03</u>Workspace context that routes the checklist</li>
+          <li><u>04</u>Roles explained before invites go out</li>
+          <li><u>05</u>One guided action that delivers value</li>
+          <li><u>06</u>Activation events instrumented for the team</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CAPABILITIES ═══════════ -->
+<section class="caps" id="capabilities" aria-labelledby="capH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Capabilities</p>
+        <h2 class="d2 s-title" id="capH" data-r>What we deliver for SaaS products</h2>
+        <p class="lede" data-r>The surfaces that usually decide demo readiness, activation, and whether the product can scale without a redesign every quarter.</p>
+      </div>
+    </div>
+
+    <div class="cap-stack">
+      <article class="cap-row" data-r>
+        <div class="cap-media">
+          <img src="/solutions/saas/onboarding.svg" alt="SaaS onboarding checklist and progress pattern" width="1600" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div>
+          <span class="cap-no num">01</span>
+          <h3 class="d3">Onboarding &amp; activation</h3>
+          <p class="body-sm">First-run flows that reach value without a guided tour dumping every feature at once.</p>
+          <ul class="feature-list">
+            <li>Progressive setup matched to role and intent</li>
+            <li>Empty states that lead to one meaningful action</li>
+            <li>Shared activation definitions for product and design</li>
+          </ul>
+          <a href="/services/saas-platforms" class="cap-link">SaaS product design <i>→</i></a>
+        </div>
+      </article>
+
+      <article class="cap-row alt" data-r>
+        <div class="cap-media">
+          <img src="/solutions/saas/permissions.svg" alt="Role and permission clarity for multi-tenant SaaS" width="1600" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div>
+          <span class="cap-no num">02</span>
+          <h3 class="d3">Roles, permissions &amp; admin</h3>
+          <p class="body-sm">Multi-tenant access that stays understandable when SSO and enterprise roles arrive.</p>
+          <ul class="feature-list">
+            <li>Plain-language roles before advanced policy</li>
+            <li>Invite flows that match how teams actually join</li>
+            <li>Admin surfaces that do not block first value</li>
+          </ul>
+          <a href="/services/product-design" class="cap-link">Product design &amp; UX <i>→</i></a>
+        </div>
+      </article>
+
+      <article class="cap-row" data-r>
+        <div class="cap-media">
+          <img src="/solutions/saas/dashboard-admin.svg" alt="SaaS dashboard and admin panel layout" width="1600" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div>
+          <span class="cap-no num">03</span>
+          <h3 class="d3">Dashboards &amp; daily-use views</h3>
+          <p class="body-sm">Home, analytics, and admin panels designed for the morning scan, not a metrics museum.</p>
+          <ul class="feature-list">
+            <li>Hierarchy for exceptions and next actions</li>
+            <li>Patterns that survive new modules and roles</li>
+            <li>Demo-ready density without visual noise</li>
+          </ul>
+          <a href="/services/dashboard-design" class="cap-link">Dashboard design <i>→</i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SYSTEM BAND ═══════════ -->
+<section class="sect sect--tight sysband" aria-labelledby="sysH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Foundations</p>
+        <h2 class="d2 s-title" id="sysH" data-r>What keeps the product shippable</h2>
+        <p class="lede" data-r>MVPs need speed. Growing products need systems. We set both up so releases do not reinvent the UI every cycle.</p>
+      </div>
+    </div>
+    <div class="sysgrid" data-s>
+      <article class="syscard">
+        <span class="k">MVP</span>
+        <h3>Scoped MVP builds</h3>
+        <p class="body-sm">Fixed scope, weekly demos, and the lightest path that answers activation or demo risk before you overbuild.</p>
+        <a href="/insights/saas-mvp-uk-guide" class="cap-link">SaaS MVP UK guide <i>→</i></a>
+      </article>
+      <article class="syscard">
+        <span class="k">System</span>
+        <h3>Design systems</h3>
+        <p class="body-sm">Tokens, components, and release-friendly patterns so new features land in the same visual language.</p>
+        <div class="tokens" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <a href="/services/design-systems" class="cap-link">Design systems <i>→</i></a>
+      </article>
+      <article class="syscard">
+        <span class="k">Build</span>
+        <h3>Design + engineering</h3>
+        <p class="body-sm">Same in-house team from prototype to Next.js delivery, with QA and analytics baselines included.</p>
+        <a href="/services/ai-assisted-development" class="cap-link">AI-assisted development <i>→</i></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROOF ═══════════ -->
 <section class="proof on-ink" aria-labelledby="pfH">
   <div class="wrap">
     <p class="eyebrow" data-r>Proof</p>
@@ -592,134 +933,143 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
     <div class="proof-grid">
       <div>
         <figure class="proof-shot" data-shot data-asset="/work/payrollpro/onboarding.svg" data-asset-alt="PayrollPro onboarding flow" data-asset-dims="1920×1080">
-<img src="/work/payrollpro/onboarding.svg" alt="PayrollPro onboarding flow" width="1920" height="1080" loading="lazy" decoding="async"><div class="slot"><div class="skel"><i></i><i></i><i></i></div>
-            <div class="tagline"><span>Proof reference · 16:9</span><span>PayrollPro</span></div></div>
+          <img src="/work/payrollpro/onboarding.svg" alt="PayrollPro onboarding flow" width="1920" height="1080" loading="lazy" decoding="async">
+          <div class="slot"><div class="skel"><i></i><i></i><i></i></div>
+            <div class="tagline"><span>Case study · 16:9</span><span>PayrollPro</span></div></div>
         </figure>
       </div>
       <div>
-        <p class="body" style="color:#B9C3CC">Progressive onboarding and permission clarity for a payroll platform after SSO rollout.</p>
+        <p class="body">Progressive onboarding and permission clarity for a payroll platform after an SSO rollout pushed setup ahead of first value.</p>
         <dl class="scope">
           <div><dt>Sector</dt><dd>B2B SaaS · payroll</dd></div>
-          <div><dt>Trigger</dt><dd>An SSO rollout pushed permission setup ahead of first value</dd></div>
-          <div><dt>Focus</dt><dd>Progressive onboarding, permission clarity</dd></div>
+          <div><dt>Trigger</dt><dd>SSO made permission setup block first value</dd></div>
+          <div><dt>Focus</dt><dd>Progressive onboarding, role clarity</dd></div>
           <div><dt>Tags</dt><dd>SaaS · Product · UX</dd></div>
         </dl>
-        <div style="display:flex;gap:11px;flex-wrap:wrap;margin-top:24px">
+        <div class="proof-cta">
           <a href="/work/payroll-pro-saas" class="btn on-dark"><span>Read the PayrollPro case study</span><i>→</i></a>
         </div>
       </div>
     </div>
-    <p class="proof-note">Selected anonymized case studies in this space. Client names and identifying details may be changed for confidentiality; metrics describe project outcomes. Metrics shown on case pages are measured delivery outcomes, not third-party ratings.</p>
+
+    <div class="proof-adj">
+      <p class="eyebrow" data-r>Also relevant</p>
+      <div class="rel" data-s>
+        <a href="/work/crm-pulse-dashboard">
+          <span class="k">CRM · Dashboard · SaaS</span>
+          <span>
+            <span class="d3 title">CRMPulse · sales dashboard</span>
+            <span class="body-sm hook">Custom HubSpot dashboards and pipeline UX aligned to how the sales team actually works.</span>
+          </span>
+          <span class="arrow"><span class="k">View case study</span><i>→</i></span>
+        </a>
+        <a href="/work/marketplace-mvp">
+          <span class="k">No-Code · Marketplace · MVP</span>
+          <span>
+            <span class="d3 title">LocalServe · marketplace MVP</span>
+            <span class="body-sm hook">No-code marketplace MVP with vendor onboarding, bookings, and admin ops, validated before custom build.</span>
+          </span>
+          <span class="arrow"><span class="k">View case study</span><i>→</i></span>
+        </a>
+        <a href="/insights/saas-onboarding-patterns">
+          <span class="k">Insight</span>
+          <span>
+            <span class="d3 title">SaaS onboarding patterns</span>
+            <span class="body-sm hook">Patterns we use when first-run flows need to reach value without a feature dump.</span>
+          </span>
+          <span class="arrow"><span class="k">Read insight</span><i>→</i></span>
+        </a>
+      </div>
+    </div>
+    <p class="proof-note">PayrollPro is a published case study. Adjacent work shows related dashboard and MVP delivery. Metrics on case pages are measured delivery outcomes, not third-party ratings.</p>
   </div>
 </section>
 
 <!-- ═══════════ PROCESS ═══════════ -->
 <section class="sect" id="process" aria-labelledby="prH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Process</p>
-    <h2 class="d2" id="prH" data-r style="margin-top:18px;max-width:18ch">How we deliver</h2>
-    <p class="body" data-r style="margin-top:18px">Structured phases with clear milestones and transparent communication.</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Process</p>
+        <h2 class="d2 s-title" id="prH" data-r>How we deliver SaaS products</h2>
+        <p class="lede" data-r>Discovery through launch with written gates, weekly demos, and one team on the call and in the code.</p>
+      </div>
+      <a href="/process" class="btn ghost"><span>Full process</span><i>→</i></a>
+    </div>
 
     <div class="steps" id="steps">
       <div class="pstep">
         <span class="pn">Phase 01</span>
         <h3>Discovery</h3>
-        <p class="body-sm">Align on ICP, activation metrics, and MVP scope. Everything is documented before design starts.</p>
+        <p class="body-sm">Align on ICP, activation definition, and MVP scope. Everything is documented before UI begins.</p>
       </div>
       <div class="pstep">
         <span class="pn">Phase 02</span>
         <h3>Design sprints</h3>
-        <p class="body-sm">Flows, prototypes, and UI validated with stakeholders and target users.</p>
+        <p class="body-sm">Flows, prototypes, and high-fidelity UI validated with you before production code.</p>
       </div>
       <div class="pstep">
         <span class="pn">Phase 03</span>
         <h3>Build &amp; iterate</h3>
-        <p class="body-sm">Incremental delivery with demos, QA, and analytics baselines.</p>
+        <p class="body-sm">Incremental delivery with demos, QA, and analytics baselines for activation events.</p>
       </div>
       <div class="pstep">
         <span class="pn">Phase 04</span>
         <h3>Launch &amp; scale</h3>
-        <p class="body-sm">Handoff, design system docs, and roadmap support for the next release.</p>
+        <p class="body-sm">Handoff, design system docs, and roadmap support for the next release cycle.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ RELATED WORK ═══════════ -->
-<section class="sect sect--tight" aria-labelledby="rwH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Proof</p>
-        <h2 class="d2" id="rwH" data-r style="margin-top:18px">Related work</h2>
-        <p class="body" data-r style="margin-top:16px">Selected anonymized case studies in this space. Client names and identifying details may be changed for confidentiality; metrics describe project outcomes.</p>
-      </div>
-      <a href="/work?filter=saas" class="btn ghost"><span>All SaaS work</span><i>→</i></a>
-    </div>
-    <div class="rel" data-s>
-      <a href="/work/payroll-pro-saas">
-        <span class="k">SaaS · Product · UX</span>
-        <span>
-          <span class="d3" style="display:block">PayrollPro · B2B SaaS onboarding</span>
-          <span class="body-sm" style="display:block;margin-top:10px">Progressive onboarding and permission clarity for a payroll platform after SSO rollout.</span>
-        </span>
-        <span class="arrow"><span class="k">View case study</span><i>→</i></span>
-      </a>
-      <a href="/work/crm-pulse-dashboard">
-        <span class="k">CRM · Dashboard · SaaS</span>
-        <span>
-          <span class="d3" style="display:block">CRMPulse · sales dashboard</span>
-          <span class="body-sm" style="display:block;margin-top:10px">Custom HubSpot dashboards and pipeline UX aligned to how the sales team actually works.</span>
-        </span>
-        <span class="arrow"><span class="k">View case study</span><i>→</i></span>
-      </a>
-      <a href="/work/marketplace-mvp">
-        <span class="k">No-Code · Marketplace · MVP</span>
-        <span>
-          <span class="d3" style="display:block">LocalServe · marketplace MVP</span>
-          <span class="body-sm" style="display:block;margin-top:10px">No-code marketplace MVP with vendor onboarding, bookings, and admin ops, validated before custom build.</span>
-        </span>
-        <span class="arrow"><span class="k">View case study</span><i>→</i></span>
-      </a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════ RELATED SERVICES ═══════════ -->
-<section class="sect sect--tight" aria-labelledby="rsH">
+<section class="sect sect--tight sect--band" aria-labelledby="rsH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Services</p>
-    <h2 class="d2" id="rsH" data-r style="margin-top:18px">Related services</h2>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Services</p>
+        <h2 class="d2 s-title" id="rsH" data-r>Related services</h2>
+        <p class="lede" data-r>The building blocks most SaaS engagements pull together.</p>
+      </div>
+    </div>
     <div class="svc" data-s>
-      <a href="/services/ui-ux-design">
-        <h3>UI/UX Design <i>→</i></h3>
-        <p class="body-sm">Research-led flows, prototypes, and interface systems that stay intuitive as products grow.</p>
+      <a href="/services/saas-platforms">
+        <h3>SaaS Product Design <i>→</i></h3>
+        <p class="body-sm">Multi-tenant UX, admin panels, permissions, and release-friendly design systems.</p>
       </a>
       <a href="/services/product-design">
         <h3>Product Design <i>→</i></h3>
-        <p class="body-sm">Full product design for SaaS, dashboards, and digital platforms, from concept through to launch-ready UI.</p>
+        <p class="body-sm">Research, flows, prototypes, and launch-ready UI for SaaS and digital platforms.</p>
       </a>
-      <a href="/services/saas-platforms">
-        <h3>SaaS Product Design <i>→</i></h3>
-        <p class="body-sm">Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems.</p>
+      <a href="/services/dashboard-design">
+        <h3>Dashboard Design <i>→</i></h3>
+        <p class="body-sm">Daily-use analytics and admin views designed for the morning scan.</p>
+      </a>
+      <a href="/services/ui-ux-design">
+        <h3>UI/UX Design <i>→</i></h3>
+        <p class="body-sm">Research-led flows and interface systems that stay clear as the product grows.</p>
+      </a>
+      <a href="/services/design-systems">
+        <h3>Design Systems <i>→</i></h3>
+        <p class="body-sm">Tokens and components so new modules ship in the same language.</p>
       </a>
       <a href="/services/ai-assisted-development">
-        <h3>AI-Assisted Product Development <i>→</i></h3>
-        <p class="body-sm">Ship faster with AI-augmented design, development, and QA. We use Claude, GPT, Copilot, and modern toolchains with human oversight at every step.</p>
+        <h3>AI-Assisted Development <i>→</i></h3>
+        <p class="body-sm">Faster design-to-code cycles with human oversight at every step.</p>
       </a>
     </div>
-    <p style="margin-top:26px" class="body-sm">Also relevant: <a href="/services/ux-research" style="border-bottom:1px solid var(--rule)">UX research</a>, <a href="/services/design-systems" style="border-bottom:1px solid var(--rule)">design systems</a>, <a href="/services/web-application-design" style="border-bottom:1px solid var(--rule)">web application design</a>, and <a href="/solutions/accounting-integrations" style="border-bottom:1px solid var(--rule)">QuickBooks &amp; Xero integrations</a>.</p>
+    <p class="body-sm svc-note">Need finance sync rather than product UX? See <a class="inline-link" href="/solutions/accounting-integrations">QuickBooks &amp; Xero integrations</a>.</p>
   </div>
 </section>
 
 <!-- ═══════════ FAQ ═══════════ -->
 <section class="sect faq" id="faq" aria-labelledby="faqH">
   <div class="wrap faq-grid">
-    <div>
+    <div class="faq-side">
       <p class="eyebrow" data-r>FAQ</p>
-      <h2 class="d2" id="faqH" data-r style="margin-top:18px">Common questions</h2>
-      <p class="body-sm" data-r style="margin-top:18px">Asked most often by SaaS founders and product leaders before a first call.</p>
-      <a href="/contact#book" class="btn ghost" style="margin-top:24px"><span>Ask us directly</span><i>→</i></a>
+      <h2 class="d2 s-title" id="faqH" data-r>Common questions</h2>
+      <p class="body-sm s-intro" data-r>Asked most often by SaaS founders and product leaders before a first call.</p>
+      <a href="/contact#book" class="btn ghost"><span>Ask us directly</span><i>→</i></a>
     </div>
 
     <div class="faq-list" data-r>
@@ -736,7 +1086,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
           <span class="qn num">02</span><span class="qt">Can you redesign an existing SaaS product?</span><span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa2"><div><div class="faq-a-in">
-          <p class="body-sm">Absolutely. We typically roll out redesigns in phases to reduce risk and maintain user continuity.</p>
+          <p class="body-sm">Yes. We typically roll out redesigns in phases to reduce risk and maintain user continuity.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -757,10 +1107,10 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa5">
-          <span class="qn num">05</span><span class="qt">What's a typical first engagement?</span><span class="qi" aria-hidden="true"></span>
+          <span class="qn num">05</span><span class="qt">What is a typical first engagement?</span><span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa5"><div><div class="faq-a-in">
-          <p class="body-sm">A scoped discovery + design sprint, or a fixed MVP build with weekly demos. We recommend the lightest path that answers your biggest risk, activation, demo readiness, or technical feasibility.</p>
+          <p class="body-sm">A scoped discovery + design sprint, or a fixed MVP build with weekly demos. We recommend the lightest path that answers your biggest risk: activation, demo readiness, or technical feasibility.</p>
         </div></div></div>
       </div>
     </div>
@@ -770,10 +1120,11 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <!-- ═══════════ CTA ═══════════ -->
 <section class="cta-band on-ink" id="contact" aria-labelledby="ctaH">
   <div class="wrap">
-    <p class="eyebrow" data-r>SaaS product solutions</p>
-    <h2 class="d2" id="ctaH" data-r>Ready to discuss your SaaS product project?</h2>
+    <p class="eyebrow" data-r>Next step</p>
+    <h2 class="d2" id="ctaH" data-r>Tell us where signup loses people</h2>
+    <p class="lede" data-r>A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
     <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+      <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
@@ -783,7 +1134,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>
-    <p class="body-sm" data-r style="color:#8C98A4;margin-top:24px;max-width:60ch">Share your goals and timeline, we'll reply within one business day with fit, scope questions, and a sensible next step.</p>
+    <p class="body-sm follow" data-r>Share your goals and timeline. We will reply within one business day with fit, scope questions, and a sensible next step.</p>
   </div>
 </section>
 
@@ -843,7 +1194,6 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service",
 "name":"SaaS Product Solutions",
@@ -871,7 +1221,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       "name": "Can you redesign an existing SaaS product?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Absolutely. We typically roll out redesigns in phases to reduce risk and maintain user continuity."
+        "text": "Yes. We typically roll out redesigns in phases to reduce risk and maintain user continuity."
       }
     },
     {
@@ -892,10 +1242,10 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
     },
     {
       "@type": "Question",
-      "name": "What's a typical first engagement?",
+      "name": "What is a typical first engagement?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A scoped discovery + design sprint, or a fixed MVP build with weekly demos. We recommend the lightest path that answers your biggest risk, activation, demo readiness, or technical feasibility."
+        "text": "A scoped discovery + design sprint, or a fixed MVP build with weekly demos. We recommend the lightest path that answers your biggest risk: activation, demo readiness, or technical feasibility."
       }
     }
   ]
@@ -945,17 +1295,19 @@ const STAGES = {
 
 let stage = 0;
 function setStage(n){
-  if(n === stage) return;
+  if(!app || n === stage) return;
   stage = n;
   const s = STAGES[n]; if(!s) return;
   app.dataset.stage = n;
-  el('wsName').textContent = s.ws;
-  el('wsRole').textContent = s.role;
-  el('whoLbl').textContent = s.who;
-  el('avInit').textContent = s.init;
-  el('progMain').textContent = 'Setup ' + s.pct + '% complete';
-  el('progSub').textContent  = 'Stage ' + n + ' of 7 · ' + s.label;
-  el('ring').style.strokeDashoffset = RING - (RING * s.pct / 100);
+  const setTxt = (id, v) => { const node = el(id); if(node) node.textContent = v; };
+  setTxt('wsName', s.ws);
+  setTxt('wsRole', s.role);
+  setTxt('whoLbl', s.who);
+  setTxt('avInit', s.init);
+  setTxt('progMain', 'Setup ' + s.pct + '% complete');
+  setTxt('progSub', 'Stage ' + n + ' of 7 · ' + s.label);
+  const ring = el('ring');
+  if(ring) ring.style.strokeDashoffset = RING - (RING * s.pct / 100);
   panels.forEach(p => p.classList.toggle('on', +p.dataset.panel === n));
   railBars.forEach((b,i)=>{
     b.classList.toggle('done', i < s.rail - 1 && s.rail > 0);
@@ -965,18 +1317,20 @@ function setStage(n){
     b.classList.toggle('done', i < n-1);
     b.classList.toggle('on', i === n-1);
   });
-  el('announce').textContent = 'Stage ' + n + ' of 7: ' + s.label;
+  setTxt('announce', 'Stage ' + n + ' of 7: ' + s.label);
 }
 
-const bIO = new IntersectionObserver(es=>{
-  for(const e of es){
-    if(!e.isIntersecting) continue;
-    beats.forEach(b => b.classList.toggle('on', b === e.target));
-    setStage(+e.target.dataset.beat);
-  }
-},{rootMargin:'-45% 0px -45% 0px'});
-beats.forEach(b => bIO.observe(b));
-setStage(1);
+if(app && beats.length){
+  const bIO = new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      beats.forEach(b => b.classList.toggle('on', b === e.target));
+      setStage(+e.target.dataset.beat);
+    }
+  },{rootMargin:'-45% 0px -45% 0px'});
+  beats.forEach(b => bIO.observe(b));
+  setStage(1);
+}
 
 /* ── process stepper: rules fill left-to-right on scroll ── */
 const psteps = [...document.querySelectorAll('.pstep')];
