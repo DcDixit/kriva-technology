@@ -4,24 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SaaS Product Design · Multi-tenant UX · KRIVA</title>
-<meta name="description" content="Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems for UK and US product teams.">
+<meta name="description" content="Multi-tenant SaaS UX, admin vs customer surfaces, permissions, and release-friendly design systems for UK and US product teams.">
 <link rel="canonical" href="https://krivatechnologies.com/services/saas-platforms">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SaaS Product Design · Multi-tenant UX">
-<meta property="og:description" content="Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems for UK and US product teams.">
+<meta property="og:description" content="Multi-tenant SaaS UX, admin vs customer surfaces, permissions, and release-friendly design systems for UK and US product teams.">
 <meta property="og:url" content="https://krivatechnologies.com/services/saas-platforms">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
+<meta property="og:image:alt" content="KRIVA · SaaS product design, multi-tenant UX">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
 /* Shared KRIVA tokens + primitives */
@@ -30,7 +29,7 @@
   --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
   --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
   --blue:#1B44C8; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --lilac:#B7A9FF;
+  --lime:#5FD3A0; --lilac:#B7A9FF; --sky:#5B8CFF;
   --f-display:'Archivo',system-ui,sans-serif;
   --f-body:'Inter',system-ui,sans-serif;
   --f-mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -93,7 +92,6 @@ img{max-width:100%;display:block}
 .p-link i{font-style:normal;transition:transform .42s var(--e)}
 .p-link:hover i{transform:translateX(6px)}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
-.flag.tbd{border-color:var(--amber);color:#8A6200}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
@@ -105,7 +103,7 @@ img{max-width:100%;display:block}
 .cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
 .cta-band .wrap{padding-block:clamp(72px,9vw,140px)}
 .cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:22px;max-width:14ch}
+.cta-band h2{color:#fff;margin-top:22px;max-width:16ch}
 .cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
 .assur i{font-style:normal;color:var(--amber);margin-right:7px}
@@ -114,6 +112,7 @@ img{max-width:100%;display:block}
   *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
+  .saas-board__live i{animation:none!important}
 }
 
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
@@ -133,7 +132,7 @@ img{max-width:100%;display:block}
   padding:10px 0 12px;margin:0 calc(-1 * var(--gutter));padding-inline:var(--gutter);
   background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none
 }
-.mob-chips:-webkit-scrollbar{display:none}
+.mob-chips::-webkit-scrollbar{display:none}
 .mob-chips a{
   flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   padding:7px 11px;border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
@@ -141,84 +140,136 @@ img{max-width:100%;display:block}
 .mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.hero{
+  background:
+    radial-gradient(110% 80% at 100% -8%, rgba(27,68,200,.08), transparent 50%),
+    radial-gradient(85% 65% at 0% 100%, rgba(91,68,200,.06), transparent 48%),
+    var(--paper);
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
+.s-head .lede,.s-intro{margin-top:16px;max-width:54ch}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
 .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
-.aside-card{background:var(--white);border:1px solid var(--rule);padding:clamp(18px,2.2vw,26px)}
-.aside-card h2{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:400;margin-bottom:14px}
-.aside-card ul{list-style:none;display:grid;gap:10px}
-.aside-card li{font-size:14.5px;display:flex;gap:9px;align-items:flex-start}
-.aside-card li:before{content:"·";color:var(--rule);flex:none}
-.contrast{margin-top:18px;padding:14px 16px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:14.5px;line-height:1.55;color:var(--ink);max-width:54ch}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
-.shot{position:relative;background:var(--ink);overflow:hidden;margin-top:clamp(28px,3.5vw,48px)}
-.shot .media{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden}
-.slot{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(14px,2vw,22px);background:linear-gradient(160deg,#161C22,#0E1216)}
-.slot .skel{display:grid;gap:7px}
-.slot .skel i{display:block;height:7px;background:#1F262E}
-.slot .skel i:nth-child(1){width:34%}.slot .skel i:nth-child(2){width:58%}.slot .skel i:nth-child(3){width:46%}
-.slot .tagline{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5C6670;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.shot-cap{margin-top:12px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+/* Signature · tenant workspace (not ops KPIs, not a pipeline) */
+.saas-board{
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  box-shadow:0 28px 60px -42px rgba(14,18,22,.55)
+}
+.saas-board__bar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:11px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+}
+.saas-board__ws{display:flex;align-items:center;gap:8px;color:#fff}
+.saas-board__ws .sq{width:14px;height:14px;background:var(--sky);flex:none}
+.saas-board__ws em{font-style:normal;color:#6B7885;font-weight:400}
+.saas-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--lilac)}
+.saas-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:saas-pulse 2.4s var(--e-io) infinite}
+@keyframes saas-pulse{0%{box-shadow:0 0 0 0 rgba(183,169,255,.45)}70%{box-shadow:0 0 0 7px rgba(183,169,255,0)}100%{box-shadow:0 0 0 0 rgba(183,169,255,0)}}
+.saas-board__meta{
+  display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)
+}
+.saas-board__cell{padding:12px 12px 14px;border-right:1px solid var(--ink-line)}
+.saas-board__cell:last-child{border-right:0}
+.saas-board__cell span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#6B7885}
+.saas-board__cell b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:clamp(1rem,1.5vw,1.2rem);letter-spacing:-.02em;color:#fff}
+.saas-board__cell em{display:block;margin-top:4px;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;color:var(--lime)}
+.saas-board__body{display:grid;grid-template-columns:1fr 1fr;min-height:188px}
+.saas-board__pane{padding:14px;display:grid;align-content:start;gap:8px}
+.saas-board__pane:first-child{border-right:1px solid var(--ink-line)}
+.saas-board__pane .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885;margin-bottom:2px}
+.perm{display:grid;grid-template-columns:1fr auto;gap:8px;padding:7px 8px;background:#141A20;font-size:10.5px;color:#B9C3CC;border-left:2px solid #3A444E}
+.perm.on{border-left-color:var(--sky);color:#fff}
+.perm.off{border-left-color:#3A444E;color:#6B7885}
+.perm.ok{border-left-color:var(--lime)}
+.perm small{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#6B7885}
+.check{display:grid;grid-template-columns:14px 1fr;gap:8px;align-items:center;font-size:10.5px;color:#B9C3CC}
+.check i{display:block;width:12px;height:12px;border:1px solid var(--ink-line);position:relative}
+.check.done{color:#DDE2E7}
+.check.done i{border-color:var(--lime);background:rgba(95,211,160,.16)}
+.check.done i:after{content:"";position:absolute;left:3px;top:0;width:3px;height:7px;border:solid var(--lime);border-width:0 1.5px 1.5px 0;transform:rotate(42deg)}
+.check.wait{color:#6B7885}
+.saas-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .saas-board__meta{grid-template-columns:1fr 1fr}
+  .saas-board__cell:nth-child(3){display:none}
+  .saas-board__body{grid-template-columns:1fr}
+  .saas-board__pane:first-child{border-right:0;border-bottom:1px solid var(--ink-line)}
+}
+
+.fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
+.fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+.fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:28ch}
+.fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
+@media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
 
 .chal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px)}
+.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px);transition:background .4s var(--e)}
+.chal article:hover{background:var(--white)}
 .chal .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:12px}
-.chal h3{margin-bottom:10px}
-.chal p{color:var(--steel);max-width:32ch}
+.chal h3{margin-bottom:12px}
+.chal p{color:var(--steel);max-width:34ch}
 @media(max-width:860px){.chal{grid-template-columns:1fr}}
 
 .approach{display:grid;gap:0;margin-top:clamp(28px,3.5vw,48px);border-top:1px solid var(--rule)}
-.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule)}
+.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,.85fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule);align-items:start}
 .ap-row .idx{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1}
-@media(max-width:640px){.ap-row{grid-template-columns:1fr;gap:8px}}
+.ap-row .body-sm{margin-top:10px}
+.ap-row .out{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-top:6px}
+.ap-row .out b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
+@media(max-width:900px){.ap-row{grid-template-columns:64px minmax(0,1fr);gap:14px}.ap-row .out{grid-column:2}}
+@media(max-width:560px){.ap-row{grid-template-columns:1fr;gap:8px}.ap-row .out{grid-column:1}}
 
-.deliv{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.deliv div{background:var(--white);padding:clamp(18px,2.2vw,26px)}
-.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.deliv p{font-size:15px;line-height:1.5;color:var(--ink)}
-@media(max-width:900px){.deliv{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.deliv{grid-template-columns:1fr}}
+.deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.deliv article{background:var(--white);padding:clamp(22px,2.6vw,34px)}
+.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
+.deliv h3{margin-bottom:10px}
+.deliv p{font-size:15px;line-height:1.58;color:var(--steel);max-width:42ch}
+@media(max-width:700px){.deliv{grid-template-columns:1fr}}
 
-.outcomes{margin-top:clamp(48px,5vw,80px);padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--rule)}
-.gain{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
-.gain ul{list-style:none;display:grid;gap:14px}
-.gain li{padding:16px 18px;background:var(--white);border:1px solid var(--rule);font-size:15.5px;line-height:1.5}
+.gain{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:start}
+.gain ul{list-style:none;display:grid;gap:12px}
+.gain li{padding:18px 20px;background:var(--white);border:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.gain li .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:4px}
+.gain li strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
+.gain li span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel)}
 @media(max-width:800px){.gain{grid-template-columns:1fr}}
 
 .faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:760px}
-.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px}
-.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none}
-.faq summary:-webkit-details-marker{display:none}
-.faq p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--steel)}
+.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
+.faq details[open]{border-color:var(--ink)}
+.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-family:var(--f-mono);font-size:14px;color:var(--steel);flex:none}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:58ch}
 
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
-.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:160px;transition:transform .5s var(--e),border-color .4s}
+.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
 .rel a:hover{transform:translate3d(0,-4px,0);border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.rel .title{display:block;margin-top:10px}
+.rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:28ch}
 .rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
 .rel a:hover .arrow i{transform:translateX(6px)}
 @media(max-width:860px){.rel{grid-template-columns:1fr}}
 
+.sib-label{margin-top:clamp(36px,4vw,56px)}
 .sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
 .sib a:hover{border-color:var(--blue);color:var(--blue)}
 
-/* Phase 11 · intentional brief board (no empty screenshot theater) */
-.brief{margin-top:clamp(28px,3.5vw,48px);border:1px solid var(--rule);background:var(--white);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
-.brief-main{padding:clamp(22px,2.8vw,36px);border-right:1px solid var(--rule)}
-.brief-side{padding:clamp(22px,2.8vw,36px);background:var(--paper-2);display:grid;align-content:space-between;gap:24px}
-.brief .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
-.brief-list{list-style:none;display:grid;gap:12px}
-.brief-list li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.45}
-.brief-list .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:3px}
-.brief-meta{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);display:grid;gap:10px}
-.brief-meta b{color:var(--ink);font-weight:500}
-@media(max-width:800px){.brief{grid-template-columns:1fr}.brief-main{border-right:0;border-bottom:1px solid var(--rule)}}
-
+.sect--band{background:var(--paper-2);border-block:1px solid var(--rule)}
+.sect--rule{border-top:1px solid var(--rule)}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:42ch}
 </style>
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body>
@@ -252,7 +303,7 @@ img{max-width:100%;display:block}
                 <div class="mm-head"><b>SaaS products</b><span>UK &amp; US</span></div>
                 <ul class="mm-list">
                   <li><a role="menuitem" href="/solutions/saas"><strong>SaaS product solutions</strong><em>Onboarding, dashboards, and MVPs that stick.</em></a></li>
-                  <li><a role="menuitem" href="/services/saas-platforms"><strong>SaaS product design</strong><em>Multi-tenant UX, admin panels, permissions.</em></a></li>
+                  <li><a role="menuitem" href="/services/saas-platforms" aria-current="page"><strong>SaaS product design</strong><em>Multi-tenant UX, admin panels, permissions.</em></a></li>
                   <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboards &amp; admin panels</strong><em>Analytics and operational views for daily use.</em></a></li>
                   <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
                 </ul>
@@ -312,7 +363,7 @@ img{max-width:100%;display:block}
       <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-saas">SaaS<span class="plus" aria-hidden="true"></span></button>
       <ul class="sheet-sub" id="sheet-saas">
         <li><a href="/solutions/saas"><strong>SaaS product solutions</strong><span>Onboarding &amp; MVPs</span></a></li>
-        <li><a href="/services/saas-platforms"><strong>SaaS product design</strong><span>Multi-tenant UX</span></a></li>
+        <li><a href="/services/saas-platforms" aria-current="page"><strong>SaaS product design</strong><span>Multi-tenant UX</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Dashboards &amp; admin</strong><span>Daily-use views</span></a></li>
         <li><a href="/services/product-design"><strong>Product design &amp; UX</strong><span>Flows to launch UI</span></a></li>
       </ul>
@@ -381,174 +432,284 @@ img{max-width:100%;display:block}
     </nav>
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" data-r>Service · Product interfaces · SaaS Product Design</p>
+        <p class="eyebrow" data-r>Service · Multi-tenant product UX</p>
         <h1 class="d1 mask" data-mask>
           <span><i>SaaS UX that activates</i></span>
           <span><i>after signup.</i></span>
         </h1>
-        <p class="lede" data-r>For B2B SaaS where admin and customer surfaces diverge, permissions confuse new users, and every UI change risks a tenant.</p>
-        <div class="tags" data-r><span class="tag">Tenant UX patterns</span><span class="tag">Admin dashboards</span><span class="tag">Scalable UI kits</span></div>
+        <p class="lede" data-r>Workspace context, role-aware empty states, and admin vs customer surfaces that stay coherent as tenants grow, so the first week in the product is usable, not a permissions maze.</p>
+        <div class="tags" data-r>
+          <span class="tag">Tenant UX</span>
+          <span class="tag">Permissions</span>
+          <span class="tag">Admin + customer</span>
+          <span class="tag">Phased UI kits</span>
+        </div>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-          <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
+          <a href="/work/payroll-pro-saas" class="btn ghost"><span>See PayrollPro onboarding</span><i>→</i></a>
         </div>
       </div>
-      <aside class="aside-card" data-r>
-        <h2>Where this sits</h2>
-        <ul>
-          <li>Family · Apps &amp; dashboards</li>
-          <li>Catalog · SaaS Product Design</li>
-          <li>Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems.</li>
-        </ul>
-        <p class="contrast">Narrower than Product Design: focused on tenant-aware patterns, admin vs end-user systems, and release-friendly components. Broader than single-surface UI/UX.</p>
-      </aside>
+
+      <div data-r>
+        <div class="saas-board" aria-hidden="true">
+          <div class="saas-board__bar">
+            <span class="saas-board__ws"><span class="sq"></span><b>Demo tenant</b><em>· workspace</em></span>
+            <span class="saas-board__live"><i></i>Owner view</span>
+          </div>
+          <div class="saas-board__meta">
+            <div class="saas-board__cell"><span>Role model</span><b>4 roles</b><em>Owner → Member</em></div>
+            <div class="saas-board__cell"><span>Setup</span><b>2 of 5</b><em>Invite pending</em></div>
+            <div class="saas-board__cell"><span>Surfaces</span><b>Admin + app</b><em>Shared kit</em></div>
+          </div>
+          <div class="saas-board__body">
+            <div class="saas-board__pane">
+              <span class="lab">Admin · permissions</span>
+              <div class="perm on"><span>Billing &amp; plan</span><small>Owner</small></div>
+              <div class="perm on"><span>Invite members</span><small>Admin+</small></div>
+              <div class="perm off"><span>Export payroll</span><small>Hidden</small></div>
+            </div>
+            <div class="saas-board__pane">
+              <span class="lab">Customer · first run</span>
+              <div class="check done"><i></i><span>Create workspace</span></div>
+              <div class="check done"><i></i><span>Invite a champion</span></div>
+              <div class="check wait"><i></i><span>Connect payroll feed</span></div>
+              <div class="check wait"><i></i><span>Run a test cycle</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="saas-board__note"><span class="flag">Demo</span> Interface pattern only, no client data</p>
+      </div>
     </div>
 
-    <div class="brief" data-r>
-      <div class="brief-main">
-        <p class="k">How we run this engagement</p>
-        <ul class="brief-list"><li><span class="n">01</span><span><b>SaaS UX audit</b>: SaaS UX audit across onboarding, permissions, and admin/end-user divergence.</span></li><li><span class="n">02</span><span><b>Tenant-aware UI</b>: Tenant-aware UI patterns and an admin + end-user design system that can ship in phases.</span></li><li><span class="n">03</span><span><b>Release-friendly specs</b>: Release-friendly component specs so improvements don't require a risky big-bang redesign.</span></li></ul>
-      </div>
-      <div class="brief-side">
-        <div>
-          <p class="k">Best for</p>
-          <p class="body-sm" style="color:var(--ink);max-width:36ch">For B2B SaaS where admin and customer surfaces diverge, permissions confuse new users, and every UI change risks a tenant.</p>
-        </div>
-        <div class="brief-meta">
-          <span>Service · <b>SaaS Product Design</b></span>
-          <span>Next · <b><a href="/work/payroll-pro-saas">PayrollPro · onboarding</a></b></span>
-          <span>CTA · <b><a href="/contact#book">Book a 20-minute fit call</a></b></span>
-        </div>
-      </div>
+    <div class="fit-rail" data-s>
+      <article>
+        <p class="k">Best for</p>
+        <h3>Live B2B SaaS with tenants</h3>
+        <p>Products where workspaces, roles, and an admin console already exist, and first-run or permissions are where users stall.</p>
+      </article>
+      <article>
+        <p class="k">What we own</p>
+        <h3>Tenant-aware product UX</h3>
+        <p>Onboarding, role models, admin vs customer surfaces, and a design system you can ship in phases.</p>
+      </article>
+      <article>
+        <p class="k">Not this service</p>
+        <h3>Strategy-only or KPI views</h3>
+        <p>End-to-end product strategy lives under Product Design. Morning-scan analytics live under Dashboard Design.</p>
+        <p class="contrast">Need both? Most SaaS rebuilds pair this page with Product Design or Dashboard Design.</p>
+      </article>
     </div>
   </div>
 </header>
 
-<section class="sect" id="challenges" aria-labelledby="chH" style="border-top:1px solid var(--rule)">
+<section class="sect sect--rule" id="challenges" aria-labelledby="chH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Challenges</p>
-    <h2 class="d2" id="chH" data-r style="margin-top:16px;max-width:18ch">When tenants and admins fight the same UI</h2>
-    <div class="chal"><article data-r>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Challenges</p>
+        <h2 class="d2" id="chH" data-r>When tenants and admins fight the same UI</h2>
+        <p class="lede" data-r>Signup worked. Activation did not. These are the patterns we see before a SaaS redesign starts.</p>
+      </div>
+    </div>
+    <div class="chal">
+      <article data-r>
         <span class="n">01</span>
         <h3 class="d3">Surface divergence</h3>
-        <p class="body-sm">Admin and customer UX diverge over time</p>
+        <p class="body-sm">Admin ships features the customer never sees, and the customer product picks up a different visual language. New users learn two products instead of one system.</p>
       </article>
       <article data-r>
         <span class="n">02</span>
         <h3 class="d3">Permission fog</h3>
-        <p class="body-sm">Permission models confuse new users</p>
+        <p class="body-sm">Roles were added for sales and security. New users hit empty states and &ldquo;you don&rsquo;t have access&rdquo; with no path to the person who can grant it.</p>
       </article>
       <article data-r>
         <span class="n">03</span>
         <h3 class="d3">Tenant risk</h3>
-        <p class="body-sm">Hard to ship UI improvements without breaking tenants</p>
-      </article></div>
+        <p class="body-sm">A visual change in the shared kit hits every workspace. Teams freeze UI work rather than ship incrementally, so the product stalls between releases.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="sect story" id="approach" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="approach" aria-labelledby="apH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Approach</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px;max-width:20ch">Tenant-aware patterns your roadmap can survive.</h2>
-    <p class="body" data-r style="margin-top:16px">Phased rollouts are the default for live SaaS, continuity over big-bang launches.</p>
-    <div class="approach"><div class="ap-row" data-r>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Approach</p>
+        <h2 class="d2" id="apH" data-r>Tenant-aware patterns your roadmap can survive</h2>
+        <p class="lede" data-r>Phased rollouts are the default for live SaaS. Continuity over a big-bang launch that breaks a tenant.</p>
+      </div>
+    </div>
+    <div class="approach">
+      <div class="ap-row" data-r>
         <span class="idx num">01</span>
         <div>
           <h3 class="d3">SaaS UX audit</h3>
-          <p class="body-sm" style="margin-top:10px">SaaS UX audit across onboarding, permissions, and admin/end-user divergence.</p>
+          <p class="body-sm">We map onboarding, permissions, and admin versus end-user divergence. The brief is where tenants, roles, and first-run actually break, not a generic heuristic score.</p>
         </div>
+        <p class="out"><b>You leave with</b>A ranked map of first-run, role, and surface gaps</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">02</span>
         <div>
           <h3 class="d3">Tenant-aware UI</h3>
-          <p class="body-sm" style="margin-top:10px">Tenant-aware UI patterns and an admin + end-user design system that can ship in phases.</p>
+          <p class="body-sm">Workspace context, role-aware empty states, and an admin plus customer design system that can ship in phases, so both surfaces stay in the same family.</p>
         </div>
+        <p class="out"><b>You leave with</b>Shared patterns for workspace, role, and empty states</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">03</span>
         <div>
           <h3 class="d3">Release-friendly specs</h3>
-          <p class="body-sm" style="margin-top:10px">Release-friendly component specs so improvements don't require a risky big-bang redesign.</p>
+          <p class="body-sm">Component specs with flags, density, and tenant-safe variants so improvements land in slices. Engineering gets something they can ship without a risky rewrite.</p>
         </div>
-      </div></div>
+        <p class="out"><b>You leave with</b>Component specs that survive the next release</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="sect" id="deliverables" aria-labelledby="delH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Deliverables</p>
-    <h2 class="d2" id="delH" data-r style="margin-top:16px;max-width:18ch">What your roadmap can reuse</h2>
-    <div class="deliv"><div data-r>
-        <b>01</b>
-        <p>SaaS UX audit</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Deliverables</p>
+        <h2 class="d2" id="delH" data-r>What your roadmap can reuse</h2>
+        <p class="lede" data-r>Artifacts engineering can build against in the next sprint, not a one-off restyle of the marketing site.</p>
       </div>
-      <div data-r>
-        <b>02</b>
-        <p>Tenant-aware UI patterns</p>
-      </div>
-      <div data-r>
-        <b>03</b>
-        <p>Admin + end-user design system</p>
-      </div>
-      <div data-r>
-        <b>04</b>
-        <p>Release-friendly component specs</p>
-      </div></div>
+    </div>
+    <div class="deliv">
+      <article data-r>
+        <b>01 · Audit</b>
+        <h3 class="d3">SaaS UX audit</h3>
+        <p>Onboarding, permissions, and admin/customer divergence documented as a ranked backlog, not a slide of screenshots.</p>
+      </article>
+      <article data-r>
+        <b>02 · Patterns</b>
+        <h3 class="d3">Tenant-aware UI patterns</h3>
+        <p>Workspace switchers, role-aware empty states, and first-run paths that explain missing access instead of dead-ending it.</p>
+      </article>
+      <article data-r>
+        <b>03 · System</b>
+        <h3 class="d3">Admin + customer design system</h3>
+        <p>One kit for both surfaces: density, status, and navigation rules so admin does not drift into a different product.</p>
+      </article>
+      <article data-r>
+        <b>04 · Specs</b>
+        <h3 class="d3">Release-friendly component specs</h3>
+        <p>Flags, variants, and handoff notes so UI improvements ship in phases without a tenant-wide visual rewrite.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="sect" id="outcomes" aria-labelledby="outH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="outcomes" aria-labelledby="outH">
   <div class="wrap">
-    <div class="gain outcomes" style="margin-top:0;padding-top:0;border-top:0">
+    <div class="gain">
       <div data-r>
         <p class="eyebrow">Outcomes</p>
-        <h2 class="d2" id="outH" style="margin-top:14px;max-width:16ch">What changes after signup</h2>
-        <p class="body-sm" style="margin-top:12px">What this engagement is meant to change in the product.</p>
+        <h2 class="d2" id="outH">What changes after signup</h2>
+        <p class="lede">Qualitative targets we design toward. Signed-off metrics publish on case studies when clients clear them.</p>
+        <a href="/work/payroll-pro-saas" class="p-link">PayrollPro · role-based onboarding <i>→</i></a>
       </div>
       <ul data-s>
-          <li>Lower churn through clearer onboarding</li>
-          <li>Faster feature shipping with shared patterns</li>
-          <li>Enterprise-ready visual polish</li>
+        <li>
+          <span class="n">01</span>
+          <span>
+            <strong>A first week people can finish</strong>
+            <span>Setup tasks, invites, and missing-access copy match real roles, so new workspaces do not stall after SSO.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <span>
+            <strong>Admin and customer in one family</strong>
+            <span>Shared patterns so the console and the product stop looking like two vendors shipped them.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <span>
+            <strong>Safer UI changes across tenants</strong>
+            <span>Component specs that absorb the next feature without a big-bang restyle of every workspace.</span>
+          </span>
+        </li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="sect sect--tight" id="proof" aria-labelledby="pfH">
+<section class="sect" id="proof" aria-labelledby="pfH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Where this shows up</p>
-    <h2 class="d2" id="pfH" data-r style="margin-top:16px">Related work and pages</h2>
-    <div class="rel" data-s><a href="/work/payroll-pro-saas">
-        <span class="k">Work</span>
-        <span class="arrow"><span class="d3">PayrollPro · onboarding</span><i>→</i></span>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Where this shows up</p>
+        <h2 class="d2" id="pfH" data-r>Related work and pages</h2>
+        <p class="lede" data-r>Live examples of tenant-aware onboarding and SaaS product UX you can open today.</p>
+      </div>
+    </div>
+    <div class="rel" data-s>
+      <a href="/work/payroll-pro-saas">
+        <span>
+          <span class="k">Work · narrative</span>
+          <span class="d3 title">PayrollPro · onboarding</span>
+          <span class="hook">Progressive onboarding and permission clarity for a payroll platform after SSO rollout.</span>
+        </span>
+        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
       </a>
       <a href="/solutions/saas">
-        <span class="k">Solution</span>
-        <span class="arrow"><span class="d3">SaaS product solutions</span><i>→</i></span>
+        <span>
+          <span class="k">Solution</span>
+          <span class="d3 title">SaaS product solutions</span>
+          <span class="hook">Onboarding, dashboards, and MVPs for UK and US B2B teams, the market page this service sits inside.</span>
+        </span>
+        <span class="arrow"><span class="mono">Solution</span><i>→</i></span>
       </a>
       <a href="/insights/saas-onboarding-patterns">
-        <span class="k">Insight</span>
-        <span class="arrow"><span class="d3">SaaS onboarding patterns</span><i>→</i></span>
-      </a></div>
-    <p class="eyebrow" data-r style="margin-top:clamp(36px,4vw,56px)">Also see</p>
+        <span>
+          <span class="k">Insight</span>
+          <span class="d3 title">SaaS onboarding patterns</span>
+          <span class="hook">Activation patterns we use when first-run, roles, and empty states are the real product problem.</span>
+        </span>
+        <span class="arrow"><span class="mono">Playbook</span><i>→</i></span>
+      </a>
+    </div>
+    <p class="eyebrow sib-label" data-r>Also see</p>
     <div class="sib" data-r>
-        <a href="/services/product-design">Product Design</a>
-        <a href="/services/dashboard-design">Dashboard Design</a>
-        <a href="/insights/saas-mvp-uk-guide">SaaS MVP UK guide</a>
+      <a href="/services/product-design">Product Design</a>
+      <a href="/services/dashboard-design">Dashboard Design</a>
+      <a href="/insights/saas-mvp-uk-guide">SaaS MVP UK guide</a>
       <a href="/services">All services</a>
     </div>
   </div>
 </section>
 
-<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="faq" aria-labelledby="faqH">
   <div class="wrap">
-    <p class="eyebrow" data-r>FAQ</p>
-    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About SaaS Product Design</h2>
-    <div class="faq" data-r><details>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>FAQ</p>
+        <h2 class="d2" id="faqH" data-r>About SaaS Product Design</h2>
+      </div>
+    </div>
+    <div class="faq" data-r>
+      <details>
         <summary>Can you redesign an existing SaaS?</summary>
-        <p>Yes. We typically roll out redesigns in phases to reduce risk and maintain continuity.</p>
-      </details></div>
+        <p>Yes. We typically roll out redesigns in phases so live tenants stay usable. The default is continuity: shared components, flagged variants, and a sequence engineering can ship without a big-bang cutover.</p>
+      </details>
+      <details>
+        <summary>How is this different from Product Design?</summary>
+        <p>Product Design covers end-to-end product scope: strategy, flows, and launch-ready UI for the whole product. SaaS Product Design is narrower: tenant-aware patterns, admin versus customer surfaces, permissions, and a design system that survives releases. Many engagements start here when the product is already live.</p>
+      </details>
+      <details>
+        <summary>How is this different from Dashboard Design?</summary>
+        <p>Dashboard Design owns widget hierarchy, filters, and scanability for analytics and ops views. This service owns workspace context, roles, onboarding, and the relationship between admin and customer UI. A SaaS product often needs both.</p>
+      </details>
+      <details>
+        <summary>Do you design both admin and customer surfaces?</summary>
+        <p>Yes. The brief is usually the gap between them: an admin console that drifted, a customer product that never inherited the same patterns, and permissions that only make sense to the person who built the role model.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -556,8 +717,9 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
     <h2 class="d2" id="ctaH" data-r>Need SaaS UX that activates?</h2>
+    <p class="lede" data-r>A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
     <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+      <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
@@ -621,18 +783,17 @@ img{max-width:100%;display:block}
 </footer>
 
 <a class="wa" href="https://wa.me/919724454455?text=Hi%20KRIVA%2C%20I'd%20like%20to%20discuss%20a%20project." rel="noopener noreferrer" target="_blank" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/><path d="M12.04 2C6.5 2 2 6.48 2 12c0 1.77.46 3.42 1.27 4.86L2 22l5.29-1.39A9.96 9.96 0 0 0 12.04 22C17.6 22 22 17.52 22 12S17.6 2 12.04 2zm0 18.15c-1.57 0-3.03-.43-4.28-1.17l-.31-.18-3.14.82.84-3.06-.2-.32A8.1 8.1 0 0 1 3.9 12c0-4.47 3.65-8.1 8.14-8.1 4.48 0 8.13 3.63 8.13 8.1 0 4.47-3.65 8.15-8.13 8.15z"/></svg>
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/><path d="M12.04 2C6.5 2 2 6.48 2 12c0 1.77.46 3.42 1.27 4.86L2 22l5.29-1.39A9.96 9.96 0 0 0 12.04 22C17.6 22 22 17.52 22 12S17.6 2 12.04 2zm0 18.15c-1.57 0-3.03-.43-4.28-1.17l-.31-.18-3.14.82.84-3.06-.2-.32A8.1 8.1 0 0 1 3.9 12c0 4.47 3.65-8.1 8.14-8.1 4.48 0 8.13 3.63 8.13 8.1 0 4.47-3.65 8.15-8.13 8.15z"/></svg>
   <span>WhatsApp</span>
 </a>
 
-<script src="/shared/chrome.js" defer></script>
 <script src="/shared/chrome.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "SaaS Product Design",
-  "description": "Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems for UK and US product teams.",
+  "description": "Multi-tenant SaaS UX, admin vs customer surfaces, permissions, and release-friendly design systems for UK and US product teams.",
   "provider": {
     "@type": "Organization",
     "name": "KRIVA Technologies"
@@ -650,13 +811,36 @@ img{max-width:100%;display:block}
       "name": "Can you redesign an existing SaaS?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We typically roll out redesigns in phases to reduce risk and maintain continuity."
+        "text": "Yes. We typically roll out redesigns in phases so live tenants stay usable. The default is continuity: shared components, flagged variants, and a sequence engineering can ship without a big-bang cutover."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Product Design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Product Design covers end-to-end product scope: strategy, flows, and launch-ready UI for the whole product. SaaS Product Design is narrower: tenant-aware patterns, admin versus customer surfaces, permissions, and a design system that survives releases. Many engagements start here when the product is already live."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Dashboard Design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dashboard Design owns widget hierarchy, filters, and scanability for analytics and ops views. This service owns workspace context, roles, onboarding, and the relationship between admin and customer UI. A SaaS product often needs both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you design both admin and customer surfaces?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The brief is usually the gap between them: an admin console that drifted, a customer product that never inherited the same patterns, and permissions that only make sense to the person who built the role model."
       }
     }
   ]
 }
 </script>
-<script src="/shared/chrome.js" defer></script>
 <script>
 (function(){
 'use strict';

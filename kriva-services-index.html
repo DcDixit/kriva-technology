@@ -4,39 +4,39 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services · Design, Development &amp; Automation · KRIVA</title>
-<meta name="description" content="UI/UX design, SaaS product development, CRM &amp; dashboards, API integrations, and practical automation - delivered by one in-house KRIVA team.">
+<meta name="description" content="UI/UX design, SaaS product development, CRM and dashboards, API integrations, and practical automation, delivered by one in-house KRIVA team.">
 <link rel="canonical" href="https://krivatechnologies.com/services">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Services · Design, Development &amp; Automation">
-<meta property="og:description" content="UI/UX design, SaaS product development, CRM &amp; dashboards, API integrations, and practical automation - delivered by one in-house KRIVA team.">
+<meta property="og:description" content="UI/UX design, SaaS product development, CRM and dashboards, API integrations, and practical automation, delivered by one in-house KRIVA team.">
 <meta property="og:url" content="https://krivatechnologies.com/services">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
+<meta property="og:image:alt" content="KRIVA · Design, development, and automation services">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
-/* ═══════════════════════════════════════════
-   KRIVA · /services capability index
-   Shared token block.
-   ═══════════════════════════════════════════ */
+/* Shared KRIVA tokens + primitives */
 :root{
   --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
   --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
   --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
   --blue:#1B44C8; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --sky:#5B8CFF; --lilac:#B7A9FF;
+  --lime:#5FD3A0; --lilac:#B7A9FF;
   --f-display:'Archivo',system-ui,sans-serif;
   --f-body:'Inter',system-ui,sans-serif;
   --f-mono:'IBM Plex Mono',ui-monospace,monospace;
   --gutter:clamp(20px,5vw,80px); --maxw:1440px;
   --e:cubic-bezier(.16,.84,.44,1); --e-io:cubic-bezier(.62,.02,.28,1);
   --t-fast:.32s; --t-mid:.62s; --t-slow:1s;
+  --fam:var(--blue);
 }
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
@@ -47,34 +47,32 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible{outline-color:var(--lilac)}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--lilac)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
-
 .eyebrow{font-family:var(--f-mono);font-size:clamp(10px,1.1vw,11.5px);letter-spacing:.16em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:11px;line-height:1}
 .eyebrow:before{content:"";width:20px;height:1px;background:currentColor;flex:none;opacity:.6}
-.d1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.35rem,5.6vw,4.9rem);line-height:.96;letter-spacing:-.036em;font-variation-settings:'wdth' 90}
+.d1{font-family:var(--f-display);font-weight:900;font-size:clamp(2.35rem,5.4vw,4.7rem);line-height:.94;letter-spacing:-.032em;font-variation-settings:'wdth' 100}
 .d2{font-family:var(--f-display);font-weight:750;font-size:clamp(1.85rem,3.8vw,3.15rem);line-height:1.04;letter-spacing:-.032em;font-variation-settings:'wdth' 94}
 .d3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,1.95vw,1.62rem);line-height:1.18;letter-spacing:-.022em}
 .lede{font-size:clamp(1.02rem,1.28vw,1.24rem);line-height:1.62;color:var(--steel);max-width:58ch}
 .body{font-size:16.5px;line-height:1.66;color:var(--steel);max-width:62ch}
 .body-sm{font-size:14.8px;line-height:1.62;color:var(--steel);max-width:58ch}
 .num{font-variant-numeric:tabular-nums}
-
 [data-r]{opacity:0;transform:translate3d(0,24px,0);transition:opacity var(--t-slow) var(--e),transform var(--t-slow) var(--e)}
 [data-r].in{opacity:1;transform:none}
 [data-s]>*{opacity:0;transform:translate3d(0,20px,0);transition:opacity var(--t-mid) var(--e),transform var(--t-mid) var(--e)}
 [data-s].in>*{opacity:1;transform:none}
 [data-s].in>*:nth-child(1){transition-delay:0ms}[data-s].in>*:nth-child(2){transition-delay:60ms}
 [data-s].in>*:nth-child(3){transition-delay:120ms}[data-s].in>*:nth-child(4){transition-delay:180ms}
-[data-s].in>*:nth-child(5){transition-delay:240ms}
+[data-s].in>*:nth-child(5){transition-delay:240ms}[data-s].in>*:nth-child(6){transition-delay:300ms}
+[data-s].in>*:nth-child(7){transition-delay:360ms}[data-s].in>*:nth-child(8){transition-delay:420ms}
 .mask span{display:block;overflow:hidden;padding-bottom:.02em}
 .mask span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
 .mask.in span i{transform:none}
 .mask.in span:nth-child(2) i{transition-delay:80ms}
-
 .btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
   padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
@@ -91,28 +89,80 @@ img{max-width:100%;display:block}
 .btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--lilac);border-color:#EDEFF1}
 .btn.on-dark:hover{color:var(--ink);border-color:var(--lilac)}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-
-/* nav/sheet/footer chrome → shared/chrome.css */
-
-/* ══ HERO ══ */
-.hero{padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(36px,4.5vw,64px)}
-.crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link i{font-style:normal;transition:transform .42s var(--e)}
+.p-link:hover i{transform:translateX(6px)}
+.crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(26px,4vw,72px);align-items:end;margin-top:clamp(22px,3vw,42px)}
+.hero{padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(28px,3.6vw,48px)}
 .hero h1{margin:20px 0 22px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
-.ledger{border-top:1px solid var(--rule)}
-.ledger div{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--rule);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;color:var(--steel)}
-.ledger div b{font-family:var(--f-display);font-weight:800;font-size:1.3rem;letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;align-items:start}}
+.sect{padding-block:clamp(64px,8vw,128px)}
+.sect--tight{padding-block:clamp(48px,6vw,88px)}
+.cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
+.cta-band .wrap{padding-block:clamp(72px,9vw,140px)}
+.cta-band .eyebrow{color:var(--ink-dim)}
+.cta-band h2{color:#fff;margin-top:22px;max-width:18ch}
+.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
+.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
+.assur i{font-style:normal;color:var(--lilac);margin-right:7px}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:48ch}
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
+  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
+  .mask span i{transform:none!important}
+  .stack-live i{animation:none!important}
+}
 
-/* ══ FAMILY RAIL (sticky) ══ */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
+
+.hero{
+  background:
+    radial-gradient(110% 80% at 100% -8%, rgba(27,68,200,.07), transparent 50%),
+    radial-gradient(85% 65% at 0% 100%, rgba(91,68,200,.05), transparent 48%),
+    var(--paper);
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.hero-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
+
+.stack{
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  box-shadow:0 28px 60px -42px rgba(14,18,22,.55)
+}
+.stack-bar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:11px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+}
+.stack-bar b{color:#fff;font-weight:400}
+.stack-live{display:inline-flex;align-items:center;gap:7px;color:var(--lilac)}
+.stack-live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:stack-pulse 2.4s var(--e-io) infinite}
+@keyframes stack-pulse{0%{box-shadow:0 0 0 0 rgba(183,169,255,.45)}70%{box-shadow:0 0 0 7px rgba(183,169,255,0)}100%{box-shadow:0 0 0 0 rgba(183,169,255,0)}}
+.stack a{
+  display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:12px;align-items:center;
+  padding:14px 16px;border-bottom:1px solid var(--ink-line);
+  transition:background var(--t-fast) var(--e)
+}
+.stack a:last-of-type{border-bottom:0}
+.stack a:hover,.stack a:focus-visible{background:var(--ink-2)}
+.stack .n{font-family:var(--f-display);font-weight:800;font-size:1.05rem;letter-spacing:-.03em;color:#3A444E;font-variant-numeric:tabular-nums;transition:color var(--t-fast)}
+.stack a:hover .n{color:#fff}
+.stack strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.02rem;letter-spacing:-.02em;color:#fff}
+.stack em{display:block;margin-top:4px;font-style:normal;font-size:12.5px;line-height:1.4;color:#8C98A4}
+.stack .go{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885;transition:color var(--t-fast),transform .4s var(--e)}
+.stack a:hover .go{color:var(--lilac);transform:translateX(4px)}
+.stack-note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+
 .rail{position:sticky;top:58px;z-index:60;background:rgba(234,234,228,.94);border-block:1px solid var(--rule)}
 @supports(backdrop-filter:blur(1px)){@media(min-width:900px){.rail{backdrop-filter:blur(12px) saturate(1.4)}}}
-.rail .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:11px}
-.rail-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity}
-.rail-links:-webkit-scrollbar{display:none}
+.rail .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:11px;min-width:0}
+.rail-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;min-width:0}
+.rail-links::-webkit-scrollbar{display:none}
 .rail-links a{
   flex:none;scroll-snap-align:start;display:inline-flex;align-items:baseline;gap:8px;
   padding:8px 13px;border:1px solid transparent;white-space:nowrap;
@@ -126,157 +176,109 @@ img{max-width:100%;display:block}
 .rail .hint{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);white-space:nowrap}
 @media(max-width:900px){.rail .hint{display:none}.rail .wrap{padding-block:9px}}
 
-/* ══ FAMILY SECTIONS ══ */
-.fam{padding-block:clamp(52px,6vw,96px);border-bottom:1px solid var(--rule)}
+.fam{padding-block:clamp(52px,6.4vw,104px);border-bottom:1px solid var(--rule);scroll-margin-top:118px}
 .fam:nth-of-type(even){background:var(--paper-2)}
-.fam-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,64px);align-items:end}
+.fam-head{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,4vw,64px);align-items:end}
 .fam-no{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(2.4rem,5vw,4rem);line-height:1;letter-spacing:-.045em;color:var(--rule);margin-bottom:14px}
-.fam-head h2{margin-bottom:0}
 .fam-meta{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel);margin-top:16px}
 .fam-meta span{padding-right:18px;border-right:1px solid var(--rule)}
 .fam-meta span:last-child{border-right:0;padding-right:0}
 
-/* service rows, expandable */
-.svcs{margin-top:clamp(30px,3.6vw,52px);border-top:1px solid var(--rule)}
-.svc{border-bottom:1px solid var(--rule)}
-.svc-top{
-  display:grid;grid-template-columns:40px minmax(0,.95fr) minmax(0,1.35fr) 32px;
-  gap:clamp(12px,2.4vw,36px);align-items:baseline;width:100%;text-align:left;
-  padding:clamp(16px,2vw,24px) 0;transition:padding-left .45s var(--e)
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.6vw,52px)}
+.card{
+  --pad:clamp(20px,2.4vw,32px);
+  background:var(--white);padding:var(--pad);display:flex;flex-direction:column;gap:0;
+  min-height:100%;scroll-margin-top:118px;position:relative;
+  transition:background .4s var(--e)
 }
-.svc-top:hover{padding-left:10px}
-.svc-n{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;color:var(--steel);transition:color var(--t-fast)}
-.svc.open .svc-n{color:var(--blue)}
-.svc-name{font-family:var(--f-display);font-weight:700;font-size:clamp(1.08rem,1.65vw,1.35rem);letter-spacing:-.02em;line-height:1.2}
-.svc-desc{font-size:14.5px;line-height:1.55;color:var(--steel)}
-.svc-i{justify-self:end;position:relative;width:22px;height:22px;align-self:center}
-.svc-i:before,.svc-i:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .45s var(--e)}
-.svc-i:after{transform:rotate(90deg)}
-.svc.open .svc-i:after{transform:rotate(0)}
-.svc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--e)}
-.svc.open .svc-body{grid-template-rows:1fr}
-.svc-body>div{overflow:hidden}
-.svc-in{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,44px);
-  padding:0 0 clamp(22px,2.6vw,32px) calc(40px + clamp(12px,2.4vw,36px))
-}
-.svc-in h4{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:12px;font-weight:400}
-.svc-in ul{list-style:none;display:grid;gap:8px}
-.svc-in li{font-size:14px;line-height:1.5;color:var(--steel);display:grid;grid-template-columns:auto 1fr;gap:9px}
-.svc-in li:before{content:"·";color:var(--rule)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
+.card:hover{background:var(--paper)}
+.card.is-target{background:var(--paper);box-shadow:inset 3px 0 0 var(--fam)}
+.card-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.card-n{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+.card-kicker{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--fam)}
+.card h3{font-family:var(--f-display);font-weight:750;font-size:clamp(1.12rem,1.7vw,1.38rem);letter-spacing:-.022em;line-height:1.18;margin-bottom:10px}
+.card h3 a{background-image:linear-gradient(currentColor,currentColor);background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .45s var(--e)}
+.card:hover h3 a{background-size:100% 1px}
+.card .desc{font-size:14.8px;line-height:1.58;color:var(--steel);max-width:46ch;flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .chip{
   font-family:var(--f-mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;
   padding:4px 9px;border:1px solid var(--rule);color:var(--steel);
-  transition:border-color var(--t-fast),color var(--t-fast)
+  transition:border-color var(--t-fast),color var(--t-fast),background var(--t-fast)
 }
-.chip:hover{border-color:var(--ink);color:var(--ink)}
+a.chip:hover{border-color:var(--ink);color:var(--ink)}
 .chip.sol{border-color:var(--violet);color:var(--violet)}
-.chip.sol:hover{background:var(--violet);color:#fff}
+a.chip.sol:hover{background:var(--violet);color:#fff}
 .chip.proj{border-color:var(--green);color:var(--green)}
-.chip.proj:hover{background:var(--green);color:#fff}
-.chip.none{border-style:dashed;color:var(--steel-2)}
-.svc-go{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding-bottom:3px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
-.svc-go i{font-style:normal;transition:transform .42s var(--e)}
-.svc-go:hover i{transform:translateX(5px)}
+a.chip.proj:hover{background:var(--green);color:#fff}
+.card-go{
+  display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding-bottom:3px;border-bottom:1px solid currentColor;align-self:flex-start
+}
+.card-go i{font-style:normal;transition:transform .42s var(--e)}
+.card:hover .card-go i,.card-go:hover i{transform:translateX(5px)}
 @media(max-width:900px){
   .fam-head{grid-template-columns:1fr;gap:14px}
-  .svc-top{grid-template-columns:34px 1fr 28px;gap:8px 14px;align-items:start}
-  .svc-desc{grid-column:2;grid-row:2;padding-top:6px}
-  .svc-in{grid-template-columns:1fr;padding-left:0;gap:22px}
+  .cards{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .card{min-height:0}
 }
 
-/* ══ MATRIX ══ */
-.matrix{background:var(--ink);color:#DDE2E7}
-.matrix .wrap{padding-block:clamp(60px,7vw,116px)}
-.matrix .eyebrow{color:var(--ink-dim)}
-.matrix h2{color:#fff;margin-top:18px;max-width:22ch}
-.mx{width:100%;border-collapse:collapse;margin-top:clamp(30px,3.6vw,54px);font-family:var(--f-mono)}
-.mx th{
-  text-align:left;padding:10px 12px;font-weight:400;font-size:9.5px;letter-spacing:.13em;
-  text-transform:uppercase;color:#6B7885;border-bottom:1px solid var(--ink-line);vertical-align:bottom
-}
-.mx th.sol-h{text-align:center;color:var(--lilac);width:15%}
-.mx td{padding:9px 12px;border-bottom:1px solid #1A2027;font-size:12px;color:#B9C3CC;transition:background var(--t-fast)}
-.mx tr:hover td{background:var(--ink-2);color:#fff}
-.mx td.cell{text-align:center}
-.mx .dot{display:inline-block;width:7px;height:7px;background:var(--lilac);border-radius:50%}
-.mx .no{display:inline-block;width:7px;height:1px;background:#2C343C}
-.mx tr.orphan td:first-child{color:var(--amber)}
-.mx tr.orphan td:first-child:after{content:" ·  no solution link";font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#6B7885}
-.mx-note{margin-top:22px;font-size:13px;line-height:1.6;color:var(--ink-dim);max-width:76ch}
-/* mobile: matrix becomes stacked entries, no horizontal scroll */
-@media(max-width:820px){
-  .mx thead{display:none}
-  .mx,.mx tbody,.mx tr,.mx td{display:block;width:100%}
-  .mx tr{padding:12px 0;border-bottom:1px solid #1A2027}
-  .mx td{border:0;padding:0}
-  .mx td:first-child{color:#fff;font-size:13px;margin-bottom:8px}
-  .mx td.cell{display:inline-block;width:auto;margin:0 6px 0 0}
-  .mx td.cell .dot{width:auto;height:auto;background:none;border-radius:0}
-  .mx td.cell .dot:after{content:attr(data-l);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--lilac);border:1px solid var(--lilac);padding:3px 7px;display:inline-block}
-  .mx td.cell .no{display:none}
-}
+.map{background:var(--ink);color:#DDE2E7}
+.map .wrap{padding-block:clamp(64px,8vw,128px)}
+.map .eyebrow{color:var(--ink-dim)}
+.map h2{color:#fff;margin-top:18px;max-width:22ch}
+.map .lede{color:#8C98A4}
+.markets{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink-line);border:1px solid var(--ink-line);margin-top:clamp(28px,3.6vw,52px)}
+.market{background:var(--ink-2);padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;gap:14px;min-height:100%;transition:background .4s var(--e)}
+.market:hover{background:#1A2027}
+.market .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--lilac)}
+.market b{display:block;font-family:var(--f-display);font-weight:750;font-size:1.12rem;letter-spacing:-.02em;color:#fff}
+.market ul{list-style:none;display:grid;gap:8px}
+.market li a{font-size:13.5px;line-height:1.4;color:#B9C3CC;border-bottom:1px solid transparent;transition:color var(--t-fast),border-color var(--t-fast)}
+.market li a:hover{color:#fff;border-color:#fff}
+.map-note{margin-top:22px;font-size:13.5px;line-height:1.6;color:var(--ink-dim);max-width:72ch}
+@media(max-width:1000px){.markets{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.markets{grid-template-columns:1fr}}
 
-/* ══ PROOF MAP ══ */
 .proofmap{padding-block:clamp(64px,7.5vw,124px)}
 .pm{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.4vw,50px)}
-.pm > a{background:var(--paper);padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-height:180px;transition:background var(--t-fast) var(--e)}
+.pm > a{background:var(--paper);padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-height:196px;transition:background var(--t-fast) var(--e),transform .5s var(--e)}
 .pm > a:hover{background:var(--white)}
 .pm .k{font-family:var(--f-mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--green)}
-.pm b{display:block;font-family:var(--f-display);font-weight:700;font-size:1.02rem;letter-spacing:-.02em;margin-top:10px}
-.pm p{font-size:13px;line-height:1.5;color:var(--steel);margin-top:8px}
+.pm b{display:block;font-family:var(--f-display);font-weight:700;font-size:1.08rem;letter-spacing:-.02em;margin-top:10px}
+.pm p{font-size:13.5px;line-height:1.5;color:var(--steel);margin-top:8px;max-width:28ch}
 .pm .caps{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2)}
+.pm > a:hover .caps{color:var(--ink)}
 @media(max-width:1000px){.pm{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.pm{grid-template-columns:1fr}.pm > a{min-height:0}}
 
-/* ══ START HERE ══ */
 .start{background:var(--paper-2);border-block:1px solid var(--rule)}
 .start .wrap{padding-block:clamp(56px,6.5vw,104px)}
 .paths{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.4vw,48px)}
-.path{background:var(--white);border:1px solid var(--rule);padding:clamp(20px,2.4vw,30px);transition:transform .5s var(--e),box-shadow .5s var(--e),border-color .4s}
+.path{background:var(--white);border:1px solid var(--rule);padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;transition:transform .5s var(--e),box-shadow .5s var(--e),border-color .4s}
 .path:hover{transform:translate3d(0,-5px,0);box-shadow:0 26px 54px -40px rgba(14,18,22,.45);border-color:var(--ink)}
 .path .k{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
-.path h3{font-family:var(--f-display);font-weight:700;font-size:1.12rem;letter-spacing:-.02em;margin-bottom:10px}
-.path .chips{margin-top:16px}
-@media(max-width:860px){.paths{grid-template-columns:1fr}}
+.path h3{font-family:var(--f-display);font-weight:700;font-size:1.12rem;letter-spacing:-.02em;margin-bottom:10px;line-height:1.28}
+.path .chips{margin-top:auto;padding-top:16px}
+@media(max-width:860px){.paths{grid-template-columns:1fr}.path:hover{transform:none}}
 
-.sect{padding-block:clamp(70px,8vw,132px)}
-.sect--tight{padding-block:clamp(52px,6vw,92px)}
-
-/* ══ CTA + footer ══ */
-.cta-band{background:var(--ink);color:#DDE2E7}
-.cta-band .wrap{padding-block:clamp(70px,8.5vw,132px)}
-.cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:24px;max-width:17ch}
-.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(30px,3.6vw,50px)}
-.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
-.assur i{font-style:normal;color:var(--lilac);margin-right:7px}
-footer{background:var(--ink);color:var(--ink-dim);border-top:1px solid var(--ink-line)}
-footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
-.fgrid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:clamp(24px,3vw,40px)}
-.fgrid h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#5C6670;font-weight:400;margin-bottom:16px}
-.fgrid a{display:inline-block;padding:5px 0;font-size:14.5px;color:#C4CCD4;transition:color var(--t-fast),transform .4s var(--e)}
-.fgrid a:hover{color:#fff;transform:translateX(4px)}
-.fgrid ul{list-style:none}
-.fbase{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-top:22px;margin-top:clamp(30px,4vw,56px);border-top:1px solid var(--ink-line);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase}
-@media(max-width:820px){.fgrid{grid-template-columns:1fr 1fr}}
-
-@media (prefers-reduced-motion:reduce){
-  html:focus-within{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:1ms!important;transition-duration:1ms!important;transition-delay:0ms!important}
-  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
-  .mask span i{transform:none!important}
-}
+.faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:820px}
+.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
+.faq details[open]{border-color:var(--ink)}
+.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker,.faq summary::marker{display:none;content:""}
+.faq summary:after{content:"+";font-family:var(--f-mono);font-size:14px;color:var(--steel);flex:none}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:62ch}
 </style>
-<link rel="stylesheet" href="/shared/slot-assets.css">
-
-<link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="nav-shell">
@@ -406,7 +408,6 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 
 <main id="main">
 
-<!-- ═══════════ HERO ═══════════ -->
 <header class="hero">
   <div class="wrap">
     <ol class="crumbs" data-r>
@@ -414,42 +415,69 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
     </ol>
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" data-r>Services</p>
+        <p class="eyebrow" data-r>Capabilities · one team</p>
         <h1 class="d1 mask" data-mask>
           <span><i>Design and engineering</i></span>
           <span><i>without the handoff tax.</i></span>
         </h1>
-        <p class="lede" data-r>UI/UX and product design, web and mobile development, SaaS platforms, API integrations, and workflow automation, one accountable team across the lifecycle.</p>
+        <p class="lede" data-r>Seventeen capabilities across product, platforms, integrations, and brand, delivered by one in-house team from discovery through launch. Start from the problem, not a menu.</p>
+        <div class="hero-tags" data-r>
+          <span class="tag">In-house design + engineering</span>
+          <span class="tag">Weekly demos</span>
+          <span class="tag">Clear gates</span>
+          <span class="tag">NDA on request</span>
+        </div>
         <div class="hero-actions" data-r>
           <a href="/contact#brief" class="btn"><span>Send a project brief</span><i>→</i></a>
           <a href="/contact#book" class="btn ghost"><span>Book a 20-minute fit call</span><i>→</i></a>
         </div>
       </div>
-      <div class="ledger" data-s>
-        <div><span>Capabilities</span><b class="num">17</b></div>
-        <div><span>Families</span><b class="num">04</b></div>
-        <div><span>Solution areas served</span><b class="num">04</b></div>
-        <div><span>Published case studies</span><b class="num">08</b></div>
+      <div data-r>
+        <nav class="stack" aria-label="Capability families">
+          <div class="stack-bar">
+            <span><b>KRIVA</b> · Capability stack</span>
+            <span class="stack-live"><i></i>Jump to a family</span>
+          </div>
+          <a href="#product-ux">
+            <span class="n num">01</span>
+            <span><strong>Product &amp; UX</strong><em>Research, flows, prototypes, design systems</em></span>
+            <span class="go">→</span>
+          </a>
+          <a href="#platforms">
+            <span class="n num">02</span>
+            <span><strong>Platforms &amp; Apps</strong><em>SaaS, CRM, dashboards, web and mobile</em></span>
+            <span class="go">→</span>
+          </a>
+          <a href="#integrations">
+            <span class="n num">03</span>
+            <span><strong>Integrations &amp; Automation</strong><em>APIs, workflows, AI with review gates</em></span>
+            <span class="go">→</span>
+          </a>
+          <a href="#brand">
+            <span class="n num">04</span>
+            <span><strong>Brand &amp; Web</strong><em>Marketing sites, identity, marks</em></span>
+            <span class="go">→</span>
+          </a>
+        </nav>
+        <p class="stack-note">Most engagements combine two or three capabilities. You do not pick from all seventeen.</p>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ═══════════ FAMILY RAIL ═══════════ -->
 <nav class="rail" id="rail" aria-label="Capability families">
   <div class="wrap">
     <div class="rail-links" id="railLinks">
       <a href="#product-ux"><u>01</u> Product &amp; UX</a>
       <a href="#platforms"><u>02</u> Platforms &amp; Apps</a>
-      <a href="#integrations"><u>03</u> Integrations &amp; Automation</a>
+      <a href="#integrations"><u>03</u> Integrations</a>
       <a href="#brand"><u>04</u> Brand &amp; Web</a>
     </div>
-    <p class="hint">Expand any capability for problems, deliverables and proof</p>
+    <p class="hint">Open any card for the full service page</p>
   </div>
 </nav>
 
-<!-- ═══════════ FAMILY 01 · PRODUCT & UX ═══════════ -->
-<section class="fam" id="product-ux" aria-labelledby="f1H">
+<section class="fam" id="product-ux" aria-labelledby="f1H" style="--fam:var(--blue)">
   <div class="wrap">
     <div class="fam-head">
       <div>
@@ -458,193 +486,100 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       </div>
       <div data-r>
         <p class="body">Research, flows, prototypes, and the systems that keep interfaces coherent as the product grows. This is where an engagement usually starts.</p>
-        <p class="fam-meta"><span>5 capabilities</span><span>Serves SaaS · Trucking</span><span>Proof: PayrollPro, FleetFlow</span></p>
+        <p class="fam-meta"><span>5 capabilities</span><span>SaaS · Trucking</span><span>PayrollPro · FleetFlow</span></p>
       </div>
     </div>
 
-    <div class="svcs" data-r>
-      <!-- Product Design -->
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s1">
-          <span class="svc-n num">01</span>
-          <span class="svc-name">Product Design</span>
-          <span class="svc-desc">Full product design for SaaS, dashboards, and digital platforms, from concept through to launch-ready UI.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s1"><div><div class="svc-in">
-          <div>
-            <h4>Problems we help solve</h4>
-            <ul>
-              <li>Product vision exists but UI execution lags</li>
-              <li>Stakeholders disagree on priorities without a shared prototype</li>
-              <li>Dashboards and settings feel like an afterthought</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Deliverables</h4>
-            <ul>
-              <li>Product UX map</li>
-              <li>Core user flows + edge cases</li>
-              <li>Design system foundations</li>
-              <li>Launch-ready UI screens</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/fleetflow-dispatch">FleetFlow</a>
-              <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/saas">SaaS</a>
-            </div>
-            <a class="svc-go" href="/services/product-design">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+    <div class="cards" data-s>
+      <article class="card" id="product-design">
+        <div class="card-top"><span class="card-n num">01</span></div>
+        <h3><a href="/services/product-design">Product Design</a></h3>
+        <p class="desc">Full product design for SaaS, dashboards, and digital platforms, from concept through to launch-ready UI.</p>
+        <div class="chips">
+          <span class="chip">Vision to UI</span>
+          <span class="chip">Core flows</span>
+          <span class="chip">Launch screens</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/fleetflow-dispatch">FleetFlow</a>
+          <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+        </div>
+        <a class="card-go" href="/services/product-design">View service <i>→</i></a>
+      </article>
 
-      <!-- UI/UX Design -->
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s2">
-          <span class="svc-n num">02</span>
-          <span class="svc-name">UI/UX Design</span>
-          <span class="svc-desc">Research-led flows, prototypes, and interface systems that stay intuitive as products grow.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s2"><div><div class="svc-in">
-          <div>
-            <h4>Problems we help solve</h4>
-            <ul>
-              <li>New features make the product feel inconsistent</li>
-              <li>Users drop off in complex workflows</li>
-              <li>Design handoffs slow engineering down</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Deliverables</h4>
-            <ul>
-              <li>User research summary</li>
-              <li>Information architecture map</li>
-              <li>Interactive Figma prototype</li>
-              <li>UI kit with component specs</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
-              <a class="chip proj" href="/work/healthtrack-mobile">HealthTrack</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/saas">SaaS</a>
-            </div>
-            <a class="svc-go" href="/services/ui-ux-design">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="ui-ux-design">
+        <div class="card-top"><span class="card-n num">02</span></div>
+        <h3><a href="/services/ui-ux-design">UI/UX Design</a></h3>
+        <p class="desc">Research-led flows, prototypes, and interface systems that stay intuitive as products grow, with handoffs engineering can ship against.</p>
+        <div class="chips">
+          <span class="chip">Complex workflows</span>
+          <span class="chip">IA + prototypes</span>
+          <span class="chip">UI kits</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
+          <a class="chip proj" href="/work/healthtrack-mobile">HealthTrack</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+        </div>
+        <a class="card-go" href="/services/ui-ux-design">View service <i>→</i></a>
+      </article>
 
-      <!-- UX Research -->
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s3">
-          <span class="svc-n num">03</span>
-          <span class="svc-name">UX Research</span>
-          <span class="svc-desc">Interviews, usability tests, and journey mapping that turn assumptions into clear product decisions.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s3"><div><div class="svc-in">
-          <div>
-            <h4>Where it shows up</h4>
-            <ul>
-              <li>Shadow sessions with ops teams before a dispatch rebuild</li>
-              <li>Journey mapping across customer, carrier, and ops</li>
-              <li>Activation research before an onboarding change</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Typically bundled with</h4>
-            <div class="chips">
-              <a class="chip" href="/services/product-design">Product Design</a>
-              <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
-              <a class="chip" href="/services/wireframing-prototyping">Prototyping</a>
-            </div>
-          </div>
-          <div>
-            <h4>Proof &amp; solutions</h4>
-            <div class="chips"><span class="chip none">No direct solution link</span></div>
-            <a class="svc-go" href="/services/ux-research">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="ux-research">
+        <div class="card-top"><span class="card-n num">03</span><span class="card-kicker">Usually bundled</span></div>
+        <h3><a href="/services/ux-research">UX Research</a></h3>
+        <p class="desc">Interviews, usability tests, and journey mapping that turn assumptions into clear product decisions before UI is locked.</p>
+        <div class="chips">
+          <span class="chip">Ops shadowing</span>
+          <span class="chip">Journey maps</span>
+          <span class="chip">Activation research</span>
+        </div>
+        <div class="chips">
+          <a class="chip" href="/services/product-design">Product Design</a>
+          <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+        </div>
+        <a class="card-go" href="/services/ux-research">View service <i>→</i></a>
+      </article>
 
-      <!-- Wireframing -->
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s4">
-          <span class="svc-n num">04</span>
-          <span class="svc-name">Wireframing &amp; Prototyping</span>
-          <span class="svc-desc">Low- and high-fidelity prototypes that align stakeholders and de-risk development before code starts.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s4"><div><div class="svc-in">
-          <div>
-            <h4>Where it shows up</h4>
-            <ul>
-              <li>Clickable prototype reviewed before production code</li>
-              <li>Stakeholder alignment ahead of an MVP build</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Typically bundled with</h4>
-            <div class="chips">
-              <a class="chip" href="/services/ux-research">UX Research</a>
-              <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
-            </div>
-          </div>
-          <div>
-            <h4>Proof &amp; solutions</h4>
-            <div class="chips"><span class="chip none">No direct solution link</span></div>
-            <a class="svc-go" href="/services/wireframing-prototyping">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="wireframing-prototyping">
+        <div class="card-top"><span class="card-n num">04</span><span class="card-kicker">Usually bundled</span></div>
+        <h3><a href="/services/wireframing-prototyping">Wireframing &amp; Prototyping</a></h3>
+        <p class="desc">Low- and high-fidelity prototypes that align stakeholders and de-risk development before production code starts.</p>
+        <div class="chips">
+          <span class="chip">Clickable prototypes</span>
+          <span class="chip">Stakeholder alignment</span>
+          <span class="chip">MVP de-risk</span>
+        </div>
+        <div class="chips">
+          <a class="chip" href="/services/ux-research">UX Research</a>
+          <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+        </div>
+        <a class="card-go" href="/services/wireframing-prototyping">View service <i>→</i></a>
+      </article>
 
-      <!-- Design Systems -->
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s5">
-          <span class="svc-n num">05</span>
-          <span class="svc-name">Design Systems</span>
-          <span class="svc-desc">Scalable component libraries, tokens, and documentation that keep product teams shipping consistent UI.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s5"><div><div class="svc-in">
-          <div>
-            <h4>Where it shows up</h4>
-            <ul>
-              <li>Design tokens and component libraries that survive rapid feature growth</li>
-              <li>Documented Figma libraries handed to your team at close</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Typically bundled with</h4>
-            <div class="chips">
-              <a class="chip" href="/services/saas-platforms">SaaS Product Design</a>
-              <a class="chip" href="/services/product-design">Product Design</a>
-            </div>
-          </div>
-          <div>
-            <h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip sol" href="/solutions/saas">SaaS</a>
-            </div>
-            <a class="svc-go" href="/services/design-systems">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="design-systems">
+        <div class="card-top"><span class="card-n num">05</span><span class="card-kicker">Usually bundled</span></div>
+        <h3><a href="/services/design-systems">Design Systems</a></h3>
+        <p class="desc">Scalable component libraries, tokens, and documentation that keep product teams shipping consistent UI as features accumulate.</p>
+        <div class="chips">
+          <span class="chip">Tokens</span>
+          <span class="chip">Component libraries</span>
+          <span class="chip">Team handoff</span>
+        </div>
+        <div class="chips">
+          <a class="chip" href="/services/saas-platforms">SaaS Product Design</a>
+          <a class="chip" href="/services/product-design">Product Design</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+        </div>
+        <a class="card-go" href="/services/design-systems">View service <i>→</i></a>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FAMILY 02 · PLATFORMS & APPS ═══════════ -->
-<section class="fam" id="platforms" aria-labelledby="f2H">
+<section class="fam" id="platforms" aria-labelledby="f2H" style="--fam:var(--amber)">
   <div class="wrap">
     <div class="fam-head">
       <div>
@@ -652,164 +587,106 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <h2 class="d2" id="f2H" data-r>Platforms &amp; Applications</h2>
       </div>
       <div data-r>
-        <p class="body">The products themselves, multi-tenant SaaS, operational consoles, data-heavy interfaces, and the mobile tools that go with them. This family carries the most case-study proof.</p>
-        <p class="fam-meta"><span>5 capabilities</span><span>Serves all 4 solutions</span><span>Proof: FleetFlow, CRMPulse, HealthTrack</span></p>
+        <p class="body">The products themselves: multi-tenant SaaS, operational consoles, data-heavy interfaces, and the mobile tools that go with them. This family carries the most published proof.</p>
+        <p class="fam-meta"><span>5 capabilities</span><span>All four solution areas</span><span>FleetFlow · CRMPulse · HealthTrack</span></p>
       </div>
     </div>
 
-    <div class="svcs" data-r>
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s6">
-          <span class="svc-n num">06</span>
-          <span class="svc-name">SaaS Product Design</span>
-          <span class="svc-desc">Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s6"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>Tenant-aware admin panels and permission models</li>
-            <li>Transportation SaaS and TMS-style multi-tenant products</li>
-          </ul></div>
-          <div><h4>Typically bundled with</h4><div class="chips">
-            <a class="chip" href="/services/design-systems">Design Systems</a>
-            <a class="chip" href="/services/dashboard-design">Dashboard Design</a>
-          </div></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
-              <a class="chip proj" href="/work/crm-pulse-dashboard">CRMPulse</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/saas">SaaS</a>
-              <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-            </div>
-            <a class="svc-go" href="/services/saas-platforms">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+    <div class="cards" data-s>
+      <article class="card" id="saas-platforms">
+        <div class="card-top"><span class="card-n num">06</span></div>
+        <h3><a href="/services/saas-platforms">SaaS Product Design</a></h3>
+        <p class="desc">Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems that stay coherent as tenants grow.</p>
+        <div class="chips">
+          <span class="chip">Tenant UX</span>
+          <span class="chip">Permissions</span>
+          <span class="chip">Admin + customer</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
+          <a class="chip proj" href="/work/crm-pulse-dashboard">CRMPulse</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
+        </div>
+        <a class="card-go" href="/services/saas-platforms">View service <i>→</i></a>
+      </article>
 
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s7">
-          <span class="svc-n num">07</span>
-          <span class="svc-name">CRM Design</span>
-          <span class="svc-desc">Sales pipelines, reporting views, and operational dashboards teams actually trust day to day.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s7"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>Dispatch CRM and TMS consoles for trucking ops</li>
-            <li>Carrier assignment tooling for auto transport</li>
-            <li>Reconciliation operator views for finance teams</li>
-          </ul></div>
-          <div><h4>How it differs</h4><ul>
-            <li>CRM Design owns stage models, pipeline UX, and CRM-platform fit. Dashboard Design owns scanability and widget hierarchy for analytics views.</li>
-          </ul></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/fleetflow-dispatch">FleetFlow</a>
-              <a class="chip proj" href="/work/crm-pulse-dashboard">CRMPulse</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-              <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
-              <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-            </div>
-            <a class="svc-go" href="/services/crm-development">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="crm-development">
+        <div class="card-top"><span class="card-n num">07</span></div>
+        <h3><a href="/services/crm-development">CRM Design</a></h3>
+        <p class="desc">Sales pipelines, reporting views, and operational dashboards teams actually trust day to day, including dispatch CRM and TMS consoles.</p>
+        <div class="chips">
+          <span class="chip">Pipeline UX</span>
+          <span class="chip">Dispatch consoles</span>
+          <span class="chip">Desk-matched</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/fleetflow-dispatch">FleetFlow</a>
+          <a class="chip proj" href="/work/crm-pulse-dashboard">CRMPulse</a>
+          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
+          <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
+          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
+        </div>
+        <a class="card-go" href="/services/crm-development">View service <i>→</i></a>
+      </article>
 
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s8">
-          <span class="svc-n num">08</span>
-          <span class="svc-name">Dashboard Design</span>
-          <span class="svc-desc">Analytics, admin, and operational dashboards designed for clarity, scanability, and daily use.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s8"><div><div class="svc-in">
-          <div><h4>Problems we help solve</h4><ul>
-            <li>Metrics are available but hard to scan quickly</li>
-            <li>Dashboards become cluttered as requests accumulate</li>
-            <li>Teams export to spreadsheets because UI isn't trusted</li>
-          </ul></div>
-          <div><h4>Deliverables</h4><ul>
-            <li>Dashboard IA and widget hierarchy</li>
-            <li>Chart and table UI patterns</li>
-            <li>Filter, date-range, and drill-down flows</li>
-            <li>Dark/light theme-ready visual system</li>
-          </ul></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/fleetflow-dispatch">FleetFlow</a>
-              <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-              <a class="chip sol" href="/solutions/saas">SaaS</a>
-              <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
-            </div>
-            <a class="svc-go" href="/services/dashboard-design">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="dashboard-design">
+        <div class="card-top"><span class="card-n num">08</span></div>
+        <h3><a href="/services/dashboard-design">Dashboard Design</a></h3>
+        <p class="desc">Analytics, admin, and operational dashboards designed for clarity, scanability, and daily use, not another spreadsheet export.</p>
+        <div class="chips">
+          <span class="chip">Widget hierarchy</span>
+          <span class="chip">Filters + drill-down</span>
+          <span class="chip">Exception views</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/fleetflow-dispatch">FleetFlow</a>
+          <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
+          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+          <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
+        </div>
+        <a class="card-go" href="/services/dashboard-design">View service <i>→</i></a>
+      </article>
 
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s9">
-          <span class="svc-n num">09</span>
-          <span class="svc-name">Web Application Design</span>
-          <span class="svc-desc">Complex web app UX for authenticated products, multi-step flows, and data-heavy interfaces.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s9"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>Quote-to-payment booking portals</li>
-            <li>Authenticated operator tooling</li>
-          </ul></div>
-          <div><h4>Typically bundled with</h4><div class="chips">
-            <a class="chip" href="/services/saas-platforms">SaaS Product Design</a>
-            <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
-          </div></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips"><span class="chip none">No direct solution link</span></div>
-            <a class="svc-go" href="/services/web-application-design">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="web-application-design">
+        <div class="card-top"><span class="card-n num">09</span></div>
+        <h3><a href="/services/web-application-design">Web Application Design</a></h3>
+        <p class="desc">Complex web app UX for authenticated products, multi-step flows, and data-heavy interfaces, from quote-to-payment portals to operator tooling.</p>
+        <div class="chips">
+          <span class="chip">Authenticated UX</span>
+          <span class="chip">Multi-step flows</span>
+          <span class="chip">Data-heavy UI</span>
+        </div>
+        <div class="chips">
+          <a class="chip" href="/services/saas-platforms">SaaS Product Design</a>
+          <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
+          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
+        </div>
+        <a class="card-go" href="/services/web-application-design">View service <i>→</i></a>
+      </article>
 
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s10">
-          <span class="svc-n num">10</span>
-          <span class="svc-name">Mobile App Design</span>
-          <span class="svc-desc">Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s10"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>Driver apps for load acceptance and document capture</li>
-            <li>Patient-facing iOS and Android UX</li>
-          </ul></div>
-          <div><h4>Typically bundled with</h4><div class="chips">
-            <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
-            <a class="chip" href="/services/ux-research">UX Research</a>
-          </div></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/healthtrack-mobile">HealthTrack</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-              <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-            </div>
-            <a class="svc-go" href="/services/mobile-applications">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="mobile-applications">
+        <div class="card-top"><span class="card-n num">10</span></div>
+        <h3><a href="/services/mobile-applications">Mobile App Design</a></h3>
+        <p class="desc">Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention, including driver and patient-facing apps.</p>
+        <div class="chips">
+          <span class="chip">iOS + Android</span>
+          <span class="chip">Onboarding</span>
+          <span class="chip">Field capture</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/healthtrack-mobile">HealthTrack</a>
+          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
+          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
+        </div>
+        <a class="card-go" href="/services/mobile-applications">View service <i>→</i></a>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FAMILY 03 · INTEGRATIONS & AUTOMATION ═══════════ -->
-<section class="fam" id="integrations" aria-labelledby="f3H">
+<section class="fam" id="integrations" aria-labelledby="f3H" style="--fam:var(--green)">
   <div class="wrap">
     <div class="fam-head">
       <div>
@@ -817,130 +694,85 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <h2 class="d2" id="f3H" data-r>Integrations &amp; Automation</h2>
       </div>
       <div data-r>
-        <p class="body">Connectors, sync reliability, and the automation that removes repetitive work while keeping a person in the loop. Underpins the accounting solution entirely.</p>
-        <p class="fam-meta"><span>4 capabilities</span><span>Serves Accounting · SaaS · Trucking</span><span>Proof: FinanceSync, SupportAI</span></p>
+        <p class="body">Connectors, sync reliability, and the automation that removes repetitive work while keeping a person in the loop. This family underpins finance close and ops triage.</p>
+        <p class="fam-meta"><span>4 capabilities</span><span>Accounting · SaaS · Trucking</span><span>FinanceSync · SupportAI</span></p>
       </div>
     </div>
 
-    <div class="svcs" data-r>
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s11">
-          <span class="svc-n num">11</span>
-          <span class="svc-name">Integrations &amp; APIs</span>
-          <span class="svc-desc">Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling and monitoring.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s11"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>QuickBooks Online and Xero sync with idempotency and audit trails</li>
-            <li>Connections into an existing TMS or CRM</li>
-          </ul></div>
-          <div><h4>Typically bundled with</h4><div class="chips">
-            <a class="chip" href="/services/dashboard-design">Dashboard Design</a>
-            <a class="chip" href="/services/automation-systems">Automation Workflows</a>
-          </div></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/finance-sync-hub">FinanceSync</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
-              <a class="chip sol" href="/solutions/saas">SaaS</a>
-              <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-            </div>
-            <a class="svc-go" href="/services/api-integrations">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+    <div class="cards" data-s>
+      <article class="card" id="api-integrations">
+        <div class="card-top"><span class="card-n num">11</span></div>
+        <h3><a href="/services/api-integrations">Integrations &amp; APIs</a></h3>
+        <p class="desc">Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling, idempotency, and monitoring.</p>
+        <div class="chips">
+          <span class="chip">QuickBooks / Xero</span>
+          <span class="chip">Audit trails</span>
+          <span class="chip">Exception handling</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/finance-sync-hub">FinanceSync</a>
+          <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
+        </div>
+        <a class="card-go" href="/services/api-integrations">View service <i>→</i></a>
+      </article>
 
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s12">
-          <span class="svc-n num">12</span>
-          <span class="svc-name">Automation Workflows</span>
-          <span class="svc-desc">Make, Zapier, and custom automations that remove repetitive work while keeping humans in control.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s12"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>Status updates, invoicing triggers, and CRM follow-ups</li>
-            <li>Ticket triage with human review before production</li>
-          </ul></div>
-          <div><h4>Typically bundled with</h4><div class="chips">
-            <a class="chip" href="/services/api-integrations">Integrations &amp; APIs</a>
-            <a class="chip" href="/services/ai-assisted-development">AI-Assisted Development</a>
-          </div></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/ai-support-automation">SupportAI</a>
-              <a class="chip proj" href="/work/finance-sync-hub">FinanceSync</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
-              <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-            </div>
-            <a class="svc-go" href="/services/automation-systems">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="automation-systems">
+        <div class="card-top"><span class="card-n num">12</span></div>
+        <h3><a href="/services/automation-systems">Automation Workflows</a></h3>
+        <p class="desc">Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of anything that reaches a customer or the ledger.</p>
+        <div class="chips">
+          <span class="chip">Human-gated</span>
+          <span class="chip">Ticket triage</span>
+          <span class="chip">Invoicing triggers</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/ai-support-automation">SupportAI</a>
+          <a class="chip proj" href="/work/finance-sync-hub">FinanceSync</a>
+          <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
+          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
+        </div>
+        <a class="card-go" href="/services/automation-systems">View service <i>→</i></a>
+      </article>
 
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s13">
-          <span class="svc-n num">13</span>
-          <span class="svc-name">AI-Assisted Product Development</span>
-          <span class="svc-desc">Ship faster with AI-augmented design, development, and QA. We use Claude, GPT, Copilot, and modern toolchains with human oversight at every step.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s13"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>AI embedded into product UX with review gates</li>
-            <li>Ticket triage and document processing</li>
-            <li>Audit-friendly delivery processes</li>
-          </ul></div>
-          <div><h4>Typically bundled with</h4><div class="chips">
-            <a class="chip" href="/services/automation-systems">Automation Workflows</a>
-          </div></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/ai-support-automation">SupportAI</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/saas">SaaS</a>
-            </div>
-            <a class="svc-go" href="/services/ai-assisted-development">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="ai-assisted-development">
+        <div class="card-top"><span class="card-n num">13</span></div>
+        <h3><a href="/services/ai-assisted-development">AI-Assisted Product Development</a></h3>
+        <p class="desc">Ship faster with AI-augmented design, development, and QA. Claude, GPT, Copilot, and modern toolchains with human oversight at every step.</p>
+        <div class="chips">
+          <span class="chip">Review gates</span>
+          <span class="chip">Document processing</span>
+          <span class="chip">Human oversight</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/ai-support-automation">SupportAI</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+        </div>
+        <a class="card-go" href="/services/ai-assisted-development">View service <i>→</i></a>
+      </article>
 
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s14">
-          <span class="svc-n num">14</span>
-          <span class="svc-name">No-Code / Low-Code Solutions</span>
-          <span class="svc-desc">Webflow, Bubble, Framer, and Make-powered MVPs and internal tools without months of custom build time.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s14"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>Marketplace MVPs validated before a custom build</li>
-            <li>Internal tools that don't justify custom engineering</li>
-          </ul></div>
-          <div><h4>Typically bundled with</h4><div class="chips">
-            <a class="chip" href="/services/automation-systems">Automation Workflows</a>
-          </div></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/marketplace-mvp">LocalServe</a>
-            </div>
-            <div class="chips" style="margin-top:8px"><span class="chip none">No direct solution link</span></div>
-            <a class="svc-go" href="/services/no-code-low-code">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="no-code-low-code">
+        <div class="card-top"><span class="card-n num">14</span></div>
+        <h3><a href="/services/no-code-low-code">No-Code / Low-Code Solutions</a></h3>
+        <p class="desc">Webflow, Bubble, Framer, and Make-powered MVPs and internal tools when a custom build is not the first honest move.</p>
+        <div class="chips">
+          <span class="chip">Marketplace MVPs</span>
+          <span class="chip">Internal tools</span>
+          <span class="chip">Validate before custom</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/marketplace-mvp">LocalServe</a>
+          <a class="chip" href="/services/automation-systems">Automation</a>
+          <a class="chip sol" href="/solutions/saas">SaaS</a>
+        </div>
+        <a class="card-go" href="/services/no-code-low-code">View service <i>→</i></a>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FAMILY 04 · BRAND & WEB ═══════════ -->
-<section class="fam" id="brand" aria-labelledby="f4H">
+<section class="fam" id="brand" aria-labelledby="f4H" style="--fam:var(--violet)">
   <div class="wrap">
     <div class="fam-head">
       <div>
@@ -948,135 +780,135 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <h2 class="d2" id="f4H" data-r>Brand &amp; Web</h2>
       </div>
       <div data-r>
-        <p class="body">Identity and marketing surfaces. The supporting family, it wins fewer engagements on its own, but carries the credibility the product work is sold against.</p>
-        <p class="fam-meta"><span>3 capabilities</span><span>Serves Trucking · Car transport</span><span>Proof: BrandLift</span></p>
+        <p class="body">Identity and marketing surfaces that match how the product should feel: conversion-focused sites, brand systems, and marks that carry the work into the market.</p>
+        <p class="fam-meta"><span>3 capabilities</span><span>Trucking · Car transport</span><span>BrandLift</span></p>
       </div>
     </div>
 
-    <div class="svcs" data-r>
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s15">
-          <span class="svc-n num">15</span>
-          <span class="svc-name">Web Design &amp; Development</span>
-          <span class="svc-desc">Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s15"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>Conversion-focused sites for carriers, brokers, and logistics brands</li>
-            <li>Booking portals that need to rank and convert</li>
-          </ul></div>
-          <div><h4>Typically bundled with</h4><div class="chips">
-            <a class="chip" href="/services/branding">Branding</a>
-            <a class="chip" href="/services/web-application-design">Web App Design</a>
-          </div></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/brandlift-ecommerce">BrandLift</a>
-            </div>
-            <div class="chips" style="margin-top:8px">
-              <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-              <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-            </div>
-            <a class="svc-go" href="/services/web-development">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+    <div class="cards" data-s>
+      <article class="card" id="web-development">
+        <div class="card-top"><span class="card-n num">15</span></div>
+        <h3><a href="/services/web-development">Web Design &amp; Development</a></h3>
+        <p class="desc">Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations that convert as well as they rank.</p>
+        <div class="chips">
+          <span class="chip">Marketing sites</span>
+          <span class="chip">CMS</span>
+          <span class="chip">SEO foundations</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/brandlift-ecommerce">BrandLift</a>
+          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
+          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
+        </div>
+        <a class="card-go" href="/services/web-development">View service <i>→</i></a>
+      </article>
 
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s16">
-          <span class="svc-n num">16</span>
-          <span class="svc-name">Branding &amp; Graphic Design</span>
-          <span class="svc-desc">Brand identity, visual systems, and marketing assets that match how the product should feel, without chasing trends.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s16"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>Brand systems for trucking and freight companies</li>
-            <li>Positioning-ready identity for enterprise sales</li>
-          </ul></div>
-          <div><h4>Naming conflict flagged</h4><ul>
-            <li>Listed as "Branding &amp; Graphic Design" here and "Branding &amp; Identity" in the main navigation</li>
-          </ul></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips">
-              <a class="chip proj" href="/work/brandlift-ecommerce">BrandLift</a>
-            </div>
-            <div class="chips" style="margin-top:8px"><span class="chip none">No direct solution link</span></div>
-            <a class="svc-go" href="/services/branding">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="branding">
+        <div class="card-top"><span class="card-n num">16</span></div>
+        <h3><a href="/services/branding">Branding &amp; Graphic Design</a></h3>
+        <p class="desc">Brand identity, visual systems, and marketing assets that match how the product should feel, without chasing trends.</p>
+        <div class="chips">
+          <span class="chip">Identity systems</span>
+          <span class="chip">Visual language</span>
+          <span class="chip">Product-matched</span>
+        </div>
+        <div class="chips">
+          <a class="chip proj" href="/work/brandlift-ecommerce">BrandLift</a>
+          <a class="chip" href="/services/web-development">Web Design</a>
+          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
+        </div>
+        <a class="card-go" href="/services/branding">View service <i>→</i></a>
+      </article>
 
-      <div class="svc">
-        <button type="button" class="svc-top" aria-expanded="false" aria-controls="s17">
-          <span class="svc-n num">17</span>
-          <span class="svc-name">Logo Design</span>
-          <span class="svc-desc">Distinctive marks and logo systems that work across digital, print, and social touchpoints.</span>
-          <span class="svc-i" aria-hidden="true"></span>
-        </button>
-        <div class="svc-body" id="s17"><div><div class="svc-in">
-          <div><h4>Where it shows up</h4><ul>
-            <li>Delivered as part of a brand system rather than in isolation</li>
-          </ul></div>
-          <div><h4>Typically bundled with</h4><div class="chips">
-            <a class="chip" href="/services/branding">Branding &amp; Graphic Design</a>
-          </div></div>
-          <div><h4>Proof &amp; solutions</h4>
-            <div class="chips"><span class="chip none">No solution link · no case study</span></div>
-            <a class="svc-go" href="/services/logo-design">View service <i>→</i></a>
-          </div>
-        </div></div></div>
-      </div>
+      <article class="card" id="logo-design">
+        <div class="card-top"><span class="card-n num">17</span><span class="card-kicker">Usually bundled</span></div>
+        <h3><a href="/services/logo-design">Logo Design</a></h3>
+        <p class="desc">Distinctive marks and logo systems that work across digital, print, and social, typically delivered as part of a brand system rather than in isolation.</p>
+        <div class="chips">
+          <span class="chip">Marks</span>
+          <span class="chip">Logo systems</span>
+          <span class="chip">Digital + print</span>
+        </div>
+        <div class="chips">
+          <a class="chip" href="/services/branding">Branding</a>
+          <a class="chip proj" href="/work/brandlift-ecommerce">BrandLift</a>
+        </div>
+        <a class="card-go" href="/services/logo-design">View service <i>→</i></a>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ CAPABILITY × SOLUTION MATRIX ═══════════ -->
-<section class="matrix on-ink" aria-labelledby="mxH">
+<section class="map on-ink" id="where" aria-labelledby="mxH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Architecture</p>
-    <h2 class="d2" id="mxH" data-r>Which capability serves which solution.</h2>
-    <table class="mx" data-r>
-      <caption class="sr">Capabilities mapped against the four solution areas, based on existing internal links.</caption>
-      <thead>
-        <tr>
-          <th scope="col">Capability</th>
-          <th scope="col" class="sol-h">Trucking</th>
-          <th scope="col" class="sol-h">SaaS</th>
-          <th scope="col" class="sol-h">Accounting</th>
-          <th scope="col" class="sol-h">Car transport</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>CRM Design</td><td class="cell"><i class="dot" data-l="Trucking"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="dot" data-l="Accounting"></i></td><td class="cell"><i class="dot" data-l="Car transport"></i></td></tr>
-        <tr><td>Integrations &amp; APIs</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="dot" data-l="SaaS"></i></td><td class="cell"><i class="dot" data-l="Accounting"></i></td><td class="cell"><i class="dot" data-l="Car transport"></i></td></tr>
-        <tr><td>Mobile App Design</td><td class="cell"><i class="dot" data-l="Trucking"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="dot" data-l="Car transport"></i></td></tr>
-        <tr><td>Dashboard Design</td><td class="cell"><i class="dot" data-l="Trucking"></i></td><td class="cell"><i class="dot" data-l="SaaS"></i></td><td class="cell"><i class="dot" data-l="Accounting"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr><td>SaaS Product Design</td><td class="cell"><i class="dot" data-l="Trucking"></i></td><td class="cell"><i class="dot" data-l="SaaS"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr><td>Web Design &amp; Development</td><td class="cell"><i class="dot" data-l="Trucking"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="dot" data-l="Car transport"></i></td></tr>
-        <tr><td>Automation Workflows</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="dot" data-l="Accounting"></i></td><td class="cell"><i class="dot" data-l="Car transport"></i></td></tr>
-        <tr><td>UI/UX Design</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="dot" data-l="SaaS"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr><td>Product Design</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="dot" data-l="SaaS"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr><td>AI-Assisted Development</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="dot" data-l="SaaS"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr><td>Design Systems</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="dot" data-l="SaaS"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr class="orphan"><td>UX Research</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr class="orphan"><td>Wireframing &amp; Prototyping</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr class="orphan"><td>Web Application Design</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr class="orphan"><td>Branding &amp; Graphic Design</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr class="orphan"><td>Logo Design</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-        <tr class="orphan"><td>No-Code / Low-Code</td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td><td class="cell"><i class="no"></i></td></tr>
-      </tbody>
-    </table>
-    <p class="mx-note">Built from internal links that exist on the live site today, each dot is a real "related services" reference on that solution page. Six capabilities currently sit outside every solution area. That is a structural finding, not a judgement on the work.</p>
+    <p class="eyebrow" data-r>By market</p>
+    <h2 class="d2" id="mxH" data-r>Where capabilities land.</h2>
+    <p class="lede" data-r style="margin-top:16px">Solutions are how we talk about markets. Services are what we actually do. Most projects combine two or three capabilities inside one of these four.</p>
+    <div class="markets" data-s>
+      <article class="market">
+        <div>
+          <span class="k">01 · Trucking</span>
+          <b>Trucking &amp; logistics</b>
+        </div>
+        <ul>
+          <li><a href="/services/crm-development">CRM Design</a></li>
+          <li><a href="/services/dashboard-design">Dashboard Design</a></li>
+          <li><a href="/services/mobile-applications">Mobile App Design</a></li>
+          <li><a href="/services/saas-platforms">SaaS Product Design</a></li>
+          <li><a href="/services/web-development">Web Design &amp; Development</a></li>
+        </ul>
+        <a class="p-link" href="/solutions/trucking-logistics" style="margin-top:4px;color:#DDE2E7">Solution page <i>→</i></a>
+      </article>
+      <article class="market">
+        <div>
+          <span class="k">02 · SaaS</span>
+          <b>SaaS products</b>
+        </div>
+        <ul>
+          <li><a href="/services/product-design">Product Design</a></li>
+          <li><a href="/services/ui-ux-design">UI/UX Design</a></li>
+          <li><a href="/services/saas-platforms">SaaS Product Design</a></li>
+          <li><a href="/services/dashboard-design">Dashboard Design</a></li>
+          <li><a href="/services/ai-assisted-development">AI-Assisted Development</a></li>
+        </ul>
+        <a class="p-link" href="/solutions/saas" style="margin-top:4px;color:#DDE2E7">Solution page <i>→</i></a>
+      </article>
+      <article class="market">
+        <div>
+          <span class="k">03 · Finance</span>
+          <b>Accounting integrations</b>
+        </div>
+        <ul>
+          <li><a href="/services/api-integrations">Integrations &amp; APIs</a></li>
+          <li><a href="/services/automation-systems">Automation Workflows</a></li>
+          <li><a href="/services/dashboard-design">Dashboard Design</a></li>
+          <li><a href="/services/crm-development">CRM Design</a></li>
+        </ul>
+        <a class="p-link" href="/solutions/accounting-integrations" style="margin-top:4px;color:#DDE2E7">Solution page <i>→</i></a>
+      </article>
+      <article class="market">
+        <div>
+          <span class="k">04 · Auto transport</span>
+          <b>Car transportation</b>
+        </div>
+        <ul>
+          <li><a href="/services/crm-development">CRM Design</a></li>
+          <li><a href="/services/mobile-applications">Mobile App Design</a></li>
+          <li><a href="/services/web-development">Web Design &amp; Development</a></li>
+          <li><a href="/services/api-integrations">Integrations &amp; APIs</a></li>
+          <li><a href="/services/automation-systems">Automation Workflows</a></li>
+        </ul>
+        <a class="p-link" href="/solutions/car-transportation" style="margin-top:4px;color:#DDE2E7">Solution page <i>→</i></a>
+      </article>
+    </div>
+    <p class="map-note">Research, prototyping, design systems, and identity usually travel with the product work above, not as standalone SKUs. <a href="/solutions" style="color:#DDE2E7;border-bottom:1px solid currentColor">Browse solutions by market</a>.</p>
   </div>
 </section>
 
-<!-- ═══════════ PROOF MAP ═══════════ -->
-<section class="proofmap" aria-labelledby="pmH">
+<section class="proofmap" id="proof" aria-labelledby="pmH">
   <div class="wrap">
     <p class="eyebrow" data-r>Proof</p>
-    <h2 class="d2" id="pmH" data-r style="margin-top:18px;max-width:22ch">Which project proves which capability.</h2>
+    <h2 class="d2" id="pmH" data-r style="margin-top:18px;max-width:22ch">Work that proves the capabilities.</h2>
     <div class="pm" data-s>
       <a href="/work/fleetflow-dispatch"><div><span class="k">Logistics</span><b>FleetFlow</b><p>US trucking dispatch CRM with bulk actions and SLA intelligence.</p></div><span class="caps">CRM · Dashboards · Product design</span></a>
       <a href="/work/payroll-pro-saas"><div><span class="k">SaaS</span><b>PayrollPro</b><p>Progressive onboarding and permission clarity after SSO rollout.</p></div><span class="caps">UI/UX · Dashboards · SaaS design</span></a>
@@ -1084,22 +916,22 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       <a href="/work/crm-pulse-dashboard"><div><span class="k">CRM</span><b>CRMPulse</b><p>HubSpot dashboards and pipeline UX aligned to the sales team.</p></div><span class="caps">CRM · Dashboards · SaaS design</span></a>
       <a href="/work/healthtrack-mobile"><div><span class="k">Mobile</span><b>HealthTrack</b><p>Patient-facing iOS and Android UX for booking and records.</p></div><span class="caps">Mobile · UI/UX</span></a>
       <a href="/work/ai-support-automation"><div><span class="k">AI</span><b>SupportAI</b><p>Make + Claude workflow triaging tickets for human approval.</p></div><span class="caps">AI-assisted · Automation</span></a>
-      <a href="/work/marketplace-mvp"><div><span class="k">MVP</span><b>LocalServe</b><p>No-code marketplace MVP validated before custom build.</p></div><span class="caps">No-code · Web app design</span></a>
+      <a href="/work/marketplace-mvp"><div><span class="k">MVP</span><b>LocalServe</b><p>No-code marketplace MVP validated before a custom build.</p></div><span class="caps">No-code · Web app design</span></a>
       <a href="/work/brandlift-ecommerce"><div><span class="k">Brand</span><b>BrandLift</b><p>Brand refresh and Shopify storefront redesign.</p></div><span class="caps">Branding · Web development</span></a>
     </div>
+    <a href="/work" class="p-link" data-r>View all work <i>→</i></a>
   </div>
 </section>
 
-<!-- ═══════════ START HERE ═══════════ -->
-<section class="start" aria-labelledby="stH">
+<section class="start" id="start" aria-labelledby="stH">
   <div class="wrap">
     <p class="eyebrow" data-r>Not sure where to start?</p>
-    <h2 class="d2" id="stH" data-r style="margin-top:18px;max-width:24ch">Tell us your goals and we'll recommend the right approach.</h2>
-    <p class="body" data-r style="margin-top:18px">A 20-minute fit call is enough to get a clear scope, realistic timeline, and an honest recommendation.</p>
+    <h2 class="d2" id="stH" data-r style="margin-top:18px;max-width:24ch">Start from the problem. We will recommend the stack.</h2>
+    <p class="body" data-r style="margin-top:18px">A 20-minute fit call is enough to get a clear scope, realistic timeline, and an honest recommendation. You do not need to pick a service first.</p>
     <div class="paths" data-s>
       <div class="path">
         <span class="k">Path 01</span>
-        <h3>"We have a product, but users aren't sticking."</h3>
+        <h3>“We have a product, but users aren’t sticking.”</h3>
         <p class="body-sm">Start with research and onboarding, then the dashboards behind it.</p>
         <div class="chips">
           <a class="chip" href="/services/ux-research">UX Research</a>
@@ -1109,7 +941,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       </div>
       <div class="path">
         <span class="k">Path 02</span>
-        <h3>"Our ops team works around the software."</h3>
+        <h3>“Our ops team works around the software.”</h3>
         <p class="body-sm">Start with the console, then the mobile tooling that feeds it.</p>
         <div class="chips">
           <a class="chip" href="/services/crm-development">CRM Design</a>
@@ -1120,7 +952,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       </div>
       <div class="path">
         <span class="k">Path 03</span>
-        <h3>"Month-end close is a fire drill."</h3>
+        <h3>“Month-end close is a fire drill.”</h3>
         <p class="body-sm">Start with the connector, then the operator view finance can self-serve.</p>
         <div class="chips">
           <a class="chip" href="/services/api-integrations">Integrations &amp; APIs</a>
@@ -1132,13 +964,38 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
   </div>
 </section>
 
-<!-- ═══════════ CTA ═══════════ -->
+<section class="sect sect--tight" id="faq" aria-labelledby="faqH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Questions</p>
+    <h2 class="d2" id="faqH" data-r style="margin-top:18px;max-width:20ch">How buying this actually works.</h2>
+    <div class="faq" data-r>
+      <details>
+        <summary>Do I pick one service or a combination?</summary>
+        <p>Most engagements combine two or three capabilities. A dispatch rebuild is usually CRM plus dashboards plus mobile. A SaaS activation project is usually research plus UI/UX plus tenant-aware product design. Tell us the problem; we will recommend the stack.</p>
+      </details>
+      <details>
+        <summary>What is the difference between Services and Solutions?</summary>
+        <p>Solutions are organised by market: trucking, SaaS, accounting integrations, and car transportation. Services are the capabilities we use inside those markets. If you already know the industry, start on <a href="/solutions" style="border-bottom:1px solid currentColor">Solutions</a>. If you know the kind of work, start here.</p>
+      </details>
+      <details>
+        <summary>Can you work inside our existing product?</summary>
+        <p>Yes. We redesign views, consoles, and flows inside the product you already have, or define patterns for a new one. The deliverable is layout, interaction, and engineering-ready specs, not a mandatory platform swap.</p>
+      </details>
+      <details>
+        <summary>How does an engagement start?</summary>
+        <p>A 20-minute fit call or a written brief. We reply within one business day with a sensible first scope, a realistic timeline, and relevant work. An NDA is available before the first call. See <a href="/process" style="border-bottom:1px solid currentColor">how we work</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section class="cta-band on-ink" id="contact" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
     <h2 class="d2" id="ctaH" data-r>Have a product to build or improve?</h2>
+    <p class="lede" data-r>Share your scope and timeline. We will reply within one business day with a clear plan, an honest pricing approach, and relevant examples.</p>
     <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+      <div class="cta-actions" data-r>
         <a href="/contact#brief" class="btn on-dark"><span>Send a project brief</span><i>→</i></a>
         <a href="/contact#book" class="btn ghost on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
       </div>
@@ -1148,7 +1005,6 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>
-    <p class="body-sm" data-r style="color:#8C98A4;margin-top:24px;max-width:62ch">Share your scope and timeline, we'll reply within one business day with a clear plan, honest pricing approach, and relevant examples.</p>
   </div>
 </section>
 
@@ -1208,8 +1064,86 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "KRIVA Services",
+  "description": "UI/UX design, SaaS product development, CRM and dashboards, API integrations, and practical automation, delivered by one in-house KRIVA team.",
+  "url": "https://krivatechnologies.com/services",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "KRIVA Technologies",
+    "url": "https://krivatechnologies.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "KRIVA capabilities",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Product Design","url":"https://krivatechnologies.com/services/product-design"},
+    {"@type":"ListItem","position":2,"name":"UI/UX Design","url":"https://krivatechnologies.com/services/ui-ux-design"},
+    {"@type":"ListItem","position":3,"name":"UX Research","url":"https://krivatechnologies.com/services/ux-research"},
+    {"@type":"ListItem","position":4,"name":"Wireframing & Prototyping","url":"https://krivatechnologies.com/services/wireframing-prototyping"},
+    {"@type":"ListItem","position":5,"name":"Design Systems","url":"https://krivatechnologies.com/services/design-systems"},
+    {"@type":"ListItem","position":6,"name":"SaaS Product Design","url":"https://krivatechnologies.com/services/saas-platforms"},
+    {"@type":"ListItem","position":7,"name":"CRM Design","url":"https://krivatechnologies.com/services/crm-development"},
+    {"@type":"ListItem","position":8,"name":"Dashboard Design","url":"https://krivatechnologies.com/services/dashboard-design"},
+    {"@type":"ListItem","position":9,"name":"Web Application Design","url":"https://krivatechnologies.com/services/web-application-design"},
+    {"@type":"ListItem","position":10,"name":"Mobile App Design","url":"https://krivatechnologies.com/services/mobile-applications"},
+    {"@type":"ListItem","position":11,"name":"Integrations & APIs","url":"https://krivatechnologies.com/services/api-integrations"},
+    {"@type":"ListItem","position":12,"name":"Automation Workflows","url":"https://krivatechnologies.com/services/automation-systems"},
+    {"@type":"ListItem","position":13,"name":"AI-Assisted Product Development","url":"https://krivatechnologies.com/services/ai-assisted-development"},
+    {"@type":"ListItem","position":14,"name":"No-Code / Low-Code Solutions","url":"https://krivatechnologies.com/services/no-code-low-code"},
+    {"@type":"ListItem","position":15,"name":"Web Design & Development","url":"https://krivatechnologies.com/services/web-development"},
+    {"@type":"ListItem","position":16,"name":"Branding & Graphic Design","url":"https://krivatechnologies.com/services/branding"},
+    {"@type":"ListItem","position":17,"name":"Logo Design","url":"https://krivatechnologies.com/services/logo-design"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I pick one service or a combination?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most engagements combine two or three capabilities. A dispatch rebuild is usually CRM plus dashboards plus mobile. A SaaS activation project is usually research plus UI/UX plus tenant-aware product design. Tell us the problem; we will recommend the stack."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Services and Solutions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Solutions are organised by market: trucking, SaaS, accounting integrations, and car transportation. Services are the capabilities we use inside those markets. If you already know the industry, start on Solutions. If you know the kind of work, start on Services."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you work inside our existing product?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We redesign views, consoles, and flows inside the product you already have, or define patterns for a new one. The deliverable is layout, interaction, and engineering-ready specs, not a mandatory platform swap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does an engagement start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 20-minute fit call or a written brief. We reply within one business day with a sensible first scope, a realistic timeline, and relevant work. An NDA is available before the first call."
+      }
+    }
+  ]
+}
+</script>
 <script>
 (function(){
 'use strict';
@@ -1229,11 +1163,14 @@ document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>{
   io.observe(el);
 });
 
-/* nav chrome → shared/chrome.js */
+const bar = document.getElementById('progress');
+if(bar) readers.push(y=>{
+  const h = document.documentElement.scrollHeight - innerHeight;
+  bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
+});
 
-/* family rail follows the nav height and tracks the section in view */
 const rail = document.getElementById('rail');
-readers.push(y=>{ rail.style.top = (y > 20 ? 58 : 72) + 'px'; });
+if(rail) readers.push(y=>{ rail.style.top = (y > 20 ? 58 : 72) + 'px'; });
 const railLinks = [...document.querySelectorAll('#railLinks a')];
 const fams = railLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 const fIO = new IntersectionObserver(es=>{
@@ -1245,27 +1182,15 @@ const fIO = new IntersectionObserver(es=>{
 },{rootMargin:'-25% 0px -65% 0px'});
 fams.forEach(f => fIO.observe(f));
 
-/* expandable service rows, one open per family keeps the list scannable */
-document.querySelectorAll('.svc-top').forEach(btn=>{
-  const svc = btn.closest('.svc');
-  const list = svc.closest('.svcs');
-  btn.addEventListener('click', ()=>{
-    const open = btn.getAttribute('aria-expanded') === 'true';
-    list.querySelectorAll('.svc-top[aria-expanded="true"]').forEach(o=>{
-      if(o === btn) return;
-      o.setAttribute('aria-expanded','false');
-      o.closest('.svc').classList.remove('open');
-    });
-    btn.setAttribute('aria-expanded', String(!open));
-    svc.classList.toggle('open', !open);
-  });
-});
-
-/* deep link: /services#dashboard-design style anchors open the matching row */
-if(location.hash){
+function highlightHash(){
+  document.querySelectorAll('.card.is-target').forEach(el=>el.classList.remove('is-target'));
+  if(!location.hash) return;
   const t = document.querySelector(location.hash);
-  if(t && t.classList.contains('fam')) t.scrollIntoView();
+  if(!t) return;
+  if(t.classList.contains('card')) t.classList.add('is-target');
 }
+highlightHash();
+addEventListener('hashchange', highlightHash);
 
 run();
 })();

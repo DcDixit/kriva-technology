@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
+<meta property="og:image:alt" content="KRIVA · Dashboard design, analytics and ops views">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
@@ -104,7 +104,7 @@ img{max-width:100%;display:block}
 .cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
 .cta-band .wrap{padding-block:clamp(72px,9vw,140px)}
 .cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:22px;max-width:14ch}
+.cta-band h2{color:#fff;margin-top:22px;max-width:18ch}
 .cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
 .assur i{font-style:normal;color:var(--amber);margin-right:7px}
@@ -153,7 +153,7 @@ img{max-width:100%;display:block}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
 .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
 
-/* Signature · ops dashboard */
+/* Signature · hierarchy-first ops scan (not equal-weight KPI tiles) */
 .dash-board{
   background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
   box-shadow:0 28px 60px -42px rgba(14,18,22,.55)
@@ -167,17 +167,29 @@ img{max-width:100%;display:block}
 .dash-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--amber)}
 .dash-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:dash-pulse 2.4s var(--e-io) infinite}
 @keyframes dash-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
-.dash-board__kpis{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--ink-line)}
+.dash-board__filters{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-bottom:1px solid var(--ink-line)}
+.chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--ink-line);color:#6B7885}
+.chip.on{border-color:var(--amber);color:var(--amber);background:rgba(219,155,31,.1)}
+.dash-board__answer{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:end;
+  padding:14px 14px 16px;border-bottom:1px solid var(--ink-line);
+  background:linear-gradient(180deg,rgba(219,155,31,.06),transparent 70%)
+}
+.dash-board__answer .q{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885}
+.dash-board__answer b{display:block;margin-top:7px;font-family:var(--f-display);font-weight:750;font-size:clamp(1.12rem,1.9vw,1.42rem);letter-spacing:-.03em;color:#fff;line-height:1.18}
+.dash-board__answer .stat{text-align:right;font-family:var(--f-display);font-weight:800;font-size:clamp(1.55rem,2.3vw,1.95rem);letter-spacing:-.04em;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums}
+.dash-board__answer .stat small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#6B7885;font-weight:400}
+.dash-board__kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
 .dash-board__kpi{padding:12px 12px 14px;border-right:1px solid var(--ink-line)}
 .dash-board__kpi:last-child{border-right:0}
 .dash-board__kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#6B7885}
-.dash-board__kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.6vw,1.25rem);letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
+.dash-board__kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.02rem,1.5vw,1.18rem);letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
 .dash-board__kpi em{display:block;margin-top:4px;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;color:#5FD3A0}
 .dash-board__kpi.warn em{color:var(--amber)}
-.dash-board__body{display:grid;grid-template-columns:1.1fr .9fr;min-height:168px}
+.dash-board__body{display:grid;grid-template-columns:1.1fr .9fr;min-height:156px}
 .dash-board__chart{padding:14px;border-right:1px solid var(--ink-line);display:flex;flex-direction:column;gap:10px}
 .dash-board__chart .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885}
-.bars{display:flex;align-items:flex-end;gap:6px;flex:1;min-height:88px;padding-top:8px}
+.bars{display:flex;align-items:flex-end;gap:6px;flex:1;min-height:78px;padding-top:8px}
 .bars i{flex:1;background:#1F262E;display:block;position:relative;min-height:8px}
 .bars i:after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--h,40%);background:var(--blue);opacity:.9}
 .bars i.hot:after{background:var(--amber)}
@@ -190,15 +202,18 @@ img{max-width:100%;display:block}
 .dash-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 @media(max-width:640px){
-  .dash-board__kpis{grid-template-columns:1fr 1fr}
-  .dash-board__kpi:nth-child(n+3){border-top:1px solid var(--ink-line)}
-  .dash-board__kpi:nth-child(2n){border-right:0}
+  .dash-board__answer{grid-template-columns:1fr;gap:10px}
+  .dash-board__answer .stat{text-align:left}
+  .dash-board__kpis{grid-template-columns:1fr}
+  .dash-board__kpi{border-right:0}
+  .dash-board__kpi + .dash-board__kpi{border-top:1px solid var(--ink-line)}
   .dash-board__body{grid-template-columns:1fr}
   .dash-board__chart{border-right:0;border-bottom:1px solid var(--ink-line)}
 }
 
 .fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
+.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px);transition:background .4s var(--e)}
+.fit-rail article:hover{background:var(--paper-2)}
 .fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
 .fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
 .fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:28ch}
@@ -241,7 +256,7 @@ img{max-width:100%;display:block}
 .faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
 .faq details[open]{border-color:var(--ink)}
 .faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
-.faq summary::-webkit-details-marker{display:none}
+.faq summary::-webkit-details-marker,.faq summary::marker{display:none;content:""}
 .faq summary:after{content:"+";font-family:var(--f-mono);font-size:14px;color:var(--steel);flex:none}
 .faq details[open] summary:after{content:"–"}
 .faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:58ch}
@@ -287,7 +302,7 @@ img{max-width:100%;display:block}
                 <ul class="mm-list">
                   <li><a role="menuitem" href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics solutions</strong><em>Dispatch, fleet, drivers, and logistics platforms.</em></a></li>
                   <li><a role="menuitem" href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><em>Consoles, bulk actions, supervisor oversight.</em></a></li>
-                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Fleet dashboards</strong><em>Route performance and exception handling.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design" aria-current="page"><strong>Fleet dashboards</strong><em>Route performance and exception handling.</em></a></li>
                   <li><a role="menuitem" href="/services/mobile-applications"><strong>Driver mobile apps</strong><em>Load acceptance, status updates, documents.</em></a></li>
                   <li><a role="menuitem" href="/solutions/car-transportation"><strong>Car transportation</strong><em>Quotes, tracking, and auto-transport ops.</em></a></li>
                 </ul>
@@ -301,7 +316,7 @@ img{max-width:100%;display:block}
                 <ul class="mm-list">
                   <li><a role="menuitem" href="/solutions/saas"><strong>SaaS product solutions</strong><em>Onboarding, dashboards, and MVPs that stick.</em></a></li>
                   <li><a role="menuitem" href="/services/saas-platforms"><strong>SaaS product design</strong><em>Multi-tenant UX, admin panels, permissions.</em></a></li>
-                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboards &amp; admin panels</strong><em>Analytics and operational views for daily use.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design" aria-current="page"><strong>Dashboards &amp; admin panels</strong><em>Analytics and operational views for daily use.</em></a></li>
                   <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
                 </ul>
                 <div class="mm-foot"><a href="/solutions/saas">All SaaS solutions <i>→</i></a></div>
@@ -351,7 +366,7 @@ img{max-width:100%;display:block}
       <ul class="sheet-sub" id="sheet-trucking">
         <li><a href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics</strong><span>Dispatch, fleet, drivers</span></a></li>
         <li><a href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><span>Consoles &amp; supervisor tools</span></a></li>
-        <li><a href="/services/dashboard-design"><strong>Fleet dashboards</strong><span>Routes &amp; exceptions</span></a></li>
+        <li><a href="/services/dashboard-design" aria-current="page"><strong>Fleet dashboards</strong><span>Routes &amp; exceptions</span></a></li>
         <li><a href="/services/mobile-applications"><strong>Driver mobile apps</strong><span>Status, docs, acceptance</span></a></li>
         <li><a href="/solutions/car-transportation"><strong>Car transportation</strong><span>Quotes &amp; tracking</span></a></li>
       </ul>
@@ -361,7 +376,7 @@ img{max-width:100%;display:block}
       <ul class="sheet-sub" id="sheet-saas">
         <li><a href="/solutions/saas"><strong>SaaS product solutions</strong><span>Onboarding &amp; MVPs</span></a></li>
         <li><a href="/services/saas-platforms"><strong>SaaS product design</strong><span>Multi-tenant UX</span></a></li>
-        <li><a href="/services/dashboard-design"><strong>Dashboards &amp; admin</strong><span>Daily-use views</span></a></li>
+        <li><a href="/services/dashboard-design" aria-current="page"><strong>Dashboards &amp; admin</strong><span>Daily-use views</span></a></li>
         <li><a href="/services/product-design"><strong>Product design &amp; UX</strong><span>Flows to launch UI</span></a></li>
       </ul>
     </div>
@@ -434,7 +449,7 @@ img{max-width:100%;display:block}
           <span><i>Dashboards that answer</i></span>
           <span><i>the shift question first.</i></span>
         </h1>
-        <p class="lede" data-r>KPI layouts, exception views, and drill-downs for teams who open a dashboard every morning, fleet, finance, or sales, and need signal without another export.</p>
+        <p class="lede" data-r>KPI layouts, exception views, and drill-downs for teams who open a dashboard every morning &mdash; fleet, finance, or sales &mdash; and need signal without another export.</p>
         <div class="tags" data-r>
           <span class="tag">KPI layouts</span>
           <span class="tag">Widget hierarchy</span>
@@ -453,16 +468,28 @@ img{max-width:100%;display:block}
             <span><b>Ops view</b> · morning scan</span>
             <span class="dash-board__live"><i></i>Live pattern</span>
           </div>
+          <div class="dash-board__filters">
+            <span class="chip on">Today</span>
+            <span class="chip">Lane · all</span>
+            <span class="chip">Owner · desk</span>
+            <span class="chip">Exceptions</span>
+          </div>
+          <div class="dash-board__answer">
+            <div>
+              <span class="q">Shift question</span>
+              <b>Which loads breach in the next two hours?</b>
+            </div>
+            <div class="stat">3<small>Need an owner now</small></div>
+          </div>
           <div class="dash-board__kpis">
             <div class="dash-board__kpi"><span>On time</span><b>94%</b><em>↑ 2.1 pts</em></div>
-            <div class="dash-board__kpi warn"><span>Exceptions</span><b>7</b><em>2 need owner</em></div>
+            <div class="dash-board__kpi warn"><span>Oldest open</span><b>11m</b><em>Needs owner</em></div>
             <div class="dash-board__kpi"><span>Active loads</span><b>128</b><em>Stable</em></div>
-            <div class="dash-board__kpi"><span>SLA risk</span><b>3</b><em>↓ 1</em></div>
           </div>
           <div class="dash-board__body">
             <div class="dash-board__chart">
               <span class="lab">Route performance · 7d</span>
-              <div class="bars" aria-hidden="true">
+              <div class="bars">
                 <i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:51%"></i>
                 <i class="hot" style="--h:78%"></i><i style="--h:64%"></i><i style="--h:71%"></i><i style="--h:68%"></i>
               </div>
@@ -475,7 +502,7 @@ img{max-width:100%;display:block}
             </div>
           </div>
         </div>
-        <p class="dash-board__note"><span class="flag">Demo</span> Interface pattern only, no client data</p>
+        <p class="dash-board__note"><span class="flag">Demo</span> Ops pattern. Same hierarchy applies to finance and sales views.</p>
       </div>
     </div>
 
@@ -483,7 +510,7 @@ img{max-width:100%;display:block}
       <article>
         <p class="k">Best for</p>
         <h3>Morning-scan operators</h3>
-        <p>Fleet leads, finance close, sales leadership, anyone who needs the answer before the detail table.</p>
+        <p>Fleet leads, finance close, sales leadership &mdash; anyone who needs the answer before the detail table.</p>
       </article>
       <article>
         <p class="k">View types</p>
@@ -492,9 +519,9 @@ img{max-width:100%;display:block}
       </article>
       <article>
         <p class="k">Not this service</p>
-        <h3>Pipeline stage redesign</h3>
-        <p>Stage models and CRM desk workflows live under CRM Design. Dashboards own hierarchy, filters, and scanability.</p>
-        <p class="contrast">Need both? Most ops builds pair this page with CRM Design.</p>
+        <h3>Pipelines or tenant UX</h3>
+        <p>Stage models live under CRM Design. Workspace, roles, and onboarding live under SaaS Product Design.</p>
+        <p class="contrast">Need both? Ops builds often pair this page with CRM Design. SaaS products often pair it with SaaS Product Design.</p>
       </article>
     </div>
   </div>
@@ -535,31 +562,31 @@ img{max-width:100%;display:block}
       <div>
         <p class="eyebrow" data-r>Approach</p>
         <h2 class="d2" id="apH" data-r>Hierarchy first. Charts second.</h2>
-        <p class="lede" data-r>Start from the questions operators ask on a shift, then map widgets and filters, before visual polish.</p>
+        <p class="lede" data-r>Start from the questions operators ask in the first 90 seconds of a shift. Rank widgets against those questions, then charts and filters.</p>
       </div>
     </div>
     <div class="approach">
       <div class="ap-row" data-r>
         <span class="idx num">01</span>
         <div>
-          <h3 class="d3">IA &amp; widget hierarchy</h3>
-          <p class="body-sm">We write the shift questions first, then rank what must answer them above the fold. Detail views earn their place after the primary scan works.</p>
+          <h3 class="d3">Shift questions first</h3>
+          <p class="body-sm">We write the questions the desk actually asks, then rank what must answer them above the fold. Stakeholder chart requests wait until the primary scan works.</p>
         </div>
-        <p class="out"><b>You leave with</b>A ranked widget map tied to real operator questions</p>
+        <p class="out"><b>You leave with</b>A ranked question map for the morning scan</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">02</span>
         <div>
-          <h3 class="d3">Chart &amp; table patterns</h3>
-          <p class="body-sm">Chart and table UI that stays readable as metrics accumulate, denser where the desk needs density, quieter where the desk needs calm.</p>
+          <h3 class="d3">Scan, then density</h3>
+          <p class="body-sm">Primary scan, then detail. Tables and charts denser where the desk needs density, quieter where leadership needs calm. Role variants so ops and exec are not the same screen.</p>
         </div>
-        <p class="out"><b>You leave with</b>Reusable chart and table patterns for engineering</p>
+        <p class="out"><b>You leave with</b>Ops, admin, and exec layout variants</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">03</span>
         <div>
-          <h3 class="d3">Filter &amp; drill-down</h3>
-          <p class="body-sm">Date range, lane, owner, and exception filters designed for operators, not one-off report builders. Drill-downs land on the record, not another export.</p>
+          <h3 class="d3">Filters that resolve</h3>
+          <p class="body-sm">Date range, lane, owner, and exception filters designed for operators, not one-off report builders. Drill-downs land on the source record, not another export.</p>
         </div>
         <p class="out"><b>You leave with</b>Filter and drill-down flows ready to ship</p>
       </div>
@@ -593,9 +620,9 @@ img{max-width:100%;display:block}
         <p>Date-range, segment, and exception filters with drill-downs that land on the source record, not a dead-end chart.</p>
       </article>
       <article data-r>
-        <b>04 · System</b>
-        <h3 class="d3">Theme-ready visual system</h3>
-        <p>Light and dark tokens, density rules, and status color semantics ops can extend without inventing a new style each sprint.</p>
+        <b>04 · Density</b>
+        <h3 class="d3">Status &amp; density system</h3>
+        <p>Role-based density, high-contrast status semantics, and light/dark tokens ops can extend without inventing a new style each sprint.</p>
       </article>
     </div>
   </div>
@@ -698,6 +725,10 @@ img{max-width:100%;display:block}
       <details>
         <summary>How is this different from CRM Design?</summary>
         <p>Dashboard Design owns widget hierarchy, filters, and drill-downs for analytics and ops views. CRM Design owns stage models, pipeline UX, and desk workflows. Many engagements use both.</p>
+      </details>
+      <details>
+        <summary>How is this different from SaaS Product Design?</summary>
+        <p>SaaS Product Design owns tenant-aware UX, permissions, and admin versus customer surfaces. This service owns the scan: hierarchy, filters, and exception views operators open every morning. A live SaaS product often needs both.</p>
       </details>
       <details>
         <summary>Can you work inside our existing product?</summary>
@@ -818,6 +849,14 @@ img{max-width:100%;display:block}
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Dashboard Design owns widget hierarchy, filters, and drill-downs for analytics and ops views. CRM Design owns stage models, pipeline UX, and desk workflows. Many engagements use both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from SaaS Product Design?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SaaS Product Design owns tenant-aware UX, permissions, and admin versus customer surfaces. This service owns the scan: hierarchy, filters, and exception views operators open every morning. A live SaaS product often needs both."
       }
     },
     {

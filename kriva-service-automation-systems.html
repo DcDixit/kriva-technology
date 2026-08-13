@@ -4,33 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Automation Workflows · Make, Zapier &amp; human gates · KRIVA</title>
-<meta name="description" content="Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of send and approve steps.">
+<meta name="description" content="Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of send, approve, and ledger steps.">
 <link rel="canonical" href="https://krivatechnologies.com/services/automation-systems">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Automation Workflows, Make, Zapier &amp; human gates">
-<meta property="og:description" content="Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of send and approve steps.">
+<meta property="og:title" content="Automation Workflows · Make, Zapier &amp; human gates">
+<meta property="og:description" content="Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of send, approve, and ledger steps.">
 <meta property="og:url" content="https://krivatechnologies.com/services/automation-systems">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
+<meta property="og:image:alt" content="KRIVA · Automation workflows with human approval gates">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
-/* Shared KRIVA tokens + primitives */
 :root{
   --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
   --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
   --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
   --blue:#1B44C8; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --lilac:#B7A9FF;
+  --lime:#5FD3A0; --lilac:#B7A9FF; --sky:#5B8CFF;
   --f-display:'Archivo',system-ui,sans-serif;
   --f-body:'Inter',system-ui,sans-serif;
   --f-mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -93,7 +91,6 @@ img{max-width:100%;display:block}
 .p-link i{font-style:normal;transition:transform .42s var(--e)}
 .p-link:hover i{transform:translateX(6px)}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
-.flag.tbd{border-color:var(--amber);color:#8A6200}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
@@ -102,11 +99,17 @@ img{max-width:100%;display:block}
 .hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
 .sect{padding-block:clamp(64px,8vw,128px)}
 .sect--tight{padding-block:clamp(48px,6vw,88px)}
+.sect--band{background:var(--paper-2);border-block:1px solid var(--rule)}
+.sect--rule{border-top:1px solid var(--rule)}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
+.s-head .lede{margin-top:16px;max-width:54ch}
 .cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
 .cta-band .wrap{padding-block:clamp(72px,9vw,140px)}
 .cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:22px;max-width:14ch}
+.cta-band h2{color:#fff;margin-top:22px;max-width:18ch}
+.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:46ch}
 .cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
 .assur i{font-style:normal;color:var(--amber);margin-right:7px}
 @media (prefers-reduced-motion:reduce){
@@ -114,6 +117,7 @@ img{max-width:100%;display:block}
   *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
+  .auto-board__live i{animation:none!important}
 }
 
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
@@ -127,13 +131,12 @@ img{max-width:100%;display:block}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
-
 .mob-chips{
   display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
   padding:10px 0 12px;margin:0 calc(-1 * var(--gutter));padding-inline:var(--gutter);
   background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none
 }
-.mob-chips:-webkit-scrollbar{display:none}
+.mob-chips::-webkit-scrollbar{display:none}
 .mob-chips a{
   flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   padding:7px 11px;border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
@@ -141,84 +144,155 @@ img{max-width:100%;display:block}
 .mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.hero{
+  background:
+    radial-gradient(110% 80% at 100% -8%, rgba(91,68,200,.08), transparent 50%),
+    radial-gradient(85% 65% at 0% 100%, rgba(27,68,200,.05), transparent 48%),
+    var(--paper);
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
 .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
-.aside-card{background:var(--white);border:1px solid var(--rule);padding:clamp(18px,2.2vw,26px)}
-.aside-card h2{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:400;margin-bottom:14px}
-.aside-card ul{list-style:none;display:grid;gap:10px}
-.aside-card li{font-size:14.5px;display:flex;gap:9px;align-items:flex-start}
-.aside-card li:before{content:"·";color:var(--rule);flex:none}
-.contrast{margin-top:18px;padding:14px 16px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:14.5px;line-height:1.55;color:var(--ink);max-width:54ch}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
-.shot{position:relative;background:var(--ink);overflow:hidden;margin-top:clamp(28px,3.5vw,48px)}
-.shot .media{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden}
-.slot{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(14px,2vw,22px);background:linear-gradient(160deg,#161C22,#0E1216)}
-.slot .skel{display:grid;gap:7px}
-.slot .skel i{display:block;height:7px;background:#1F262E}
-.slot .skel i:nth-child(1){width:34%}.slot .skel i:nth-child(2){width:58%}.slot .skel i:nth-child(3){width:46%}
-.slot .tagline{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5C6670;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.shot-cap{margin-top:12px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+/* Signature · human-gated review queue (not a connector board, not a CRM) */
+.auto-board{
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  box-shadow:0 28px 60px -42px rgba(14,18,22,.55)
+}
+.auto-board__bar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:11px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+}
+.auto-board__bar b{color:#fff;font-weight:400}
+.auto-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--lilac)}
+.auto-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:auto-pulse 2.4s var(--e-io) infinite}
+@keyframes auto-pulse{0%{box-shadow:0 0 0 0 rgba(183,169,255,.45)}70%{box-shadow:0 0 0 7px rgba(183,169,255,0)}100%{box-shadow:0 0 0 0 rgba(183,169,255,0)}}
+.auto-board__kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
+.auto-board__kpi{padding:12px 14px;border-right:1px solid var(--ink-line)}
+.auto-board__kpi:last-child{border-right:0}
+.auto-board__kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885}
+.auto-board__kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
+.auto-board__kpi em{display:block;margin-top:3px;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;color:var(--lime)}
+.auto-board__kpi.warn em{color:var(--amber)}
+.auto-flow{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  padding:9px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#6B7885
+}
+.auto-flow .step{padding:3px 8px;border:1px solid var(--ink-line);color:#DDE2E7}
+.auto-flow .step.gate{border-color:var(--lilac);color:var(--lilac)}
+.auto-flow .arr{opacity:.45}
+.auto-row{
+  display:grid;grid-template-columns:56px 1fr 72px 78px;gap:10px;align-items:center;
+  padding:9px 14px;border-bottom:1px solid #1A2027;font-size:11.5px;color:#B9C3CC
+}
+.auto-row:last-child{border-bottom:0}
+.auto-row.on{background:#16131C}
+.auto-row .ref{font-family:var(--f-mono);font-size:10.5px;color:#fff;letter-spacing:.04em}
+.auto-row .lane{min-width:0}
+.auto-row .lane b{display:block;font-weight:500;color:#fff;font-size:12px;letter-spacing:-.01em}
+.auto-row .lane em{display:block;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#6B7885}
+.auto-row .conf{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;color:#8C98A4;font-variant-numeric:tabular-nums;justify-self:end}
+.st{display:inline-flex;align-items:center;gap:5px;padding:3px 7px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;white-space:nowrap;justify-self:end}
+.st-ok{color:var(--lime)}.st-go{color:var(--lilac)}.st-idle{color:#6B7885}.st-warn{color:var(--amber)}
+.auto-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .auto-board__kpis{grid-template-columns:1fr 1fr}
+  .auto-board__kpi:nth-child(3){display:none}
+  .auto-row{grid-template-columns:1fr auto;gap:8px}
+  .auto-row .ref,.auto-row .conf{display:none}
+  .auto-row .st{grid-column:2;grid-row:1}
+}
+
+.fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
+.fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+.fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
+.fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
+@media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
+
+.desks{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.desks article{background:var(--white);padding:clamp(22px,2.6vw,36px)}
+.desks .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
+.desks h3{margin-bottom:12px}
+.desks ul{list-style:none;display:grid;gap:9px;margin-top:18px}
+.desks li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink)}
+.desks li:before{content:"";width:6px;height:6px;margin-top:7px;background:var(--violet)}
+.desks article:last-child li:before{background:var(--amber)}
+@media(max-width:800px){.desks{grid-template-columns:1fr}}
+
+.pair{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(22px,3.5vw,48px);align-items:center;
+  margin-top:clamp(28px,3.5vw,48px);padding:clamp(22px,2.8vw,36px);
+  background:var(--white);border:1px solid var(--rule)
+}
+.pair-logos{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.lockup{display:inline-flex;align-items:center;gap:8px;padding:7px 12px 7px 8px;border:1px solid var(--rule);background:var(--paper-2)}
+.lockup img{width:22px;height:22px;flex:none}
+.lockup b{font-family:var(--f-display);font-weight:750;font-size:13.5px;letter-spacing:-.02em}
+.lockup small{display:block;margin-top:2px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
+@media(max-width:800px){.pair{grid-template-columns:1fr}}
 
 .chal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px)}
+.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px);transition:background .4s var(--e)}
+.chal article:hover{background:var(--white)}
 .chal .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:12px}
-.chal h3{margin-bottom:10px}
-.chal p{color:var(--steel);max-width:32ch}
+.chal h3{margin-bottom:12px}
+.chal p{color:var(--steel);max-width:34ch}
 @media(max-width:860px){.chal{grid-template-columns:1fr}}
 
 .approach{display:grid;gap:0;margin-top:clamp(28px,3.5vw,48px);border-top:1px solid var(--rule)}
-.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule)}
+.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,.85fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule);align-items:start}
 .ap-row .idx{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1}
-@media(max-width:640px){.ap-row{grid-template-columns:1fr;gap:8px}}
+.ap-row .body-sm{margin-top:10px}
+.ap-row .out{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-top:6px}
+.ap-row .out b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
+@media(max-width:900px){.ap-row{grid-template-columns:64px minmax(0,1fr);gap:14px}.ap-row .out{grid-column:2}}
+@media(max-width:560px){.ap-row{grid-template-columns:1fr;gap:8px}.ap-row .out{grid-column:1}}
 
-.deliv{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.deliv div{background:var(--white);padding:clamp(18px,2.2vw,26px)}
-.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.deliv p{font-size:15px;line-height:1.5;color:var(--ink)}
-@media(max-width:900px){.deliv{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.deliv{grid-template-columns:1fr}}
+.deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.deliv article{background:var(--white);padding:clamp(22px,2.6vw,34px)}
+.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
+.deliv h3{margin-bottom:10px}
+.deliv p{font-size:15px;line-height:1.58;color:var(--steel);max-width:42ch}
+@media(max-width:700px){.deliv{grid-template-columns:1fr}}
 
-.outcomes{margin-top:clamp(48px,5vw,80px);padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--rule)}
-.gain{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
-.gain ul{list-style:none;display:grid;gap:14px}
-.gain li{padding:16px 18px;background:var(--white);border:1px solid var(--rule);font-size:15.5px;line-height:1.5}
+.gain{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:start}
+.gain ul{list-style:none;display:grid;gap:12px}
+.gain li{padding:18px 20px;background:var(--white);border:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.gain li .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:4px}
+.gain li strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
+.gain li span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel)}
 @media(max-width:800px){.gain{grid-template-columns:1fr}}
 
 .faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:760px}
-.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px}
-.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none}
-.faq summary:-webkit-details-marker{display:none}
-.faq p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--steel)}
+.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
+.faq details[open]{border-color:var(--ink)}
+.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-family:var(--f-mono);font-size:14px;color:var(--steel);flex:none}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:58ch}
 
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
-.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:160px;transition:transform .5s var(--e),border-color .4s}
+.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
 .rel a:hover{transform:translate3d(0,-4px,0);border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.rel .title{display:block;margin-top:10px}
+.rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:32ch}
 .rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
 .rel a:hover .arrow i{transform:translateX(6px)}
 @media(max-width:860px){.rel{grid-template-columns:1fr}}
-
+.sib-label{margin-top:clamp(36px,4vw,56px)}
 .sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
 .sib a:hover{border-color:var(--blue);color:var(--blue)}
-
-/* Phase 11 · intentional brief board (no empty screenshot theater) */
-.brief{margin-top:clamp(28px,3.5vw,48px);border:1px solid var(--rule);background:var(--white);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
-.brief-main{padding:clamp(22px,2.8vw,36px);border-right:1px solid var(--rule)}
-.brief-side{padding:clamp(22px,2.8vw,36px);background:var(--paper-2);display:grid;align-content:space-between;gap:24px}
-.brief .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
-.brief-list{list-style:none;display:grid;gap:12px}
-.brief-list li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.45}
-.brief-list .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:3px}
-.brief-meta{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);display:grid;gap:10px}
-.brief-meta b{color:var(--ink);font-weight:500}
-@media(max-width:800px){.brief{grid-template-columns:1fr}.brief-main{border-right:0;border-bottom:1px solid var(--rule)}}
-
 </style>
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body>
@@ -276,7 +350,7 @@ img{max-width:100%;display:block}
                 <div class="mm-head"><b>Operations</b><span>Tooling &amp; delivery</span></div>
                 <ul class="mm-list">
                   <li><a role="menuitem" href="/services/crm-development"><strong>CRM &amp; ops consoles</strong><em>Pipelines and internal tools matched to real desks.</em></a></li>
-                  <li><a role="menuitem" href="/services/automation-systems"><strong>Automation workflows</strong><em>Human-gated triage, docs, and internal tooling.</em></a></li>
+                  <li><a role="menuitem" href="/services/automation-systems" aria-current="page"><strong>Automation workflows</strong><em>Human-gated triage, docs, and internal tooling.</em></a></li>
                   <li><a role="menuitem" href="/process"><strong>How we work</strong><em>Discovery through launch: clear gates, weekly demos.</em></a></li>
                 </ul>
                 <div class="mm-foot"><a href="/process">See the process <i>→</i></a></div>
@@ -328,7 +402,7 @@ img{max-width:100%;display:block}
       <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-operations">Operations<span class="plus" aria-hidden="true"></span></button>
       <ul class="sheet-sub" id="sheet-operations">
         <li><a href="/services/crm-development"><strong>CRM &amp; ops consoles</strong><span>Desk-matched tooling</span></a></li>
-        <li><a href="/services/automation-systems"><strong>Automation workflows</strong><span>Human-gated pipelines</span></a></li>
+        <li><a href="/services/automation-systems" aria-current="page"><strong>Automation workflows</strong><span>Human-gated pipelines</span></a></li>
         <li><a href="/process"><strong>How we work</strong><span>Process &amp; delivery</span></a></li>
       </ul>
     </div>
@@ -353,6 +427,7 @@ img{max-width:100%;display:block}
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview"><span>Overview</span><i></i></a>
+  <a href="#gates"><span>Gates</span><i></i></a>
   <a href="#challenges"><span>Challenges</span><i></i></a>
   <a href="#approach"><span>Approach</span><i></i></a>
   <a href="#deliverables"><span>Deliverables</span><i></i></a>
@@ -372,6 +447,7 @@ img{max-width:100%;display:block}
     </ol>
     <nav class="mob-chips" id="mobChips" aria-label="On this page">
       <a href="#overview" aria-current="true">Overview</a>
+      <a href="#gates">Gates</a>
       <a href="#challenges">Challenges</a>
       <a href="#approach">Approach</a>
       <a href="#deliverables">Deliverables</a>
@@ -381,174 +457,361 @@ img{max-width:100%;display:block}
     </nav>
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" data-r>Service · AI &amp; automation · Automation Workflows</p>
+        <p class="eyebrow" data-r>Service · Automation workflows</p>
         <h1 class="d1 mask" data-mask>
           <span><i>Automate the queue.</i></span>
-          <span><i>Keep humans on the send.</i></span>
+          <span><i>Keep humans on send.</i></span>
         </h1>
-        <p class="lede" data-r>For ops and support teams drowning in repeatable steps, with approval gates so automation never sends on its own.</p>
-        <div class="tags" data-r><span class="tag">Make / Zapier</span><span class="tag">CRM automation</span><span class="tag">AI workflow design</span></div>
+        <p class="lede" data-r>Make, Zapier, and custom pipelines for the steps people already repeat, with approval gates so nothing customer-facing or ledger-facing goes out on its own. Low-confidence runs fall back to a person, not a silent send.</p>
+        <div class="tags" data-r>
+          <span class="tag">Make / Zapier</span>
+          <span class="tag">Human gates</span>
+          <span class="tag">Ticket triage</span>
+          <span class="tag">Invoice triggers</span>
+        </div>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-          <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
+          <a href="/work/ai-support-automation" class="btn ghost"><span>See SupportAI</span><i>→</i></a>
         </div>
       </div>
-      <aside class="aside-card" data-r>
-        <h2>Where this sits</h2>
-        <ul>
-          <li>Family · AI &amp; automation</li>
-          <li>Catalog · Automation Workflows</li>
-          <li>Make, Zapier, and custom automations that remove repetitive work while keeping humans in control.</li>
-        </ul>
-        <p class="contrast">Distinct from AI-Assisted Product Development (how we ship design/code) and from Integrations (connector reliability). This service owns workflow orchestration.</p>
-      </aside>
+
+      <div data-r>
+        <div class="auto-board" aria-hidden="true">
+          <div class="auto-board__bar">
+            <span><b>Review queue</b> · 8 waiting</span>
+            <span class="auto-board__live"><i></i>Human gate on</span>
+          </div>
+          <div class="auto-board__kpis">
+            <div class="auto-board__kpi"><span>Drafted today</span><b>14</b><em>Make · Claude</em></div>
+            <div class="auto-board__kpi"><span>Needs review</span><b>8</b><em>Before send</em></div>
+            <div class="auto-board__kpi warn"><span>Fallback</span><b>2</b><em>Low confidence</em></div>
+          </div>
+          <div class="auto-flow">
+            <span class="step">Ticket</span><span class="arr">→</span>
+            <span class="step">Make · Claude</span><span class="arr">→</span>
+            <span class="step gate">Gate</span><span class="arr">→</span>
+            <span class="step">Send</span>
+          </div>
+          <div class="auto-row on">
+            <span class="ref">T-1841</span>
+            <span class="lane"><b>Billing dispute</b><em>Draft ready · HubSpot</em></span>
+            <span class="conf">92%</span>
+            <span class="st st-go">Review</span>
+          </div>
+          <div class="auto-row on">
+            <span class="ref">T-1844</span>
+            <span class="lane"><b>Login lockout</b><em>Low confidence · fallback</em></span>
+            <span class="conf">61%</span>
+            <span class="st st-warn">Hold</span>
+          </div>
+          <div class="auto-row">
+            <span class="ref">T-1847</span>
+            <span class="lane"><b>Plan change</b><em>Draft ready · Zendesk</em></span>
+            <span class="conf">88%</span>
+            <span class="st st-go">Review</span>
+          </div>
+          <div class="auto-row">
+            <span class="ref">INV-09</span>
+            <span class="lane"><b>Invoice fire</b><em>Waiting approve · ledger</em></span>
+            <span class="conf">—</span>
+            <span class="st st-idle">Gate</span>
+          </div>
+        </div>
+        <p class="auto-board__note"><span class="flag">Demo</span> Illustrative queue · no client data · SupportAI pattern</p>
+      </div>
     </div>
 
-    <div class="brief" data-r>
-      <div class="brief-main">
-        <p class="k">How we run this engagement</p>
-        <ul class="brief-list"><li><span class="n">01</span><span><b>Workflow audit</b>: Workflow audit of the steps people repeat, and where a human must stay in the loop.</span></li><li><span class="n">02</span><span><b>Make / Zapier build</b>: Make / Zapier automation build with CRM and email triggers where they earn their place.</span></li><li><span class="n">03</span><span><b>Monitoring &amp; fallback</b>: Monitoring and fallback rules so low-confidence or failed runs return to a manual queue.</span></li></ul>
-      </div>
-      <div class="brief-side">
-        <div>
-          <p class="k">Best for</p>
-          <p class="body-sm" style="color:var(--ink);max-width:36ch">For ops and support teams drowning in repeatable steps, with approval gates so automation never sends on its own.</p>
-        </div>
-        <div class="brief-meta">
-          <span>Service · <b>Automation Workflows</b></span>
-          <span>Next · <b><a href="/work/ai-support-automation">SupportAI · ticket automation</a></b></span>
-          <span>CTA · <b><a href="/contact#book">Book a 20-minute fit call</a></b></span>
-        </div>
-      </div>
+    <div class="fit-rail" data-s>
+      <article>
+        <p class="k">Best for</p>
+        <h3>Ops and support drowning in the same steps</h3>
+        <p>Teams who already know the repeatable work, and need a person on anything that reaches a customer or the ledger.</p>
+      </article>
+      <article>
+        <p class="k">What we own</p>
+        <h3>Audit, build, gates, fallback</h3>
+        <p>Workflow map, Make or Zapier (or custom), human approval on send, and monitoring so failed runs return to a queue.</p>
+      </article>
+      <article>
+        <p class="k">Not this service</p>
+        <h3>Connectors, close UX, or “AI to ship code”</h3>
+        <p>Idempotent APIs live under Integrations. Month-end reconciliation lives on QuickBooks &amp; Xero. Using AI to design and build product lives under AI-Assisted Development.</p>
+        <p class="contrast">Need both? Ticket queues often pair this page with CRM Design. Ledger posting pairs with Integrations.</p>
+      </article>
     </div>
   </div>
 </header>
 
-<section class="sect" id="challenges" aria-labelledby="chH" style="border-top:1px solid var(--rule)">
+<section class="sect sect--rule" id="gates" aria-labelledby="gtH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Challenges</p>
-    <h2 class="d2" id="chH" data-r style="margin-top:16px;max-width:18ch">When the same steps burn every shift</h2>
-    <div class="chal"><article data-r>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Two queues, one rule</p>
+        <h2 class="d2" id="gtH" data-r>Triage drafts and invoice fires still need a person</h2>
+        <p class="lede" data-r>We orchestrate both. The mistake is letting Make send on its own, or treating a ledger write like a Slack ping. Human gates are default for anything customer-facing or books-facing.</p>
+      </div>
+    </div>
+    <div class="desks" data-s>
+      <article>
+        <p class="k">01 · Support &amp; ops</p>
+        <h3 class="d3">Ticket and follow-up queues</h3>
+        <p class="body-sm">Make or Zapier with an LLM step for routing, summary, and draft replies. A person approves before send, same posture as SupportAI.</p>
+        <ul>
+          <li>Triage and draft in the queue, not in a private inbox</li>
+          <li>Low-confidence runs fall back to a human, not a silent send</li>
+          <li>CRM and email triggers only where they earn their place</li>
+        </ul>
+      </article>
+      <article>
+        <p class="k">02 · Finance ops</p>
+        <h3 class="d3">Invoice and reminder triggers</h3>
+        <p class="body-sm">When a delivered load or won deal should fire an invoice, automation owns the trigger and the gate. The connector that actually writes the books is a pairing, not this page.</p>
+        <ul>
+          <li>Approve before anything posts to the ledger</li>
+          <li>Failed or duplicate runs return to a review queue</li>
+          <li>Operators see why a run held, not a raw error dump</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="pair" data-r>
+      <div>
+        <p class="eyebrow">When the workflow posts to the books</p>
+        <h3 class="d3" style="margin-top:14px">A gated trigger is not a finance connector</h3>
+        <p class="body-sm" style="margin-top:12px">Automation Workflows owns the queue and the human gate. If the next step must land in QuickBooks Online or Xero, we pair this service with the original APIs, not a CSV after close.</p>
+        <a href="/solutions/accounting-integrations" class="p-link">QuickBooks &amp; Xero integrations <i>→</i></a>
+      </div>
+      <div class="pair-logos">
+        <span class="lockup">
+          <img src="/brand/logos/quickbooks.svg" alt="QuickBooks" width="22" height="22">
+          <span><b>QuickBooks</b><small>Online API</small></span>
+        </span>
+        <span class="lockup">
+          <img src="/brand/logos/xero.svg" alt="Xero" width="22" height="22">
+          <span><b>Xero</b><small>Cloud API</small></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="challenges" aria-labelledby="chH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Challenges</p>
+        <h2 class="d2" id="chH" data-r>When the same steps burn every shift</h2>
+        <p class="lede" data-r>The tools are already there. The queue is still manual. These are the patterns we see before an automation engagement starts.</p>
+      </div>
+    </div>
+    <div class="chal">
+      <article data-r>
         <span class="n">01</span>
         <h3 class="d3">Repeatable toil</h3>
-        <p class="body-sm">Teams repeat the same manual steps daily</p>
+        <p class="body-sm">The same copy, tag, and follow-up happens every shift. People stay busy. The work does not get better, and nobody can point to a rule that owns it.</p>
       </article>
       <article data-r>
         <span class="n">02</span>
-        <h3 class="d3">Tool gaps</h3>
-        <p class="body-sm">Leads and data fall through cracks between tools</p>
+        <h3 class="d3">Ungated send</h3>
+        <p class="body-sm">A Zap went live without an approval step. Customer email, invoice, or CRM write happens on its own, then someone spends Friday reversing it.</p>
       </article>
       <article data-r>
         <span class="n">03</span>
         <h3 class="d3">Orphaned workflows</h3>
-        <p class="body-sm">No one owns workflow maintenance</p>
-      </article></div>
+        <p class="body-sm">The person who built the scenario left. Failures land in a forgotten inbox. Nobody owns monitoring, fallback, or the map of what still runs.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="sect story" id="approach" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="approach" aria-labelledby="apH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Approach</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px;max-width:20ch">Automate the queue. Keep humans on the send.</h2>
-    <p class="body" data-r style="margin-top:16px">Human approval gates are default for anything customer-facing, same posture as SupportAI.</p>
-    <div class="approach"><div class="ap-row" data-r>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Approach</p>
+        <h2 class="d2" id="apH" data-r>Map the loop, then put a person on send</h2>
+        <p class="lede" data-r>Human approval gates are default for anything customer-facing or ledger-facing, same posture as SupportAI.</p>
+      </div>
+    </div>
+    <div class="approach">
+      <div class="ap-row" data-r>
         <span class="idx num">01</span>
         <div>
           <h3 class="d3">Workflow audit</h3>
-          <p class="body-sm" style="margin-top:10px">Workflow audit of the steps people repeat, and where a human must stay in the loop.</p>
+          <p class="body-sm">We sit with the people who repeat the steps. Triggers, handoffs, and the moments a human must stay in the loop get written before anyone opens Make.</p>
         </div>
+        <p class="out"><b>You leave with</b>A map of what to automate, and what must stay gated</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">02</span>
         <div>
           <h3 class="d3">Make / Zapier build</h3>
-          <p class="body-sm" style="margin-top:10px">Make / Zapier automation build with CRM and email triggers where they earn their place.</p>
+          <p class="body-sm">Scenarios with CRM, email, and ticket triggers where they earn their place. LLM steps for routing and drafts when they help. Custom code when the platform is the bottleneck.</p>
         </div>
+        <p class="out"><b>You leave with</b>A live pipeline ops can open and explain</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">03</span>
         <div>
           <h3 class="d3">Monitoring &amp; fallback</h3>
-          <p class="body-sm" style="margin-top:10px">Monitoring and fallback rules so low-confidence or failed runs return to a manual queue.</p>
+          <p class="body-sm">Failed, duplicate, and low-confidence runs return to a manual queue. Someone owns the alert. Nothing silent writes into production without a path back.</p>
         </div>
-      </div></div>
+        <p class="out"><b>You leave with</b>Fallback rules and an owner for what still runs</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="sect" id="deliverables" aria-labelledby="delH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Deliverables</p>
-    <h2 class="d2" id="delH" data-r style="margin-top:16px;max-width:18ch">What runs without babysitting</h2>
-    <div class="deliv"><div data-r>
-        <b>01</b>
-        <p>Workflow audit</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Deliverables</p>
+        <h2 class="d2" id="delH" data-r>What runs without babysitting</h2>
+        <p class="lede" data-r>Artifacts your team can operate next week, not a slide deck about “automation strategy.”</p>
       </div>
-      <div data-r>
-        <b>02</b>
-        <p>Make / Zapier automation build</p>
-      </div>
-      <div data-r>
-        <b>03</b>
-        <p>CRM &amp; email triggers</p>
-      </div>
-      <div data-r>
-        <b>04</b>
-        <p>Monitoring &amp; fallback rules</p>
-      </div></div>
+    </div>
+    <div class="deliv">
+      <article data-r>
+        <b>01 · Map</b>
+        <h3 class="d3">Workflow audit</h3>
+        <p>Documented steps, owners, gates, and the moments automation is not allowed to send on its own.</p>
+      </article>
+      <article data-r>
+        <b>02 · Build</b>
+        <h3 class="d3">Make / Zapier (or custom)</h3>
+        <p>Working scenarios with named triggers, test runs, and a path to change them without calling the original builder.</p>
+      </article>
+      <article data-r>
+        <b>03 · Gates</b>
+        <h3 class="d3">Approval &amp; review queue</h3>
+        <p>Human steps on customer send and ledger write, with low-confidence fallback instead of a silent fire.</p>
+      </article>
+      <article data-r>
+        <b>04 · Run</b>
+        <h3 class="d3">Monitoring &amp; fallback rules</h3>
+        <p>Alerts, retry policy, and a manual queue so failed runs do not vanish into an unowned inbox.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="sect" id="outcomes" aria-labelledby="outH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="outcomes" aria-labelledby="outH">
   <div class="wrap">
-    <div class="gain outcomes" style="margin-top:0;padding-top:0;border-top:0">
+    <div class="gain">
       <div data-r>
         <p class="eyebrow">Outcomes</p>
-        <h2 class="d2" id="outH" style="margin-top:14px;max-width:16ch">What changes in the queue</h2>
-        <p class="body-sm" style="margin-top:12px">What this engagement is meant to change in the product.</p>
+        <h2 class="d2" id="outH">What changes in the queue</h2>
+        <p class="lede">Qualitative targets we design toward. Signed-off metrics publish on case studies when clients clear them.</p>
+        <a href="/work/ai-support-automation" class="p-link">SupportAI · triage with human gates <i>→</i></a>
       </div>
       <ul data-s>
-          <li>Hours returned to high-value work</li>
-          <li>Fewer missed follow-ups and data errors</li>
-          <li>Scalable ops without hiring immediately</li>
+        <li>
+          <span class="n">01</span>
+          <span>
+            <strong>Hours back on the desk</strong>
+            <span>Repeat copy, tagging, and first-pass drafts leave the queue. People spend the shift on exceptions, not the same eight steps.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <span>
+            <strong>Nothing customer-facing goes out alone</strong>
+            <span>Approval is a step in the scenario, not a hope. Low-confidence and failed runs return to a person.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <span>
+            <strong>Someone owns what still runs</strong>
+            <span>A map, an alert, and a fallback queue. The workflow survives the person who first built it.</span>
+          </span>
+        </li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="sect sect--tight" id="proof" aria-labelledby="pfH">
+<section class="sect" id="proof" aria-labelledby="pfH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Where this shows up</p>
-    <h2 class="d2" id="pfH" data-r style="margin-top:16px">Related work and pages</h2>
-    <div class="rel" data-s><a href="/work/ai-support-automation">
-        <span class="k">Work</span>
-        <span class="arrow"><span class="d3">SupportAI · ticket automation</span><i>→</i></span>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Where this shows up</p>
+        <h2 class="d2" id="pfH" data-r>Related work and pages</h2>
+        <p class="lede" data-r>Human-gated ticket automation, a finance pairing when the trigger hits the books, and the connector service this is not.</p>
+      </div>
+    </div>
+    <div class="rel" data-s>
+      <a href="/work/ai-support-automation">
+        <span>
+          <span class="k">Work · narrative</span>
+          <span class="d3 title">SupportAI · ticket automation</span>
+          <span class="hook">Make + Claude triage with draft replies and human approval before send, plus low-confidence fallback.</span>
+        </span>
+        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
       </a>
-      <a href="/solutions/accounting-integrations">
-        <span class="k">Solution</span>
-        <span class="arrow"><span class="d3">Accounting ops</span><i>→</i></span>
+      <a href="/work/finance-sync-hub">
+        <span>
+          <span class="k">Work · pairing</span>
+          <span class="d3 title">FinanceSync · close ops</span>
+          <span class="hook">When an approved trigger must land in the ledger, this is the operator surface beside QuickBooks and Xero.</span>
+        </span>
+        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
       </a>
-      <a href="/services/ai-assisted-development">
-        <span class="k">Service</span>
-        <span class="arrow"><span class="d3">AI-assisted development</span><i>→</i></span>
-      </a></div>
-    <p class="eyebrow" data-r style="margin-top:clamp(36px,4vw,56px)">Also see</p>
+      <a href="/services/api-integrations">
+        <span>
+          <span class="k">Service</span>
+          <span class="d3 title">Integrations &amp; APIs</span>
+          <span class="hook">Connector reliability, idempotency, and error surfaces, when two systems must stay in agreement without a queue.</span>
+        </span>
+        <span class="arrow"><span class="mono">Service</span><i>→</i></span>
+      </a>
+    </div>
+    <p class="eyebrow sib-label" data-r>Also see</p>
     <div class="sib" data-r>
-        <a href="/services/ai-assisted-development">AI-Assisted Development</a>
-        <a href="/services/api-integrations">Integrations &amp; APIs</a>
-        <a href="/services/crm-development">CRM Design</a>
+      <a href="/services/crm-development">CRM Design</a>
+      <a href="/services/ai-assisted-development">AI-Assisted Development</a>
+      <a href="/solutions/accounting-integrations">QuickBooks &amp; Xero</a>
+      <a href="/solutions/car-transportation">Car transportation</a>
       <a href="/services">All services</a>
     </div>
   </div>
 </section>
 
-<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="faq" aria-labelledby="faqH">
   <div class="wrap">
-    <p class="eyebrow" data-r>FAQ</p>
-    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About Automation Workflows</h2>
-    <div class="faq" data-r><details>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>FAQ</p>
+        <h2 class="d2" id="faqH" data-r>About Automation Workflows</h2>
+      </div>
+    </div>
+    <div class="faq" data-r>
+      <details>
+        <summary>Do you only use Make and Zapier?</summary>
+        <p>Make and Zapier are the default when they fit. We write custom workers when the platform is the bottleneck, the volume is too high, or the gate needs a console the iPaaS cannot host. The engagement starts with the loop, not the logo.</p>
+      </details>
+      <details>
+        <summary>How is this different from Integrations &amp; APIs?</summary>
+        <p>Automation owns the queue: triggers, human gates, and fallback. Integrations owns connector architecture, idempotency, webhooks, and error surfaces. Use this page when a person is still in the loop on send. Use Integrations when two systems must stay in agreement without a nightly spreadsheet.</p>
+      </details>
+      <details>
+        <summary>How is this different from AI-Assisted Development?</summary>
+        <p>AI-Assisted Development is how KRIVA ships design and code faster. This service is the customer’s ops queue: ticket triage, drafts, invoice triggers, with a human on send. We may use an LLM inside a Make scenario. That is not the same as using AI to build your product.</p>
+      </details>
+      <details>
         <summary>Can you automate AI steps too?</summary>
-        <p>Yes. We chain LLM steps into Make workflows for summarization, routing, and draft generation, with approval gates throughout.</p>
-      </details></div>
+        <p>Yes. We chain LLM steps into Make or custom workers for summarization, routing, and draft generation, with approval gates throughout. Low-confidence output falls back to a person. Nothing customer-facing sends on its own.</p>
+      </details>
+      <details>
+        <summary>What if the workflow needs to hit QuickBooks or Xero?</summary>
+        <p>Automation owns the trigger and the gate. The write into QuickBooks Online or Xero uses the original APIs under QuickBooks &amp; Xero integrations, not a CSV export after the run. We pair the two services when the queue and the ledger both matter.</p>
+      </details>
+      <details>
+        <summary>Who owns the workflow after launch?</summary>
+        <p>Your team. We leave a map, named scenarios, monitoring, and a fallback queue so the pipeline survives the original builder. Maintenance can stay in-house, or we can retain a light ops retainer if you ask for it.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -556,8 +819,9 @@ img{max-width:100%;display:block}
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
     <h2 class="d2" id="ctaH" data-r>Need automation with humans in the loop?</h2>
+    <p class="lede" data-r>A short fit call or a written brief. Bring the steps people already repeat, including the Zap nobody wants to touch.</p>
     <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+      <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
@@ -626,13 +890,12 @@ img{max-width:100%;display:block}
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Automation Workflows",
-  "description": "Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of send and approve steps.",
+  "description": "Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of send, approve, and ledger steps.",
   "provider": {
     "@type": "Organization",
     "name": "KRIVA Technologies"
@@ -647,16 +910,55 @@ img{max-width:100%;display:block}
   "mainEntity": [
     {
       "@type": "Question",
+      "name": "Do you only use Make and Zapier?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Make and Zapier are the default when they fit. We write custom workers when the platform is the bottleneck, the volume is too high, or the gate needs a console the iPaaS cannot host. The engagement starts with the loop, not the logo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Integrations & APIs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Automation owns the queue: triggers, human gates, and fallback. Integrations owns connector architecture, idempotency, webhooks, and error surfaces. Use this page when a person is still in the loop on send. Use Integrations when two systems must stay in agreement without a nightly spreadsheet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from AI-Assisted Development?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI-Assisted Development is how KRIVA ships design and code faster. This service is the customer’s ops queue: ticket triage, drafts, invoice triggers, with a human on send. We may use an LLM inside a Make scenario. That is not the same as using AI to build your product."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Can you automate AI steps too?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We chain LLM steps into Make workflows for summarization, routing, and draft generation, with approval gates throughout."
+        "text": "Yes. We chain LLM steps into Make or custom workers for summarization, routing, and draft generation, with approval gates throughout. Low-confidence output falls back to a person. Nothing customer-facing sends on its own."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if the workflow needs to hit QuickBooks or Xero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Automation owns the trigger and the gate. The write into QuickBooks Online or Xero uses the original APIs under QuickBooks & Xero integrations, not a CSV export after the run. We pair the two services when the queue and the ledger both matter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who owns the workflow after launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your team. We leave a map, named scenarios, monitoring, and a fallback queue so the pipeline survives the original builder. Maintenance can stay in-house, or we can retain a light ops retainer if you ask for it."
       }
     }
   ]
 }
 </script>
-<script src="/shared/chrome.js" defer></script>
 <script>
 (function(){
 'use strict';

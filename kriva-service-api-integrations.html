@@ -3,34 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Integrations &amp; APIs · Reliable connectors · KRIVA</title>
-<meta name="description" content="Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling and monitoring.">
+<title>Integrations &amp; APIs · Connectors operators can trust · KRIVA</title>
+<meta name="description" content="Reliable connectors between your product, CRM, ERP, payments, and accounting APIs, with idempotent jobs, readable errors, and monitoring operators can act on.">
 <link rel="canonical" href="https://krivatechnologies.com/services/api-integrations">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Integrations &amp; APIs · Reliable connectors">
-<meta property="og:description" content="Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling and monitoring.">
+<meta property="og:title" content="Integrations &amp; APIs · Connectors operators can trust">
+<meta property="og:description" content="Reliable connectors between your product, CRM, ERP, payments, and accounting APIs, with idempotent jobs, readable errors, and monitoring operators can act on.">
 <meta property="og:url" content="https://krivatechnologies.com/services/api-integrations">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
+<meta property="og:image:alt" content="KRIVA · Integrations and APIs, connectors operators can trust">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
-/* Shared KRIVA tokens + primitives */
 :root{
   --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
   --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
   --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
   --blue:#1B44C8; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --lilac:#B7A9FF;
+  --lime:#5FD3A0; --lilac:#B7A9FF; --sky:#5B8CFF;
+  --qb:#2CA01C; --xero:#13B5EA;
   --f-display:'Archivo',system-ui,sans-serif;
   --f-body:'Inter',system-ui,sans-serif;
   --f-mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -93,20 +92,25 @@ img{max-width:100%;display:block}
 .p-link i{font-style:normal;transition:transform .42s var(--e)}
 .p-link:hover i{transform:translateX(6px)}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
-.flag.tbd{border-color:var(--amber);color:#8A6200}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
 .hero{padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(36px,4.5vw,64px)}
-.hero h1{margin:20px 0 22px}
+.hero h1{margin:16px 0 22px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
 .sect{padding-block:clamp(64px,8vw,128px)}
 .sect--tight{padding-block:clamp(48px,6vw,88px)}
+.sect--band{background:var(--paper-2);border-block:1px solid var(--rule)}
+.sect--rule{border-top:1px solid var(--rule)}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
+.s-head .lede{margin-top:16px;max-width:54ch}
 .cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
 .cta-band .wrap{padding-block:clamp(72px,9vw,140px)}
 .cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:22px;max-width:14ch}
+.cta-band h2{color:#fff;margin-top:22px;max-width:16ch}
+.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:46ch}
 .cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
 .assur i{font-style:normal;color:var(--amber);margin-right:7px}
 @media (prefers-reduced-motion:reduce){
@@ -114,6 +118,7 @@ img{max-width:100%;display:block}
   *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
+  .conn-board__live i{animation:none!important}
 }
 
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
@@ -127,13 +132,12 @@ img{max-width:100%;display:block}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
-
 .mob-chips{
   display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
   padding:10px 0 12px;margin:0 calc(-1 * var(--gutter));padding-inline:var(--gutter);
   background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none
 }
-.mob-chips:-webkit-scrollbar{display:none}
+.mob-chips::-webkit-scrollbar{display:none}
 .mob-chips a{
   flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   padding:7px 11px;border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
@@ -141,84 +145,145 @@ img{max-width:100%;display:block}
 .mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.hero{
+  background:
+    radial-gradient(110% 80% at 100% -8%, rgba(27,68,200,.08), transparent 50%),
+    radial-gradient(85% 65% at 0% 100%, rgba(19,181,234,.07), transparent 48%),
+    var(--paper);
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
 .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
-.aside-card{background:var(--white);border:1px solid var(--rule);padding:clamp(18px,2.2vw,26px)}
-.aside-card h2{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:400;margin-bottom:14px}
-.aside-card ul{list-style:none;display:grid;gap:10px}
-.aside-card li{font-size:14.5px;display:flex;gap:9px;align-items:flex-start}
-.aside-card li:before{content:"·";color:var(--rule);flex:none}
-.contrast{margin-top:18px;padding:14px 16px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:14.5px;line-height:1.55;color:var(--ink);max-width:54ch}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.logo-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.lockup{display:inline-flex;align-items:center;gap:8px;padding:6px 11px 6px 7px;background:var(--white);border:1px solid var(--rule)}
+.lockup img{width:20px;height:20px;flex:none}
+.lockup b{font-family:var(--f-display);font-weight:750;font-size:13px;letter-spacing:-.02em;line-height:1}
+.lockup small{display:block;margin-top:2px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
 
-.shot{position:relative;background:var(--ink);overflow:hidden;margin-top:clamp(28px,3.5vw,48px)}
-.shot .media{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden}
-.slot{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(14px,2vw,22px);background:linear-gradient(160deg,#161C22,#0E1216)}
-.slot .skel{display:grid;gap:7px}
-.slot .skel i{display:block;height:7px;background:#1F262E}
-.slot .skel i:nth-child(1){width:34%}.slot .skel i:nth-child(2){width:58%}.slot .skel i:nth-child(3){width:46%}
-.slot .tagline{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5C6670;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.shot-cap{margin-top:12px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+/* Signature · connector health (not a ledger, not a SaaS workspace) */
+.conn-board{
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  box-shadow:0 28px 60px -42px rgba(14,18,22,.55)
+}
+.conn-board__bar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:11px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+}
+.conn-board__bar b{color:#fff;font-weight:400}
+.conn-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--lime)}
+.conn-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:conn-pulse 2.4s var(--e-io) infinite}
+@keyframes conn-pulse{0%{box-shadow:0 0 0 0 rgba(95,211,160,.45)}70%{box-shadow:0 0 0 7px rgba(95,211,160,0)}100%{box-shadow:0 0 0 0 rgba(95,211,160,0)}}
+.conn-board__meta{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
+.conn-board__cell{padding:12px 12px 14px;border-right:1px solid var(--ink-line)}
+.conn-board__cell:last-child{border-right:0}
+.conn-board__cell span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#6B7885}
+.conn-board__cell b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:clamp(1rem,1.5vw,1.2rem);letter-spacing:-.02em;color:#fff}
+.conn-board__cell em{display:block;margin-top:4px;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;color:var(--lime)}
+.conn-row{
+  display:grid;grid-template-columns:minmax(0,1.4fr) auto auto;gap:10px;align-items:center;
+  padding:10px 14px;border-bottom:1px solid #1A2027;
+  font-size:12px;color:#B9C3CC
+}
+.conn-row:last-child{border-bottom:0}
+.conn-row .who{display:flex;align-items:center;gap:9px;color:#fff;min-width:0}
+.conn-row .who img{width:18px;height:18px;flex:none}
+.conn-row .who .mark{width:18px;height:18px;flex:none;display:grid;place-items:center;font-family:var(--f-mono);font-size:8px;letter-spacing:.04em;border:1px solid var(--ink-line);color:#8C98A4}
+.conn-row .who b{font-weight:500;font-size:12.5px;letter-spacing:-.01em}
+.conn-row .who em{display:block;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#6B7885}
+.conn-row .ago{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#6B7885;white-space:nowrap}
+.st{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;white-space:nowrap}
+.st:before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
+.st-ok{color:var(--lime)}.st-sync{color:var(--sky)}.st-warn{color:var(--amber)}
+.conn-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+@media(max-width:560px){
+  .conn-board__meta{grid-template-columns:1fr 1fr}
+  .conn-board__cell:nth-child(3){display:none}
+  .conn-row{grid-template-columns:1fr auto;gap:6px 10px}
+  .conn-row .ago{display:none}
+}
+
+.fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
+.fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+.fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
+.fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
+@media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
+
+.sys{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.sys article{background:var(--white);padding:clamp(22px,2.6vw,34px)}
+.sys .lockup{margin-bottom:16px;padding:0;border:0;background:none}
+.sys .lockup img{width:28px;height:28px}
+.sys .lockup b{font-size:1.15rem}
+.sys ul{list-style:none;display:grid;gap:8px;margin-top:16px}
+.sys li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink)}
+.sys li:before{content:"";width:6px;height:6px;margin-top:7px;background:var(--rule)}
+.sys article:nth-child(1) li:before{background:var(--qb)}
+.sys article:nth-child(2) li:before{background:var(--xero)}
+.sys-more{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-top:0}
+.sys-more div{background:var(--paper);padding:clamp(18px,2.2vw,26px)}
+.sys-more .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:8px}
+.sys-more h3{font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:8px}
+@media(max-width:800px){.sys,.sys-more{grid-template-columns:1fr}}
 
 .chal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px)}
+.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px);transition:background .4s var(--e)}
+.chal article:hover{background:var(--white)}
 .chal .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:12px}
-.chal h3{margin-bottom:10px}
-.chal p{color:var(--steel);max-width:32ch}
+.chal h3{margin-bottom:12px}
+.chal p{color:var(--steel);max-width:34ch}
 @media(max-width:860px){.chal{grid-template-columns:1fr}}
 
 .approach{display:grid;gap:0;margin-top:clamp(28px,3.5vw,48px);border-top:1px solid var(--rule)}
-.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule)}
+.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,.85fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule);align-items:start}
 .ap-row .idx{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1}
-@media(max-width:640px){.ap-row{grid-template-columns:1fr;gap:8px}}
+.ap-row .body-sm{margin-top:10px}
+.ap-row .out{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-top:6px}
+.ap-row .out b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
+@media(max-width:900px){.ap-row{grid-template-columns:64px minmax(0,1fr);gap:14px}.ap-row .out{grid-column:2}}
+@media(max-width:560px){.ap-row{grid-template-columns:1fr;gap:8px}.ap-row .out{grid-column:1}}
 
-.deliv{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.deliv div{background:var(--white);padding:clamp(18px,2.2vw,26px)}
-.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.deliv p{font-size:15px;line-height:1.5;color:var(--ink)}
-@media(max-width:900px){.deliv{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.deliv{grid-template-columns:1fr}}
+.deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.deliv article{background:var(--white);padding:clamp(22px,2.6vw,34px)}
+.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
+.deliv h3{margin-bottom:10px}
+.deliv p{font-size:15px;line-height:1.58;color:var(--steel);max-width:42ch}
+@media(max-width:700px){.deliv{grid-template-columns:1fr}}
 
-.outcomes{margin-top:clamp(48px,5vw,80px);padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--rule)}
-.gain{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
-.gain ul{list-style:none;display:grid;gap:14px}
-.gain li{padding:16px 18px;background:var(--white);border:1px solid var(--rule);font-size:15.5px;line-height:1.5}
+.gain{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:start}
+.gain ul{list-style:none;display:grid;gap:12px}
+.gain li{padding:18px 20px;background:var(--white);border:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.gain li .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:4px}
+.gain li strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
+.gain li span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel)}
 @media(max-width:800px){.gain{grid-template-columns:1fr}}
 
 .faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:760px}
-.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px}
-.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none}
-.faq summary:-webkit-details-marker{display:none}
-.faq p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--steel)}
+.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
+.faq details[open]{border-color:var(--ink)}
+.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-family:var(--f-mono);font-size:14px;color:var(--steel);flex:none}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:58ch}
 
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
-.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:160px;transition:transform .5s var(--e),border-color .4s}
+.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
 .rel a:hover{transform:translate3d(0,-4px,0);border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.rel .title{display:block;margin-top:10px}
+.rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:32ch}
 .rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
 .rel a:hover .arrow i{transform:translateX(6px)}
 @media(max-width:860px){.rel{grid-template-columns:1fr}}
-
+.sib-label{margin-top:clamp(36px,4vw,56px)}
 .sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
 .sib a:hover{border-color:var(--blue);color:var(--blue)}
-
-/* Phase 11 · intentional brief board (no empty screenshot theater) */
-.brief{margin-top:clamp(28px,3.5vw,48px);border:1px solid var(--rule);background:var(--white);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
-.brief-main{padding:clamp(22px,2.8vw,36px);border-right:1px solid var(--rule)}
-.brief-side{padding:clamp(22px,2.8vw,36px);background:var(--paper-2);display:grid;align-content:space-between;gap:24px}
-.brief .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
-.brief-list{list-style:none;display:grid;gap:12px}
-.brief-list li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.45}
-.brief-list .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:3px}
-.brief-meta{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);display:grid;gap:10px}
-.brief-meta b{color:var(--ink);font-weight:500}
-@media(max-width:800px){.brief{grid-template-columns:1fr}.brief-main{border-right:0;border-bottom:1px solid var(--rule)}}
-
 </style>
-<link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body>
@@ -265,7 +330,7 @@ img{max-width:100%;display:block}
                 <div class="mm-head"><b>Integrations</b><span>Finance &amp; APIs</span></div>
                 <ul class="mm-list">
                   <li><a role="menuitem" href="/solutions/accounting-integrations"><strong>QuickBooks &amp; Xero</strong><em>Sync and reconciliation finance teams trust.</em></a></li>
-                  <li><a role="menuitem" href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><em>Reliable connectors with clear error handling.</em></a></li>
+                  <li><a role="menuitem" href="/services/api-integrations" aria-current="page"><strong>Integrations &amp; APIs</strong><em>Reliable connectors with clear error handling.</em></a></li>
                 </ul>
                 <div class="mm-foot"><a href="/solutions/accounting-integrations">Explore integrations <i>→</i></a></div>
               </div>
@@ -321,7 +386,7 @@ img{max-width:100%;display:block}
       <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-integration">Integration<span class="plus" aria-hidden="true"></span></button>
       <ul class="sheet-sub" id="sheet-integration">
         <li><a href="/solutions/accounting-integrations"><strong>QuickBooks &amp; Xero</strong><span>Sync &amp; reconciliation</span></a></li>
-        <li><a href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><span>Connectors that hold</span></a></li>
+        <li><a href="/services/api-integrations" aria-current="page"><strong>Integrations &amp; APIs</strong><span>Connectors that hold</span></a></li>
       </ul>
     </div>
     <div class="sheet-item">
@@ -353,6 +418,7 @@ img{max-width:100%;display:block}
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview"><span>Overview</span><i></i></a>
+  <a href="#systems"><span>Systems</span><i></i></a>
   <a href="#challenges"><span>Challenges</span><i></i></a>
   <a href="#approach"><span>Approach</span><i></i></a>
   <a href="#deliverables"><span>Deliverables</span><i></i></a>
@@ -372,6 +438,7 @@ img{max-width:100%;display:block}
     </ol>
     <nav class="mob-chips" id="mobChips" aria-label="On this page">
       <a href="#overview" aria-current="true">Overview</a>
+      <a href="#systems">Systems</a>
       <a href="#challenges">Challenges</a>
       <a href="#approach">Approach</a>
       <a href="#deliverables">Deliverables</a>
@@ -379,185 +446,374 @@ img{max-width:100%;display:block}
       <a href="#proof">Proof</a>
       <a href="#faq">FAQ</a>
     </nav>
+
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" data-r>Service · Build &amp; integration · Integrations &amp; APIs</p>
+        <p class="eyebrow" data-r>Service · Connectors &amp; APIs</p>
+        <div class="logo-row" data-r>
+          <span class="lockup">
+            <img src="/brand/logos/quickbooks.svg" alt="" width="20" height="20">
+            <span><b>QuickBooks</b><small>Online API</small></span>
+          </span>
+          <span class="lockup">
+            <img src="/brand/logos/xero.svg" alt="" width="20" height="20">
+            <span><b>Xero</b><small>Cloud API</small></span>
+          </span>
+        </div>
         <h1 class="d1 mask" data-mask>
           <span><i>Integrations that fail</i></span>
           <span><i>where operators can see them.</i></span>
         </h1>
-        <p class="lede" data-r>For products where silent sync drift is more expensive than a slow feature, QuickBooks, Xero, CRM, payments, and ops tools that must stay honest.</p>
-        <div class="tags" data-r><span class="tag">REST &amp; webhooks</span><span class="tag">CRM / ERP sync</span><span class="tag">Monitoring &amp; alerts</span></div>
+        <p class="lede" data-r>Connectors between your product and the tools it must stay honest with: QuickBooks, Xero, CRM, payments, and ops feeds. Idempotent jobs, readable errors, and monitoring that does not wait for a spreadsheet.</p>
+        <div class="tags" data-r>
+          <span class="tag">REST &amp; webhooks</span>
+          <span class="tag">CRM / ERP sync</span>
+          <span class="tag">QBO · Xero</span>
+          <span class="tag">Monitoring &amp; alerts</span>
+        </div>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-          <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
+          <a href="/work/finance-sync-hub" class="btn ghost"><span>See FinanceSync connectors</span><i>→</i></a>
         </div>
       </div>
-      <aside class="aside-card" data-r>
-        <h2>Where this sits</h2>
-        <ul>
-          <li>Family · Build &amp; integration</li>
-          <li>Catalog · Integrations &amp; APIs</li>
-          <li>Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling and monitoring.</li>
-        </ul>
-        <p class="contrast">Pairs with Automation Workflows when the job is Make/Zapier orchestration; this service owns connector architecture, error surfaces, and operator docs.</p>
-      </aside>
+
+      <div data-r>
+        <div class="conn-board" aria-hidden="true">
+          <div class="conn-board__bar">
+            <span><b>Connector health</b> · 5 feeds</span>
+            <span class="conn-board__live"><i></i>4 healthy</span>
+          </div>
+          <div class="conn-board__meta">
+            <div class="conn-board__cell"><span>Last sweep</span><b>2m ago</b><em>On schedule</em></div>
+            <div class="conn-board__cell"><span>Open exceptions</span><b>1</b><em>ELD feed</em></div>
+            <div class="conn-board__cell"><span>Retries</span><b>Idempotent</b><em>No duplicates</em></div>
+          </div>
+          <div class="conn-row">
+            <span class="who"><img src="/brand/logos/quickbooks.svg" alt=""><span><b>QuickBooks Online</b><em>US entity</em></span></span>
+            <span class="ago">2m</span>
+            <span class="st st-ok">Healthy</span>
+          </div>
+          <div class="conn-row">
+            <span class="who"><img src="/brand/logos/xero.svg" alt=""><span><b>Xero</b><em>UK org</em></span></span>
+            <span class="ago">2m</span>
+            <span class="st st-ok">Healthy</span>
+          </div>
+          <div class="conn-row">
+            <span class="who"><span class="mark">S</span><span><b>Stripe</b><em>Payouts</em></span></span>
+            <span class="ago">4m</span>
+            <span class="st st-ok">Healthy</span>
+          </div>
+          <div class="conn-row">
+            <span class="who"><span class="mark">H</span><span><b>HubSpot</b><em>CRM sync</em></span></span>
+            <span class="ago">11m</span>
+            <span class="st st-sync">Retrying</span>
+          </div>
+          <div class="conn-row">
+            <span class="who"><span class="mark">E</span><span><b>ELD feed</b><em>Fleet</em></span></span>
+            <span class="ago">—</span>
+            <span class="st st-warn">Exception</span>
+          </div>
+        </div>
+        <p class="conn-board__note"><span class="flag">Demo</span> Interface pattern · illustrative feeds, no client data</p>
+      </div>
     </div>
 
-    <div class="brief" data-r>
-      <div class="brief-main">
-        <p class="k">How we run this engagement</p>
-        <ul class="brief-list"><li><span class="n">01</span><span><b>Architecture map</b>: Integration architecture map across entities, rate limits, and ownership, before writing connectors.</span></li><li><span class="n">02</span><span><b>Connector build</b>: Connector implementation with idempotent patterns where the domain requires them.</span></li><li><span class="n">03</span><span><b>Alerting &amp; docs</b>: Error alerting, logs, and operator documentation so failures are triageable, not tribal knowledge.</span></li></ul>
-      </div>
-      <div class="brief-side">
-        <div>
-          <p class="k">Best for</p>
-          <p class="body-sm" style="color:var(--ink);max-width:36ch">For products where silent sync drift is more expensive than a slow feature, QuickBooks, Xero, CRM, payments, and ops tools that must stay honest.</p>
-        </div>
-        <div class="brief-meta">
-          <span>Service · <b>Integrations &amp; APIs</b></span>
-          <span>Next · <b><a href="/work/finance-sync-hub">FinanceSync · QB/Xero hub</a></b></span>
-          <span>CTA · <b><a href="/contact#book">Book a 20-minute fit call</a></b></span>
-        </div>
-      </div>
+    <div class="fit-rail" data-s>
+      <article>
+        <p class="k">Best for</p>
+        <h3>Products that must stay honest with other systems</h3>
+        <p>SaaS, trucking, and ops platforms where silent sync drift costs more than a slow feature: ledgers, CRM, payments, ELD.</p>
+      </article>
+      <article>
+        <p class="k">What we own</p>
+        <h3>Connector architecture and error surfaces</h3>
+        <p>Mapping, idempotent jobs, webhooks, retries, alerting, and operator docs so failures are triageable.</p>
+      </article>
+      <article>
+        <p class="k">Not this service</p>
+        <h3>Zapier-only, or finance close UX alone</h3>
+        <p>Make/Zapier orchestration lives under Automation. Month-end reconciliation UX lives on QuickBooks &amp; Xero.</p>
+        <p class="contrast">Need both? Most ledger syncs pair this service with the accounting solution page.</p>
+      </article>
     </div>
   </div>
 </header>
 
-<section class="sect" id="challenges" aria-labelledby="chH" style="border-top:1px solid var(--rule)">
+<section class="sect sect--rule" id="systems" aria-labelledby="sysH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Challenges</p>
-    <h2 class="d2" id="chH" data-r style="margin-top:16px;max-width:18ch">When sync drift shows up at month-end</h2>
-    <div class="chal"><article data-r>
-        <span class="n">01</span>
-        <h3 class="d3">Silent drift</h3>
-        <p class="body-sm">Integrations break silently and data drifts</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Systems</p>
+        <h2 class="d2" id="sysH" data-r>The APIs we ship against most often</h2>
+        <p class="lede" data-r>Official QuickBooks and Xero connectors first. Then CRM, payments, and ops feeds with the same error language so operators are not learning five products.</p>
+      </div>
+    </div>
+    <div class="sys" data-s>
+      <article>
+        <span class="lockup">
+          <img src="/brand/logos/quickbooks.svg" alt="QuickBooks" width="28" height="28">
+          <span><b>QuickBooks Online</b><small>Intuit API</small></span>
+        </span>
+        <p class="body-sm">Default for US books. Invoices, payments, customers, and tax codes through Intuit’s API, with token refresh and idempotent writes. Desktop only when the ledger cannot move to Online.</p>
+        <ul>
+          <li>Per-company tokens and rate-limit backoff</li>
+          <li>Webhooks plus poll so silent drift cannot hide</li>
+        </ul>
       </article>
-      <article data-r>
-        <span class="n">02</span>
-        <h3 class="d3">Manual reconciliation</h3>
-        <p class="body-sm">Teams manually reconcile between systems</p>
+      <article>
+        <span class="lockup">
+          <img src="/brand/logos/xero.svg" alt="Xero" width="28" height="28">
+          <span><b>Xero</b><small>Xero API</small></span>
+        </span>
+        <p class="body-sm">Default for UK orgs and dual-region SaaS. Same operator health view as QBO, separate connector, shared exception language for outsourced finance.</p>
+        <ul>
+          <li>Multi-org UK/US books, unified triage</li>
+          <li>VAT and multi-currency lines with readable deltas</li>
+        </ul>
       </article>
-      <article data-r>
-        <span class="n">03</span>
-        <h3 class="d3">Blind failures</h3>
-        <p class="body-sm">No visibility when sync jobs fail</p>
-      </article></div>
+    </div>
+    <div class="sys-more" data-s>
+      <div>
+        <p class="k">Payments</p>
+        <h3>Stripe, Razorpay</h3>
+        <p class="body-sm">Payouts, invoices, and webhook signatures that must not post twice when a timeout hits.</p>
+      </div>
+      <div>
+        <p class="k">CRM &amp; ERP</p>
+        <h3>HubSpot, Zoho, custom ERP</h3>
+        <p class="body-sm">Contacts, deals, and stage changes mapped to ownership, not a nightly dump that overwrites the desk.</p>
+      </div>
+      <div>
+        <p class="k">Ops &amp; fleet</p>
+        <h3>ELD, mapping, TMS feeds</h3>
+        <p class="body-sm">Location and load events into dispatch or accounting, with exceptions when a device goes quiet.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="sect story" id="approach" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect" id="challenges" aria-labelledby="chH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Approach</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px;max-width:20ch">Make failures visible before finance or ops notice.</h2>
-    <p class="body" data-r style="margin-top:16px">Discovery documents schemas and failure modes first; canary rollouts follow the FinanceSync-style pattern when stakes are high.</p>
-    <div class="approach"><div class="ap-row" data-r>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Challenges</p>
+        <h2 class="d2" id="chH" data-r>When the connector “worked in staging”</h2>
+        <p class="lede" data-r>These are the failure modes we design against, whether the other system is a ledger, a CRM, or an ELD feed.</p>
+      </div>
+    </div>
+    <div class="chal">
+      <article data-r>
+        <span class="n">01</span>
+        <h3 class="d3">Silent drift</h3>
+        <p class="body-sm">Jobs report success while amounts, stages, or entity mapping quietly diverge. Ops finds it in a spreadsheet, not in the product.</p>
+      </article>
+      <article data-r>
+        <span class="n">02</span>
+        <h3 class="d3">Error theater</h3>
+        <p class="body-sm">Failures arrive as raw API payloads. The person who has to act cannot tell whether to retry, remap, or wait on the vendor.</p>
+      </article>
+      <article data-r>
+        <span class="n">03</span>
+        <h3 class="d3">Retry that duplicates</h3>
+        <p class="body-sm">A timeout posts the invoice, payout, or CRM note twice. Without idempotency keys, every retry makes the books worse.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sect sect--band" id="approach" aria-labelledby="apH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Approach</p>
+        <h2 class="d2" id="apH" data-r>Map ownership first. Write connectors second.</h2>
+        <p class="lede" data-r>Discovery documents schemas and failure modes before a line of sync code. Canary rollouts when the other system is a live ledger or a live CRM.</p>
+      </div>
+    </div>
+    <div class="approach">
+      <div class="ap-row" data-r>
         <span class="idx num">01</span>
         <div>
           <h3 class="d3">Architecture map</h3>
-          <p class="body-sm" style="margin-top:10px">Integration architecture map across entities, rate limits, and ownership, before writing connectors.</p>
+          <p class="body-sm">Entities, rate limits, tokens, and who owns each failure, across QuickBooks, Xero, CRM, or payments, before we write a worker.</p>
         </div>
+        <p class="out"><b>You leave with</b>A signed map of systems, keys, and failure ownership</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">02</span>
         <div>
           <h3 class="d3">Connector build</h3>
-          <p class="body-sm" style="margin-top:10px">Connector implementation with idempotent patterns where the domain requires them.</p>
+          <p class="body-sm">Idempotent jobs, webhooks, and backoff against sandbox orgs. A forced timeout must not duplicate a post.</p>
         </div>
+        <p class="out"><b>You leave with</b>Workers staging can trust to retry</p>
       </div>
       <div class="ap-row" data-r>
         <span class="idx num">03</span>
         <div>
           <h3 class="d3">Alerting &amp; docs</h3>
-          <p class="body-sm" style="margin-top:10px">Error alerting, logs, and operator documentation so failures are triageable, not tribal knowledge.</p>
+          <p class="body-sm">Error surfaces and operator documentation so the next person on call can triage without the engineer who shipped it.</p>
         </div>
-      </div></div>
+        <p class="out"><b>You leave with</b>Alerts and a playbook ops can finish</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="sect" id="deliverables" aria-labelledby="delH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Deliverables</p>
-    <h2 class="d2" id="delH" data-r style="margin-top:16px;max-width:18ch">What engineering and finance can own</h2>
-    <div class="deliv"><div data-r>
-        <b>01</b>
-        <p>Integration architecture map</p>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Deliverables</p>
+        <h2 class="d2" id="delH" data-r>What engineering and ops can own after we leave</h2>
+        <p class="lede" data-r>Artefacts your team can run, not a private Zap nobody documented.</p>
       </div>
-      <div data-r>
-        <b>02</b>
-        <p>Connector implementation</p>
-      </div>
-      <div data-r>
-        <b>03</b>
-        <p>Error alerting &amp; logs</p>
-      </div>
-      <div data-r>
-        <b>04</b>
-        <p>Operator documentation</p>
-      </div></div>
+    </div>
+    <div class="deliv">
+      <article data-r>
+        <b>01 · Map</b>
+        <h3 class="d3">Integration architecture map</h3>
+        <p>Systems, entities, rate limits, and ownership written down before connectors. The brief for every worker that follows.</p>
+      </article>
+      <article data-r>
+        <b>02 · Build</b>
+        <h3 class="d3">Connector implementation</h3>
+        <p>Idempotent jobs and webhooks for the APIs in scope, QuickBooks Online, Xero, CRM, payments, or ELD, with sandbox proof.</p>
+      </article>
+      <article data-r>
+        <b>03 · Signal</b>
+        <h3 class="d3">Error alerting &amp; logs</h3>
+        <p>Failures that name the record, the system, and the next step. Not a 500 in a channel nobody watches.</p>
+      </article>
+      <article data-r>
+        <b>04 · Ops</b>
+        <h3 class="d3">Operator documentation</h3>
+        <p>Playbooks for retry, remap, and vendor wait, so finance or dispatch can act without an engineering ticket.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="sect" id="outcomes" aria-labelledby="outH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="outcomes" aria-labelledby="outH">
   <div class="wrap">
-    <div class="gain outcomes" style="margin-top:0;padding-top:0;border-top:0">
+    <div class="gain">
       <div data-r>
         <p class="eyebrow">Outcomes</p>
-        <h2 class="d2" id="outH" style="margin-top:14px;max-width:16ch">What changes when systems disagree</h2>
-        <p class="body-sm" style="margin-top:12px">What this engagement is meant to change in the product.</p>
+        <h2 class="d2" id="outH">What changes when systems disagree</h2>
+        <p class="lede">Qualitative targets we design toward. Signed-off metrics publish on case studies when clients clear them.</p>
+        <a href="/work/finance-sync-hub" class="p-link">FinanceSync · QB/Xero connectors <i>→</i></a>
       </div>
       <ul data-s>
-          <li>Reliable data across tools</li>
-          <li>Less manual ops work</li>
-          <li>Faster troubleshooting when issues arise</li>
+        <li>
+          <span class="n">01</span>
+          <span>
+            <strong>Failures surface in the product</strong>
+            <span>Operators see the record and the next step. They do not reconstruct drift from a vendor dashboard at month-end or after a missed load.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <span>
+            <strong>Retries that cannot duplicate a post</strong>
+            <span>Idempotency keys on QuickBooks, Xero, Stripe, and CRM writes so a timeout is recoverable, not a second invoice.</span>
+          </span>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <span>
+            <strong>Ops can triage without the author</strong>
+            <span>Docs and alerts that survive the engineer who shipped the connector going on leave.</span>
+          </span>
+        </li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="sect sect--tight" id="proof" aria-labelledby="pfH">
+<section class="sect" id="proof" aria-labelledby="pfH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Where this shows up</p>
-    <h2 class="d2" id="pfH" data-r style="margin-top:16px">Related work and pages</h2>
-    <div class="rel" data-s><a href="/work/finance-sync-hub">
-        <span class="k">Work</span>
-        <span class="arrow"><span class="d3">FinanceSync · QB/Xero hub</span><i>→</i></span>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Where this shows up</p>
+        <h2 class="d2" id="pfH" data-r>Related work and pages</h2>
+        <p class="lede" data-r>The case that proved the pattern, the finance solution this service often pairs with, and the stack page.</p>
+      </div>
+    </div>
+    <div class="rel" data-s>
+      <a href="/work/finance-sync-hub">
+        <span>
+          <span class="k">Work · case</span>
+          <span class="d3 title">FinanceSync · QB/Xero hub</span>
+          <span class="hook">Idempotent QuickBooks and Xero workers with exception dashboards finance can finish at close.</span>
+        </span>
+        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
       </a>
       <a href="/solutions/accounting-integrations">
-        <span class="k">Solution</span>
-        <span class="arrow"><span class="d3">QuickBooks &amp; Xero</span><i>→</i></span>
+        <span>
+          <span class="k">Solution</span>
+          <span class="d3 title">QuickBooks &amp; Xero integrations</span>
+          <span class="hook">The finance-specific solution this service sits inside when the job is month-end close.</span>
+        </span>
+        <span class="arrow"><span class="mono">Solution</span><i>→</i></span>
       </a>
-      <a href="/technologies">
-        <span class="k">Stack</span>
-        <span class="arrow"><span class="d3">Technologies</span><i>→</i></span>
-      </a></div>
-    <p class="eyebrow" data-r style="margin-top:clamp(36px,4vw,56px)">Also see</p>
+      <a href="/services/automation-systems">
+        <span>
+          <span class="k">Service</span>
+          <span class="d3 title">Automation workflows</span>
+          <span class="hook">Make/Zapier orchestration with human gates, when the job is a queue, not a connector.</span>
+        </span>
+        <span class="arrow"><span class="mono">Service</span><i>→</i></span>
+      </a>
+    </div>
+    <p class="eyebrow sib-label" data-r>Also see</p>
     <div class="sib" data-r>
-        <a href="/services/automation-systems">Automation Workflows</a>
-        <a href="/services/dashboard-design">Dashboard Design</a>
-        <a href="/solutions/accounting-integrations">Accounting integrations</a>
+      <a href="/services/dashboard-design">Dashboard design</a>
+      <a href="/technologies">Tools &amp; stack</a>
+      <a href="/solutions/saas">SaaS product solutions</a>
       <a href="/services">All services</a>
     </div>
   </div>
 </section>
 
-<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect sect--band" id="faq" aria-labelledby="faqH">
   <div class="wrap">
-    <p class="eyebrow" data-r>FAQ</p>
-    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About Integrations &amp; APIs</h2>
-    <div class="faq" data-r><details>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>FAQ</p>
+        <h2 class="d2" id="faqH" data-r>About Integrations &amp; APIs</h2>
+      </div>
+    </div>
+    <div class="faq" data-r>
+      <details>
         <summary>Do you integrate with payment or accounting systems?</summary>
-        <p>Yes. QuickBooks Online, Xero, Stripe, Razorpay, Zoho, and common ERP APIs depending on your stack.</p>
-      </details></div>
+        <p>Yes. QuickBooks Online and Xero are a primary path. We also ship Stripe, Razorpay, HubSpot, Zoho, and common ERP or ELD APIs depending on the stack. Desktop QuickBooks is scoped only when the ledger cannot move to Online.</p>
+      </details>
+      <details>
+        <summary>How is this different from QuickBooks &amp; Xero integrations?</summary>
+        <p>That solution page is the finance close: matching, exception UX, and audit for QBO and Xero. This service is the broader connector practice, CRM, payments, ELD, and those same accounting APIs when the job is architecture, retries, and operator docs. Many products need both.</p>
+      </details>
+      <details>
+        <summary>How is this different from Automation Workflows?</summary>
+        <p>Automation owns Make, Zapier, and human-gated queues. This service owns connector architecture, idempotency, webhooks, and error surfaces. Use automation when a person is still in the loop on send. Use this when two systems must stay in agreement without a nightly spreadsheet.</p>
+      </details>
+      <details>
+        <summary>How do you handle sync failures?</summary>
+        <p>Every job logs the record, retries with backoff and an idempotency key, and surfaces the exception with a next step. Failures are visible in the product before finance or dispatch notices them in another tool.</p>
+      </details>
+      <details>
+        <summary>Will you work with an API we already started?</summary>
+        <p>Yes. We often inherit a half-built connector, map what actually posts, add idempotency and alerting, then document the failure modes. A rewrite is the last option, not the first.</p>
+      </details>
+    </div>
   </div>
 </section>
 
 <section class="cta-band on-ink" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
-    <h2 class="d2" id="ctaH" data-r>Need integrations finance can trust?</h2>
+    <h2 class="d2" id="ctaH" data-r>Need connectors operators can trust?</h2>
+    <p class="lede" data-r>Share the systems that must stay in agreement, and where they currently drift. You leave with fit, scope questions, and a sensible next step.</p>
     <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+      <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
@@ -626,13 +882,12 @@ img{max-width:100%;display:block}
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Integrations & APIs",
-  "description": "Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling and monitoring.",
+  "description": "Reliable connectors between your product, CRM, ERP, payments, and accounting APIs, with idempotent jobs, readable errors, and monitoring operators can act on.",
   "provider": {
     "@type": "Organization",
     "name": "KRIVA Technologies"
@@ -650,13 +905,44 @@ img{max-width:100%;display:block}
       "name": "Do you integrate with payment or accounting systems?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. QuickBooks Online, Xero, Stripe, Razorpay, Zoho, and common ERP APIs depending on your stack."
+        "text": "Yes. QuickBooks Online and Xero are a primary path. We also ship Stripe, Razorpay, HubSpot, Zoho, and common ERP or ELD APIs depending on the stack. Desktop QuickBooks is scoped only when the ledger cannot move to Online."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from QuickBooks & Xero integrations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That solution page is the finance close: matching, exception UX, and audit for QBO and Xero. This service is the broader connector practice, CRM, payments, ELD, and those same accounting APIs when the job is architecture, retries, and operator docs. Many products need both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from Automation Workflows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Automation owns Make, Zapier, and human-gated queues. This service owns connector architecture, idempotency, webhooks, and error surfaces. Use automation when a person is still in the loop on send. Use this when two systems must stay in agreement without a nightly spreadsheet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you handle sync failures?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every job logs the record, retries with backoff and an idempotency key, and surfaces the exception with a next step. Failures are visible in the product before finance or dispatch notices them in another tool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will you work with an API we already started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We often inherit a half-built connector, map what actually posts, add idempotency and alerting, then document the failure modes. A rewrite is the last option, not the first."
       }
     }
   ]
 }
 </script>
-<script src="/shared/chrome.js" defer></script>
 <script>
 (function(){
 'use strict';
