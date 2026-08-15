@@ -45,7 +45,7 @@ const CASE_PROOF = {
 const FOUNDER = {
   file: "kriva-about.html",
   publicPath: "/brand/founder-portrait.jpg",
-  alt: "Dixit Panchal, founder of KRIVA Technologies",
+  alt: "KRIVA Technologies product studio",
   w: 1200,
   h: 1500,
 };

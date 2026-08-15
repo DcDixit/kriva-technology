@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- KRIVA_ICONS_START -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E1216">
+<!-- KRIVA_ICONS_END -->
+<link rel="stylesheet" href="/shared/tokens.css">
 <title>CRM Design · Dispatch &amp; sales consoles · KRIVA</title>
 <meta name="description" content="CRM and ops console design for dispatch boards, sales pipelines, and reporting views desks actually trust — HubSpot, Salesforce, or custom.">
 <link rel="canonical" href="https://krivatechnologies.com/services/crm-development">
@@ -20,22 +27,10 @@
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
-:root{
-  --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
-  --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
-  --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
-  --blue:#5B4FFF; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --lilac:#B7A9FF; --sky:#5B8CFF;
-  --f-display:'Archivo',system-ui,sans-serif;
-  --f-body:'Inter',system-ui,sans-serif;
-  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
-  --gutter:clamp(20px,5vw,80px); --maxw:1440px;
-  --e:cubic-bezier(.16,.84,.44,1); --e-io:cubic-bezier(.62,.02,.28,1);
-  --t-fast:.32s; --t-mid:.62s; --t-slow:1s;
-}
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
@@ -45,7 +40,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--lilac)}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -73,7 +68,7 @@ img{max-width:100%;display:block}
 .mask.in span:nth-child(2) i{transition-delay:80ms}
 .btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
+  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
   font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
@@ -84,10 +79,10 @@ img{max-width:100%;display:block}
 .btn:hover i{transform:translateX(5px)}
 .btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
 .btn.sm{padding:9px 15px;font-size:11px}
-.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--lilac);border-color:#EDEFF1}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--lilac)}
+.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
+.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding-top:4px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
 .p-link i{font-style:normal;transition:transform .42s var(--e)}
 .p-link:hover i{transform:translateX(6px)}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
@@ -145,10 +140,7 @@ img{max-width:100%;display:block}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
 .hero{
-  background:
-    radial-gradient(110% 80% at 100% -8%, rgba(219,155,31,.08), transparent 50%),
-    radial-gradient(85% 65% at 0% 100%, rgba(27,68,200,.05), transparent 48%),
-    var(--paper);
+  background:var(--paper);
 }
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
@@ -162,7 +154,7 @@ img{max-width:100%;display:block}
 .crm-board__bar{
   display:flex;justify-content:space-between;align-items:center;gap:12px;
   padding:11px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
 }
 .crm-board__bar b{color:#fff;font-weight:400}
 .crm-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--amber)}
@@ -171,14 +163,14 @@ img{max-width:100%;display:block}
 .crm-board__kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
 .crm-board__kpi{padding:12px 14px;border-right:1px solid var(--ink-line)}
 .crm-board__kpi:last-child{border-right:0}
-.crm-board__kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885}
+.crm-board__kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
 .crm-board__kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
 .crm-board__kpi em{display:block;margin-top:3px;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;color:var(--lime)}
 .crm-board__kpi.warn em{color:var(--amber)}
 .crm-board__tools{
   display:flex;align-items:center;gap:8px;flex-wrap:wrap;
   padding:9px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#6B7885
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
 }
 .crm-board__tools .act{padding:3px 8px;border:1px solid var(--ink-line);color:#DDE2E7}
 .crm-board__tools .act.on{border-color:var(--sky);color:var(--sky)}
@@ -194,9 +186,9 @@ img{max-width:100%;display:block}
 .crm-row .ref{font-family:var(--f-mono);font-size:10.5px;color:#fff;letter-spacing:.04em}
 .crm-row .lane{min-width:0}
 .crm-row .lane b{display:block;font-weight:500;color:#fff;font-size:12px;letter-spacing:-.01em}
-.crm-row .lane em{display:block;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#6B7885}
+.crm-row .lane em{display:block;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C}
 .st{display:inline-flex;align-items:center;gap:5px;padding:3px 7px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;white-space:nowrap;justify-self:end}
-.st-ok{color:var(--lime)}.st-go{color:var(--sky)}.st-idle{color:#6B7885}.st-warn{color:var(--amber)}
+.st-ok{color:var(--lime)}.st-go{color:var(--sky)}.st-idle{color:#717F8C}.st-warn{color:var(--amber)}
 .crm-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 @media(max-width:640px){
@@ -210,7 +202,7 @@ img{max-width:100%;display:block}
 .fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
 .fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
 .fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.fit-rail h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
 .fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
 .fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
 @media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
@@ -281,7 +273,7 @@ img{max-width:100%;display:block}
 
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
 .rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
-.rel a:hover{transform:translate3d(0,-4px,0);border-color:var(--ink)}
+.rel a:hover{border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
 .rel .title{display:block;margin-top:10px}
 .rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:32ch}
@@ -295,20 +287,20 @@ img{max-width:100%;display:block}
 .sib a:hover{border-color:var(--blue);color:var(--blue)}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/system.css">
+<link rel="stylesheet" href="/shared/archetypes.css">
 </head>
-<body class="service strategic">
+<body class="service strategic arch-industry">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="nav-shell">
     <div class="wrap nav-in">
-      <a href="/" class="mark" aria-label="KRIVA Technologies home"><svg class="mark-icon" viewBox="0 0 160 40" width="160" height="40" aria-hidden="true" style="display:inline;margin-right:8px;vertical-align:middle">
-  <!-- Geometric K mark -->
-  <rect x="6" y="5" width="14" height="35" fill="currentColor"/>
-  <polygon points="16,5 30,20 30,18 22,5" fill="#5B4FFF"/>
-  <polygon points="20,23 28,40 35,40 20,30" fill="currentColor"/>
-</svg>KRIVA<sup>®</sup></a>
+      <a href="/" class="mark" aria-label="KRIVA Technologies home">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26" loading="eager">
+      </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
@@ -433,34 +425,23 @@ img{max-width:100%;display:block}
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview"><span>Overview</span><i></i></a>
-  <a href="#desks"><span>Desks</span><i></i></a>
-  <a href="#challenges"><span>Challenges</span><i></i></a>
-  <a href="#approach"><span>Approach</span><i></i></a>
-  <a href="#deliverables"><span>Deliverables</span><i></i></a>
-  <a href="#outcomes"><span>Outcomes</span><i></i></a>
-  <a href="#proof"><span>Proof</span><i></i></a>
+  <a href="#board"><span>The board</span><i></i></a>
+  <a href="#desks"><span>Two desks</span><i></i></a>
+  <a href="#fails"><span>What fails</span><i></i></a>
+  <a href="#method"><span>Method</span><i></i></a>
+  <a href="#work"><span>Work</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
 <main id="main">
 
-<header class="hero" id="overview">
+<header class="hero lp-hero" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">CRM Design</li>
     </ol>
-    <nav class="mob-chips" id="mobChips" aria-label="On this page">
-      <a href="#overview" aria-current="true">Overview</a>
-      <a href="#desks">Desks</a>
-      <a href="#challenges">Challenges</a>
-      <a href="#approach">Approach</a>
-      <a href="#deliverables">Deliverables</a>
-      <a href="#outcomes">Outcomes</a>
-      <a href="#proof">Proof</a>
-      <a href="#faq">FAQ</a>
-    </nav>
     <div class="hero-grid">
       <div>
         <p class="eyebrow" data-r>Service · CRM &amp; ops consoles</p>
@@ -468,104 +449,61 @@ img{max-width:100%;display:block}
           <span><i>A CRM the floor</i></span>
           <span><i>will trust.</i></span>
         </h1>
-        <p class="lede" data-r>Dispatch boards, sales pipelines, and reporting views built around how the desk already works, on HubSpot, Salesforce, or a custom console. Bulk actions and exceptions live on the board, not in a spreadsheet beside it.</p>
-        <div class="tags" data-r>
-          <span class="tag">Dispatch / TMS</span>
-          <span class="tag">Pipeline UX</span>
-          <span class="tag">Stage models</span>
-          <span class="tag">HubSpot / Salesforce</span>
-        </div>
+        <p class="lede" data-r>Dispatch boards, sales pipelines, and reporting views built around how the desk already works — on HubSpot, Salesforce, or a custom console. Bulk actions and exceptions live on the board, not in a spreadsheet beside it.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
           <a href="/work/fleetflow-dispatch" class="btn ghost"><span>See FleetFlow</span><i>→</i></a>
         </div>
       </div>
-
       <div data-r>
         <div class="crm-board" aria-hidden="true">
-          <div class="crm-board__bar">
-            <span><b>Dispatch board</b> · 12 active</span>
-            <span class="crm-board__live"><i></i>SLA watch</span>
-          </div>
+          <div class="crm-board__bar"><span><b>Dispatch board</b> · 12 active</span><span class="crm-board__live"><i></i>SLA watch</span></div>
           <div class="crm-board__kpis">
             <div class="crm-board__kpi"><span>Open loads</span><b>12</b><em>Board 04</em></div>
             <div class="crm-board__kpi warn"><span>At risk</span><b>2</b><em>Need owner</em></div>
             <div class="crm-board__kpi"><span>Assigned today</span><b>6</b><em>Bulk action</em></div>
           </div>
           <div class="crm-board__tools">
-            <span class="act on">3 selected</span>
-            <span class="act">Assign</span>
-            <span class="act">SLA sort</span>
+            <span class="act on">3 selected</span><span class="act">Assign</span><span class="act">SLA sort</span>
             <span>Supervisor · override audited</span>
           </div>
-          <div class="crm-row on">
-            <i class="box"></i>
-            <span class="ref">#4821</span>
-            <span class="lane"><b>DAL → PHX</b><em>R. Alvarez · rolling</em></span>
-            <span class="eta">14:20</span>
-            <span class="st st-go">On SLA</span>
-          </div>
-          <div class="crm-row on">
-            <i class="box"></i>
-            <span class="ref">#4822</span>
-            <span class="lane"><b>ATL → CLT</b><em>Unassigned · tendered</em></span>
-            <span class="eta">11:05</span>
-            <span class="st st-warn">SLA risk</span>
-          </div>
-          <div class="crm-row">
-            <i class="box"></i>
-            <span class="ref">#4824</span>
-            <span class="lane"><b>CHI → DFW</b><em>M. Chen · detention</em></span>
-            <span class="eta">—</span>
-            <span class="st st-warn">Exception</span>
-          </div>
-          <div class="crm-row">
-            <i class="box"></i>
-            <span class="ref">#4827</span>
-            <span class="lane"><b>SEA → PDX</b><em>J. Ortiz · delivered</em></span>
-            <span class="eta">09:48</span>
-            <span class="st st-ok">POD in</span>
-          </div>
+          <div class="crm-row on"><i class="box"></i><span class="ref">#4821</span><span class="lane"><b>DAL → PHX</b><em>R. Alvarez · rolling</em></span><span class="eta">14:20</span><span class="st st-go">On SLA</span></div>
+          <div class="crm-row on"><i class="box"></i><span class="ref">#4822</span><span class="lane"><b>ATL → CLT</b><em>Unassigned · tendered</em></span><span class="eta">11:05</span><span class="st st-warn">SLA risk</span></div>
+          <div class="crm-row"><i class="box"></i><span class="ref">#4824</span><span class="lane"><b>CHI → DFW</b><em>M. Chen · detention</em></span><span class="eta">—</span><span class="st st-warn">Exception</span></div>
+          <div class="crm-row"><i class="box"></i><span class="ref">#4827</span><span class="lane"><b>SEA → PDX</b><em>J. Ortiz · delivered</em></span><span class="eta">09:48</span><span class="st st-ok">POD in</span></div>
         </div>
         <p class="crm-board__note"><span class="flag">Demo</span> Dispatch pattern · sales pipelines use the same stage discipline, different columns</p>
       </div>
     </div>
-
-    <div class="fit-rail" data-s>
-      <article>
-        <p class="k">Best for</p>
-        <h3>Desks that live in the CRM every shift</h3>
-        <p>Dispatchers, supervisors, and sales reps who need bulk work, exceptions, and a board that matches the floor, not a leadership deck.</p>
-      </article>
-      <article>
-        <p class="k">What we own</p>
-        <h3>Stages, console UX, automation map</h3>
-        <p>Exit criteria, role layouts, bulk actions, and rules with rollback, on HubSpot, Salesforce, or a custom console.</p>
-      </article>
-      <article>
-        <p class="k">Not this service</p>
-        <h3>KPI dashboards or Zapier-only</h3>
-        <p>Widget hierarchy lives under Dashboard Design. Make/Zapier queues live under Automation.</p>
-        <p class="contrast">Need both? Ops builds often pair this page with Dashboard Design. Ledger posting pairs with QuickBooks &amp; Xero.</p>
-      </article>
-    </div>
   </div>
 </header>
 
-<section class="sect sect--rule" id="desks" aria-labelledby="dkH">
+<section class="arch-show" id="board" aria-labelledby="crmShow">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Two desks, one discipline</p>
-        <h2 class="d2" id="dkH" data-r>Dispatch consoles and sales pipelines are not the same board</h2>
-        <p class="lede" data-r>We design both. The mistake is forcing a sales template onto a load board, or a TMS onto a forecast. Stages, bulk work, and exceptions are the shared language.</p>
+    <p class="k">Signature interface</p>
+    <h2 id="crmShow">The board the floor actually uses.</h2>
+    <div class="arch-layer">
+      <div class="arch-frame">
+        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>dispatch · board 04</span></div>
+        <img src="/work/fleetflow/console-full.svg" alt="Dispatch CRM console" width="1920" height="1080" loading="lazy" decoding="async">
+      </div>
+      <div class="side arch-frame">
+        <img src="/work/fleetflow/load-board.svg" alt="Load board" width="1200" height="800" loading="lazy" decoding="async">
       </div>
     </div>
-    <div class="desks" data-s>
+  </div>
+</section>
+
+<section class="sect" id="desks" aria-labelledby="dkH" style="background:var(--white);border-block:1px solid var(--rule)">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Two desks, one discipline</p>
+    <h2 class="d2" id="dkH" data-r style="margin-top:16px">Dispatch and sales are not the same board.</h2>
+    <p class="lede" data-r style="margin-top:16px">Stages, bulk work, and exceptions are the shared language. The mistake is forcing a sales template onto a load board.</p>
+    <div class="lp-desk" data-s>
       <article>
         <p class="k">01 · Ops floor</p>
         <h3 class="d3">Dispatch CRM &amp; TMS</h3>
-        <p class="body-sm">Load boards for US carriers, brokers, and fleets. Assignment is a bulk action. SLA sits on the row. Supervisor overrides are audited.</p>
+        <p class="body-sm" style="margin-top:8px">Load boards for US carriers, brokers, and fleets. Assignment is a bulk action. SLA sits on the row. Supervisor overrides are audited.</p>
         <ul>
           <li>Multi-select assign as a single event</li>
           <li>Exception and detention visible before the customer calls</li>
@@ -574,254 +512,69 @@ img{max-width:100%;display:block}
       </article>
       <article>
         <p class="k">02 · Revenue desk</p>
-        <h3 class="d3">Sales pipeline CRM</h3>
-        <p class="body-sm">HubSpot, Salesforce, or custom. Stages with exit criteria sales, ops, and finance can share, so Monday forecast is not archaeology.</p>
+        <h3 class="d3">Sales pipeline</h3>
+        <p class="body-sm" style="margin-top:8px">HubSpot or Salesforce stages with exit criteria the team actually uses. Forecast views that match the floor, not a leadership deck.</p>
         <ul>
-          <li>Stage model the desk can defend in standup</li>
-          <li>List and board layouts for reps and managers</li>
-          <li>Reporting views that replace the private spreadsheet</li>
+          <li>Stage model with exit criteria</li>
+          <li>Role layouts for rep and manager</li>
+          <li>Rules with rollback, not silent automation</li>
         </ul>
       </article>
     </div>
+  </div>
+</section>
 
-    <div class="pair" data-r>
-      <div>
-        <p class="eyebrow">When the board posts to the books</p>
-        <h3 class="d3" style="margin-top:14px">Won deals and delivered loads still have to land in the ledger</h3>
-        <p class="body-sm" style="margin-top:12px">CRM Design owns the desk. If a closed load or won deal must hit accounting, we pair this service with QuickBooks Online and Xero connectors, original APIs, not a CSV export after close.</p>
-        <a href="/solutions/accounting-integrations" class="p-link">QuickBooks &amp; Xero integrations <i>→</i></a>
-      </div>
-      <div class="pair-logos">
-        <span class="lockup">
-          <img src="/brand/logos/quickbooks.svg" alt="QuickBooks" width="22" height="22">
-          <span><b>QuickBooks</b><small>Online API</small></span>
-        </span>
-        <span class="lockup">
-          <img src="/brand/logos/xero.svg" alt="Xero" width="22" height="22">
-          <span><b>Xero</b><small>Cloud API</small></span>
-        </span>
-      </div>
+<section class="sect" id="fails" aria-labelledby="frH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>What fails</p>
+    <h2 class="d2" id="frH" data-r style="margin-top:16px">When the CRM becomes a spreadsheet again.</h2>
+    <div class="lp-frac" data-s>
+      <article><span class="offer-no">01 · Board</span><div><h3 class="d3">Work happens beside the tool</h3><p class="body-sm" style="margin-top:8px">Bulk assign, SLA, and exceptions live in a sheet. The CRM is a system of record nobody updates until Friday.</p></div></article>
+      <article><span class="offer-no">02 · Stages</span><div><h3 class="d3">Stages without exit criteria</h3><p class="body-sm" style="margin-top:8px">Anyone can drag a deal or a load forward. Reporting looks healthy. The floor does not trust it.</p></div></article>
+      <article><span class="offer-no">03 · Roles</span><div><h3 class="d3">One layout for every job</h3><p class="body-sm" style="margin-top:8px">Supervisor, dispatcher, and rep see the same density. Overrides are unaudited. Exceptions hide in filters.</p></div></article>
     </div>
   </div>
 </section>
 
-<section class="sect" id="challenges" aria-labelledby="chH">
+<section class="sect" id="method" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Challenges</p>
-        <h2 class="d2" id="chH" data-r>When the CRM becomes a spreadsheet again</h2>
-        <p class="lede" data-r>The product is live. Adoption is not. These are the patterns we see before a redesign starts.</p>
-      </div>
-    </div>
-    <div class="chal">
-      <article data-r>
-        <span class="n">01</span>
-        <h3 class="d3">Pipeline distrust</h3>
-        <p class="body-sm">Stages mean different things to sales, ops, and finance. Forecast meetings become archaeology. People keep a private spreadsheet “just to be sure.”</p>
-      </article>
-      <article data-r>
-        <span class="n">02</span>
-        <h3 class="d3">Click tax on the floor</h3>
-        <p class="body-sm">Default templates force one-row chores. Bulk assign, overrides, and exceptions live outside the tool, so the board never matches the shift.</p>
-      </article>
-      <article data-r>
-        <span class="n">03</span>
-        <h3 class="d3">Export dependency</h3>
-        <p class="body-sm">Reports that should be a view become CSV dumps and Slack threads. Leadership stops opening the CRM for anything but status theater.</p>
-      </article>
-    </div>
+    <p class="eyebrow" data-r>Method</p>
+    <h2 class="d2" id="apH" data-r style="margin-top:16px">Design around how the team already works.</h2>
+    <ol class="lp-time" data-s>
+      <li><span class="wk">01 · Shadow</span><div><h3 class="d3">Watch the desk</h3><p class="body-sm" style="margin-top:8px">We sit with the board people actually use — including the spreadsheet beside it — before we draw a stage model.</p></div></li>
+      <li><span class="wk">02 · Stages</span><div><h3 class="d3">Exit criteria, then UX</h3><p class="body-sm" style="margin-top:8px">Stages, bulk actions, and exception paths are designed as events the floor can complete in one motion.</p></div></li>
+      <li><span class="wk">03 · Console</span><div><h3 class="d3">HubSpot, Salesforce, or custom</h3><p class="body-sm" style="margin-top:8px">Platform UX when that is enough. A custom console when the desk outgrew the template.</p></div></li>
+    </ol>
   </div>
 </section>
 
-<section class="sect sect--band" id="approach" aria-labelledby="apH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Approach</p>
-        <h2 class="d2" id="apH" data-r>Design the CRM around how the team already works</h2>
-        <p class="lede" data-r>Stage definitions first, then console UX, then automation rules, reviewed before engineering commits.</p>
-      </div>
+<section class="featwork" id="work" aria-labelledby="pfH" style="padding:0">
+  <article class="lp-case" data-r>
+    <a href="/work/fleetflow-dispatch"><img src="/work/fleetflow/console-full.svg" alt="FleetFlow dispatch console" width="1920" height="1080" loading="lazy" decoding="async"></a>
+    <div>
+      <p class="eyebrow">Selected work · signed-off</p>
+      <h3 class="d2" id="pfH">FleetFlow</h3>
+      <p>US trucking dispatch CRM: bulk actions, SLA on the row, supervisor controls. Published −32% handle time on the case study.</p>
+      <a href="/work/fleetflow-dispatch" class="btn on-dark" style="margin-top:22px"><span>Read the case</span><i>→</i></a>
     </div>
-    <div class="approach">
-      <div class="ap-row" data-r>
-        <span class="idx num">01</span>
-        <div>
-          <h3 class="d3">Stage reality workshop</h3>
-          <p class="body-sm">We sit with the people who move deals and loads. Exit criteria, owners, and handoffs get written so the board stops arguing with the floor.</p>
-        </div>
-        <p class="out"><b>You leave with</b>A stage model the desk can defend in a standup</p>
-      </div>
-      <div class="ap-row" data-r>
-        <span class="idx num">02</span>
-        <div>
-          <h3 class="d3">Console &amp; pipeline UX</h3>
-          <p class="body-sm">Boards, list views, and role layouts for the people who open the tool every day. Bulk actions, risk signals, and supervisor overrides where the desk needs them.</p>
-        </div>
-        <p class="out"><b>You leave with</b>Clickable console patterns ready for build</p>
-      </div>
-      <div class="ap-row" data-r>
-        <span class="idx num">03</span>
-        <div>
-          <h3 class="d3">Automation map</h3>
-          <p class="body-sm">Rules for assignment, reminders, and stage moves, with rollback paths. Nothing silent writes into production without an operator path back.</p>
-        </div>
-        <p class="out"><b>You leave with</b>An automation map ops will actually trust</p>
-      </div>
-    </div>
-  </div>
+  </article>
 </section>
 
-<section class="sect" id="deliverables" aria-labelledby="delH">
+<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--white);border-top:1px solid var(--rule)">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Deliverables</p>
-        <h2 class="d2" id="delH" data-r>What lands on the ops desk</h2>
-        <p class="lede" data-r>Artifacts your team can use in the next sprint, not a slide deck about CRM best practices.</p>
-      </div>
-    </div>
-    <div class="deliv">
-      <article data-r>
-        <b>01 · Model</b>
-        <h3 class="d3">Pipeline &amp; stage workshop</h3>
-        <p>Documented stages, exit criteria, owners, and handoffs matched to how deals and loads actually move.</p>
-      </article>
-      <article data-r>
-        <b>02 · Interface</b>
-        <h3 class="d3">Console &amp; pipeline UX</h3>
-        <p>Board and list layouts, role views, and interaction patterns for daily operators and supervisors.</p>
-      </article>
-      <article data-r>
-        <b>03 · Rules</b>
-        <h3 class="d3">Automation rule map</h3>
-        <p>Trigger, action, owner, and rollback for each rule so go-live does not become a silent failure mode.</p>
-      </article>
-      <article data-r>
-        <b>04 · Platform</b>
-        <h3 class="d3">HubSpot / Salesforce / custom</h3>
-        <p>Improvements inside the CRM you already run, or a custom console brief when the platform is the product.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sect sect--band" id="outcomes" aria-labelledby="outH">
-  <div class="wrap">
-    <div class="gain">
-      <div data-r>
-        <p class="eyebrow">Outcomes</p>
-        <h2 class="d2" id="outH">What changes on the floor</h2>
-        <p class="lede">Qualitative targets we design toward. Signed-off metrics publish on case studies when clients clear them.</p>
-        <a href="/work/fleetflow-dispatch" class="p-link">FleetFlow published −32% handle time <i>→</i></a>
-      </div>
-      <ul data-s>
-        <li>
-          <span class="n">01</span>
-          <span>
-            <strong>A board people keep open</strong>
-            <span>Bulk work, exceptions, and overrides happen in the tool. The private spreadsheet stops being the real system of record.</span>
-          </span>
-        </li>
-        <li>
-          <span class="n">02</span>
-          <span>
-            <strong>Stages the desk can defend</strong>
-            <span>Shared exit criteria so pipeline and load reviews stop rewriting history every Monday.</span>
-          </span>
-        </li>
-        <li>
-          <span class="n">03</span>
-          <span>
-            <strong>Fewer export detours</strong>
-            <span>Views that match the questions supervisors already ask, inside the CRM, not in a CSV after the shift.</span>
-          </span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="sect" id="proof" aria-labelledby="pfH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Where this shows up</p>
-        <h2 class="d2" id="pfH" data-r>Related work and pages</h2>
-        <p class="lede" data-r>Dispatch CRM with a published metric, a sales pipeline case, and the trucking solution this service often sits inside.</p>
-      </div>
-    </div>
-    <div class="rel" data-s>
-      <a href="/work/fleetflow-dispatch">
-        <span>
-          <span class="k">Work · signed-off</span>
-          <span class="d3 title">FleetFlow · dispatch CRM</span>
-          <span class="hook">Bulk assignment and SLA risk on the board. −32% manual handle time, published on the case study.</span>
-        </span>
-        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
-      </a>
-      <a href="/work/crm-pulse-dashboard">
-        <span>
-          <span class="k">Work · narrative</span>
-          <span class="d3 title">CRMPulse · sales dashboard</span>
-          <span class="hook">Pipeline and forecast views built for weekly leadership use, not one-off exports.</span>
-        </span>
-        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
-      </a>
-      <a href="/solutions/trucking-logistics">
-        <span>
-          <span class="k">Solution</span>
-          <span class="d3 title">Trucking &amp; logistics</span>
-          <span class="hook">Dispatch, fleet, and driver tooling for US carriers, brokers, and fleets.</span>
-        </span>
-        <span class="arrow"><span class="mono">Solution</span><i>→</i></span>
-      </a>
-    </div>
-    <p class="eyebrow sib-label" data-r>Also see</p>
-    <div class="sib" data-r>
-      <a href="/services/dashboard-design">Dashboard Design</a>
-      <a href="/services/automation-systems">Automation Workflows</a>
-      <a href="/solutions/car-transportation">Car transportation</a>
-      <a href="/solutions/accounting-integrations">QuickBooks &amp; Xero</a>
-      <a href="/insights/crm-dashboard-ux-patterns">CRM dashboard UX patterns</a>
-      <a href="/services">All services</a>
-    </div>
-  </div>
-</section>
-
-<section class="sect sect--band" id="faq" aria-labelledby="faqH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>FAQ</p>
-        <h2 class="d2" id="faqH" data-r>About CRM Design</h2>
-      </div>
-    </div>
+    <p class="eyebrow" data-r>FAQ</p>
+    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About CRM Design</h2>
     <div class="faq" data-r>
-      <details>
-        <summary>Which CRM platforms do you design for?</summary>
-        <p>HubSpot, Salesforce, Pipedrive, and custom CRM or TMS consoles. We design for the tool you run today, or the console you are building next.</p>
-      </details>
-      <details>
-        <summary>Is this dispatch CRM, sales CRM, or both?</summary>
-        <p>Both. Dispatch boards are a primary KRIVA path, bulk assign, SLA on the row, audited overrides. Sales pipelines use the same stage discipline on HubSpot or Salesforce. We do not force a sales template onto a load board.</p>
-      </details>
-      <details>
-        <summary>How is this different from Dashboard Design?</summary>
-        <p>CRM Design owns stage models, pipeline UX, and desk workflows. Dashboard Design owns widget hierarchy, filters, and drill-downs for analytics views. Many engagements use both.</p>
-      </details>
-      <details>
-        <summary>How is this different from the trucking solutions page?</summary>
-        <p>Trucking &amp; logistics is the market page: dispatch, fleet, drivers, and the full ops stack. This service is the CRM/console craft used on those projects, and on sales desks outside trucking. Start on the solution page if you are a carrier or broker; start here if the job is the board itself.</p>
-      </details>
-      <details>
-        <summary>Do you rebuild the CRM or improve the one we have?</summary>
-        <p>Either. Platform UX improvements stay inside HubSpot or Salesforce when that is enough. Custom consoles when the desk outgrew the template and the product is the CRM itself.</p>
-      </details>
-      <details>
-        <summary>What if won deals or delivered loads need to hit QuickBooks or Xero?</summary>
-        <p>CRM Design owns the desk. Ledger posting is a pairing: we connect the board to QuickBooks Online or Xero through the original APIs under QuickBooks &amp; Xero integrations, not a CSV export after close.</p>
-      </details>
+      <details><summary>Which CRM platforms do you design for?</summary><p>HubSpot, Salesforce, Pipedrive, and custom CRM or TMS consoles. We design for the tool you run today, or the console you are building next.</p></details>
+      <details><summary>Is this dispatch CRM, sales CRM, or both?</summary><p>Both. Dispatch boards are a primary KRIVA path. Sales pipelines use the same stage discipline on HubSpot or Salesforce. We do not force a sales template onto a load board.</p></details>
+      <details><summary>How is this different from Dashboard Design?</summary><p>CRM Design owns stage models, pipeline UX, and desk workflows. Dashboard Design owns widget hierarchy, filters, and drill-downs. Many engagements use both.</p></details>
+      <details><summary>Do you rebuild the CRM or improve the one we have?</summary><p>Either. Platform UX improvements stay inside HubSpot or Salesforce when that is enough. Custom consoles when the desk outgrew the template.</p></details>
+    </div>
+    <div class="sib" data-r style="margin-top:32px">
+      <a href="/services/dashboard-design">Dashboard Design</a>
+      <a href="/solutions/trucking-logistics">Trucking solutions</a>
+      <a href="/work/fleetflow-dispatch">FleetFlow case</a>
+      <a href="/services">All services</a>
     </div>
   </div>
 </section>
@@ -887,7 +640,7 @@ img{max-width:100%;display:block}
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true">KRIVA</p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143" loading="lazy" decoding="async"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -1016,5 +769,33 @@ if(mob.length){
 run();
 })();
 </script>
+<!-- KRIVA_SCHEMA_START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://krivatechnologies.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://krivatechnologies.com/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "A CRM the floor will trust.",
+      "item": "https://krivatechnologies.com/services/crm-development"
+    }
+  ]
+}
+</script>
+<!-- KRIVA_SCHEMA_END -->
 </body>
 </html>

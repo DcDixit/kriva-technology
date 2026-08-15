@@ -67,6 +67,10 @@ function resolves(h) {
     const slug = h.split("/").pop();
     return fs.existsSync(path.join(root, `kriva-service-${slug}.html`));
   }
+  // root-level static assets (favicon, manifest, icons, robots, sitemap)
+  if (/^\/[^/]+\.[a-z0-9]+$/i.test(h)) {
+    return fs.existsSync(path.join(root, h.slice(1)));
+  }
   return false;
 }
 

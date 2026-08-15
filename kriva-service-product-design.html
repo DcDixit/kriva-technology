@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- KRIVA_ICONS_START -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E1216">
+<!-- KRIVA_ICONS_END -->
+<link rel="stylesheet" href="/shared/tokens.css">
 <title>Product Design · Strategy to launch-ready UI · KRIVA</title>
 <meta name="description" content="Full product design for SaaS, dashboards, and digital platforms, from concept through launch-ready UI, not just individual screens.">
 <link rel="canonical" href="https://krivatechnologies.com/services/product-design">
@@ -20,23 +27,11 @@
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
 /* Shared KRIVA tokens + primitives */
-:root{
-  --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
-  --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
-  --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
-  --blue:#5B4FFF; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --lilac:#B7A9FF; --sky:#5B8CFF;
-  --f-display:'Archivo',system-ui,sans-serif;
-  --f-body:'Inter',system-ui,sans-serif;
-  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
-  --gutter:clamp(20px,5vw,80px); --maxw:1440px;
-  --e:cubic-bezier(.16,.84,.44,1); --e-io:cubic-bezier(.62,.02,.28,1);
-  --t-fast:.32s; --t-mid:.62s; --t-slow:1s;
-}
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
@@ -46,7 +41,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--lilac)}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -74,7 +69,7 @@ img{max-width:100%;display:block}
 .mask.in span:nth-child(2) i{transition-delay:80ms}
 .btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
+  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
   font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
@@ -85,10 +80,10 @@ img{max-width:100%;display:block}
 .btn:hover i{transform:translateX(5px)}
 .btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
 .btn.sm{padding:9px 15px;font-size:11px}
-.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--lilac);border-color:#EDEFF1}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--lilac)}
+.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
+.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding-top:4px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
 .p-link i{font-style:normal;transition:transform .42s var(--e)}
 .p-link:hover i{transform:translateX(6px)}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
@@ -141,10 +136,7 @@ img{max-width:100%;display:block}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
 .hero{
-  background:
-    radial-gradient(110% 80% at 100% -8%, rgba(91,68,200,.08), transparent 50%),
-    radial-gradient(85% 65% at 0% 100%, rgba(27,68,200,.05), transparent 48%),
-    var(--paper);
+  background:var(--paper);
 }
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
 .s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
@@ -160,19 +152,19 @@ img{max-width:100%;display:block}
 .prod-board__bar{
   display:flex;justify-content:space-between;align-items:center;gap:12px;
   padding:11px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
 }
 .prod-board__bar b{color:#fff;font-weight:400}
-.prod-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--lilac)}
+.prod-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--amber)}
 .prod-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:prod-pulse 2.4s var(--e-io) infinite}
 @keyframes prod-pulse{0%{box-shadow:0 0 0 0 rgba(183,169,255,.45)}70%{box-shadow:0 0 0 7px rgba(183,169,255,0)}100%{box-shadow:0 0 0 0 rgba(183,169,255,0)}}
 .prod-board__body{display:grid;grid-template-columns:1.05fr .95fr;min-height:220px}
 .prod-board__pane{padding:14px;display:grid;align-content:start;gap:8px}
 .prod-board__pane:first-child{border-right:1px solid var(--ink-line)}
-.prod-board__pane .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885;margin-bottom:2px}
+.prod-board__pane .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:2px}
 .j-row{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;padding:8px 9px;background:#141A20;font-size:11px;color:#B9C3CC;border-left:2px solid #3A444E}
-.j-row .n{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;color:#6B7885}
-.j-row small{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#6B7885}
+.j-row .n{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;color:#717F8C}
+.j-row small{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C}
 .j-row.on{border-left-color:var(--sky);color:#fff}
 .j-row.ok{border-left-color:var(--lime)}
 .j-row.warn{border-left-color:var(--amber);color:#fff}
@@ -194,7 +186,7 @@ img{max-width:100%;display:block}
 .fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px);transition:background .4s var(--e)}
 .fit-rail article:hover{background:var(--paper-2)}
 .fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.fit-rail h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
 .fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:28ch}
 .fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
 @media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
@@ -242,7 +234,7 @@ img{max-width:100%;display:block}
 
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
 .rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
-.rel a:hover{transform:translate3d(0,-4px,0);border-color:var(--ink)}
+.rel a:hover{border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
 .rel .title{display:block;margin-top:10px}
 .rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:28ch}
@@ -262,20 +254,20 @@ img{max-width:100%;display:block}
 .cta-band .lede{color:#8C98A4;margin-top:16px;max-width:42ch}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/system.css">
+<link rel="stylesheet" href="/shared/archetypes.css">
 </head>
-<body class="service design-ux">
+<body class="service design-ux arch-product">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="nav-shell">
     <div class="wrap nav-in">
-      <a href="/" class="mark" aria-label="KRIVA Technologies home"><svg class="mark-icon" viewBox="0 0 160 40" width="160" height="40" aria-hidden="true" style="display:inline;margin-right:8px;vertical-align:middle">
-  <!-- Geometric K mark -->
-  <rect x="6" y="5" width="14" height="35" fill="currentColor"/>
-  <polygon points="16,5 30,20 30,18 22,5" fill="#5B4FFF"/>
-  <polygon points="20,23 28,40 35,40 20,30" fill="currentColor"/>
-</svg>KRIVA<sup>®</sup></a>
+      <a href="/" class="mark" aria-label="KRIVA Technologies home">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26" loading="eager">
+      </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
@@ -400,309 +392,107 @@ img{max-width:100%;display:block}
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview"><span>Overview</span><i></i></a>
-  <a href="#challenges"><span>Challenges</span><i></i></a>
-  <a href="#approach"><span>Approach</span><i></i></a>
-  <a href="#deliverables"><span>Deliverables</span><i></i></a>
-  <a href="#outcomes"><span>Outcomes</span><i></i></a>
-  <a href="#proof"><span>Proof</span><i></i></a>
+  <a href="#product"><span>The product</span><i></i></a>
+  <a href="#leftover"><span>Leftover surfaces</span><i></i></a>
+  <a href="#story"><span>One story</span><i></i></a>
+  <a href="#work"><span>Work</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
 <main id="main">
 
-<header class="hero" id="overview">
+<header class="hero lp-hero" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">Product Design</li>
     </ol>
-    <nav class="mob-chips" id="mobChips" aria-label="On this page">
-      <a href="#overview" aria-current="true">Overview</a>
-      <a href="#challenges">Challenges</a>
-      <a href="#approach">Approach</a>
-      <a href="#deliverables">Deliverables</a>
-      <a href="#outcomes">Outcomes</a>
-      <a href="#proof">Proof</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="hero-grid">
+    <div class="lp-stack" style="margin-top:clamp(22px,3vw,40px)">
       <div>
         <p class="eyebrow" data-r>Service · Strategy to launch-ready UI</p>
-        <h1 class="d1 mask" data-mask>
-          <span><i>End-to-end product design</i></span>
-          <span><i>strategy to ship.</i></span>
+        <h1 class="d1 mask lp-type" data-mask>
+          <span><i>One product story</i></span>
+          <span><i>before code.</i></span>
         </h1>
-        <p class="lede" data-r>Strategy, flows, and UI for the whole product &mdash; including the settings and dashboards that usually get left behind &mdash; so stakeholders share one prototype before engineering starts.</p>
-        <div class="tags" data-r>
-          <span class="tag">Product strategy</span>
-          <span class="tag">UX architecture</span>
-          <span class="tag">Shared prototype</span>
-          <span class="tag">Launch-ready UI</span>
-        </div>
+        <p class="lede" data-r>Strategy, flows, and UI for the whole product — including the settings and dashboards that usually get left behind — so stakeholders share one prototype before engineering starts.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
           <a href="/work/fleetflow-dispatch" class="btn ghost"><span>See FleetFlow</span><i>→</i></a>
         </div>
       </div>
-
-      <div data-r>
-        <div class="prod-board" aria-hidden="true">
-          <div class="prod-board__bar">
-            <span><b>Product map</b> · before engineering</span>
-            <span class="prod-board__live"><i></i>Shared prototype</span>
-          </div>
-          <div class="prod-board__body">
-            <div class="prod-board__pane">
-              <span class="lab">Journeys in scope</span>
-              <div class="j-row ok"><span class="n">01</span><span>Signup &amp; first run</span><small>Mapped</small></div>
-              <div class="j-row on"><span class="n">02</span><span>Daily work</span><small>Prototype</small></div>
-              <div class="j-row warn"><span class="n">03</span><span>Settings</span><small>In scope</small></div>
-              <div class="j-row warn"><span class="n">04</span><span>Dashboard</span><small>In scope</small></div>
-            </div>
-            <div class="prod-board__pane">
-              <span class="lab">Prototype path</span>
-              <div class="flow">
-                <div class="flow-step done"><i></i><span>Create workspace</span></div>
-                <div class="flow-step on"><i></i><span>Invite the team</span></div>
-                <div class="flow-step edge"><i></i><span>Empty settings &middot; edge</span></div>
-                <div class="flow-step"><i></i><span>First success state</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p class="prod-board__note"><span class="flag">Demo</span> Whole-product map, not a client screenshot</p>
-      </div>
-    </div>
-
-    <div class="fit-rail" data-s>
-      <article>
-        <p class="k">Best for</p>
-        <h3>New products and rebuilds</h3>
-        <p>When strategy, flows, and UI need to be one engagement, and stakeholders cannot agree until they can walk a prototype.</p>
-      </article>
-      <article>
-        <p class="k">What we own</p>
-        <h3>The whole product story</h3>
-        <p>Core journeys plus the leftover surfaces: settings, dashboards, empty states, and the UI engineering can build against.</p>
-      </article>
-      <article>
-        <p class="k">Not this service</p>
-        <h3>Screens-only or tenant UX</h3>
-        <p>Feature-level flows and handoff live under UI/UX Design. Multi-tenant permissions live under SaaS Product Design.</p>
-        <p class="contrast">Need a narrower brief? Start on UI/UX Design. Already live with tenants? See SaaS Product Design.</p>
-      </article>
     </div>
   </div>
 </header>
 
-<section class="sect sect--rule" id="challenges" aria-labelledby="chH">
+<section class="arch-show" id="product" aria-labelledby="pdShow">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Challenges</p>
-        <h2 class="d2" id="chH" data-r>When screens ship without a product story</h2>
-        <p class="lede" data-r>The vision is in a deck. The UI is in Figma. Nobody can walk the product. These are the patterns we see before an umbrella engagement starts.</p>
+    <p class="k">The product, not the hero screens</p>
+    <h2 id="pdShow">Core journeys plus the surfaces that get skipped.</h2>
+    <div class="arch-layer">
+      <div class="arch-frame">
+        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>fleetflow · console</span></div>
+        <img src="/work/fleetflow/console-full.svg" alt="Product console" width="1920" height="1080" loading="lazy" decoding="async">
       </div>
-    </div>
-    <div class="chal">
-      <article data-r>
-        <span class="n">01</span>
-        <h3 class="d3">Vision without UI</h3>
-        <p class="body-sm">The product story exists in slides, but UI execution lags. Engineering starts guessing, and the first build does not match what leadership thought they approved.</p>
-      </article>
-      <article data-r>
-        <span class="n">02</span>
-        <h3 class="d3">Priority fog</h3>
-        <p class="body-sm">Stakeholders disagree on what ships first because there is no shared prototype. Every meeting re-litigates the same journeys.</p>
-      </article>
-      <article data-r>
-        <span class="n">03</span>
-        <h3 class="d3">Leftover surfaces</h3>
-        <p class="body-sm">Dashboards and settings ship last, or never. The happy path looks finished; the product people actually live in still feels unfinished.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sect sect--band" id="approach" aria-labelledby="apH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Approach</p>
-        <h2 class="d2" id="apH" data-r>One shared product story before code</h2>
-        <p class="lede" data-r>This is often the umbrella engagement. UI/UX, research, and prototyping nest inside when the brief is narrower.</p>
-      </div>
-    </div>
-    <div class="approach">
-      <div class="ap-row" data-r>
-        <span class="idx num">01</span>
-        <div>
-          <h3 class="d3">Product UX map</h3>
-          <p class="body-sm">We map core journeys and the surfaces that usually get left behind: settings, empty states, and dashboards. Scope is the product, not a handful of hero screens.</p>
-        </div>
-        <p class="out"><b>You leave with</b>A journey map that includes leftover surfaces</p>
-      </div>
-      <div class="ap-row" data-r>
-        <span class="idx num">02</span>
-        <div>
-          <h3 class="d3">Flows &amp; edge cases</h3>
-          <p class="body-sm">Core paths plus the edges: failed invites, empty settings, missing permissions. Priorities show up in a shared prototype stakeholders can walk, not a slide deck.</p>
-        </div>
-        <p class="out"><b>You leave with</b>A prototype the whole team can argue over once</p>
-      </div>
-      <div class="ap-row" data-r>
-        <span class="idx num">03</span>
-        <div>
-          <h3 class="d3">Launch-ready UI</h3>
-          <p class="body-sm">Design system foundations and the screens engineering can build against. Visual quality is in service of the story already agreed, not a restyle after the fact.</p>
-        </div>
-        <p class="out"><b>You leave with</b>UI and system foundations ready to ship</p>
+      <div class="side arch-frame">
+        <img src="/solutions/saas/dashboard-admin.svg" alt="Admin surface" width="1200" height="800" loading="lazy" decoding="async">
       </div>
     </div>
   </div>
 </section>
 
-<section class="sect" id="deliverables" aria-labelledby="delH">
+<section class="sect" id="leftover" aria-labelledby="frH">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Deliverables</p>
-        <h2 class="d2" id="delH" data-r>What the product team leaves with</h2>
-        <p class="lede" data-r>Artifacts engineering can build against, not a moodboard of screens that never cover settings.</p>
-      </div>
-    </div>
-    <div class="deliv">
-      <article data-r>
-        <b>01 · Map</b>
-        <h3 class="d3">Product UX map</h3>
-        <p>Core journeys plus settings, dashboards, and empty states so the leftover surfaces are in the brief, not a later surprise.</p>
-      </article>
-      <article data-r>
-        <b>02 · Flows</b>
-        <h3 class="d3">Core flows + edge cases</h3>
-        <p>Happy paths and the edges that usually break first-run: failed invites, missing access, and empty states with a next step.</p>
-      </article>
-      <article data-r>
-        <b>03 · System</b>
-        <h3 class="d3">Design system foundations</h3>
-        <p>Tokens, components, and density rules so the next feature does not invent a new visual language.</p>
-      </article>
-      <article data-r>
-        <b>04 · UI</b>
-        <h3 class="d3">Launch-ready screens</h3>
-        <p>High-fidelity UI engineering can build against, tied to the prototype already walked with stakeholders.</p>
-      </article>
+    <p class="eyebrow" data-r>Leftover surfaces</p>
+    <h2 class="d2" id="frH" data-r style="margin-top:16px">Settings, empty states, and the dashboard after launch.</h2>
+    <div class="lp-frac" data-s>
+      <article><span class="offer-no">01 · Scope</span><div><h3 class="d3">Hero screens, then a scramble</h3><p class="body-sm" style="margin-top:8px">The pitch deck looks finished. Engineering discovers settings, invites, and empty states were never designed.</p></div></article>
+      <article><span class="offer-no">02 · Alignment</span><div><h3 class="d3">Stakeholders cannot walk the product</h3><p class="body-sm" style="margin-top:8px">There is no shared prototype. Arguments restart every sprint because nobody has clicked the same path.</p></div></article>
+      <article><span class="offer-no">03 · Handoff</span><div><h3 class="d3">UI after the fact</h3><p class="body-sm" style="margin-top:8px">Visual polish arrives when the story is already frozen. The leftover surfaces never catch up.</p></div></article>
     </div>
   </div>
 </section>
 
-<section class="sect sect--band" id="outcomes" aria-labelledby="outH">
+<section class="sect" id="story" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
   <div class="wrap">
-    <div class="gain">
-      <div data-r>
-        <p class="eyebrow">Outcomes</p>
-        <h2 class="d2" id="outH">What changes in the product story</h2>
-        <p class="lede">Qualitative targets we design toward. Signed-off metrics publish on case studies when clients clear them.</p>
-        <a href="/work/fleetflow-dispatch" class="p-link">FleetFlow published &minus;32% handle time <i>→</i></a>
-      </div>
-      <ul data-s>
-        <li>
-          <span class="n">01</span>
-          <span>
-            <strong>One story the team can walk</strong>
-            <span>Stakeholders argue over a prototype once, instead of rediscovering priorities in every sprint review.</span>
-          </span>
-        </li>
-        <li>
-          <span class="n">02</span>
-          <span>
-            <strong>Less rework before code</strong>
-            <span>Engineering starts from agreed flows and leftover surfaces, not a deck that never covered settings.</span>
-          </span>
-        </li>
-        <li>
-          <span class="n">03</span>
-          <span>
-            <strong>UI that can carry the product</strong>
-            <span>Visual quality supports pricing and trust because it sits on a complete product story, not a set of hero screens.</span>
-          </span>
-        </li>
-      </ul>
-    </div>
+    <p class="eyebrow" data-r>How we run it</p>
+    <h2 class="d2" id="apH" data-r style="margin-top:16px">Map. Prototype. UI engineering can build.</h2>
+    <p class="lede" data-r style="margin-top:16px">This is often the umbrella engagement. UI/UX, research, and prototyping nest inside when the brief is narrower.</p>
+    <ol class="run-bar" data-s style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,32px)">
+      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">01 · Map</span><h3 class="d3">Product UX map</h3><p class="body-sm" style="margin-top:8px">Core journeys plus leftover surfaces: settings, empty states, dashboards.</p></li>
+      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">02 · Walk</span><h3 class="d3">Shared prototype</h3><p class="body-sm" style="margin-top:8px">Failed invites, empty settings, missing permissions — edges the team can argue over once.</p></li>
+      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">03 · Ship</span><h3 class="d3">Launch-ready UI</h3><p class="body-sm" style="margin-top:8px">System foundations and screens engineering can build against. Visual quality in service of the story already agreed.</p></li>
+    </ol>
   </div>
 </section>
 
-<section class="sect" id="proof" aria-labelledby="pfH">
+<section class="featwork" id="work" aria-labelledby="pfH" style="padding:0">
+  <article class="lp-case" data-r>
+    <a href="/work/fleetflow-dispatch"><img src="/work/fleetflow/home-console.svg" alt="FleetFlow product console" width="1920" height="1080" loading="lazy" decoding="async"></a>
+    <div>
+      <p class="eyebrow">Selected work · signed-off</p>
+      <h3 class="d2" id="pfH">FleetFlow</h3>
+      <p>Whole-product dispatch UX: console, SLA, supervisor tooling. Published −32% handle time on the case study.</p>
+      <a href="/work/fleetflow-dispatch" class="btn on-dark" style="margin-top:22px"><span>Read the case</span><i>→</i></a>
+    </div>
+  </article>
+</section>
+
+<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--white);border-top:1px solid var(--rule)">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Where this shows up</p>
-        <h2 class="d2" id="pfH" data-r>Related work and pages</h2>
-        <p class="lede" data-r>End-to-end product work you can open today, plus the market page this service sits inside.</p>
-      </div>
+    <p class="eyebrow" data-r>FAQ</p>
+    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About Product Design</h2>
+    <div class="faq" data-r>
+      <details><summary>Is this different from UI/UX design?</summary><p>Yes. Product Design owns the whole-product story. UI/UX Design owns feature-level flows and handoff. Research and prototyping can nest inside this engagement.</p></details>
+      <details><summary>How is this different from SaaS Product Design?</summary><p>SaaS Product Design owns tenant-aware UX, permissions, and admin versus customer surfaces on a live product. Start there if the product already has workspaces and roles.</p></details>
+      <details><summary>Are settings and dashboards in scope?</summary><p>Yes. Leftover surfaces are the point. A product story that skips them is a pitch, not a shippable product.</p></details>
+      <details><summary>Can research and prototyping sit inside this engagement?</summary><p>Yes. They nest here when the brief is the whole product. They can also run as their own services when the brief is narrower.</p></details>
     </div>
-    <div class="rel" data-s>
-      <a href="/work/fleetflow-dispatch">
-        <span>
-          <span class="k">Work · signed-off</span>
-          <span class="d3 title">FleetFlow</span>
-          <span class="hook">Dispatch console, supervisor tooling, and SLA views as one product story. &minus;32% handle time, published on the case study.</span>
-        </span>
-        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
-      </a>
-      <a href="/work/payroll-pro-saas">
-        <span>
-          <span class="k">Work · narrative</span>
-          <span class="d3 title">PayrollPro</span>
-          <span class="hook">Progressive onboarding and permission clarity after SSO &mdash; first-run as part of the product, not a leftover checklist.</span>
-        </span>
-        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
-      </a>
-      <a href="/solutions/saas">
-        <span>
-          <span class="k">Solution</span>
-          <span class="d3 title">SaaS product solutions</span>
-          <span class="hook">Onboarding, dashboards, and MVPs for UK and US B2B teams. The market page this service often sits inside.</span>
-        </span>
-        <span class="arrow"><span class="mono">Solution</span><i>→</i></span>
-      </a>
-    </div>
-    <p class="eyebrow sib-label" data-r>Also see</p>
-    <div class="sib" data-r>
+    <div class="sib" data-r style="margin-top:32px">
       <a href="/services/ui-ux-design">UI/UX Design</a>
       <a href="/services/saas-platforms">SaaS Product Design</a>
-      <a href="/insights/ai-in-product-design-2026">AI in product design 2026</a>
+      <a href="/work/fleetflow-dispatch">FleetFlow case</a>
       <a href="/services">All services</a>
-    </div>
-  </div>
-</section>
-
-<section class="sect sect--band" id="faq" aria-labelledby="faqH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>FAQ</p>
-        <h2 class="d2" id="faqH" data-r>About Product Design</h2>
-      </div>
-    </div>
-    <div class="faq" data-r>
-      <details>
-        <summary>Is this different from UI/UX design?</summary>
-        <p>Yes. Product Design covers strategy, flows, and launch-ready UI for the full product, including settings and dashboards. UI/UX Design is narrower: research-led flows, prototypes, and interface systems for screens and journeys as the product grows. Choose this page when you need the whole narrative, not a surface.</p>
-      </details>
-      <details>
-        <summary>How is this different from SaaS Product Design?</summary>
-        <p>SaaS Product Design is for live multi-tenant products: workspace context, permissions, and admin versus customer surfaces. Product Design is the umbrella when the product story itself is not yet agreed. A live SaaS rebuild often starts here, then narrows into SaaS Product Design.</p>
-      </details>
-      <details>
-        <summary>Are settings and dashboards in scope?</summary>
-        <p>Yes. The brief includes leftover surfaces by default. If the need is only a morning-scan analytics view, that work lives under Dashboard Design. If it is the whole product including those views, it stays here.</p>
-      </details>
-      <details>
-        <summary>Can research and prototyping sit inside this engagement?</summary>
-        <p>Yes. This is often the umbrella. User research, wireframes, and interactive prototypes nest inside when the brief is end-to-end. If you only need flows and handoff into a live product, start on UI/UX Design.</p>
-      </details>
     </div>
   </div>
 </section>
@@ -768,7 +558,7 @@ img{max-width:100%;display:block}
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true">KRIVA</p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143" loading="lazy" decoding="async"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -881,5 +671,33 @@ if(mob.length){
 run();
 })();
 </script>
+<!-- KRIVA_SCHEMA_START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://krivatechnologies.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://krivatechnologies.com/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "End-to-end product design strategy to ship.",
+      "item": "https://krivatechnologies.com/services/product-design"
+    }
+  ]
+}
+</script>
+<!-- KRIVA_SCHEMA_END -->
 </body>
 </html>

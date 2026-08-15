@@ -455,8 +455,8 @@ const assets = [
     dims: "1200×1500",
     ratio: "4:5",
     priority: "P1",
-    slotLabel: "Slot · founder portrait · 1200×1500",
-    alt: "KRIVA founder portrait",
+    slotLabel: "Slot · studio portrait · 1200×1500",
+    alt: "KRIVA Technologies product studio",
   },
   {
     id: "insights-feat-cover",

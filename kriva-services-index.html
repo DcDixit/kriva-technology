@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- KRIVA_ICONS_START -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E1216">
+<!-- KRIVA_ICONS_END -->
+<link rel="stylesheet" href="/shared/tokens.css">
 <title>Services · Design, Development &amp; Automation · KRIVA</title>
 <meta name="description" content="UI/UX design, SaaS product development, CRM and dashboards, API integrations, and practical automation, delivered by one in-house KRIVA team.">
 <link rel="canonical" href="https://krivatechnologies.com/services">
@@ -20,24 +27,11 @@
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
 /* Shared KRIVA tokens + primitives */
-:root{
-  --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
-  --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
-  --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
-  --blue:#5B4FFF; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --lilac:#B7A9FF;
-  --f-display:'Archivo',system-ui,sans-serif;
-  --f-body:'Inter',system-ui,sans-serif;
-  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
-  --gutter:clamp(20px,5vw,80px); --maxw:1440px;
-  --e:cubic-bezier(.16,.84,.44,1); --e-io:cubic-bezier(.62,.02,.28,1);
-  --t-fast:.32s; --t-mid:.62s; --t-slow:1s;
-  --fam:var(--blue);
-}
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
@@ -47,7 +41,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--lilac)}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -75,7 +69,7 @@ img{max-width:100%;display:block}
 .mask.in span:nth-child(2) i{transition-delay:80ms}
 .btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
+  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
   font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
@@ -86,10 +80,10 @@ img{max-width:100%;display:block}
 .btn:hover i{transform:translateX(5px)}
 .btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
 .btn.sm{padding:9px 15px;font-size:11px}
-.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--lilac);border-color:#EDEFF1}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--lilac)}
+.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
+.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding-top:4px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
 .p-link i{font-style:normal;transition:transform .42s var(--e)}
 .p-link:hover i{transform:translateX(6px)}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
@@ -106,7 +100,7 @@ img{max-width:100%;display:block}
 .cta-band h2{color:#fff;margin-top:22px;max-width:18ch}
 .cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
-.assur i{font-style:normal;color:var(--lilac);margin-right:7px}
+.assur i{font-style:normal;color:var(--amber);margin-right:7px}
 .cta-actions{display:flex;gap:12px;flex-wrap:wrap}
 .cta-band .lede{color:#8C98A4;margin-top:16px;max-width:48ch}
 @media (prefers-reduced-motion:reduce){
@@ -120,10 +114,7 @@ img{max-width:100%;display:block}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 
 .hero{
-  background:
-    radial-gradient(110% 80% at 100% -8%, rgba(27,68,200,.07), transparent 50%),
-    radial-gradient(85% 65% at 0% 100%, rgba(91,68,200,.05), transparent 48%),
-    var(--paper);
+  background:var(--paper);
 }
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
 .hero-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
@@ -136,12 +127,12 @@ img{max-width:100%;display:block}
 .stack-bar{
   display:flex;justify-content:space-between;align-items:center;gap:12px;
   padding:11px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
 }
 .stack-bar b{color:#fff;font-weight:400}
-.stack-live{display:inline-flex;align-items:center;gap:7px;color:var(--lilac)}
+.stack-live{display:inline-flex;align-items:center;gap:7px;color:var(--amber)}
 .stack-live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:stack-pulse 2.4s var(--e-io) infinite}
-@keyframes stack-pulse{0%{box-shadow:0 0 0 0 rgba(183,169,255,.45)}70%{box-shadow:0 0 0 7px rgba(183,169,255,0)}100%{box-shadow:0 0 0 0 rgba(183,169,255,0)}}
+@keyframes stack-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
 .stack a{
   display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:12px;align-items:center;
   padding:14px 16px;border-bottom:1px solid var(--ink-line);
@@ -153,8 +144,8 @@ img{max-width:100%;display:block}
 .stack a:hover .n{color:#fff}
 .stack strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.02rem;letter-spacing:-.02em;color:#fff}
 .stack em{display:block;margin-top:4px;font-style:normal;font-size:12.5px;line-height:1.4;color:#8C98A4}
-.stack .go{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885;transition:color var(--t-fast),transform .4s var(--e)}
-.stack a:hover .go{color:var(--lilac);transform:translateX(4px)}
+.stack .go{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;transition:color var(--t-fast),transform .4s var(--e)}
+.stack a:hover .go{color:var(--amber);transform:translateX(4px)}
 .stack-note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
@@ -172,7 +163,7 @@ img{max-width:100%;display:block}
 .rail-links a u{text-decoration:none;font-size:9.5px;color:var(--rule)}
 .rail-links a:hover{color:var(--ink);border-color:var(--rule)}
 .rail-links a[aria-current="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-.rail-links a[aria-current="true"] u{color:var(--lilac)}
+.rail-links a[aria-current="true"] u{color:var(--amber)}
 .rail .hint{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);white-space:nowrap}
 @media(max-width:900px){.rail .hint{display:none}.rail .wrap{padding-block:9px}}
 
@@ -234,7 +225,7 @@ a.chip.proj:hover{background:var(--green);color:#fff}
 .markets{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink-line);border:1px solid var(--ink-line);margin-top:clamp(28px,3.6vw,52px)}
 .market{background:var(--ink-2);padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;gap:14px;min-height:100%;transition:background .4s var(--e)}
 .market:hover{background:#1A2027}
-.market .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--lilac)}
+.market .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--amber)}
 .market b{display:block;font-family:var(--f-display);font-weight:750;font-size:1.12rem;letter-spacing:-.02em;color:#fff}
 .market ul{list-style:none;display:grid;gap:8px}
 .market li a{font-size:13.5px;line-height:1.4;color:#B9C3CC;border-bottom:1px solid transparent;transition:color var(--t-fast),border-color var(--t-fast)}
@@ -259,7 +250,7 @@ a.chip.proj:hover{background:var(--green);color:#fff}
 .start .wrap{padding-block:clamp(56px,6.5vw,104px)}
 .paths{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.4vw,48px)}
 .path{background:var(--white);border:1px solid var(--rule);padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;transition:transform .5s var(--e),box-shadow .5s var(--e),border-color .4s}
-.path:hover{transform:translate3d(0,-5px,0);box-shadow:0 26px 54px -40px rgba(14,18,22,.45);border-color:var(--ink)}
+.path:hover{border-color:var(--ink)}
 .path .k{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
 .path h3{font-family:var(--f-display);font-weight:700;font-size:1.12rem;letter-spacing:-.02em;margin-bottom:10px;line-height:1.28}
 .path .chips{margin-top:auto;padding-top:16px}
@@ -275,6 +266,8 @@ a.chip.proj:hover{background:var(--green);color:#fff}
 .faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:62ch}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/system.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -283,12 +276,9 @@ a.chip.proj:hover{background:var(--green);color:#fff}
 <header class="nav" id="nav">
   <div class="nav-shell">
     <div class="wrap nav-in">
-      <a href="/" class="mark" aria-label="KRIVA Technologies home"><svg class="mark-icon" viewBox="0 0 160 40" width="160" height="40" aria-hidden="true" style="display:inline;margin-right:8px;vertical-align:middle">
-  <!-- Geometric K mark -->
-  <rect x="6" y="5" width="14" height="35" fill="currentColor"/>
-  <polygon points="16,5 30,20 30,18 22,5" fill="#5B4FFF"/>
-  <polygon points="20,23 28,40 35,40 20,30" fill="currentColor"/>
-</svg>KRIVA<sup>®</sup></a>
+      <a href="/" class="mark" aria-label="KRIVA Technologies home">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26" loading="eager">
+      </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
@@ -478,7 +468,7 @@ a.chip.proj:hover{background:var(--green);color:#fff}
       <a href="#integrations"><u>03</u> Integrations</a>
       <a href="#brand"><u>04</u> Brand &amp; Web</a>
     </div>
-    <p class="hint">Open any card for the full service page</p>
+    <p class="hint">Open any row for the full service page</p>
   </div>
 </nav>
 
@@ -495,91 +485,41 @@ a.chip.proj:hover{background:var(--green);color:#fff}
       </div>
     </div>
 
-    <div class="cards" data-s>
-      <article class="card" id="product-design">
-        <div class="card-top"><span class="card-n num">01</span></div>
-        <h3><a href="/services/product-design">Product Design</a></h3>
-        <p class="desc">Full product design for SaaS, dashboards, and digital platforms, from concept through to launch-ready UI.</p>
-        <div class="chips">
-          <span class="chip">Vision to UI</span>
-          <span class="chip">Core flows</span>
-          <span class="chip">Launch screens</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/fleetflow-dispatch">FleetFlow</a>
-          <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-        </div>
-        <a class="card-go" href="/services/product-design">View service <i>→</i></a>
-      </article>
+    <div class="idx-list" data-s>
+      <a class="idx-row" href="/services/product-design" id="product-design">
+        <span class="n">01</span>
+        <h3>Product Design</h3>
+        <p>Full product design for SaaS, dashboards, and digital platforms, from concept through to launch-ready UI.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="ui-ux-design">
-        <div class="card-top"><span class="card-n num">02</span></div>
-        <h3><a href="/services/ui-ux-design">UI/UX Design</a></h3>
-        <p class="desc">Research-led flows, prototypes, and interface systems that stay intuitive as products grow, with handoffs engineering can ship against.</p>
-        <div class="chips">
-          <span class="chip">Complex workflows</span>
-          <span class="chip">IA + prototypes</span>
-          <span class="chip">UI kits</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
-          <a class="chip proj" href="/work/healthtrack-mobile">HealthTrack</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-        </div>
-        <a class="card-go" href="/services/ui-ux-design">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/ui-ux-design" id="ui-ux-design">
+        <span class="n">02</span>
+        <h3>UI/UX Design</h3>
+        <p>Research-led flows, prototypes, and interface systems that stay intuitive as products grow, with handoffs engineering can ship against.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="ux-research">
-        <div class="card-top"><span class="card-n num">03</span><span class="card-kicker">Usually bundled</span></div>
-        <h3><a href="/services/ux-research">UX Research</a></h3>
-        <p class="desc">Interviews, usability tests, and journey mapping that turn assumptions into clear product decisions before UI is locked.</p>
-        <div class="chips">
-          <span class="chip">Ops shadowing</span>
-          <span class="chip">Journey maps</span>
-          <span class="chip">Activation research</span>
-        </div>
-        <div class="chips">
-          <a class="chip" href="/services/product-design">Product Design</a>
-          <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-        </div>
-        <a class="card-go" href="/services/ux-research">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/ux-research" id="ux-research">
+        <span class="n">03</span>
+        <h3>UX Research</h3>
+        <p>Interviews, usability tests, and journey mapping that turn assumptions into clear product decisions before UI is locked.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="wireframing-prototyping">
-        <div class="card-top"><span class="card-n num">04</span><span class="card-kicker">Usually bundled</span></div>
-        <h3><a href="/services/wireframing-prototyping">Wireframing &amp; Prototyping</a></h3>
-        <p class="desc">Low- and high-fidelity prototypes that align stakeholders and de-risk development before production code starts.</p>
-        <div class="chips">
-          <span class="chip">Clickable prototypes</span>
-          <span class="chip">Stakeholder alignment</span>
-          <span class="chip">MVP de-risk</span>
-        </div>
-        <div class="chips">
-          <a class="chip" href="/services/ux-research">UX Research</a>
-          <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-        </div>
-        <a class="card-go" href="/services/wireframing-prototyping">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/wireframing-prototyping" id="wireframing-prototyping">
+        <span class="n">04</span>
+        <h3>Wireframing &amp; Prototyping</h3>
+        <p>Low- and high-fidelity prototypes that align stakeholders and de-risk development before production code starts.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="design-systems">
-        <div class="card-top"><span class="card-n num">05</span><span class="card-kicker">Usually bundled</span></div>
-        <h3><a href="/services/design-systems">Design Systems</a></h3>
-        <p class="desc">Scalable component libraries, tokens, and documentation that keep product teams shipping consistent UI as features accumulate.</p>
-        <div class="chips">
-          <span class="chip">Tokens</span>
-          <span class="chip">Component libraries</span>
-          <span class="chip">Team handoff</span>
-        </div>
-        <div class="chips">
-          <a class="chip" href="/services/saas-platforms">SaaS Product Design</a>
-          <a class="chip" href="/services/product-design">Product Design</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-        </div>
-        <a class="card-go" href="/services/design-systems">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/design-systems" id="design-systems">
+        <span class="n">05</span>
+        <h3>Design Systems</h3>
+        <p>Scalable component libraries, tokens, and documentation that keep product teams shipping consistent UI as features accumulate.</p>
+        <i>→</i>
+      </a>
     </div>
   </div>
 </section>
@@ -597,96 +537,41 @@ a.chip.proj:hover{background:var(--green);color:#fff}
       </div>
     </div>
 
-    <div class="cards" data-s>
-      <article class="card" id="saas-platforms">
-        <div class="card-top"><span class="card-n num">06</span></div>
-        <h3><a href="/services/saas-platforms">SaaS Product Design</a></h3>
-        <p class="desc">Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems that stay coherent as tenants grow.</p>
-        <div class="chips">
-          <span class="chip">Tenant UX</span>
-          <span class="chip">Permissions</span>
-          <span class="chip">Admin + customer</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
-          <a class="chip proj" href="/work/crm-pulse-dashboard">CRMPulse</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-        </div>
-        <a class="card-go" href="/services/saas-platforms">View service <i>→</i></a>
-      </article>
+    <div class="idx-list" data-s>
+      <a class="idx-row" href="/services/saas-platforms" id="saas-platforms">
+        <span class="n">01</span>
+        <h3>SaaS Product Design</h3>
+        <p>Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems that stay coherent as tenants grow.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="crm-development">
-        <div class="card-top"><span class="card-n num">07</span></div>
-        <h3><a href="/services/crm-development">CRM Design</a></h3>
-        <p class="desc">Sales pipelines, reporting views, and operational dashboards teams actually trust day to day, including dispatch CRM and TMS consoles.</p>
-        <div class="chips">
-          <span class="chip">Pipeline UX</span>
-          <span class="chip">Dispatch consoles</span>
-          <span class="chip">Desk-matched</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/fleetflow-dispatch">FleetFlow</a>
-          <a class="chip proj" href="/work/crm-pulse-dashboard">CRMPulse</a>
-          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-          <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
-          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-        </div>
-        <a class="card-go" href="/services/crm-development">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/crm-development" id="crm-development">
+        <span class="n">02</span>
+        <h3>CRM Design</h3>
+        <p>Sales pipelines, reporting views, and operational dashboards teams actually trust day to day, including dispatch CRM and TMS consoles.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="dashboard-design">
-        <div class="card-top"><span class="card-n num">08</span></div>
-        <h3><a href="/services/dashboard-design">Dashboard Design</a></h3>
-        <p class="desc">Analytics, admin, and operational dashboards designed for clarity, scanability, and daily use, not another spreadsheet export.</p>
-        <div class="chips">
-          <span class="chip">Widget hierarchy</span>
-          <span class="chip">Filters + drill-down</span>
-          <span class="chip">Exception views</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/fleetflow-dispatch">FleetFlow</a>
-          <a class="chip proj" href="/work/payroll-pro-saas">PayrollPro</a>
-          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-          <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
-        </div>
-        <a class="card-go" href="/services/dashboard-design">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/dashboard-design" id="dashboard-design">
+        <span class="n">03</span>
+        <h3>Dashboard Design</h3>
+        <p>Analytics, admin, and operational dashboards designed for clarity, scanability, and daily use, not another spreadsheet export.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="web-application-design">
-        <div class="card-top"><span class="card-n num">09</span></div>
-        <h3><a href="/services/web-application-design">Web Application Design</a></h3>
-        <p class="desc">Complex web app UX for authenticated products, multi-step flows, and data-heavy interfaces, from quote-to-payment portals to operator tooling.</p>
-        <div class="chips">
-          <span class="chip">Authenticated UX</span>
-          <span class="chip">Multi-step flows</span>
-          <span class="chip">Data-heavy UI</span>
-        </div>
-        <div class="chips">
-          <a class="chip" href="/services/saas-platforms">SaaS Product Design</a>
-          <a class="chip" href="/services/ui-ux-design">UI/UX Design</a>
-          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-        </div>
-        <a class="card-go" href="/services/web-application-design">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/web-application-design" id="web-application-design">
+        <span class="n">04</span>
+        <h3>Web Application Design</h3>
+        <p>Complex web app UX for authenticated products, multi-step flows, and data-heavy interfaces, from quote-to-payment portals to operator tooling.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="mobile-applications">
-        <div class="card-top"><span class="card-n num">10</span></div>
-        <h3><a href="/services/mobile-applications">Mobile App Design</a></h3>
-        <p class="desc">Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention, including driver and patient-facing apps.</p>
-        <div class="chips">
-          <span class="chip">iOS + Android</span>
-          <span class="chip">Onboarding</span>
-          <span class="chip">Field capture</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/healthtrack-mobile">HealthTrack</a>
-          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-        </div>
-        <a class="card-go" href="/services/mobile-applications">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/mobile-applications" id="mobile-applications">
+        <span class="n">05</span>
+        <h3>Mobile App Design</h3>
+        <p>Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention, including driver and patient-facing apps.</p>
+        <i>→</i>
+      </a>
     </div>
   </div>
 </section>
@@ -704,75 +589,34 @@ a.chip.proj:hover{background:var(--green);color:#fff}
       </div>
     </div>
 
-    <div class="cards" data-s>
-      <article class="card" id="api-integrations">
-        <div class="card-top"><span class="card-n num">11</span></div>
-        <h3><a href="/services/api-integrations">Integrations &amp; APIs</a></h3>
-        <p class="desc">Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling, idempotency, and monitoring.</p>
-        <div class="chips">
-          <span class="chip">QuickBooks / Xero</span>
-          <span class="chip">Audit trails</span>
-          <span class="chip">Exception handling</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/finance-sync-hub">FinanceSync</a>
-          <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-        </div>
-        <a class="card-go" href="/services/api-integrations">View service <i>→</i></a>
-      </article>
+    <div class="idx-list" data-s>
+      <a class="idx-row" href="/services/api-integrations" id="api-integrations">
+        <span class="n">01</span>
+        <h3>Integrations &amp; APIs</h3>
+        <p>Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling, idempotency, and monitoring.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="automation-systems">
-        <div class="card-top"><span class="card-n num">12</span></div>
-        <h3><a href="/services/automation-systems">Automation Workflows</a></h3>
-        <p class="desc">Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of anything that reaches a customer or the ledger.</p>
-        <div class="chips">
-          <span class="chip">Human-gated</span>
-          <span class="chip">Ticket triage</span>
-          <span class="chip">Invoicing triggers</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/ai-support-automation">SupportAI</a>
-          <a class="chip proj" href="/work/finance-sync-hub">FinanceSync</a>
-          <a class="chip sol" href="/solutions/accounting-integrations">Accounting</a>
-          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-        </div>
-        <a class="card-go" href="/services/automation-systems">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/automation-systems" id="automation-systems">
+        <span class="n">02</span>
+        <h3>Automation Workflows</h3>
+        <p>Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of anything that reaches a customer or the ledger.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="ai-assisted-development">
-        <div class="card-top"><span class="card-n num">13</span></div>
-        <h3><a href="/services/ai-assisted-development">AI-Assisted Product Development</a></h3>
-        <p class="desc">Ship faster with AI-augmented design, development, and QA. Claude, GPT, Copilot, and modern toolchains with human oversight at every step.</p>
-        <div class="chips">
-          <span class="chip">Review gates</span>
-          <span class="chip">Document processing</span>
-          <span class="chip">Human oversight</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/ai-support-automation">SupportAI</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-        </div>
-        <a class="card-go" href="/services/ai-assisted-development">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/ai-assisted-development" id="ai-assisted-development">
+        <span class="n">03</span>
+        <h3>AI-Assisted Product Development</h3>
+        <p>Ship faster with AI-augmented design, development, and QA. Claude, GPT, Copilot, and modern toolchains with human oversight at every step.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="no-code-low-code">
-        <div class="card-top"><span class="card-n num">14</span></div>
-        <h3><a href="/services/no-code-low-code">No-Code / Low-Code Solutions</a></h3>
-        <p class="desc">Webflow, Bubble, Framer, and Make-powered MVPs and internal tools when a custom build is not the first honest move.</p>
-        <div class="chips">
-          <span class="chip">Marketplace MVPs</span>
-          <span class="chip">Internal tools</span>
-          <span class="chip">Validate before custom</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/marketplace-mvp">LocalServe</a>
-          <a class="chip" href="/services/automation-systems">Automation</a>
-          <a class="chip sol" href="/solutions/saas">SaaS</a>
-        </div>
-        <a class="card-go" href="/services/no-code-low-code">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/no-code-low-code" id="no-code-low-code">
+        <span class="n">04</span>
+        <h3>No-Code / Low-Code Solutions</h3>
+        <p>Webflow, Bubble, Framer, and Make-powered MVPs and internal tools when a custom build is not the first honest move.</p>
+        <i>→</i>
+      </a>
     </div>
   </div>
 </section>
@@ -790,56 +634,27 @@ a.chip.proj:hover{background:var(--green);color:#fff}
       </div>
     </div>
 
-    <div class="cards" data-s>
-      <article class="card" id="web-development">
-        <div class="card-top"><span class="card-n num">15</span></div>
-        <h3><a href="/services/web-development">Web Design &amp; Development</a></h3>
-        <p class="desc">Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations that convert as well as they rank.</p>
-        <div class="chips">
-          <span class="chip">Marketing sites</span>
-          <span class="chip">CMS</span>
-          <span class="chip">SEO foundations</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/brandlift-ecommerce">BrandLift</a>
-          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-          <a class="chip sol" href="/solutions/car-transportation">Car transport</a>
-        </div>
-        <a class="card-go" href="/services/web-development">View service <i>→</i></a>
-      </article>
+    <div class="idx-list" data-s>
+      <a class="idx-row" href="/services/web-development" id="web-development">
+        <span class="n">01</span>
+        <h3>Web Design &amp; Development</h3>
+        <p>Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations that convert as well as they rank.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="branding">
-        <div class="card-top"><span class="card-n num">16</span></div>
-        <h3><a href="/services/branding">Branding &amp; Graphic Design</a></h3>
-        <p class="desc">Brand identity, visual systems, and marketing assets that match how the product should feel, without chasing trends.</p>
-        <div class="chips">
-          <span class="chip">Identity systems</span>
-          <span class="chip">Visual language</span>
-          <span class="chip">Product-matched</span>
-        </div>
-        <div class="chips">
-          <a class="chip proj" href="/work/brandlift-ecommerce">BrandLift</a>
-          <a class="chip" href="/services/web-development">Web Design</a>
-          <a class="chip sol" href="/solutions/trucking-logistics">Trucking</a>
-        </div>
-        <a class="card-go" href="/services/branding">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/branding" id="branding">
+        <span class="n">02</span>
+        <h3>Branding &amp; Graphic Design</h3>
+        <p>Brand identity, visual systems, and marketing assets that match how the product should feel, without chasing trends.</p>
+        <i>→</i>
+      </a>
 
-      <article class="card" id="logo-design">
-        <div class="card-top"><span class="card-n num">17</span><span class="card-kicker">Usually bundled</span></div>
-        <h3><a href="/services/logo-design">Logo Design</a></h3>
-        <p class="desc">Distinctive marks and logo systems that work across digital, print, and social, typically delivered as part of a brand system rather than in isolation.</p>
-        <div class="chips">
-          <span class="chip">Marks</span>
-          <span class="chip">Logo systems</span>
-          <span class="chip">Digital + print</span>
-        </div>
-        <div class="chips">
-          <a class="chip" href="/services/branding">Branding</a>
-          <a class="chip proj" href="/work/brandlift-ecommerce">BrandLift</a>
-        </div>
-        <a class="card-go" href="/services/logo-design">View service <i>→</i></a>
-      </article>
+      <a class="idx-row" href="/services/logo-design" id="logo-design">
+        <span class="n">03</span>
+        <h3>Logo Design</h3>
+        <p>Distinctive marks and logo systems that work across digital, print, and social, typically delivered as part of a brand system rather than in isolation.</p>
+        <i>→</i>
+      </a>
     </div>
   </div>
 </section>
@@ -1055,7 +870,7 @@ a.chip.proj:hover{background:var(--green);color:#fff}
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true">KRIVA</p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143" loading="lazy" decoding="async"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>

@@ -6,13 +6,18 @@
 /* ── NAV SHELL ── */
 .nav{position:fixed;inset:0 0 auto;z-index:90;transition:transform var(--t-mid) var(--e)}
 .nav-shell{border-bottom:1px solid transparent;transition:background var(--t-mid) var(--e),border-color var(--t-mid) var(--e)}
-.nav.scrolled .nav-shell{background:rgba(234,234,228,.92);border-bottom-color:var(--rule)}
+.nav.scrolled .nav-shell{background:rgba(244,243,238,.94);border-bottom-color:var(--rule)}
 @supports(backdrop-filter:blur(1px)){@media(min-width:1100px){.nav.scrolled .nav-shell{backdrop-filter:blur(14px) saturate(1.5)}}}
 .nav.hide{transform:translate3d(0,-100%,0)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px;transition:height var(--t-mid) var(--e)}
 .nav.scrolled .nav-in{height:58px}
-.mark{font-family:var(--f-display);font-weight:900;font-size:15px;letter-spacing:.2em;font-variation-settings:'wdth' 112;line-height:1;flex:none}
-.mark sup{font-family:var(--f-mono);font-size:8px;color:var(--steel);vertical-align:super;margin-left:4px;font-weight:400;letter-spacing:.1em}
+.nav .mark{
+  display:inline-flex;align-items:center;flex:none;line-height:0
+}
+.nav .mark-logo{
+  display:block;height:26px;width:auto
+}
+.nav.scrolled .mark-logo{height:22px}
 
 .nav-primary{display:flex;align-items:center;min-width:0}
 .nav-links{display:flex;align-items:center;gap:0;list-style:none}
@@ -79,16 +84,16 @@
 /* Header CTA · locked to compact dark mono chip (keep this look) */
 .nav-cta .btn.sm{
   display:inline-flex;align-items:center;gap:8px;
-  height:34px;padding:0 14px;box-sizing:border-box;
-  max-width:none;border-radius:0;border:1px solid var(--ink);
-  background:var(--ink);color:var(--paper);
-  font-family:var(--f-mono);font-size:10.5px;font-weight:400;
+  height:36px;padding:0 14px;box-sizing:border-box;
+  max-width:none;border-radius:0;border:1px solid var(--cta);
+  background:var(--cta);color:#fff;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:500;
   letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
   line-height:1;overflow:hidden
 }
 .nav-cta .btn.sm span{overflow:visible;text-overflow:clip;white-space:nowrap}
 .nav-cta .btn.sm i{font-style:normal;line-height:1}
-.nav.scrolled .nav-cta .btn.sm{height:34px;padding:0 14px;font-size:10.5px}
+.nav.scrolled .nav-cta .btn.sm{height:36px;padding:0 14px;font-size:10.5px}
 
 .burger{display:none;width:44px;height:44px;flex-direction:column;align-items:center;justify-content:center;gap:5px}
 .burger span{width:20px;height:1.5px;background:var(--ink);transition:transform var(--t-fast) var(--e),opacity var(--t-fast)}
@@ -146,7 +151,7 @@
 }
 .sheet-sub a:hover,.sheet-sub a:focus-visible{color:#fff;padding-left:8px}
 .sheet-sub a strong{display:block;font-weight:600;color:#EDEFF1;font-size:14.5px}
-.sheet-sub a span{display:block;margin-top:3px;font-size:12px;line-height:1.4;color:#6B7885}
+.sheet-sub a span{display:block;margin-top:3px;font-size:12px;line-height:1.4;color:#717F8C}
 
 .sheet-cta{display:grid;gap:12px;margin-top:8px}
 .sheet-foot{color:var(--ink-dim);font-family:var(--f-mono);font-size:12px;display:grid;gap:12px;padding-top:8px}
@@ -165,47 +170,55 @@
 /* Compact desktop between 1100–1280 · keep CTA chip size stable */
 @media(min-width:1100px) and (max-width:1280px){
   .nav-link,.nav-trigger{padding:8px 8px;font-size:10.5px;letter-spacing:.07em}
-  .nav-cta .btn.sm{height:34px;padding:0 12px;font-size:10px}
+  .nav-cta .btn.sm{height:36px;padding:0 12px;font-size:10px}
 }
+
+/* ── BREADCRUMBS ── */
+/* padding only; the text baseline does not move, but the target clears 24px */
+.crumbs a{display:inline-block;padding:6px 0;margin:-6px 0}
 
 /* ── FOOTER ── */
 footer{background:var(--ink);color:var(--ink-dim);border-top:1px solid var(--ink-line)}
 footer .wrap{padding-block:clamp(48px,5vw,72px) 28px}
 .fgrid{display:grid;grid-template-columns:1.55fr repeat(3,1fr);gap:clamp(24px,3vw,40px)}
-.fgrid h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#5C6670;font-weight:400;margin-bottom:16px}
+/* #8C98A4 on --ink is 6.40:1. The previous #5C6670 measured 3.21:1 here, which reads
+   fine on paper but fails AA on the dark footer. */
+.fgrid h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8C98A4;font-weight:400;margin-bottom:16px}
 .fgrid a{display:inline-block;padding:5px 0;font-size:14.5px;color:#C4CCD4;transition:color var(--t-fast),transform .4s var(--e)}
 .fgrid a:hover{color:#fff;transform:translateX(4px)}
 .fgrid ul{list-style:none}
-.fgrid .f-blurb{margin-top:14px;max-width:32ch;font-size:13.5px;color:#5C6670;line-height:1.55}
+.fgrid .f-blurb{margin-top:14px;max-width:32ch;font-size:13.5px;color:#8C98A4;line-height:1.55}
 .fmark{
-  font-family:var(--f-display);font-weight:900;font-size:clamp(3.4rem,13vw,10rem);
-  letter-spacing:-.05em;line-height:.82;color:#171E25;margin-top:clamp(40px,5vw,72px);
-  font-variation-settings:'wdth' 118;user-select:none
+  margin-top:clamp(40px,5vw,72px);line-height:0;user-select:none
+}
+.fmark img{
+  display:block;width:min(100%,560px);height:auto;opacity:.16
 }
 .fbase{
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
   padding-top:22px;margin-top:22px;border-top:1px solid var(--ink-line);
   font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase
 }
-.fbase a{color:inherit}
+/* padding lifts these to a 24px minimum target (WCAG 2.2 · 2.5.8) without moving text */
+.fbase a{color:inherit;display:inline-block;padding:6px 0;margin:-6px 0}
 .fbase a:hover{color:#fff}
-.fsocial{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px}
-.fsocial a{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#6B7885;padding:0}
+.fsocial{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}
+.fsocial a{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;display:inline-block;padding:6px 0}
 .fsocial a:hover{color:#fff;transform:none}
 @media(max-width:820px){.fgrid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.fgrid{grid-template-columns:1fr}}
 
-/* ── WhatsApp float ── */
+/* ── WhatsApp float · brand ink, not product-green ── */
 .wa{
   position:fixed;right:max(16px,var(--gutter));bottom:20px;z-index:80;
   display:inline-flex;align-items:center;gap:10px;
-  padding:12px 16px;background:#128C7E;color:#fff;border:1px solid #0E7A6E;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:11px 14px;background:var(--ink);color:#EDEFF1;border:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
   box-shadow:0 18px 40px -22px rgba(14,18,22,.65);
-  transition:transform .4s var(--e),background .3s
+  transition:transform .4s var(--e),background .3s,border-color .3s
 }
-.wa:hover{background:#0E7A6E;transform:translateY(-2px)}
-.wa svg{width:16px;height:16px;flex:none}
+.wa:hover{background:var(--ink-2);border-color:#3A444E;transform:translateY(-2px)}
+.wa svg{width:15px;height:15px;flex:none;color:#5FD3A0}
 @media(max-width:560px){
   .wa span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   .wa{padding:14px;border-radius:0}
@@ -216,46 +229,3 @@ footer .wrap{padding-block:clamp(48px,5vw,72px) 28px}
   .nav.open + .sheet a.big,.nav.open + .sheet .sheet-item{opacity:1;transform:none}
 }
 
-/* ════════════════════════════════════════════
-   SERVICE PAGE LAYOUTS · 3 distinct types
-   ════════════════════════════════════════════ */
-
-/* CATEGORY 1: DESIGN & UX SERVICES (Visual-First) */
-.service.design-ux .hero{padding-block:clamp(64px,8vw,112px)}
-.service.design-ux .hero-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(40px,6vw,80px);align-items:center}
-.service.design-ux .showcase{margin-top:clamp(56px,6vw,96px);display:grid;gap:clamp(20px,2.5vw,32px)}
-.service.design-ux .showcase-item{border:1px solid var(--rule);padding:clamp(20px,3vw,32px);background:var(--white);transition:transform .4s var(--e),box-shadow .4s var(--e)}
-.service.design-ux .showcase-item:hover{transform:translate3d(0,-4px,0);box-shadow:0 20px 40px -24px rgba(14,18,22,.4)}
-.service.design-ux .showcase-item figure{margin-bottom:16px}
-.service.design-ux .showcase-item img{border:1px solid var(--rule);border-radius:2px}
-.service.design-ux .process{background:var(--paper-2);margin-top:clamp(56px,6vw,96px);padding-block:clamp(48px,5vw,80px)}
-@media(max-width:900px){.service.design-ux .hero-grid{grid-template-columns:1fr;gap:32px}}
-
-/* CATEGORY 2: DEVELOPMENT SERVICES (Systems-First) */
-.service.development .hero{padding-block:clamp(64px,8vw,112px)}
-.service.development .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
-.service.development .tech-callout{background:var(--paper-2);border-left:3px solid var(--blue);padding:clamp(20px,3vw,32px);margin:clamp(32px,4vw,56px) 0}
-.service.development .tech-callout h3{font-size:1.1rem;margin-bottom:12px;color:var(--ink)}
-.service.development .tech-callout ul{list-style:none;padding:0;display:grid;gap:8px}
-.service.development .tech-callout li{padding-left:20px;position:relative;color:var(--steel)}
-.service.development .tech-callout li:before{content:"→";position:absolute;left:0;color:var(--blue)}
-.service.development .code-block{background:var(--ink);color:#fff;padding:clamp(16px,2vw,24px);overflow:auto;border-radius:2px;font-family:var(--f-mono);font-size:12px;line-height:1.6;margin:clamp(20px,2vw,32px) 0}
-.service.development .integrations{margin-top:clamp(56px,6vw,96px);padding-block:clamp(48px,5vw,80px);background:var(--paper-2)}
-@media(max-width:900px){.service.development .hero-grid{grid-template-columns:1fr;gap:32px}}
-
-/* CATEGORY 3: STRATEGIC SERVICES (Results-Focused) */
-.service.strategic .hero{padding-block:clamp(64px,8vw,112px)}
-.service.strategic .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
-.service.strategic .outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);margin:clamp(32px,4vw,56px) 0}
-.service.strategic .outcome-card{text-align:center;padding:clamp(16px,2vw,24px);background:var(--white);border:1px solid var(--rule-soft);border-radius:2px}
-.service.strategic .outcome-card b{display:block;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--blue);margin-bottom:8px;line-height:1;font-variant-numeric:tabular-nums}
-.service.strategic .outcome-card span{display:block;font-size:13px;color:var(--steel);text-transform:uppercase;letter-spacing:.05em}
-.service.strategic .engagement{margin-top:clamp(56px,6vw,96px);padding-block:clamp(48px,5vw,80px);background:var(--paper-2)}
-.service.strategic .testimonial{background:var(--ink);color:#fff;padding:clamp(32px,4vw,48px);margin:clamp(32px,4vw,56px) 0;border-left:3px solid var(--blue);font-size:clamp(1rem,1.2vw,1.12rem);line-height:1.65;font-style:italic;max-width:52ch}
-.service.strategic .testimonial cite{display:block;margin-top:16px;font-style:normal;color:var(--amber);font-size:13px;font-weight:500}
-.service.strategic .results{margin-top:clamp(56px,6vw,96px);padding-block:clamp(48px,5vw,80px)}
-.service.strategic .case-study{background:var(--paper-2);padding-block:clamp(48px,5vw,80px);text-align:center;margin-top:clamp(56px,6vw,96px)}
-.service.strategic .case-study a{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);transition:all .4s var(--e)}
-.service.strategic .case-study a:hover{background:var(--blue);border-color:var(--blue);color:#fff}
-@media(max-width:900px){.service.strategic .hero-grid{grid-template-columns:1fr;gap:32px}.service.strategic .outcomes{grid-template-columns:1fr}}
-@media(max-width:640px){.service.strategic .outcomes{grid-template-columns:1fr}}

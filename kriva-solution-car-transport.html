@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- KRIVA_ICONS_START -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E1216">
+<!-- KRIVA_ICONS_END -->
+<link rel="stylesheet" href="/shared/tokens.css">
 <title>Car Transportation Software &amp; Digital Product Design - KRIVA</title>
 <meta name="description" content="Digital product design and development for car transportation companies, booking portals, dispatch CRM, and customer tracking experiences.">
 <link rel="canonical" href="https://krivatechnologies.com/solutions/car-transportation">
@@ -20,6 +27,7 @@
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* ═══════════════════════════════════════════════════════
@@ -28,19 +36,6 @@
    customer-vs-ops duality. Violet = customer-facing,
    sky = system, green = delivered.
    ═══════════════════════════════════════════════════════ */
-:root{
-  --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
-  --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
-  --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
-  --blue:#5B4FFF; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --sky:#5B8CFF; --lilac:#B7A9FF;
-  --f-display:'Archivo',system-ui,sans-serif;
-  --f-body:'Inter',system-ui,sans-serif;
-  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
-  --gutter:clamp(20px,5vw,80px); --maxw:1440px;
-  --e:cubic-bezier(.16,.84,.44,1); --e-io:cubic-bezier(.62,.02,.28,1);
-  --t-fast:.32s; --t-mid:.62s; --t-slow:1s;
-}
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
@@ -50,7 +45,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible{outline-color:var(--lilac)}
+.on-ink :focus-visible,footer :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -80,7 +75,7 @@ img{max-width:100%;display:block}
 
 .btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
+  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
   font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
@@ -91,8 +86,8 @@ img{max-width:100%;display:block}
 .btn:hover i{transform:translateX(5px)}
 .btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
 .btn.sm{padding:9px 15px;font-size:11px}
-.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--lilac);border-color:#EDEFF1}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--lilac)}
+.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
+.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
 
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
@@ -104,10 +99,7 @@ img{max-width:100%;display:block}
 /* ══ HERO ══ */
 .hero{
   padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(40px,5vw,72px);
-  background:
-    radial-gradient(110% 80% at 100% -8%, rgba(91,68,200,.07), transparent 50%),
-    radial-gradient(85% 65% at 0% 100%, rgba(91,140,255,.05), transparent 48%),
-    var(--paper);
+  background:var(--paper);
 }
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
@@ -126,18 +118,18 @@ img{max-width:100%;display:block}
 .order{background:var(--ink);color:#DDE2E7;box-shadow:0 40px 80px -50px rgba(14,18,22,.55)}
 .o-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 14px;border-bottom:1px solid var(--ink-line);flex-wrap:wrap}
 .o-id{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff}
-.o-id em{font-style:normal;color:#6B7885;margin-left:9px}
+.o-id em{font-style:normal;color:#717F8C;margin-left:9px}
 .views{display:flex;gap:5px}
 .views span{
   font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;
-  padding:4px 9px;border:1px solid var(--ink-line);color:#6B7885;
+  padding:4px 9px;border:1px solid var(--ink-line);color:#717F8C;
   transition:color .5s var(--e),border-color .5s var(--e)
 }
 .views span.act{color:var(--lilac);border-color:var(--lilac)}
 
 /* quote figure, the money moment, unique to this page */
 .quote-block{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end;padding:16px 14px;border-bottom:1px solid var(--ink-line)}
-.quote-block .lbl{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#6B7885;margin-bottom:8px}
+.quote-block .lbl{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#717F8C;margin-bottom:8px}
 .quote-fig{
   font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,4.4vw,2.9rem);
   line-height:.94;letter-spacing:-.045em;color:#fff;font-variant-numeric:tabular-nums;
@@ -150,18 +142,18 @@ img{max-width:100%;display:block}
   border:1px solid currentColor;transition:color .5s var(--e);white-space:nowrap
 }
 .qstate:before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
-.q-idle{color:#6B7885}.q-live{color:var(--lilac)}.q-go{color:var(--sky)}.q-done{color:var(--lime)}
+.q-idle{color:#717F8C}.q-live{color:var(--lilac)}.q-go{color:var(--sky)}.q-done{color:var(--lime)}
 
 /* vehicle + route */
 .o-fields{display:grid;grid-template-columns:1fr 1fr}
 .of{padding:12px 14px;border-bottom:1px solid #1A2027;border-right:1px solid #1A2027}
 .of:nth-child(2n){border-right:0}
-.of span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#6B7885}
+.of span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#717F8C}
 .of b{display:block;margin-top:6px;font-family:var(--f-mono);font-size:12px;color:#fff;font-weight:400}
 .of b.dim{color:#4E5A66}
 
 .leg{padding:16px 14px;border-bottom:1px solid var(--ink-line)}
-.leg-top{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885;margin-bottom:12px}
+.leg-top{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:12px}
 .leg-track{position:relative;height:2px;background:var(--ink-line)}
 .leg-track i{position:absolute;inset:0;background:var(--sky);transform:scaleX(var(--p,0));transform-origin:0 50%;transition:transform .8s var(--e),background .5s var(--e)}
 .order[data-stage="7"] .leg-track i,.order[data-stage="8"] .leg-track i{background:var(--lime)}
@@ -300,8 +292,8 @@ img{max-width:100%;display:block}
 .proof-note{margin-top:22px;font-size:15px;line-height:1.65;color:#B9C3CC;max-width:62ch}
 .adj{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(26px,3vw,44px)}
 .adj a{display:flex;flex-direction:column;justify-content:space-between;gap:26px;padding:clamp(20px,2.4vw,30px);border:1px solid var(--ink-line);transition:border-color .4s var(--e),transform .5s var(--e)}
-.adj a:hover{border-color:var(--lilac);transform:translate3d(0,-4px,0)}
-.adj .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#6B7885}
+.adj a:hover{border-color:var(--ink)}
+.adj .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#717F8C}
 .adj .title{display:block;margin-top:12px;color:#fff}
 .adj .hook{display:block;margin-top:10px;color:#8C98A4}
 .adj .why{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--lilac);margin-top:10px;display:block}
@@ -327,7 +319,7 @@ img{max-width:100%;display:block}
 /* ══ RELATED ══ */
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.4vw,48px)}
 .rel a{display:flex;flex-direction:column;justify-content:space-between;gap:30px;padding:clamp(20px,2.4vw,30px);background:var(--white);border:1px solid var(--rule);min-height:190px;transition:transform .5s var(--e),box-shadow .5s var(--e),border-color .4s}
-.rel a:hover{transform:translate3d(0,-5px,0);box-shadow:0 26px 54px -40px rgba(14,18,22,.45);border-color:var(--ink)}
+.rel a:hover{border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--steel)}
 .rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
 .rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
@@ -386,7 +378,7 @@ img{max-width:100%;display:block}
 .cta-band h2{color:#fff;margin-top:24px;max-width:16ch}
 .cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(30px,3.6vw,50px)}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
-.assur i{font-style:normal;color:var(--lilac);margin-right:7px}
+.assur i{font-style:normal;color:var(--amber);margin-right:7px}
 footer{background:var(--ink);color:var(--ink-dim);border-top:1px solid var(--ink-line)}
 footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 .fgrid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:clamp(24px,3vw,40px)}
@@ -407,6 +399,8 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 </style>
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/system.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -414,12 +408,9 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <header class="nav" id="nav">
   <div class="nav-shell">
     <div class="wrap nav-in">
-      <a href="/" class="mark" aria-label="KRIVA Technologies home"><svg class="mark-icon" viewBox="0 0 160 40" width="160" height="40" aria-hidden="true" style="display:inline;margin-right:8px;vertical-align:middle">
-  <!-- Geometric K mark -->
-  <rect x="6" y="5" width="14" height="35" fill="currentColor"/>
-  <polygon points="16,5 30,20 30,18 22,5" fill="#5B4FFF"/>
-  <polygon points="20,23 28,40 35,40 20,30" fill="currentColor"/>
-</svg>KRIVA<sup>®</sup></a>
+      <a href="/" class="mark" aria-label="KRIVA Technologies home">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26" loading="eager">
+      </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
@@ -1112,7 +1103,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true">KRIVA</p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143" loading="lazy" decoding="async"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -1285,5 +1276,33 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
 run();
 })();
 </script>
+<!-- KRIVA_SCHEMA_START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://krivatechnologies.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Solutions",
+      "item": "https://krivatechnologies.com/solutions"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Vehicle logistics software that matches how carriers actually operate.",
+      "item": "https://krivatechnologies.com/solutions/car-transportation"
+    }
+  ]
+}
+</script>
+<!-- KRIVA_SCHEMA_END -->
 </body>
 </html>

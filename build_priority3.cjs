@@ -407,11 +407,11 @@ const aboutBody = `
     </div>
     <div class="letter" data-r>
       <p>We design and build dispatch tools, fleet software, SaaS dashboards, and accounting integrations that operators and product teams actually want to use.</p>
-      <p>I've spent the last nine years designing and building software — SaaS dashboards, trucking dispatch tools, QuickBooks integrations, mobile apps. Most of that work was done inside agencies and product companies where I watched the same problems repeat: design teams handing off specs that engineering couldn't build, clients managing three vendors for one project, and products that looked polished in Figma but fell apart in production.</p>
-      <p>KRIVA started because I wanted to build a studio where design and engineering work together from day one — where the person who designs the interface understands the API it connects to, and where clients talk to the people doing the work, not a project manager relaying messages.</p>
+      <p>The team has spent years designing and shipping software — SaaS dashboards, trucking dispatch tools, QuickBooks integrations, mobile apps. Most of that work happened inside agencies and product companies where the same problems repeated: design teams handing off specs that engineering couldn't build, clients managing three vendors for one project, and products that looked polished in Figma but fell apart in production.</p>
+      <p>KRIVA started in 2025 to be a studio where design and engineering work together from day one — where the person who designs the interface understands the API it connects to, and where clients talk to the people doing the work, not a project manager relaying messages.</p>
       <p>We're based in Ahmedabad, India. Our clients are in the US, UK, and across the world. What they have in common: they need software built by people who've already solved problems like theirs.</p>
-      <p class="sign">— Dixit Panchal<small>Founder &amp; Design Lead</small></p>
-      <p class="body-sm" style="margin-top:20px"><span class="flag tbd">Note</span> “Nine years” refers to founder experience, not company age. KRIVA was founded in 2025.</p>
+      <p class="sign">KRIVA Technologies<small>Product studio · Ahmedabad</small></p>
+      <p class="body-sm" style="margin-top:20px"><span class="flag tbd">Note</span> “Nine years” refers to team experience, not company age. KRIVA was founded in 2025.</p>
     </div>
   </div>
 </section>
@@ -423,7 +423,7 @@ const aboutBody = `
     <dl class="glance" data-s>
       <div><dt>Legal entity</dt><dd>KRIVA Technologies</dd></div>
       <div><dt>Founded</dt><dd>2025</dd></div>
-      <div><dt>Founder experience</dt><dd>Founder-led product design &amp; engineering</dd></div>
+      <div><dt>Team experience</dt><dd>Product design &amp; engineering</dd></div>
       <div><dt>Headquarters</dt><dd>511 - I The Address, Ahmedabad, Gujarat 380060, IN<br><span style="color:var(--steel);font-size:14px">Ahmedabad, India · Remote-first · Global clients</span></dd></div>
       <div><dt>How we deliver</dt><dd>Remote-first with dedicated squads for each project.</dd></div>
       <div><dt>Contact</dt><dd><a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a><br><a href="tel:+919724454455">+91 97244 54455</a></dd></div>
@@ -435,13 +435,13 @@ const aboutBody = `
   <div class="wrap">
     <p class="eyebrow" data-r>Team</p>
     <h2 class="d2" id="teamH" data-r style="margin-top:16px;max-width:16ch">Small team. Senior people.</h2>
-    <p class="body" data-r style="margin-top:16px">KRIVA is founder-led with a core team of designers and engineers who ship SaaS products, trucking platforms, and accounting integrations. The people on your first call are the people building your product.</p>
+    <p class="body" data-r style="margin-top:16px">KRIVA is a small in-house studio with a core team of designers and engineers who ship SaaS products, trucking platforms, and accounting integrations. The people on your first call are the people building your product.</p>
     <div class="prac" data-s>
       <article>
         <div class="mark" aria-hidden="true">P&amp;</div>
         <h3 class="d3">Product &amp; Delivery Leadership</h3>
-        <p class="role">Founder-led delivery</p>
-        <p class="body-sm">Every project starts with a founder-led discovery session. Your brief, goals, and constraints get documented before any design or code begins.</p>
+        <p class="role">Studio-led delivery</p>
+        <p class="body-sm">Every project starts with a discovery session with the delivery team. Your brief, goals, and constraints get documented before any design or code begins.</p>
         <ul><li>Discovery</li><li>Roadmapping</li><li>Delivery quality</li></ul>
       </article>
       <article>
@@ -804,7 +804,7 @@ const pages = [
     file: "kriva-about.html",
     title: "About KRIVA Technologies · Team, Story &amp; Experience",
     description:
-      "KRIVA is a founder-led product studio in Ahmedabad designing and building software for US trucking ops and SaaS product teams — design and engineering under one roof.",
+      "KRIVA is a product studio in Ahmedabad designing and building software for US trucking ops and SaaS product teams — design and engineering under one roof.",
     canonical: "https://krivatechnologies.com/about",
     ogTitle: "About KRIVA Technologies · Team, Story &amp; Experience",
     pageCss: aboutCss,

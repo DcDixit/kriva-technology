@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- KRIVA_ICONS_START -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E1216">
+<!-- KRIVA_ICONS_END -->
+<link rel="stylesheet" href="/shared/tokens.css">
 <title>UX Research · Evidence before build · KRIVA</title>
 <meta name="description" content="Interviews, usability tests, and journey mapping that turn assumptions into clear product decisions.">
 <link rel="canonical" href="https://krivatechnologies.com/services/ux-research">
@@ -20,24 +27,12 @@
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
 /* Shared KRIVA tokens + primitives */
-:root{
-  --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
-  --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
-  --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
-  --blue:#5B4FFF; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --lilac:#B7A9FF;
-  --f-display:'Archivo',system-ui,sans-serif;
-  --f-body:'Inter',system-ui,sans-serif;
-  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
-  --gutter:clamp(20px,5vw,80px); --maxw:1440px;
-  --e:cubic-bezier(.16,.84,.44,1); --e-io:cubic-bezier(.62,.02,.28,1);
-  --t-fast:.32s; --t-mid:.62s; --t-slow:1s;
-}
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
@@ -47,7 +42,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--lilac)}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -75,7 +70,7 @@ img{max-width:100%;display:block}
 .mask.in span:nth-child(2) i{transition-delay:80ms}
 .btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
+  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
   font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
@@ -86,10 +81,10 @@ img{max-width:100%;display:block}
 .btn:hover i{transform:translateX(5px)}
 .btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
 .btn.sm{padding:9px 15px;font-size:11px}
-.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--lilac);border-color:#EDEFF1}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--lilac)}
+.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
+.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding-top:4px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
 .p-link i{font-style:normal;transition:transform .42s var(--e)}
 .p-link:hover i{transform:translateX(6px)}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
@@ -194,7 +189,7 @@ img{max-width:100%;display:block}
 
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
 .rel a{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:160px;transition:transform .5s var(--e),border-color .4s}
-.rel a:hover{transform:translate3d(0,-4px,0);border-color:var(--ink)}
+.rel a:hover{border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
 .rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
@@ -218,22 +213,22 @@ img{max-width:100%;display:block}
 @media(max-width:800px){.brief{grid-template-columns:1fr}.brief-main{border-right:0;border-bottom:1px solid var(--rule)}}
 
 </style>
-<link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/chrome.css">
+
+
+<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/system.css">
+<link rel="stylesheet" href="/shared/archetypes.css">
 </head>
-<body class="service strategic">
+<body class="service strategic arch-product">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="nav-shell">
     <div class="wrap nav-in">
-      <a href="/" class="mark" aria-label="KRIVA Technologies home"><svg class="mark-icon" viewBox="0 0 160 40" width="160" height="40" aria-hidden="true" style="display:inline;margin-right:8px;vertical-align:middle">
-  <!-- Geometric K mark -->
-  <rect x="6" y="5" width="14" height="35" fill="currentColor"/>
-  <polygon points="16,5 30,20 30,18 22,5" fill="#5B4FFF"/>
-  <polygon points="20,23 28,40 35,40 20,30" fill="currentColor"/>
-</svg>KRIVA<sup>®</sup></a>
+      <a href="/" class="mark" aria-label="KRIVA Technologies home">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26" loading="eager">
+      </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
@@ -358,202 +353,85 @@ img{max-width:100%;display:block}
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview"><span>Overview</span><i></i></a>
-  <a href="#challenges"><span>Challenges</span><i></i></a>
-  <a href="#approach"><span>Approach</span><i></i></a>
-  <a href="#deliverables"><span>Deliverables</span><i></i></a>
-  <a href="#outcomes"><span>Outcomes</span><i></i></a>
-  <a href="#proof"><span>Proof</span><i></i></a>
+  <a href="#evidence"><span>Evidence</span><i></i></a>
+  <a href="#sprint"><span>The sprint</span><i></i></a>
+  <a href="#decisions"><span>Decisions</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
 <main id="main">
 
-<header class="hero" id="overview">
+<header class="hero lp-hero" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">UX Research</li>
     </ol>
-    <nav class="mob-chips" id="mobChips" aria-label="On this page">
-      <a href="#overview" aria-current="true">Overview</a>
-      <a href="#challenges">Challenges</a>
-      <a href="#approach">Approach</a>
-      <a href="#deliverables">Deliverables</a>
-      <a href="#outcomes">Outcomes</a>
-      <a href="#proof">Proof</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="hero-grid">
-      <div>
-        <p class="eyebrow" data-r>Service · Product interfaces · UX Research</p>
-        <h1 class="d1 mask" data-mask>
-          <span><i>Evidence before</i></span>
-          <span><i>the expensive build.</i></span>
-        </h1>
-        <p class="lede" data-r>For teams about to rebuild dispatch, onboarding, or a core workflow, when opinions are loud and evidence is thin.</p>
-        <div class="tags" data-r><span class="tag">User interviews</span><span class="tag">Usability testing</span><span class="tag">Journey &amp; persona maps</span></div>
-        <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-          <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
-        </div>
-      </div>
-      <aside class="aside-card" data-r>
-        <h2>Where this sits</h2>
-        <ul>
-          <li>Family · Product &amp; UX</li>
-          <li>Catalog · UX Research</li>
-          <li>Interviews, usability tests, and journey mapping that turn assumptions into clear product decisions.</li>
-        </ul>
-        <p class="contrast">Feeds Product Design and Wireframing &amp; Prototyping. Research owns the evidence; those services own the flows and UI that follow.</p>
-      </aside>
-    </div>
-
-    <div class="brief" data-r>
-      <div class="brief-main">
-        <p class="k">How we run this engagement</p>
-        <ul class="brief-list"><li><span class="n">01</span><span><b>Plan &amp; recruit</b>: Research plan and recruitment guide scoped to the decision you need to make, not a generic study.</span></li><li><span class="n">02</span><span><b>Sessions &amp; synthesis</b>: Interviews or usability tests with notes and recordings your team can revisit.</span></li><li><span class="n">03</span><span><b>Prioritized readout</b>: Insight report with prioritized recommendations, plus journey maps or persona snapshots when they clarify the system.</span></li></ul>
-      </div>
-      <div class="brief-side">
-        <div>
-          <p class="k">Best for</p>
-          <p class="body-sm" style="color:var(--ink);max-width:36ch">For teams about to rebuild dispatch, onboarding, or a core workflow, when opinions are loud and evidence is thin.</p>
-        </div>
-        <div class="brief-meta">
-          <span>Service · <b>UX Research</b></span>
-          <span>Next · <b><a href="/work/fleetflow-dispatch">FleetFlow · ops research</a></b></span>
-          <span>CTA · <b><a href="/contact#book">Book a 20-minute fit call</a></b></span>
-        </div>
+    <div style="margin-top:clamp(22px,3vw,40px);max-width:22ch">
+      <p class="eyebrow" data-r>Service · Evidence before UI</p>
+      <h1 class="d1 mask" data-mask>
+        <span><i>Ask the desks that</i></span>
+        <span><i>live in the product.</i></span>
+      </h1>
+      <p class="lede" data-r>Interviews, usability tests, and journey mapping that turn assumptions into product decisions before UI is locked. No product chrome here — the work is evidence.</p>
+      <div class="hero-actions" data-r>
+        <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
       </div>
     </div>
   </div>
 </header>
 
-<section class="sect" id="challenges" aria-labelledby="chH" style="border-top:1px solid var(--rule)">
+<section class="lp-ink" id="evidence" aria-labelledby="evH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Challenges</p>
-    <h2 class="d2" id="chH" data-r style="margin-top:16px;max-width:18ch">When opinions replace evidence</h2>
-    <div class="chal"><article data-r>
-        <span class="n">01</span>
-        <h3 class="d3">Product decisions rely on</h3>
-        <p class="body-sm">Product decisions rely on opinions instead of evidence</p>
-      </article>
-      <article data-r>
-        <span class="n">02</span>
-        <h3 class="d3">Usability issues surface only</h3>
-        <p class="body-sm">Usability issues surface only after launch</p>
-      </article>
-      <article data-r>
-        <span class="n">03</span>
-        <h3 class="d3">Teams lack shared understanding</h3>
-        <p class="body-sm">Teams lack shared understanding of user goals</p>
-      </article></div>
+    <p class="eyebrow">When opinions replace evidence</p>
+    <p class="lp-pull" id="evH">The loudest stakeholder is not a sample.</p>
+    <p class="lede" style="margin-top:24px">We shadow operators, test the paths people actually take, and bring a readout the team can act on — not a 60-page appendix.</p>
   </div>
 </section>
 
-<section class="sect story" id="approach" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect" id="sprint" aria-labelledby="apH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Approach</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px;max-width:20ch">Ask the desks that live in the product.</h2>
-    <p class="body" data-r style="margin-top:16px">Usually runs before wireframes or as a focused check before a high-risk rebuild.</p>
-    <div class="approach"><div class="ap-row" data-r>
-        <span class="idx num">01</span>
-        <div>
-          <h3 class="d3">Plan &amp; recruit</h3>
-          <p class="body-sm" style="margin-top:10px">Research plan and recruitment guide scoped to the decision you need to make, not a generic study.</p>
-        </div>
-      </div>
-      <div class="ap-row" data-r>
-        <span class="idx num">02</span>
-        <div>
-          <h3 class="d3">Sessions &amp; synthesis</h3>
-          <p class="body-sm" style="margin-top:10px">Interviews or usability tests with notes and recordings your team can revisit.</p>
-        </div>
-      </div>
-      <div class="ap-row" data-r>
-        <span class="idx num">03</span>
-        <div>
-          <h3 class="d3">Prioritized readout</h3>
-          <p class="body-sm" style="margin-top:10px">Insight report with prioritized recommendations, plus journey maps or persona snapshots when they clarify the system.</p>
-        </div>
-      </div></div>
+    <p class="eyebrow" data-r>The sprint</p>
+    <h2 class="d2" id="apH" data-r style="margin-top:16px">Most focused studies run 2–4 weeks.</h2>
+    <ol class="lp-time" data-s>
+      <li><span class="wk">01 · Shadow</span><div><h3 class="d3">Ops and first-run</h3><p class="body-sm" style="margin-top:8px">Sit with the desks that live in the product. Activation research for SaaS; floor shadowing for ops tools.</p></div></li>
+      <li><span class="wk">02 · Test</span><div><h3 class="d3">Usability on the real path</h3><p class="body-sm" style="margin-top:8px">Tasks against the current product or a prototype. We record where people stall, not whether they “like” the UI.</p></div></li>
+      <li><span class="wk">03 · Readout</span><div><h3 class="d3">Decisions, not theatre</h3><p class="body-sm" style="margin-top:8px">Journey maps and a ranked list of what to change before UI is locked. Recruitment and scope set the calendar.</p></div></li>
+    </ol>
   </div>
 </section>
 
-<section class="sect" id="deliverables" aria-labelledby="delH">
+<section class="sect" id="decisions" aria-labelledby="delH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
   <div class="wrap">
-    <p class="eyebrow" data-r>Deliverables</p>
-    <h2 class="d2" id="delH" data-r style="margin-top:16px;max-width:18ch">What decisions get evidence</h2>
-    <div class="deliv"><div data-r>
-        <b>01</b>
-        <p>Research plan &amp; recruitment guide</p>
-      </div>
-      <div data-r>
-        <b>02</b>
-        <p>Interview or test recordings &amp; notes</p>
-      </div>
-      <div data-r>
-        <b>03</b>
-        <p>Insight report with prioritized recommendations</p>
-      </div>
-      <div data-r>
-        <b>04</b>
-        <p>Journey maps or persona snapshots</p>
-      </div></div>
-  </div>
-</section>
-
-<section class="sect" id="outcomes" aria-labelledby="outH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
-  <div class="wrap">
-    <div class="gain outcomes" style="margin-top:0;padding-top:0;border-top:0">
-      <div data-r>
-        <p class="eyebrow">Outcomes</p>
-        <h2 class="d2" id="outH" style="margin-top:14px;max-width:16ch">What changes before build</h2>
-        <p class="body-sm" style="margin-top:12px">What this engagement is meant to change in the product.</p>
-      </div>
-      <ul data-s>
-          <li>Clearer roadmap priorities backed by user evidence</li>
-          <li>Fewer expensive rework cycles</li>
-          <li>Shared language across product, design, and leadership</li>
-      </ul>
+    <p class="eyebrow" data-r>What decisions get evidence</p>
+    <h2 class="d2" id="delH" data-r style="margin-top:16px">What to build. What to cut. What to test again.</h2>
+    <div class="lp-spec" data-s>
+      <div><b>01</b><span>Journey maps</span></div>
+      <div><b>02</b><span>Usability findings</span></div>
+      <div><b>03</b><span>Ranked decisions</span></div>
     </div>
-  </div>
-</section>
-
-<section class="sect sect--tight" id="proof" aria-labelledby="pfH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Where this shows up</p>
-    <h2 class="d2" id="pfH" data-r style="margin-top:16px">Related work and pages</h2>
-    <div class="rel" data-s><a href="/work/fleetflow-dispatch">
-        <span class="k">Work</span>
-        <span class="arrow"><span class="d3">FleetFlow · ops research</span><i>→</i></span>
-      </a>
-      <a href="/work/payroll-pro-saas">
-        <span class="k">Work</span>
-        <span class="arrow"><span class="d3">PayrollPro · activation</span><i>→</i></span>
-      </a>
-      <a href="/services/product-design">
-        <span class="k">Service</span>
-        <span class="arrow"><span class="d3">Product Design</span><i>→</i></span>
-      </a></div>
-    <p class="eyebrow" data-r style="margin-top:clamp(36px,4vw,56px)">Also see</p>
-    <div class="sib" data-r>
-        <a href="/services/product-design">Product Design</a>
-        <a href="/services/wireframing-prototyping">Wireframing &amp; Prototyping</a>
-        <a href="/services/ui-ux-design">UI/UX Design</a>
+    <div class="sib" data-r style="margin-top:32px">
+      <a href="/services/product-design">Product Design</a>
+      <a href="/services/ui-ux-design">UI/UX Design</a>
       <a href="/services">All services</a>
     </div>
   </div>
 </section>
 
-<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--white);border-top:1px solid var(--rule)">
   <div class="wrap">
     <p class="eyebrow" data-r>FAQ</p>
     <h2 class="d2" id="faqH" data-r style="margin-top:16px">About UX Research</h2>
-    <div class="faq" data-r><details>
-        <summary>How long does a research sprint take?</summary>
-        <p>Most focused studies run 2-4 weeks from kickoff to readout, depending on recruitment and scope.</p>
-      </details></div>
+    <div class="faq" data-r>
+      <details><summary>How long does a research sprint take?</summary><p>Most focused studies run 2–4 weeks from kickoff to readout, depending on recruitment and scope.</p></details>
+    </div>
+    <div class="sib" data-r style="margin-top:32px">
+      <a href="/services/product-design">Product Design</a>
+      <a href="/services/wireframing-prototyping">Wireframing &amp; Prototyping</a>
+      <a href="/services">All services</a>
+    </div>
   </div>
 </section>
 
@@ -617,7 +495,7 @@ img{max-width:100%;display:block}
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true">KRIVA</p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143" loading="lazy" decoding="async"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -631,7 +509,7 @@ img{max-width:100%;display:block}
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/chrome.js" defer></script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -661,7 +539,7 @@ img{max-width:100%;display:block}
   ]
 }
 </script>
-<script src="/shared/chrome.js" defer></script>
+
 <script>
 (function(){
 'use strict';
@@ -708,5 +586,33 @@ if(mob.length){
 run();
 })();
 </script>
+<!-- KRIVA_SCHEMA_START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://krivatechnologies.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://krivatechnologies.com/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Evidence before the expensive build.",
+      "item": "https://krivatechnologies.com/services/ux-research"
+    }
+  ]
+}
+</script>
+<!-- KRIVA_SCHEMA_END -->
 </body>
 </html>

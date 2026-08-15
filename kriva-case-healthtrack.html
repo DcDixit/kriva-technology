@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- KRIVA_ICONS_START -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E1216">
+<!-- KRIVA_ICONS_END -->
+<link rel="stylesheet" href="/shared/tokens.css">
 <title>HealthTrack · patient mobile app · KRIVA</title>
 <meta name="description" content="Patient-facing iOS and Android UX for appointment booking, records, and care plan adherence.">
 <link rel="canonical" href="https://krivatechnologies.com/work/healthtrack-mobile">
@@ -20,6 +27,7 @@
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 
@@ -28,18 +36,6 @@
    Tokens below are IDENTICAL to the homepage build. In production
    this block lives in tokens.css and is imported once.
    ═══════════════════════════════════════════════════════════════ */
-:root{
-  --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
-  --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
-  --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
-  --blue:#5B4FFF; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --f-display:'Archivo',system-ui,sans-serif;
-  --f-body:'Inter',system-ui,sans-serif;
-  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
-  --gutter:clamp(20px,5vw,80px); --maxw:1440px;
-  --e:cubic-bezier(.16,.84,.44,1); --e-io:cubic-bezier(.62,.02,.28,1);
-  --t-fast:.32s; --t-mid:.62s; --t-slow:1s;
-}
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
@@ -81,7 +77,7 @@ img{max-width:100%;display:block}
 
 .btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
+  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
   font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
@@ -188,7 +184,7 @@ img{max-width:100%;display:block}
 .story-frame{position:relative;background:var(--ink);aspect-ratio:16/10;overflow:hidden}
 .story-scene{position:absolute;inset:0;opacity:0;transform:scale(1.03);transition:opacity .6s var(--e),transform .8s var(--e)}
 .story-scene.on{opacity:1;transform:none}
-.story-bar{display:flex;justify-content:space-between;gap:14px;padding:11px 14px;background:var(--ink);border-bottom:1px solid var(--ink-line);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#6B7885}
+.story-bar{display:flex;justify-content:space-between;gap:14px;padding:11px 14px;background:var(--ink);border-bottom:1px solid var(--ink-line);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#717F8C}
 .story-bar b{color:#fff;font-weight:400}
 .beat{padding:clamp(28px,4vw,58px) 0;border-bottom:1px solid var(--rule)}
 .beat:last-child{border-bottom:0}
@@ -214,14 +210,14 @@ img{max-width:100%;display:block}
 .ba-range{position:absolute;inset:0;width:100%;opacity:0;cursor:ew-resize;margin:0}
 .ba-range:focus-visible+.ba-handle{background:var(--amber)}
 .ba-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,32px);margin-top:22px}
-.ba-cols h4{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+.ba-cols h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
 @media(max-width:700px){.ba-cols{grid-template-columns:1fr;gap:18px}}
 
 /* ══ COMPONENT: spec grid (capabilities / stack) ══ */
 .spec{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);margin-top:clamp(30px,3.5vw,52px)}
 .spec-col{padding:26px clamp(14px,2vw,28px) 26px 0;border-right:1px solid var(--rule)}
 .spec-col:last-child{border-right:0}
-.spec-col h4{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
+.spec-col h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
 .spec-col ul{list-style:none;display:grid;gap:8px}
 .spec-col li{font-size:14.5px;color:var(--ink);display:flex;gap:9px}
 .spec-col li:before{content:"·";color:var(--rule);flex:none}
@@ -242,7 +238,7 @@ img{max-width:100%;display:block}
 /* ══ COMPONENT: related links ══ */
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(30px,3.5vw,50px)}
 .rel a{display:flex;flex-direction:column;justify-content:space-between;gap:36px;padding:clamp(20px,2.4vw,30px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),box-shadow .5s var(--e),border-color .4s}
-.rel a:hover{transform:translate3d(0,-5px,0);box-shadow:0 26px 54px -40px rgba(14,18,22,.45);border-color:var(--ink)}
+.rel a:hover{border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
 .rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
 .rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
@@ -292,9 +288,11 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
-<link rel="stylesheet" href="/shared/chrome.css">
+
+<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/system.css">
 </head>
-<body>
+<body class="case">
 <a class="skip" href="#main">Skip to content</a>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -302,12 +300,9 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <header class="nav" id="nav">
   <div class="nav-shell">
     <div class="wrap nav-in">
-      <a href="/" class="mark" aria-label="KRIVA Technologies home"><svg class="mark-icon" viewBox="0 0 160 40" width="160" height="40" aria-hidden="true" style="display:inline;margin-right:8px;vertical-align:middle">
-  <!-- Geometric K mark -->
-  <rect x="6" y="5" width="14" height="35" fill="currentColor"/>
-  <polygon points="16,5 30,20 30,18 22,5" fill="#5B4FFF"/>
-  <polygon points="20,23 28,40 35,40 20,30" fill="currentColor"/>
-</svg>KRIVA<sup>®</sup></a>
+      <a href="/" class="mark" aria-label="KRIVA Technologies home">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26" loading="eager">
+      </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
@@ -495,7 +490,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       <span class="pin" style="left:70%;top:40%" tabindex="0" data-note="Reminders">3</span>
     </div>
   </figure>
-  <figcaption class="shot-cap"><span class="flag">Illustrative</span> Interface reference · approved screenshots replace this frame</figcaption>
+  <figcaption class="shot-cap"><span class="flag">Illustrative</span> Reconstructed interface · no client data shown</figcaption>
 </div>
 
 <!-- Project context · not a fake metrics bar -->
@@ -518,21 +513,21 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 
     <div style="margin-top:clamp(40px,4.5vw,72px)">
       <div class="narr" data-r>
-        <div class="kicker"><span class="idx num">01</span><h3 class="d3">Problem</h3></div>
+        <div class="kicker"><span class="idx num" aria-hidden="true">01</span><h3 class="d3">Problem</h3></div>
         <div>
           <p class="body">Legacy patient portal frustrated booking and records access, and support volume was high.</p>
         </div>
       </div>
 
       <div class="narr" data-r>
-        <div class="kicker"><span class="idx num">02</span><h3 class="d3">Research</h3></div>
+        <div class="kicker"><span class="idx num" aria-hidden="true">02</span><h3 class="d3">Research</h3></div>
         <div>
           <p class="body">Patient interviews, support ticket taxonomy, and competitive audit of top-rated health apps.</p>
         </div>
       </div>
 
       <div class="narr" data-r>
-        <div class="kicker"><span class="idx num">03</span><h3 class="d3">Challenges</h3></div>
+        <div class="kicker"><span class="idx num" aria-hidden="true">03</span><h3 class="d3">Challenges</h3></div>
         <div>
           <p class="body">Strict compliance reviews, offline edge cases, and provider-specific scheduling rules.</p>
         </div>
@@ -601,7 +596,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
     <p class="eyebrow" data-r>UX / UI decisions</p>
     <h2 class="d2" id="uxH" data-r style="margin-top:18px;max-width:22ch">UX and UI decisions that shaped the build.</h2>
     <div class="narr" data-r style="margin-top:clamp(32px,4vw,56px)">
-      <div class="kicker"><span class="idx num">04</span><h3 class="d3">Interface choices</h3></div>
+      <div class="kicker"><span class="idx num" aria-hidden="true">04</span><h3 class="d3">Interface choices</h3></div>
       <div>
         <p class="body">Accessible typography, calm visual language, and step-by-step flows tested with older patient cohorts.</p>
         
@@ -617,8 +612,8 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
     <p class="body" data-r style="margin-top:18px">Mobile-first IA with clear appointment flows, record access, and proactive care reminders.</p>
 
     <div class="ba-cols" style="margin-top:clamp(30px,3.5vw,50px)" data-r>
-      <div><h4>Before</h4><p class="body-sm">Legacy portal friction around booking and records; high support volume.</p></div>
-      <div><h4>After</h4><p class="body-sm">Mobile-first appointment flows, record access, and proactive care reminders with accessible typography.</p></div>
+      <div><h3>Before</h3><p class="body-sm">Legacy portal friction around booking and records; high support volume.</p></div>
+      <div><h3>After</h3><p class="body-sm">Mobile-first appointment flows, record access, and proactive care reminders with accessible typography.</p></div>
     </div>
 
     <div style="margin-top:clamp(24px,3vw,40px)" data-r>
@@ -643,7 +638,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
                aria-label="Reveal before or after. Left shows before, right shows after.">
         <span class="ba-handle" aria-hidden="true"></span>
       </div>
-      <p class="shot-cap"><span class="flag">Illustrative</span> Interactive compare · approved screenshots replace these frames</p>
+      <p class="shot-cap"><span class="flag">Illustrative</span> Before / after pattern · no client data shown</p>
     </div>
   </div>
 </section>
@@ -659,10 +654,10 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <p class="body">React Native app, biometric login, HIPAA-conscious data handling patterns, App Store optimization assets.</p>
 
         <div class="spec">
-          <div class="spec-col"><h4>Frontend</h4><ul><li>React Native</li><li>Biometric login</li></ul></div>
-          <div class="spec-col"><h4>Delivery</h4><ul><li>HIPAA-conscious patterns</li><li>App Store optimization assets</li></ul></div>
-          <div class="spec-col"><h4>Capabilities</h4><ul><li><a href="/services/mobile-applications">Mobile app design</a></li><li><a href="/services/ui-ux-design">UI/UX design</a></li><li><a href="/services/ux-research">UX research</a></li></ul></div>
-          <div class="spec-col"><h4>Platforms</h4><ul><li>iOS</li><li>Android</li></ul></div>
+          <div class="spec-col"><h3>Frontend</h3><ul><li>React Native</li><li>Biometric login</li></ul></div>
+          <div class="spec-col"><h3>Delivery</h3><ul><li>HIPAA-conscious patterns</li><li>App Store optimization assets</li></ul></div>
+          <div class="spec-col"><h3>Capabilities</h3><ul><li><a href="/services/mobile-applications">Mobile app design</a></li><li><a href="/services/ui-ux-design">UI/UX design</a></li><li><a href="/services/ux-research">UX research</a></li></ul></div>
+          <div class="spec-col"><h3>Platforms</h3><ul><li>iOS</li><li>Android</li></ul></div>
         </div>
       </div>
     </div>
@@ -780,7 +775,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true">KRIVA</p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143" loading="lazy" decoding="async"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -812,7 +807,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 }
 </script>
 
-<script src="/shared/chrome.js" defer></script>
+
 <script>
 (function(){
 'use strict';
@@ -886,5 +881,33 @@ if(ba && baRange){
 run();
 })();
 </script>
+<!-- KRIVA_SCHEMA_START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://krivatechnologies.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Work",
+      "item": "https://krivatechnologies.com/work"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "HealthTrack patient mobile app",
+      "item": "https://krivatechnologies.com/work/healthtrack-mobile"
+    }
+  ]
+}
+</script>
+<!-- KRIVA_SCHEMA_END -->
 </body>
 </html>

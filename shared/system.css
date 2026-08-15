@@ -1,0 +1,122 @@
+/* KRIVA · global visual system
+   Loaded last. Unifies CTAs, forms, cards, and dark-band actions
+   so every page behaves like one product. */
+
+/* ── Primary buttons ── */
+body .btn:not(.ghost):not(.on-dark){
+  --btn-bg:var(--cta);
+  --btn-fg:#fff;
+  --btn-hover:var(--cta-hover);
+  background:var(--cta);
+  border-color:var(--cta);
+  color:#fff;
+  min-height:48px;
+  padding:13px 22px;
+  font-weight:500;
+}
+body .btn.ghost{
+  --btn-bg:transparent;
+  --btn-fg:var(--ink);
+  --btn-hover:var(--cta);
+  min-height:48px;
+  padding:13px 22px;
+}
+body .btn.sm{
+  min-height:36px;
+  padding:8px 14px;
+}
+body .cta-band .btn.on-dark,
+body .feat .btn.on-dark,
+body .map .btn.on-dark,
+body .next .btn.on-dark,
+body .sheet .btn.on-dark{
+  --btn-bg:var(--cta);
+  --btn-fg:#fff;
+  --btn-hover:#fff;
+  background:var(--cta);
+  border-color:var(--cta);
+  color:#fff;
+}
+body .cta-band .btn.on-dark:hover,
+body .feat .btn.on-dark:hover,
+body .map .btn.on-dark:hover,
+body .sheet .btn.on-dark:hover{
+  color:var(--ink);
+  border-color:#fff;
+}
+body .cta-band .btn.ghost.on-dark:hover,
+body .sheet .btn.ghost.on-dark:hover{
+  color:#fff;
+  border-color:var(--cta);
+}
+
+/* Header CTA stays compact, now brand-blue so it matches page actions */
+.nav-cta .btn.sm,
+.nav-cta .btn.sm:not(.ghost):not(.on-dark){
+  --btn-bg:var(--cta);
+  --btn-fg:#fff;
+  --btn-hover:var(--ink);
+  height:36px;
+  min-height:36px;
+  padding:0 14px;
+  background:var(--cta);
+  border-color:var(--cta);
+  color:#fff;
+}
+
+/* ── Forms ── */
+input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),
+select, textarea{
+  border-radius:0;
+}
+.f input:focus, .f select:focus, .f textarea:focus{
+  border-color:var(--cta);
+  box-shadow:0 0 0 3px rgba(79,70,229,.18);
+}
+
+/* ── Product frames ── */
+.console, .stack, .offer-tile figure, .story-media, .case-row figure,
+.proj-media, .feat-shot, .mosaic a{
+  box-shadow:var(--shadow-product);
+}
+.offer-tile:hover, .case-row:hover figure, .proj:hover .proj-media,
+.path:hover, .card:hover, .fit-card:hover, .note-card:hover, .model-tile:hover{
+  box-shadow:var(--shadow-lift);
+}
+
+.card, .path, .pm > a, .market{
+  transition:background var(--t-fast) var(--e), transform var(--t-fast) var(--e), box-shadow var(--t-fast) var(--e), border-color var(--t-fast) var(--e);
+}
+.card:hover, .path:hover, .pm > a:hover{
+  transform:translateY(-3px);
+}
+
+/* ── CTA band type ── */
+.cta-band h2{
+  letter-spacing:-.04em;
+  max-width:14ch;
+}
+
+/* ── WhatsApp: quieter, still findable ── */
+.wa{
+  background:var(--ink);
+  border-color:var(--ink-line);
+}
+.wa:hover{background:var(--cta);border-color:var(--cta)}
+
+/* Inner-page product frames and challenge tiles */
+.shot, .aside-card, .stack, div.brief{
+  box-shadow:var(--shadow-product);
+}
+.chal article, .deliv div{
+  transition:background var(--t-fast) var(--e);
+}
+.chal article:hover, .deliv div:hover{
+  background:var(--white);
+}
+.proj-media{
+  border:1px solid var(--ink-line);
+}
+.rail, .filters, .mob-chips{
+  background:rgba(244,243,238,.94) !important;
+}

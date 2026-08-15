@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- KRIVA_ICONS_START -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E1216">
+<!-- KRIVA_ICONS_END -->
+<link rel="stylesheet" href="/shared/tokens.css">
 <title>Dashboard Design · Analytics &amp; ops views · KRIVA</title>
 <meta name="description" content="Analytics, admin, and operational dashboards designed for clarity, scanability, and daily use, not spreadsheet exports.">
 <link rel="canonical" href="https://krivatechnologies.com/services/dashboard-design">
@@ -20,23 +27,11 @@
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
 /* Shared KRIVA tokens + primitives */
-:root{
-  --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
-  --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
-  --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
-  --blue:#5B4FFF; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --lilac:#B7A9FF;
-  --f-display:'Archivo',system-ui,sans-serif;
-  --f-body:'Inter',system-ui,sans-serif;
-  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
-  --gutter:clamp(20px,5vw,80px); --maxw:1440px;
-  --e:cubic-bezier(.16,.84,.44,1); --e-io:cubic-bezier(.62,.02,.28,1);
-  --t-fast:.32s; --t-mid:.62s; --t-slow:1s;
-}
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
@@ -46,7 +41,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--lilac)}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -74,7 +69,7 @@ img{max-width:100%;display:block}
 .mask.in span:nth-child(2) i{transition-delay:80ms}
 .btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
+  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
   font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
@@ -85,10 +80,10 @@ img{max-width:100%;display:block}
 .btn:hover i{transform:translateX(5px)}
 .btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
 .btn.sm{padding:9px 15px;font-size:11px}
-.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--lilac);border-color:#EDEFF1}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--lilac)}
+.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
+.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding-top:4px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
 .p-link i{font-style:normal;transition:transform .42s var(--e)}
 .p-link:hover i{transform:translateX(6px)}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
@@ -142,10 +137,7 @@ img{max-width:100%;display:block}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
 .hero{
-  background:
-    radial-gradient(110% 80% at 100% -8%, rgba(27,68,200,.07), transparent 50%),
-    radial-gradient(85% 65% at 0% 100%, rgba(219,155,31,.05), transparent 48%),
-    var(--paper);
+  background:var(--paper);
 }
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
 .s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
@@ -161,44 +153,44 @@ img{max-width:100%;display:block}
 .dash-board__bar{
   display:flex;justify-content:space-between;align-items:center;gap:12px;
   padding:11px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
 }
 .dash-board__bar b{color:#fff;font-weight:400}
 .dash-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--amber)}
 .dash-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:dash-pulse 2.4s var(--e-io) infinite}
 @keyframes dash-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
 .dash-board__filters{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-bottom:1px solid var(--ink-line)}
-.chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--ink-line);color:#6B7885}
+.chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--ink-line);color:#717F8C}
 .chip.on{border-color:var(--amber);color:var(--amber);background:rgba(219,155,31,.1)}
 .dash-board__answer{
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:end;
   padding:14px 14px 16px;border-bottom:1px solid var(--ink-line);
   background:linear-gradient(180deg,rgba(219,155,31,.06),transparent 70%)
 }
-.dash-board__answer .q{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885}
+.dash-board__answer .q{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
 .dash-board__answer b{display:block;margin-top:7px;font-family:var(--f-display);font-weight:750;font-size:clamp(1.12rem,1.9vw,1.42rem);letter-spacing:-.03em;color:#fff;line-height:1.18}
 .dash-board__answer .stat{text-align:right;font-family:var(--f-display);font-weight:800;font-size:clamp(1.55rem,2.3vw,1.95rem);letter-spacing:-.04em;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums}
-.dash-board__answer .stat small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#6B7885;font-weight:400}
+.dash-board__answer .stat small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C;font-weight:400}
 .dash-board__kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
 .dash-board__kpi{padding:12px 12px 14px;border-right:1px solid var(--ink-line)}
 .dash-board__kpi:last-child{border-right:0}
-.dash-board__kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#6B7885}
+.dash-board__kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#717F8C}
 .dash-board__kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.02rem,1.5vw,1.18rem);letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
 .dash-board__kpi em{display:block;margin-top:4px;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;color:#5FD3A0}
 .dash-board__kpi.warn em{color:var(--amber)}
 .dash-board__body{display:grid;grid-template-columns:1.1fr .9fr;min-height:156px}
 .dash-board__chart{padding:14px;border-right:1px solid var(--ink-line);display:flex;flex-direction:column;gap:10px}
-.dash-board__chart .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885}
+.dash-board__chart .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
 .bars{display:flex;align-items:flex-end;gap:6px;flex:1;min-height:78px;padding-top:8px}
 .bars i{flex:1;background:#1F262E;display:block;position:relative;min-height:8px}
 .bars i:after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--h,40%);background:var(--blue);opacity:.9}
 .bars i.hot:after{background:var(--amber)}
 .dash-board__list{padding:12px 14px;display:grid;align-content:start;gap:7px}
-.dash-board__list .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885;margin-bottom:2px}
+.dash-board__list .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:2px}
 .ex-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:7px 8px;background:#141A20;font-size:10.5px;color:#B9C3CC;border-left:2px solid #3A444E}
 .ex-row.hot{border-left-color:var(--amber);color:#fff}
 .ex-row.ok{border-left-color:var(--green)}
-.ex-row small{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#6B7885}
+.ex-row small{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C}
 .dash-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 @media(max-width:640px){
@@ -215,7 +207,7 @@ img{max-width:100%;display:block}
 .fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px);transition:background .4s var(--e)}
 .fit-rail article:hover{background:var(--paper-2)}
 .fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.fit-rail h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
 .fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:28ch}
 .fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
 @media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
@@ -263,7 +255,7 @@ img{max-width:100%;display:block}
 
 .rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
 .rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
-.rel a:hover{transform:translate3d(0,-4px,0);border-color:var(--ink)}
+.rel a:hover{border-color:var(--ink)}
 .rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
 .rel .title{display:block;margin-top:10px}
 .rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:28ch}
@@ -283,20 +275,20 @@ img{max-width:100%;display:block}
 .cta-band .lede{color:#8C98A4;margin-top:16px;max-width:42ch}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/system.css">
+<link rel="stylesheet" href="/shared/archetypes.css">
 </head>
-<body class="service design-ux">
+<body class="service design-ux arch-saas">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="nav-shell">
     <div class="wrap nav-in">
-      <a href="/" class="mark" aria-label="KRIVA Technologies home"><svg class="mark-icon" viewBox="0 0 160 40" width="160" height="40" aria-hidden="true" style="display:inline;margin-right:8px;vertical-align:middle">
-  <!-- Geometric K mark -->
-  <rect x="6" y="5" width="14" height="35" fill="currentColor"/>
-  <polygon points="16,5 30,20 30,18 22,5" fill="#5B4FFF"/>
-  <polygon points="20,23 28,40 35,40 20,30" fill="currentColor"/>
-</svg>KRIVA<sup>®</sup></a>
+      <a href="/" class="mark" aria-label="KRIVA Technologies home">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26" loading="eager">
+      </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
@@ -421,32 +413,22 @@ img{max-width:100%;display:block}
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview"><span>Overview</span><i></i></a>
-  <a href="#challenges"><span>Challenges</span><i></i></a>
-  <a href="#approach"><span>Approach</span><i></i></a>
-  <a href="#deliverables"><span>Deliverables</span><i></i></a>
-  <a href="#outcomes"><span>Outcomes</span><i></i></a>
-  <a href="#proof"><span>Proof</span><i></i></a>
+  <a href="#scan"><span>The scan</span><i></i></a>
+  <a href="#challenges"><span>What fails</span><i></i></a>
+  <a href="#approach"><span>Hierarchy</span><i></i></a>
+  <a href="#work"><span>Work</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
 <main id="main">
 
-<header class="hero" id="overview">
+<header class="hero lp-hero" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">Dashboard Design</li>
     </ol>
-    <nav class="mob-chips" id="mobChips" aria-label="On this page">
-      <a href="#overview" aria-current="true">Overview</a>
-      <a href="#challenges">Challenges</a>
-      <a href="#approach">Approach</a>
-      <a href="#deliverables">Deliverables</a>
-      <a href="#outcomes">Outcomes</a>
-      <a href="#proof">Proof</a>
-      <a href="#faq">FAQ</a>
-    </nav>
     <div class="hero-grid">
       <div>
         <p class="eyebrow" data-r>Service · Analytics &amp; ops views</p>
@@ -510,37 +492,30 @@ img{max-width:100%;display:block}
         <p class="dash-board__note"><span class="flag">Demo</span> Ops pattern. Same hierarchy applies to finance and sales views.</p>
       </div>
     </div>
-
-    <div class="fit-rail" data-s>
-      <article>
-        <p class="k">Best for</p>
-        <h3>Morning-scan operators</h3>
-        <p>Fleet leads, finance close, sales leadership &mdash; anyone who needs the answer before the detail table.</p>
-      </article>
-      <article>
-        <p class="k">View types</p>
-        <h3>Ops, admin, and exec</h3>
-        <p>Exception boards, customer analytics, and summary views that stay readable as metrics grow.</p>
-      </article>
-      <article>
-        <p class="k">Not this service</p>
-        <h3>Pipelines or tenant UX</h3>
-        <p>Stage models live under CRM Design. Workspace, roles, and onboarding live under SaaS Product Design.</p>
-        <p class="contrast">Need both? Ops builds often pair this page with CRM Design. SaaS products often pair it with SaaS Product Design.</p>
-      </article>
-    </div>
   </div>
 </header>
 
-<section class="sect sect--rule" id="challenges" aria-labelledby="chH">
+<section class="arch-show" id="scan" aria-labelledby="dashShow">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Challenges</p>
-        <h2 class="d2" id="chH" data-r>When the dashboard becomes another export</h2>
-        <p class="lede" data-r>The data exists. The morning scan still fails. These are the patterns we see before a redesign starts.</p>
+    <p class="k">Signature interface</p>
+    <h2 id="dashShow">The morning scan, without another export.</h2>
+    <div class="arch-layer">
+      <div class="arch-frame">
+        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>fleet · exceptions</span></div>
+        <img src="/solutions/trucking/fleet-dashboard.svg" alt="Fleet operations dashboard" width="1600" height="1000" loading="lazy" decoding="async">
+      </div>
+      <div class="side arch-frame">
+        <img src="/work/fleetflow/sla-burndown.svg" alt="SLA burndown" width="1200" height="800" loading="lazy" decoding="async">
       </div>
     </div>
+  </div>
+</section>
+
+<section class="sect sect--rule" id="challenges" aria-labelledby="chH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>What fails</p>
+    <h2 class="d2" id="chH" data-r style="margin-top:16px">The data exists. The morning scan still fails.</h2>
+    <p class="lede" data-r style="margin-top:16px">These are the patterns we see before a redesign starts.</p>
     <div class="chal">
       <article data-r>
         <span class="n">01</span>
@@ -572,7 +547,7 @@ img{max-width:100%;display:block}
     </div>
     <div class="approach">
       <div class="ap-row" data-r>
-        <span class="idx num">01</span>
+        <span class="idx num" aria-hidden="true">01</span>
         <div>
           <h3 class="d3">Shift questions first</h3>
           <p class="body-sm">We write the questions the desk actually asks, then rank what must answer them above the fold. Stakeholder chart requests wait until the primary scan works.</p>
@@ -580,7 +555,7 @@ img{max-width:100%;display:block}
         <p class="out"><b>You leave with</b>A ranked question map for the morning scan</p>
       </div>
       <div class="ap-row" data-r>
-        <span class="idx num">02</span>
+        <span class="idx num" aria-hidden="true">02</span>
         <div>
           <h3 class="d3">Scan, then density</h3>
           <p class="body-sm">Primary scan, then detail. Tables and charts denser where the desk needs density, quieter where leadership needs calm. Role variants so ops and exec are not the same screen.</p>
@@ -588,7 +563,7 @@ img{max-width:100%;display:block}
         <p class="out"><b>You leave with</b>Ops, admin, and exec layout variants</p>
       </div>
       <div class="ap-row" data-r>
-        <span class="idx num">03</span>
+        <span class="idx num" aria-hidden="true">03</span>
         <div>
           <h3 class="d3">Filters that resolve</h3>
           <p class="body-sm">Date range, lane, owner, and exception filters designed for operators, not one-off report builders. Drill-downs land on the source record, not another export.</p>
@@ -599,119 +574,29 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<section class="sect" id="deliverables" aria-labelledby="delH">
+<section class="sect" id="spec" aria-labelledby="delH">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Deliverables</p>
-        <h2 class="d2" id="delH" data-r>What operators open every morning</h2>
-        <p class="lede" data-r>Artifacts your team can build against in the next sprint, not a moodboard of chart types.</p>
-      </div>
-    </div>
-    <div class="deliv">
-      <article data-r>
-        <b>01 · Structure</b>
-        <h3 class="d3">Dashboard IA &amp; hierarchy</h3>
-        <p>Primary scan, secondary detail, and role variants so the first screen answers the shift question before the deep cut.</p>
-      </article>
-      <article data-r>
-        <b>02 · Patterns</b>
-        <h3 class="d3">Chart &amp; table UI</h3>
-        <p>Reusable chart and table patterns that stay readable as metrics accumulate and new requests arrive.</p>
-      </article>
-      <article data-r>
-        <b>03 · Flows</b>
-        <h3 class="d3">Filters &amp; drill-downs</h3>
-        <p>Date-range, segment, and exception filters with drill-downs that land on the source record, not a dead-end chart.</p>
-      </article>
-      <article data-r>
-        <b>04 · Density</b>
-        <h3 class="d3">Status &amp; density system</h3>
-        <p>Role-based density, high-contrast status semantics, and light/dark tokens ops can extend without inventing a new style each sprint.</p>
-      </article>
+    <p class="eyebrow" data-r>What operators open</p>
+    <h2 class="d2" id="delH" data-r style="margin-top:16px">Hierarchy. Filters. Role variants.</h2>
+    <p class="lede" data-r style="margin-top:16px">Artifacts the next sprint can build against — not a moodboard of chart types.</p>
+    <div class="lp-spec" data-s>
+      <div><b>IA</b><span>Scan, then density</span></div>
+      <div><b>Fx</b><span>Filters that resolve</span></div>
+      <div><b>3</b><span>Ops · admin · exec</span></div>
     </div>
   </div>
 </section>
 
-<section class="sect sect--band" id="outcomes" aria-labelledby="outH">
-  <div class="wrap">
-    <div class="gain">
-      <div data-r>
-        <p class="eyebrow">Outcomes</p>
-        <h2 class="d2" id="outH">What changes in the morning scan</h2>
-        <p class="lede">Qualitative targets we design toward. Signed-off metrics publish on case studies when clients clear them.</p>
-        <a href="/work/fleetflow-dispatch" class="p-link">FleetFlow published −32% handle time <i>→</i></a>
-      </div>
-      <ul data-s>
-        <li>
-          <span class="n">01</span>
-          <span>
-            <strong>Visibility without CSV detours</strong>
-            <span>Operators get the shift answer inside the product instead of rebuilding it in a spreadsheet.</span>
-          </span>
-        </li>
-        <li>
-          <span class="n">02</span>
-          <span>
-            <strong>Views leadership keeps open</strong>
-            <span>Weekly scans stay useful because hierarchy and filters match the questions they already ask.</span>
-          </span>
-        </li>
-        <li>
-          <span class="n">03</span>
-          <span>
-            <strong>Room for the next metric</strong>
-            <span>Layout patterns that absorb new KPIs without turning the first screen into equal-weight noise.</span>
-          </span>
-        </li>
-      </ul>
+<section class="featwork" id="work" aria-labelledby="pfH" style="padding:0">
+  <article class="lp-case" data-r>
+    <a href="/work/fleetflow-dispatch"><img src="/work/fleetflow/console-full.svg" alt="FleetFlow dispatch console" width="1920" height="1080" loading="lazy" decoding="async"></a>
+    <div>
+      <p class="eyebrow">Selected work · signed-off</p>
+      <h3 class="d2" id="pfH">FleetFlow</h3>
+      <p>Exception scanning and SLA views for US dispatch. Published −32% handle time on the case study.</p>
+      <a href="/work/fleetflow-dispatch" class="btn on-dark" style="margin-top:22px"><span>Read the case</span><i>→</i></a>
     </div>
-  </div>
-</section>
-
-<section class="sect" id="proof" aria-labelledby="pfH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Where this shows up</p>
-        <h2 class="d2" id="pfH" data-r>Related work and pages</h2>
-        <p class="lede" data-r>Live examples of ops and leadership views you can open today.</p>
-      </div>
-    </div>
-    <div class="rel" data-s>
-      <a href="/work/fleetflow-dispatch">
-        <span>
-          <span class="k">Work · signed-off</span>
-          <span class="d3 title">FleetFlow · SLA views</span>
-          <span class="hook">Breach risk on the board and exception scanning for US dispatch ops. −32% handle time, published on the case study.</span>
-        </span>
-        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
-      </a>
-      <a href="/work/finance-sync-hub">
-        <span>
-          <span class="k">Work · narrative</span>
-          <span class="d3 title">FinanceSync · reconciliation</span>
-          <span class="hook">Exception-first finance views with source record, retry history, and operator resolve paths.</span>
-        </span>
-        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
-      </a>
-      <a href="/work/crm-pulse-dashboard">
-        <span>
-          <span class="k">Work · narrative</span>
-          <span class="d3 title">CRMPulse · leadership views</span>
-          <span class="hook">Pipeline and forecast dashboards built for weekly leadership use, not one-off exports.</span>
-        </span>
-        <span class="arrow"><span class="mono">Case study</span><i>→</i></span>
-      </a>
-    </div>
-    <p class="eyebrow sib-label" data-r>Also see</p>
-    <div class="sib" data-r>
-      <a href="/services/crm-development">CRM Design</a>
-      <a href="/services/saas-platforms">SaaS Product Design</a>
-      <a href="/insights/crm-dashboard-ux-patterns">CRM dashboard UX patterns</a>
-      <a href="/services">All services</a>
-    </div>
-  </div>
+  </article>
 </section>
 
 <section class="sect sect--band" id="faq" aria-labelledby="faqH">
@@ -808,7 +693,7 @@ img{max-width:100%;display:block}
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true">KRIVA</p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143" loading="lazy" decoding="async"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -929,5 +814,33 @@ if(mob.length){
 run();
 })();
 </script>
+<!-- KRIVA_SCHEMA_START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://krivatechnologies.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://krivatechnologies.com/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Dashboards that answer the shift question first.",
+      "item": "https://krivatechnologies.com/services/dashboard-design"
+    }
+  ]
+}
+</script>
+<!-- KRIVA_SCHEMA_END -->
 </body>
 </html>

@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- KRIVA_ICONS_START -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E1216">
+<!-- KRIVA_ICONS_END -->
+<link rel="stylesheet" href="/shared/tokens.css">
 <title>KRIVA · Design engineering for SaaS &amp; trucking</title>
 <meta name="description" content="Dispatch consoles, fleet dashboards, SaaS onboarding and QuickBooks/Xero sync, designed and shipped by one senior team.">
 <link rel="canonical" href="https://krivatechnologies.com/">
@@ -22,698 +29,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* ═══════════════════════════════════════════
-   KRIVA · design tokens
-   ═══════════════════════════════════════════ */
-:root{
-  /* surface ladder: each section steps along this, never repeats twice in a row */
-  --paper:#EAEAE4;
-  --paper-2:#F1F1EC;
-  --white:#FFFFFF;
-  --ink:#0E1216;
-  --ink-2:#161C22;
-  --ink-line:#232B33;
-  --ink-dim:#8C98A4;
-
-  --steel:#5C6670;
-  --steel-2:#7A838D;
-  --rule:#D2D2C9;
-  --rule-soft:#DFDFD8;
-
-  /* signal semantics, borrowed from dispatch status language */
-  --blue:#5B4FFF;      /* action / interstate */
-  --amber:#DB9B1F;     /* live, in-motion */
-  --green:#1B7A54;     /* cleared */
-  --violet:#5B44C8;    /* automation */
-
-  --f-display:'Archivo',system-ui,-apple-system,sans-serif;
-  --f-body:'Inter',system-ui,-apple-system,sans-serif;
-  --f-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;
-
-  --gutter:clamp(20px,5vw,80px);
-  --maxw:1440px;
-
-  /* one motion language, five values, used everywhere */
-  --e:cubic-bezier(.16,.84,.44,1);
-  --e-io:cubic-bezier(.62,.02,.28,1);
-  --t-fast:.32s;
-  --t-mid:.62s;
-  --t-slow:1s;
-}
-
-*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-html:focus-within{scroll-behavior:smooth}
-body{
-  background:var(--paper);color:var(--ink);
-  font-family:var(--f-body);font-size:16px;line-height:1.55;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-img{max-width:100%;display:block}
-svg{display:block}
-:selection{background:var(--blue);color:#fff}
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:1px}
-.cta-band :focus-visible,footer :focus-visible,.readout :focus-visible{outline-color:var(--amber)}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
-.skip:focus{left:12px}
-
-.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
-
-/* ── type scale: 5 steps, fixed ratios, tabular numerals everywhere numbers matter ── */
-.eyebrow{
-  font-family:var(--f-mono);font-size:clamp(10px,1.1vw,11.5px);
-  letter-spacing:.16em;text-transform:uppercase;color:var(--steel);
-  display:flex;align-items:center;gap:11px;line-height:1
-}
-.eyebrow:before{content:"";width:20px;height:1px;background:currentColor;flex:none;opacity:.6}
-.d1{font-family:var(--f-display);font-weight:900;font-size:clamp(2.55rem,6.2vw,5.35rem);line-height:.88;letter-spacing:-.03em;font-variation-settings:'wdth' 102}
-.d2{font-family:var(--f-display);font-weight:750;font-size:clamp(2.1rem,4.8vw,4.05rem);line-height:1;letter-spacing:-.032em;font-variation-settings:'wdth' 94}
-.d3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.35rem,2.15vw,1.75rem);line-height:1.16;letter-spacing:-.022em}
-.lede{font-size:clamp(1.02rem,1.25vw,1.24rem);line-height:1.62;color:var(--steel);max-width:54ch;letter-spacing:-.005em}
-.body-sm{font-size:15px;line-height:1.62;color:var(--steel);max-width:58ch}
-.mono{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase}
-.num{font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}
-
-/* ═══ motion primitives, one reveal, one stagger, one mask ═══ */
-[data-r]{opacity:0;transform:translate3d(0,24px,0);transition:opacity var(--t-slow) var(--e),transform var(--t-slow) var(--e)}
-[data-r].in{opacity:1;transform:none}
-[data-s]>*{opacity:0;transform:translate3d(0,20px,0);transition:opacity var(--t-mid) var(--e),transform var(--t-mid) var(--e)}
-[data-s].in>*{opacity:1;transform:none}
-[data-s].in>*:nth-child(1){transition-delay:0ms}
-[data-s].in>*:nth-child(2){transition-delay:70ms}
-[data-s].in>*:nth-child(3){transition-delay:140ms}
-[data-s].in>*:nth-child(4){transition-delay:210ms}
-[data-s].in>*:nth-child(5){transition-delay:280ms}
-[data-s].in>*:nth-child(6){transition-delay:350ms}
-.mask span{display:block;overflow:hidden;padding-bottom:.02em}
-.mask span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
-.mask.in span i{transform:none}
-.mask.in span:nth-child(2) i{transition-delay:80ms}
-.mask.in span:nth-child(3) i{transition-delay:160ms}
-
-.btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
-  position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:12px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
-  transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
-.btn>*{position:relative;z-index:1}
-.btn:before{content:"";position:absolute;inset:0;background:var(--btn-hover);transform:translate3d(0,101%,0);transition:transform .5s var(--e)}
-.btn:hover:before,.btn:focus-visible:before{transform:none}
-.btn:hover{color:#fff;border-color:var(--btn-hover)}
-.btn i{font-style:normal;transition:transform .42s var(--e)}
-.btn:hover i{transform:translateX(5px)}
-.btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
-.btn.sm{padding:9px 15px;font-size:11px}
-.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
-.btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-
-/* nav/sheet/footer chrome → shared/chrome.css */
-
-/* ═══════════ HERO ═══════════ */
-.hero{
-  padding:calc(72px + clamp(24px,4.2vw,56px)) 0 clamp(40px,4.5vw,72px);position:relative;
-  background:
-    radial-gradient(115% 85% at 100% -10%, rgba(219,155,31,.07), transparent 52%),
-    radial-gradient(90% 70% at -5% 110%, rgba(27,68,200,.05), transparent 48%),
-    var(--paper);
-}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(28px,4vw,72px);align-items:end}
-.hero-copy .d1{margin:16px 0 18px;max-width:14ch}
-.hero-copy .d1 em{font-style:normal;position:relative;white-space:nowrap}
-.hero-copy .d1 em:after{content:"";position:absolute;left:0;right:0;bottom:.1em;height:.055em;background:var(--amber);transform:scaleX(0);transform-origin:0 50%;transition:transform .9s var(--e) .75s}
-.mask.in .d1 em:after,.d1.mask.in em:after{transform:scaleX(1)}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.hero-facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0;margin-top:36px;border-top:1px solid var(--rule);padding-top:18px}
-.fact{padding-right:clamp(20px,3vw,40px);margin-right:clamp(20px,3vw,40px);border-right:1px solid var(--rule)}
-.fact:last-child{border-right:0;margin-right:0;padding-right:0}
-.fact b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.35rem,2.2vw,1.75rem);letter-spacing:-.03em;line-height:1}
-.fact small{display:block;margin-top:7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
-@media(max-width:1000px){.hero-grid{grid-template-columns:1fr;align-items:start}.hero-copy .d1{max-width:none}.hero-grid>*{min-width:0}.console{max-width:100%;overflow:hidden}}
-@media(max-width:560px){
-  .hero-copy .d1 em{white-space:normal}
-  .hero-facts{grid-template-columns:1fr;gap:14px}
-  .fact{padding-right:0;margin-right:0;border-right:0;padding-bottom:12px;border-bottom:1px solid var(--rule)}
-  .fact:last-child{border-bottom:0;padding-bottom:0}
-  .c-head{flex-wrap:wrap}
-  .c-tabs{max-width:100%;overflow-x:auto;scrollbar-width:none}
-  .c-tabs:-webkit-scrollbar{display:none}
-}
-
-/* ── SIGNATURE: dispatch console ── */
-.console{
-  background:var(--ink);color:#DDE2E7;
-  box-shadow:0 2px 0 rgba(14,18,22,.06),0 40px 80px -46px rgba(14,18,22,.55);
-  will-change:transform
-}
-.c-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px;border-bottom:1px solid var(--ink-line)}
-.c-tabs{display:flex}
-.c-tabs button{
-  padding:13px 14px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:#6B7885;position:relative;transition:color var(--t-fast) var(--e)
-}
-.c-tabs button:after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:1px;background:var(--amber);transform:scaleX(0);transition:transform .4s var(--e)}
-.c-tabs button:hover{color:#B9C3CC}
-.c-tabs button[aria-selected="true"]{color:#fff}
-.c-tabs button[aria-selected="true"]:after{transform:scaleX(1)}
-.c-live{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--amber);white-space:nowrap}
-.dot{width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:pulse 2.4s var(--e-io) infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.5)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
-
-.c-kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
-.kpi{padding:14px;border-right:1px solid var(--ink-line)}
-.kpi:last-child{border-right:0}
-.kpi span{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#6B7885}
-.kpi b{display:block;margin-top:6px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.15rem,1.7vw,1.45rem);letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
-.kpi.up b{color:#5FD3A0}
-
-.c-table{width:100%;border-collapse:collapse;font-family:var(--f-mono);font-size:11.5px}
-.c-table caption{text-align:left;padding:0;font:inherit;position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.c-table th{
-  text-align:left;padding:9px 14px;font-weight:400;font-size:9.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:#6B7885;border-bottom:1px solid var(--ink-line)
-}
-.c-table td{padding:11px 14px;border-bottom:1px solid #1A2027;color:#B9C3CC;white-space:nowrap;transition:color var(--t-fast) var(--e),background var(--t-fast) var(--e)}
-.c-table td:first-child{color:#fff;position:relative;padding-left:20px}
-.c-table td:first-child:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--amber);transform:scaleY(0);transform-origin:50% 100%;transition:transform var(--t-fast) var(--e)}
-.c-table tbody tr{opacity:0;transform:translate3d(0,8px,0);transition:opacity .5s var(--e),transform .5s var(--e)}
-.c-table tbody tr.on{opacity:1;transform:none}
-.c-table tbody tr:hover td{background:var(--ink-2);color:#EDEFF1}
-.c-table tbody tr:hover td:first-child:before{transform:scaleY(1);transform-origin:50% 0}
-.chip{
-  display:inline-flex;align-items:center;gap:6px;padding:3px 9px;
-  font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;
-  border:1px solid currentColor;transition:color .5s var(--e)
-}
-.chip:before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
-.chip.s0{color:#6B7885}.chip.s1{color:var(--amber)}.chip.s2{color:#5FD3A0}
-.c-foot{display:flex;align-items:center;gap:14px;padding:13px 14px}
-.c-foot .mono{font-size:9.5px;letter-spacing:.13em;color:#6B7885;white-space:nowrap}
-.track-bar{position:relative;flex:1;height:2px;background:var(--ink-line);overflow:hidden}
-.track-bar i{position:absolute;inset:0;background:var(--amber);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.2s var(--e)}
-.spark{width:64px;height:20px;flex:none;overflow:visible}
-.spark path{fill:none;stroke:#5FD3A0;stroke-width:1.25;stroke-linecap:round;stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1.6s var(--e) .4s}
-.console.lit .spark path{stroke-dashoffset:0}
-.c-note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
-.flag{border:1px solid var(--rule);padding:2px 7px;color:var(--steel);flex:none}
-.flag.tbd{border-color:var(--amber);color:#8A6200}
-
-/* mobile: table becomes stacked records, no horizontal scroll */
-@media(max-width:560px){
-  .c-kpis{grid-template-columns:1fr 1fr}
-  .kpi:nth-child(3){display:none}
-  .c-table thead{display:none}
-  .c-table,.c-table tbody,.c-table tr,.c-table td{display:block;width:100%}
-  .c-table tr{padding:10px 14px;border-bottom:1px solid #1A2027;display:grid;grid-template-columns:auto 1fr;gap:2px 12px}
-  .c-table td{border:0;padding:2px 0}
-  .c-table td:first-child{padding-left:0;grid-row:1;font-size:12.5px}
-  .c-table td:nth-child(2){grid-row:1;text-align:right}
-  .c-table td:nth-child(3){grid-row:2;color:#6B7885}
-  .c-table td:nth-child(4){grid-row:2;text-align:right}
-  .c-table td:first-child:before{display:none}
-}
-
-/* ═══════════ CLIENTS / MANIFEST ═══════════ */
-.manifest{
-  background:var(--paper-2);
-  border-block:1px solid var(--rule-soft);
-  padding-block:clamp(52px,6.5vw,96px) clamp(36px,4.5vw,64px);
-  overflow:hidden;
-}
-.manifest-head{
-  display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,4vw,48px);
-  flex-wrap:wrap;margin-bottom:clamp(32px,4vw,56px);
-}
-.manifest-head .d2{margin-top:18px;max-width:12ch}
-.manifest-meta{
-  display:flex;flex-direction:column;align-items:flex-end;gap:10px;text-align:right;
-}
-.manifest-meta .mono{color:var(--steel-2)}
-.manifest-link{
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--blue);display:inline-flex;align-items:center;gap:8px;
-  transition:opacity var(--t-fast) var(--e);
-}
-.manifest-link:hover{opacity:.72}
-.manifest-link i{font-style:normal}
-
-/* Dual-row logo rail, full-bleed, cardless, quiet motion */
-.logo-rail{
-  position:relative;
-  border-block:1px solid var(--rule-soft);
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
-}
-.logo-rail__row{
-  overflow:hidden;
-  border-bottom:1px solid var(--rule-soft);
-  padding-block:clamp(20px,2.6vw,32px);
-}
-.logo-rail__row:last-child{border-bottom:0}
-.logo-rail__track{
-  display:flex;width:max-content;align-items:center;
-  animation:logo-marquee 52s linear infinite;
-  will-change:transform;
-}
-.logo-rail__row:nth-child(2) .logo-rail__track{
-  animation-duration:64s;
-  animation-delay:-22s;
-}
-.logo-rail:hover .logo-rail__track,
-.logo-rail:focus-within .logo-rail__track{animation-play-state:paused}
-.logo-rail__set{
-  list-style:none;display:flex;align-items:center;
-  gap:clamp(36px,5.5vw,80px);
-  padding-inline:clamp(18px,2.8vw,40px);
-}
-.logo-rail__set li{
-  flex:none;display:flex;align-items:center;justify-content:center;
-  min-width:clamp(112px,11vw,156px);height:44px;
-}
-.logo-rail__set img{
-  width:auto;height:auto;max-height:34px;max-width:140px;object-fit:contain;
-  filter:grayscale(1);opacity:.52;
-  transition:opacity var(--t-fast) var(--e),filter var(--t-fast) var(--e);
-}
-.logo-rail__set li:hover img,
-.logo-rail__set li:focus-within img{filter:none;opacity:1}
-.logo-rail__item--tall img{max-height:40px;max-width:108px}
-@keyframes logo-marquee{
-  from{transform:translate3d(0,0,0)}
-  to{transform:translate3d(-50%,0,0)}
-}
-@media(max-width:700px){
-  .manifest-meta{align-items:flex-start;text-align:left;width:100%}
-  .logo-rail{
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
-    mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
-  }
-  .logo-rail__set{gap:clamp(28px,8vw,48px)}
-  .logo-rail__set img{max-height:30px;max-width:120px}
-  .logo-rail__item--tall img{max-height:36px;max-width:96px}
-}
-
-/* ═══════════ SECTION FRAME ═══════════ */
-.sect{padding-block:clamp(76px,9vw,156px);position:relative}
-.sect--tight{padding-block:clamp(60px,7vw,110px)}
-.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(20px,4vw,60px);flex-wrap:wrap}
-.s-head h2{margin-top:20px}
-
-/* ═══════════ SOLUTIONS · sticky viewer + panels ═══════════ */
-.sol{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(28px,5vw,88px);align-items:start;margin-top:clamp(36px,4vw,64px)}
-.sol-rail{position:sticky;top:110px}
-.sol-index{list-style:none;margin-top:30px;border-top:1px solid var(--rule)}
-.sol-index li{border-bottom:1px solid var(--rule)}
-.sol-index button{
-  display:flex;gap:14px;align-items:baseline;width:100%;text-align:left;padding:12px 0;
-  font-family:var(--f-mono);font-size:12px;letter-spacing:.05em;color:var(--steel);
-  transition:color var(--t-fast) var(--e),padding-left .45s var(--e)
-}
-.sol-index button u{text-decoration:none;color:var(--rule);transition:color var(--t-fast)}
-.sol-index li.act button{color:var(--ink);padding-left:12px}
-.sol-index li.act button u{color:var(--acc,var(--blue))}
-.sol-index button:hover{color:var(--ink)}
-
-/* the sticky viewer: a mini system panel that changes per solution */
-.viewer{background:var(--ink);margin-top:26px;position:relative;overflow:hidden}
-.viewer-bar{display:flex;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--ink-line);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#6B7885}
-.viewer-bar b{color:#fff;font-weight:400;transition:color var(--t-fast)}
-.viewer-body{position:relative;height:190px}
-.scene{position:absolute;inset:0;padding:18px;opacity:0;transform:translate3d(0,10px,0);transition:opacity .5s var(--e),transform .5s var(--e);pointer-events:none}
-.scene.on{opacity:1;transform:none}
-/* scene 1 · route */
-.route{width:100%;height:100%}
-.route .ln{fill:none;stroke:#2C3640;stroke-width:1}
-.route .grid{stroke:#1E252C;stroke-width:1}
-.route .path{fill:none;stroke:var(--amber);stroke-width:1.5;stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset 1.4s var(--e)}
-.scene.on .route .path{stroke-dashoffset:0}
-.route .node{fill:#0E1216;stroke:#5FD3A0;stroke-width:1.25}
-/* scene 2 · funnel */
-.funnel{display:grid;gap:9px;height:100%;align-content:center}
-.frow{display:grid;grid-template-columns:76px 1fr 42px;align-items:center;gap:10px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#6B7885}
-.frow em{font-style:normal;color:#C4CCD4;text-align:right;font-variant-numeric:tabular-nums}
-.fbar{height:8px;background:#1A2027;position:relative;overflow:hidden}
-.fbar i{position:absolute;inset:0;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;transition:transform .9s var(--e)}
-.scene.on .fbar i{transform:scaleX(var(--v))}
-/* scene 3 · ledger match */
-.ledger{display:grid;gap:7px;height:100%;align-content:center;font-family:var(--f-mono);font-size:10.5px}
-.lrow{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:7px 10px;background:#141A20;color:#B9C3CC}
-.lrow small{color:#6B7885;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
-.lrow.ok{border-left:2px solid var(--green)}
-.lrow.ex{border-left:2px solid var(--amber);color:#fff}
-/* scene 4 · auto transport haul */
-.haul{display:grid;gap:8px;height:100%;align-content:center;font-family:var(--f-mono);font-size:10.5px}
-.hrow{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:8px 10px;background:#141A20;color:#B9C3CC;border-left:2px solid #2A3340}
-.hrow.on{border-left-color:var(--amber);color:#fff}
-.hrow.done{border-left-color:var(--green)}
-.hrow small{color:#6B7885;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
-.scene.on .hrow.on small{color:var(--amber)}
-.scene.on .hrow.done small{color:#5FD3A0}
-
-.panels{display:grid;gap:clamp(14px,1.6vw,22px)}
-.panel{
-  --acc:var(--blue);
-  position:relative;background:var(--white);border:1px solid var(--rule);
-  padding:clamp(24px,3vw,42px);
-  transition:transform .55s var(--e),box-shadow .55s var(--e),border-color .4s var(--e)
-}
-.panel:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--acc);transform:scaleY(0);transform-origin:50% 100%;transition:transform .5s var(--e)}
-.panel:hover,.panel:focus-within{transform:translate3d(0,-5px,0);box-shadow:0 30px 60px -42px rgba(14,18,22,.5);border-color:var(--ink)}
-.panel:hover:before,.panel:focus-within:before{transform:scaleY(1);transform-origin:50% 0}
-.panel .eyebrow{color:var(--acc)}
-.panel h3{margin:16px 0 12px;max-width:20ch}
-.panel-no{position:absolute;top:clamp(22px,3vw,38px);right:clamp(22px,3vw,38px);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--rule)}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
-.tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule-soft);color:var(--steel);transition:border-color var(--t-fast),color var(--t-fast)}
-.panel:hover .tag{border-color:var(--rule);color:var(--ink)}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:24px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
-.p-link i{font-style:normal;transition:transform .42s var(--e)}
-.panel:hover .p-link i{transform:translateX(6px)}
-@media(max-width:1000px){
-  .sol{grid-template-columns:1fr;gap:32px}
-  .sol-rail{position:static}
-  .sol-index,.viewer{display:none}
-}
-
-/* ═══════════ READOUT (dark, full-bleed) ═══════════ */
-.readout{background:var(--ink);color:#DDE2E7}
-.readout .wrap{padding-block:clamp(64px,7.5vw,124px)}
-.readout .eyebrow{color:var(--ink-dim)}
-.readout h2{color:#fff;max-width:18ch}
-.readout-head{padding-bottom:clamp(32px,4vw,56px);border-bottom:1px solid var(--ink-line)}
-.readout-head .lede{color:#8C98A4;margin-top:18px;max-width:48ch}
-.nums{display:grid;grid-template-columns:repeat(4,1fr)}
-.nc{padding:clamp(28px,3vw,44px) clamp(16px,2vw,30px) 0 0;border-right:1px solid var(--ink-line)}
-.nc:last-child{border-right:0}
-.nc b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(2.6rem,5.6vw,4.8rem);line-height:.92;letter-spacing:-.045em;color:#fff;font-variant-numeric:tabular-nums}
-.nc span{display:block;margin-top:16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--amber)}
-.nc em{display:block;margin-top:7px;font-style:normal;font-size:13.5px;line-height:1.5;color:var(--ink-dim);max-width:22ch}
-@media(max-width:860px){
-  .nums{grid-template-columns:1fr 1fr}
-  .nc{border-bottom:1px solid var(--ink-line);padding-bottom:26px}
-  .nc:nth-child(2n){border-right:0}
-  .nc:nth-last-child(-n+2){border-bottom:0}
-}
-
-/* ═══════════ WORK · featured stage + supporting index ═══════════ */
-.work{background:var(--paper-2);border-block:1px solid var(--rule)}
-.work .s-head .lede{margin-top:18px;max-width:42ch}
-
-/* Featured case · dominant, always visible */
-.feat-case{
-  margin-top:clamp(40px,4.5vw,72px);
-  border-top:1px solid var(--rule);
-  padding-top:clamp(28px,3.2vw,44px);
-  position:relative
-}
-.feat-case-bar{
-  display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  margin-bottom:clamp(22px,2.6vw,36px)
-}
-.feat-case-bar .feat-no{
-  font-family:var(--f-display);font-weight:800;font-size:clamp(1.15rem,2vw,1.45rem);
-  letter-spacing:-.03em;line-height:1;color:var(--ink)
-}
-.feat-case-bar .feat-tags{
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)
-}
-.feat-case-bar .feat-tags b{
-  font-weight:500;color:var(--ink);letter-spacing:.14em
-}
-.feat-case-bar .feat-tags b:after{
-  content:"";display:inline-block;width:16px;height:1px;background:var(--rule);
-  margin-left:12px;vertical-align:middle
-}
-.feat-case-grid{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);
-  gap:clamp(28px,4vw,64px);align-items:start
-}
-.feat-case-copy{position:relative;z-index:1;padding-bottom:4px}
-.feat-case-kicker{
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--steel);margin-bottom:14px
-}
-.feat-case-title{
-  font-family:var(--f-display);font-weight:800;font-size:clamp(2.05rem,4.4vw,3.55rem);
-  line-height:.96;letter-spacing:-.038em;font-variation-settings:'wdth' 96;max-width:11ch
-}
-.feat-case-story{
-  margin-top:18px;font-size:clamp(1rem,1.15vw,1.12rem);line-height:1.58;color:var(--steel);max-width:38ch
-}
-.feat-outcome{
-  display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,2.5vw,36px);
-  align-items:end;margin-top:clamp(24px,2.8vw,36px);
-  padding:clamp(18px,2vw,24px) 0;border-block:1px solid var(--rule)
-}
-.feat-outcome-lead b{
-  display:block;font-family:var(--f-display);font-weight:800;
-  font-size:clamp(2.8rem,5.5vw,4.2rem);line-height:.9;letter-spacing:-.045em;
-  color:var(--green);font-variant-numeric:tabular-nums
-}
-.feat-outcome-lead span{
-  display:block;margin-top:10px;font-family:var(--f-mono);font-size:10px;
-  letter-spacing:.13em;text-transform:uppercase;color:var(--steel);max-width:14ch
-}
-.feat-outcome-side{display:flex;gap:clamp(20px,2.8vw,40px);flex-wrap:wrap;padding-bottom:4px}
-.feat-outcome-side div b{
-  display:block;font-family:var(--f-display);font-weight:750;
-  font-size:clamp(1.35rem,2.2vw,1.7rem);letter-spacing:-.03em;line-height:1;
-  font-variant-numeric:tabular-nums
-}
-.feat-outcome-side div span{
-  display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--steel)
-}
-.feat-shift{
-  display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:clamp(20px,2.2vw,28px);
-  border:1px solid var(--rule)
-}
-.feat-shift > div{padding:clamp(14px,1.6vw,20px) clamp(14px,1.8vw,22px)}
-.feat-shift > div + div{border-left:1px solid var(--rule)}
-.feat-shift .mono{color:var(--steel-2);margin-bottom:8px}
-.feat-shift .mono.now{color:var(--blue)}
-.feat-shift p{font-size:14px;line-height:1.5;color:var(--ink);max-width:28ch}
-.feat-shift > div:first-child p{color:var(--steel)}
-.feat-case-cta{
-  display:inline-flex;align-items:center;gap:10px;margin-top:clamp(22px,2.4vw,32px);
-  padding:13px 18px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
-  transition:background .45s var(--e),border-color .45s var(--e),color .45s var(--e)
-}
-.feat-case-cta i{font-style:normal;transition:transform .42s var(--e)}
-.feat-case-cta:hover,.feat-case-cta:focus-visible{background:var(--blue);border-color:var(--blue);color:#fff}
-.feat-case-cta:hover i,.feat-case-cta:focus-visible i{transform:translateX(6px)}
-
-.feat-case-media{position:relative;min-width:0}
-.feat-media-link{display:block;outline-offset:4px}
-.feat-media-link:hover .feat-media-frame,
-.feat-media-link:focus-visible .feat-media-frame{transform:translate3d(0,-3px,0)}
-.feat-media-frame{
-  display:flex;flex-direction:column;position:relative;background:var(--ink);
-  overflow:hidden;border:1px solid var(--ink-line);
-  transition:transform .5s var(--e)
-}
-.feat-media-chrome{
-  display:flex;justify-content:space-between;align-items:center;gap:12px;flex:none;
-  padding:11px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6B7885
-}
-.feat-media-chrome b{color:#DDE2E7;font-weight:400}
-.feat-media-frame .crop{position:relative;aspect-ratio:16/10;flex:none;border:0}
-.crop{position:relative;background:var(--ink);aspect-ratio:16/10;overflow:hidden}
-.crop img{width:100%;height:100%;object-fit:cover}
-.crop-ph{
-  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
-  padding:14px;background:linear-gradient(180deg,#141A20,#0E1216)
-}
-.crop-ph .lines{display:grid;gap:6px}
-.crop-ph .lines i{display:block;height:6px;background:#1F262E}
-.crop-ph .lines i:nth-child(1){width:38%}
-.crop-ph .lines i:nth-child(2){width:64%}
-.crop-ph .lines i:nth-child(3){width:52%}
-.crop-slot{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:#5C6670}
-.feat-media-cap{
-  margin-top:12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;
-  text-transform:uppercase;color:var(--steel-2)
-}
-.feat-case:hover .feat-media-frame .crop-ph,
-.feat-case:focus-within .feat-media-frame .crop-ph{
-  background:linear-gradient(180deg,#1A222A,#10161C)
-}
-
-/* Supporting projects · editorial index, not cards */
-.work-more{margin-top:clamp(44px,5vw,72px)}
-.work-more > .eyebrow{margin-bottom:clamp(6px,1vw,10px)}
-.work-index{list-style:none;border-top:1px solid var(--rule)}
-.work-index li{border-bottom:1px solid var(--rule)}
-.work-index a{
-  display:grid;grid-template-columns:clamp(48px,5vw,72px) minmax(0,1.4fr) minmax(0,.9fr) auto;
-  gap:clamp(14px,2.4vw,36px);align-items:center;
-  padding:clamp(20px,2.4vw,28px) 0;position:relative;
-  transition:padding-left .45s var(--e)
-}
-.work-index a:before{
-  content:"";position:absolute;left:calc(var(--gutter)*-1);right:calc(var(--gutter)*-1);
-  top:0;bottom:0;background:var(--white);opacity:0;transition:opacity .4s var(--e);z-index:-1
-}
-.work-index a:hover:before,.work-index a:focus-visible:before{opacity:1}
-.work-index a:hover,.work-index a:focus-visible{padding-left:8px}
-.wi-no{
-  font-family:var(--f-display);font-weight:800;font-size:clamp(1.25rem,2.2vw,1.7rem);
-  letter-spacing:-.04em;color:var(--rule);line-height:1;transition:color .4s var(--e)
-}
-.work-index a:hover .wi-no,.work-index a:focus-visible .wi-no{color:var(--ink)}
-.wi-kicker{
-  display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--steel);margin-bottom:8px
-}
-.wi-title{
-  display:block;font-family:var(--f-display);font-weight:700;
-  font-size:clamp(1.15rem,1.9vw,1.45rem);line-height:1.12;letter-spacing:-.028em
-}
-.wi-hook{display:block;margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--steel);max-width:42ch}
-.wi-fact{
-  display:flex;flex-direction:column;gap:6px;
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel)
-}
-.wi-fact b{
-  font-family:var(--f-display);font-weight:750;font-size:clamp(1.2rem,2vw,1.55rem);
-  letter-spacing:-.03em;color:var(--ink);text-transform:none;
-  font-variant-numeric:tabular-nums
-}
-.wi-cta{
-  display:inline-flex;align-items:center;gap:8px;justify-self:end;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  border-bottom:1px solid currentColor;padding-bottom:3px;white-space:nowrap
-}
-.wi-cta i{font-style:normal;transition:transform .42s var(--e)}
-.work-index a:hover .wi-cta i,.work-index a:focus-visible .wi-cta i{transform:translateX(6px)}
-
-@media(max-width:980px){
-  .feat-case-grid{grid-template-columns:1fr;gap:28px;align-items:start}
-  .feat-outcome{grid-template-columns:1fr;gap:20px}
-  .work-index a{grid-template-columns:48px minmax(0,1fr) auto;gap:12px 16px}
-  .wi-fact{display:none}
-  .wi-cta{grid-column:2;justify-self:start;margin-top:4px}
-}
-@media(max-width:640px){
-  .feat-shift{grid-template-columns:1fr}
-  .feat-shift > div + div{border-left:0;border-top:1px solid var(--rule)}
-  .feat-outcome-side{gap:22px}
-  .work-index a{grid-template-columns:40px minmax(0,1fr);padding:18px 0}
-  .wi-cta{grid-column:2}
-}
-
-/* ═══════════ FIT · who this is for ═══════════ */
-.fit{background:var(--white);border-block:1px solid var(--rule-soft)}
-.fit-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:0;margin-top:clamp(36px,4vw,60px);
-  border:1px solid var(--rule)
-}
-.fit-card{
-  --acc:var(--blue);
-  display:flex;flex-direction:column;padding:clamp(24px,2.8vw,40px);
-  border-right:1px solid var(--rule);min-height:280px;
-  transition:background .45s var(--e),color .45s var(--e)
-}
-.fit-card:last-child{border-right:0}
-.fit-card:hover,.fit-card:focus-visible{background:var(--ink);color:#DDE2E7;outline:none}
-.fit-card .eyebrow{color:var(--acc);transition:color .45s var(--e)}
-.fit-card:hover .eyebrow,.fit-card:focus-visible .eyebrow{color:var(--amber)}
-.fit-card h3{
-  margin:16px 0 12px;font-family:var(--f-display);font-weight:700;
-  font-size:clamp(1.2rem,1.8vw,1.45rem);line-height:1.18;letter-spacing:-.025em;
-  max-width:16ch;transition:color .45s var(--e)
-}
-.fit-card:hover h3,.fit-card:focus-visible h3{color:#fff}
-.fit-card p{font-size:15px;line-height:1.6;color:var(--steel);max-width:34ch;flex:1;transition:color .45s var(--e)}
-.fit-card:hover p,.fit-card:focus-visible p{color:#A8B2BC}
-.fit-link{
-  display:inline-flex;align-items:center;gap:9px;margin-top:28px;
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
-  border-bottom:1px solid currentColor;padding-bottom:3px;align-self:flex-start
-}
-.fit-link i{font-style:normal;transition:transform .42s var(--e)}
-.fit-card:hover .fit-link i,.fit-card:focus-visible .fit-link i{transform:translateX(6px)}
-@media(max-width:900px){
-  .fit-grid{grid-template-columns:1fr;border:0}
-  .fit-card{border:1px solid var(--rule);border-bottom:0;min-height:0}
-  .fit-card:last-child{border-bottom:1px solid var(--rule)}
-}
-
-/* ═══════════ PROCESS RAIL ═══════════ */
-.process{background:var(--paper);border-top:1px solid var(--rule)}
-.process .s-head{margin-bottom:0}
-.process .s-head .lede{margin-top:18px;max-width:46ch}
-.rail{position:relative;margin-top:clamp(40px,4.5vw,72px)}
-.rail-line,.rail-fill{position:absolute;left:7px;top:8px;width:1px}
-.rail-line{bottom:8px;background:var(--rule)}
-.rail-fill{background:var(--blue);height:0;transform-origin:50% 0}
-.step{display:grid;grid-template-columns:52px minmax(0,190px) minmax(0,1fr);gap:clamp(14px,2.6vw,44px);padding:clamp(18px,2.2vw,28px) 0;align-items:start}
-.dot-o{width:15px;height:15px;border-radius:50%;border:1px solid var(--rule);background:var(--paper);position:relative;transition:border-color .5s var(--e),transform .5s var(--e)}
-.dot-o:after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:transparent;transition:background .5s var(--e)}
-.step.on .dot-o{border-color:var(--blue);transform:scale(1.15)}
-.step.on .dot-o:after{background:var(--blue)}
-.step h3{color:var(--steel-2);transition:color .5s var(--e)}
-.step.on h3{color:var(--ink)}
-.when{margin-top:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.gate{font-size:9px;letter-spacing:.12em;padding:3px 7px;border:1px solid var(--amber);color:var(--amber)}
-.step p{font-size:15px;line-height:1.62;color:var(--steel);max-width:50ch}
-@media(max-width:820px){
-  .step{grid-template-columns:34px minmax(0,1fr);gap:14px}
-  .step>div:nth-child(3){grid-column:2}
-  .rail-line,.rail-fill{left:7px}
-}
-
-.work-note{
-  margin-top:clamp(22px,2.5vw,32px);
-  display:flex;gap:10px;align-items:baseline;
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)
-}
-.cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
-.cta-band .wrap{padding-block:clamp(76px,9.5vw,150px)}
-.cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,8vw,6.4rem);line-height:.93}
-.cta-band .lede{color:#8C98A4;margin-top:18px;max-width:42ch}
-.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
-.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
-.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
-.assur i{font-style:normal;color:var(--amber);margin-right:7px}
-
-/* footer chrome → shared/chrome.css */
-
-
-@media (prefers-reduced-motion:reduce){
-  html:focus-within{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
-  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
-  .mask span i{transform:none!important}
-  .logo-rail{
-    -webkit-mask-image:none;mask-image:none;border:0;
-    max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);
-  }
-  .logo-rail__row{border:0;padding-block:10px}
-  .logo-rail__track{
-    animation:none!important;width:100%;flex-wrap:wrap;justify-content:center;
-  }
-  .logo-rail__set--dup{display:none}
-  .logo-rail__set{
-    flex-wrap:wrap;justify-content:center;width:100%;
-    gap:clamp(22px,5vw,40px) clamp(28px,5vw,52px);padding:0;
-  }
-  .logo-rail__set img{filter:none;opacity:.7}
-  .c-table tbody tr{opacity:1;transform:none}
-}
-</style>
+<link rel="stylesheet" href="/shared/home.css">
+<link rel="stylesheet" href="/shared/home-art.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/system.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -721,12 +41,9 @@ svg{display:block}
 <header class="nav" id="nav">
   <div class="nav-shell">
     <div class="wrap nav-in">
-      <a href="/" class="mark" aria-label="KRIVA Technologies home"><svg class="mark-icon" viewBox="0 0 160 40" width="160" height="40" aria-hidden="true" style="display:inline;margin-right:8px;vertical-align:middle">
-  <!-- Geometric K mark -->
-  <rect x="6" y="5" width="14" height="35" fill="currentColor"/>
-  <polygon points="16,5 30,20 30,18 22,5" fill="#5B4FFF"/>
-  <polygon points="20,23 28,40 35,40 20,30" fill="currentColor"/>
-</svg>KRIVA<sup>®</sup></a>
+      <a href="/" class="mark" aria-label="KRIVA Technologies home">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26" loading="eager">
+      </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
@@ -850,438 +167,413 @@ svg{display:block}
 </div>
 
 <main id="main">
-<div id="top"></div>
 
-<!-- ══════ HERO ══════ -->
+<!-- A · HERO · product is the centerpiece -->
 <section class="hero" aria-labelledby="h1">
-  <div class="wrap hero-grid">
+  <div class="wrap hero-stage">
     <div class="hero-copy">
-      <p class="eyebrow" data-r>Design engineering · SaaS &amp; trucking</p>
+      <p class="eyebrow" data-r>Product studio · US trucking &amp; SaaS</p>
       <h1 class="d1 mask" id="h1" data-mask>
-        <span><i>We build the</i></span>
-        <span><i>dispatch board</i></span>
-        <span><i><em>nobody</em> works around.</i></span>
+        <span><i>Software</i></span>
+        <span><i>nobody works</i></span>
+        <span><i>around.</i></span>
       </h1>
-      <p class="lede" data-r>Dispatch consoles, fleet dashboards, SaaS onboarding and QuickBooks&nbsp;/&nbsp;Xero sync, designed and shipped by the same senior team that shows up to your kickoff call.</p>
+      <p class="lede" data-r>Dispatch consoles, SaaS onboarding, and QuickBooks / Xero sync — designed and shipped by the same senior team on your kickoff call.</p>
       <div class="hero-actions" data-r>
         <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/work" class="btn ghost"><span>See the work</span><i>→</i></a>
       </div>
-      <div class="hero-facts" data-s>
-        <div class="fact"><b>Trucking</b><small>Dispatch, fleet, drivers</small></div>
-        <div class="fact"><b>SaaS</b><small>UK &amp; US product teams</small></div>
-        <div class="fact"><b>Finance</b><small>QuickBooks &amp; Xero</small></div>
-      </div>
+      <p class="hero-trust" data-r>
+        <span>Reply in one business day</span>
+        <span>US &amp; UK hours</span>
+        <span>In-house. No subcontracting.</span>
+      </p>
     </div>
 
-    <div data-r>
-      <div class="console" id="console">
-        <div class="c-head">
-          <div class="c-tabs" role="tablist" aria-label="Console views">
-            <button type="button" role="tab" aria-selected="true" id="tab-board">Board</button>
-            <button type="button" role="tab" aria-selected="false" id="tab-lanes">Lanes</button>
-            <button type="button" role="tab" aria-selected="false" id="tab-exc">Exceptions</button>
+    <div class="hero-stack" data-r>
+      <div class="browser">
+        <div class="browser-bar" aria-hidden="true">
+          <i></i><i></i><i></i>
+          <span>fleetflow · dispatch</span>
+        </div>
+        <div class="console" id="console">
+          <div class="c-head">
+            <div class="c-tabs" role="tablist" aria-label="Dispatch console views">
+              <button type="button" role="tab" aria-selected="true" aria-controls="panel-board" id="tab-board">Board</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="panel-lanes" id="tab-lanes">Lanes</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="panel-exc" id="tab-exc">Exceptions</button>
+            </div>
+            <span class="c-live"><i class="dot" aria-hidden="true"></i>Live pattern</span>
           </div>
-          <span class="c-live"><i class="dot" aria-hidden="true"></i><span id="clock">LIVE</span></span>
-        </div>
-
-        <div class="c-kpis">
-          <div class="kpi"><span>Active loads</span><b class="num" data-kpi="128">··</b></div>
-          <div class="kpi up"><span>On time</span><b class="num" id="ontime">··</b></div>
-          <div class="kpi"><span>Exceptions</span><b class="num" data-kpi="3">··</b></div>
-        </div>
-
-        <table class="c-table" id="board">
-          <caption>Illustrative dispatch board showing five sample loads and their status.</caption>
-          <thead><tr><th scope="col">Load</th><th scope="col">Lane</th><th scope="col">ETA</th><th scope="col">Status</th></tr></thead>
-          <tbody>
-            <tr><td>#4821</td><td>DAL → PHX</td><td>14:20</td><td><span class="chip s2" data-stage="2">Rolling</span></td></tr>
-            <tr><td>#4822</td><td>ATL → CLT</td><td>09:05</td><td><span class="chip s1" data-stage="1">Assigned</span></td></tr>
-            <tr><td>#4823</td><td>CHI → DET</td><td>16:40</td><td><span class="chip s0" data-stage="0">Pending</span></td></tr>
-            <tr><td>#4824</td><td>LAX → LAS</td><td>11:15</td><td><span class="chip s0" data-stage="0">Pending</span></td></tr>
-            <tr><td>#4825</td><td>SEA → PDX</td><td>08:30</td><td><span class="chip s1" data-stage="1">Assigned</span></td></tr>
-          </tbody>
-        </table>
-
-        <div class="c-foot">
-          <span class="mono">SLA</span>
-          <span class="track-bar" role="img" aria-label="Service level, 94 percent"><i id="sla"></i></span>
-          <span class="mono num" id="slaPct">0%</span>
-          <svg class="spark" viewBox="0 0 64 20" aria-hidden="true"><path d="M0 16 L9 12 L18 14 L27 8 L36 10 L45 5 L54 7 L64 2"/></svg>
-        </div>
-      </div>
-      <p class="c-note"><span class="flag">Demo</span> Interface pattern only, no client data shown</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ CLIENTS ══════ -->
-<section class="manifest" id="clients" aria-labelledby="clientsH">
-  <div class="wrap">
-    <div class="manifest-head">
-      <div>
-        <p class="eyebrow" data-r>Trusted by</p>
-        <h2 class="d2" id="clientsH" data-r>Operators we&rsquo;ve built for.</h2>
-      </div>
-      <div class="manifest-meta" data-r>
-        <p class="mono">Some engagements under NDA</p>
-        <a class="manifest-link" href="/work">Explore case studies <i>→</i></a>
-      </div>
-    </div>
-  </div>
-
-  <ul class="sr">
-    <li>Keep Moving Movers</li>
-    <li>XmileAuto Transport</li>
-    <li>DC Auto Transport</li>
-    <li>Extra Mile Movers</li>
-    <li>EliteOne Transportation</li>
-    <li>Schwarz Logistics</li>
-    <li>Xmile Transport &amp; Moving</li>
-    <li>Houzway</li>
-    <li>CareerMoon</li>
-    <li>Script</li>
-    <li>Cascadia Collection</li>
-    <li>Keep Moving Fitness</li>
-    <li>Global Crypto Blockchain</li>
-  </ul>
-
-  <div class="logo-rail" aria-hidden="true">
-    <div class="logo-rail__row">
-      <div class="logo-rail__track">
-        <ul class="logo-rail__set">
-          <li><img src="/brand/logos/clients/keep-moving-movers.png" alt="Keep Moving Movers" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/xmileauto-transport.png" alt="XmileAuto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/dc-auto-transport.png" alt="DC Auto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/extra-mile-movers.png" alt="Extra Mile Movers" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/eliteone-transportation.png" alt="EliteOne Transportation" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/schwarz-logistics.png" alt="Schwarz Logistics" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/xmile-transport-moving.png" alt="Xmile Transport and Moving" width="176" height="64" loading="lazy" decoding="async"></li>
-        </ul>
-        <ul class="logo-rail__set logo-rail__set--dup">
-          <li><img src="/brand/logos/clients/keep-moving-movers.png" alt="Keep Moving Movers" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/xmileauto-transport.png" alt="XmileAuto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/dc-auto-transport.png" alt="DC Auto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/extra-mile-movers.png" alt="Extra Mile Movers" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/eliteone-transportation.png" alt="EliteOne Transportation" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/schwarz-logistics.png" alt="Schwarz Logistics" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/xmile-transport-moving.png" alt="Xmile Transport and Moving" width="176" height="64" loading="lazy" decoding="async"></li>
-        </ul>
-      </div>
-    </div>
-    <div class="logo-rail__row">
-      <div class="logo-rail__track">
-        <ul class="logo-rail__set">
-          <li><img src="/brand/logos/clients/houzway.png" alt="Houzway" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/careermoon.png" alt="CareerMoon" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/script.png" alt="Script" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/cascadia-collection.png" alt="Cascadia Collection" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/keep-moving-fitness.png" alt="Keep Moving Fitness" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/global-crypto-blockchain.png" alt="Global Crypto Blockchain" width="176" height="64" loading="lazy" decoding="async"></li>
-        </ul>
-        <ul class="logo-rail__set logo-rail__set--dup">
-          <li><img src="/brand/logos/clients/houzway.png" alt="Houzway" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/careermoon.png" alt="CareerMoon" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/script.png" alt="Script" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li><img src="/brand/logos/clients/cascadia-collection.png" alt="Cascadia Collection" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/keep-moving-fitness.png" alt="Keep Moving Fitness" width="176" height="64" loading="lazy" decoding="async"></li>
-          <li class="logo-rail__item--tall"><img src="/brand/logos/clients/global-crypto-blockchain.png" alt="Global Crypto Blockchain" width="176" height="64" loading="lazy" decoding="async"></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ SOLUTIONS ══════ -->
-<section class="sect" id="solutions" aria-labelledby="solH">
-  <div class="wrap">
-    <div class="sol">
-      <div class="sol-rail">
-        <p class="eyebrow" data-r>What we build</p>
-        <h2 class="d2" id="solH" data-r style="margin-top:20px">Four domains.<br>Shipped in production.</h2>
-        <p class="body-sm" data-r style="margin-top:18px">Each lane maps to a live solution page. Nothing here is a filler menu item invented for coverage.</p>
-
-        <ul class="sol-index" id="solIndex">
-          <li class="act" style="--acc:var(--amber)"><button type="button" data-go="0"><u>01</u> Trucking &amp; logistics</button></li>
-          <li style="--acc:var(--blue)"><button type="button" data-go="1"><u>02</u> SaaS products</button></li>
-          <li style="--acc:var(--green)"><button type="button" data-go="2"><u>03</u> Accounting integrations</button></li>
-          <li style="--acc:var(--violet)"><button type="button" data-go="3"><u>04</u> Car transportation</button></li>
-        </ul>
-
-        <div class="viewer" aria-hidden="true">
-          <div class="viewer-bar"><b id="vName">Route planner</b><span id="vMeta">04 / 12 lanes</span></div>
-          <div class="viewer-body">
-            <div class="scene on" data-scene="0">
-              <svg class="route" viewBox="0 0 300 150" preserveAspectRatio="none">
-                <g class="grid" stroke="#1E252C">
-                  <line x1="0" y1="37" x2="300" y2="37"/><line x1="0" y1="75" x2="300" y2="75"/><line x1="0" y1="113" x2="300" y2="113"/>
-                  <line x1="75" y1="0" x2="75" y2="150"/><line x1="150" y1="0" x2="150" y2="150"/><line x1="225" y1="0" x2="225" y2="150"/>
-                </g>
-                <path class="path" d="M18 122 C 70 118, 84 62, 138 60 S 220 92, 282 26"/>
-                <circle class="node" cx="18" cy="122" r="4"/><circle class="node" cx="138" cy="60" r="4"/><circle class="node" cx="282" cy="26" r="4"/>
-              </svg>
+          <div class="c-kpis">
+            <div class="kpi"><span>Active loads</span><b class="num" data-kpi="128">··</b></div>
+            <div class="kpi up"><span>On time</span><b class="num" id="ontime">··</b></div>
+            <div class="kpi"><span>Exceptions</span><b class="num" data-kpi="3">··</b></div>
+          </div>
+          <div class="c-panel on" id="panel-board" role="tabpanel" aria-labelledby="tab-board">
+            <table class="c-table" id="board">
+              <caption>Illustrative dispatch board showing five sample loads.</caption>
+              <thead><tr><th scope="col">Load</th><th scope="col">Lane</th><th scope="col">ETA</th><th scope="col">Status</th></tr></thead>
+              <tbody>
+                <tr><td>#4821</td><td>DAL → PHX</td><td>14:20</td><td><span class="chip s2">Rolling</span></td></tr>
+                <tr><td>#4822</td><td>ATL → CLT</td><td>09:05</td><td><span class="chip s1">Assigned</span></td></tr>
+                <tr><td>#4823</td><td>CHI → DET</td><td>16:40</td><td><span class="chip s0">Pending</span></td></tr>
+                <tr><td>#4824</td><td>LAX → LAS</td><td>11:15</td><td><span class="chip s1">Assigned</span></td></tr>
+                <tr><td>#4825</td><td>SEA → PDX</td><td>08:30</td><td><span class="chip s2">Rolling</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="c-panel" id="panel-lanes" role="tabpanel" aria-labelledby="tab-lanes" hidden>
+            <div class="lane-list">
+              <div class="lane-row"><b>DAL → PHX</b><span class="lane-bar" style="--v:.86"><i></i></span><span>86%</span></div>
+              <div class="lane-row"><b>ATL → CLT</b><span class="lane-bar" style="--v:.72"><i></i></span><span>72%</span></div>
+              <div class="lane-row"><b>CHI → DET</b><span class="lane-bar" style="--v:.64"><i></i></span><span>64%</span></div>
+              <div class="lane-row"><b>LAX → LAS</b><span class="lane-bar" style="--v:.91"><i></i></span><span>91%</span></div>
+              <div class="lane-row"><b>SEA → PDX</b><span class="lane-bar" style="--v:.58"><i></i></span><span>58%</span></div>
             </div>
-            <div class="scene" data-scene="1">
-              <div class="funnel">
-                <div class="frow"><span>Signup</span><span class="fbar" style="--v:1"><i></i></span><em>100%</em></div>
-                <div class="frow"><span>Verified</span><span class="fbar" style="--v:.78"><i></i></span><em>78%</em></div>
-                <div class="frow"><span>First run</span><span class="fbar" style="--v:.54"><i></i></span><em>54%</em></div>
-                <div class="frow"><span>Activated</span><span class="fbar" style="--v:.41"><i></i></span><em>41%</em></div>
-              </div>
+          </div>
+          <div class="c-panel" id="panel-exc" role="tabpanel" aria-labelledby="tab-exc" hidden>
+            <div class="exc-list">
+              <div class="exc-row"><b>#4823 CHI → DET</b><span>HOS window</span><small>Open</small></div>
+              <div class="exc-row"><b>#4819 DEN → KC</b><span>Late pickup</span><small>Watch</small></div>
+              <div class="exc-row"><b>#4804 PHX → ELP</b><span>Missing POD</span><small>Open</small></div>
             </div>
-            <div class="scene" data-scene="2">
-              <div class="ledger">
-                <div class="lrow ok"><span>INV-2291</span><small>Matched</small><span>$4,120.00</span></div>
-                <div class="lrow ok"><span>INV-2292</span><small>Matched</small><span>$880.50</span></div>
-                <div class="lrow ex"><span>INV-2293</span><small>Exception</small><span>$1,204.75</span></div>
-                <div class="lrow ok"><span>INV-2294</span><small>Matched</small><span>$310.00</span></div>
-              </div>
-            </div>
-            <div class="scene" data-scene="3">
-              <div class="haul">
-                <div class="hrow done"><span>QT-1841 · Sedan · CHI→ATL</span><small>Delivered</small></div>
-                <div class="hrow on"><span>QT-1842 · SUV · DAL→PHX</span><small>In transit</small></div>
-                <div class="hrow"><span>QT-1843 · Truck · LAX→DEN</span><small>Quoted</small></div>
-                <div class="hrow"><span>QT-1844 · Van · SEA→PDX</span><small>Assigned</small></div>
-              </div>
-            </div>
+          </div>
+          <div class="c-foot">
+            <span class="mono">SLA</span>
+            <span class="track-bar" role="img" aria-label="Service level, 94 percent"><i id="sla"></i></span>
+            <span class="mono num" id="slaPct">0%</span>
           </div>
         </div>
       </div>
-
-      <div class="panels" id="panels">
-        <article class="panel" style="--acc:var(--amber)" data-r data-v="Route planner|04 / 12 lanes">
-          <span class="panel-no">01</span>
-          <p class="eyebrow">Carriers · Brokers · Fleets</p>
-          <h3 class="d3">Dispatch boards built around the desk, not the database.</h3>
-          <p class="body-sm">Bulk assignment, SLA intelligence, supervisor overrides, and driver apps that survive a cracked Android in a truck-stop parking lot. We've sat next to dispatchers during a shift. It changes what you build.</p>
-          <div class="tags"><span class="tag">Custom TMS</span><span class="tag">Dispatch CRM</span><span class="tag">Fleet dashboards</span><span class="tag">Driver apps</span></div>
-          <a href="/solutions/trucking-logistics" class="p-link">Explore trucking solutions <i>→</i></a>
-        </article>
-
-        <article class="panel" style="--acc:var(--blue)" data-r data-v="Activation funnel|Last 30 days">
-          <span class="panel-no">02</span>
-          <p class="eyebrow">Pre-seed → Series B</p>
-          <h3 class="d3">The product works. Users aren't sticking.</h3>
-          <p class="body-sm">We fix the parts causing drop-off: first-run flows, permission screens that don't confuse admins, and dashboards that answer the question someone actually opened the app to ask.</p>
-          <div class="tags"><span class="tag">Onboarding</span><span class="tag">Dashboards</span><span class="tag">10-week MVP</span><span class="tag">Design systems</span></div>
-          <a href="/solutions/saas" class="p-link">Explore SaaS solutions <i>→</i></a>
-        </article>
-
-        <article class="panel" style="--acc:var(--green)" data-r data-v="Reconciliation|Period 08 · open">
-          <span class="panel-no">03</span>
-          <p class="eyebrow">Finance &amp; operations</p>
-          <h3 class="d3">Month-end close without the fire drill.</h3>
-          <p class="body-sm">QuickBooks and Xero sync that surfaces exceptions before they turn into reconciliation archaeology. Reliable retries, readable error states, and an audit trail your accountant will accept.</p>
-          <div class="tags"><span class="tag">QuickBooks API</span><span class="tag">Xero sync</span><span class="tag">Exception dashboards</span></div>
-          <a href="/solutions/accounting-integrations" class="p-link">Explore integrations <i>→</i></a>
-        </article>
-
-        <article class="panel" style="--acc:var(--violet)" data-r data-v="Haul board|04 open quotes">
-          <span class="panel-no">04</span>
-          <p class="eyebrow">Auto transport · Brokers · Carriers</p>
-          <h3 class="d3">Quotes, hauls, and tracking that stay in one system.</h3>
-          <p class="body-sm">Quote intake that survives a busy Monday, carrier assignment without spreadsheet ping-pong, and status tracking customers can trust. Built for auto-transport desks that live on volume and exceptions.</p>
-          <div class="tags"><span class="tag">Quote workflows</span><span class="tag">Carrier matching</span><span class="tag">Load tracking</span><span class="tag">Customer portals</span></div>
-          <a href="/solutions/car-transportation" class="p-link">Explore car transport <i>→</i></a>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ READOUT ══════ -->
-<section class="readout" aria-labelledby="roH">
-  <div class="wrap">
-    <div class="readout-head">
-      <p class="eyebrow" data-r>How engagements run</p>
-      <h2 class="d2" id="roH" data-r style="margin-top:18px">Operating rules we keep on every project.</h2>
-      <p class="lede" data-r>Not vanity metrics. The constraints that decide whether a build stays usable after launch.</p>
-    </div>
-    <div class="nums" id="nums">
-      <div class="nc"><b class="num" data-count="4" data-suffix="">0</b><span>Time zones</span><em>US &amp; UK call hours with India delivery overlap</em></div>
-      <div class="nc"><b>1</b><span>Team, no subcontracting</span><em>The people on your call build the product</em></div>
-      <div class="nc"><b>NDA</b><span>From day one</span><em>Available before the first conversation</em></div>
-      <div class="nc"><b>Weekly</b><span>Working demos</span><em>Shared board, written decisions</em></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ WORK ══════ -->
-<section class="sect work" id="work" aria-labelledby="workH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Selected work</p>
-        <h2 class="d2" id="workH" data-r>Three we can<br>talk about.</h2>
-        <p class="lede" data-r>What we designed, for whom, and the outcome that held up after launch.</p>
-      </div>
-      <a href="/work" class="btn ghost"><span>Full portfolio</span><i>→</i></a>
-    </div>
-
-    <article class="feat-case" data-r aria-labelledby="featCaseH">
-      <div class="feat-case-bar">
-        <span class="feat-no num" aria-hidden="true">01</span>
-        <div class="feat-tags">
-          <b>Featured</b>
-          <span>Logistics · Dispatch CRM</span>
-        </div>
-      </div>
-
-      <div class="feat-case-grid">
-        <div class="feat-case-copy">
-          <p class="feat-case-kicker">US trucking · Series A SaaS</p>
-          <h3 class="feat-case-title" id="featCaseH">FleetFlow dispatch console</h3>
-          <p class="feat-case-story">Rebuilt the dispatch board so operators reassign loads in bulk and see SLA breach risk on every row, before it becomes a call.</p>
-
-          <div class="feat-outcome" aria-label="Signed-off outcomes">
-            <div class="feat-outcome-lead">
-              <b class="num">−32%</b>
-              <span>Manual handle time</span>
-            </div>
-            <div class="feat-outcome-side">
-              <div><b class="num">400+</b><span>Daily routes</span></div>
-              <div><b class="num">11 wk</b><span>To production</span></div>
-            </div>
-          </div>
-
-          <div class="feat-shift" aria-label="Before and after">
-            <div>
-              <p class="mono">Was</p>
-              <p>One-row reassignment. No view of which loads were about to breach SLA.</p>
-            </div>
-            <div>
-              <p class="mono now">Now</p>
-              <p>Multi-select assignment, breach countdowns on the row, supervisor override on the board.</p>
-            </div>
-          </div>
-
-          <a href="/work/fleetflow-dispatch" class="feat-case-cta">Read the FleetFlow case study <i aria-hidden="true">→</i></a>
-        </div>
-
-        <div class="feat-case-media">
-          <a href="/work/fleetflow-dispatch" class="feat-media-link" aria-label="Read the FleetFlow case study">
-            <figure class="feat-media-frame">
-              <div class="feat-media-chrome" aria-hidden="true">
-                <span><b>FleetFlow</b> · console reference</span>
-                <span>16:9</span>
-              </div>
-              <div class="crop">
-                <div data-asset="/work/fleetflow/home-console.svg" data-asset-alt="FleetFlow dispatch console" data-asset-dims="1600×1000">
-<img src="/work/fleetflow/home-console.svg" alt="FleetFlow dispatch console" width="1600" height="1000" loading="lazy" decoding="async"></div>
-              </div>
-            </figure>
-          </a>
-          <p class="feat-media-cap">Discovery on-site · console + driver app · metrics by client ops</p>
-        </div>
-      </div>
-    </article>
-
-    <div class="work-more">
-      <p class="eyebrow" data-r>Also on the board</p>
-      <ul class="work-index" data-s>
-        <li>
-          <a href="/work/payroll-pro-saas">
-            <span class="wi-no num" aria-hidden="true">02</span>
-            <span>
-              <span class="wi-kicker">B2B SaaS · Onboarding</span>
-              <span class="wi-title">PayrollPro first-run rebuild</span>
-              <span class="wi-hook">Progressive setup that reaches a real payroll run in one sitting, permissions deferred until after first value.</span>
-            </span>
-            <span class="wi-fact"><b class="num">6 wk</b>To production</span>
-            <span class="wi-cta">Case study <i aria-hidden="true">→</i></span>
-          </a>
-        </li>
-        <li>
-          <a href="/work/finance-sync-hub">
-            <span class="wi-no num" aria-hidden="true">03</span>
-            <span>
-              <span class="wi-kicker">Integrations · Finance ops</span>
-              <span class="wi-title">FinanceSync reconciliation hub</span>
-              <span class="wi-hook">Exceptions raised the moment they occur, with the source record, retry history, and one-click resolve.</span>
-            </span>
-            <span class="wi-fact"><b class="num">QB + Xero</b>Ledgers synced</span>
-            <span class="wi-cta">Case study <i aria-hidden="true">→</i></span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <p class="work-note"><span class="flag">Note</span> Only FleetFlow publishes signed-off outcome metrics. Other cases lead with verified narrative until metrics are cleared.</p>
-  </div>
-</section>
-
-<!-- ══════ FIT ══════ -->
-<section class="sect fit" id="fit" aria-labelledby="fitH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Who this is for</p>
-        <h2 class="d2" id="fitH" data-r>Built for operators,<br>not for portfolios.</h2>
-        <p class="lede" data-r>If your desk runs on exceptions, handoffs, and software people work around, you are the buyer we designed this site for.</p>
-      </div>
-      <a href="/contact#book" class="btn ghost"><span>Check the fit</span><i>→</i></a>
-    </div>
-
-    <div class="fit-grid" data-s>
-      <a class="fit-card" href="/solutions/trucking-logistics" style="--acc:var(--amber)">
-        <p class="eyebrow">VP Ops · Fleet leads</p>
-        <h3>Dispatch that matches the board, not the schema.</h3>
-        <p>Bulk assignment, SLA risk on every row, driver apps that survive a cracked Android. We have sat next to the desk during a live shift.</p>
-        <span class="fit-link">Trucking solutions <i aria-hidden="true">→</i></span>
-      </a>
-      <a class="fit-card" href="/solutions/saas" style="--acc:var(--blue)">
-        <p class="eyebrow">Founders · Product leads</p>
-        <h3>Activation that survives first week, not first click.</h3>
-        <p>Onboarding, permissions, and dashboards that answer the question someone opened the product to ask. Built for UK and US B2B SaaS.</p>
-        <span class="fit-link">SaaS solutions <i aria-hidden="true">→</i></span>
-      </a>
-      <a class="fit-card" href="/solutions/accounting-integrations" style="--acc:var(--green)">
-        <p class="eyebrow">Finance · Ops leads</p>
-        <h3>Close without reconciliation archaeology.</h3>
-        <p>QuickBooks and Xero sync with readable exceptions, retries that hold, and an audit trail your accountant will accept.</p>
-        <span class="fit-link">Accounting integrations <i aria-hidden="true">→</i></span>
+      <figure class="hero-float">
+        <img src="/solutions/trucking/fleet-dashboard.svg" alt="" width="800" height="500" decoding="async">
+        <figcaption>Fleet view · exceptions first</figcaption>
+      </figure>
+      <a class="hero-callout" href="/work/fleetflow-dispatch">
+        <b class="num">−32%</b>
+        <span>Manual handle time · FleetFlow, signed-off</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ══════ PROCESS ══════ -->
-<section class="sect process" id="process" aria-labelledby="procH">
+<!-- B · COMPACT TRUST -->
+<section class="proof-strip" aria-label="Selected clients">
   <div class="wrap">
-    <div class="s-head">
+    <p class="proof-label">On desks at</p>
+    <ul class="logo-row">
+      <li><img src="/brand/logos/clients/keep-moving-movers.png" alt="Keep Moving Movers" width="176" height="64" loading="lazy" decoding="async"></li>
+      <li><img src="/brand/logos/clients/xmileauto-transport.png" alt="XmileAuto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
+      <li><img src="/brand/logos/clients/dc-auto-transport.png" alt="DC Auto Transport" width="176" height="64" loading="lazy" decoding="async"></li>
+      <li><img src="/brand/logos/clients/eliteone-transportation.png" alt="EliteOne Transportation" width="176" height="64" loading="lazy" decoding="async"></li>
+      <li><img src="/brand/logos/clients/schwarz-logistics.png" alt="Schwarz Logistics" width="176" height="64" loading="lazy" decoding="async"></li>
+      <li><img src="/brand/logos/clients/houzway.png" alt="Houzway" width="176" height="64" loading="lazy" decoding="async"></li>
+      <li><img src="/brand/logos/clients/careermoon.png" alt="CareerMoon" width="176" height="64" loading="lazy" decoding="async"></li>
+      <li><img src="/brand/logos/clients/script.png" alt="Script" width="176" height="64" loading="lazy" decoding="async"></li>
+    </ul>
+  </div>
+</section>
+
+<!-- C · SIGNATURE PRODUCT SHOWCASE -->
+<section class="canvas" id="product" aria-labelledby="canvasH">
+  <div class="wrap canvas-head">
+    <div>
+      <p class="eyebrow" data-r>Product moment</p>
+      <h2 class="d2" id="canvasH" data-r>A board a dispatcher can run a shift on.</h2>
+    </div>
+    <p class="lede" data-r>This is the work. Not a capability list. FleetFlow-style dispatch: bulk actions, SLA on every row, exceptions before they become a call.</p>
+  </div>
+  <div class="canvas-stage" data-r>
+    <div class="browser canvas-main">
+      <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>fleetflow.kriva · console</span></div>
+      <img src="/work/fleetflow/console-full.svg" alt="FleetFlow dispatch console" width="1920" height="1080" loading="lazy" decoding="async">
+    </div>
+    <figure class="canvas-side">
+      <img src="/work/fleetflow/load-board.svg" alt="Load board density" width="1200" height="800" loading="lazy" decoding="async">
+    </figure>
+    <p class="anno anno-1">Bulk reassign without leaving the row</p>
+    <p class="anno anno-2">SLA risk on the board, not in a report</p>
+  </div>
+  <div class="wrap canvas-foot">
+    <p>Illustrative pattern · no client data shown</p>
+    <a href="/work/fleetflow-dispatch" class="btn">Read the FleetFlow case <i>→</i></a>
+  </div>
+</section>
+
+<!-- D · DOMAINS · featured split + editorial rows, not a card farm -->
+<section class="domains" id="solutions" aria-labelledby="solH">
+  <div class="wrap">
+    <div class="domains-head">
+      <p class="eyebrow" data-r>What we build</p>
+      <h2 class="d2" id="solH" data-r>Four production lanes.</h2>
+    </div>
+
+    <a class="domain-feat" href="/solutions/trucking-logistics" data-r>
+      <div class="domain-feat-copy">
+        <span class="offer-no">01 · For VP Ops</span>
+        <h3 class="d2">Trucking &amp; logistics</h3>
+        <p class="lede">Dispatch boards built around the desk, not the database. Fleet views and driver tools sit next to the same shift.</p>
+        <span class="offer-go">Explore trucking <i>→</i></span>
+      </div>
+      <figure>
+        <img src="/solutions/trucking/dispatch-console.svg" alt="Dispatch console for trucking operations" width="1600" height="1000" loading="lazy" decoding="async">
+      </figure>
+    </a>
+
+    <div class="domain-rows" data-s>
+      <a href="/solutions/saas">
+        <span class="offer-no">02</span>
+        <div>
+          <h3>SaaS products</h3>
+          <p>Onboarding, permissions, and dashboards people still use after week one.</p>
+        </div>
+        <span class="who">Founders · Product</span>
+        <span class="offer-go">Explore <i>→</i></span>
+      </a>
+      <a href="/solutions/accounting-integrations">
+        <span class="offer-no">03</span>
+        <div>
+          <h3>Accounting integrations</h3>
+          <p>QuickBooks and Xero sync that surfaces exceptions before close.</p>
+        </div>
+        <span class="who">Finance · Ops</span>
+        <span class="offer-go">Explore <i>→</i></span>
+      </a>
+      <a href="/solutions/car-transportation">
+        <span class="offer-no">04</span>
+        <div>
+          <h3>Car transportation</h3>
+          <p>Quotes, hauls, and tracking that stay in one system.</p>
+        </div>
+        <span class="who">Auto transport</span>
+        <span class="offer-go">Explore <i>→</i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- E · DARK · studio rules + UI crop -->
+<section class="desk" aria-labelledby="diffH">
+  <div class="wrap desk-grid">
+    <div>
+      <p class="eyebrow" data-r>How the studio works</p>
+      <h2 class="d2" id="diffH" data-r>Sit with the desk.<br>Then ship.</h2>
+      <ol class="desk-rules" data-s>
+        <li><b>01</b><div><h3>Design and engineering in one thread</h3><p>The people who draw the interface understand the API it connects to.</p></div></li>
+        <li><b>02</b><div><h3>Built from the shift, not the schema</h3><p>Bulk actions and SLA risk come from sitting next to dispatchers — not a feature list.</p></div></li>
+        <li><b>03</b><div><h3>Weekly software on a real URL</h3><p>You approve the thing itself, not a slide about progress.</p></div></li>
+        <li><b>04</b><div><h3>One team. No subcontracting.</h3><p>The people on the first call build the product.</p></div></li>
+      </ol>
+    </div>
+    <figure class="desk-ui" data-r>
+      <img src="/work/fleetflow/sla-burndown.svg" alt="SLA burndown view from FleetFlow" width="1200" height="800" loading="lazy" decoding="async">
+      <figcaption>SLA view · FleetFlow pattern</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- F · PROCESS as a visual run, not tiles -->
+<section class="run" id="process" aria-labelledby="procH">
+  <div class="wrap">
+    <div class="run-head">
       <div>
-        <p class="eyebrow" data-r>Ten weeks, three approval gates</p>
-        <h2 class="d2" id="procH" data-r>You always know what<br>you&rsquo;re approving next.</h2>
-        <p class="lede" data-r>Discovery through launch with written gates, weekly demos on a real URL, and a shared board for decisions.</p>
+        <p class="eyebrow" data-r>A project, in weeks</p>
+        <h2 class="d2" id="procH" data-r>You always know what you&rsquo;re approving next.</h2>
       </div>
       <a href="/process" class="btn ghost"><span>Full process</span><i>→</i></a>
     </div>
+    <ol class="run-bar" data-s>
+      <li>
+        <span class="wk">Wk 1–2</span>
+        <i class="bar" style="--w:20%"></i>
+        <h3>Discovery</h3>
+        <p>Written definition of success. Nothing is designed until you have read it back.</p>
+      </li>
+      <li>
+        <span class="wk">Wk 2–4</span>
+        <i class="bar" style="--w:40%"></i>
+        <h3>UX &amp; UI</h3>
+        <p>Prototype, then final UI — reviewed before production code.</p>
+      </li>
+      <li>
+        <span class="wk">Wk 4–8</span>
+        <i class="bar" style="--w:70%"></i>
+        <h3>Build</h3>
+        <p>Weekly demos on a real URL. The thing itself, in your browser.</p>
+      </li>
+      <li>
+        <span class="wk">Wk 8–10</span>
+        <i class="bar" style="--w:100%"></i>
+        <h3>Launch</h3>
+        <p>QA, phased rollout, docs your team can maintain.</p>
+      </li>
+    </ol>
+    <p class="run-facts" data-r>
+      <span><b>US &amp; UK hours</b> India delivery overlap</span>
+      <span><b>1 business day</b> first reply, the studio on the call</span>
+      <span><b>You own the files</b> Figma, repos, docs at close</span>
+      <span><b>NDA standard</b> before product detail</span>
+    </p>
+  </div>
+</section>
 
-    <div class="rail" id="rail">
-      <div class="rail-line" aria-hidden="true"></div>
-      <div class="rail-fill" id="railFill" aria-hidden="true"></div>
+<!-- G · WORK · one dominant case -->
+<section class="featwork" id="work" aria-labelledby="workH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Selected work</p>
+    <h2 class="d2" id="workH" data-r>Held up after launch.</h2>
+  </div>
+  <article class="featwork-hero" data-r aria-labelledby="featCaseH">
+    <a class="featwork-shot" href="/work/fleetflow-dispatch">
+      <img src="/work/fleetflow/console-hero.svg" alt="FleetFlow dispatch console" width="1920" height="1080" loading="lazy" decoding="async">
+    </a>
+    <div class="featwork-copy">
+      <p class="story-kicker">US trucking · Dispatch CRM</p>
+      <h3 class="story-title" id="featCaseH">FleetFlow</h3>
+      <p class="lede">Operators reassign loads in bulk and see SLA breach risk on every row — before it becomes a call.</p>
+      <p class="featwork-stat"><b class="num">−32%</b> <span>manual handle time · signed-off</span></p>
+      <p class="featwork-meta"><span>400+ daily routes</span><span>11 weeks to production</span></p>
+      <a href="/work/fleetflow-dispatch" class="btn">Read the case study <i>→</i></a>
+    </div>
+  </article>
+  <div class="wrap">
+    <div class="featwork-more">
+      <a href="/work/payroll-pro-saas">
+        <span class="offer-no">PayrollPro</span>
+        <h3>First-run rebuild for B2B SaaS</h3>
+        <p>A real payroll run in one sitting. Permissions wait until after first value.</p>
+        <span class="offer-go">Case study <i>→</i></span>
+      </a>
+      <a href="/work/finance-sync-hub">
+        <span class="offer-no">FinanceSync</span>
+        <h3>Reconciliation hub</h3>
+        <p>Exceptions with the source record, retry history, and one-click resolve.</p>
+        <span class="offer-go">Case study <i>→</i></span>
+      </a>
+    </div>
+    <p class="work-note">Only FleetFlow publishes signed-off outcome metrics. Other cases lead with verified narrative until metrics are cleared.</p>
+  </div>
+</section>
 
-      <div class="step"><span class="dot-o" aria-hidden="true"></span>
-        <div><h3 class="d3">Discovery</h3><p class="when">Week 1–2 <span class="gate">You sign off</span></p></div>
-        <p>Goals, users, constraints, and a written definition of success. Nothing gets designed until you've read it back to us.</p>
+<!-- H · INSIGHTS · editorial, not three equal cards -->
+<section class="journal" aria-labelledby="notesH">
+  <div class="wrap">
+    <div class="journal-head">
+      <div>
+        <p class="eyebrow" data-r>Perspectives</p>
+        <h2 class="d2" id="notesH" data-r>Notes from the desk.</h2>
       </div>
-      <div class="step"><span class="dot-o" aria-hidden="true"></span>
-        <div><h3 class="d3">UX &amp; UI</h3><p class="when">Week 2–4</p></div>
-        <p>Wireframes, a clickable prototype, then final UI, reviewed with you before a line of production code exists.</p>
+      <a href="/insights" class="btn ghost"><span>All insights</span><i>→</i></a>
+    </div>
+    <div class="journal-feat" data-r>
+      <a class="journal-lead" href="/insights/trucking-dispatch-crm-guide">
+        <span class="notes-cat">Trucking · May 2026</span>
+        <h3>Dispatch CRM for US trucking companies: what actually works</h3>
+        <span class="offer-go">Read <i>→</i></span>
+      </a>
+      <div class="journal-side">
+        <a href="/insights/saas-onboarding-patterns">
+          <span class="notes-cat">SaaS · Dec 2025</span>
+          <h3>Onboarding patterns that improve activation</h3>
+        </a>
+        <a href="/insights/choosing-a-digital-agency">
+          <span class="notes-cat">Strategy · Sep 2025</span>
+          <h3>How to choose a digital agency without wasting six months</h3>
+        </a>
       </div>
-      <div class="step"><span class="dot-o" aria-hidden="true"></span>
-        <div><h3 class="d3">Build</h3><p class="when">Week 4–8 <span class="gate">You sign off</span></p></div>
-        <p>Weekly working demos on a real URL. Not a slide about progress, the thing itself, in your browser.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FAQ · OBJECTION HANDLING ══════ -->
+<section class="sect faq" id="faq" aria-labelledby="faqH">
+  <div class="wrap faq-grid">
+    <div>
+      <p class="eyebrow" data-r>Before you get in touch</p>
+      <h2 class="d2" id="faqH" data-r>The questions buyers ask first.</h2>
+      <p class="lede" data-r>Straight answers, so the first call starts further along.</p>
+    </div>
+
+    <div class="faq-list" data-r>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+          <span class="qn num">01</span>
+          <span class="qt">Can you work with US and UK companies from India?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
+          <p>Yes. The studio is remote-first, headquartered in Ahmedabad. We cover US and UK call hours with India delivery overlap, run async updates in Slack, and hold weekly video calls at times that work in both regions. Most of our US trucking clients have never met us in person.</p>
+        </div></div></div>
       </div>
-      <div class="step"><span class="dot-o" aria-hidden="true"></span>
-        <div><h3 class="d3">QA &amp; launch</h3><p class="when">Week 8–10</p></div>
-        <p>Cross-browser, accessibility, analytics, phased rollout, and documentation your team can actually maintain.</p>
+
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+          <span class="qn num">02</span>
+          <span class="qt">What happens after I send an enquiry?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
+          <p>You get a reply within one business day. The first conversation is a 20-minute fit call with the KRIVA team — there is no salesperson between you and the people who ship the work. If it looks like a fit, the designers and engineers on the project join when scoping starts.</p>
+        </div></div></div>
       </div>
-      <div class="step"><span class="dot-o" aria-hidden="true"></span>
-        <div><h3 class="d3">After</h3><p class="when">Week 10+ <span class="gate">You sign off</span></p></div>
-        <p>Fixes, iteration, roadmap support. Most clients keep going, the ones who don't leave with everything they need.</p>
+
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+          <span class="qn num">03</span>
+          <span class="qt">What do you need from us to get started?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
+          <p>A brief, your timeline, and a 20-minute fit call. If you do not have a brief yet, we will send a template or write one with you. We are used to clients who arrive with a problem rather than a specification.</p>
+        </div></div></div>
       </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+          <span class="qn num">04</span>
+          <span class="qt">Can you work with our existing product and team?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
+          <p>Yes. We embed with in-house designers, developers, and product managers, and adapt to your tools and working style. Redesigns of live products are rolled out in phases to reduce risk and keep existing users on solid ground.</p>
+        </div></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
+          <span class="qn num">05</span>
+          <span class="qt">How is a project scoped and priced?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
+          <p>Everything is scoped after discovery, with deliverables and milestones agreed upfront — fixed-scope, monthly retainer, or sprint-based. A focused MVP or redesign usually runs 6 to 10 weeks. A full platform with integrations runs 12 to 20. You get an honest timeline on the first call.</p>
+        </div></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
+          <span class="qn num">06</span>
+          <span class="qt">Who owns the code and the design files?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
+          <p>You do. All Figma files, repositories, and documentation transfer to you at project close, or before if you prefer. We help onboard your internal team on what we have built.</p>
+        </div></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
+          <span class="qn num">07</span>
+          <span class="qt">How are you different from a typical outsourcing agency?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq7" role="region" aria-labelledby="fqb7"><div><div class="faq-a-in">
+          <p>No subcontracting. Every designer and engineer is a permanent team member, and the people on your first call are the people who build the product. If a project needs a specialist we do not have, we say so before we start rather than quietly farming the work out.</p>
+        </div></div></div>
+      </div>
+
+      <p class="faq-more" data-r>More detail on <a href="/faq">the full FAQ</a> and <a href="/process">how a project runs</a>.</p>
     </div>
   </div>
 </section>
@@ -1348,7 +640,7 @@ svg{display:block}
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true">KRIVA</p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143" loading="lazy" decoding="async"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -1362,158 +654,152 @@ svg{display:block}
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script>
-(function(){
-'use strict';
-const mqReduce = matchMedia('(prefers-reduced-motion: reduce)');
-const mqDesk   = matchMedia('(min-width: 1001px)');
-const reduce   = () => mqReduce.matches;
-
-/* ───────── single scroll loop: every scroll-driven effect reads from here ───────── */
-const readers = [];
-let ticking = false;
-function onScroll(){ if(!ticking){ requestAnimationFrame(run); ticking = true; } }
-function run(){ const y = scrollY; for(const r of readers) r(y); ticking = false; }
-addEventListener('scroll', onScroll, {passive:true});
-addEventListener('resize', onScroll, {passive:true});
-
-/* ───────── reveals ───────── */
-const io = new IntersectionObserver((es)=>{
-  for(const e of es){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }
-},{threshold:.14, rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>io.observe(el));
-
-/* nav chrome → shared/chrome.js */
-/* ───────── HERO CONSOLE ───────── */
-const con = document.getElementById('console');
-const rows = [...document.querySelectorAll('#board tbody tr')];
-const chips = [...document.querySelectorAll('#board .chip')];
-const STAGES = [['Pending','s0'],['Assigned','s1'],['Rolling','s2']];
-
-const conIO = new IntersectionObserver(es=>{
-  if(!es[0].isIntersecting) return;
-  conIO.disconnect();
-  con.classList.add('lit');
-
-  // rows deal in with an eased, non-linear stagger (fast at first, slower after)
-  rows.forEach((r,i)=>{
-    const d = reduce() ? 0 : 380 + Math.pow(i,.82) * 105;
-    setTimeout(()=>r.classList.add('on'), d);
-  });
-
-  // KPI counters + SLA fill, sequenced after the rows land
-  setTimeout(()=>{
-    document.querySelectorAll('[data-kpi]').forEach(el=>countTo(el, +el.dataset.kpi, ''));
-    countTo(document.getElementById('ontime'), 96, '%');
-    document.getElementById('sla').style.transform = 'scaleX(.94)';
-    countTo(document.getElementById('slaPct'), 94, '%');
-  }, reduce() ? 0 : 900);
-},{threshold:.3});
-conIO.observe(con);
-
-// scroll-driven state progression: statuses advance as the hero scrolls past
-if(!reduce()){
-  let stageShown = -1;
-  readers.push(()=>{
-    const r = con.getBoundingClientRect();
-    if(r.bottom < 0 || r.top > innerHeight) return;
-    const p = Math.min(1, Math.max(0, (innerHeight * .8 - r.top) / (r.height + innerHeight * .5)));
-    const step = p < .34 ? 0 : p < .67 ? 1 : 2;
-    if(step === stageShown) return;
-    stageShown = step;
-    chips.forEach((c,i)=>{
-      const base = +c.dataset.stage;
-      const s = Math.min(2, base + step);
-      setTimeout(()=>{ c.textContent = STAGES[s][0]; c.className = 'chip ' + STAGES[s][1]; }, i*70);
-    });
-  });
-
-  // live clock, cheap, one setInterval, paused when tab hidden
-  const clock = document.getElementById('clock');
-  const tickClock = ()=>{
-    if(document.hidden) return;
-    const d = new Date();
-    clock.textContent = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0') + ':' + String(d.getSeconds()).padStart(2,'0');
-  };
-  tickClock(); setInterval(tickClock, 1000);
+<script src="/shared/home.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Organization", "ProfessionalService"],
+  "@id": "https://krivatechnologies.com/#organization",
+  "name": "KRIVA Technologies",
+  "url": "https://krivatechnologies.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://krivatechnologies.com/icon-512.png",
+    "width": 512,
+    "height": 512
+  },
+  "image": "https://krivatechnologies.com/brand/og-default.png",
+  "description": "Design and engineering studio building dispatch consoles, fleet dashboards, SaaS onboarding, and QuickBooks/Xero integrations for US trucking operators and UK/US B2B SaaS teams.",
+  "foundingDate": "2025",
+  "email": "hello@krivatechnologies.com",
+  "telephone": "+919724454455",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "511 - I The Address",
+    "addressLocality": "Ahmedabad",
+    "addressRegion": "Gujarat",
+    "postalCode": "380060",
+    "addressCountry": "IN"
+  },
+  "areaServed": [
+    { "@type": "Country", "name": "United States" },
+    { "@type": "Country", "name": "United Kingdom" },
+    { "@type": "Country", "name": "India" }
+  ],
+  "knowsAbout": [
+    "Dispatch CRM and transportation management systems",
+    "Fleet dashboards and exception handling",
+    "Driver mobile applications",
+    "B2B SaaS onboarding and activation",
+    "Multi-tenant SaaS admin and permissions",
+    "QuickBooks and Xero integrations",
+    "Accounting reconciliation workflows"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "email": "hello@krivatechnologies.com",
+    "telephone": "+919724454455",
+    "availableLanguage": "English",
+    "areaServed": ["US", "GB", "IN"]
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/kriva-technologies",
+    "https://dribbble.com/krivatechnologies",
+    "https://www.instagram.com/krivatechnologies",
+    "https://x.com/krivatechnologies"
+  ]
 }
-
-// console tabs (visual state only, real routing goes here in the Next.js port)
-document.querySelectorAll('.c-tabs button').forEach(b=>{
-  b.addEventListener('click', ()=>{
-    document.querySelectorAll('.c-tabs button').forEach(x=>x.setAttribute('aria-selected','false'));
-    b.setAttribute('aria-selected','true');
-  });
-});
-
-/* ───────── count-up helper ───────── */
-function countTo(el, target, suffix){
-  if(reduce()){ el.textContent = target + suffix; return; }
-  const dur = 1200, t0 = performance.now();
-  const tick = t=>{
-    const p = Math.min((t - t0)/dur, 1);
-    const eased = 1 - Math.pow(1 - p, 3.4);
-    el.textContent = Math.round(target * eased) + suffix;
-    if(p < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://krivatechnologies.com/#website",
+  "name": "KRIVA Technologies",
+  "url": "https://krivatechnologies.com",
+  "inLanguage": "en",
+  "publisher": { "@id": "https://krivatechnologies.com/#organization" }
 }
-
-/* ───────── readout counters ───────── */
-const numsIO = new IntersectionObserver(es=>{
-  for(const e of es){
-    if(!e.isIntersecting) continue;
-    numsIO.unobserve(e.target);
-    e.target.querySelectorAll('[data-count]').forEach((el,i)=>{
-      setTimeout(()=>countTo(el, +el.dataset.count, el.dataset.suffix || ''), reduce() ? 0 : i*110);
-    });
-  }
-},{threshold:.35});
-numsIO.observe(document.getElementById('nums'));
-
-/* ───────── solutions: index + viewer sync to the panel in view ───────── */
-const panels = [...document.querySelectorAll('#panels .panel')];
-const items  = [...document.querySelectorAll('#solIndex li')];
-const scenes = [...document.querySelectorAll('.scene')];
-const vName = document.getElementById('vName'), vMeta = document.getElementById('vMeta');
-let activeSol = -1;
-function setSolution(i){
-  if(i === activeSol || i < 0) return;
-  activeSol = i;
-  items.forEach((li,j)=>li.classList.toggle('act', j===i));
-  scenes.forEach((s,j)=>s.classList.toggle('on', j===i));
-  const [n,m] = (panels[i].dataset.v || '|').split('|');
-  vName.textContent = n; vMeta.textContent = m;
-  vName.style.color = getComputedStyle(panels[i]).getPropertyValue('--acc');
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://krivatechnologies.com/#webpage",
+  "url": "https://krivatechnologies.com/",
+  "name": "KRIVA · Design engineering for SaaS & trucking",
+  "description": "Dispatch consoles, fleet dashboards, SaaS onboarding and QuickBooks/Xero sync, designed and shipped by one senior team.",
+  "isPartOf": { "@id": "https://krivatechnologies.com/#website" },
+  "about": { "@id": "https://krivatechnologies.com/#organization" },
+  "primaryImageOfPage": "https://krivatechnologies.com/brand/og-default.png"
 }
-if(mqDesk.matches){
-  const pIO = new IntersectionObserver(es=>{
-    for(const e of es){ if(e.isIntersecting) setSolution(panels.indexOf(e.target)); }
-  },{rootMargin:'-42% 0px -42% 0px'});
-  panels.forEach(p=>pIO.observe(p));
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://krivatechnologies.com/#faq",
+  "isPartOf": { "@id": "https://krivatechnologies.com/#webpage" },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can you work with US and UK companies from India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The studio is remote-first, headquartered in Ahmedabad. We cover US and UK call hours with India delivery overlap, run async updates in Slack, and hold weekly video calls at times that work in both regions. Most of our US trucking clients have never met us in person."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after I send an enquiry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You get a reply within one business day. The first conversation is a 20-minute fit call with the KRIVA team — there is no salesperson between you and the people who ship the work. If it looks like a fit, the designers and engineers on the project join when scoping starts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do you need from us to get started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A brief, your timeline, and a 20-minute fit call. If you do not have a brief yet, we will send a template or write one with you. We are used to clients who arrive with a problem rather than a specification."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you work with our existing product and team?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We embed with in-house designers, developers, and product managers, and adapt to your tools and working style. Redesigns of live products are rolled out in phases to reduce risk and keep existing users on solid ground."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is a project scoped and priced?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Everything is scoped after discovery, with deliverables and milestones agreed upfront — fixed-scope, monthly retainer, or sprint-based. A focused MVP or redesign usually runs 6 to 10 weeks. A full platform with integrations runs 12 to 20. You get an honest timeline on the first call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who owns the code and the design files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You do. All Figma files, repositories, and documentation transfer to you at project close, or before if you prefer. We help onboard your internal team on what we have built."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are you different from a typical outsourcing agency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No subcontracting. Every designer and engineer is a permanent team member, and the people on your first call are the people who build the product. If a project needs a specialist we do not have, we say so before we start rather than quietly farming the work out."
+      }
+    }
+  ]
 }
-document.querySelectorAll('#solIndex button').forEach(b=>{
-  b.addEventListener('click', ()=>{
-    const i = +b.dataset.go;
-    setSolution(i);
-    panels[i].scrollIntoView({behavior: reduce() ? 'auto' : 'smooth', block:'center'});
-  });
-});
-
-/* ───────── process rail ───────── */
-const rail = document.getElementById('rail'), fill = document.getElementById('railFill');
-const steps = [...document.querySelectorAll('.step')];
-readers.push(()=>{
-  const r = rail.getBoundingClientRect();
-  if(r.bottom < -200 || r.top > innerHeight + 200) return;
-  const mid = innerHeight * .58;
-  const p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
-  fill.style.height = (p * r.height) + 'px';
-  for(const s of steps) s.classList.toggle('on', s.getBoundingClientRect().top < mid);
-});
-
-run();
-})();
 </script>
 </body>
 </html>

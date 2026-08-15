@@ -219,12 +219,12 @@ ${Array.from({ length: 9 }, (_, i) => `<rect x="36" y="${52 + i * 34}" width="${
       svgClose();
   },
   founder(w, h) {
-    return `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="KRIVA founder portrait">
+    return `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="KRIVA Technologies product studio">
 <rect width="100%" height="100%" fill="${C.ink}"/>
 <rect y="${h * 0.64}" width="${w}" height="${h * 0.36}" fill="${C.ink2}"/>
 <circle cx="${w / 2}" cy="${h * 0.36}" r="${w * 0.14}" fill="none" stroke="${C.amber}" stroke-width="2"/>
 <text x="${w / 2}" y="${h * 0.38}" text-anchor="middle" fill="${C.white}" font-size="${w * 0.12}" font-weight="800">K</text>
-<text x="${w / 2}" y="${h * 0.78}" text-anchor="middle" fill="${C.amber}" font-family="ui-monospace,monospace" font-size="11" letter-spacing="0.14em">KRIVA · FOUNDER</text>
+<text x="${w / 2}" y="${h * 0.78}" text-anchor="middle" fill="${C.amber}" font-family="ui-monospace,monospace" font-size="11" letter-spacing="0.14em">KRIVA · STUDIO</text>
 <text x="${w / 2}" y="${h * 0.84}" text-anchor="middle" fill="${C.dim}" font-size="14">Design engineering · remote-first</text></svg>`;
   },
   editorial(w, h, o, seed) {
