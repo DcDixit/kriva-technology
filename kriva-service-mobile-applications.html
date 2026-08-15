@@ -10,67 +10,64 @@
 <meta name="theme-color" content="#0E1216">
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
-<title>Mobile App Design · iOS &amp; Android UX · KRIVA</title>
-<meta name="description" content="Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention for patient, driver, and field apps.">
+<title>Driver Mobile App · iOS &amp; Android UX · KRIVA</title>
+<meta name="description" content="Driver and field mobile apps designed for the hand: load acceptance, status updates, and documents — not a shrunk desktop.">
 <link rel="canonical" href="https://krivatechnologies.com/services/mobile-applications">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mobile App Design · iOS &amp; Android UX">
-<meta property="og:description" content="Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention for patient, driver, and field apps.">
+<meta property="og:title" content="Driver Mobile App · iOS &amp; Android UX">
+<meta property="og:description" content="Driver and field mobile apps designed for the hand: load acceptance, status updates, and documents — not a shrunk desktop.">
 <meta property="og:url" content="https://krivatechnologies.com/services/mobile-applications">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
+<meta property="og:image:alt" content="KRIVA · Driver mobile app design, iOS and Android">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <style>
-/* Shared KRIVA tokens + primitives */
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-img{max-width:100%;display:block}
+img,svg{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible,.app-stage :focus-visible,.app-case :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .eyebrow{font-family:var(--f-mono);font-size:clamp(10px,1.1vw,11.5px);letter-spacing:.16em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:11px;line-height:1}
 .eyebrow:before{content:"";width:20px;height:1px;background:currentColor;flex:none;opacity:.6}
-.d1{font-family:var(--f-display);font-weight:900;font-size:clamp(2.35rem,5.4vw,4.7rem);line-height:.94;letter-spacing:-.032em;font-variation-settings:'wdth' 100}
-.d2{font-family:var(--f-display);font-weight:750;font-size:clamp(1.85rem,3.8vw,3.15rem);line-height:1.04;letter-spacing:-.032em;font-variation-settings:'wdth' 94}
-.d3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,1.95vw,1.62rem);line-height:1.18;letter-spacing:-.022em}
-.lede{font-size:clamp(1.02rem,1.28vw,1.24rem);line-height:1.62;color:var(--steel);max-width:58ch}
-.body{font-size:16.5px;line-height:1.66;color:var(--steel);max-width:62ch}
-.body-sm{font-size:14.8px;line-height:1.62;color:var(--steel);max-width:58ch}
-.mono{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase}
-.num{font-variant-numeric:tabular-nums}
-[data-r]{opacity:0;transform:translate3d(0,24px,0);transition:opacity var(--t-slow) var(--e),transform var(--t-slow) var(--e)}
+.d1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.55rem,5.8vw,4.9rem);line-height:.92;letter-spacing:-.03em}
+.d2{font-family:var(--f-display);font-weight:700;font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em}
+.d3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.28rem,2vw,1.7rem);line-height:1.16;letter-spacing:-.022em}
+.lede{font-size:clamp(1.05rem,1.3vw,1.22rem);line-height:1.6;color:var(--steel);max-width:42ch;letter-spacing:-.01em}
+.body-sm{font-size:15px;line-height:1.62;color:var(--steel);max-width:48ch}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+[data-r]{opacity:0;transform:translate3d(0,22px,0);transition:opacity var(--t-slow) var(--e),transform var(--t-slow) var(--e)}
 [data-r].in{opacity:1;transform:none}
-[data-s]>*{opacity:0;transform:translate3d(0,20px,0);transition:opacity var(--t-mid) var(--e),transform var(--t-mid) var(--e)}
+[data-s]>*{opacity:0;transform:translate3d(0,18px,0);transition:opacity var(--t-mid) var(--e),transform var(--t-mid) var(--e)}
 [data-s].in>*{opacity:1;transform:none}
-[data-s].in>*:nth-child(1){transition-delay:0ms}[data-s].in>*:nth-child(2){transition-delay:60ms}
-[data-s].in>*:nth-child(3){transition-delay:120ms}[data-s].in>*:nth-child(4){transition-delay:180ms}
-[data-s].in>*:nth-child(5){transition-delay:240ms}[data-s].in>*:nth-child(6){transition-delay:300ms}
+[data-s].in>*:nth-child(1){transition-delay:0ms}[data-s].in>*:nth-child(2){transition-delay:70ms}
+[data-s].in>*:nth-child(3){transition-delay:140ms}[data-s].in>*:nth-child(4){transition-delay:210ms}
 .mask span{display:block;overflow:hidden;padding-bottom:.02em}
 .mask span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
 .mask.in span i{transform:none}
-.mask.in span:nth-child(2) i{transition-delay:80ms}
-.btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
+.mask.in span:nth-child(2) i{transition-delay:90ms}
+.mask.in span:nth-child(3) i{transition-delay:170ms}
+.btn{--btn-fg:#fff;--btn-bg:var(--cta);--btn-hover:var(--ink);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:13px 22px;min-height:48px;border:1px solid var(--cta);background:var(--btn-bg);color:var(--btn-fg);
+  font-family:var(--f-mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
 .btn:before{content:"";position:absolute;inset:0;background:var(--btn-hover);transform:translate3d(0,101%,0);transition:transform .5s var(--e)}
@@ -78,39 +75,30 @@ img{max-width:100%;display:block}
 .btn:hover{color:#fff;border-color:var(--btn-hover)}
 .btn i{font-style:normal;transition:transform .42s var(--e)}
 .btn:hover i{transform:translateX(5px)}
-.btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
-.btn.sm{padding:9px 15px;font-size:11px}
-.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
+.btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink);border-color:var(--ink)}
+.btn.sm{padding:9px 15px;font-size:11px;min-height:36px}
+.btn.on-dark{--btn-bg:var(--cta);--btn-fg:#fff;--btn-hover:#fff;border-color:var(--cta)}
+.btn.on-dark:hover{color:var(--ink);border-color:#fff}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding-top:4px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
-.p-link i{font-style:normal;transition:transform .42s var(--e)}
-.p-link:hover i{transform:translateX(6px)}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
-.flag.tbd{border-color:var(--amber);color:#8A6200}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
-.hero{padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(36px,4.5vw,64px)}
-.hero h1{margin:20px 0 22px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
-.sect{padding-block:clamp(64px,8vw,128px)}
-.sect--tight{padding-block:clamp(48px,6vw,88px)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.sect{padding-block:clamp(80px,10vw,140px);scroll-margin-top:88px}
 .cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
-.cta-band .wrap{padding-block:clamp(72px,9vw,140px)}
+.cta-band .wrap{padding-block:clamp(88px,11vw,160px)}
 .cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:22px;max-width:14ch}
-.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
+.cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,7vw,5.4rem);line-height:.93;letter-spacing:-.032em}
+.cta-band .lede{color:#8C98A4;margin-top:18px;max-width:40ch}
+.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
 .assur i{font-style:normal;color:var(--amber);margin-right:7px}
-@media (prefers-reduced-motion:reduce){
-  html:focus-within{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
-  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
-  .mask span i{transform:none!important}
-  .phone__live i{animation:none!important}
-}
-
+.offer-no{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cta)}
+.offer-go{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+.offer-go i{font-style:normal;transition:transform .42s var(--e)}
+a:hover .offer-go i{transform:translateX(6px)}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 .chapters{position:fixed;right:calc(var(--gutter) - 8px);top:50%;transform:translateY(-50%);z-index:70;display:grid;gap:2px;opacity:0;transition:opacity var(--t-mid) var(--e);pointer-events:none}
 .chapters.show{opacity:1;pointer-events:auto}
@@ -122,146 +110,331 @@ img{max-width:100%;display:block}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
-
-.mob-chips{
-  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
-  padding:10px 0 12px;margin:0 calc(-1 * var(--gutter));padding-inline:var(--gutter);
-  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none
-}
-.mob-chips::-webkit-scrollbar{display:none}
-.mob-chips a{
-  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  padding:7px 11px;border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
-}
-.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
-@media(max-width:1280px){.mob-chips{display:flex}}
-
-.hero{
-  background:var(--paper);
-}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
-.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
-.s-head .lede,.s-intro{margin-top:16px;max-width:54ch}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
-.tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
-
-/* Signature · phone frame */
-.phone-stage{display:flex;flex-direction:column;align-items:center}
-.phone{
-  width:min(100%,280px);background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
-  border-radius:28px;overflow:hidden;box-shadow:0 28px 60px -42px rgba(14,18,22,.55);
-  position:relative
-}
-.phone:before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:72px;height:6px;border-radius:99px;background:#1A2027;z-index:2}
-.phone__bar{
-  display:flex;justify-content:space-between;align-items:center;gap:10px;
-  padding:22px 14px 10px;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
-}
-.phone__bar b{color:#fff;font-weight:400}
-.phone__live{display:inline-flex;align-items:center;gap:6px;color:var(--amber)}
-.phone__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:phone-pulse 2.4s var(--e-io) infinite}
-@keyframes phone-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
-.phone__hero{
-  margin:0 12px;padding:14px;background:#141A20;border:1px solid #232B33
-}
-.phone__hero .k{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
-.phone__hero .phone__title{margin-top:8px;font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:-.025em;color:#fff;line-height:1.15}
-.phone__hero p{margin-top:6px;font-size:12px;line-height:1.45;color:#8C98A4}
-.phone__meta{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.phone__chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;border:1px solid #2A3340;color:#B9C3CC}
-.phone__chip.on{border-color:var(--amber);color:var(--amber)}
-.phone__actions{display:grid;gap:8px;padding:12px}
-.phone__btn{
-  display:flex;justify-content:space-between;align-items:center;gap:10px;
-  padding:12px 12px;background:#1A2027;border:1px solid #232B33;
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#DDE2E7
-}
-.phone__btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
-.phone__btn span{color:#717F8C}
-.phone__btn.primary span{color:rgba(255,255,255,.7)}
-.phone__status{padding:0 12px 14px;display:grid;gap:6px}
-.phone__status .row{display:flex;justify-content:space-between;gap:8px;padding:8px 10px;background:#141A20;font-size:11px;color:#B9C3CC;border-left:2px solid #3A444E}
-.phone__status .row.ok{border-left-color:var(--green)}
-.phone__status .row.hot{border-left-color:var(--amber);color:#fff}
-.phone__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2);align-self:stretch;justify-content:center}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.phone-stage{align-items:flex-start}.phone{width:min(100%,300px)}}
-
-.fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
-.fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.fit-rail h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
-.fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:28ch}
-.fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
-@media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
-
-.chal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px);transition:background .4s var(--e)}
-.chal article:hover{background:var(--white)}
-.chal .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:12px}
-.chal h3{margin-bottom:12px}
-.chal p{color:var(--steel);max-width:34ch}
-@media(max-width:860px){.chal{grid-template-columns:1fr}}
-
-.approach{display:grid;gap:0;margin-top:clamp(28px,3.5vw,48px);border-top:1px solid var(--rule)}
-.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,.85fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule);align-items:start}
-.ap-row .idx{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1}
-.ap-row .body-sm{margin-top:10px}
-.ap-row .out{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-top:6px}
-.ap-row .out b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
-@media(max-width:900px){.ap-row{grid-template-columns:64px minmax(0,1fr);gap:14px}.ap-row .out{grid-column:2}}
-@media(max-width:560px){.ap-row{grid-template-columns:1fr;gap:8px}.ap-row .out{grid-column:1}}
-
-.deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.deliv article{background:var(--white);padding:clamp(22px,2.6vw,34px)}
-.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
-.deliv h3{margin-bottom:10px}
-.deliv p{font-size:15px;line-height:1.58;color:var(--steel);max-width:42ch}
-@media(max-width:700px){.deliv{grid-template-columns:1fr}}
-
-.gain{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:start}
-.gain ul{list-style:none;display:grid;gap:12px}
-.gain li{padding:18px 20px;background:var(--white);border:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
-.gain li .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:4px}
-.gain li strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
-.gain li span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel)}
-@media(max-width:800px){.gain{grid-template-columns:1fr}}
-
-.faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:760px}
-.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
-.faq details[open]{border-color:var(--ink)}
-.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary:after{content:"+";font-family:var(--f-mono);font-size:14px;color:var(--steel);flex:none}
-.faq details[open] summary:after{content:"–"}
-.faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:58ch}
-
-.rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
-.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
-.rel a:hover{border-color:var(--ink)}
-.rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
-.rel .title{display:block;margin-top:10px}
-.rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:28ch}
-.rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
-.rel a:hover .arrow i{transform:translateX(6px)}
-@media(max-width:860px){.rel{grid-template-columns:1fr}}
-
-.sib-label{margin-top:clamp(36px,4vw,56px)}
-.sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
-.sib a:hover{border-color:var(--blue);color:var(--blue)}
-
-.sect--band{background:var(--paper-2);border-block:1px solid var(--rule)}
-.sect--rule{border-top:1px solid var(--rule)}
-.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
-.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:42ch}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/inner.css">
 <link rel="stylesheet" href="/shared/system.css">
+<link rel="stylesheet" href="/shared/responsive.css">
 <link rel="stylesheet" href="/shared/archetypes.css">
+<style>
+/* Page-scoped Driver Mobile App — loaded last */
+body.page-mobile .d1{font-size:clamp(2.55rem,5.8vw,4.9rem);line-height:.92;letter-spacing:-.03em}
+body.page-mobile .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
+body.page-mobile .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
+body.page-mobile .sect{padding-block:clamp(80px,10vw,140px)}
+body.page-mobile .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;line-height:.93;letter-spacing:-.032em}
+body.page-mobile .hero{
+  background:var(--paper);color:var(--ink);overflow:hidden;
+  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(40px,5vw,80px)
+}
+@media(min-width:1025px){
+  body.page-mobile .hero{
+    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding:80px 0 56px
+  }
+  body.page-mobile .hero > .wrap{width:100%}
+}
+.hero,.app-stage,.app-jobs,.app-work{scroll-margin-top:88px}
+.app-hero-grid{
+  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:clamp(28px,4.5vw,72px);align-items:center;
+  margin-top:clamp(22px,3vw,36px)
+}
+.app-hero-copy,.app-cluster,.job-copy,.job-view{min-width:0}
+.app-hero-copy .d1{margin:18px 0 20px;max-width:12ch}
+.app-hero-copy .lede{max-width:40ch}
+.app-trust{
+  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
+}
+.app-trust span{display:inline-flex;align-items:center;gap:8px}
+.app-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:5px 9px;border:1px solid var(--rule);color:var(--steel)}
+
+/* Device */
+.app-device{
+  width:min(100%,280px);background:#07090C;color:#DDE2E7;
+  border:1.5px solid #2A333C;border-radius:38px;
+  padding:12px 10px 10px;position:relative;
+  box-shadow:var(--shadow-product),0 0 0 1px rgba(255,255,255,.04)
+}
+.app-device--sm{width:min(100%,220px);padding:10px 8px 8px;border-radius:32px}
+.app-island{
+  position:absolute;top:18px;left:50%;transform:translateX(-50%);z-index:3;
+  width:92px;height:22px;border-radius:99px;background:#0A0D10
+}
+.app-device--sm .app-island{width:72px;height:18px;top:16px}
+.app-screen{
+  background:#0E1216;border-radius:28px;overflow:hidden;
+  display:flex;flex-direction:column;min-height:520px
+}
+.app-device--sm .app-screen{min-height:400px;border-radius:22px}
+.app-status{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 16px 6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;color:#B9C3CC
+}
+.app-nav{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:8px 14px 10px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
+}
+.app-nav b{color:#fff;font-weight:600}
+.app-live{display:inline-flex;align-items:center;gap:6px;color:var(--amber)}
+.app-live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;animation:app-pulse 2.4s var(--e-io) infinite}
+@keyframes app-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
+.app-hero-card{
+  margin:0 12px 12px;padding:16px 14px;background:#141A20;border:1px solid var(--ink-line)
+}
+.app-k{font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#717F8C}
+.app-route{margin-top:8px;font-family:var(--f-display);font-weight:800;font-size:clamp(1.35rem,2vw,1.7rem);letter-spacing:-.04em;color:#fff;line-height:1}
+.app-hero-card p{margin-top:8px;font-size:12.5px;line-height:1.45;color:#8C98A4}
+.app-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.app-chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid #2A3340;color:#B9C3CC}
+.app-chip.on{border-color:var(--amber);color:var(--amber);background:rgba(219,155,31,.1)}
+.app-actions{display:grid;gap:8px;padding:0 12px 12px}
+.app-cta{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:14px 14px;min-height:48px;background:var(--cta);color:#fff;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase
+}
+.app-cta em{font-style:normal;color:rgba(255,255,255,.7);font-weight:500}
+.app-ghost{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 14px;min-height:44px;border:1px solid #2A333C;background:#141A20;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#DDE2E7
+}
+.app-list{padding:0 12px;display:grid;gap:6px;flex:1}
+.app-row{display:flex;justify-content:space-between;gap:8px;padding:9px 10px;background:#141A20;font-size:11.5px;color:#B9C3CC;border-left:2px solid #3A444E}
+.app-row.ok{border-left-color:var(--green)}
+.app-row.hot{border-left-color:var(--amber);color:#fff}
+.app-row small{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C}
+.app-tabs{
+  display:grid;grid-template-columns:repeat(3,1fr);margin-top:12px;
+  border-top:1px solid var(--ink-line);background:#12181E
+}
+.app-tabs span{
+  padding:12px 6px 14px;text-align:center;
+  font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
+}
+.app-tabs span.on{color:#fff;box-shadow:inset 0 2px 0 var(--cta)}
+.app-homebar{width:108px;height:4px;border-radius:99px;background:#2A333C;margin:8px auto 2px}
+
+.app-cluster{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:0;padding:12px 4% 28px}
+.app-device--main{position:relative;z-index:2}
+.app-device--side{
+  position:absolute;right:2%;top:8%;z-index:1;
+  transform:rotate(7deg);opacity:.92
+}
+.app-hero-note{
+  margin-top:18px;display:flex;gap:10px;align-items:baseline;justify-content:center;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2);position:relative;z-index:2
+}
+.app-hero-callout{
+  position:absolute;left:0;bottom:18%;z-index:4;
+  background:var(--white);border:1px solid var(--rule);padding:14px 16px 12px;
+  box-shadow:var(--shadow-lift);min-width:140px;transition:transform var(--t-fast) var(--e),border-color var(--t-fast)
+}
+.app-hero-callout:hover{transform:translateY(-3px);border-color:var(--ink)}
+.app-hero-callout b{display:block;font-family:var(--f-display);font-weight:800;font-size:1.05rem;letter-spacing:-.03em;line-height:1.15;color:var(--ink);max-width:12ch}
+.app-hero-callout span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);max-width:16ch}
+
+/* Strip */
+.app-strip{background:var(--white);border-block:1px solid var(--rule);padding-block:clamp(22px,3vw,36px)}
+.app-strip .wrap{display:flex;align-items:center;gap:clamp(20px,4vw,48px)}
+.app-strip .k{flex:none;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);max-width:11ch;line-height:1.45}
+.app-strip ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px 8px;flex:1;min-width:0}
+.app-strip li{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;border:1px solid var(--rule);color:var(--ink);background:var(--paper)
+}
+
+/* Dark stage */
+.app-stage{background:var(--ink);color:#DDE2E7;padding:clamp(72px,9vw,128px) 0;overflow:hidden}
+.app-stage .eyebrow{color:var(--ink-dim)}
+.app-stage h2{color:#fff;margin-top:16px;max-width:14ch}
+.app-stage .lede{color:#8C98A4}
+.app-stage-grid{
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(32px,5vw,72px);align-items:center
+}
+.app-phones{display:flex;justify-content:center;align-items:flex-end;gap:clamp(12px,2vw,28px);flex-wrap:wrap}
+.app-phones .app-device:nth-child(1){transform:translateY(18px) rotate(-4deg)}
+.app-phones .app-device:nth-child(2){z-index:2}
+.app-phones .app-device:nth-child(3){transform:translateY(18px) rotate(4deg)}
+.app-stage-copy .btn{margin-top:28px}
+.app-stage-cap{margin-top:18px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C}
+
+/* Fails */
+.app-fails{background:var(--paper)}
+.app-fails .d2,.app-fails .lede{margin-top:16px}
+.lp-frac{margin-top:clamp(28px,4vw,48px)}
+.lp-frac article{
+  display:grid;grid-template-columns:minmax(0,140px) minmax(0,1fr);gap:24px;
+  padding:28px 0;border-bottom:1px solid var(--rule)
+}
+.lp-frac article:first-child{border-top:1px solid var(--rule)}
+.lp-frac .offer-no{padding-top:6px}
+.lp-frac h3{margin-bottom:8px}
+
+/* Jobs switcher */
+.app-jobs{background:var(--paper-2);border-block:1px solid var(--rule)}
+.app-jobs .d2{margin-top:16px;max-width:14ch}
+.app-jobs .lede{margin-top:16px}
+.job-switch{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(32px,4vw,56px)}
+.job-tabs{display:flex;flex-wrap:wrap;gap:0;margin-bottom:22px;border-bottom:1px solid var(--rule)}
+.job-tabs button{
+  padding:12px 16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--steel);position:relative;min-height:44px
+}
+.job-tabs button:after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:1px;background:var(--cta);transform:scaleX(0);transition:transform .4s var(--e)}
+.job-tabs button:hover{color:var(--ink)}
+.job-tabs button[aria-selected="true"]{color:var(--ink)}
+.job-tabs button[aria-selected="true"]:after{transform:scaleX(1)}
+.job-copy h3{margin-bottom:10px}
+.job-copy p{margin-bottom:18px}
+.job-copy ul{list-style:none;display:grid;gap:10px}
+.job-copy li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.45}
+.job-copy li:before{content:"";width:6px;height:6px;margin-top:8px;background:var(--cta);flex:none}
+.job-view{display:flex;justify-content:center}
+.job-panel[hidden]{display:none !important}
+
+/* Approach */
+.app-run{background:var(--white);border-block:1px solid var(--rule)}
+.app-run .d2,.app-run .lede{margin-top:16px}
+.run-bar{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(36px,5vw,56px)}
+.run-bar .wk{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
+.run-bar .bar{display:block;height:3px;background:var(--rule);position:relative;margin-bottom:18px}
+.run-bar .bar:after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--cta)}
+.run-bar h3{margin-bottom:8px}
+.run-bar p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
+
+/* Work */
+.app-work{background:var(--paper);padding-block:clamp(72px,9vw,128px)}
+.app-work > .wrap:first-child{margin-bottom:clamp(28px,4vw,44px)}
+.app-work h2{margin-top:16px}
+.app-case{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);background:var(--ink);color:#DDE2E7;overflow:hidden}
+.app-case-phones{display:flex;justify-content:center;align-items:flex-end;gap:16px;padding:clamp(28px,4vw,48px) var(--gutter);background:#0A0D10}
+.app-case .copy{padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;justify-content:center}
+.app-case .eyebrow{color:var(--ink-dim)}
+.app-case h3{color:#fff;font-size:clamp(1.9rem,3.2vw,2.8rem);margin:10px 0 14px;max-width:12ch}
+.app-case p{color:#8C98A4;max-width:36ch}
+.app-meta{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 24px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C}
+.app-more{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:clamp(8px,2vw,20px);border-top:1px solid var(--rule)}
+.app-more a{padding:28px 0;border-bottom:1px solid var(--rule);transition:padding-left .4s var(--e)}
+.app-more a:hover{padding-left:8px}
+.app-more a:first-child{padding-right:32px;border-right:1px solid var(--rule)}
+.app-more a:last-child{padding-left:32px}
+.app-more a:last-child:hover{padding-left:40px}
+.app-more h3{font-family:var(--f-display);font-weight:700;font-size:1.35rem;letter-spacing:-.025em;margin:8px 0}
+.app-more p{font-size:15px;color:var(--steel);max-width:36ch}
+
+/* Related */
+.app-rel{background:var(--white);border-top:1px solid var(--rule)}
+.app-rel .d2{margin-top:16px}
+.idx-list{margin-top:clamp(24px,3vw,40px)}
+.idx-row{
+  display:grid;grid-template-columns:48px minmax(0,1.1fr) minmax(0,1.4fr) auto;
+  gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--rule);color:inherit;
+  transition:padding-left .4s var(--e)
+}
+.idx-row:first-child{border-top:1px solid var(--rule)}
+.idx-row:hover{padding-left:8px}
+.idx-row .n{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--cta)}
+.idx-row h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.03em;font-size:clamp(1.15rem,2vw,1.45rem)}
+.idx-row p{color:var(--steel);font-size:14.5px;max-width:46ch}
+.idx-row i{font-style:normal;color:var(--cta);transition:transform .42s var(--e)}
+.idx-row:hover i{transform:translateX(6px)}
+
+/* FAQ */
+.app-faq{background:var(--paper-2);border-block:1px solid var(--rule)}
+.faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
+.faq-grid > div:first-child{position:sticky;top:112px}
+.faq-grid .d2{margin-top:18px;max-width:13ch}
+.faq-grid .lede{margin-top:18px}
+.faq-list{border-top:1px solid var(--rule)}
+.faq-item{border-bottom:1px solid var(--rule)}
+.faq-q{
+  width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
+  gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
+  padding:clamp(20px,2.4vw,26px) 0;transition:padding-left .45s var(--e)
+}
+.faq-q:hover,.faq-q:focus-visible{padding-left:8px}
+.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel);transition:color var(--t-fast) var(--e);padding-top:5px}
+.faq-item.open .qn{color:var(--blue)}
+.faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
+.faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
+.faq-q .qi:before,.faq-q .qi:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .4s var(--e)}
+.faq-q .qi:after{transform:rotate(90deg)}
+.faq-item.open .qi:after{transform:rotate(0)}
+.faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--e),visibility 0s linear .5s}
+.faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--e),visibility 0s linear 0s}
+.faq-a>div{overflow:hidden}
+.faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
+.faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
+.sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.sib a{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  padding:10px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast),background var(--t-fast)
+}
+.sib a:hover{border-color:var(--blue);color:var(--blue);background:var(--white)}
+
+@media(max-width:1024px){
+  .app-hero-grid,.app-stage-grid,.job-switch,.app-case,.faq-grid{grid-template-columns:1fr}
+  .app-hero-copy .d1{max-width:none}
+  .app-device--side{position:relative;right:auto;top:auto;transform:rotate(3deg);margin:-48px 0 0 auto;width:min(42%,200px)}
+  .app-hero-callout{position:static;margin:16px 0 0;display:inline-block}
+  .app-phones .app-device:nth-child(1),.app-phones .app-device:nth-child(3){transform:none}
+  .idx-row{grid-template-columns:40px minmax(0,1fr);gap:12px 20px}
+  .idx-row p{grid-column:2}
+  .idx-row i{display:none}
+  .faq-grid > div:first-child{position:static}
+}
+@media(max-width:900px){
+  .lp-frac article,.run-bar,.app-more{grid-template-columns:1fr}
+  .app-more a:first-child,.app-more a:last-child{padding-inline:0;border-right:0}
+  .app-more a:last-child:hover{padding-left:8px}
+  .cta-row{align-items:flex-start}
+  .app-phones .app-device:nth-child(3){display:none}
+}
+@media(max-width:800px){
+  .app-strip .wrap{flex-direction:column;align-items:flex-start;gap:16px}
+}
+@media(max-width:640px){
+  .app-device--side{display:none}
+  .app-cluster{justify-content:flex-start;padding-inline:0}
+  .app-device--main{width:min(100%,300px)}
+  .app-phones{justify-content:flex-start}
+  .app-phones .app-device:nth-child(1){display:none}
+  .job-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .job-tabs::-webkit-scrollbar{display:none}
+  .job-tabs button{flex:none}
+}
+@media(max-width:560px){
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center}
+  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
+  .faq-a-in{padding-left:44px}
+  .lp-frac article,.idx-row{grid-template-columns:1fr}
+  .cta-row{flex-direction:column;align-items:stretch}
+  .app-screen{min-height:480px}
+}
+@media(max-width:390px){
+  body.page-mobile .d1{font-size:2.28rem}
+  .app-device{border-radius:32px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
+  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
+  .mask span i{transform:none!important}
+  .app-live i{animation:none!important}
+  .app-phones .app-device{transform:none!important}
+}
+</style>
 </head>
-<body class="service development arch-saas">
+<body class="service development page-mobile">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -282,7 +455,7 @@ img{max-width:100%;display:block}
                   <li><a role="menuitem" href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics solutions</strong><em>Dispatch, fleet, drivers, and logistics platforms.</em></a></li>
                   <li><a role="menuitem" href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><em>Consoles, bulk actions, supervisor oversight.</em></a></li>
                   <li><a role="menuitem" href="/services/dashboard-design"><strong>Fleet dashboards</strong><em>Route performance and exception handling.</em></a></li>
-                  <li><a role="menuitem" href="/services/mobile-applications"><strong>Driver mobile apps</strong><em>Load acceptance, status updates, documents.</em></a></li>
+                  <li><a role="menuitem" href="/services/mobile-applications" aria-current="page"><strong>Driver mobile apps</strong><em>Load acceptance, status updates, documents.</em></a></li>
                   <li><a role="menuitem" href="/solutions/car-transportation"><strong>Car transportation</strong><em>Quotes, tracking, and auto-transport ops.</em></a></li>
                 </ul>
                 <div class="mm-foot"><a href="/solutions/trucking-logistics">All trucking solutions <i>→</i></a></div>
@@ -346,7 +519,7 @@ img{max-width:100%;display:block}
         <li><a href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics</strong><span>Dispatch, fleet, drivers</span></a></li>
         <li><a href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><span>Consoles &amp; supervisor tools</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Fleet dashboards</strong><span>Routes &amp; exceptions</span></a></li>
-        <li><a href="/services/mobile-applications"><strong>Driver mobile apps</strong><span>Status, docs, acceptance</span></a></li>
+        <li><a href="/services/mobile-applications" aria-current="page"><strong>Driver mobile apps</strong><span>Status, docs, acceptance</span></a></li>
         <li><a href="/solutions/car-transportation"><strong>Car transportation</strong><span>Quotes &amp; tracking</span></a></li>
       </ul>
     </div>
@@ -403,100 +576,491 @@ img{max-width:100%;display:block}
 
 <main id="main">
 
-<header class="hero lp-hero" id="overview">
+<header class="hero" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
-      <li aria-current="page">Mobile App Design</li>
+      <li aria-current="page">Driver Mobile App</li>
     </ol>
-    <div class="hero-grid">
-      <div>
+    <div class="app-hero-grid">
+      <div class="app-hero-copy">
         <p class="eyebrow" data-r>Service · Flows for the hand</p>
         <h1 class="d1 mask" data-mask>
-          <span><i>Apps operators</i></span>
-          <span><i>will actually use.</i></span>
+          <span><i>Apps the cab</i></span>
+          <span><i>will actually</i></span>
+          <span><i>use.</i></span>
         </h1>
-        <p class="lede" data-r>Flows for people between tasks — drivers, patients, field teams — not a shrunk desktop. Design-only or design-and-build (React Native, Flutter, or native) chosen with your constraints.</p>
+        <p class="lede" data-r>Load acceptance, status, and documents for people between tasks — drivers, patients, field teams — not a shrunk desktop. Design-only or design-and-build, chosen with your constraints.</p>
+        <div class="tags" data-r>
+          <span class="tag">Load accept</span>
+          <span class="tag">Status updates</span>
+          <span class="tag">Documents</span>
+          <span class="tag">iOS &amp; Android</span>
+        </div>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
           <a href="/work/healthtrack-mobile" class="btn ghost"><span>See HealthTrack</span><i>→</i></a>
         </div>
+        <p class="app-trust" data-r>
+          <span>One-thumb primary actions</span>
+          <span>Outdoor-readable density</span>
+          <span>NDA on request</span>
+        </p>
       </div>
-      <div class="phone-stage" data-r>
-        <div class="phone" aria-hidden="true">
-          <div class="phone__bar"><span><b>Load</b> · #4821</span><span class="phone__live"><i></i>Live</span></div>
-          <div class="phone__hero">
-            <p class="k">Next stop</p>
-            <div class="phone__title">DAL → PHX</div>
-            <p>Gate 14 · ETA 14:20 · docs ready</p>
-            <div class="phone__meta"><span class="phone__chip on">Assigned</span><span class="phone__chip">2 stops</span></div>
+
+      <div class="app-cluster" data-r>
+        <div class="app-device app-device--main" aria-hidden="true">
+          <i class="app-island"></i>
+          <div class="app-screen">
+            <div class="app-status"><span>9:41</span><span>LTE</span></div>
+            <div class="app-nav"><span><b>Load</b> · #4821</span><span class="app-live"><i></i>Live</span></div>
+            <div class="app-hero-card">
+              <p class="app-k">Next stop</p>
+              <div class="app-route">DAL → PHX</div>
+              <p>Gate 14 · ETA 14:20 · 214 mi</p>
+              <div class="app-chips"><span class="app-chip on">Assigned</span><span class="app-chip">2 stops</span></div>
+            </div>
+            <div class="app-actions">
+              <div class="app-cta"><b>Accept load</b><em>Primary</em></div>
+              <div class="app-ghost"><b>Update status</b></div>
+            </div>
+            <div class="app-list">
+              <div class="app-row ok"><span>Pickup confirmed</span><small>09:12</small></div>
+              <div class="app-row hot"><span>DOC hold · photo</span><small>Now</small></div>
+            </div>
+            <div class="app-tabs"><span class="on">Load</span><span>Status</span><span>Docs</span></div>
           </div>
-          <div class="phone__actions">
-            <div class="phone__btn primary"><b>Accept load</b><span>Primary</span></div>
-            <div class="phone__btn"><b>Update status</b><span>Secondary</span></div>
-          </div>
-          <div class="phone__status">
-            <div class="row ok"><span>Pickup confirmed</span><span>09:12</span></div>
-            <div class="row hot"><span>DOC hold · photo needed</span><span>Now</span></div>
-          </div>
+          <i class="app-homebar"></i>
         </div>
-        <p class="phone__note"><span class="flag">Demo</span> Interface pattern only, no client data</p>
+        <div class="app-device app-device--sm app-device--side" aria-hidden="true">
+          <i class="app-island"></i>
+          <div class="app-screen">
+            <div class="app-status"><span>9:41</span><span>LTE</span></div>
+            <div class="app-nav"><span><b>Documents</b></span><span class="app-live"><i></i>Need</span></div>
+            <div class="app-hero-card">
+              <p class="app-k">POD</p>
+              <div class="app-route" style="font-size:1.2rem">Photo needed</div>
+              <p>Gate 14 · before departure</p>
+            </div>
+            <div class="app-actions">
+              <div class="app-cta"><b>Capture photo</b><em>Camera</em></div>
+            </div>
+            <div class="app-list">
+              <div class="app-row ok"><span>BOL</span><small>Done</small></div>
+              <div class="app-row hot"><span>POD</span><small>Open</small></div>
+              <div class="app-row"><span>Inspection</span><small>Skip</small></div>
+            </div>
+          </div>
+          <i class="app-homebar"></i>
+        </div>
+        <a class="app-hero-callout" href="#hand">
+          <b>One thumb. Gloves on.</b>
+          <span>Primary action in the first viewport</span>
+        </a>
+        <p class="app-hero-note"><span class="flag">Demo</span> Driver pattern. Same discipline for patient and field apps.</p>
       </div>
     </div>
   </div>
 </header>
 
-<section class="arch-show" id="hand" aria-labelledby="moShow">
+<section class="app-strip" aria-label="Platforms and jobs">
   <div class="wrap">
-    <p class="k">On the phone, not in a browser crop</p>
-    <h2 id="moShow">Accept. Status. Documents. One thumb.</h2>
-    <div class="arch-frame" style="max-width:420px">
-      <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>driver · iOS</span></div>
-      <img src="/solutions/trucking/driver-app.svg" alt="Driver mobile app" width="800" height="1400" loading="lazy" decoding="async" style="aspect-ratio:9/16;object-fit:cover;object-position:top">
+    <p class="k">Built for the hand</p>
+    <ul>
+      <li>Load accept</li>
+      <li>Status</li>
+      <li>Documents</li>
+      <li>iOS</li>
+      <li>Android</li>
+      <li>React Native · Flutter</li>
+    </ul>
+  </div>
+</section>
+
+<section class="app-stage" id="hand" aria-labelledby="moShow">
+  <div class="wrap app-stage-grid">
+    <div class="app-stage-copy">
+      <p class="eyebrow" data-r>On the phone, not in a browser crop</p>
+      <h2 class="d2" id="moShow" data-r>Accept. Status. Documents. One thumb.</h2>
+      <p class="lede" data-r>The first action has to work outdoors, in a cab, with interrupted attention. If it needs two hands or a desktop mental model, drivers text dispatch instead.</p>
+      <a href="/contact#book" class="btn"><span>Talk through a flow</span><i>→</i></a>
+      <p class="app-stage-cap">Illustrative pattern · no client data shown</p>
+    </div>
+    <div class="app-phones" data-r aria-hidden="true">
+      <div class="app-device app-device--sm">
+        <i class="app-island"></i>
+        <div class="app-screen" style="min-height:360px">
+          <div class="app-status"><span>9:41</span><span>LTE</span></div>
+          <div class="app-nav"><span><b>Status</b></span></div>
+          <div class="app-list" style="padding-top:8px">
+            <div class="app-row ok"><span>Accepted</span><small>09:04</small></div>
+            <div class="app-row ok"><span>En route</span><small>09:18</small></div>
+            <div class="app-row hot"><span>At shipper</span><small>Now</small></div>
+          </div>
+          <div class="app-actions"><div class="app-cta"><b>Mark departed</b></div></div>
+        </div>
+        <i class="app-homebar"></i>
+      </div>
+      <div class="app-device">
+        <i class="app-island"></i>
+        <div class="app-screen">
+          <div class="app-status"><span>9:41</span><span>LTE</span></div>
+          <div class="app-nav"><span><b>Load</b> · #4821</span><span class="app-live"><i></i>Live</span></div>
+          <div class="app-hero-card">
+            <p class="app-k">Next stop</p>
+            <div class="app-route">DAL → PHX</div>
+            <p>Gate 14 · ETA 14:20</p>
+            <div class="app-chips"><span class="app-chip on">Assigned</span></div>
+          </div>
+          <div class="app-actions">
+            <div class="app-cta"><b>Accept load</b><em>Primary</em></div>
+            <div class="app-ghost"><b>Decline</b></div>
+          </div>
+          <div class="app-tabs"><span class="on">Load</span><span>Status</span><span>Docs</span></div>
+        </div>
+        <i class="app-homebar"></i>
+      </div>
+      <div class="app-device app-device--sm">
+        <i class="app-island"></i>
+        <div class="app-screen" style="min-height:360px">
+          <div class="app-status"><span>9:41</span><span>LTE</span></div>
+          <div class="app-nav"><span><b>Docs</b></span></div>
+          <div class="app-hero-card">
+            <p class="app-k">POD</p>
+            <div class="app-route" style="font-size:1.15rem">Photo</div>
+            <p>Required before depart</p>
+          </div>
+          <div class="app-actions"><div class="app-cta"><b>Capture</b></div></div>
+        </div>
+        <i class="app-homebar"></i>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sect" id="shrink" aria-labelledby="frH">
+<section class="sect app-fails" id="shrink" aria-labelledby="frH">
   <div class="wrap">
     <p class="eyebrow" data-r>When mobile is a shrunk desktop</p>
-    <h2 class="d2" id="frH" data-r style="margin-top:16px">The app installs. Usage does not stick.</h2>
+    <h2 class="d2" id="frH" data-r>The app installs. Usage does not stick.</h2>
+    <p class="lede" data-r>These are the patterns we see before a redesign starts.</p>
     <div class="lp-frac" data-s>
-      <article><span class="offer-no">01 · Hand</span><div><h3 class="d3">Desktop shrink</h3><p class="body-sm" style="margin-top:8px">Screens copied from the web miss thumb targets and fail outdoors. Operators text dispatch instead.</p></div></article>
-      <article><span class="offer-no">02 · Value</span><div><h3 class="d3">Everything before the first action</h3><p class="body-sm" style="margin-top:8px">Onboarding asks for the world. Interrupted users never reach accept, book, or update status.</p></div></article>
-      <article><span class="offer-no">03 · Store</span><div><h3 class="d3">Listing does not match the product</h3><p class="body-sm" style="margin-top:8px">Installs happen. Activation and reviews do not.</p></div></article>
+      <article>
+        <span class="offer-no">01 · Hand</span>
+        <div>
+          <h3 class="d3">Desktop shrink</h3>
+          <p class="body-sm">Screens copied from the web miss thumb targets and fail outdoors. Operators text dispatch instead of opening the app.</p>
+        </div>
+      </article>
+      <article>
+        <span class="offer-no">02 · Value</span>
+        <div>
+          <h3 class="d3">Everything before the first action</h3>
+          <p class="body-sm">Onboarding asks for the world. Interrupted users never reach accept, book, or update status.</p>
+        </div>
+      </article>
+      <article>
+        <span class="offer-no">03 · Store</span>
+        <div>
+          <h3 class="d3">Listing does not match the product</h3>
+          <p class="body-sm">Installs happen. Activation and reviews do not, because the first session is not the job they came to finish.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="featwork" id="work" aria-labelledby="pfH" style="padding:0">
-  <article class="lp-case" data-r>
-    <a href="/work/healthtrack-mobile"><img src="/work/healthtrack/hero.svg" alt="HealthTrack patient app" width="1920" height="1080" loading="lazy" decoding="async"></a>
-    <div>
-      <p class="eyebrow">Selected work</p>
-      <h3 class="d2" id="pfH">HealthTrack</h3>
-      <p>Patient-facing iOS and Android UX for booking, records, and care-plan adherence — designed for the hand.</p>
-      <a href="/work/healthtrack-mobile" class="btn on-dark" style="margin-top:22px"><span>Read the case</span><i>→</i></a>
+<section class="sect app-jobs" id="jobs" aria-labelledby="jobH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Jobs on the hand</p>
+    <h2 class="d2" id="jobH" data-r>Three actions. Then everything else.</h2>
+    <p class="lede" data-r>If accept, status, and documents work with one thumb, the rest of the product can stay quiet.</p>
+    <div class="job-switch" data-r>
+      <div class="job-copy">
+        <div class="job-tabs" role="tablist" aria-label="Primary mobile jobs">
+          <button type="button" role="tab" id="tab-accept" aria-selected="true" aria-controls="panel-accept">Accept</button>
+          <button type="button" role="tab" id="tab-status" aria-selected="false" aria-controls="panel-status">Status</button>
+          <button type="button" role="tab" id="tab-docs" aria-selected="false" aria-controls="panel-docs">Documents</button>
+        </div>
+        <div class="job-panel" id="panel-accept" role="tabpanel" aria-labelledby="tab-accept">
+          <h3 class="d3">Accept without a call</h3>
+          <p class="body-sm">Lane, time, and the decision sit in the first viewport. Secondary detail waits. Gloves, sun, and a 20-second window.</p>
+          <ul>
+            <li>Primary CTA in the thumb zone</li>
+            <li>Decline is visible, not hidden in a menu</li>
+            <li>Load identity readable at arm’s length</li>
+          </ul>
+        </div>
+        <div class="job-panel" id="panel-status" role="tabpanel" aria-labelledby="tab-status" hidden>
+          <h3 class="d3">Status that dispatch can trust</h3>
+          <p class="body-sm">One tap to the next state. Exceptions are a reason, not a free-text novel. The board updates without a phone call.</p>
+          <ul>
+            <li>States in the order the desk already uses</li>
+            <li>Exception codes before a comment field</li>
+            <li>Offline queue when the yard has no signal</li>
+          </ul>
+        </div>
+        <div class="job-panel" id="panel-docs" role="tabpanel" aria-labelledby="tab-docs" hidden>
+          <h3 class="d3">Documents at the gate</h3>
+          <p class="body-sm">Capture, confirm, done. The camera is the product, not a buried attachment picker copied from the web app.</p>
+          <ul>
+            <li>Photo-first for POD and inspection</li>
+            <li>What’s still open, not a file tree</li>
+            <li>Retry when the upload fails in the lot</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job-view" aria-hidden="true">
+        <div class="app-device job-panel" id="view-accept">
+          <i class="app-island"></i>
+          <div class="app-screen">
+            <div class="app-status"><span>9:41</span><span>LTE</span></div>
+            <div class="app-nav"><span><b>Load</b> · #4821</span><span class="app-live"><i></i>Live</span></div>
+            <div class="app-hero-card">
+              <p class="app-k">Offer</p>
+              <div class="app-route">DAL → PHX</div>
+              <p>Pickup 10:00 · 214 mi · $2.14/mi</p>
+              <div class="app-chips"><span class="app-chip on">Needs accept</span><span class="app-chip">2 stops</span></div>
+            </div>
+            <div class="app-actions">
+              <div class="app-cta"><b>Accept load</b><em>Primary</em></div>
+              <div class="app-ghost"><b>Decline</b></div>
+            </div>
+            <div class="app-tabs"><span class="on">Load</span><span>Status</span><span>Docs</span></div>
+          </div>
+          <i class="app-homebar"></i>
+        </div>
+        <div class="app-device job-panel" id="view-status" hidden>
+          <i class="app-island"></i>
+          <div class="app-screen">
+            <div class="app-status"><span>9:41</span><span>LTE</span></div>
+            <div class="app-nav"><span><b>Status</b> · #4821</span></div>
+            <div class="app-list" style="padding-top:4px">
+              <div class="app-row ok"><span>Accepted</span><small>09:04</small></div>
+              <div class="app-row ok"><span>En route to shipper</span><small>09:18</small></div>
+              <div class="app-row hot"><span>At shipper · waiting</span><small>Now</small></div>
+            </div>
+            <div class="app-actions">
+              <div class="app-cta"><b>Mark loaded</b><em>Next</em></div>
+              <div class="app-ghost"><b>Report exception</b></div>
+            </div>
+            <div class="app-tabs"><span>Load</span><span class="on">Status</span><span>Docs</span></div>
+          </div>
+          <i class="app-homebar"></i>
+        </div>
+        <div class="app-device job-panel" id="view-docs" hidden>
+          <i class="app-island"></i>
+          <div class="app-screen">
+            <div class="app-status"><span>9:41</span><span>LTE</span></div>
+            <div class="app-nav"><span><b>Documents</b></span><span class="app-live"><i></i>Need</span></div>
+            <div class="app-hero-card">
+              <p class="app-k">Required now</p>
+              <div class="app-route" style="font-size:1.25rem">POD photo</div>
+              <p>Before you leave the gate</p>
+            </div>
+            <div class="app-actions">
+              <div class="app-cta"><b>Capture photo</b><em>Camera</em></div>
+            </div>
+            <div class="app-list">
+              <div class="app-row ok"><span>BOL</span><small>Done</small></div>
+              <div class="app-row hot"><span>POD</span><small>Open</small></div>
+              <div class="app-row"><span>Inspection</span><small>—</small></div>
+            </div>
+            <div class="app-tabs"><span>Load</span><span>Status</span><span class="on">Docs</span></div>
+          </div>
+          <i class="app-homebar"></i>
+        </div>
+      </div>
     </div>
-  </article>
+  </div>
 </section>
 
-<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--white);border-top:1px solid var(--rule)">
+<section class="sect app-run" id="approach" aria-labelledby="apH">
   <div class="wrap">
-    <p class="eyebrow" data-r>FAQ</p>
-    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About Mobile App Design</h2>
-    <div class="faq" data-r>
-      <details><summary>Do you also build the app?</summary><p>Yes, when the brief includes it. React Native, Flutter, or native paths are chosen with your constraints, not as a default slogan.</p></details>
-      <details><summary>How is this different from UI/UX Design?</summary><p>UI/UX Design owns shared desktop and responsive systems. This page owns mobile-specific flows and store handoff. Pair them when you need both.</p></details>
-      <details><summary>Do you design for iOS and Android separately?</summary><p>One system, platform-native patterns where they matter. We do not ship a single web crop to both stores.</p></details>
-      <details><summary>What do we need before a kickoff?</summary><p>Who uses the app in the field, the first action that must succeed, and any store or device constraints. An NDA is available before the first call.</p></details>
+    <p class="eyebrow" data-r>Approach</p>
+    <h2 class="d2" id="apH" data-r>Design for interruption. Then platform.</h2>
+    <p class="lede" data-r>Task flows first. Native patterns where they matter. Store listing last, so it matches the product that ships.</p>
+    <ol class="run-bar" data-s>
+      <li>
+        <span class="wk">01 · Jobs</span>
+        <i class="bar" style="--w:34%"></i>
+        <h3 class="d3">Name the first action</h3>
+        <p>We write the job that must succeed in 20 seconds. Everything else waits, including account setup copied from the web.</p>
+      </li>
+      <li>
+        <span class="wk">02 · Hand</span>
+        <i class="bar" style="--w:66%"></i>
+        <h3 class="d3">Thumb, glare, gloves</h3>
+        <p>Targets, contrast, and density for the cab or the clinic hallway. iOS and Android stay native without inventing two products.</p>
+      </li>
+      <li>
+        <span class="wk">03 · Ship</span>
+        <i class="bar" style="--w:100%"></i>
+        <h3 class="d3">Build path, then store</h3>
+        <p>React Native, Flutter, or native — chosen with your constraints. Listing and screenshots match the first session, not a pitch deck.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="app-work" id="work" aria-labelledby="pfH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Selected work</p>
+    <h2 class="d2" id="pfH" data-r>Designed for the hand, then shipped.</h2>
+  </div>
+  <article class="app-case" data-r>
+    <div class="app-case-phones" aria-hidden="true">
+      <div class="app-device app-device--sm" style="transform:rotate(-5deg);margin-top:24px">
+        <i class="app-island"></i>
+        <div class="app-screen" style="min-height:380px">
+          <div class="app-status"><span>9:41</span><span>LTE</span></div>
+          <div class="app-nav"><span><b>Visit</b></span></div>
+          <div class="app-hero-card">
+            <p class="app-k">Next</p>
+            <div class="app-route" style="font-size:1.2rem">Thu 10:30</div>
+            <p>Care plan · 12 min away</p>
+          </div>
+          <div class="app-actions"><div class="app-cta"><b>Check in</b></div></div>
+        </div>
+        <i class="app-homebar"></i>
+      </div>
+      <div class="app-device">
+        <i class="app-island"></i>
+        <div class="app-screen">
+          <div class="app-status"><span>9:41</span><span>LTE</span></div>
+          <div class="app-nav"><span><b>HealthTrack</b></span><span class="app-live"><i></i>Today</span></div>
+          <div class="app-hero-card">
+            <p class="app-k">This week</p>
+            <div class="app-route" style="font-size:1.35rem">2 visits</div>
+            <p>Meds on track · one reminder due</p>
+            <div class="app-chips"><span class="app-chip on">Adherence</span></div>
+          </div>
+          <div class="app-actions">
+            <div class="app-cta"><b>Book follow-up</b><em>Primary</em></div>
+            <div class="app-ghost"><b>Records</b></div>
+          </div>
+          <div class="app-tabs"><span class="on">Home</span><span>Plan</span><span>Care</span></div>
+        </div>
+        <i class="app-homebar"></i>
+      </div>
     </div>
-    <div class="sib" data-r style="margin-top:32px">
-      <a href="/services/ui-ux-design">UI/UX Design</a>
-      <a href="/solutions/trucking-logistics">Trucking solutions</a>
-      <a href="/work/healthtrack-mobile">HealthTrack case</a>
-      <a href="/services">All services</a>
+    <div class="copy">
+      <p class="eyebrow">Patient app · iOS &amp; Android</p>
+      <h3 class="d2">HealthTrack</h3>
+      <p>Booking, records, and care-plan adherence designed for interrupted attention — the same one-thumb discipline we use for driver apps.</p>
+      <p class="app-meta"><span>iOS + Android</span><span>First action: book</span></p>
+      <a href="/work/healthtrack-mobile" class="btn"><span>Read the case</span><i>→</i></a>
+    </div>
+  </article>
+  <div class="wrap">
+    <div class="app-more">
+      <a href="/work/fleetflow-dispatch">
+        <span class="offer-no">FleetFlow</span>
+        <h3>The desk the app talks to</h3>
+        <p>Dispatch console and SLA views. Driver status only sticks if the board can receive it.</p>
+        <span class="offer-go">Case study <i>→</i></span>
+      </a>
+      <a href="/solutions/trucking-logistics">
+        <span class="offer-no">Trucking</span>
+        <h3>Driver apps in the ops stack</h3>
+        <p>Accept, status, and documents sit next to TMS and fleet views, not as a separate product.</p>
+        <span class="offer-go">Explore <i>→</i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sect app-rel" aria-labelledby="relH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Also in this work</p>
+    <h2 class="d2" id="relH" data-r>The app is rarely the whole system.</h2>
+    <div class="idx-list" data-s>
+      <a class="idx-row" href="/services/crm-development">
+        <span class="n">01</span>
+        <h3>CRM Design</h3>
+        <p>The dispatch board that receives status. Driver apps fail when the desk still lives in a spreadsheet.</p>
+        <i>→</i>
+      </a>
+      <a class="idx-row" href="/services/ui-ux-design">
+        <span class="n">02</span>
+        <h3>UI/UX Design</h3>
+        <p>Shared desktop and responsive systems. Pair with this page when the product spans web and the hand.</p>
+        <i>→</i>
+      </a>
+      <a class="idx-row" href="/services/product-design">
+        <span class="n">03</span>
+        <h3>Product Design</h3>
+        <p>The whole-product story when the mobile app is one surface in a larger rebuild.</p>
+        <i>→</i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sect app-faq" id="faq" aria-labelledby="faqH">
+  <div class="wrap faq-grid">
+    <div>
+      <p class="eyebrow" data-r>FAQ</p>
+      <h2 class="d2" id="faqH" data-r>About Driver Mobile Apps</h2>
+      <p class="lede" data-r>Straight answers so the first call starts further along.</p>
+      <div class="sib" data-r>
+        <a href="/services/ui-ux-design">UI/UX Design</a>
+        <a href="/solutions/trucking-logistics">Trucking solutions</a>
+        <a href="/work/healthtrack-mobile">HealthTrack case</a>
+        <a href="/services">All services</a>
+      </div>
+    </div>
+    <div class="faq-list" data-r>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+          <span class="qn num">01</span>
+          <span class="qt">Do you also build the app?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
+          <p>Yes, when the brief includes it. React Native, Flutter, or native paths are chosen with your constraints, not as a default slogan. Design-only is available when engineering sits in-house.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+          <span class="qn num">02</span>
+          <span class="qt">How is this different from UI/UX Design?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
+          <p>UI/UX Design owns shared desktop and responsive systems. This page owns mobile-specific flows, thumb targets, offline field constraints, and store handoff. Pair them when you need both.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+          <span class="qn num">03</span>
+          <span class="qt">Do you design for iOS and Android separately?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
+          <p>One system, platform-native patterns where they matter — navigation, controls, and density. We do not ship a single web crop to both stores.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+          <span class="qn num">04</span>
+          <span class="qt">Is this only for trucking?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
+          <p>Driver apps are a primary KRIVA path. The same interrupted-attention discipline applies to patient and field apps — HealthTrack is the published example. If the user is between tasks, this is the page.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
+          <span class="qn num">05</span>
+          <span class="qt">What do we need before a kickoff?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
+          <p>Who uses the app in the field, the first action that must succeed, and any store, device, or offline constraints. Access to a few operators for a walkthrough helps. An NDA is available before the first call.</p>
+        </div></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -504,7 +1068,7 @@ img{max-width:100%;display:block}
 <section class="cta-band on-ink" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
-    <h2 class="d2" id="ctaH" data-r>Need a mobile app operators will use?</h2>
+    <h2 class="d2" id="ctaH" data-r>Need an app the cab will open?</h2>
     <p class="lede" data-r>A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
@@ -580,8 +1144,8 @@ img{max-width:100%;display:block}
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Mobile App Design",
-  "description": "Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention for patient, driver, and field apps.",
+  "name": "Driver Mobile App Design",
+  "description": "Driver and field mobile apps designed for the hand: load acceptance, status updates, and documents, not a shrunk desktop.",
   "provider": {
     "@type": "Organization",
     "name": "KRIVA Technologies"
@@ -599,7 +1163,7 @@ img{max-width:100%;display:block}
       "name": "Do you also build the app?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We offer design-only or design and development with React Native, Flutter, or native paths, chosen with your constraints."
+        "text": "Yes, when the brief includes it. React Native, Flutter, or native paths are chosen with your constraints, not as a default slogan. Design-only is available when engineering sits in-house."
       }
     },
     {
@@ -607,7 +1171,7 @@ img{max-width:100%;display:block}
       "name": "How is this different from UI/UX Design?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Mobile App Design owns mobile-specific flows, platform fidelity, and store handoff. UI/UX Design covers cross-platform interface systems across web and product surfaces. Many products need both."
+        "text": "UI/UX Design owns shared desktop and responsive systems. This page owns mobile-specific flows, thumb targets, offline field constraints, and store handoff. Pair them when you need both."
       }
     },
     {
@@ -615,7 +1179,15 @@ img{max-width:100%;display:block}
       "name": "Do you design for iOS and Android separately?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We design shared task flows with platform-faithful patterns, navigation, controls, and density, so the product feels native on each OS without inventing two products."
+        "text": "One system, platform-native patterns where they matter — navigation, controls, and density. We do not ship a single web crop to both stores."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this only for trucking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Driver apps are a primary KRIVA path. The same interrupted-attention discipline applies to patient and field apps — HealthTrack is the published example. If the user is between tasks, this is the page."
       }
     },
     {
@@ -623,7 +1195,7 @@ img{max-width:100%;display:block}
       "name": "What do we need before a kickoff?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The primary mobile jobs users must finish, any offline or field constraints, and access to a few operators or patients for a walkthrough. An NDA is available before the first call."
+        "text": "Who uses the app in the field, the first action that must succeed, and any store, device, or offline constraints. Access to a few operators for a walkthrough helps. An NDA is available before the first call."
       }
     }
   ]
@@ -661,17 +1233,60 @@ const chIO=new IntersectionObserver(es=>{
   }
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
-const mob=[...document.querySelectorAll('#mobChips a')];
-if(mob.length){
-  const mobIO=new IntersectionObserver(es=>{
-    for(const e of es){
-      if(!e.isIntersecting) continue;
-      const id=e.target.id;
-      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
-    }
-  },{rootMargin:'-35% 0px -55% 0px'});
-  chTargets.forEach(t=>mobIO.observe(t));
+
+const tabs=[...document.querySelectorAll('.job-tabs [role="tab"]')];
+const panels={
+  'tab-accept':['panel-accept','view-accept'],
+  'tab-status':['panel-status','view-status'],
+  'tab-docs':['panel-docs','view-docs']
+};
+function selectJob(id){
+  tabs.forEach(t=>{
+    const on=t.id===id;
+    t.setAttribute('aria-selected', String(on));
+    t.tabIndex=on?0:-1;
+  });
+  Object.entries(panels).forEach(([key, ids])=>{
+    const show=key===id;
+    ids.forEach(pid=>{
+      const el=document.getElementById(pid);
+      if(el) el.hidden=!show;
+    });
+  });
 }
+tabs.forEach((btn,i)=>{
+  btn.tabIndex=i===0?0:-1;
+  btn.addEventListener('click',()=>selectJob(btn.id));
+  btn.addEventListener('keydown',e=>{
+    const dir=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
+    if(!dir) return;
+    e.preventDefault();
+    const n=(i+dir+tabs.length)%tabs.length;
+    tabs[n].focus();
+    selectJob(tabs[n].id);
+  });
+});
+
+const faqs=[...document.querySelectorAll('.faq-q')];
+faqs.forEach(btn=>{
+  const item=btn.closest('.faq-item');
+  btn.addEventListener('click',()=>{
+    const open=btn.getAttribute('aria-expanded')==='true';
+    faqs.forEach(other=>{
+      if(other===btn) return;
+      other.setAttribute('aria-expanded','false');
+      other.closest('.faq-item').classList.remove('open');
+    });
+    btn.setAttribute('aria-expanded', String(!open));
+    item.classList.toggle('open', !open);
+  });
+  btn.addEventListener('keydown',e=>{
+    if(e.key!=='Escape' || btn.getAttribute('aria-expanded')!=='true') return;
+    btn.setAttribute('aria-expanded','false');
+    item.classList.remove('open');
+  });
+});
+
 run();
 })();
 </script>
@@ -696,7 +1311,7 @@ run();
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Mobile UX built for interrupted attention.",
+      "name": "Apps the cab will actually use.",
       "item": "https://krivatechnologies.com/services/mobile-applications"
     }
   ]

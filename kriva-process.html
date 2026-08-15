@@ -27,49 +27,46 @@
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/shared/slot-assets.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-img{max-width:100%;display:block}
+img,svg{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible,.prc-sign :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .eyebrow{font-family:var(--f-mono);font-size:clamp(10px,1.1vw,11.5px);letter-spacing:.16em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:11px;line-height:1}
 .eyebrow:before{content:"";width:20px;height:1px;background:currentColor;flex:none;opacity:.6}
-.d1{font-family:var(--f-display);font-weight:900;font-size:clamp(2.35rem,5.4vw,4.7rem);line-height:.94;letter-spacing:-.032em;font-variation-settings:'wdth' 100}
-.d2{font-family:var(--f-display);font-weight:750;font-size:clamp(1.85rem,3.8vw,3.15rem);line-height:1.04;letter-spacing:-.032em;font-variation-settings:'wdth' 94}
-.d3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,1.95vw,1.62rem);line-height:1.18;letter-spacing:-.022em}
-.lede{font-size:clamp(1.02rem,1.28vw,1.24rem);line-height:1.62;color:var(--steel);max-width:58ch}
-.body{font-size:16.5px;line-height:1.66;color:var(--steel);max-width:62ch}
-.body-sm{font-size:14.8px;line-height:1.62;color:var(--steel);max-width:58ch}
-.mono{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase}
-.num{font-variant-numeric:tabular-nums}
-[data-r]{opacity:0;transform:translate3d(0,24px,0);transition:opacity var(--t-slow) var(--e),transform var(--t-slow) var(--e)}
+.d1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.55rem,5.8vw,4.9rem);line-height:.92;letter-spacing:-.03em}
+.d2{font-family:var(--f-display);font-weight:700;font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em}
+.d3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.28rem,2vw,1.7rem);line-height:1.16;letter-spacing:-.022em}
+.lede{font-size:clamp(1.05rem,1.3vw,1.22rem);line-height:1.6;color:var(--steel);max-width:42ch;letter-spacing:-.01em}
+.body-sm{font-size:15px;line-height:1.62;color:var(--steel);max-width:48ch}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+[data-r]{opacity:0;transform:translate3d(0,22px,0);transition:opacity var(--t-slow) var(--e),transform var(--t-slow) var(--e)}
 [data-r].in{opacity:1;transform:none}
-[data-s]>*{opacity:0;transform:translate3d(0,20px,0);transition:opacity var(--t-mid) var(--e),transform var(--t-mid) var(--e)}
+[data-s]>*{opacity:0;transform:translate3d(0,18px,0);transition:opacity var(--t-mid) var(--e),transform var(--t-mid) var(--e)}
 [data-s].in>*{opacity:1;transform:none}
-[data-s].in>*:nth-child(1){transition-delay:0ms}[data-s].in>*:nth-child(2){transition-delay:60ms}
-[data-s].in>*:nth-child(3){transition-delay:120ms}[data-s].in>*:nth-child(4){transition-delay:180ms}
-[data-s].in>*:nth-child(5){transition-delay:240ms}[data-s].in>*:nth-child(6){transition-delay:300ms}
+[data-s].in>*:nth-child(1){transition-delay:0ms}[data-s].in>*:nth-child(2){transition-delay:70ms}
+[data-s].in>*:nth-child(3){transition-delay:140ms}[data-s].in>*:nth-child(4){transition-delay:210ms}
+[data-s].in>*:nth-child(5){transition-delay:280ms}[data-s].in>*:nth-child(6){transition-delay:350ms}
 .mask span{display:block;overflow:hidden;padding-bottom:.02em}
 .mask span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
 .mask.in span i{transform:none}
-.mask.in span:nth-child(2) i{transition-delay:80ms}
-.btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
+.mask.in span:nth-child(2) i{transition-delay:90ms}
+.btn{--btn-fg:#fff;--btn-bg:var(--cta);--btn-hover:var(--ink);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:13px 22px;min-height:48px;border:1px solid var(--cta);background:var(--btn-bg);color:var(--btn-fg);
+  font-family:var(--f-mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
 .btn:before{content:"";position:absolute;inset:0;background:var(--btn-hover);transform:translate3d(0,101%,0);transition:transform .5s var(--e)}
@@ -77,44 +74,29 @@ img{max-width:100%;display:block}
 .btn:hover{color:#fff;border-color:var(--btn-hover)}
 .btn i{font-style:normal;transition:transform .42s var(--e)}
 .btn:hover i{transform:translateX(5px)}
-.btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
-.btn.sm{padding:9px 15px;font-size:11px}
-.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
+.btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink);border-color:var(--ink)}
+.btn.sm{padding:9px 15px;font-size:11px;min-height:36px}
+.btn.on-dark{--btn-bg:var(--cta);--btn-fg:#fff;--btn-hover:#fff;border-color:var(--cta)}
+.btn.on-dark:hover{color:var(--ink);border-color:#fff}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding-top:4px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
-.p-link i{font-style:normal;transition:transform .42s var(--e)}
-.p-link:hover i{transform:translateX(6px)}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
-.hero{padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(36px,4.5vw,64px)}
-.hero h1{margin:20px 0 22px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
-.sect{padding-block:clamp(64px,8vw,128px)}
-.sect--tight{padding-block:clamp(48px,6vw,88px)}
-.sect--band{background:var(--paper-2);border-block:1px solid var(--rule)}
-.sect--rule{border-top:1px solid var(--rule)}
-.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
-.s-head .lede{margin-top:16px;max-width:54ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.sect{padding-block:clamp(80px,10vw,140px);scroll-margin-top:88px}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(24px,4vw,72px);flex-wrap:wrap}
+.s-head h2,.s-title{margin-top:18px}
+.s-head .lede{margin-top:18px}
 .cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
-.cta-band .wrap{padding-block:clamp(72px,9vw,140px)}
+.cta-band .wrap{padding-block:clamp(88px,11vw,160px)}
 .cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:22px;max-width:18ch}
-.cta-band .lede{color:#8C98A4;margin-top:16px;max-width:46ch}
-.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
+.cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,7vw,5.4rem);line-height:.93;letter-spacing:-.032em}
+.cta-band .lede{color:#8C98A4;margin-top:18px;max-width:40ch}
+.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
 .cta-actions{display:flex;gap:12px;flex-wrap:wrap}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
 .assur i{font-style:normal;color:var(--amber);margin-right:7px}
-@media (prefers-reduced-motion:reduce){
-  html:focus-within{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
-  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
-  .mask span i{transform:none!important}
-  .del-board__live i{animation:none!important}
-}
-
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 .chapters{position:fixed;right:calc(var(--gutter) - 8px);top:50%;transform:translateY(-50%);z-index:70;display:grid;gap:2px;opacity:0;transition:opacity var(--t-mid) var(--e);pointer-events:none}
 .chapters.show{opacity:1;pointer-events:auto}
@@ -126,167 +108,288 @@ img{max-width:100%;display:block}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
-.mob-chips{
-  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
-  padding:10px 0 12px;margin:0 calc(-1 * var(--gutter));padding-inline:var(--gutter);
-  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none
+</style>
+<link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/system.css">
+<link rel="stylesheet" href="/shared/responsive.css">
+<style>
+/* Page-scoped Process — loaded last */
+body.page-process{overflow-x:clip}
+body.page-process .hero .d1{
+  font-size:clamp(2.35rem,1.15rem + 5.4vw,5.6rem);line-height:.9;letter-spacing:-.032em
 }
-.mob-chips::-webkit-scrollbar{display:none}
-.mob-chips a{
-  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  padding:7px 11px;border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+body.page-process .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
+body.page-process .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
+body.page-process .sect{padding-block:clamp(80px,10vw,140px)}
+body.page-process .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;line-height:.93;letter-spacing:-.032em}
+body.page-process .hero{
+  background:var(--paper);color:var(--ink);overflow:hidden;
+  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(40px,5vw,80px);
+  scroll-margin-top:88px
 }
-.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
-@media(max-width:1280px){.mob-chips{display:flex}}
+@media(min-width:1025px){
+  body.page-process .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 56px}
+  body.page-process .hero > .wrap{width:100%}
+}
 
-.hero{
-  background:var(--paper);
+.prc-hero-grid{
+  display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:clamp(28px,4.5vw,72px);align-items:center;margin-top:clamp(22px,3vw,36px)
 }
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
-.tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
+.prc-hero-grid > *{min-width:0}
+.prc-hero-copy .d1{margin:18px 0 20px;max-width:11ch}
+.prc-trust{
+  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
+}
+.prc-trust span{display:inline-flex;align-items:center;gap:8px}
+.prc-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
 
-/* Signature · delivery board */
-.del-board{
+.prc-instrument{position:relative;padding:0 0 8px}
+.prc-gate{
   background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
-  box-shadow:0 28px 60px -42px rgba(14,18,22,.55)
+  box-shadow:var(--shadow-product);overflow:hidden
 }
-.del-board__bar{
-  display:flex;justify-content:space-between;align-items:center;gap:12px;
-  padding:11px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
+.prc-gate-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 16px;background:#12181E;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
 }
-.del-board__bar b{color:#fff;font-weight:400}
-.del-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--amber)}
-.del-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:del-pulse 2.4s var(--e-io) infinite}
-@keyframes del-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 rgba(219,155,31,0)}}
-.del-board__kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
-.del-board__kpi{padding:12px 14px;border-right:1px solid var(--ink-line)}
-.del-board__kpi:last-child{border-right:0}
-.del-board__kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
-.del-board__kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;color:#fff}
-.del-board__kpi em{display:block;margin-top:3px;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;color:var(--lime)}
-.del-board__kpi.warn em{color:var(--amber)}
-.del-flow{
-  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
-  padding:9px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
+.prc-gate-bar b{color:#fff;font-weight:500}
+.prc-live{display:inline-flex;align-items:center;gap:7px;color:var(--amber);white-space:nowrap}
+.prc-live i{width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:prc-pulse 2.4s var(--e-io) infinite}
+@keyframes prc-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 currentColor}}
+.prc-spine{position:relative;padding:8px 0 4px;list-style:none}
+.prc-spine:before{
+  content:"";position:absolute;left:27px;top:18px;bottom:18px;width:1px;background:#2A333C
 }
-.del-flow .step{padding:3px 8px;border:1px solid var(--ink-line);color:#717F8C}
-.del-flow .step.done{color:var(--lime);border-color:#2A4A3C}
-.del-flow .step.on{border-color:var(--amber);color:var(--amber)}
-.del-row{
-  display:grid;grid-template-columns:1fr 110px 78px;gap:10px;align-items:center;
-  padding:9px 14px;border-bottom:1px solid #1A2027;font-size:11.5px;color:#B9C3CC
+.prc-spine li{
+  display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;
+  padding:11px 16px;position:relative
 }
-.del-row:last-child{border-bottom:0}
-.del-row.on{background:#171310}
-.del-row .lane b{display:block;font-weight:500;color:#fff;font-size:12px;letter-spacing:-.01em}
-.del-row .lane em{display:block;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C}
-.del-row .when{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8C98A4;justify-self:end}
-.st{display:inline-flex;align-items:center;padding:3px 7px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;white-space:nowrap;justify-self:end}
-.st-ok{color:var(--lime)}.st-go{color:var(--amber)}.st-idle{color:#717F8C}
-.del-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
-@media(max-width:640px){
-  .del-board__kpis{grid-template-columns:1fr 1fr}
-  .del-board__kpi:nth-child(3){display:none}
-  .del-row{grid-template-columns:1fr auto}
-  .del-row .when{display:none}
+.prc-spine .nd{
+  width:18px;height:18px;border:1px solid #3A444E;background:#0E1216;margin-left:10px;
+  display:grid;place-items:center;position:relative;z-index:1
+}
+.prc-spine .nd i{width:6px;height:6px;background:#3A444E;display:block}
+.prc-spine li.done .nd{border-color:var(--lime)}
+.prc-spine li.done .nd i{background:var(--lime)}
+.prc-spine li.on .nd{border-color:var(--cta);background:var(--cta)}
+.prc-spine li.on .nd i{background:#fff}
+.prc-spine .nm{font-family:var(--f-display);font-weight:700;font-size:14px;letter-spacing:-.02em;color:#8C98A4}
+.prc-spine li.on .nm{color:#fff}
+.prc-spine .wk{display:block;margin-top:3px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#5C6670}
+.prc-spine .st{
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:#5C6670;padding:4px 8px;border:1px solid #2A333C;white-space:nowrap
+}
+.prc-spine li.done .st{color:var(--lime);border-color:#2A4A3C}
+.prc-spine li.on .st{color:#fff;background:var(--cta);border-color:var(--cta)}
+.prc-cap{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+
+.prc-fit{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  margin-top:clamp(36px,5vw,64px)
+}
+.prc-fit article{background:var(--white);padding:clamp(22px,2.8vw,36px);min-width:0}
+.prc-fit .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
+.prc-fit h2{margin-bottom:10px;max-width:16ch}
+.prc-fit p{font-size:15px;line-height:1.6;color:var(--steel);max-width:40ch}
+.prc-fit .contrast{
+  margin-top:16px;padding:14px 16px;border-left:2px solid var(--amber);
+  background:var(--paper-2);font-size:13.5px;line-height:1.55;color:var(--ink);max-width:none
+}
+.prc-fit .contrast a{border-bottom:1px solid var(--rule)}
+
+.prc-layout{
+  display:grid;grid-template-columns:minmax(240px,.72fr) minmax(0,1.28fr);
+  gap:clamp(28px,4vw,72px);align-items:start;margin-top:clamp(36px,5vw,64px)
+}
+.prc-sign{
+  position:sticky;top:112px;
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  padding:clamp(20px,2.4vw,28px);box-shadow:var(--shadow-product)
+}
+.prc-sign .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.prc-sign b{
+  display:block;margin:14px 0 10px;
+  font-family:var(--f-display);font-weight:800;font-size:clamp(1.55rem,2.4vw,2.1rem);
+  letter-spacing:-.04em;line-height:1.05;color:#fff
+}
+.prc-sign p{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8C98A4;line-height:1.5}
+.prc-sign .tick{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.prc-sign .tick span{
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 8px;border:1px solid #3A444E;color:#8C98A4
 }
 
-.fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
-.fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.fit-rail h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
-.fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
-.fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
-@media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
-
-.rail-wrap{position:relative;margin-top:clamp(32px,4vw,56px)}
-.rail-line,.rail-fill{position:absolute;left:7px;top:8px;width:1px}
-.rail-line{bottom:8px;background:var(--rule)}
-.rail-fill{background:var(--blue);height:0;transform-origin:50% 0}
-.phase{
-  display:grid;grid-template-columns:52px minmax(0,180px) minmax(0,1fr) minmax(0,.7fr);
-  gap:clamp(14px,2.4vw,36px);padding:clamp(22px,2.6vw,36px) 0;align-items:start;
-  border-bottom:1px solid var(--rule)
+.prc-path{position:relative}
+.prc-path ol{list-style:none;margin:0;padding:0}
+.prc-path:before{
+  content:"";position:absolute;left:7px;top:12px;bottom:12px;width:1px;background:var(--rule)
 }
-.phase:last-child{border-bottom:0}
-.dot-o{width:15px;height:15px;border-radius:50%;border:1px solid var(--rule);background:var(--paper);position:relative;transition:border-color .5s var(--e),transform .5s var(--e);margin-top:6px}
-.dot-o:after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:transparent;transition:background .5s var(--e)}
-.phase.on .dot-o{border-color:var(--blue);transform:scale(1.15)}
-.phase.on .dot-o:after{background:var(--blue)}
-.phase h3{color:var(--steel-2);transition:color .5s var(--e)}
-.phase.on h3{color:var(--ink)}
-.when{margin-top:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel)}
-.gate{display:inline-block;margin-left:8px;font-size:9px;letter-spacing:.12em;padding:3px 7px;border:1px solid var(--amber);color:#8A6200}
-.phase p{font-size:15.5px;line-height:1.62;color:var(--steel);max-width:48ch}
-.phase .out{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-top:4px}
-.phase .out b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
-@media(max-width:960px){
-  .phase{grid-template-columns:34px minmax(0,1fr);gap:14px}
-  .phase>div:nth-child(3),.phase .out{grid-column:2}
-  .rail-line,.rail-fill{left:7px}
+.prc-fill{
+  position:absolute;left:7px;top:12px;width:1px;height:0;background:var(--cta);
+  transform-origin:50% 0;z-index:1;pointer-events:none
 }
+.prc-phase{
+  display:grid;grid-template-columns:36px minmax(0,1fr);
+  gap:clamp(16px,2.2vw,28px);padding:clamp(22px,2.8vw,36px) 0;
+  border-bottom:1px solid var(--rule);position:relative
+}
+.prc-phase:first-child{padding-top:4px}
+.prc-phase:last-child{border-bottom:0}
+.prc-node{
+  width:15px;height:15px;border:1px solid var(--rule);background:var(--paper);
+  margin-top:6px;position:relative;z-index:2;transition:border-color .45s var(--e),transform .45s var(--e)
+}
+.prc-node:after{content:"";position:absolute;inset:3.5px;background:transparent;transition:background .45s var(--e)}
+.prc-phase.on .prc-node{border-color:var(--cta);transform:scale(1.12)}
+.prc-phase.on .prc-node:after{background:var(--cta)}
+.prc-wk{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:10px}
+.prc-phase h3{margin-bottom:6px;color:var(--steel-2);transition:color .45s var(--e)}
+.prc-phase.on h3{color:var(--ink)}
+.prc-when{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
+.prc-gate-flag{
+  display:inline-block;margin-left:8px;font-size:9px;letter-spacing:.12em;
+  padding:3px 7px;border:1px solid var(--amber);color:#8A6200;vertical-align:1px
+}
+.prc-phase > div p{font-size:15.5px;line-height:1.62;color:var(--steel);max-width:52ch}
+.prc-out{
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)
+}
+.prc-out b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
 
-.cadence{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.cadence article{background:var(--white);padding:clamp(22px,2.6vw,34px)}
-.cadence .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
-.cadence h3{margin-bottom:12px}
-.cadence p{font-size:15px;line-height:1.58;color:var(--steel);max-width:36ch}
-@media(max-width:860px){.cadence{grid-template-columns:1fr}}
+.prc-cad{margin-top:clamp(32px,4vw,56px);border-top:1px solid var(--rule)}
+.prc-cad article{
+  display:grid;grid-template-columns:56px minmax(0,1fr);
+  gap:clamp(16px,2vw,28px);padding:clamp(22px,2.6vw,32px) 0;border-bottom:1px solid var(--rule)
+}
+.prc-cad .n{font-family:var(--f-display);font-weight:800;font-size:1.5rem;letter-spacing:-.04em;color:var(--cta);line-height:1}
+.prc-cad h3{margin-bottom:8px}
 
-.eng{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.eng article{background:var(--white);padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;min-height:280px}
-.eng .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8A6200;margin-bottom:14px}
-.eng h3{margin-bottom:8px}
-.eng .dur{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
-.eng p{flex:1;font-size:15px;line-height:1.6;color:var(--steel)}
-@media(max-width:860px){.eng{grid-template-columns:1fr}}
+.prc-eng{
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  margin-top:clamp(32px,4vw,56px)
+}
+.prc-eng-lead,.prc-eng-alt article{background:var(--white);padding:clamp(24px,3vw,40px);min-width:0}
+.prc-eng-lead{display:flex;flex-direction:column;min-height:320px}
+.prc-eng .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8A6200;margin-bottom:14px}
+.prc-eng h3{margin-bottom:8px;max-width:14ch}
+.prc-eng .dur{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
+.prc-eng p{font-size:15px;line-height:1.6;color:var(--steel);max-width:42ch}
+.prc-eng-lead .btn{margin-top:auto;align-self:flex-start}
+.prc-eng-alt{display:grid;gap:1px;background:var(--rule)}
+.prc-eng-alt article{display:flex;flex-direction:column}
+.prc-go{
+  display:inline-flex;align-items:center;gap:8px;margin-top:18px;
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  border-bottom:1px solid currentColor
+}
+.prc-go i{font-style:normal;transition:transform .42s var(--e)}
+.prc-eng-alt article:hover .prc-go i{transform:translateX(6px)}
 
-.pair{
+.prc-same{
   display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
   gap:clamp(22px,3.5vw,48px);align-items:center;
   margin-top:clamp(28px,3.5vw,48px);padding:clamp(22px,2.8vw,36px);
   background:var(--white);border:1px solid var(--rule)
 }
-.pair-logos{display:flex;flex-wrap:wrap;gap:10px}
-.lockup{display:inline-flex;align-items:center;gap:8px;padding:7px 12px 7px 8px;border:1px solid var(--rule);background:var(--paper-2)}
-.lockup img{width:22px;height:22px;flex:none}
-.lockup b{font-family:var(--f-display);font-weight:750;font-size:13.5px;letter-spacing:-.02em}
-.lockup small{display:block;margin-top:2px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
-@media(max-width:800px){.pair{grid-template-columns:1fr}}
+.prc-same h3{margin-top:14px}
+.prc-same .body-sm{margin-top:12px}
+.prc-same .prc-go{margin-top:18px}
+.prc-lockups{display:flex;flex-wrap:wrap;gap:10px}
+.prc-lockup{display:inline-flex;align-items:center;gap:8px;padding:7px 12px 7px 8px;border:1px solid var(--rule);background:var(--paper-2)}
+.prc-lockup img{width:22px;height:22px;flex:none}
+.prc-lockup b{font-family:var(--f-display);font-weight:700;font-size:13.5px;letter-spacing:-.02em}
+.prc-lockup small{display:block;margin-top:2px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
 
-.faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:760px}
-.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
-.faq details[open]{border-color:var(--ink)}
-.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary:after{content:"+";font-family:var(--f-mono);font-size:14px;color:var(--steel);flex:none}
-.faq details[open] summary:after{content:"–"}
-.faq p{margin-top:12px;font-size:15px;line-height:1.6;color:var(--steel);max-width:58ch}
+.prc-more{display:grid;gap:0;border-top:1px solid var(--rule);margin-top:clamp(28px,4vw,48px)}
+.prc-more a{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:18px 0;border-bottom:1px solid var(--rule);min-height:48px;
+  transition:padding-left .4s var(--e)
+}
+.prc-more a:hover{padding-left:8px}
+.prc-more b{font-family:var(--f-display);font-weight:700;letter-spacing:-.02em}
+.prc-more span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cta)}
+.prc-sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.prc-sib a{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast),background var(--t-fast)
+}
+.prc-sib a:hover{border-color:var(--ink);color:var(--ink);background:var(--white)}
 
-.rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
-.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:180px;transition:transform .5s var(--e),border-color .4s}
-.rel a:hover{border-color:var(--ink)}
-.rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
-.rel .title{display:block;margin-top:10px}
-.rel .hook{margin-top:8px;font-size:14px;line-height:1.5;color:var(--steel);max-width:32ch}
-.rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
-.rel a:hover .arrow i{transform:translateX(6px)}
-@media(max-width:860px){.rel{grid-template-columns:1fr}}
-.sib-label{margin-top:clamp(36px,4vw,56px)}
-.sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
-.sib a:hover{border-color:var(--blue);color:var(--blue)}
+.faq-sec{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px}
+.faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
+.faq-grid > div:first-child{position:sticky;top:112px}
+.faq-grid .d2{margin-top:18px;max-width:13ch}
+.faq-grid .lede{margin-top:18px}
+.faq-list{border-top:1px solid var(--rule)}
+.faq-item{border-bottom:1px solid var(--rule)}
+.faq-q{
+  width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
+  gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
+  padding:clamp(20px,2.4vw,26px) 0;transition:padding-left .45s var(--e)
+}
+.faq-q:hover,.faq-q:focus-visible{padding-left:8px}
+.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel);transition:color var(--t-fast) var(--e);padding-top:5px}
+.faq-item.open .qn{color:var(--cta)}
+.faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
+.faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
+.faq-q .qi:before,.faq-q .qi:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .4s var(--e)}
+.faq-q .qi:after{transform:rotate(90deg)}
+.faq-item.open .qi:after{transform:rotate(0)}
+.faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--e),visibility 0s linear .5s}
+.faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--e),visibility 0s linear 0s}
+.faq-a>div{overflow:hidden}
+.faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
+.faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
+.faq-a-in a{border-bottom:1px solid var(--rule)}
+.faq-side .btn{margin-top:24px}
+
+@media(max-width:1024px){
+  .prc-hero-grid,.prc-layout,.prc-eng,.prc-same,.faq-grid,.prc-fit{grid-template-columns:1fr}
+  .prc-hero-copy .d1{max-width:none}
+  .prc-sign,.faq-grid > div:first-child{position:static}
+  .cta-row{align-items:flex-start}
+}
+@media(max-width:640px){
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
+  .cta-row{flex-direction:column;align-items:stretch}
+  .prc-cad article{grid-template-columns:1fr;gap:8px}
+  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
+  .faq-a-in{padding-left:44px}
+  .prc-spine li{grid-template-columns:40px minmax(0,1fr);gap:10px}
+  .prc-spine .st{display:none}
+  .prc-spine:before{left:19px}
+}
+@media(max-width:390px){
+  body.page-process .hero .d1{font-size:2.2rem}
+}
+@media(hover:none){
+  .prc-more a:hover,.faq-q:hover{padding-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
+  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
+  .mask span i{transform:none!important}
+  .prc-live i{animation:none!important}
+  .prc-node{transform:none!important}
+}
+@media(min-width:1600px){
+  body.page-process .hero .d1{font-size:5.4rem}
+}
 </style>
-<link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/inner.css">
-<link rel="stylesheet" href="/shared/system.css">
 </head>
-<body>
+<body class="page-process">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -419,194 +522,206 @@ img{max-width:100%;display:block}
 </div>
 
 <nav class="chapters" id="chapters" aria-label="Sections">
-  <a href="#overview"><span>Overview</span><i></i></a>
+  <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
   <a href="#phases"><span>Phases</span><i></i></a>
   <a href="#cadence"><span>Cadence</span><i></i></a>
-  <a href="#engagements"><span>Engagements</span><i></i></a>
-  <a href="#proof"><span>Also</span><i></i></a>
+  <a href="#engagements"><span>Paths</span><i></i></a>
+  <a href="#related"><span>Also</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
 <main id="main">
 
-<header class="hero" id="overview">
+<header class="hero" id="overview" aria-labelledby="h1">
   <div class="wrap">
     <ol class="crumbs" data-r>
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">Process</li>
     </ol>
-    <nav class="mob-chips" id="mobChips" aria-label="On this page">
-      <a href="#overview" aria-current="true">Overview</a>
-      <a href="#phases">Phases</a>
-      <a href="#cadence">Cadence</a>
-      <a href="#engagements">Engagements</a>
-      <a href="#proof">Also</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="hero-grid">
-      <div>
+    <div class="prc-hero-grid">
+      <div class="prc-hero-copy">
         <p class="eyebrow" data-r>How we work · Delivery</p>
-        <h1 class="d1 mask" data-mask>
-          <span><i>Five phases.</i></span>
-          <span><i>Visible progress.</i></span>
+        <h1 class="d1 mask" id="h1" data-mask>
+          <span><i>You always know</i></span>
+          <span><i>what you're approving next.</i></span>
         </h1>
         <p class="lede" data-r>Discovery, design, build, launch, and support. Each phase has a written next step, a weekly demo, and a sign-off before we move on. Tools help us move faster. People own every decision that ships.</p>
-        <div class="tags" data-r>
-          <span class="tag">Weekly demos</span>
-          <span class="tag">Sign-off gates</span>
-          <span class="tag">UK / US overlap</span>
-          <span class="tag">Remote-first</span>
-        </div>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
           <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
         </div>
+        <p class="prc-trust" data-r>
+          <span>Weekly demos</span>
+          <span>Sign-off gates</span>
+          <span>UK / US overlap</span>
+          <span>Remote-first</span>
+        </p>
       </div>
-
-      <div data-r>
-        <div class="del-board" aria-hidden="true">
-          <div class="del-board__bar">
-            <span><b>Delivery board</b> · Week 6 of 12</span>
-            <span class="del-board__live"><i></i>Demo Thursday</span>
+      <div class="prc-instrument" data-r>
+        <div class="prc-gate" aria-hidden="true">
+          <div class="prc-gate-bar">
+            <span><b>Gate instrument</b> · Week 6 of 12</span>
+            <span class="prc-live"><i></i>Next: Fri sign-off</span>
           </div>
-          <div class="del-board__kpis">
-            <div class="del-board__kpi"><span>Current phase</span><b>02 Design</b><em>In review</em></div>
-            <div class="del-board__kpi warn"><span>Next gate</span><b>Fri</b><em>You sign off</em></div>
-            <div class="del-board__kpi"><span>Cadence</span><b>Weekly</b><em>Open progress</em></div>
-          </div>
-          <div class="del-flow">
-            <span class="step done">01 Discover</span>
-            <span class="step on">02 Design</span>
-            <span class="step">03 Build</span>
-            <span class="step">04 Launch</span>
-            <span class="step">05 Support</span>
-          </div>
-          <div class="del-row on">
-            <span class="lane"><b>Weekly demo</b><em>Clickable prototype · desk review</em></span>
-            <span class="when">Thu overlap</span>
-            <span class="st st-ok">On track</span>
-          </div>
-          <div class="del-row on">
-            <span class="lane"><b>Stakeholder pack</b><em>Flows + UI · v3</em></span>
-            <span class="when">Gate Fri</span>
-            <span class="st st-go">Open</span>
-          </div>
-          <div class="del-row">
-            <span class="lane"><b>Build kickoff</b><em>After design sign-off</em></span>
-            <span class="when">Queued</span>
-            <span class="st st-idle">Hold</span>
-          </div>
+          <ol class="prc-spine">
+            <li class="done">
+              <span class="nd"><i></i></span>
+              <span><span class="nm">Discover</span><span class="wk">W1–2</span></span>
+              <span class="st">Signed</span>
+            </li>
+            <li class="on">
+              <span class="nd"><i></i></span>
+              <span><span class="nm">Design</span><span class="wk">W3–7 · you sign</span></span>
+              <span class="st">Open</span>
+            </li>
+            <li>
+              <span class="nd"><i></i></span>
+              <span><span class="nm">Build</span><span class="wk">Weekly demos</span></span>
+              <span class="st">Queued</span>
+            </li>
+            <li>
+              <span class="nd"><i></i></span>
+              <span><span class="nm">Launch</span><span class="wk">Go-live checklist</span></span>
+              <span class="st">Hold</span>
+            </li>
+            <li>
+              <span class="nd"><i></i></span>
+              <span><span class="nm">Support</span><span class="wk">Optional retainer</span></span>
+              <span class="st">Choice</span>
+            </li>
+          </ol>
         </div>
-        <p class="del-board__note"><span class="flag">Demo</span> Illustrative board · no client data</p>
+        <p class="prc-cap"><span class="flag">Instrument</span> Illustrative gates · no client data</p>
       </div>
     </div>
 
-    <div class="fit-rail" data-s>
+    <div class="prc-fit" data-s>
       <article>
-        <p class="k">Best for</p>
-        <h2>Teams who want to see the next gate</h2>
+        <p class="k">Who this is for</p>
+        <h2 class="d3">Teams who want to see the next gate</h2>
         <p>Founders and ops leads who will join a weekly demo and sign a written brief before design or code starts.</p>
       </article>
       <article>
-        <p class="k">What this page is</p>
-        <h2>How a KRIVA engagement actually runs</h2>
-        <p>Five phases, cadence, and three engagement models. Same sequence for trucking consoles, SaaS products, and finance connectors.</p>
-      </article>
-      <article>
-        <p class="k">Not this page</p>
-        <h2>Services catalog or the tools list</h2>
-        <p>What we sell lives under Services. Figma, Next.js, Make, and the rest live on Tools &amp; stack.</p>
-        <p class="contrast">AI assists the work. A person still signs every decision that ships. That is also how AI-Assisted Development sits inside this process, not instead of it.</p>
+        <p class="k">Who this is not for</p>
+        <h2 class="d3">Services catalog or the tools list</h2>
+        <p>What we sell lives under Services. Figma, Next.js, Make, and the rest live on Tools &amp; stack. This page is how a KRIVA engagement actually runs — five phases, cadence, and three engagement models. Same sequence for trucking consoles, SaaS products, and finance connectors.</p>
+        <p class="contrast">AI assists the work. A person still signs every decision that ships. That is also how <a href="/services/ai-assisted-development">AI-Assisted Development</a> sits inside this process, not instead of it.</p>
       </article>
     </div>
   </div>
 </header>
 
-<section class="sect sect--rule" id="phases" aria-labelledby="phaseH">
+<section class="sect" id="phases" aria-labelledby="phaseH">
   <div class="wrap">
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>How a project runs</p>
-        <h2 class="d2" id="phaseH" data-r>You always know what you are approving next</h2>
+        <h2 class="d2 s-title" id="phaseH" data-r>Five phases. Hard gates.</h2>
         <p class="lede" data-r>We do not start the next phase on a handshake. Discover and Design have hard sign-off. Build has weekly demos. Launch has a go-live checklist. Support is optional and named.</p>
       </div>
     </div>
-    <div class="rail-wrap" id="rail">
-      <div class="rail-line" aria-hidden="true"></div>
-      <div class="rail-fill" id="railFill" aria-hidden="true"></div>
-      <article class="phase">
-        <span class="dot-o" aria-hidden="true"></span>
-        <div>
-          <h3 class="d3">Discover</h3>
-          <p class="when">Phase 01 · 1–2 weeks <span class="gate">You sign off</span></p>
+
+    <div class="prc-layout">
+      <aside class="prc-sign" id="prcSign" aria-live="polite">
+        <p class="k">You are signing</p>
+        <b id="prcSignTitle">The brief</b>
+        <p id="prcSignMeta">Phase 01 · 1–2 weeks · you sign off</p>
+        <div class="tick">
+          <span>Written next step</span>
+          <span>Named owner</span>
+          <span>No handshake gates</span>
         </div>
-        <p>Goals, users, constraints, and success metrics in a written brief. We sit with the desk that will use the product, not only the sponsor who commissioned it.</p>
-        <p class="out"><b>You leave with</b>A scoped brief and a realistic timeline</p>
-      </article>
-      <article class="phase">
-        <span class="dot-o" aria-hidden="true"></span>
-        <div>
-          <h3 class="d3">Design</h3>
-          <p class="when">Phase 02 · 2–5 weeks <span class="gate">You sign off</span></p>
-        </div>
-        <p>Flows, prototypes, and high-fidelity UI reviewed in weekly demos. Engineering does not start until the pack is signed. Changes after this gate are a change request, not a surprise.</p>
-        <p class="out"><b>You leave with</b>Clickable UI the floor can react to</p>
-      </article>
-      <article class="phase">
-        <span class="dot-o" aria-hidden="true"></span>
-        <div>
-          <h3 class="d3">Build</h3>
-          <p class="when">Phase 03 · weekly demos</p>
-        </div>
-        <p>Incremental delivery with QA gates and open progress. You see working software every week, not a big reveal. Tools accelerate the work. A person still reviews what ships.</p>
-        <p class="out"><b>You leave with</b>Shippable increments, not a black box</p>
-      </article>
-      <article class="phase">
-        <span class="dot-o" aria-hidden="true"></span>
-        <div>
-          <h3 class="d3">Launch</h3>
-          <p class="when">Phase 04 <span class="gate">Go-live checklist</span></p>
-        </div>
-        <p>Deployment, analytics, handoff docs, and training for the people who will run it. We do not call it live until the checklist is green and someone on your side can operate it.</p>
-        <p class="out"><b>You leave with</b>A live product and a named owner</p>
-      </article>
-      <article class="phase">
-        <span class="dot-o" aria-hidden="true"></span>
-        <div>
-          <h3 class="d3">Support</h3>
-          <p class="when">Phase 05 · optional retainer</p>
-        </div>
-        <p>Iteration sprints, automation maintenance, and roadmap support. Most clients stay on a monthly retainer after launch. It is a choice, not a lock-in buried in the SOW.</p>
-        <p class="out"><b>You leave with</b>A clear retain-or-handoff decision</p>
-      </article>
+      </aside>
+
+      <div class="prc-path" id="prcPath">
+        <div class="prc-fill" id="prcFill" aria-hidden="true"></div>
+        <ol>
+        <li class="prc-phase" data-sign="The brief" data-meta="Phase 01 · 1–2 weeks · you sign off">
+          <span class="prc-node" aria-hidden="true"></span>
+          <div>
+            <span class="prc-wk">W1–2</span>
+            <h3 class="d3">Discover</h3>
+            <p class="prc-when">Phase 01 · 1–2 weeks <span class="prc-gate-flag">You sign off</span></p>
+            <p>Goals, users, constraints, and success metrics in a written brief. We sit with the desk that will use the product, not only the sponsor who commissioned it.</p>
+            <p class="prc-out"><b>You leave with</b>A scoped brief and a realistic timeline</p>
+          </div>
+        </li>
+        <li class="prc-phase" data-sign="The UI pack" data-meta="Phase 02 · 2–5 weeks · you sign off">
+          <span class="prc-node" aria-hidden="true"></span>
+          <div>
+            <span class="prc-wk">W3–7</span>
+            <h3 class="d3">Design</h3>
+            <p class="prc-when">Phase 02 · 2–5 weeks <span class="prc-gate-flag">You sign off</span></p>
+            <p>Flows, prototypes, and high-fidelity UI reviewed in weekly demos. Engineering does not start until the pack is signed. Changes after this gate are a change request, not a surprise.</p>
+            <p class="prc-out"><b>You leave with</b>Clickable UI the floor can react to</p>
+          </div>
+        </li>
+        <li class="prc-phase" data-sign="Weekly software" data-meta="Phase 03 · demos on a real URL">
+          <span class="prc-node" aria-hidden="true"></span>
+          <div>
+            <span class="prc-wk">Weekly</span>
+            <h3 class="d3">Build</h3>
+            <p class="prc-when">Phase 03 · weekly demos</p>
+            <p>Incremental delivery with QA gates and open progress. You see working software every week, not a big reveal. Tools accelerate the work. A person still reviews what ships.</p>
+            <p class="prc-out"><b>You leave with</b>Shippable increments, not a black box</p>
+          </div>
+        </li>
+        <li class="prc-phase" data-sign="The go-live checklist" data-meta="Phase 04 · named owner">
+          <span class="prc-node" aria-hidden="true"></span>
+          <div>
+            <span class="prc-wk">Go-live</span>
+            <h3 class="d3">Launch</h3>
+            <p class="prc-when">Phase 04 <span class="prc-gate-flag">Go-live checklist</span></p>
+            <p>Deployment, analytics, handoff docs, and training for the people who will run it. We do not call it live until the checklist is green and someone on your side can operate it.</p>
+            <p class="prc-out"><b>You leave with</b>A live product and a named owner</p>
+          </div>
+        </li>
+        <li class="prc-phase" data-sign="Retain or handoff" data-meta="Phase 05 · optional retainer">
+          <span class="prc-node" aria-hidden="true"></span>
+          <div>
+            <span class="prc-wk">Optional</span>
+            <h3 class="d3">Support</h3>
+            <p class="prc-when">Phase 05 · optional retainer</p>
+            <p>Iteration sprints, automation maintenance, and roadmap support. Most clients stay on a monthly retainer after launch. It is a choice, not a lock-in buried in the SOW.</p>
+            <p class="prc-out"><b>You leave with</b>A clear retain-or-handoff decision</p>
+          </div>
+        </li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sect sect--band" id="cadence" aria-labelledby="cadH">
+<section class="sect" id="cadence" aria-labelledby="cadH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
   <div class="wrap">
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>Cadence</p>
-        <h2 class="d2" id="cadH" data-r>How the week actually feels</h2>
+        <h2 class="d2 s-title" id="cadH" data-r>How the week actually feels</h2>
         <p class="lede" data-r>Ahmedabad, India. Remote-first. Overlap windows for UK and US clients so the demo is a conversation, not a recording.</p>
       </div>
     </div>
-    <div class="cadence" data-s>
+    <div class="prc-cad" data-s>
       <article>
-        <p class="k">01 · Rhythm</p>
-        <h3 class="d3">Weekly demo, written next step</h3>
-        <p>Every week you see the work and leave with the next decision named. No status theater. If a gate is blocked, we say so on the call.</p>
+        <span class="n num">01</span>
+        <div>
+          <h3 class="d3">Weekly demo, written next step</h3>
+          <p class="body-sm">Every week you see the work and leave with the next decision named. No status theater. If a gate is blocked, we say so on the call.</p>
+        </div>
       </article>
       <article>
-        <p class="k">02 · Overlap</p>
-        <h3 class="d3">UK and US hours, on purpose</h3>
-        <p>Demos sit in the overlap. Async updates land in writing the same day. You are not expected to stay up for India midnight.</p>
+        <span class="n num">02</span>
+        <div>
+          <h3 class="d3">UK and US hours, on purpose</h3>
+          <p class="body-sm">Demos sit in the overlap. Async updates land in writing the same day. You are not expected to stay up for India midnight.</p>
+        </div>
       </article>
       <article>
-        <p class="k">03 · Roles</p>
-        <h3 class="d3">One owner on each side</h3>
-        <p>You name a decision-maker. We name a lead. Feedback that is not from the owner waits. That is how sign-off stays real.</p>
+        <span class="n num">03</span>
+        <div>
+          <h3 class="d3">One owner on each side</h3>
+          <p class="body-sm">You name a decision-maker. We name a lead. Feedback that is not from the owner waits. That is how sign-off stays real.</p>
+        </div>
       </article>
     </div>
   </div>
@@ -617,47 +732,49 @@ img{max-width:100%;display:block}
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>Engagement models</p>
-        <h2 class="d2" id="engH" data-r>Pick the path that fits your stage</h2>
+        <h2 class="d2 s-title" id="engH" data-r>Pick the path that fits your stage</h2>
         <p class="lede" data-r>Same five phases. Different commitment. We will tell you if a full project is too early, or if a sprint is stalling a decision you already have.</p>
       </div>
     </div>
-    <div class="eng" data-s>
-      <article>
-        <span class="tag">Start here</span>
-        <h3 class="d3">Discovery sprint</h3>
-        <p class="dur">1–2 weeks</p>
-        <p>Align on scope, timeline, and what you actually need before a full engagement. You leave with a brief you can take in-house or bring back to us.</p>
-        <a href="/contact#book" class="p-link">Book a 20-minute fit call <i>→</i></a>
-      </article>
-      <article>
+    <div class="prc-eng" data-s>
+      <article class="prc-eng-lead">
         <span class="tag">Most common</span>
         <h3 class="d3">Project engagement</h3>
         <p class="dur">6–16 weeks</p>
         <p>Fixed scope with milestones, weekly demos, and a clear handoff. Design is signed before build. Launch has a checklist, not a hope.</p>
-        <a href="/contact#brief" class="p-link">Send a project brief <i>→</i></a>
+        <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
       </article>
-      <article>
-        <span class="tag">Ongoing</span>
-        <h3 class="d3">Ongoing partnership</h3>
-        <p class="dur">Rolling monthly</p>
-        <p>Iteration, design support, and automation maintenance after launch. Useful when the product is live and the roadmap is still moving.</p>
-        <a href="/contact#brief" class="p-link">Start a conversation <i>→</i></a>
-      </article>
+      <div class="prc-eng-alt">
+        <article>
+          <span class="tag">Start here</span>
+          <h3 class="d3">Discovery sprint</h3>
+          <p class="dur">1–2 weeks</p>
+          <p>Align on scope, timeline, and what you actually need before a full engagement. You leave with a brief you can take in-house or bring back to us.</p>
+          <a href="/contact#book" class="prc-go">Book a 20-minute fit call <i>→</i></a>
+        </article>
+        <article>
+          <span class="tag">Ongoing</span>
+          <h3 class="d3">Ongoing partnership</h3>
+          <p class="dur">Rolling monthly</p>
+          <p>Iteration, design support, and automation maintenance after launch. Useful when the product is live and the roadmap is still moving.</p>
+          <a href="/contact#brief" class="prc-go">Start a conversation <i>→</i></a>
+        </article>
+      </div>
     </div>
 
-    <div class="pair" data-r>
+    <div class="prc-same" data-r>
       <div>
         <p class="eyebrow">Same gates, different products</p>
-        <h3 class="d3" style="margin-top:14px">Dispatch consoles, SaaS MVPs, and finance connectors run this sequence</h3>
-        <p class="body-sm" style="margin-top:12px">A QuickBooks or Xero engagement still gets a written brief, a signed design for the operator surface, weekly demos, and a go-live checklist. The APIs are original. The process is the same.</p>
-        <a href="/solutions/accounting-integrations" class="p-link">QuickBooks &amp; Xero integrations <i>→</i></a>
+        <h3 class="d3">Dispatch consoles, SaaS MVPs, and finance connectors run this sequence</h3>
+        <p class="body-sm">A QuickBooks or Xero engagement still gets a written brief, a signed design for the operator surface, weekly demos, and a go-live checklist. The APIs are original. The process is the same.</p>
+        <a href="/solutions/accounting-integrations" class="prc-go">QuickBooks &amp; Xero integrations <i>→</i></a>
       </div>
-      <div class="pair-logos">
-        <span class="lockup">
-          <img src="/brand/logos/quickbooks.svg" alt="QuickBooks" width="22" height="22" loading="eager">
+      <div class="prc-lockups">
+        <span class="prc-lockup">
+          <img src="/brand/logos/quickbooks.svg" alt="QuickBooks" width="22" height="22" loading="lazy" decoding="async">
           <span><b>QuickBooks</b><small>Online API</small></span>
         </span>
-        <span class="lockup">
+        <span class="prc-lockup">
           <img src="/brand/logos/xero.svg" alt="Xero" width="22" height="22" loading="lazy" decoding="async">
           <span><b>Xero</b><small>Cloud API</small></span>
         </span>
@@ -666,43 +783,22 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<section class="sect sect--band" id="proof" aria-labelledby="pfH">
+<section class="sect" id="related" aria-labelledby="pfH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
   <div class="wrap">
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>Where this shows up</p>
-        <h2 class="d2" id="pfH" data-r>Related pages</h2>
+        <h2 class="d2 s-title" id="pfH" data-r>Related pages</h2>
         <p class="lede" data-r>Who we are, the tools inside the phases, and the services this process delivers.</p>
       </div>
     </div>
-    <div class="rel" data-s>
-      <a href="/about">
-        <span>
-          <span class="k">Company</span>
-          <span class="d3 title">About KRIVA</span>
-          <span class="hook">Ahmedabad, remote-first. The people behind the weekly demo.</span>
-        </span>
-        <span class="arrow"><span class="mono">About</span><i>→</i></span>
-      </a>
-      <a href="/technologies">
-        <span>
-          <span class="k">Company</span>
-          <span class="d3 title">Tools &amp; stack</span>
-          <span class="hook">Figma, Next.js, Make, and reviewed AI tooling. The list lives here, not as a dump on this page.</span>
-        </span>
-        <span class="arrow"><span class="mono">Stack</span><i>→</i></span>
-      </a>
-      <a href="/services">
-        <span>
-          <span class="k">Catalog</span>
-          <span class="d3 title">Services</span>
-          <span class="hook">CRM, dashboards, integrations, automation, and product design, delivered on this sequence.</span>
-        </span>
-        <span class="arrow"><span class="mono">Services</span><i>→</i></span>
-      </a>
-    </div>
-    <p class="eyebrow sib-label" data-r>Also see</p>
-    <div class="sib" data-r>
+    <nav class="prc-more" aria-label="Related" data-s>
+      <a href="/about"><b>About KRIVA</b><span>Company</span></a>
+      <a href="/technologies"><b>Tools &amp; stack</b><span>Company</span></a>
+      <a href="/services"><b>Services</b><span>Catalog</span></a>
+    </nav>
+    <p class="eyebrow" data-r style="margin-top:clamp(36px,4vw,56px)">Also see</p>
+    <div class="prc-sib" data-r>
       <a href="/work">Work</a>
       <a href="/services/ai-assisted-development">AI-Assisted Development</a>
       <a href="/solutions/trucking-logistics">Trucking &amp; logistics</a>
@@ -712,39 +808,75 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<section class="sect" id="faq" aria-labelledby="faqH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>FAQ</p>
-        <h2 class="d2" id="faqH" data-r>About how we work</h2>
-      </div>
+<section class="sect faq-sec" id="faq" aria-labelledby="faqH">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <p class="eyebrow" data-r>FAQ</p>
+      <h2 class="d2" id="faqH" data-r>About how we work</h2>
+      <p class="lede" data-r>Straight answers so the first call starts further along.</p>
+      <a href="/contact#book" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
     </div>
-    <div class="faq" data-r>
-      <details>
-        <summary>How long does a typical project take?</summary>
-        <p>Discovery is 1–2 weeks. A full project is usually 6–16 weeks depending on scope. We will not quote a date until the brief is written. A fit call is for fit, not a fake timeline.</p>
-      </details>
-      <details>
-        <summary>What do you need from us?</summary>
-        <p>A named decision-maker, access to the people who will use the product, and feedback inside the weekly cadence. If the desk cannot join a demo, we will say the engagement is not ready.</p>
-      </details>
-      <details>
-        <summary>How do timezones work?</summary>
-        <p>We are remote-first from Ahmedabad, India, with overlap windows for UK and US clients. Demos sit in that overlap. Async notes go out the same day. You should not need midnight calls.</p>
-      </details>
-      <details>
-        <summary>How is this different from AI-Assisted Development?</summary>
-        <p>This page is the delivery sequence: phases, gates, cadence. AI-Assisted Development is how we use Claude, Copilot, and Cursor inside those phases. Tools speed the work. A person still signs what ships.</p>
-      </details>
-      <details>
-        <summary>Do QuickBooks and Xero projects use the same process?</summary>
-        <p>Yes. Finance connectors still get a written brief, a signed operator surface, weekly demos, and a go-live checklist. The write into QuickBooks Online or Xero uses the original APIs. The gates do not change.</p>
-      </details>
-      <details>
-        <summary>What happens after launch?</summary>
-        <p>You can take the handoff and run it, or stay on a monthly retainer for iteration and automation maintenance. Support is Phase 05 and optional. It is not bundled as a surprise.</p>
-      </details>
+    <div class="faq-list" data-r>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+          <span class="qn num">01</span>
+          <span class="qt">How long does a typical project take?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
+          <p>Discovery is 1–2 weeks. A full project is usually 6–16 weeks depending on scope. We will not quote a date until the brief is written. A fit call is for fit, not a fake timeline.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+          <span class="qn num">02</span>
+          <span class="qt">What do you need from us?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
+          <p>A named decision-maker, access to the people who will use the product, and feedback inside the weekly cadence. If the desk cannot join a demo, we will say the engagement is not ready.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+          <span class="qn num">03</span>
+          <span class="qt">How do timezones work?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
+          <p>We are remote-first from Ahmedabad, India, with overlap windows for UK and US clients. Demos sit in that overlap. Async notes go out the same day. You should not need midnight calls.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+          <span class="qn num">04</span>
+          <span class="qt">How is this different from AI-Assisted Development?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
+          <p>This page is the delivery sequence: phases, gates, cadence. AI-Assisted Development is how we use Claude, Copilot, and Cursor inside those phases. Tools speed the work. A person still signs what ships.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
+          <span class="qn num">05</span>
+          <span class="qt">Do QuickBooks and Xero projects use the same process?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
+          <p>Yes. Finance connectors still get a written brief, a signed operator surface, weekly demos, and a go-live checklist. The write into QuickBooks Online or Xero uses the original APIs. The gates do not change.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
+          <span class="qn num">06</span>
+          <span class="qt">What happens after launch?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
+          <p>You can take the handoff and run it, or stay on a monthly retainer for iteration and automation maintenance. Support is Phase 05 and optional. It is not bundled as a surprise.</p>
+        </div></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -803,7 +935,7 @@ img{max-width:100%;display:block}
         <li><a href="/industries">Industries</a></li>
         <li><a href="/work">Work</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/process">Process</a></li>
+        <li><a href="/process" aria-current="page">Process</a></li>
         <li><a href="/technologies">Tools &amp; stack</a></li>
         <li><a href="/insights">Insights</a></li>
         <li><a href="/faq">FAQ</a></li>
@@ -845,60 +977,29 @@ img{max-width:100%;display:block}
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How long does a typical project take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Discovery is 1–2 weeks. A full project is usually 6–16 weeks depending on scope. We will not quote a date until the brief is written. A fit call is for fit, not a fake timeline."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What do you need from us?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A named decision-maker, access to the people who will use the product, and feedback inside the weekly cadence. If the desk cannot join a demo, we will say the engagement is not ready."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do timezones work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We are remote-first from Ahmedabad, India, with overlap windows for UK and US clients. Demos sit in that overlap. Async notes go out the same day. You should not need midnight calls."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How is this different from AI-Assisted Development?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "This page is the delivery sequence: phases, gates, cadence. AI-Assisted Development is how we use Claude, Copilot, and Cursor inside those phases. Tools speed the work. A person still signs what ships."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do QuickBooks and Xero projects use the same process?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Finance connectors still get a written brief, a signed operator surface, weekly demos, and a go-live checklist. The write into QuickBooks Online or Xero uses the original APIs. The gates do not change."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens after launch?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can take the handoff and run it, or stay on a monthly retainer for iteration and automation maintenance. Support is Phase 05 and optional. It is not bundled as a surprise."
-      }
-    }
+    {"@type":"Question","name":"How long does a typical project take?","acceptedAnswer":{"@type":"Answer","text":"Discovery is 1–2 weeks. A full project is usually 6–16 weeks depending on scope. We will not quote a date until the brief is written. A fit call is for fit, not a fake timeline."}},
+    {"@type":"Question","name":"What do you need from us?","acceptedAnswer":{"@type":"Answer","text":"A named decision-maker, access to the people who will use the product, and feedback inside the weekly cadence. If the desk cannot join a demo, we will say the engagement is not ready."}},
+    {"@type":"Question","name":"How do timezones work?","acceptedAnswer":{"@type":"Answer","text":"We are remote-first from Ahmedabad, India, with overlap windows for UK and US clients. Demos sit in that overlap. Async notes go out the same day. You should not need midnight calls."}},
+    {"@type":"Question","name":"How is this different from AI-Assisted Development?","acceptedAnswer":{"@type":"Answer","text":"This page is the delivery sequence: phases, gates, cadence. AI-Assisted Development is how we use Claude, Copilot, and Cursor inside those phases. Tools speed the work. A person still signs what ships."}},
+    {"@type":"Question","name":"Do QuickBooks and Xero projects use the same process?","acceptedAnswer":{"@type":"Answer","text":"Yes. Finance connectors still get a written brief, a signed operator surface, weekly demos, and a go-live checklist. The write into QuickBooks Online or Xero uses the original APIs. The gates do not change."}},
+    {"@type":"Question","name":"What happens after launch?","acceptedAnswer":{"@type":"Answer","text":"You can take the handoff and run it, or stay on a monthly retainer for iteration and automation maintenance. Support is Phase 05 and optional. It is not bundled as a surprise."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://krivatechnologies.com/"},
+    {"@type":"ListItem","position":2,"name":"Process","item":"https://krivatechnologies.com/process"}
   ]
 }
 </script>
 <script>
 (function(){
 'use strict';
+const reduce=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
 const readers=[]; let ticking=false;
 const onScroll=()=>{ if(!ticking){ requestAnimationFrame(run); ticking=true; } };
 function run(){ const y=scrollY; for(const r of readers) r(y); ticking=false; }
@@ -928,36 +1029,54 @@ const chIO=new IntersectionObserver(es=>{
   }
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
-const mob=[...document.querySelectorAll('#mobChips a')];
-if(mob.length){
-  const mobIO=new IntersectionObserver(es=>{
-    for(const e of es){
-      if(!e.isIntersecting) continue;
-      const id=e.target.id;
-      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
-    }
-  },{rootMargin:'-35% 0px -55% 0px'});
-  chTargets.forEach(t=>mobIO.observe(t));
-}
 
-const rail=document.getElementById('rail');
-const fill=document.getElementById('railFill');
-const steps=[...document.querySelectorAll('#rail .phase')];
-if(rail && fill && steps.length){
+const path=document.getElementById('prcPath');
+const fill=document.getElementById('prcFill');
+const steps=[...document.querySelectorAll('#prcPath .prc-phase')];
+const signTitle=document.getElementById('prcSignTitle');
+const signMeta=document.getElementById('prcSignMeta');
+if(path && fill && steps.length){
   readers.push(()=>{
-    const rect=rail.getBoundingClientRect();
+    const rect=path.getBoundingClientRect();
     const vh=innerHeight;
     const start=rect.top-vh*0.35;
     const end=rect.bottom-vh*0.45;
     const span=Math.max(end-start,1);
     const p=Math.min(1,Math.max(0,(0-start)/span));
-    fill.style.height=(p*(rail.offsetHeight-16))+'px';
+    fill.style.height=(p*(path.offsetHeight-24))+'px';
     const y=scrollY+vh*0.42;
+    let active=steps[0];
     steps.forEach(s=>{
       const top=s.getBoundingClientRect().top+scrollY;
-      s.classList.toggle('on', y>=top);
+      const on=y>=top;
+      s.classList.toggle('on', on);
+      if(on) active=s;
     });
+    if(signTitle && active){
+      signTitle.textContent=active.getAttribute('data-sign')||'The brief';
+      if(signMeta) signMeta.textContent=active.getAttribute('data-meta')||'';
+    }
   });
+}
+
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  const item=btn.closest('.faq-item');
+  btn.addEventListener('click',()=>{
+    const open=btn.getAttribute('aria-expanded')==='true';
+    document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(o=>{
+      if(o===btn) return;
+      o.setAttribute('aria-expanded','false');
+      o.closest('.faq-item').classList.remove('open');
+    });
+    btn.setAttribute('aria-expanded', String(!open));
+    item.classList.toggle('open', !open);
+  });
+});
+
+if(reduce()){
+  document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
+  steps.forEach(s=>s.classList.add('on'));
+  if(fill && path) fill.style.height=(path.offsetHeight-24)+'px';
 }
 run();
 })();

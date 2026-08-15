@@ -1,0 +1,170 @@
+/* KRIVA · last-loaded type + responsive recomposition
+   Loaded after page CSS. One family (Manrope). Tablet is not mobile. */
+
+img,svg,video,canvas,iframe{max-width:100%;height:auto}
+.wrap,.hero-stage,.hero-grid,.ph-grid,.lp-split,.cs-asym,main,article,section{min-width:0}
+h1,h2,h3,.d1,.d2,.d3,.lede{overflow-wrap:break-word}
+.d1,.d2,h1,h2{text-wrap:balance}
+
+/* Manrope reads wider than Archivo condensed. Recast the scale. */
+.d1,h1.d1{
+  font-family:var(--f-display);
+  font-weight:800;
+  letter-spacing:-.028em;
+  line-height:.94;
+  font-size:clamp(2.05rem,1.15rem + 4.2vw,4.6rem)
+}
+.d2,h2.d2{
+  font-family:var(--f-display);
+  font-weight:700;
+  letter-spacing:-.022em;
+  line-height:1.12;
+  font-size:clamp(1.55rem,1.05rem + 2.2vw,3.15rem)
+}
+.d3{
+  font-weight:700;
+  letter-spacing:-.018em;
+  line-height:1.22;
+  font-size:clamp(1.15rem,.95rem + .7vw,1.55rem)
+}
+.lede{
+  font-weight:400;
+  line-height:1.62;
+  letter-spacing:-.008em;
+  max-width:min(42ch,100%)
+}
+.body,.body-sm{line-height:1.65;max-width:min(58ch,100%)}
+.cta-band h2{
+  font-weight:800;
+  letter-spacing:-.03em;
+  line-height:.96;
+  font-size:clamp(2rem,1.1rem + 4.4vw,4.4rem);
+  max-width:14ch
+}
+.nav-cta .btn.sm{font-weight:600}
+
+/* Homepage display can stay larger; still clamp down on small phones. */
+body:not(.case) .hero .d1,
+.hero-copy .d1{
+  font-size:clamp(2.15rem,1.2rem + 5vw,5.8rem);
+  line-height:.92;
+  letter-spacing:-.03em
+}
+body.case-brand .ph .d1{
+  font-size:clamp(2.4rem,1.1rem + 6.2vw,5.8rem);
+  line-height:.9
+}
+body.case .cs-proof b{
+  font-size:clamp(3.6rem,12vw,9.5rem);
+  letter-spacing:-.05em
+}
+
+/* ── Phone ── */
+@media(max-width:479px){
+  .hero-actions,.ph-actions,.cta-row,.s-head{
+    flex-direction:column;align-items:stretch
+  }
+  .hero-actions .btn,.ph-actions .btn,.cta-row .btn,.sheet-cta .btn{
+    width:100%;justify-content:center
+  }
+  .sect,.lp-hero,.lp-ink{padding-block:clamp(52px,16vw,88px)}
+  .cta-band .wrap{padding-block:clamp(56px,18vw,96px)}
+  .chapters{display:none !important}
+  .hero-callout b{font-size:1.7rem}
+  .featwork-stat b{font-size:2.4rem}
+  .fgrid a,.sheet-sub a{padding-block:10px}
+}
+
+@media(max-width:359px){
+  .d1,h1.d1,.hero-copy .d1,body:not(.case) .hero .d1{
+    font-size:1.95rem;line-height:1.06;letter-spacing:-.022em
+  }
+  .d2,h2.d2{font-size:1.42rem;line-height:1.18}
+  .cta-band h2{font-size:1.7rem}
+  .idx-row,.lp-frac article,.lp-time li,.domain-rows a,.chal article{
+    grid-template-columns:1fr !important;gap:8px
+  }
+}
+
+/* ── Tablet: recompose, do not inherit the phone stack ── */
+@media(min-width:768px) and (max-width:1024px){
+  .ph-grid,
+  .hero-grid,
+  .lp-split,
+  .lp-hero .hero-grid,
+  .cs-asym,
+  .cs-asym.flip,
+  body.case-mobile .ph-grid,
+  .book-grid,
+  .wh-grid,
+  .feat-grid,
+  .domain-feat,
+  .desk-grid,
+  .sol-lead,
+  .lp-case,
+  .lp-dual,
+  .journal-feat,
+  .featwork-hero{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    align-items:start
+  }
+  .lp-pair,.lp-desk,.deliv,.featwork-more,.cs-lock,.stats{
+    grid-template-columns:1fr 1fr !important
+  }
+  .fit-rail,.lp-spec,.promise{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important
+  }
+  .cs-phones{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+  .run-bar{grid-template-columns:1fr 1fr !important}
+  .idx-row{
+    grid-template-columns:40px minmax(0,1fr) !important;
+    gap:12px 20px
+  }
+  .idx-row p{grid-column:2}
+  .fgrid{grid-template-columns:1.2fr 1fr 1fr !important}
+  .sect{padding-block:clamp(64px,8vw,104px)}
+  .hero-float{display:none}
+  .hero-stack{min-height:0}
+  .canvas-side{width:min(42%,280px)}
+  .lp-dual img.phone{max-width:180px;margin-left:auto}
+  .hero-actions .btn,.ph-actions .btn{width:auto}
+}
+
+/* iPad landscape / small laptop: keep density, don't go full desktop nav assumptions */
+@media(min-width:1024px) and (max-width:1279px){
+  .hero-stage{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr) !important;align-items:center}
+  .lp-hero .hero-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) !important}
+  .idx-row{grid-template-columns:40px minmax(0,1.1fr) minmax(0,1.4fr) auto !important}
+  .idx-row p{grid-column:auto}
+}
+
+/* Large desktop: editorial measure, not a stretch */
+@media(min-width:1600px){
+  .d1,h1.d1{font-size:4.5rem}
+  .hero-copy .d1{font-size:5.6rem}
+  .cta-band h2{font-size:4.4rem}
+  .canvas-stage{max-width:1480px}
+}
+
+/* Forms: comfortable tap, no 16px zoom on iOS */
+.f input,.f select,.f textarea,
+input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),
+select,textarea{
+  font-size:16px;
+  min-height:48px
+}
+.f textarea,textarea{min-height:150px}
+
+/* Touch: don't leave hover-lift stuck */
+@media(hover:none){
+  .card:hover,.path:hover,.pm > a:hover,
+  .mm-list a:hover,.featwork-shot:hover img,.domain-feat:hover img{
+    transform:none
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .d1,.d2,.mask span i,[data-r],[data-s]>*{
+    transition:none !important;transform:none !important;opacity:1 !important
+  }
+}

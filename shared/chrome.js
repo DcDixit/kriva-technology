@@ -154,4 +154,38 @@
     if (desktop() && nav.classList.contains('open')) setSheet(false);
     if (!desktop()) closeAll();
   });
+
+  /* How we work · five-phase strip in Operations chrome */
+  const processSteps = [
+    ['01', 'Discovery', 'Clear the problem'],
+    ['02', 'Strategy', 'Defined direction'],
+    ['03', 'Design', 'Iterative UI'],
+    ['04', 'Build', 'Weekly demos'],
+    ['05', 'Launch', 'Confident ship']
+  ];
+  const mountProcess = (link) => {
+    if (!link || link.querySelector('.mm-steps')) return;
+    const ol = document.createElement('ol');
+    ol.className = 'mm-steps';
+    ol.setAttribute('aria-hidden', 'true');
+    processSteps.forEach(([num, title, detail]) => {
+      const li = document.createElement('li');
+      const n = document.createElement('span');
+      n.className = 'n';
+      const mark = document.createElement('i');
+      n.appendChild(mark);
+      n.appendChild(document.createTextNode(num));
+      const b = document.createElement('b');
+      b.textContent = title;
+      const small = document.createElement('small');
+      small.textContent = detail;
+      li.appendChild(n);
+      li.appendChild(b);
+      li.appendChild(small);
+      ol.appendChild(li);
+    });
+    link.appendChild(ol);
+  };
+  mountProcess(document.querySelector('#mm-operations a[href="/process"]'));
+  mountProcess(document.querySelector('#sheet-operations a[href="/process"]'));
 })();

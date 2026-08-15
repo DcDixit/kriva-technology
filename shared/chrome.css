@@ -25,7 +25,7 @@
 
 .nav-link,.nav-trigger{
   position:relative;display:inline-flex;align-items:center;gap:6px;
-  padding:9px 11px;font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  padding:9px 11px;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   color:var(--steel);transition:color var(--t-fast) var(--e);white-space:nowrap;background:none;border:0;cursor:pointer
 }
 .nav-link:before,.nav-trigger:before{
@@ -58,7 +58,7 @@
   display:flex;justify-content:space-between;align-items:baseline;gap:16px;
   padding:16px 18px 12px;border-bottom:1px solid var(--rule-soft)
 }
-.mm-head b{font-family:var(--f-display);font-weight:750;font-size:1.05rem;letter-spacing:-.02em;color:var(--ink)}
+.mm-head b{font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;color:var(--ink)}
 .mm-head span{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
 .mm-list{list-style:none;padding:8px;display:grid;gap:2px}
 .mm-list a{
@@ -80,6 +80,255 @@
 /* Align rightmost megas so they don't clip */
 .nav-item:nth-last-child(-n+2) .mm{left:auto;right:0}
 
+/* ── Integration + Operations mega tiles · product, not plain text ── */
+#mm-integration,
+#mm-operations{
+  width:min(456px,calc(100vw - 2 * var(--gutter)))
+}
+#mm-integration .mm-list,
+#mm-operations .mm-list{
+  gap:6px;padding:10px
+}
+#mm-integration .mm-list a,
+#mm-operations .mm-list a[href="/services/crm-development"],
+#mm-operations .mm-list a[href="/services/automation-systems"]{
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr);
+  column-gap:14px;row-gap:5px;align-items:start;
+  padding:14px 12px;min-height:76px;
+  border:1px solid var(--rule-soft);background:var(--white)
+}
+#mm-integration .mm-list a:hover,
+#mm-integration .mm-list a:focus-visible,
+#mm-operations .mm-list a[href="/services/crm-development"]:hover,
+#mm-operations .mm-list a[href="/services/crm-development"]:focus-visible,
+#mm-operations .mm-list a[href="/services/automation-systems"]:hover,
+#mm-operations .mm-list a[href="/services/automation-systems"]:focus-visible{
+  background:var(--paper);border-color:var(--ink);transform:none
+}
+#mm-integration .mm-list a[aria-current="page"],
+#mm-operations .mm-list a[href="/services/crm-development"][aria-current="page"],
+#mm-operations .mm-list a[href="/services/automation-systems"][aria-current="page"]{
+  border-color:var(--ink);background:var(--paper)
+}
+#mm-integration .mm-list a strong,
+#mm-operations .mm-list a[href="/services/crm-development"] strong,
+#mm-operations .mm-list a[href="/services/automation-systems"] strong{
+  grid-column:2;
+  font-family:var(--f-display);font-weight:700;font-size:15px;
+  letter-spacing:-.022em;line-height:1.2
+}
+#mm-integration .mm-list a em,
+#mm-operations .mm-list a[href="/services/crm-development"] em,
+#mm-operations .mm-list a[href="/services/automation-systems"] em{
+  grid-column:2;font-size:13px;line-height:1.5;max-width:34ch
+}
+#mm-integration .mm-list a:before,
+#mm-operations .mm-list a[href="/services/crm-development"]:before,
+#mm-operations .mm-list a[href="/services/automation-systems"]:before{
+  content:"";grid-column:1;grid-row:1 / span 2;
+  width:52px;height:52px;align-self:center;flex:none;
+  border:1px solid var(--rule);background-color:var(--paper);
+  background-repeat:no-repeat;background-position:center;
+  transition:border-color var(--t-fast) var(--e),transform var(--t-fast) var(--e)
+}
+#mm-integration .mm-list a:hover:before,
+#mm-integration .mm-list a:focus-visible:before,
+#mm-operations .mm-list a[href="/services/crm-development"]:hover:before,
+#mm-operations .mm-list a[href="/services/crm-development"]:focus-visible:before,
+#mm-operations .mm-list a[href="/services/automation-systems"]:hover:before,
+#mm-operations .mm-list a[href="/services/automation-systems"]:focus-visible:before{
+  border-color:var(--ink);transform:translateY(-1px)
+}
+
+/* QuickBooks ↔ Xero · connected ledgers */
+#mm-integration .mm-list a[href="/solutions/accounting-integrations"]:before{
+  background-image:
+    url("/brand/logos/quickbooks.svg"),
+    url("/brand/logos/xero.svg"),
+    linear-gradient(var(--rule),var(--rule)),
+    radial-gradient(circle,var(--lime) 62%,transparent 68%);
+  background-size:17px 17px,17px 17px,7px 1px,6px 6px;
+  background-position:7px 17px,28px 17px,23px 25px,23px 22.5px;
+  background-repeat:no-repeat
+}
+
+/* Integrations & APIs · endpoint nodes */
+#mm-integration .mm-list a[href="/services/api-integrations"]:before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='13' cy='26' r='4.2' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%234F46E5'/%3E%3Ccircle cx='39' cy='26' r='4.2' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Cpath d='M17.4 26h3.5M31.1 26h3.5' stroke='%230E1216' stroke-width='1.15'/%3E%3C/svg%3E");
+  background-size:52px 52px
+}
+
+/* CRM & ops consoles · pipeline stages */
+#mm-operations .mm-list a[href="/services/crm-development"]:before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='7' y='21' width='11' height='10' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='20.5' y='21' width='11' height='10' fill='%234F46E5'/%3E%3Crect x='34' y='21' width='11' height='10' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Cpath d='M18 26h2.5M31.5 26H34' stroke='%230E1216' stroke-width='1.15'/%3E%3Ccircle cx='12.5' cy='16.5' r='1.7' fill='%235FD3A0'/%3E%3C/svg%3E");
+  background-size:52px 52px
+}
+
+/* Automation workflows · trigger → human gate → action */
+#mm-operations .mm-list a[href="/services/automation-systems"]:before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12' cy='26' r='4.2' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='23.4' y='20' width='1.7' height='12' fill='%23DB9B1F'/%3E%3Crect x='26.9' y='20' width='1.7' height='12' fill='%23DB9B1F'/%3E%3Ccircle cx='40' cy='26' r='4.6' fill='%234F46E5'/%3E%3Cpath d='M16.4 26h6.4M29 26h6.2' stroke='%230E1216' stroke-width='1.15'/%3E%3C/svg%3E");
+  background-size:52px 52px
+}
+
+/* How we work · process strip, not a text row */
+#mm-operations{
+  width:min(540px,calc(100vw - 2 * var(--gutter)))
+}
+#mm-operations .mm-list a[href="/process"]{
+  display:grid;grid-template-columns:1fr;gap:4px;
+  padding:14px 14px 12px;min-height:0;
+  border:1px solid var(--rule-soft);background:var(--white)
+}
+#mm-operations .mm-list a[href="/process"]:hover,
+#mm-operations .mm-list a[href="/process"]:focus-visible{
+  background:var(--paper);border-color:var(--ink);transform:none
+}
+#mm-operations .mm-list a[href="/process"][aria-current="page"]{
+  border-color:var(--ink);background:var(--paper)
+}
+#mm-operations .mm-list a[href="/process"] strong{
+  font-family:var(--f-display);font-weight:700;font-size:15px;
+  letter-spacing:-.022em;line-height:1.2
+}
+#mm-operations .mm-list a[href="/process"] em{
+  font-size:13px;line-height:1.5;max-width:44ch;color:var(--steel)
+}
+.mm-steps{
+  list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:0;margin-top:10px;padding-top:12px;border-top:1px solid var(--rule-soft)
+}
+.mm-steps li{
+  position:relative;min-width:0;padding:0 10px 0 0;
+  transition:transform var(--t-fast) var(--e)
+}
+.mm-steps .n{
+  display:flex;align-items:center;gap:6px;margin-bottom:7px;
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta)
+}
+.mm-steps .n i{
+  width:7px;height:7px;flex:none;border:1px solid var(--cta);background:var(--white);
+  transition:background var(--t-fast) var(--e),border-color var(--t-fast) var(--e),transform var(--t-fast) var(--e)
+}
+.mm-steps li:not(:last-child):after{
+  content:"";position:absolute;top:3px;left:12px;right:4px;height:1px;background:var(--rule);pointer-events:none
+}
+.mm-steps b{
+  display:block;font-family:var(--f-display);font-weight:700;font-size:12.5px;
+  letter-spacing:-.02em;line-height:1.2;color:var(--ink)
+}
+.mm-steps small{
+  display:block;margin-top:4px;font-size:11px;line-height:1.35;color:var(--steel)
+}
+.mm-steps li:hover{transform:translateY(-1px)}
+.mm-steps li:hover .n i{background:var(--cta);transform:scale(1.15)}
+
+@media(max-width:1280px){
+  .mm-steps small{display:none}
+}
+
+/* Mobile sheet · matching tiles, dark */
+#sheet-integration a[href="/solutions/accounting-integrations"],
+#sheet-integration a[href="/services/api-integrations"],
+#sheet-operations a[href="/services/crm-development"],
+#sheet-operations a[href="/services/automation-systems"]{
+  display:grid;grid-template-columns:44px minmax(0,1fr);
+  column-gap:14px;row-gap:3px;align-items:center;
+  padding:12px 0;min-height:64px
+}
+#sheet-integration a[href="/solutions/accounting-integrations"]:before,
+#sheet-integration a[href="/services/api-integrations"]:before,
+#sheet-operations a[href="/services/crm-development"]:before,
+#sheet-operations a[href="/services/automation-systems"]:before{
+  content:"";grid-column:1;grid-row:1 / span 2;
+  width:44px;height:44px;border:1px solid #3A444E;background-color:#12181E;
+  background-repeat:no-repeat;background-position:center;transition:border-color var(--t-fast)
+}
+#sheet-integration a[href="/solutions/accounting-integrations"]:hover:before,
+#sheet-integration a[href="/services/api-integrations"]:hover:before,
+#sheet-operations a[href="/services/crm-development"]:hover:before,
+#sheet-operations a[href="/services/automation-systems"]:hover:before,
+#sheet-integration a[href="/solutions/accounting-integrations"]:focus-visible:before,
+#sheet-integration a[href="/services/api-integrations"]:focus-visible:before,
+#sheet-operations a[href="/services/crm-development"]:focus-visible:before,
+#sheet-operations a[href="/services/automation-systems"]:focus-visible:before{
+  border-color:#8C98A4
+}
+#sheet-integration a[href="/solutions/accounting-integrations"] strong,
+#sheet-integration a[href="/services/api-integrations"] strong,
+#sheet-operations a[href="/services/crm-development"] strong,
+#sheet-operations a[href="/services/automation-systems"] strong,
+#sheet-integration a[href="/solutions/accounting-integrations"] span,
+#sheet-integration a[href="/services/api-integrations"] span,
+#sheet-operations a[href="/services/crm-development"] span,
+#sheet-operations a[href="/services/automation-systems"] span{
+  grid-column:2
+}
+#sheet-integration a[href="/solutions/accounting-integrations"]:before{
+  background-image:
+    url("/brand/logos/quickbooks.svg"),
+    url("/brand/logos/xero.svg"),
+    linear-gradient(#3A444E,#3A444E),
+    radial-gradient(circle,var(--lime) 62%,transparent 68%);
+  background-size:14px 14px,14px 14px,6px 1px,5px 5px;
+  background-position:6px 14px,24px 14px,20px 21.5px,19.5px 19.5px;
+  background-repeat:no-repeat
+}
+#sheet-integration a[href="/services/api-integrations"]:before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='13' cy='26' r='4.2' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%234F46E5'/%3E%3Ccircle cx='39' cy='26' r='4.2' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Cpath d='M17.4 26h3.5M31.1 26h3.5' stroke='%23EDEFF1' stroke-width='1.15'/%3E%3C/svg%3E");
+  background-size:44px 44px
+}
+#sheet-operations a[href="/services/crm-development"]:before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='7' y='21' width='11' height='10' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='20.5' y='21' width='11' height='10' fill='%234F46E5'/%3E%3Crect x='34' y='21' width='11' height='10' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Cpath d='M18 26h2.5M31.5 26H34' stroke='%23EDEFF1' stroke-width='1.15'/%3E%3Ccircle cx='12.5' cy='16.5' r='1.7' fill='%235FD3A0'/%3E%3C/svg%3E");
+  background-size:44px 44px
+}
+#sheet-operations a[href="/services/automation-systems"]:before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12' cy='26' r='4.2' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='23.4' y='20' width='1.7' height='12' fill='%23DB9B1F'/%3E%3Crect x='26.9' y='20' width='1.7' height='12' fill='%23DB9B1F'/%3E%3Ccircle cx='40' cy='26' r='4.6' fill='%234F46E5'/%3E%3Cpath d='M16.4 26h6.4M29 26h6.2' stroke='%23EDEFF1' stroke-width='1.15'/%3E%3C/svg%3E");
+  background-size:44px 44px
+}
+
+#sheet-operations a[href="/process"]{
+  display:block;padding:12px 0;min-height:0
+}
+#sheet-operations a[href="/process"]:hover,
+#sheet-operations a[href="/process"]:focus-visible{
+  padding-left:0
+}
+#sheet-operations a[href="/process"] strong{
+  display:block;font-weight:600;color:#EDEFF1;font-size:14.5px
+}
+#sheet-operations a[href="/process"] em,
+#sheet-operations a[href="/process"] > span{
+  display:block;margin-top:3px;font-size:12px;line-height:1.4;color:#8C98A4;font-style:normal
+}
+#sheet-operations a[href="/process"] .mm-steps{
+  grid-template-columns:1fr;gap:0;margin-top:12px;padding:2px 0 4px 16px;
+  border-top:0;border-left:1px solid #3A444E
+}
+#sheet-operations a[href="/process"] .mm-steps li{
+  padding:8px 0 8px 0
+}
+#sheet-operations a[href="/process"] .mm-steps li:not(:last-child):after{display:none}
+#sheet-operations a[href="/process"] .mm-steps .n{color:var(--amber);margin-bottom:5px}
+#sheet-operations a[href="/process"] .mm-steps .n i{
+  position:absolute;left:-20px;top:12px;background:#12181E;border-color:var(--amber)
+}
+#sheet-operations a[href="/process"] .mm-steps b{color:#EDEFF1;font-size:13.5px}
+#sheet-operations a[href="/process"] .mm-steps small{display:block;color:#8C98A4;font-size:12px}
+#sheet-operations a[href="/process"] .mm-steps li:hover{transform:none}
+#sheet-operations a[href="/process"] .mm-steps li:hover .n i{background:var(--amber);transform:none}
+
+@media(hover:none){
+  #mm-integration .mm-list a:hover,
+  #mm-operations .mm-list a[href="/services/crm-development"]:hover,
+  #mm-operations .mm-list a[href="/services/automation-systems"]:hover,
+  #mm-integration .mm-list a:hover:before,
+  #mm-operations .mm-list a[href="/services/crm-development"]:hover:before,
+  #mm-operations .mm-list a[href="/services/automation-systems"]:hover:before{
+    transform:none
+  }
+}
+
 .nav-cta{display:flex;align-items:center;gap:12px;flex:none}
 /* Header CTA · locked to compact dark mono chip (keep this look) */
 .nav-cta .btn.sm{
@@ -87,7 +336,7 @@
   height:36px;padding:0 14px;box-sizing:border-box;
   max-width:none;border-radius:0;border:1px solid var(--cta);
   background:var(--cta);color:#fff;
-  font-family:var(--f-mono);font-size:10.5px;font-weight:500;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:600;
   letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
   line-height:1;overflow:hidden
 }
@@ -112,7 +361,7 @@
 .sheet-item{border-bottom:1px solid var(--ink-line)}
 .sheet a.big,.sheet-toggle{
   display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
-  font-family:var(--f-display);font-weight:750;font-size:clamp(1.55rem,7vw,2.35rem);
+  font-family:var(--f-display);font-weight:700;font-size:clamp(1.55rem,7vw,2.35rem);
   letter-spacing:-.03em;color:#EDEFF1;padding:14px 0;text-align:left;background:none;border:0;cursor:pointer
 }
 .sheet a.big{opacity:0;transform:translateY(14px);transition:opacity .5s var(--e),transform .5s var(--e)}
@@ -144,7 +393,7 @@
   list-style:none;overflow:hidden;max-height:0;opacity:0;
   transition:max-height .5s var(--e),opacity .4s var(--e),padding .4s
 }
-.sheet-item.open .sheet-sub{max-height:480px;opacity:1;padding:0 0 14px}
+.sheet-item.open .sheet-sub{max-height:920px;opacity:1;padding:0 0 14px}
 .sheet-sub a{
   display:block;padding:9px 0;font-size:14.5px;color:#A8B2BC;
   border-bottom:1px solid #1A2027;transition:color var(--t-fast),padding-left .35s var(--e)
@@ -183,7 +432,7 @@ footer .wrap{padding-block:clamp(48px,5vw,72px) 28px}
 .fgrid{display:grid;grid-template-columns:1.55fr repeat(3,1fr);gap:clamp(24px,3vw,40px)}
 /* #8C98A4 on --ink is 6.40:1. The previous #5C6670 measured 3.21:1 here, which reads
    fine on paper but fails AA on the dark footer. */
-.fgrid h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8C98A4;font-weight:400;margin-bottom:16px}
+.fgrid h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8C98A4;font-weight:500;margin-bottom:16px}
 .fgrid a{display:inline-block;padding:5px 0;font-size:14.5px;color:#C4CCD4;transition:color var(--t-fast),transform .4s var(--e)}
 .fgrid a:hover{color:#fff;transform:translateX(4px)}
 .fgrid ul{list-style:none}
@@ -227,5 +476,11 @@ footer .wrap{padding-block:clamp(48px,5vw,72px) 28px}
 @media (prefers-reduced-motion:reduce){
   .mm,.sheet,.sheet-sub,.nav-chev,.wa{transition:none !important}
   .nav.open + .sheet a.big,.nav.open + .sheet .sheet-item{opacity:1;transform:none}
+  #mm-integration .mm-list a:before,
+  #mm-operations .mm-list a[href="/services/crm-development"]:before,
+  #mm-operations .mm-list a[href="/services/automation-systems"]:before{
+    transition:none !important;transform:none !important
+  }
+  .mm-steps li,.mm-steps .n i{transition:none !important;transform:none !important}
 }
 

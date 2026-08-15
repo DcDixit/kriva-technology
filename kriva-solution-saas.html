@@ -10,54 +10,389 @@
 <meta name="theme-color" content="#0E1216">
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
-<title>SaaS Product Design &amp; Development Agency UK - KRIVA</title>
-<meta name="description" content="Product design and development for UK B2B SaaS, onboarding UX, dashboards, MVP builds, and design systems that scale with your roadmap.">
+<title>SaaS Product Solutions · Onboarding, dashboards, MVPs · KRIVA</title>
+<meta name="description" content="Product design and development for UK and US B2B SaaS: first-run onboarding, roles, daily dashboards, and MVPs that reach a real outcome — not an empty home screen.">
 <link rel="canonical" href="https://krivatechnologies.com/solutions/saas">
-<meta property="og:title" content="SaaS Product Design &amp; Development Agency UK">
-<meta property="og:description" content="Product design and development for UK B2B SaaS, onboarding UX, dashboards, MVP builds, and design systems that scale with your roadmap.">
-<meta property="og:url" content="https://krivatechnologies.com/solutions/saas">
 <meta property="og:type" content="website">
+<meta property="og:title" content="SaaS Product Solutions · Onboarding, dashboards, MVPs">
+<meta property="og:description" content="Product design and development for UK and US B2B SaaS: first-run onboarding, roles, daily dashboards, and MVPs that reach a real outcome — not an empty home screen.">
+<meta property="og:url" content="https://krivatechnologies.com/solutions/saas">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · SaaS product design and development">
+<meta property="og:image:alt" content="KRIVA · SaaS product design, onboarding and activation">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/shared/saas.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html:focus-within{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img,svg{max-width:100%;display:block}
+:selection{background:var(--blue);color:#fff}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible,.saas-frame :focus-visible{outline-color:var(--amber)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
+.skip:focus{left:12px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-family:var(--f-mono);font-size:clamp(10px,1.1vw,11.5px);letter-spacing:.16em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:11px;line-height:1}
+.eyebrow:before{content:"";width:20px;height:1px;background:currentColor;flex:none;opacity:.6}
+.d1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.55rem,5.8vw,4.9rem);line-height:.92;letter-spacing:-.03em}
+.d2{font-family:var(--f-display);font-weight:700;font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em}
+.d3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.28rem,2vw,1.7rem);line-height:1.16;letter-spacing:-.022em}
+.lede{font-size:clamp(1.05rem,1.3vw,1.22rem);line-height:1.6;color:var(--steel);max-width:42ch;letter-spacing:-.01em}
+.body-sm{font-size:15px;line-height:1.62;color:var(--steel);max-width:48ch}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+[data-r]{opacity:0;transform:translate3d(0,22px,0);transition:opacity var(--t-slow) var(--e),transform var(--t-slow) var(--e)}
+[data-r].in{opacity:1;transform:none}
+[data-s]>*{opacity:0;transform:translate3d(0,18px,0);transition:opacity var(--t-mid) var(--e),transform var(--t-mid) var(--e)}
+[data-s].in>*{opacity:1;transform:none}
+[data-s].in>*:nth-child(1){transition-delay:0ms}[data-s].in>*:nth-child(2){transition-delay:70ms}
+[data-s].in>*:nth-child(3){transition-delay:140ms}[data-s].in>*:nth-child(4){transition-delay:210ms}
+[data-s].in>*:nth-child(5){transition-delay:280ms}
+.mask span{display:block;overflow:hidden;padding-bottom:.02em}
+.mask span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
+.mask.in span i{transform:none}
+.mask.in span:nth-child(2) i{transition-delay:90ms}
+.btn{--btn-fg:#fff;--btn-bg:var(--cta);--btn-hover:var(--ink);
+  position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
+  padding:13px 22px;min-height:48px;border:1px solid var(--cta);background:var(--btn-bg);color:var(--btn-fg);
+  font-family:var(--f-mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
+.btn>*{position:relative;z-index:1}
+.btn:before{content:"";position:absolute;inset:0;background:var(--btn-hover);transform:translate3d(0,101%,0);transition:transform .5s var(--e)}
+.btn:hover:before,.btn:focus-visible:before{transform:none}
+.btn:hover{color:#fff;border-color:var(--btn-hover)}
+.btn i{font-style:normal;transition:transform .42s var(--e)}
+.btn:hover i{transform:translateX(5px)}
+.btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink);border-color:var(--ink)}
+.btn.sm{padding:9px 15px;font-size:11px;min-height:36px}
+.btn.on-dark{--btn-bg:var(--cta);--btn-fg:#fff;--btn-hover:#fff;border-color:var(--cta)}
+.btn.on-dark:hover{color:var(--ink);border-color:#fff}
+.btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
+.flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
+.crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
+.crumbs a:hover{color:var(--ink)}
+.crumbs li[aria-current]{color:var(--ink)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.sect{padding-block:clamp(80px,10vw,140px);scroll-margin-top:88px}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(24px,4vw,72px);flex-wrap:wrap}
+.s-head h2{margin-top:18px}
+.s-head .lede{margin-top:18px}
+.s-title{margin-top:18px}
+.cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
+.cta-band .wrap{padding-block:clamp(88px,11vw,160px)}
+.cta-band .eyebrow{color:var(--ink-dim)}
+.cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,7vw,5.4rem);line-height:.93;letter-spacing:-.032em}
+.cta-band .lede{color:#8C98A4;margin-top:18px;max-width:40ch}
+.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
+.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
+.assur i{font-style:normal;color:var(--amber);margin-right:7px}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:22px;min-height:44px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link i{font-style:normal;transition:transform .42s var(--e)}
+.p-link:hover i{transform:translateX(6px)}
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
+.chapters{position:fixed;right:calc(var(--gutter) - 8px);top:50%;transform:translateY(-50%);z-index:70;display:grid;gap:2px;opacity:0;transition:opacity var(--t-mid) var(--e);pointer-events:none}
+.chapters.show{opacity:1;pointer-events:auto}
+.chapters a{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:5px 8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel-2)}
+.chapters a span{opacity:0;transform:translateX(6px);transition:opacity var(--t-fast) var(--e),transform var(--t-fast) var(--e)}
+.chapters:hover a span,.chapters a[aria-current="true"] span{opacity:1;transform:none}
+.chapters a i{display:block;width:18px;height:1px;background:var(--rule);flex:none;transition:width var(--t-fast) var(--e),background var(--t-fast)}
+.chapters a:hover i{width:26px;background:var(--steel)}
+.chapters a[aria-current="true"]{color:var(--ink)}
+.chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
+@media(max-width:1280px){.chapters{display:none}}
+</style>
 <link rel="stylesheet" href="/shared/chrome.css">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service",
-"name":"SaaS Product Solutions",
-"serviceType":"SaaS product design, onboarding UX, dashboards, MVP development, design systems",
-"provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},
-"areaServed":["GB","US"],
-"url":"https://krivatechnologies.com/solutions/saas",
-"description":"Product design and development for UK B2B SaaS, onboarding UX, dashboards, MVP builds, and design systems that scale with your roadmap."}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Do you work with early-stage UK SaaS startups?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with teams from pre-seed MVPs through to Series A scaling. Team size and engagement model are tailored to your stage and runway."}},
-    {"@type":"Question","name":"Can you redesign an existing SaaS product?","acceptedAnswer":{"@type":"Answer","text":"Yes. We typically roll out redesigns in phases to reduce risk and maintain user continuity."}},
-    {"@type":"Question","name":"Design-only or design + development?","acceptedAnswer":{"@type":"Answer","text":"Both. Many clients start with product design and extend into Next.js development with the same in-house team."}},
-    {"@type":"Question","name":"Do you work with US SaaS teams as well as UK?","acceptedAnswer":{"@type":"Answer","text":"Yes. The UK is our primary SaaS market, but we regularly support US product teams with overlapping hours and the same delivery model."}},
-    {"@type":"Question","name":"What is a typical first engagement?","acceptedAnswer":{"@type":"Answer","text":"A scoped discovery + design sprint, or a fixed MVP build with weekly demos. We recommend the lightest path that answers your biggest risk: activation, demo readiness, or technical feasibility."}}
-  ]
-}
-</script>
 <link rel="stylesheet" href="/shared/inner.css">
 <link rel="stylesheet" href="/shared/system.css">
+<link rel="stylesheet" href="/shared/responsive.css">
+<style>
+/* Page-scoped SaaS Product Solutions — loaded last so it wins the cascade */
+body.page-saas{overflow-x:clip}
+body.page-saas .d1{font-size:clamp(2.55rem,5.8vw,4.9rem);line-height:.92;letter-spacing:-.03em}
+body.page-saas .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
+body.page-saas .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
+body.page-saas .sect{padding-block:clamp(80px,10vw,140px)}
+body.page-saas .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;line-height:.93;letter-spacing:-.032em}
+body.page-saas .hero{
+  background:var(--paper);color:var(--ink);overflow:hidden;
+  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(40px,5vw,80px);
+  scroll-margin-top:88px
+}
+@media(min-width:1025px){
+  body.page-saas .hero{
+    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding:80px 0 56px
+  }
+  body.page-saas .hero > .wrap{width:100%}
+}
+
+.saas-hero-grid{
+  display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+  gap:clamp(28px,4.5vw,72px);align-items:center;
+  margin-top:clamp(22px,3vw,36px)
+}
+.saas-hero-copy .d1{margin:18px 0 20px;max-width:11ch}
+.saas-hero-copy .lede{max-width:40ch}
+.saas-trust{
+  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
+}
+.saas-trust span{display:inline-flex;align-items:center;gap:8px}
+.saas-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
+.saas-hero-visual{position:relative;min-width:0}
+@media(min-width:641px){.saas-hero-visual{padding-bottom:clamp(24px,5vw,48px)}}
+.cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+
+.saas-frame{
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  box-shadow:var(--shadow-product);overflow:hidden;position:relative;z-index:1
+}
+.saas-chrome{
+  display:flex;align-items:center;gap:6px;padding:10px 14px;
+  background:#12181E;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
+}
+.saas-chrome i{width:8px;height:8px;border-radius:50%;background:#2A333C;flex:none}
+.saas-chrome i:first-child{background:#5C6670}
+.saas-chrome span{margin-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ob-bar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:12px 14px;border-bottom:1px solid var(--ink-line)
+}
+.ob-bar b{font-weight:600;color:#fff;letter-spacing:-.015em}
+.ob-bar em{font-style:normal;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime)}
+.ob-progress{padding:12px 14px 4px;border-bottom:1px solid var(--ink-line)}
+.ob-progress span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:8px}
+.ob-track{height:2px;background:var(--ink-line);position:relative}
+.ob-track i{position:absolute;inset:0 auto 0 0;width:50%;background:var(--cta);transform:scaleX(0);transform-origin:0 50%;transition:transform .9s var(--e)}
+.saas-frame.lit .ob-track i{transform:scaleX(1)}
+.ob-track.mid i{width:66%;transform:scaleX(1)}
+.ob-list{padding:6px 0}
+.ob-item{
+  display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:center;
+  padding:11px 14px;border-bottom:1px solid #1A2027;font-size:13px;color:#8C98A4
+}
+.ob-item:last-child{border-bottom:0}
+.ob-item .dot{width:10px;height:10px;border:1px solid #3A444E;border-radius:50%;flex:none}
+.ob-item.done{color:#fff}
+.ob-item.done .dot{background:var(--lime);border-color:var(--lime)}
+.ob-item.now{color:#fff;background:rgba(79,70,229,.1);border-left:2px solid var(--cta)}
+.ob-item.now .dot{border-color:var(--cta);box-shadow:0 0 0 3px rgba(79,70,229,.2)}
+.ob-item small{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C}
+.ob-empty{padding:16px 14px 18px;background:linear-gradient(180deg,rgba(79,70,229,.08),transparent 70%)}
+.ob-empty span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
+.ob-empty b{display:block;margin:8px 0 10px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.15rem,1.8vw,1.4rem);letter-spacing:-.03em;color:#fff;line-height:1.2}
+.ob-empty p{font-size:13px;line-height:1.5;color:#8C98A4;max-width:42ch}
+.ob-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ob-acts span{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 12px;min-height:36px;display:inline-flex;align-items:center
+}
+.ob-acts .go{background:var(--cta);color:#fff}
+.ob-acts .ghost{border:1px solid #3A444E;color:#B9C3CC}
+
+.saas-callout{
+  position:absolute;left:-5%;bottom:10%;z-index:4;width:min(70%,268px);
+  background:var(--white);border:1px solid var(--rule);padding:14px 16px 12px;
+  box-shadow:var(--shadow-lift)
+}
+.saas-callout .k{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
+.saas-callout b{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;line-height:1.25}
+.saas-callout em{display:block;margin-top:6px;font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
+
+/* Leaks — editorial, not a 3-up farm */
+.leaks{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
+.leaks .wrap{padding-block:clamp(80px,10vw,140px)}
+.leaks .eyebrow{color:var(--ink-dim)}
+.leaks h2{color:#fff;margin-top:18px;max-width:14ch}
+.leaks .lede{color:#8C98A4;margin-top:18px}
+.saas-frac{margin-top:clamp(32px,4.5vw,56px);border-top:1px solid var(--ink-line)}
+.saas-frac article{
+  display:grid;grid-template-columns:56px minmax(0,.85fr) minmax(0,1.25fr);
+  gap:clamp(16px,2.4vw,32px);align-items:start;
+  padding:clamp(22px,2.6vw,32px) 0;border-bottom:1px solid var(--ink-line)
+}
+.saas-frac .n{
+  font-family:var(--f-display);font-weight:800;font-size:clamp(1.35rem,2vw,1.7rem);
+  letter-spacing:-.04em;color:#3A444E;line-height:1;padding-top:4px;transition:color .45s var(--e)
+}
+.saas-frac article:hover .n{color:var(--cta)}
+.saas-frac h3{color:#fff;margin-bottom:0;max-width:16ch}
+.saas-frac p{color:#8C98A4;font-size:15px;line-height:1.62;max-width:48ch;margin:0}
+
+/* Surfaces */
+.saas-stage{background:var(--paper-2);border-block:1px solid var(--rule)}
+.saas-switch{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(28px,4vw,52px)}
+.saas-tabs{display:flex;flex-wrap:wrap;gap:0;margin-bottom:22px;border-bottom:1px solid var(--rule)}
+.saas-tabs button{
+  padding:12px 16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--steel);position:relative;min-height:48px
+}
+.saas-tabs button:after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:1px;background:var(--cta);transform:scaleX(0);transition:transform .4s var(--e)}
+.saas-tabs button:hover{color:var(--ink)}
+.saas-tabs button[aria-selected="true"]{color:var(--ink)}
+.saas-tabs button[aria-selected="true"]:after{transform:scaleX(1)}
+.saas-copy h3{margin-bottom:10px;max-width:16ch}
+.saas-copy ul{list-style:none;display:grid;gap:9px;margin-top:18px}
+.saas-copy li{padding-left:14px;position:relative;font-size:14.5px;line-height:1.5;color:var(--ink);max-width:40ch}
+.saas-copy li:before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--steel)}
+.saas-panel[hidden]{display:none}
+.saas-view[hidden]{display:none}
+
+.role-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto;gap:10px;align-items:center;padding:11px 14px;border-bottom:1px solid #1A2027}
+.role-row:last-child{border-bottom:0}
+.role-row.on{background:rgba(79,70,229,.08);border-left:2px solid var(--cta)}
+.role-row b{display:block;color:#fff;font-weight:600;font-size:13px}
+.role-row em{display:block;margin-top:3px;font-style:normal;font-size:12px;color:#8C98A4}
+.role-row small{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C}
+.role-invite{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px 14px;border-top:1px solid var(--ink-line)}
+.role-invite span{font-family:var(--f-mono);font-size:11px;color:#B9C3CC;padding:7px 10px;border:1px solid #2A333C}
+.role-invite .go{background:var(--cta);color:#fff;border-color:var(--cta);letter-spacing:.08em;text-transform:uppercase;font-size:10px}
+
+.home-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--ink-line)}
+.home-kpi{padding:12px 14px;border-right:1px solid var(--ink-line);min-width:0}
+.home-kpi:last-child{border-right:0}
+.home-kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#717F8C}
+.home-kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:1.12rem;letter-spacing:-.02em;color:#fff}
+.home-kpi em{display:block;margin-top:4px;font-style:normal;font-family:var(--f-mono);font-size:9px;color:var(--lime)}
+.home-kpi.warn em{color:var(--amber)}
+.ex-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:9px 10px;background:#141A20;font-size:12px;color:#B9C3CC;border-left:2px solid #3A444E}
+.ex-row.hot{border-left-color:var(--amber);color:#fff}
+.ex-row.ok{border-left-color:var(--lime)}
+.ex-list{padding:12px 14px;display:grid;gap:7px}
+.ex-list .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:2px}
+
+/* Proof */
+.saas-proof{background:var(--white);border-block:1px solid var(--rule)}
+.saas-proof-grid{
+  display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  gap:clamp(28px,4vw,64px);align-items:center;margin-top:clamp(32px,4vw,56px)
+}
+.scope{display:grid;margin-top:24px;border-top:1px solid var(--rule)}
+.scope div{display:grid;grid-template-columns:clamp(72px,10vw,100px) minmax(0,1fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--rule);font-size:14.5px}
+.scope dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);padding-top:3px}
+.scope dd{color:var(--ink)}
+.proof-cta{margin-top:28px}
+.proof-note{margin-top:28px;font-size:13.5px;line-height:1.6;color:var(--steel-2);max-width:62ch}
+
+/* Process */
+.run-bar{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(36px,5vw,56px)}
+.run-bar .wk{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
+.run-bar .bar{display:block;height:3px;background:var(--rule);position:relative;margin-bottom:18px}
+.run-bar .bar:after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--cta)}
+.run-bar h3{margin-bottom:8px}
+.run-bar p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
+
+/* Related */
+.saas-rel{background:var(--white);border-top:1px solid var(--rule)}
+.idx-list{margin-top:clamp(24px,3vw,40px)}
+.idx-row{
+  display:grid;grid-template-columns:48px minmax(0,1.1fr) minmax(0,1.4fr) auto;
+  gap:24px;align-items:baseline;padding:22px 0;min-height:48px;border-bottom:1px solid var(--rule);color:inherit;
+  transition:padding-left .4s var(--e)
+}
+.idx-row:first-child{border-top:1px solid var(--rule)}
+.idx-row:hover{padding-left:8px}
+.idx-row .n{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--cta)}
+.idx-row h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.03em;font-size:clamp(1.15rem,2vw,1.45rem)}
+.idx-row p{color:var(--steel);font-size:14.5px;max-width:46ch}
+.idx-row i{font-style:normal;color:var(--cta);transition:transform .42s var(--e)}
+.idx-row:hover i{transform:translateX(6px)}
+.svc-note{margin-top:26px}
+.inline-link{border-bottom:1px solid var(--rule)}
+
+/* FAQ */
+.saas-faq{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px}
+.faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
+.faq-grid > div:first-child{position:sticky;top:112px}
+.faq-grid .d2{margin-top:18px;max-width:13ch}
+.faq-grid .lede{margin-top:18px}
+.faq-list{border-top:1px solid var(--rule)}
+.faq-item{border-bottom:1px solid var(--rule)}
+.faq-q{
+  width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
+  gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
+  padding:clamp(20px,2.4vw,26px) 0;transition:padding-left .45s var(--e)
+}
+.faq-q:hover,.faq-q:focus-visible{padding-left:8px}
+.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel);transition:color var(--t-fast) var(--e);padding-top:5px}
+.faq-item.open .qn{color:var(--cta)}
+.faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
+.faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
+.faq-q .qi:before,.faq-q .qi:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .4s var(--e)}
+.faq-q .qi:after{transform:rotate(90deg)}
+.faq-item.open .qi:after{transform:rotate(0)}
+.faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--e),visibility 0s linear .5s}
+.faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--e),visibility 0s linear 0s}
+.faq-a>div{overflow:hidden}
+.faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
+.faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
+.faq-side .btn{margin-top:24px}
+
+@media(max-width:1024px){
+  .saas-hero-grid,.saas-switch,.saas-proof-grid,.faq-grid,.run-bar{grid-template-columns:1fr}
+  .saas-hero-copy .d1{max-width:none}
+  .faq-grid > div:first-child{position:static}
+  .idx-row{grid-template-columns:40px minmax(0,1fr);gap:12px 20px}
+  .idx-row p{grid-column:2}
+  .idx-row i{display:none}
+  .saas-callout{position:static;width:100%;margin-top:14px;box-shadow:none}
+  .saas-hero-visual{padding-bottom:0}
+  .cta-row{align-items:flex-start}
+}
+@media(max-width:900px){
+  .saas-frac article{grid-template-columns:48px minmax(0,1fr);gap:14px}
+  .saas-frac p{grid-column:1 / -1}
+  .saas-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .saas-tabs::-webkit-scrollbar{display:none}
+  .saas-tabs button{flex:none}
+}
+@media(max-width:640px){
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
+  .home-kpis{grid-template-columns:1fr 1fr}
+  .home-kpi:nth-child(3){display:none}
+  .role-row{grid-template-columns:1fr;gap:4px}
+  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
+  .faq-a-in{padding-left:44px}
+  .idx-row{grid-template-columns:1fr}
+  .idx-row p{grid-column:1}
+  .cta-row{flex-direction:column;align-items:stretch}
+}
+@media(max-width:560px){
+  .saas-frac article{grid-template-columns:1fr;gap:8px}
+  .ob-item{grid-template-columns:22px minmax(0,1fr)}
+  .ob-item small{display:none}
+}
+@media(max-width:390px){
+  body.page-saas .d1{font-size:2.28rem}
+  .saas-chrome span{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
+  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
+  .mask span i{transform:none!important}
+  .ob-track i,.saas-frame.lit .ob-track i{transform:none!important}
+}
+</style>
 </head>
-<body>
+<body class="solution page-saas">
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="nav-shell">
@@ -87,7 +422,7 @@
               <div class="mm" id="mm-saas" role="menu">
                 <div class="mm-head"><b>SaaS products</b><span>UK &amp; US</span></div>
                 <ul class="mm-list">
-                  <li><a role="menuitem" href="/solutions/saas"><strong>SaaS product solutions</strong><em>Onboarding, dashboards, and MVPs that stick.</em></a></li>
+                  <li><a role="menuitem" href="/solutions/saas" aria-current="page"><strong>SaaS product solutions</strong><em>Onboarding, dashboards, and MVPs that stick.</em></a></li>
                   <li><a role="menuitem" href="/services/saas-platforms"><strong>SaaS product design</strong><em>Multi-tenant UX, admin panels, permissions.</em></a></li>
                   <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboards &amp; admin panels</strong><em>Analytics and operational views for daily use.</em></a></li>
                   <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
@@ -147,7 +482,7 @@
     <div class="sheet-item">
       <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-saas">SaaS<span class="plus" aria-hidden="true"></span></button>
       <ul class="sheet-sub" id="sheet-saas">
-        <li><a href="/solutions/saas"><strong>SaaS product solutions</strong><span>Onboarding &amp; MVPs</span></a></li>
+        <li><a href="/solutions/saas" aria-current="page"><strong>SaaS product solutions</strong><span>Onboarding &amp; MVPs</span></a></li>
         <li><a href="/services/saas-platforms"><strong>SaaS product design</strong><span>Multi-tenant UX</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Dashboards &amp; admin</strong><span>Daily-use views</span></a></li>
         <li><a href="/services/product-design"><strong>Product design &amp; UX</strong><span>Flows to launch UI</span></a></li>
@@ -187,94 +522,125 @@
   </div>
 </div>
 
+<nav class="chapters" id="chapters" aria-label="Sections">
+  <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
+  <a href="#leaks"><span>Leaks</span><i></i></a>
+  <a href="#surfaces"><span>Surfaces</span><i></i></a>
+  <a href="#proof"><span>Proof</span><i></i></a>
+  <a href="#faq"><span>FAQ</span><i></i></a>
+</nav>
+
 <main id="main">
 
-<header class="hero">
+<header class="hero" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">SaaS</li>
     </ol>
-    <p class="eyebrow" data-r>SaaS product design</p>
-    <h1 class="d1 mask hero-copy" data-mask>
-      <span><i>Signup is not</i></span>
-      <span><i>the product.</i></span>
-    </h1>
-    <div class="hero-row">
-      <p class="lede" data-r>We design the first run so B2B SaaS users reach a real outcome — not an empty dashboard and a product tour.</p>
-      <div class="hero-actions" data-r>
-        <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-        <a href="/work/payroll-pro-saas" class="btn ghost"><span>See PayrollPro</span><i>→</i></a>
-      </div>
-    </div>
 
-    <div class="pair" data-s>
-      <div class="pair-item">
-        <a href="#surfaces" aria-label="Onboarding and activation surfaces">
-          <img src="/solutions/saas/onboarding.svg" alt="SaaS onboarding checklist and first-run progress" width="1600" height="1000" decoding="async" loading="eager">
-        </a>
-        <p class="cap">Onboarding · first meaningful action</p>
+    <div class="saas-hero-grid">
+      <div class="saas-hero-copy">
+        <p class="eyebrow" data-r>SaaS product design · UK &amp; US</p>
+        <h1 class="d1 mask" data-mask>
+          <span><i>Signup is not</i></span>
+          <span><i>the product.</i></span>
+        </h1>
+        <p class="lede" data-r>We design the first run so B2B users reach a real outcome — not an empty dashboard and a product tour they skip.</p>
+        <div class="hero-actions" data-r>
+          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+          <a href="/work/payroll-pro-saas" class="btn ghost"><span>See PayrollPro</span><i>→</i></a>
+        </div>
+        <p class="saas-trust" data-r>
+          <span>Onboarding · roles · home</span>
+          <span>Pre-seed to Series A</span>
+          <span>Design + Next.js</span>
+        </p>
       </div>
-      <div class="pair-item">
-        <a href="#surfaces" aria-label="Admin dashboard surfaces">
-          <img src="/solutions/saas/dashboard-admin.svg" alt="SaaS admin dashboard for daily use" width="1600" height="1000" loading="lazy" decoding="async">
-        </a>
-        <p class="cap">Home · the morning scan, not a metrics museum</p>
+
+      <div class="saas-hero-visual" data-r>
+        <div class="saas-frame" id="heroFrame" aria-hidden="true">
+          <div class="saas-chrome"><i></i><i></i><i></i><span>app.kriva.cloud / get started</span></div>
+          <div class="ob-bar">
+            <b>Northwind Ltd</b>
+            <em>Step 2 of 4</em>
+          </div>
+          <div class="ob-progress">
+            <span>First value · import records</span>
+            <div class="ob-track"><i></i></div>
+          </div>
+          <div class="ob-list">
+            <div class="ob-item done"><i class="dot"></i><span>Workspace created</span><small>Done</small></div>
+            <div class="ob-item done"><i class="dot"></i><span>Role · Finance admin</span><small>Done</small></div>
+            <div class="ob-item now"><i class="dot"></i><span>Import first records</span><small>Now</small></div>
+            <div class="ob-item"><i class="dot"></i><span>Invite the rest of the team</span><small>Later</small></div>
+          </div>
+          <div class="ob-empty">
+            <span>Empty state · designed as a path</span>
+            <b>Nothing to scan yet.</b>
+            <p>Import a CSV or connect HRIS so the home screen has an exception to act on — not a tooltip tour.</p>
+            <div class="ob-acts">
+              <span class="go">Import CSV</span>
+              <span class="ghost">Connect HRIS</span>
+            </div>
+          </div>
+        </div>
+        <aside class="saas-callout" aria-hidden="true">
+          <span class="k">Activated means</span>
+          <b>First payroll locked — not “completed setup.”</b>
+          <em>Named with you before UI begins</em>
+        </aside>
+        <p class="cap-note"><span class="flag">Demo</span> Illustrative first run · no client data</p>
       </div>
     </div>
   </div>
 </header>
 
-<section class="leaks" id="leaks" aria-labelledby="lkH">
+<section class="leaks on-ink" id="leaks" aria-labelledby="lkH">
   <div class="wrap">
     <p class="eyebrow" data-r>Where signup leaks</p>
     <h2 class="d2" id="lkH" data-r>Users signed up. Then they left.</h2>
     <p class="lede" data-r>Activation is not “completed setup.” It is the first outcome they came for. Most products lose people in the same three places.</p>
-
-    <div class="leak-grid">
-      <article class="leak" data-r>
-        <span class="n num" aria-hidden="true">01</span>
+    <div class="saas-frac">
+      <article data-r>
+        <span class="n num">01</span>
         <h3 class="d3">An empty dashboard</h3>
         <p>The account exists. The workspace is named. Nothing useful is on screen, so a tooltip tour stands in for the product.</p>
       </article>
-      <article class="leak" data-r>
-        <span class="n num" aria-hidden="true">02</span>
+      <article data-r>
+        <span class="n num">02</span>
         <h3 class="d3">Permissions before value</h3>
         <p>SSO and role sprawl push admin setup ahead of the job. The buyer never reaches the moment that proves the product.</p>
       </article>
-      <article class="leak" data-r>
-        <span class="n num" aria-hidden="true">03</span>
+      <article data-r>
+        <span class="n num">03</span>
         <h3 class="d3">No shared “activated”</h3>
-        <p>Growth, product, and design track different events. Nobody can say what first value is — so nobody can design for it.</p>
+        <p>Growth, product, and design track different events. Nobody can say what first value is, so nobody can design for it.</p>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sect stage" id="surfaces" aria-labelledby="sfH">
+<section class="sect saas-stage" id="surfaces" aria-labelledby="sfH">
   <div class="wrap">
-    <div class="stage-head">
-      <p class="eyebrow" data-r>What we design</p>
-      <h2 class="d2" id="sfH" data-r>The surfaces that decide whether people stay.</h2>
-      <p class="lede" data-r>Onboarding, roles, and the daily home — designed as one first-run, not three products bolted together.</p>
-    </div>
-
-    <div class="stage-tabs" role="tablist" aria-label="Product surfaces">
-      <button type="button" role="tab" id="tab-onboarding" aria-controls="panel-onboarding" aria-selected="true" tabindex="0">Onboarding</button>
-      <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1">Roles &amp; admin</button>
-      <button type="button" role="tab" id="tab-home" aria-controls="panel-home" aria-selected="false" tabindex="-1">Dashboards</button>
-    </div>
-
-    <div class="stage-body">
-      <div class="stage-frame" aria-hidden="true">
-        <img class="on" src="/solutions/saas/onboarding.svg" alt="" width="1600" height="1000" decoding="async" loading="lazy">
-        <img src="/solutions/saas/permissions.svg" alt="" width="1600" height="1000" decoding="async" loading="lazy">
-        <img src="/solutions/saas/dashboard-admin.svg" alt="" width="1600" height="1000" decoding="async" loading="lazy">
-      </div>
-
+    <div class="s-head">
       <div>
-        <div class="stage-panel stage-copy on" id="panel-onboarding" role="tabpanel" aria-labelledby="tab-onboarding">
+        <p class="eyebrow" data-r>What we design</p>
+        <h2 class="d2 s-title" id="sfH" data-r>The surfaces that decide whether people stay</h2>
+        <p class="lede" data-r>Onboarding, roles, and the daily home — designed as one first run, not three products bolted together.</p>
+      </div>
+    </div>
+
+    <div class="saas-switch">
+      <div>
+        <div class="saas-tabs" role="tablist" aria-label="Product surfaces">
+          <button type="button" role="tab" id="tab-onboarding" aria-controls="panel-onboarding" aria-selected="true" tabindex="0">Onboarding</button>
+          <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1">Roles &amp; admin</button>
+          <button type="button" role="tab" id="tab-home" aria-controls="panel-home" aria-selected="false" tabindex="-1">Dashboards</button>
+        </div>
+
+        <div class="saas-panel saas-copy" id="panel-onboarding" role="tabpanel" aria-labelledby="tab-onboarding">
           <h3 class="d3">First value before the tour ends</h3>
           <p class="body-sm">Collect only what creates a workspace. Route the checklist from role and intent. Design the empty state as a path, not a blank canvas.</p>
           <ul>
@@ -284,7 +650,7 @@
           </ul>
           <a href="/services/saas-platforms" class="p-link">SaaS product design <i>→</i></a>
         </div>
-        <div class="stage-panel stage-copy" id="panel-roles" role="tabpanel" aria-labelledby="tab-roles">
+        <div class="saas-panel saas-copy" id="panel-roles" role="tabpanel" aria-labelledby="tab-roles" hidden>
           <h3 class="d3">Roles people can explain out loud</h3>
           <p class="body-sm">Multi-tenant access has to stay understandable when SSO and enterprise policy arrive. Default safe roles. Defer advanced admin until someone needs it.</p>
           <ul>
@@ -294,7 +660,7 @@
           </ul>
           <a href="/services/product-design" class="p-link">Product design &amp; UX <i>→</i></a>
         </div>
-        <div class="stage-panel stage-copy" id="panel-home" role="tabpanel" aria-labelledby="tab-home">
+        <div class="saas-panel saas-copy" id="panel-home" role="tabpanel" aria-labelledby="tab-home" hidden>
           <h3 class="d3">A home for the morning scan</h3>
           <p class="body-sm">Dashboards and admin panels designed for exceptions and next actions — density that holds up in a demo without becoming a metrics museum.</p>
           <ul>
@@ -305,19 +671,102 @@
           <a href="/services/dashboard-design" class="p-link">Dashboard design <i>→</i></a>
         </div>
       </div>
+
+      <div>
+        <div class="saas-view" id="view-onboarding" aria-hidden="true">
+          <div class="saas-frame lit">
+            <div class="saas-chrome"><i></i><i></i><i></i><span>get started · checklist</span></div>
+            <div class="ob-bar"><b>Northwind Ltd</b><em>2 of 4 complete</em></div>
+            <div class="ob-progress"><span>Activation path</span><div class="ob-track"><i></i></div></div>
+            <div class="ob-list">
+              <div class="ob-item done"><i class="dot"></i><span>Create workspace</span><small>Done</small></div>
+              <div class="ob-item done"><i class="dot"></i><span>Choose your role</span><small>Done</small></div>
+              <div class="ob-item now"><i class="dot"></i><span>Import first records</span><small>Now</small></div>
+              <div class="ob-item"><i class="dot"></i><span>Invite teammates</span><small>Later</small></div>
+            </div>
+            <div class="ob-empty">
+              <span>One action</span>
+              <b>Get data on the home screen.</b>
+              <div class="ob-acts"><span class="go">Import CSV</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="saas-view" id="view-roles" hidden aria-hidden="true">
+          <div class="saas-frame">
+            <div class="saas-chrome"><i></i><i></i><i></i><span>settings / members</span></div>
+            <div class="ob-bar"><b>Roles · Northwind Ltd</b><em>SSO connected</em></div>
+            <div class="role-row">
+              <div><b>Owner</b><em>Billing and workspace settings</em></div>
+              <span></span><small>You</small>
+            </div>
+            <div class="role-row on">
+              <div><b>Admin</b><em>Users, integrations, safe defaults</em></div>
+              <span></span><small>Default</small>
+            </div>
+            <div class="role-row">
+              <div><b>Member</b><em>Day-to-day work in the product</em></div>
+              <span></span><small>Most seats</small>
+            </div>
+            <div class="role-row">
+              <div><b>Guest</b><em>View only · no settings</em></div>
+              <span></span><small>External</small>
+            </div>
+            <div class="role-invite">
+              <span>sarah@northwind.co</span>
+              <span>Member</span>
+              <span class="go">Send invite</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="saas-view" id="view-home" hidden aria-hidden="true">
+          <div class="saas-frame">
+            <div class="saas-chrome"><i></i><i></i><i></i><span>home · morning scan</span></div>
+            <div class="ob-bar"><b>Good morning, Priya</b><em>Needs a decision</em></div>
+            <div class="home-kpis">
+              <div class="home-kpi warn"><span>Blocked</span><b class="num">1</b><em>Pay run · bank</em></div>
+              <div class="home-kpi warn"><span>Missing data</span><b class="num">3</b><em>NI numbers</em></div>
+              <div class="home-kpi"><span>SSO</span><b>Healthy</b><em>Ok</em></div>
+            </div>
+            <div class="ex-list">
+              <span class="lab">Exceptions · not a metrics museum</span>
+              <div class="ex-row hot"><span>Pay run blocked · bank not verified</span><small>Now</small></div>
+              <div class="ex-row hot"><span>3 employees missing NI numbers</span><small>Today</small></div>
+              <div class="ex-row ok"><span>SSO directory sync completed 06:12</span><small>Ok</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sect proof" aria-labelledby="pfH">
+<section class="sect saas-proof" id="proof" aria-labelledby="pfH">
   <div class="wrap">
     <p class="eyebrow" data-r>Proof</p>
-    <h2 class="d2" id="pfH" data-r>PayrollPro · first value after SSO</h2>
-    <div class="proof-grid">
-      <a class="proof-shot" href="/work/payroll-pro-saas" aria-label="Read the PayrollPro case study">
-        <img src="/work/payrollpro/onboarding.svg" alt="PayrollPro onboarding flow" width="1920" height="1080" loading="lazy" decoding="async">
-      </a>
-      <div>
+    <h2 class="d2 s-title" id="pfH" data-r>PayrollPro · first value after SSO</h2>
+    <div class="saas-proof-grid">
+      <div data-r>
+        <div class="saas-frame" aria-hidden="true">
+          <div class="saas-chrome"><i></i><i></i><i></i><span>payrollpro / first run</span></div>
+          <div class="ob-bar"><b>SSO complete</b><em>Permissions deferred</em></div>
+          <div class="ob-progress"><span>First value · lock a pay run</span><div class="ob-track mid"><i></i></div></div>
+          <div class="ob-list">
+            <div class="ob-item done"><i class="dot"></i><span>Identity via SSO</span><small>Done</small></div>
+            <div class="ob-item done"><i class="dot"></i><span>Safe default role</span><small>Done</small></div>
+            <div class="ob-item now"><i class="dot"></i><span>Lock first payroll</span><small>Now</small></div>
+            <div class="ob-item"><i class="dot"></i><span>Advanced policy matrix</span><small>Later</small></div>
+          </div>
+          <div class="ob-empty">
+            <span>The leak we closed</span>
+            <b>Setup no longer sits in front of the job.</b>
+            <p>SSO still authenticates. Advanced permissions wait until someone needs them.</p>
+          </div>
+        </div>
+        <p class="cap-note"><span class="flag">Case</span> Pattern from the published PayrollPro study</p>
+      </div>
+      <div data-r>
         <p class="lede">Progressive onboarding and permission clarity for a UK &amp; EU payroll platform after SSO pushed setup ahead of first value.</p>
         <dl class="scope">
           <div><dt>Sector</dt><dd>B2B SaaS · payroll</dd></div>
@@ -334,112 +783,152 @@
   </div>
 </section>
 
-<section class="sect engage" id="process" aria-labelledby="prH">
+<section class="sect" id="process" aria-labelledby="prH">
   <div class="wrap">
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>How we engage</p>
-        <h2 class="d2" id="prH" data-r>Start with the leak. Then ship the first run.</h2>
+        <h2 class="d2 s-title" id="prH" data-r>Start with the leak. Then ship the first run.</h2>
         <p class="lede" data-r>Written gates, weekly demos, and one team on the call and in the code.</p>
       </div>
       <a href="/process" class="btn ghost"><span>Full process</span><i>→</i></a>
     </div>
-
-    <div class="phases" data-s>
-      <div class="phase">
-        <span class="pn">Phase 01</span>
+    <ol class="run-bar" data-s>
+      <li>
+        <span class="wk">Phase 01</span>
+        <span class="bar" style="--w:25%"></span>
         <h3 class="d3">Define activated</h3>
-        <p class="body-sm">Name first value, who it is for, and what we will not build. Documented before UI begins.</p>
-      </div>
-      <div class="phase">
-        <span class="pn">Phase 02</span>
+        <p>Name first value, who it is for, and what we will not build. Documented before UI begins.</p>
+      </li>
+      <li>
+        <span class="wk">Phase 02</span>
+        <span class="bar" style="--w:50%"></span>
         <h3 class="d3">Design the first run</h3>
-        <p class="body-sm">Account, workspace, roles, and the one action that proves the product — validated with you before production code.</p>
-      </div>
-      <div class="phase">
-        <span class="pn">Phase 03</span>
+        <p>Account, workspace, roles, and the one action that proves the product, validated before production code.</p>
+      </li>
+      <li>
+        <span class="wk">Phase 03</span>
+        <span class="bar" style="--w:75%"></span>
         <h3 class="d3">Build &amp; instrument</h3>
-        <p class="body-sm">Incremental delivery with QA and activation events in the product, not a slide.</p>
-      </div>
-      <div class="phase">
-        <span class="pn">Phase 04</span>
+        <p>Incremental delivery with QA and activation events in the product, not a slide.</p>
+      </li>
+      <li>
+        <span class="wk">Phase 04</span>
+        <span class="bar" style="--w:100%"></span>
         <h3 class="d3">Launch &amp; iterate</h3>
-        <p class="body-sm">Handoff, design-system docs, and the next cycle against the same definition of activated.</p>
-      </div>
-    </div>
+        <p>Handoff, design-system docs, and the next cycle against the same definition of activated.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
-<section class="sect faq" id="faq" aria-labelledby="faqH">
+<section class="sect saas-rel" aria-labelledby="rsH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Services</p>
+        <h2 class="d2 s-title" id="rsH" data-r>Related services</h2>
+        <p class="lede" data-r>The building blocks most B2B SaaS products pull together after the first run is named.</p>
+      </div>
+    </div>
+    <div class="idx-list">
+      <a class="idx-row" href="/services/saas-platforms">
+        <span class="n">01</span>
+        <h3>SaaS Product Design</h3>
+        <p>Multi-tenant UX, admin versus customer surfaces, and permissions that stay explainable.</p>
+        <i>→</i>
+      </a>
+      <a class="idx-row" href="/services/product-design">
+        <span class="n">02</span>
+        <h3>Product Design &amp; UX</h3>
+        <p>Research, flows, and launch-ready UI for the path from signup to first value.</p>
+        <i>→</i>
+      </a>
+      <a class="idx-row" href="/services/dashboard-design">
+        <span class="n">03</span>
+        <h3>Dashboard Design</h3>
+        <p>Morning-scan homes and admin panels for exceptions — not a metrics museum.</p>
+        <i>→</i>
+      </a>
+      <a class="idx-row" href="/work/crm-pulse-dashboard">
+        <span class="n">04</span>
+        <h3>CRMPulse</h3>
+        <p>A published SaaS dashboard case for pipeline clarity and daily use.</p>
+        <i>→</i>
+      </a>
+    </div>
+    <p class="body-sm svc-note">Need finance sync rather than product UX? See <a class="inline-link" href="/solutions/accounting-integrations">QuickBooks &amp; Xero integrations</a>. Related reading: <a class="inline-link" href="/insights/saas-onboarding-patterns">onboarding patterns</a>.</p>
+  </div>
+</section>
+
+<section class="sect saas-faq" id="faq" aria-labelledby="faqH">
   <div class="wrap faq-grid">
-    <div>
+    <div class="faq-side">
       <p class="eyebrow" data-r>Before the call</p>
-      <h2 class="d2" id="faqH" data-r>Questions founders actually ask.</h2>
+      <h2 class="d2" id="faqH" data-r>Questions founders actually ask</h2>
       <p class="lede" data-r>Including whether you need design only, or design and build.</p>
+      <a href="/contact#book" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
     </div>
 
     <div class="faq-list" data-r>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa1">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa1" id="fqb1">
           <span class="qn num">01</span>
           <span class="qt">Do you work with early-stage UK SaaS startups?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa1"><div><div class="faq-a-in">
-          <p class="body-sm">Yes. We work with teams from pre-seed MVPs through to Series A scaling. Team size and engagement model are tailored to your stage and runway.</p>
+        <div class="faq-a" id="fa1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
+          <p>Yes. We work with teams from pre-seed MVPs through to Series A scaling. Team size and engagement model are tailored to your stage and runway.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa2">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa2" id="fqb2">
           <span class="qn num">02</span>
           <span class="qt">Can you redesign an existing SaaS product?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa2"><div><div class="faq-a-in">
-          <p class="body-sm">Yes. We typically roll out redesigns in phases to reduce risk and maintain user continuity.</p>
+        <div class="faq-a" id="fa2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
+          <p>Yes. We typically roll out redesigns in phases to reduce risk and maintain user continuity.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa3">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa3" id="fqb3">
           <span class="qn num">03</span>
           <span class="qt">Design-only or design + development?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa3"><div><div class="faq-a-in">
-          <p class="body-sm">Both. Many clients start with product design and extend into Next.js development with the same in-house team.</p>
+        <div class="faq-a" id="fa3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
+          <p>Both. Many clients start with product design and extend into Next.js development with the same in-house team.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa4">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa4" id="fqb4">
           <span class="qn num">04</span>
           <span class="qt">Do you work with US SaaS teams as well as UK?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa4"><div><div class="faq-a-in">
-          <p class="body-sm">Yes. The UK is our primary SaaS market, but we regularly support US product teams with overlapping hours and the same delivery model.</p>
+        <div class="faq-a" id="fa4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
+          <p>Yes. The UK is our primary SaaS market, but we regularly support US product teams with overlapping hours and the same delivery model.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa5">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa5" id="fqb5">
           <span class="qn num">05</span>
           <span class="qt">What is a typical first engagement?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa5"><div><div class="faq-a-in">
-          <p class="body-sm">A scoped discovery + design sprint, or a fixed MVP build with weekly demos. We recommend the lightest path that answers your biggest risk: activation, demo readiness, or technical feasibility.</p>
+        <div class="faq-a" id="fa5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
+          <p>A scoped discovery + design sprint, or a fixed MVP build with weekly demos. We recommend the lightest path that answers your biggest risk: activation, demo readiness, or technical feasibility.</p>
         </div></div></div>
       </div>
     </div>
   </div>
-  <div class="wrap">
-    <p class="also">Need finance sync rather than product UX? See <a href="/solutions/accounting-integrations">QuickBooks &amp; Xero integrations</a>. Related: <a href="/services/saas-platforms">SaaS product design</a>, <a href="/work/crm-pulse-dashboard">CRMPulse</a>, <a href="/insights/saas-onboarding-patterns">onboarding patterns</a>.</p>
-  </div>
 </section>
 
-<section class="cta-band" id="contact" aria-labelledby="ctaH">
+<section class="cta-band on-ink" id="contact" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Next step</p>
-    <h2 class="d2" id="ctaH" data-r>Tell us where signup loses people.</h2>
+    <h2 class="d2" id="ctaH" data-r>Where does signup lose people?</h2>
     <p class="lede" data-r>A short fit call. You leave with a yes, no, or not-yet — and whether the leak is onboarding, roles, or the home screen.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
@@ -511,7 +1000,28 @@
 </a>
 
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/saas.js" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service",
+"name":"SaaS Product Solutions",
+"serviceType":"SaaS product design, onboarding UX, dashboards, MVP development, design systems",
+"provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},
+"areaServed":["GB","US"],
+"url":"https://krivatechnologies.com/solutions/saas",
+"description":"Product design and development for UK B2B SaaS, onboarding UX, dashboards, MVP builds, and design systems that scale with your roadmap."}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Do you work with early-stage UK SaaS startups?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with teams from pre-seed MVPs through to Series A scaling. Team size and engagement model are tailored to your stage and runway."}},
+    {"@type":"Question","name":"Can you redesign an existing SaaS product?","acceptedAnswer":{"@type":"Answer","text":"Yes. We typically roll out redesigns in phases to reduce risk and maintain user continuity."}},
+    {"@type":"Question","name":"Design-only or design + development?","acceptedAnswer":{"@type":"Answer","text":"Both. Many clients start with product design and extend into Next.js development with the same in-house team."}},
+    {"@type":"Question","name":"Do you work with US SaaS teams as well as UK?","acceptedAnswer":{"@type":"Answer","text":"Yes. The UK is our primary SaaS market, but we regularly support US product teams with overlapping hours and the same delivery model."}},
+    {"@type":"Question","name":"What is a typical first engagement?","acceptedAnswer":{"@type":"Answer","text":"A scoped discovery + design sprint, or a fixed MVP build with weekly demos. We recommend the lightest path that answers your biggest risk: activation, demo readiness, or technical feasibility."}}
+  ]
+}
+</script>
 <!-- KRIVA_SCHEMA_START -->
 <script type="application/ld+json">
 {
@@ -533,12 +1043,112 @@
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Signup is not the product.",
+      "name": "SaaS Product Solutions",
       "item": "https://krivatechnologies.com/solutions/saas"
     }
   ]
 }
 </script>
 <!-- KRIVA_SCHEMA_END -->
+
+<script>
+(function(){
+'use strict';
+const reduce=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
+const readers=[]; let ticking=false;
+const onScroll=()=>{ if(!ticking){ requestAnimationFrame(run); ticking=true; } };
+function run(){ const y=scrollY; for(const r of readers) r(y); ticking=false; }
+addEventListener('scroll', onScroll, {passive:true});
+addEventListener('resize', onScroll, {passive:true});
+
+const io=new IntersectionObserver(es=>{
+  for(const e of es){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }
+},{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>{
+  if(el.hasAttribute('data-mask')) el.classList.add('mask');
+  io.observe(el);
+});
+
+const bar=document.getElementById('progress');
+if(bar) readers.push(y=>{
+  const h=document.documentElement.scrollHeight-innerHeight;
+  bar.style.transform='scaleX('+(h>0?Math.min(1,y/h):0)+')';
+});
+const chLinks=[...document.querySelectorAll('#chapters a')];
+const chTargets=chLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const chRail=document.getElementById('chapters');
+if(chRail) readers.push(y=>chRail.classList.toggle('show', y>420));
+const chIO=new IntersectionObserver(es=>{
+  for(const e of es){
+    if(!e.isIntersecting) continue;
+    const i=chTargets.indexOf(e.target);
+    chLinks.forEach((a,j)=>a.setAttribute('aria-current', j===i?'true':'false'));
+  }
+},{rootMargin:'-40% 0px -55% 0px'});
+chTargets.forEach(t=>chIO.observe(t));
+
+const frame=document.getElementById('heroFrame');
+if(frame){
+  const fio=new IntersectionObserver(es=>{
+    for(const e of es){ if(e.isIntersecting){ e.target.classList.add('lit'); fio.unobserve(e.target); } }
+  },{threshold:.35});
+  fio.observe(frame);
+}
+
+const tabs=[...document.querySelectorAll('.saas-tabs [role="tab"]')];
+const panels={
+  'tab-onboarding':['panel-onboarding','view-onboarding'],
+  'tab-roles':['panel-roles','view-roles'],
+  'tab-home':['panel-home','view-home']
+};
+function selectSurface(id){
+  tabs.forEach(t=>{
+    const on=t.id===id;
+    t.setAttribute('aria-selected', String(on));
+    t.tabIndex=on?0:-1;
+  });
+  Object.entries(panels).forEach(([key, ids])=>{
+    const show=key===id;
+    ids.forEach(pid=>{
+      const el=document.getElementById(pid);
+      if(el) el.hidden=!show;
+    });
+  });
+}
+tabs.forEach((btn,i)=>{
+  btn.tabIndex=i===0?0:-1;
+  btn.addEventListener('click',()=>selectSurface(btn.id));
+  btn.addEventListener('keydown',e=>{
+    const dir=e.key==='ArrowRight'||e.key==='ArrowDown'?1:e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:0;
+    if(!dir) return;
+    e.preventDefault();
+    const n=(i+dir+tabs.length)%tabs.length;
+    tabs[n].focus();
+    selectSurface(tabs[n].id);
+  });
+});
+
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  const item=btn.closest('.faq-item');
+  btn.addEventListener('click',()=>{
+    const open=btn.getAttribute('aria-expanded')==='true';
+    document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(o=>{
+      if(o===btn) return;
+      o.setAttribute('aria-expanded','false');
+      o.closest('.faq-item').classList.remove('open');
+    });
+    btn.setAttribute('aria-expanded', String(!open));
+    item.classList.toggle('open', !open);
+  });
+});
+
+if(reduce()){
+  document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
+  if(frame) frame.classList.add('lit');
+}
+
+run();
+})();
+</script>
 </body>
 </html>

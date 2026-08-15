@@ -24,10 +24,10 @@
   --red:#A62A1F;
   --cta:#4F46E5;
   --cta-hover:#0E1216;
-  --f-display:'Archivo',system-ui,-apple-system,sans-serif;
-  --f-body:'Inter',system-ui,-apple-system,sans-serif;
-  --f-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;
-  --gutter:clamp(20px,5vw,80px);
+  --f-display:'Manrope','Manrope Fallback',system-ui,-apple-system,sans-serif;
+  --f-body:'Manrope','Manrope Fallback',system-ui,-apple-system,sans-serif;
+  --f-mono:'Manrope','Manrope Fallback',system-ui,-apple-system,sans-serif;
+  --gutter:clamp(16px,4.6vw,80px);
   --maxw:1360px;
   --space-1:8px;
   --space-2:12px;
@@ -44,4 +44,26 @@
   --t-fast:.28s;
   --t-mid:.5s;
   --t-slow:.9s;
+}
+
+/* Metric-matched fallback so swap does not shove the layout. */
+@font-face{
+  font-family:'Manrope Fallback';
+  src:local('Segoe UI'),local('Helvetica Neue'),local('Arial');
+  size-adjust:103%;
+  ascent-override:98%;
+  descent-override:22%;
+  line-gap-override:0%;
+}
+
+html{font-family:var(--f-body)}
+
+/* Manrope: one family. Weight carries the hierarchy. */
+.eyebrow,.mono,.crumbs,.tag,.cs-cap,.fgrid h3{font-weight:500}
+.btn,.nav-cta .btn.sm{font-weight:600}
+.d2,.d3,.d4,h2,h3{font-weight:700}
+.d1,h1{font-weight:800}
+
+@media(min-width:1600px){
+  :root{--maxw:1440px;--gutter:clamp(56px,6vw,96px)}
 }
