@@ -4,8 +4,8 @@
    ═══════════════════════════════════════════ */
 
 /* ── NAV SHELL ── */
-.nav{position:fixed;inset:0 0 auto;z-index:90;transition:transform var(--t-mid) var(--e)}
-.nav-shell{border-bottom:1px solid transparent;transition:background var(--t-mid) var(--e),border-color var(--t-mid) var(--e)}
+.nav{position:fixed;inset:0 0 auto;z-index:90;padding-top:env(safe-area-inset-top,0px);transition:transform var(--t-mid) var(--e),background var(--t-mid) var(--e)}
+.nav-shell{border-bottom:1px solid transparent;transition:background var(--t-mid) var(--e),border-color var(--t-mid) var(--e),color var(--t-fast) var(--e)}
 .nav.scrolled .nav-shell{background:rgba(244,243,238,.94);border-bottom-color:var(--rule)}
 @supports(backdrop-filter:blur(1px)){@media(min-width:1100px){.nav.scrolled .nav-shell{backdrop-filter:blur(14px) saturate(1.5)}}}
 .nav.hide{transform:translate3d(0,-100%,0)}
@@ -344,25 +344,46 @@
 .nav-cta .btn.sm i{font-style:normal;line-height:1}
 .nav.scrolled .nav-cta .btn.sm{height:36px;padding:0 14px;font-size:10.5px}
 
-.burger{display:none;width:44px;height:44px;flex-direction:column;align-items:center;justify-content:center;gap:5px}
-.burger span{width:20px;height:1.5px;background:var(--ink);transition:transform var(--t-fast) var(--e),opacity var(--t-fast)}
-.nav.open .burger span:nth-child(1){transform:translateY(3.25px) rotate(45deg)}
-.nav.open .burger span:nth-child(2){opacity:0}
-.nav.open .burger span:nth-child(3){transform:translateY(-3.25px) rotate(-45deg)}
+.burger{
+  display:none;position:relative;z-index:2;
+  width:44px;height:44px;flex:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  margin:0;padding:0;border:0;border-radius:0;
+  background:transparent;color:var(--ink);
+  appearance:none;-webkit-appearance:none;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;cursor:pointer
+}
+.burger span{
+  display:block;flex:none;width:18px;height:2px;
+  background:currentColor;border-radius:1px;
+  pointer-events:none;transform-origin:center;
+  transition:transform var(--t-fast) var(--e),opacity var(--t-fast),background var(--t-fast)
+}
+.nav.open .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav.open .burger span:nth-child(2){opacity:0;transform:scaleX(.4)}
+.nav.open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
 /* ── MOBILE SHEET ── */
 .sheet{
   position:fixed;inset:0;background:var(--ink);z-index:89;
-  padding:88px var(--gutter) 28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;
-  clip-path:inset(0 0 100% 0);transition:clip-path .62s var(--e);visibility:hidden;overflow:auto
+  padding:calc(88px + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right,0px)) max(28px,env(safe-area-inset-bottom,0px)) max(var(--gutter),env(safe-area-inset-left,0px));
+  display:flex;flex-direction:column;justify-content:flex-start;gap:24px;
+  clip-path:inset(0 0 100% 0);transition:clip-path .62s var(--e),visibility .62s;
+  visibility:hidden;overflow:hidden;-webkit-overflow-scrolling:touch
 }
-.nav.open + .sheet{clip-path:inset(0 0 0 0);visibility:visible}
+.sheet[hidden]{display:none !important}
+.nav.open + .sheet{
+  clip-path:inset(0 0 0 0);visibility:visible;overflow:auto;display:flex !important
+}
 .sheet-nav{display:grid;gap:0}
 .sheet-item{border-bottom:1px solid var(--ink-line)}
 .sheet a.big,.sheet-toggle{
   display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
   font-family:var(--f-display);font-weight:700;font-size:clamp(1.55rem,7vw,2.35rem);
-  letter-spacing:-.03em;color:#EDEFF1;padding:14px 0;text-align:left;background:none;border:0;cursor:pointer
+  letter-spacing:-.03em;color:#EDEFF1;padding:14px 0;text-align:left;
+  background:none;border:0;border-radius:0;cursor:pointer;
+  appearance:none;-webkit-appearance:none;-webkit-tap-highlight-color:transparent
 }
 .sheet a.big{opacity:0;transform:translateY(14px);transition:opacity .5s var(--e),transform .5s var(--e)}
 .nav.open + .sheet a.big,.nav.open + .sheet .sheet-item{opacity:1;transform:none}
@@ -411,9 +432,28 @@
   .nav-primary{display:none}
   .burger{display:flex}
   .nav-cta .btn{display:none}
+  .nav-shell{
+    background:rgba(244,243,238,.97);
+    border-bottom-color:var(--rule)
+  }
+  .nav.open .nav-shell{
+    background:var(--ink);
+    border-bottom-color:transparent
+  }
+  .nav.open .nav-in,
+  .nav.open.scrolled .nav-in{height:72px}
+  .nav.open .mark-logo,
+  .nav.open.scrolled .mark-logo{height:26px;filter:brightness(0) invert(1)}
+  .nav.open .burger{color:#EDEFF1}
+  .nav.open ~ .wa{opacity:0;visibility:hidden;pointer-events:none}
+  .sheet a.big,.sheet-toggle{
+    font-size:clamp(1.35rem,6vw,1.85rem);
+    padding:12px 0;
+    min-height:48px
+  }
 }
 @media(min-width:1100px){
-  .sheet{display:none !important}
+  .sheet,.nav.open + .sheet{display:none !important}
 }
 
 /* Compact desktop between 1100–1280 · keep CTA chip size stable */

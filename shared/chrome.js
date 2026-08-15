@@ -95,14 +95,15 @@
 
   /* ── mobile sheet ── */
   const setSheet = (open) => {
-    nav.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     document.body.style.overflow = open ? 'hidden' : '';
     if (open) {
       sheet.hidden = false;
       closeAll();
+      requestAnimationFrame(() => nav.classList.add('open'));
     } else {
+      nav.classList.remove('open');
       sheet.querySelectorAll('.sheet-item.open').forEach((el) => {
         el.classList.remove('open');
         const t = el.querySelector('.sheet-toggle');
@@ -115,7 +116,7 @@
     }
   };
 
-  burger.addEventListener('click', () => setSheet(!nav.classList.contains('open')));
+  burger.addEventListener('click', () => setSheet(burger.getAttribute('aria-expanded') !== 'true'));
 
   sheet.querySelectorAll('.sheet-toggle').forEach((btn) => {
     btn.addEventListener('click', () => {
