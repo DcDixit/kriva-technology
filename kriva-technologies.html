@@ -110,14 +110,14 @@ img,svg{max-width:100%;display:block}
 @media(max-width:1280px){.chapters{display:none}}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
-<link rel="stylesheet" href="/shared/responsive.css">
+<link rel="stylesheet" href="/shared/responsive.css?v=hero4">
 <style>
 /* Page-scoped Tools & stack — loaded last */
 body.page-stack{overflow-x:clip}
 body.page-stack .hero .d1{
-  font-size:clamp(2.35rem,1.15rem + 5.4vw,5.6rem);line-height:.9;letter-spacing:-.032em
+  font-size:clamp(1.85rem,1rem + 3.55vw,4.65rem);line-height:.94;letter-spacing:-.032em
 }
 body.page-stack .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
 body.page-stack .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
@@ -167,6 +167,8 @@ body.page-stack .hero{
   display:grid;place-items:center;font-family:var(--f-mono);font-size:14px;color:var(--cta);align-self:center
 }
 .stk-art{padding:12px;display:grid;gap:8px;min-height:148px}
+.stk-art:has(.pu){padding:0;min-height:0;gap:0}
+.stk-art .pu{background:transparent}
 .stk-frame{background:#141A20;border:1px solid #2A333C;padding:10px}
 .stk-frame.on{border-color:var(--cta)}
 .stk-frame b{display:block;font-size:12px;color:#fff;letter-spacing:-.02em}
@@ -310,7 +312,7 @@ body.page-stack .hero{
   .stk-nocode .copy{flex-direction:column;align-items:stretch}
 }
 @media(max-width:390px){
-  body.page-stack .hero .d1{font-size:2.2rem}
+  body.page-stack .hero .d1{font-size:1.9rem}
 }
 @media(hover:none){
   .stk-links a:hover{padding-left:0}
@@ -322,7 +324,7 @@ body.page-stack .hero{
   .mask span i{transform:none!important}
 }
 @media(min-width:1600px){
-  body.page-stack .hero .d1{font-size:5.4rem}
+  body.page-stack .hero .d1{font-size:4.55rem}
 }
 </style>
 </head>
@@ -495,8 +497,20 @@ body.page-stack .hero{
           <div class="stk-pane">
             <div class="stk-chrome"><i></i><i></i><i></i><span>Figma · first-run</span></div>
             <div class="stk-art">
-              <div class="stk-frame on"><b>Onboarding</b><em>Frame 1280 × 800</em><span class="stk-dots"><u class="on"></u><u></u><u></u></span></div>
-              <div class="stk-frame"><b>Tokens</b><em>Design system</em></div>
+              <div class="pu" role="img" aria-label="Figma first-run: import records now, invite later.">
+                <div class="pu-bar">
+                  <div>
+                    <p class="pu-title">Onboarding</p>
+                    <p class="pu-meta">Frame · first-run</p>
+                  </div>
+                  <span class="pu-chip cta">v3</span>
+                </div>
+                <ol class="pu-steps" style="padding:10px 16px 14px">
+                  <li class="done"><i></i><span>Workspace</span><em>Done</em></li>
+                  <li class="now"><i></i><span>Import records</span><em>Now</em></li>
+                  <li class="later"><i></i><span>Invite roles</span><em>Later</em></li>
+                </ol>
+              </div>
             </div>
           </div>
           <span class="stk-arrow" aria-hidden="true">→</span>

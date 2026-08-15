@@ -289,9 +289,9 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 
-<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
-<link rel="stylesheet" href="/shared/responsive.css">
+<link rel="stylesheet" href="/shared/responsive.css?v=hero4">
 </head>
 <body class="case">
 <a class="skip" href="#main">Skip to content</a>
@@ -481,7 +481,22 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
   <figure class="shot shot--wide" data-shot>
     <div class="media">
       <div class="slot" data-visual="hero" role="img" aria-label="Slot · hero · 2400×1029 · SupportAI review console">
-        <img src="/work/supportai/hero.svg" alt="SupportAI review console" width="2400" height="1030" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Review queue: Claude draft with Approve and Hold. Nothing auto-sends.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Review queue</p>
+              <p class="pu-meta">Claude draft · human gate</p>
+            </div>
+            <span class="pu-chip warn">Hold send</span>
+          </div>
+          <p class="pu-k">#4812 · Billing · 94%</p>
+          <p class="pu-q">Charge posted twice after the March plan change.</p>
+          <div class="pu-draft"><span>Draft</span>We can reverse the duplicate and credit the difference today.</div>
+          <div class="pu-acts">
+            <span class="pu-ok">Approve</span>
+            <span class="pu-no">Hold</span>
+          </div>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
         <div class="tagline"><span>SupportAI · interface reference</span><span>21:9 · <span class="flag">Illustrative</span></span></div>
@@ -549,21 +564,60 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <div class="story-frame">
           <div class="story-scene on" data-scene="0">
             <div class="slot" data-visual="story-0" role="img" aria-label="Triage">
-        <img src="/work/supportai/approach-1.svg" alt="Ticket classification" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Triage: 94 percent confidence, billing.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Triage</p>
+              <p class="pu-meta">Claude routes</p>
+            </div>
+            <span class="pu-chip ok">94% billing</span>
+          </div>
+          <p class="pu-k">#4812 · Billing</p>
+          <p class="pu-q">Charge posted twice after the March plan change.</p>
+          <ul class="pu-rows">
+            <li class="on"><b>Billing</b><span>94%</span><em>Route</em></li>
+            <li class="risk"><b>Login</b><span>62%</span><em>Manual</em></li>
+          </ul>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
               <div class="tagline"><span>Triage</span><span>01 / 03</span></div></div>
           </div>
           <div class="story-scene" data-scene="1">
             <div class="slot" data-visual="story-1" role="img" aria-label="Drafts">
-        <img src="/work/supportai/approach-2.svg" alt="Human review queue" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Human review gate: Approve or Hold. Nothing auto-sends.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Human review</p>
+              <p class="pu-meta">Drafts never auto-send</p>
+            </div>
+            <span class="pu-chip warn">Hold send</span>
+          </div>
+          <div class="pu-draft"><span>Claude draft</span>We can reverse the duplicate and credit the difference today.</div>
+          <div class="pu-acts">
+            <span class="pu-ok">Approve</span>
+            <span class="pu-no">Hold</span>
+          </div>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
               <div class="tagline"><span>Drafts</span><span>02 / 03</span></div></div>
           </div>
           <div class="story-scene" data-scene="2">
             <div class="slot" data-visual="story-2" role="img" aria-label="Fallback">
-        <img src="/work/supportai/approach-3.svg" alt="Resolution audit log" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Audit log: sent and held rows.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Audit log</p>
+              <p class="pu-meta">Nothing auto-sends</p>
+            </div>
+          </div>
+          <ul class="pu-rows">
+            <li class="on"><b>#4812</b><span>Billing</span><em>Sent</em></li>
+            <li class="risk"><b>#4808</b><span>Login</span><em>Held</em></li>
+            <li><b>#4803</b><span>Shipping</span><em>Sent</em></li>
+          </ul>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
               <div class="tagline"><span>Fallback</span><span>03 / 03</span></div></div>
@@ -621,7 +675,17 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       <div class="ba" id="ba">
         <div class="ba-layer before">
           <div class="slot" data-visual="before" role="img" aria-label="Before state">
-        <img src="/work/supportai/before.svg" alt="Before manual triage" width="1920" height="1080" loading="lazy" decoding="async">
+        <div class="pu pu-sheet" role="img" aria-label="Before: unread ticket pile.">
+          <p class="pu-title">Inbox.xls</p>
+          <table>
+            <thead><tr><th>Ticket</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><b>#4812</b></td><td class="miss">Unread</td></tr>
+              <tr><td><b>#4808</b></td><td class="miss">Unread</td></tr>
+              <tr><td><b>#4803</b></td><td>Open</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
             <div class="tagline"><span>Before · SupportAI</span><span><span class="flag">Illustrative</span></span></div></div>
@@ -629,7 +693,26 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         </div>
         <div class="ba-layer after">
           <div class="slot" style="background:linear-gradient(160deg,#1B2028,#0E1216)" data-visual="after" role="img" aria-label="After state">
-        <img src="/work/supportai/after.svg" alt="After automated support console" width="1920" height="1080" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="After: review queue with Claude draft, Approve and Hold.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Review queue</p>
+              <p class="pu-meta">Human gate · shipped</p>
+            </div>
+            <span class="pu-chip warn">Hold send</span>
+          </div>
+          <p class="pu-k">#4812 · Billing · 94%</p>
+          <p class="pu-q">Charge posted twice after the March plan change.</p>
+          <div class="pu-draft"><span>Draft</span>We can reverse the duplicate and credit the difference today.</div>
+          <div class="pu-acts">
+            <span class="pu-ok">Approve</span>
+            <span class="pu-no">Hold</span>
+          </div>
+          <ul class="pu-rows">
+            <li><b>#4808</b><span>Login</span><em>Manual</em></li>
+            <li><b>#4803</b><span>Shipping</span><em>88%</em></li>
+          </ul>
+        </div>
         <div class="skel"><i style="background:#2A323B"></i><i style="background:#2A323B"></i><i style="background:#2A323B"></i>
       </div>
             <div class="tagline"><span>After · SupportAI</span><span><span class="flag">Illustrative</span></span></div></div>

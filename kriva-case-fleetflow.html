@@ -288,9 +288,9 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <link rel="stylesheet" href="/shared/chrome.css">
 
 
-<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
-<link rel="stylesheet" href="/shared/responsive.css">
+<link rel="stylesheet" href="/shared/responsive.css?v=hero4">
 </head>
 <body class="case case-fleet">
 <a class="skip" href="#main">Skip to content</a>
@@ -474,7 +474,25 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
   <div class="wrap">
     <figure class="cs-frame" data-r>
       <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>fleetflow · dispatch console</span></div>
-      <img src="/work/fleetflow/console-full.svg" alt="FleetFlow dispatch console with load board, SLA, and bulk actions" width="1920" height="1080" decoding="async">
+      <div class="pu" role="img" aria-label="FleetFlow dispatch console: 128 active, 94 percent on time, 3 at risk, bulk reassign.">
+        <div class="pu-bar">
+          <div>
+            <p class="pu-title">FleetFlow</p>
+            <p class="pu-meta">Dispatch · load board</p>
+          </div>
+          <span class="pu-act">Reassign</span>
+        </div>
+        <div class="pu-kpis">
+          <div><span>Active</span><b>128</b></div>
+          <div class="up"><span>On time</span><b>94%</b></div>
+          <div class="risk"><span>At risk</span><b>3</b></div>
+        </div>
+        <ul class="pu-rows">
+          <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m SLA</em></li>
+          <li><b>#4821</b><span>DAL &rarr; PHX</span><em>42m SLA</em></li>
+          <li class="risk"><b>#4823</b><span>CHI &rarr; DET</span><em>6m SLA</em></li>
+        </ul>
+      </div>
     </figure>
     <p class="cs-cap">Illustrative reconstruction · no client data shown</p>
   </div>
@@ -490,7 +508,22 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       </div>
       <figure class="cs-frame" data-r>
         <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>load board · bulk select</span></div>
-        <img src="/work/fleetflow/load-board.svg" alt="Load board with bulk selection" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Load board with three loads selected for bulk reassign.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Load board</p>
+              <p class="pu-meta">Bulk select · 3 selected</p>
+            </div>
+            <span class="pu-act">Reassign</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>On</em></li>
+            <li class="on"><b>#4824</b><span>LAX &rarr; LAS</span><em>On</em></li>
+            <li class="on risk"><b>#4826</b><span>DEN &rarr; SLC</span><em>On</em></li>
+            <li><b>#4821</b><span>DAL &rarr; PHX</span><em>42m</em></li>
+            <li class="pu-desk"><b>#4825</b><span>SEA &rarr; PDX</span><em>51m</em></li>
+          </ul>
+        </div>
       </figure>
     </div>
   </div>
@@ -526,10 +559,38 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
     <div class="cs-asym flip" style="margin-top:clamp(36px,5vw,64px)">
       <figure class="cs-frame" data-r>
         <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>sla · burndown</span></div>
-        <img src="/work/fleetflow/sla-burndown.svg" alt="SLA burndown view" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="SLA burndown: exceptions by remaining minutes, 4m, 6m, 9m.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Exceptions</p>
+              <p class="pu-meta">By SLA remaining</p>
+            </div>
+            <span class="pu-chip warn">Amber</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="risk"><b>#4826</b><span>DEN &rarr; SLC</span><em>4m</em></li>
+            <li class="risk"><b>#4823</b><span>CHI &rarr; DET</span><em>6m</em></li>
+            <li class="risk"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m</em></li>
+          </ul>
+        </div>
       </figure>
       <figure class="cs-crop" data-r>
-        <img src="/work/fleetflow/console-hero.svg" alt="Console detail crop" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Dense dispatch row list for the desk.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Desk</p>
+              <p class="pu-meta">Density · SLA on the row</p>
+            </div>
+          </div>
+          <ul class="pu-rows">
+            <li class="risk"><b>#4826</b><span>DEN &rarr; SLC</span><em>4m</em></li>
+            <li class="risk"><b>#4823</b><span>CHI &rarr; DET</span><em>6m</em></li>
+            <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m</em></li>
+            <li><b>#4824</b><span>LAX &rarr; LAS</span><em>18m</em></li>
+            <li class="pu-desk"><b>#4821</b><span>DAL &rarr; PHX</span><em>42m</em></li>
+            <li class="pu-desk"><b>#4825</b><span>SEA &rarr; PDX</span><em>51m</em></li>
+          </ul>
+        </div>
       </figure>
     </div>
   </div>
@@ -575,7 +636,20 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       </div>
       <figure class="cs-frame" data-r>
         <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>tablet density</span></div>
-        <img src="/work/fleetflow/tablet-density.svg" alt="Tablet density mode" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Tablet density: fewer rows, thumb-friendly reassign.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Tablet</p>
+              <p class="pu-meta">Field supervisor</p>
+            </div>
+            <span class="pu-act">Reassign</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="risk"><b>#4826</b><span>DEN &rarr; SLC</span><em>4m</em></li>
+            <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m</em></li>
+            <li class="pu-desk"><b>#4821</b><span>DAL &rarr; PHX</span><em>42m</em></li>
+          </ul>
+        </div>
       </figure>
     </div>
   </div>
@@ -609,7 +683,25 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
     <h2 id="finH">The same shift. One console.</h2>
     <figure class="cs-frame" style="margin-top:clamp(24px,3vw,40px)">
       <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>after · unified console</span></div>
-      <img src="/work/fleetflow/after.svg" alt="Unified FleetFlow dispatch console" width="1920" height="1080" loading="lazy" decoding="async">
+      <div class="pu" role="img" aria-label="Unified FleetFlow console: Reassign and 94 percent on time.">
+        <div class="pu-bar">
+          <div>
+            <p class="pu-title">One console</p>
+            <p class="pu-meta">TMS + sheet, retired</p>
+          </div>
+          <span class="pu-act">Reassign</span>
+        </div>
+        <div class="pu-kpis">
+          <div><span>Active</span><b>128</b></div>
+          <div class="up"><span>On time</span><b>94%</b></div>
+          <div class="risk"><span>At risk</span><b>3</b></div>
+        </div>
+        <ul class="pu-rows">
+          <li class="on"><b>#4824</b><span>LAX &rarr; LAS</span><em>Assigned</em></li>
+          <li><b>#4821</b><span>DAL &rarr; PHX</span><em>Rolling</em></li>
+          <li class="risk"><b>#4826</b><span>DEN &rarr; SLC</span><em>4m</em></li>
+        </ul>
+      </div>
     </figure>
     <p class="cs-cap">Illustrative · no client data shown</p>
     <div class="sib" data-r style="margin-top:32px">

@@ -289,9 +289,9 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <link rel="stylesheet" href="/shared/chrome.css">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 
-<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
-<link rel="stylesheet" href="/shared/responsive.css">
+<link rel="stylesheet" href="/shared/responsive.css?v=hero4">
 </head>
 <body class="case">
 <a class="skip" href="#main">Skip to content</a>
@@ -481,7 +481,21 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
   <figure class="shot shot--wide" data-shot>
     <div class="media">
       <div class="slot" data-visual="hero" role="img" aria-label="Slot · hero · 2400×1029 · FinanceSync reconciliation hub">
-        <img src="/work/financesync/hero.svg" alt="FinanceSync reconciliation hub" width="2400" height="1030" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="FinanceSync March close: unmatched invoice against QuickBooks and bank, one-click resolve.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">March close</p>
+              <p class="pu-meta">QuickBooks · Xero · bank</p>
+            </div>
+            <span class="pu-chip warn">4 unmatched</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
+            <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
+            <li><b>INV-2052</b><span>QB &rarr; Xero</span><em>Retry</em></li>
+          </ul>
+          <span class="pu-cta lime">Resolve</span>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
         <div class="tagline"><span>FinanceSync · interface reference</span><span>21:9 · <span class="flag">Illustrative</span></span></div>
@@ -549,21 +563,71 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         <div class="story-frame">
           <div class="story-scene on" data-scene="0">
             <div class="slot" data-visual="story-0" role="img" aria-label="Sync workers">
-        <img src="/work/financesync/sync-workers.svg" alt="Sync workers" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Sync workers: QuickBooks, Xero, and bank Running.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Workers</p>
+              <p class="pu-meta">Idempotent retry</p>
+            </div>
+            <span class="pu-chip ok">Running</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="on"><b>QuickBooks</b><span>UK books</span><em>Running</em></li>
+            <li class="on"><b>Xero</b><span>US books</span><em>Running</em></li>
+            <li class="on"><b>Bank</b><span>Feed</span><em>Running</em></li>
+          </ul>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
               <div class="tagline"><span>Sync workers</span><span>01 / 03</span></div></div>
           </div>
           <div class="story-scene" data-scene="1">
             <div class="slot" data-visual="story-1" role="img" aria-label="Anomalies">
-        <img src="/work/financesync/anomalies.svg" alt="Anomaly detection" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Retry queue for unmatched close items.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Retry queue</p>
+              <p class="pu-meta">Before close</p>
+            </div>
+            <span class="pu-chip warn">1 retry</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="risk"><b>INV-2052</b><span>QB &rarr; Xero</span><em>Retry</em></li>
+            <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
+            <li class="pu-desk"><b>INV-2055</b><span>Bank feed</span><em>Queued</em></li>
+          </ul>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
               <div class="tagline"><span>Anomalies</span><span>02 / 03</span></div></div>
           </div>
           <div class="story-scene" data-scene="2">
             <div class="slot" data-visual="story-2" role="img" aria-label="Discrepancy UI">
-        <img src="/work/financesync/discrepancy.svg" alt="Discrepancy resolution UI" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Unmatched invoice INV-2041 against source record.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">INV-2041</p>
+              <p class="pu-meta">Unmatched · source record</p>
+            </div>
+            <span class="pu-chip warn">&minus;&pound;420</span>
+          </div>
+          <div class="pu-split">
+            <div class="pu-col">
+              <p class="pu-h">Queue</p>
+              <ul class="pu-rows">
+                <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>Open</em></li>
+              </ul>
+            </div>
+            <div class="pu-col">
+              <p class="pu-h">Source</p>
+              <ul class="pu-rows">
+                <li><b>QB</b><span>Invoice</span><em>&pound;420</em></li>
+                <li class="risk"><b>Bank</b><span>No match</span><em>0</em></li>
+              </ul>
+            </div>
+          </div>
+          <span class="pu-cta lime">Resolve</span>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
               <div class="tagline"><span>Discrepancy UI</span><span>03 / 03</span></div></div>
@@ -621,7 +685,17 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       <div class="ba" id="ba">
         <div class="ba-layer before">
           <div class="slot" data-visual="before" role="img" aria-label="Before state">
-        <img src="/work/financesync/before.svg" alt="Before reconciliation workflow" width="1920" height="1080" loading="lazy" decoding="async">
+        <div class="pu pu-sheet" role="img" aria-label="Before: unmatched spreadsheet close.">
+          <p class="pu-title">Mar close.xls</p>
+          <table>
+            <thead><tr><th>Ref</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><b>INV-2041</b></td><td class="miss">?</td></tr>
+              <tr><td><b>INV-2048</b></td><td>ok</td></tr>
+              <tr><td><b>INV-2052</b></td><td class="miss">?</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="skel"><i></i><i></i><i></i>
       </div>
             <div class="tagline"><span>Before · FinanceSync</span><span><span class="flag">Illustrative</span></span></div></div>
@@ -629,7 +703,24 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
         </div>
         <div class="ba-layer after">
           <div class="slot" style="background:linear-gradient(160deg,#1B2028,#0E1216)" data-visual="after" role="img" aria-label="After state">
-        <img src="/work/financesync/after.svg" alt="After unified reconciliation hub" width="1920" height="1080" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="After unified reconciliation hub: March close, 4 unmatched, Resolve.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">March close</p>
+              <p class="pu-meta">Unified hub</p>
+            </div>
+            <span class="pu-chip warn">4 unmatched</span>
+          </div>
+          <div class="pu-kpis">
+            <div><span>Matched</span><b>186</b></div>
+            <div class="risk"><span>Open</span><b>4</b></div>
+            <div><span>Retry</span><b>1</b></div>
+          </div>
+          <ul class="pu-rows">
+            <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
+          </ul>
+          <span class="pu-cta lime">Resolve</span>
+        </div>
         <div class="skel"><i style="background:#2A323B"></i><i style="background:#2A323B"></i><i style="background:#2A323B"></i>
       </div>
             <div class="tagline"><span>After · FinanceSync</span><span><span class="flag">Illustrative</span></span></div></div>

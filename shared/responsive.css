@@ -12,7 +12,7 @@ h1,h2,h3,.d1,.d2,.d3,.lede{overflow-wrap:break-word}
   font-weight:800;
   letter-spacing:-.028em;
   line-height:.94;
-  font-size:clamp(2.05rem,1.15rem + 4.2vw,4.6rem)
+  font-size:clamp(1.85rem,1.05rem + 3.5vw,3.9rem)
 }
 .d2,h2.d2{
   font-family:var(--f-display);
@@ -45,13 +45,17 @@ h1,h2,h3,.d1,.d2,.d3,.lede{overflow-wrap:break-word}
 
 /* Homepage display can stay larger; still clamp down on small phones. */
 body:not(.case) .hero .d1,
-.hero-copy .d1{
-  font-size:clamp(2.15rem,1.2rem + 5vw,5.8rem);
-  line-height:.92;
+.hero-copy .d1,
+.lp-hero .d1{
+  font-size:clamp(1.85rem,1rem + 3.55vw,4.65rem);
+  line-height:.94;
   letter-spacing:-.03em
 }
+.ph .d1{
+  font-size:clamp(1.85rem,1.05rem + 3.5vw,3.9rem)
+}
 body.case-brand .ph .d1{
-  font-size:clamp(2.4rem,1.1rem + 6.2vw,5.8rem);
+  font-size:clamp(2rem,1.05rem + 4.8vw,4.55rem);
   line-height:.9
 }
 body.case .cs-proof b{
@@ -76,8 +80,8 @@ body.case .cs-proof b{
 }
 
 @media(max-width:359px){
-  .d1,h1.d1,.hero-copy .d1,body:not(.case) .hero .d1{
-    font-size:1.95rem;line-height:1.06;letter-spacing:-.022em
+  .d1,h1.d1,.hero-copy .d1,.lp-hero .d1,body:not(.case) .hero .d1{
+    font-size:1.8rem;line-height:1.06;letter-spacing:-.022em
   }
   .d2,h2.d2{font-size:1.42rem;line-height:1.18}
   .cta-band h2{font-size:1.7rem}
@@ -103,8 +107,7 @@ body.case .cs-proof b{
   .sol-lead,
   .lp-case,
   .lp-dual,
-  .journal-feat,
-  .featwork-hero{
+  .journal-feat{
     grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
     align-items:start
   }
@@ -125,7 +128,6 @@ body.case .cs-proof b{
   .sect{padding-block:clamp(64px,8vw,104px)}
   .hero-float{display:none}
   .hero-stack{min-height:0}
-  .canvas-side{width:min(42%,280px)}
   .lp-dual img.phone{max-width:180px;margin-left:auto}
   .hero-actions .btn,.ph-actions .btn{width:auto}
 }
@@ -140,10 +142,27 @@ body.case .cs-proof b{
 
 /* Large desktop: editorial measure, not a stretch */
 @media(min-width:1600px){
-  .d1,h1.d1{font-size:4.5rem}
-  .hero-copy .d1{font-size:5.6rem}
+  .d1,h1.d1,.ph .d1{font-size:3.85rem}
+  .hero-copy .d1,.lp-hero .d1,body:not(.case) .hero .d1{font-size:4.55rem}
   .cta-band h2{font-size:4.4rem}
-  .canvas-stage{max-width:1480px}
+}
+
+/* Hero H1s: smaller than the original oversized clamp, but not undersized. */
+.hero .d1,
+.hero h1,
+.lp-hero .d1,
+.hero-copy .d1,
+.ph .d1,
+.ph h1,
+.wh .d1,
+.wh h1{
+  font-size:clamp(1.85rem,1rem + 3.55vw,4.65rem) !important;
+  line-height:.94
+}
+@media(min-width:1600px){
+  .hero .d1,.hero h1,.lp-hero .d1,.hero-copy .d1,.ph .d1,.ph h1,.wh .d1,.wh h1{
+    font-size:4.55rem !important
+  }
 }
 
 /* Forms: comfortable tap, no 16px zoom on iOS */
@@ -158,7 +177,7 @@ select,textarea{
 /* Touch: don't leave hover-lift stuck */
 @media(hover:none){
   .card:hover,.path:hover,.pm > a:hover,
-  .mm-list a:hover,.featwork-shot:hover img,.domain-feat:hover img{
+  .mm-list a:hover,.featwork-shot:hover .case-ui,.domain-feat:hover .domain-shot .browser{
     transform:none
   }
 }

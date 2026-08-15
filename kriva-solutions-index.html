@@ -95,15 +95,15 @@ img,svg{max-width:100%;display:block}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
-<link rel="stylesheet" href="/shared/responsive.css">
+<link rel="stylesheet" href="/shared/responsive.css?v=hero4">
 <style>
 /* Page-scoped Solutions — loaded last */
 body.page-solutions{overflow-x:clip}
 body.page-solutions .sect{padding-block:clamp(80px,10vw,140px)}
 body.page-solutions .hero .d1{
-  font-size:clamp(2.35rem,1.15rem + 5.4vw,5.6rem);line-height:.9;letter-spacing:-.032em
+  font-size:clamp(1.85rem,1rem + 3.55vw,4.65rem);line-height:.94;letter-spacing:-.032em
 }
 body.page-solutions .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
 body.page-solutions .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
@@ -246,7 +246,7 @@ body.page-solutions .hero{
   .sol-feat .stat{font-size:3.2rem}
 }
 @media(max-width:390px){
-  body.page-solutions .hero .d1{font-size:2.2rem}
+  body.page-solutions .hero .d1{font-size:1.9rem}
 }
 @media(hover:none){
   .sol-peek{opacity:1;transform:none}
@@ -261,7 +261,7 @@ body.page-solutions .hero{
   .sol-media img,.sol-feat-shot img{transform:none!important}
 }
 @media(min-width:1600px){
-  body.page-solutions .hero .d1{font-size:5.4rem}
+  body.page-solutions .hero .d1{font-size:4.55rem}
 }
 </style>
 </head>
@@ -430,7 +430,25 @@ body.page-solutions .hero{
 
 <section class="sol-feat on-ink" id="paths" aria-labelledby="leadH">
   <a class="sol-feat-shot" href="/solutions/trucking-logistics">
-    <img src="/work/fleetflow/console-full.svg" alt="FleetFlow dispatch console with active loads, SLA risk, and status board" width="1920" height="1080" decoding="async" fetchpriority="high">
+    <div class="pu" role="img" aria-label="FleetFlow dispatch console: three loads selected, SLA remaining, bulk reassign.">
+      <div class="pu-bar">
+        <div>
+          <p class="pu-title">FleetFlow</p>
+          <p class="pu-meta">Dispatch · 3 selected</p>
+        </div>
+        <span class="pu-act">Reassign</span>
+      </div>
+      <div class="pu-kpis">
+        <div><span>Active</span><b>128</b></div>
+        <div class="up"><span>On time</span><b>94%</b></div>
+        <div class="risk"><span>At risk</span><b>3</b></div>
+      </div>
+      <ul class="pu-rows">
+        <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m</em></li>
+        <li><b>#4821</b><span>DAL &rarr; PHX</span><em>42m</em></li>
+        <li class="risk"><b>#4823</b><span>CHI &rarr; DET</span><em>6m SLA</em></li>
+      </ul>
+    </div>
   </a>
   <div class="sol-feat-bar">
     <div data-r>
@@ -457,7 +475,21 @@ body.page-solutions .hero{
 
     <article class="sol-row" data-r>
       <div class="sol-media">
-        <img src="/work/payrollpro/onboarding.svg" alt="PayrollPro first-value onboarding with completed and pending setup steps" width="1920" height="1080" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="PayrollPro first sitting: SSO and bank done, a real test cycle now, roles after first value.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">First sitting</p>
+              <p class="pu-meta">SaaS · after SSO</p>
+            </div>
+            <span class="pu-chip warn">Roles later</span>
+          </div>
+          <ol class="pu-steps" style="padding:14px 16px 16px">
+            <li class="done"><i></i><span>SSO</span><em>Done</em></li>
+            <li class="done"><i></i><span>Link bank</span><em>Done</em></li>
+            <li class="now"><i></i><span>Run test cycle</span><em>Now</em></li>
+            <li class="later"><i></i><span>Invite roles</span><em>After value</em></li>
+          </ol>
+        </div>
         <span class="sol-peek">Explore SaaS →</span>
       </div>
       <div class="sol-copy">
@@ -475,7 +507,21 @@ body.page-solutions .hero{
 
     <article class="sol-row flip" data-r>
       <div class="sol-media">
-        <img src="/work/financesync/hero.svg" alt="FinanceSync reconciliation hub matching QuickBooks and Xero invoices" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="FinanceSync March close: unmatched invoice against QuickBooks and bank, one-click resolve.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">March close</p>
+              <p class="pu-meta">QuickBooks · Xero · bank</p>
+            </div>
+            <span class="pu-chip warn">4 unmatched</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
+            <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
+            <li><b>INV-2052</b><span>QB &rarr; Xero</span><em>Retry</em></li>
+          </ul>
+          <span class="pu-cta lime">Resolve</span>
+        </div>
         <span class="sol-peek">Explore integrations →</span>
       </div>
       <div class="sol-copy">
@@ -493,7 +539,23 @@ body.page-solutions .hero{
 
     <article class="sol-row" data-r>
       <div class="sol-media">
-        <img src="/solutions/trucking/dispatch-console.svg" alt="Dispatch console used as related visual for auto-transport operations" width="1600" height="1000" loading="lazy" decoding="async">
+        <div class="pu" role="img" aria-label="Auto-transport quote: VIN, Dallas to Phoenix, enclosed, Book move.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Quote</p>
+              <p class="pu-meta">VIN · origin · delivery</p>
+            </div>
+            <span class="pu-chip cta">Open</span>
+          </div>
+          <p class="pu-k">1C4HJXDG · 2022 Wrangler</p>
+          <p class="pu-q">Dallas &rarr; Phoenix</p>
+          <ul class="pu-rows">
+            <li><b>Pickup</b><span>Gate 14 · 06:40</span><em>Enclosed</em></li>
+            <li class="on"><b>In transit</b><span>I-10 west</span><em>ETA 2d</em></li>
+            <li><b>Deliver</b><span>Scottsdale</span><em>Pending</em></li>
+          </ul>
+          <span class="pu-cta">Book move</span>
+        </div>
         <span class="sol-peek">Explore car transport →</span>
       </div>
       <div class="sol-copy">

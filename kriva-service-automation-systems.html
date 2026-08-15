@@ -143,12 +143,15 @@ img{max-width:100%;display:block}
   background:var(--paper);
 }
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.hero-grid > *{min-width:0}
+.lp-hero .d1{max-width:12ch}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
 .tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
 
 /* Signature · human-gated review queue (not a connector board, not a CRM) */
 .auto-board{
   background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  overflow:hidden;min-width:0;
   box-shadow:0 28px 60px -42px rgba(14,18,22,.55)
 }
 .auto-board__bar{
@@ -190,7 +193,7 @@ img{max-width:100%;display:block}
 .st-ok{color:var(--lime)}.st-go{color:var(--lilac)}.st-idle{color:#717F8C}.st-warn{color:var(--amber)}
 .auto-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
-@media(max-width:640px){
+@media(max-width:720px){
   .auto-board__kpis{grid-template-columns:1fr 1fr}
   .auto-board__kpi:nth-child(3){display:none}
   .auto-row{grid-template-columns:1fr auto;gap:8px}
@@ -286,10 +289,25 @@ img{max-width:100%;display:block}
 .sib a:hover{border-color:var(--blue);color:var(--blue)}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
-<link rel="stylesheet" href="/shared/responsive.css">
-<link rel="stylesheet" href="/shared/archetypes.css">
+<link rel="stylesheet" href="/shared/responsive.css?v=hero4">
+<link rel="stylesheet" href="/shared/archetypes.css?v=hero4">
+<style>
+.lp-hero .hero-grid{align-items:end}
+.lp-hero .d1{max-width:12ch}
+@media(max-width:1024px){
+  .lp-hero .hero-grid{grid-template-columns:1fr !important;align-items:start}
+  .auto-board__kpis{grid-template-columns:1fr 1fr}
+  .auto-board__kpi:nth-child(3){display:none}
+  .auto-row{grid-template-columns:minmax(0,1fr) auto;gap:8px}
+  .auto-row .ref,.auto-row .conf{display:none}
+  .auto-row .st{grid-column:2;grid-row:1}
+}
+@media(max-width:860px){
+  .fit-rail{grid-template-columns:1fr !important}
+}
+</style>
 </head>
 <body class="service strategic arch-industry">
 <a class="skip" href="#main">Skip to content</a>
@@ -440,17 +458,86 @@ img{max-width:100%;display:block}
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">Automation Workflows</li>
     </ol>
-    <div style="margin-top:clamp(22px,3vw,40px);max-width:24ch">
-      <p class="eyebrow" data-r>Service · Human-gated pipelines</p>
-      <h1 class="d1 mask" data-mask>
-        <span><i>Automation with a</i></span>
-        <span><i>person on send.</i></span>
-      </h1>
-      <p class="lede" data-r>Map the loop, then put a person on the step that must not go out wrong. Make, Zapier, or custom, chosen for the job, not the slogan.</p>
-      <div class="hero-actions" data-r>
-        <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
-        <a href="/work/ai-support-automation" class="btn ghost"><span>See SupportAI</span><i>→</i></a>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow" data-r>Service · Human-gated pipelines</p>
+        <h1 class="d1 mask" data-mask>
+          <span><i>Automation with a</i></span>
+          <span><i>person on send.</i></span>
+        </h1>
+        <p class="lede" data-r>Map the loop, then put a person on the step that must not go out wrong. Make, Zapier, or custom, chosen for the job, not the slogan.</p>
+        <div class="tags" data-r>
+          <span class="tag">Make / Zapier</span>
+          <span class="tag">Human gates</span>
+          <span class="tag">Ticket triage</span>
+          <span class="tag">Invoice triggers</span>
+        </div>
+        <div class="hero-actions" data-r>
+          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+          <a href="/work/ai-support-automation" class="btn ghost"><span>See SupportAI</span><i>→</i></a>
+        </div>
       </div>
+      <div data-r>
+        <div class="auto-board" aria-hidden="true">
+          <div class="auto-board__bar">
+            <span><b>Review queue</b> · 8 waiting</span>
+            <span class="auto-board__live"><i></i>Human gate on</span>
+          </div>
+          <div class="auto-board__kpis">
+            <div class="auto-board__kpi"><span>Drafted today</span><b>14</b><em>Make · Claude</em></div>
+            <div class="auto-board__kpi"><span>Needs review</span><b>8</b><em>Before send</em></div>
+            <div class="auto-board__kpi warn"><span>Fallback</span><b>2</b><em>Low confidence</em></div>
+          </div>
+          <div class="auto-flow">
+            <span class="step">Ticket</span><span class="arr">→</span>
+            <span class="step">Make · Claude</span><span class="arr">→</span>
+            <span class="step gate">Gate</span><span class="arr">→</span>
+            <span class="step">Send</span>
+          </div>
+          <div class="auto-row on">
+            <span class="ref">T-1841</span>
+            <span class="lane"><b>Billing dispute</b><em>Draft ready · HubSpot</em></span>
+            <span class="conf">92%</span>
+            <span class="st st-go">Review</span>
+          </div>
+          <div class="auto-row on">
+            <span class="ref">T-1844</span>
+            <span class="lane"><b>Login lockout</b><em>Low confidence · fallback</em></span>
+            <span class="conf">61%</span>
+            <span class="st st-warn">Hold</span>
+          </div>
+          <div class="auto-row">
+            <span class="ref">T-1847</span>
+            <span class="lane"><b>Plan change</b><em>Draft ready · Zendesk</em></span>
+            <span class="conf">88%</span>
+            <span class="st st-go">Review</span>
+          </div>
+          <div class="auto-row">
+            <span class="ref">INV-09</span>
+            <span class="lane"><b>Invoice fire</b><em>Waiting approve · ledger</em></span>
+            <span class="conf">—</span>
+            <span class="st st-idle">Gate</span>
+          </div>
+        </div>
+        <p class="auto-board__note"><span class="flag">Demo</span> Illustrative queue · no client data · SupportAI pattern</p>
+      </div>
+    </div>
+    <div class="fit-rail" data-s>
+      <article>
+        <p class="k">Best for</p>
+        <h2>Ops and support drowning in the same steps</h2>
+        <p>Teams who already know the repeatable work, and need a person on anything that reaches a customer or the ledger.</p>
+      </article>
+      <article>
+        <p class="k">What we own</p>
+        <h2>Audit, build, gates, fallback</h2>
+        <p>Workflow map, Make or Zapier (or custom), human approval on send, and monitoring so failed runs return to a queue.</p>
+      </article>
+      <article>
+        <p class="k">Not this service</p>
+        <h2>Connectors, close UX, or “AI to ship code”</h2>
+        <p>Idempotent APIs live under Integrations. Month-end reconciliation lives on QuickBooks &amp; Xero. Using AI to design and build product lives under AI-Assisted Development.</p>
+      </article>
     </div>
   </div>
 </header>
@@ -473,14 +560,28 @@ img{max-width:100%;display:block}
     <h2 id="auShow">Triage, drafts, and a gate, not a firehose.</h2>
     <div class="arch-frame">
       <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>supportai · review</span></div>
-      <img src="/work/supportai/after.svg" alt="SupportAI review gate" width="1920" height="1080" loading="lazy" decoding="async">
+      <div class="pu" role="img" aria-label="Review queue, human gate.">
+        <div class="pu-bar"><div><p class="pu-title">Review queue</p><p class="pu-meta">Claude draft · human gate</p></div><span class="pu-chip warn">Hold send</span></div>
+        <p class="pu-k">#4812 · Billing · 94%</p>
+        <p class="pu-q">Charge posted twice after the March plan change.</p>
+        <p class="pu-draft"><span>Draft</span>We can reverse the duplicate and credit the difference today.</p>
+        <div class="pu-acts"><span class="pu-ok">Approve</span><span class="pu-no">Hold</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="featwork" id="work" aria-labelledby="pfH" style="padding:0">
   <article class="lp-case" data-r>
-    <a href="/work/ai-support-automation"><img src="/work/supportai/hero.svg" alt="SupportAI copilot" width="1920" height="1080" loading="lazy" decoding="async"></a>
+    <a href="/work/ai-support-automation">
+      <div class="pu" role="img" aria-label="Review queue, human gate.">
+        <div class="pu-bar"><div><p class="pu-title">Review queue</p><p class="pu-meta">Claude draft · human gate</p></div><span class="pu-chip warn">Hold send</span></div>
+        <p class="pu-k">#4812 · Billing · 94%</p>
+        <p class="pu-q">Charge posted twice after the March plan change.</p>
+        <p class="pu-draft"><span>Draft</span>We can reverse the duplicate and credit the difference today.</p>
+        <div class="pu-acts"><span class="pu-ok">Approve</span><span class="pu-no">Hold</span></div>
+      </div>
+    </a>
     <div>
       <p class="eyebrow">Selected work</p>
       <h3 class="d2" id="pfH">SupportAI</h3>

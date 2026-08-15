@@ -1,9 +1,10 @@
 /* KRIVA · inner pages
    Homepage is the benchmark. Unifies type, rhythm, CTAs,
    and kills cloned catalog / 3-col farms across services. */
+@import url("product-ui.css?v=pu2");
 
 .d1{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;line-height:.92;
-  font-size:clamp(2.45rem,5.6vw,4.8rem)}
+  font-size:clamp(2rem,4.8vw,4.05rem)}
 .d2{font-family:var(--f-display);font-weight:700;letter-spacing:-.025em;line-height:1.08;
   font-size:clamp(1.9rem,3.6vw,3.2rem);max-width:16ch}
 .lede{max-width:40ch}
@@ -11,8 +12,9 @@
 .cta-band h2{font-size:clamp(2.4rem,6vw,4.6rem);max-width:14ch;letter-spacing:-.032em}
 .wrap{max-width:var(--maxw)}
 
-/* Internal catalog chrome, not for buyers */
-.aside-card,.hero .brief,.shot .slot,.mob-chips{display:none !important}
+/* Internal catalog chrome, not for buyers. Keep .slot when it holds a product UI. */
+.aside-card,.hero .brief,.mob-chips{display:none !important}
+.shot .slot:not(:has(.pu)){display:none !important}
 
 /* Hero: when catalog aside is gone, copy takes the full measure */
 .hero-grid:has(> .aside-card){grid-template-columns:minmax(0,1fr) !important;max-width:72ch}
@@ -65,7 +67,7 @@ body.arch-saas .chal article{border-bottom-color:var(--ink-line) !important}
   .dash-board{max-width:100%}
 }
 @media(max-width:390px){
-  .d1{font-size:clamp(2.05rem,8vw,2.35rem)}
+  .d1{font-size:clamp(1.9rem,8vw,2.2rem)}
   .hero-callout{width:calc(100% - 24px)}
   .anno{display:none}
   .canvas-stage{padding-inline:var(--gutter)}
@@ -92,6 +94,8 @@ body.arch-saas .chal article{border-bottom-color:var(--ink-line) !important}
 .lp-dual{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:16px;align-items:end}
 .lp-dual figure{margin:0;background:var(--ink);overflow:hidden;border:1px solid var(--ink-line);box-shadow:var(--shadow-product)}
 .lp-dual img{width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.lp-dual:has(.pu),.arch-frame:has(.pu),.lp-pair figure:has(.pu){min-width:0}
+.arch-frame:has(.pu){overflow:hidden}
 .lp-dual img.phone{aspect-ratio:9/16;max-width:220px;margin-left:auto;display:block}
 .lp-frac a,.lp-frac article{
   display:grid;grid-template-columns:minmax(0,140px) minmax(0,1fr);gap:24px;
@@ -99,10 +103,11 @@ body.arch-saas .chal article{border-bottom-color:var(--ink-line) !important}
 }
 .lp-frac .offer-no{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);padding-top:6px}
 .lp-case{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);background:var(--ink);color:#DDE2E7}
+.lp-case > a{min-width:0;min-height:320px;display:flex}
 .lp-case img{width:100%;height:100%;object-fit:cover;min-height:320px;display:block}
-.lp-case div{padding:clamp(28px,4vw,48px)}
+.lp-case > div{padding:clamp(28px,4vw,48px)}
 .lp-case h3{color:#fff;font-size:clamp(1.8rem,3vw,2.6rem);margin:10px 0 14px}
-.lp-case p{color:#8C98A4}
+.lp-case > div p{color:#8C98A4}
 .lp-case .eyebrow{color:var(--ink-dim)}
 
 @media(max-width:767px){
@@ -158,7 +163,8 @@ body.arch-saas .chal article{border-bottom-color:var(--ink-line) !important}
 .sol-lead div{padding:clamp(28px,4vw,48px)}
 .sol-lead h2{color:#fff;font-size:clamp(1.8rem,3vw,2.6rem);margin:10px 0 14px}
 .sol-lead p{color:#8C98A4}
-body.case .shot .slot{display:none !important}
+body.case .shot .slot:not(:has(.pu)){display:none !important}
+body.case .shot .slot:has(.pu){display:flex !important;flex-direction:column;padding:0;background:none}
 body.case .shot--wide .media,body.case .shot .media{background:#0a0d10;border:1px solid var(--ink-line);box-shadow:var(--shadow-product);overflow:hidden}
 body.case .shot img{width:100%;height:auto;display:block}
 body.case .ph{padding:calc(72px + clamp(24px,4vw,48px)) 0 clamp(28px,4vw,48px)}
@@ -228,7 +234,7 @@ body.case-mobile .cs-crop img{width:160%;object-position:40% 10%}
 
 /* BrandLift, type-led, white, oversized mark */
 body.case-brand .ph{background:var(--white)}
-body.case-brand .ph .d1{font-size:clamp(3rem,8vw,6.4rem);max-width:11ch;line-height:.86}
+body.case-brand .ph .d1{font-size:clamp(2.25rem,6vw,4.55rem);max-width:11ch;line-height:.86}
 
 @media(max-width:1024px){
   body.case .cs-asym,body.case .cs-asym.flip,body.case-mobile .ph-grid{grid-template-columns:1fr}
@@ -238,7 +244,7 @@ body.case-brand .ph .d1{font-size:clamp(3rem,8vw,6.4rem);max-width:11ch;line-hei
 }
 @media(max-width:768px){
   body.case .cs-proof b{font-size:clamp(4.2rem,22vw,7rem)}
-  body.case-brand .ph .d1{font-size:clamp(2.6rem,12vw,4rem)}
+  body.case-brand .ph .d1{font-size:clamp(2.35rem,11vw,3.55rem)}
 }
 @media(max-width:640px){
   body.case .cs-lock,body.case .cs-phones{grid-template-columns:1fr}

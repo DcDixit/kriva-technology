@@ -95,15 +95,15 @@ img,svg{max-width:100%;display:block}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 </style>
 <link rel="stylesheet" href="/shared/chrome.css">
-<link rel="stylesheet" href="/shared/inner.css">
+<link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
-<link rel="stylesheet" href="/shared/responsive.css">
+<link rel="stylesheet" href="/shared/responsive.css?v=hero4">
 <style>
 /* Page-scoped Insights — loaded last */
 body.page-insights{overflow-x:clip}
 body.page-insights .sect{padding-block:clamp(80px,10vw,140px)}
 body.page-insights .hero .d1{
-  font-size:clamp(2.35rem,1.15rem + 5.4vw,5.6rem);line-height:.9;letter-spacing:-.032em
+  font-size:clamp(1.85rem,1rem + 3.55vw,4.65rem);line-height:.94;letter-spacing:-.032em
 }
 body.page-insights .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
 body.page-insights .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
@@ -133,6 +133,9 @@ body.page-insights .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12c
   transform:scale(1.02);transition:transform 1.1s var(--e)
 }
 .ins-lead-shot:hover img{transform:scale(1.05)}
+.ins-lead-shot .pu{min-height:0}
+.ins-lead-shot:has(.pu){background:#0E1216}
+.ins-lead-shot:hover .pu{transform:none}
 .ins-lead-bar{
   display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);
   gap:clamp(24px,4vw,56px);align-items:center;
@@ -247,7 +250,7 @@ body.page-insights .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12c
   .ins-row:hover{padding-left:0}
 }
 @media(max-width:390px){
-  body.page-insights .hero .d1{font-size:2.2rem}
+  body.page-insights .hero .d1{font-size:1.9rem}
 }
 @media(hover:none){
   .ins-links a:hover,.ins-row:hover{padding-left:0}
@@ -261,7 +264,7 @@ body.page-insights .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12c
   .ins-lead-shot img{transform:none!important}
 }
 @media(min-width:1600px){
-  body.page-insights .hero .d1{font-size:5.4rem}
+  body.page-insights .hero .d1{font-size:4.55rem}
 }
 </style>
 </head>
@@ -425,7 +428,34 @@ body.page-insights .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12c
 
 <article class="ins-lead on-ink" id="featured" aria-labelledby="featH">
   <a class="ins-lead-shot" href="/insights/saas-mvp-uk-guide">
-    <img src="/insights/featured-cover.svg" alt="Featured insights article cover" width="1200" height="800" decoding="async" fetchpriority="high">
+    <div class="pu" role="img" aria-label="UK SaaS MVP first sitting: workspace and import done, first payroll lock now, roles later.">
+      <div class="pu-bar">
+        <div>
+          <p class="pu-title">First sitting</p>
+          <p class="pu-meta">UK MVP · Northwind Ltd</p>
+        </div>
+        <span class="pu-chip warn">Roles later</span>
+      </div>
+      <div class="pu-split">
+        <div class="pu-col">
+          <p class="pu-h">In the MVP</p>
+          <ol class="pu-steps">
+            <li class="done"><i></i><span>Workspace created</span><em>Done</em></li>
+            <li class="done"><i></i><span>Import 12 records</span><em>Done</em></li>
+            <li class="now"><i></i><span>Lock first payroll</span><em>Now</em></li>
+            <li class="later"><i></i><span>Invite the rest of the team</span><em>Later</em></li>
+          </ol>
+        </div>
+        <div class="pu-col">
+          <p class="pu-h">Cut from v1</p>
+          <ul class="pu-mini">
+            <li><b>Role matrix</b> After first value</li>
+            <li><b>White-label</b> Not this sitting</li>
+            <li class="hot"><b>Marketplace</b> Out of scope</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </a>
   <div class="ins-lead-bar">
     <div data-r>
