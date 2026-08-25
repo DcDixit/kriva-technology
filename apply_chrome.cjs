@@ -29,6 +29,8 @@ const PAGE_CURRENT = {
   "kriva-service-design-systems.html": "saas",
   "kriva-service-web-application-design.html": "services",
   "kriva-service-logo-design.html": "services",
+  "kriva-service-graphic-design.html": "services",
+  "kriva-service-seo-digital-marketing.html": "services",
   "kriva-work-index.html": "work",
   "kriva-careers.html": null,
   "kriva-industries.html": null,
@@ -140,7 +142,19 @@ function headerHtml(current, opts = {}) {
                 <div class="mm-foot"><a href="/process">See the process <i>→</i></a></div>
               </div>
             </li>
-            <li><a class="nav-link" href="/services"${nav.servicesCurrent ? ' aria-current="page"' : ""}>Services</a></li>
+            <li class="nav-item${nav.servicesCurrent ? " is-active" : ""}" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-services" aria-haspopup="true">Services<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-services" role="menu">
+                <div class="mm-head"><b>Services</b><span>Capabilities</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/services/graphic-design"><strong>Graphic Design</strong><em>Identity, print, social, packaging, and marketing kits.</em></a></li>
+                  <li><a role="menuitem" href="/services/seo-digital-marketing"><strong>SEO &amp; Digital Marketing</strong><em>Search, ads, social, and reporting you can audit.</em></a></li>
+                  <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
+                  <li><a role="menuitem" href="/services/web-development"><strong>Web Design &amp; Development</strong><em>Sites and apps that convert as well as they rank.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/services">All services <i>→</i></a></div>
+              </div>
+            </li>
             <li><a class="nav-link" href="/work"${nav.work ? ' aria-current="page"' : ""}>Work</a></li>
             <li><a class="nav-link" href="/about"${nav.about ? ' aria-current="page"' : ""}>About</a></li>
           </ul>
@@ -190,7 +204,14 @@ function headerHtml(current, opts = {}) {
         <li><a href="/process"><strong>How we work</strong><span>Process &amp; delivery</span></a></li>
       </ul>
     </div>
-    <div class="sheet-item"><a class="big" href="/services">Services</a></div>
+    <div class="sheet-item">
+      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-services">Services<span class="plus" aria-hidden="true"></span></button>
+      <ul class="sheet-sub" id="sheet-services">
+        <li><a href="/services/graphic-design"><strong>Graphic Design</strong><span>Identity, print, social</span></a></li>
+        <li><a href="/services/seo-digital-marketing"><strong>SEO &amp; Digital Marketing</strong><span>Search, ads, performance</span></a></li>
+        <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
+      </ul>
+    </div>
     <div class="sheet-item"><a class="big" href="/industries">Industries</a></div>
     <div class="sheet-item"><a class="big" href="/work">Work</a></div>
     <div class="sheet-item"><a class="big" href="/about">About</a></div>
@@ -240,6 +261,8 @@ const FOOTER_HTML = `<footer>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/solutions">Solutions</a></li>
         <li><a href="/services">Services</a></li>
+        <li><a href="/services/graphic-design">Graphic Design</a></li>
+        <li><a href="/services/seo-digital-marketing">SEO &amp; Digital Marketing</a></li>
         <li><a href="/industries">Industries</a></li>
         <li><a href="/work">Work</a></li>
         <li><a href="/about">About</a></li>

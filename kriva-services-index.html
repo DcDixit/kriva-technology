@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/shared/chrome.js" defer></script>
 <script>document.documentElement.classList.add('js')</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +13,11 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
 <title>Services · Design, Development &amp; Automation · KRIVA</title>
-<meta name="description" content="Product design, UI/UX, SaaS, dashboards, mobile, branding, and web — designed and engineered by one in-house KRIVA team, from discovery through launch.">
+<meta name="description" content="Product design, UI/UX, SaaS, dashboards, mobile, branding, graphic design, SEO, and web — designed and engineered by one in-house KRIVA team, from discovery through launch.">
 <link rel="canonical" href="https://krivatechnologies.com/services">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Services · Design, Development &amp; Automation">
-<meta property="og:description" content="Product design, UI/UX, SaaS, dashboards, mobile, branding, and web — designed and engineered by one in-house KRIVA team, from discovery through launch.">
+<meta property="og:description" content="Product design, UI/UX, SaaS, dashboards, mobile, branding, graphic design, SEO, and web — designed and engineered by one in-house KRIVA team, from discovery through launch.">
 <meta property="og:url" content="https://krivatechnologies.com/services">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -207,7 +208,7 @@ body.page-services .hero{
 .svc-row em{display:block;margin-top:3px;font-style:normal;font-size:11.5px;color:#8C98A4}
 .svc-row .lane{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C}
 
-#product-design,#ui-ux-design,#saas-platforms,#dashboard-design,#mobile-applications,#branding,#web-development,#logo-design{
+#product-design,#ui-ux-design,#saas-platforms,#dashboard-design,#mobile-applications,#branding,#web-development,#logo-design,#graphic-design,#seo-digital-marketing{
   scroll-margin-top:100px
 }
 .svc-strip{background:var(--white);border-block:1px solid var(--rule);padding-block:clamp(22px,3vw,36px)}
@@ -556,6 +557,7 @@ body.page-services .hero{
   body.page-services .hero .d1{font-size:4.55rem}
 }
 </style>
+<link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body class="page-services">
 <a class="skip" href="#main">Skip to content</a>
@@ -565,7 +567,7 @@ body.page-services .hero{
   <div class="nav-shell">
     <div class="wrap nav-in">
       <a href="/" class="mark" aria-label="KRIVA Technologies home">
-        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26" loading="eager">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="136" height="26">
       </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
@@ -615,19 +617,31 @@ body.page-services .hero{
                 <ul class="mm-list">
                   <li><a role="menuitem" href="/services/crm-development"><strong>CRM &amp; ops consoles</strong><em>Pipelines and internal tools matched to real desks.</em></a></li>
                   <li><a role="menuitem" href="/services/automation-systems"><strong>Automation workflows</strong><em>Human-gated triage, docs, and internal tooling.</em></a></li>
-                  <li><a role="menuitem" href="/process"><strong>How we work</strong><em>Discovery through launch: clear gates, weekly demos.</em></a></li>
+                  <li><a role="menuitem" href="/process"><strong>How we work</strong><em>Discovery through launch — clear gates, weekly demos.</em></a></li>
                 </ul>
                 <div class="mm-foot"><a href="/process">See the process <i>→</i></a></div>
               </div>
             </li>
-            <li><a class="nav-link" href="/services" aria-current="page">Services</a></li>
+            <li class="nav-item is-active" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-services" aria-haspopup="true">Services<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-services" role="menu">
+                <div class="mm-head"><b>Services</b><span>Capabilities</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/services/graphic-design"><strong>Graphic Design</strong><em>Identity, print, social, packaging, and marketing kits.</em></a></li>
+                  <li><a role="menuitem" href="/services/seo-digital-marketing"><strong>SEO &amp; Digital Marketing</strong><em>Search, ads, social, and reporting you can audit.</em></a></li>
+                  <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
+                  <li><a role="menuitem" href="/services/web-development"><strong>Web Design &amp; Development</strong><em>Sites and apps that convert as well as they rank.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/services">All services <i>→</i></a></div>
+              </div>
+            </li>
             <li><a class="nav-link" href="/work">Work</a></li>
             <li><a class="nav-link" href="/about">About</a></li>
           </ul>
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="/contact#book" class="btn sm"><span>Request a fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn sm"><span>Book a 20-minute fit call</span><i>→</i></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -670,7 +684,14 @@ body.page-services .hero{
         <li><a href="/process"><strong>How we work</strong><span>Process &amp; delivery</span></a></li>
       </ul>
     </div>
-    <div class="sheet-item"><a class="big" href="/services" aria-current="page">Services</a></div>
+    <div class="sheet-item">
+      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-services">Services<span class="plus" aria-hidden="true"></span></button>
+      <ul class="sheet-sub" id="sheet-services">
+        <li><a href="/services/graphic-design"><strong>Graphic Design</strong><span>Identity, print, social</span></a></li>
+        <li><a href="/services/seo-digital-marketing"><strong>SEO &amp; Digital Marketing</strong><span>Search, ads, performance</span></a></li>
+        <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
+      </ul>
+    </div>
     <div class="sheet-item"><a class="big" href="/industries">Industries</a></div>
     <div class="sheet-item"><a class="big" href="/work">Work</a></div>
     <div class="sheet-item"><a class="big" href="/about">About</a></div>
@@ -678,7 +699,7 @@ body.page-services .hero{
     <div class="sheet-item"><a class="big" href="/faq">FAQ</a></div>
     <div class="sheet-item"><a class="big" href="/careers">Careers</a></div>
     <div class="sheet-cta">
-      <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
+      <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
       <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
     </div>
   </div>
@@ -780,6 +801,8 @@ body.page-services .hero{
       <li><a href="#dashboard-design">Dashboards</a></li>
       <li><a href="#mobile-applications">Mobile</a></li>
       <li><a href="#branding">Branding</a></li>
+      <li><a href="#graphic-design">Graphic</a></li>
+      <li><a href="#seo-digital-marketing">SEO</a></li>
       <li><a href="#web-development">Web</a></li>
     </ul>
   </div>
@@ -1022,6 +1045,18 @@ body.page-services .hero{
         <span class="n">08</span>
         <h3>Logo Design</h3>
         <p>Marks that work across product and marketing — usually with a brand system.</p>
+        <i>→</i>
+      </a>
+      <a class="idx-row" href="/services/graphic-design" id="graphic-design">
+        <span class="n">09</span>
+        <h3>Graphic Design</h3>
+        <p>Identity, print, social, packaging, and campaign kits from one system.</p>
+        <i>→</i>
+      </a>
+      <a class="idx-row" href="/services/seo-digital-marketing" id="seo-digital-marketing">
+        <span class="n">10</span>
+        <h3>SEO &amp; Digital Marketing</h3>
+        <p>Search, ads, and reporting you can audit — not a ranking guarantee.</p>
         <i>→</i>
       </a>
     </div>
@@ -1327,6 +1362,8 @@ body.page-services .hero{
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/solutions">Solutions</a></li>
         <li><a href="/services">Services</a></li>
+        <li><a href="/services/graphic-design">Graphic Design</a></li>
+        <li><a href="/services/seo-digital-marketing">SEO &amp; Digital Marketing</a></li>
         <li><a href="/industries">Industries</a></li>
         <li><a href="/work">Work</a></li>
         <li><a href="/about">About</a></li>
@@ -1337,7 +1374,7 @@ body.page-services .hero{
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143" loading="lazy" decoding="async"></p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="151"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -1356,7 +1393,7 @@ body.page-services .hero{
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "KRIVA Services",
-  "description": "Product design, UI/UX, SaaS, dashboards, mobile, branding, and web — designed and engineered by one in-house KRIVA team.",
+  "description": "Product design, UI/UX, SaaS, dashboards, mobile, branding, graphic design, SEO, and web — designed and engineered by one in-house KRIVA team.",
   "url": "https://krivatechnologies.com/services",
   "isPartOf": {"@type": "WebSite", "name": "KRIVA Technologies", "url": "https://krivatechnologies.com"}
 }
@@ -1383,7 +1420,9 @@ body.page-services .hero{
     {"@type":"ListItem","position":14,"name":"Automation Workflows","url":"https://krivatechnologies.com/services/automation-systems"},
     {"@type":"ListItem","position":15,"name":"AI-Assisted Product Development","url":"https://krivatechnologies.com/services/ai-assisted-development"},
     {"@type":"ListItem","position":16,"name":"No-Code / Low-Code Solutions","url":"https://krivatechnologies.com/services/no-code-low-code"},
-    {"@type":"ListItem","position":17,"name":"Logo Design","url":"https://krivatechnologies.com/services/logo-design"}
+    {"@type":"ListItem","position":17,"name":"Logo Design","url":"https://krivatechnologies.com/services/logo-design"},
+    {"@type":"ListItem","position":18,"name":"Graphic Design","url":"https://krivatechnologies.com/services/graphic-design"},
+    {"@type":"ListItem","position":19,"name":"SEO & Digital Marketing","url":"https://krivatechnologies.com/services/seo-digital-marketing"}
   ]
 }
 </script>

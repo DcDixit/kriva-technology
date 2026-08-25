@@ -39,6 +39,8 @@ const FILE_MAP = {
   "/insights/trucking-dispatch-crm-guide": "kriva-insight-trucking-dispatch-crm-guide.html",
   "/insights/crm-dashboard-ux-patterns": "kriva-insight-crm-dashboard-ux-patterns.html",
   "/insights/choosing-a-digital-agency": "kriva-insight-choosing-a-digital-agency.html",
+  "/services/graphic-design": "kriva-service-graphic-design.html",
+  "/services/seo-digital-marketing": "kriva-service-seo-digital-marketing.html",
 };
 
 const counts = {};
