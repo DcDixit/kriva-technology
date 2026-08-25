@@ -620,7 +620,7 @@ function legalPage({ crumb, h1, lede, sections, contactLine }) {
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
-        <a href="mailto:hello@krivatechnologies.com" class="btn ghost on-dark"><span>Email us</span><i>→</i></a>
+        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
@@ -655,7 +655,7 @@ const privacySections = [
   { h: "Data retention", p: "We retain inquiry records for as long as needed to respond, maintain business records, and comply with legal obligations. You may request deletion of marketing-related data where applicable law allows." },
   { h: "Your rights", p: "Depending on your location, you may have rights to access, correct, delete, or restrict processing of your personal data, and to object to certain uses. Contact us to exercise these rights." },
   { h: "Security", p: "We use reasonable technical and organizational measures to protect information. No method of transmission over the internet is completely secure." },
-  { h: "Contact", p: "For privacy questions or requests, email hello@krivatechnologies.com." },
+  { h: "Contact", p: "For privacy questions or requests, use the contact form." },
 ];
 
 const termsSections = [
@@ -667,7 +667,7 @@ const termsSections = [
   { h: "Disclaimers", p: 'The site is provided "as is" without warranties of uninterrupted availability. Case studies and metrics reflect past client results; outcomes vary by context. Third-party tools and links are not under our control.' },
   { h: "Limitation of liability", p: "To the extent permitted by law, we are not liable for indirect or consequential damages arising from use of this website. Liability caps for paid services are defined in the applicable client agreement." },
   { h: "Governing law", p: "These terms are governed by the laws of India, without regard to conflict-of-law principles. Disputes will be subject to the exclusive jurisdiction of courts in Ahmedabad, Gujarat, unless otherwise agreed in writing." },
-  { h: "Contact", p: "Questions about these terms: hello@krivatechnologies.com." },
+  { h: "Contact", p: "Questions about these terms: use the contact form." },
 ];
 
 /* ── Write all pages ── */
@@ -766,7 +766,7 @@ write(
       lede: "Last updated: May 2026. This policy explains how KRIVA Technologies handles information when you visit our website or contact us about a project.",
       sections: privacySections,
       contactLine:
-        'Office: 511 - I The Address, Ahmedabad, Gujarat 380060, IN · <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>',
+        'Office: 511 - I The Address, Ahmedabad, Gujarat 380060, IN',
     }),
     extraScript: tocScript,
   })
@@ -786,7 +786,7 @@ write(
       lede: "Last updated: May 2026. These terms apply to your use of the KRIVA website. Separate statements of work govern paid engagements.",
       sections: termsSections,
       contactLine:
-        'Questions: <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a> · Ahmedabad, Gujarat, India',
+        'Questions: <a href="/contact#brief">contact form</a> · Ahmedabad, Gujarat, India',
     }),
     extraScript: tocScript,
   })

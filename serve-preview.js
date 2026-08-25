@@ -7,6 +7,26 @@ const { FILE_MAP } = require("./_crawl_links.js");
 
 const ROOT = __dirname;
 const PORT = Number(process.env.PORT || 5177);
+
+function loadEnvFile(file) {
+  const p = path.join(ROOT, file);
+  if (!fs.existsSync(p)) return;
+  for (const line of fs.readFileSync(p, "utf8").split(/\r?\n/)) {
+    const t = line.trim();
+    if (!t || t.startsWith("#")) continue;
+    const i = t.indexOf("=");
+    if (i < 1) continue;
+    const key = t.slice(0, i).trim();
+    if (!key || process.env[key]) continue;
+    let val = t.slice(i + 1).trim();
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    process.env[key] = val;
+  }
+}
+loadEnvFile(".env.local");
+loadEnvFile(".env");
 const MIME = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -52,10 +72,16 @@ function resolveUrl(urlPath) {
   return null;
 }
 
+const inquiry = require("./api/inquiry.js");
+
 const server = http.createServer((req, res) => {
   const raw = req.url || "/";
   const pathOnly = decodeURIComponent(raw.split("?")[0].split("#")[0]);
   const qs = raw.includes("?") ? raw.slice(raw.indexOf("?")) : "";
+  if (pathOnly === "/api/inquiry") {
+    inquiry(req, res);
+    return;
+  }
   // Match vercel.json trailingSlash:false, redirect /about/ → /about
   if (pathOnly.length > 1 && pathOnly.endsWith("/")) {
     res.writeHead(308, { Location: pathOnly.replace(/\/+$/, "") + qs });

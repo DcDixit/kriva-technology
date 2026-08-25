@@ -127,31 +127,31 @@ const careers = pageShell({
   <div class="wrap">
     <p class="eyebrow" data-r>Open roles</p>
     <h2 class="d2" id="rolesH" data-r style="margin-top:16px">Current openings</h2>
-    <p class="body" data-r style="margin-top:14px">Remote-first. Apply by email with your portfolio or GitHub and a short note on what you do best.</p>
+    <p class="body" data-r style="margin-top:14px">Remote-first. Apply through the contact form with your portfolio or GitHub and a short note on what you do best.</p>
     <div class="role-list" data-s>
       <article class="role">
         <div>
           <h3 class="d3">Senior Product Designer</h3>
           <p class="meta">Remote · India-friendly overlap · Full-time</p>
         </div>
-        <a class="btn sm" href="mailto:hello@krivatechnologies.com?subject=Application%20%C2%B7%20Senior%20Product%20Designer"><span>Apply</span><i>→</i></a>
+        <a class="btn sm" href="/contact#brief"><span>Apply</span><i>→</i></a>
       </article>
       <article class="role">
         <div>
           <h3 class="d3">Full-Stack Developer (Next.js)</h3>
           <p class="meta">Remote · global · Full-time</p>
         </div>
-        <a class="btn sm" href="mailto:hello@krivatechnologies.com?subject=Application%20%C2%B7%20Full-Stack%20Developer"><span>Apply</span><i>→</i></a>
+        <a class="btn sm" href="/contact#brief"><span>Apply</span><i>→</i></a>
       </article>
       <article class="role">
         <div>
           <h3 class="d3">AI Automation Specialist</h3>
           <p class="meta">Remote · Full-time · contract-to-hire</p>
         </div>
-        <a class="btn sm" href="mailto:hello@krivatechnologies.com?subject=Application%20%C2%B7%20AI%20Automation%20Specialist"><span>Apply</span><i>→</i></a>
+        <a class="btn sm" href="/contact#brief"><span>Apply</span><i>→</i></a>
       </article>
     </div>
-    <p class="aside-note body-sm" data-r>Don't see your role? Send a general application to <a href="mailto:hello@krivatechnologies.com?subject=General%20application" style="border-bottom:1px solid var(--rule)">hello@krivatechnologies.com</a> — we review every note and reply when there's a fit.</p>
+    <p class="aside-note body-sm" data-r>Don't see your role? <a href="/contact#brief" style="border-bottom:1px solid var(--rule)">Send a general application</a> — we review every note and reply when there's a fit.</p>
   </div>
 </section>`,
 });

@@ -41,4 +41,4 @@ for (const asset of ['robots.txt', 'sitemap.xml', 'favicon.svg', 'apple-touch-ic
 }
 
 const contact = fs.readFileSync('kriva-contact.html', 'utf8');
-console.log('contact form endpoint wired:', /data-api-endpoint="https:\/\/formspree\.io/.test(contact));
+console.log('contact form endpoint wired:', /action="\/api\/inquiry"/.test(contact));

@@ -137,11 +137,9 @@ for (const [hex, count] of [...colorUse.entries()].sort((a, b) => b[1] - a[1])) 
 /* ── 4. contact form ── */
 const contact = fs.readFileSync('kriva-contact.html', 'utf8');
 const formBlock = (contact.match(/<form id="briefForm"[\s\S]*?<\/form>/) || [''])[0];
-if (!/data-api-endpoint="https?:\/\//.test(contact)) R.formIssues.push('no live endpoint configured');
+if (!/action="\/api\/inquiry"/.test(contact)) R.formIssues.push('contact form is not posted to /api/inquiry');
 if (/YOUR_FORM_ID/.test(contact)) R.formIssues.push('Formspree placeholder YOUR_FORM_ID still present (needs real ID)');
-const actionM = contact.match(/<form id="briefForm"[^>]*action="([^"]*)"/);
-const apiM = contact.match(/data-api-endpoint="([^"]*)"/);
-if (actionM && apiM && actionM[1] !== apiM[1]) R.formIssues.push(`action (${actionM[1]}) != data-api-endpoint (${apiM[1]})`);
+if (/mailto:hello@|tel:\+919724454455|wa\.me\/919724454455/.test(contact)) R.formIssues.push('public phone or email still on contact page');
 for (const need of [['novalidate', 'novalidate'], ['honeypot', 'website_hp'], ['aria-live status', 'aria-live'], ['error summary', 'summaryList']]) {
   if (!new RegExp(need[1]).test(contact)) R.formIssues.push(`missing ${need[0]}`);
 }

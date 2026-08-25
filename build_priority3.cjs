@@ -426,7 +426,7 @@ const aboutBody = `
       <div><dt>Team experience</dt><dd>Product design &amp; engineering</dd></div>
       <div><dt>Headquarters</dt><dd>511 - I The Address, Ahmedabad, Gujarat 380060, IN<br><span style="color:var(--steel);font-size:14px">Ahmedabad, India · Remote-first · Global clients</span></dd></div>
       <div><dt>How we deliver</dt><dd>Remote-first with dedicated squads for each project.</dd></div>
-      <div><dt>Contact</dt><dd><a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a><br><a href="tel:+919724454455">+91 97244 54455</a></dd></div>
+      <div><dt>Contact</dt><dd><a href="/contact#brief">Send a project brief</a></dd></div>
     </dl>
   </div>
 </section>
