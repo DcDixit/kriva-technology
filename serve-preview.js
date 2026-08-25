@@ -72,14 +72,14 @@ function resolveUrl(urlPath) {
   return null;
 }
 
-const inquiry = require("./api/inquiry.js");
-
 const server = http.createServer((req, res) => {
   const raw = req.url || "/";
   const pathOnly = decodeURIComponent(raw.split("?")[0].split("#")[0]);
   const qs = raw.includes("?") ? raw.slice(raw.indexOf("?")) : "";
   if (pathOnly === "/api/inquiry") {
-    inquiry(req, res);
+    const inquiryPath = require.resolve("./api/inquiry.js");
+    delete require.cache[inquiryPath];
+    require("./api/inquiry.js")(req, res);
     return;
   }
   // Match vercel.json trailingSlash:false, redirect /about/ → /about

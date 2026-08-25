@@ -931,6 +931,22 @@ form.addEventListener('submit', async e=>{
     });
     const body = await res.json().catch(() => ({}));
     if (!res.ok || body.ok === false) throw new Error(body.error || ('HTTP ' + res.status));
+    if (body.relay && body.relay.url) {
+      const relayRes = await fetch(body.relay.url, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(body.relay.payload || payload)
+      });
+      const relayBody = await relayRes.json().catch(() => ({}));
+      const ok = relayBody.success === true || String(relayBody.success) === 'true';
+      if (!ok) {
+        const msg = String(relayBody.message || '');
+        if (/activat/i.test(msg)) {
+          throw new Error('First send: open the activation email in the studio inbox, click Activate Form, then send this brief once more.');
+        }
+        throw new Error(msg || 'Could not send. Try again shortly.');
+      }
+    }
     showDone('Brief received. We reply within one business day.');
   } catch (err) {
     showFail(err && err.message ? err.message : 'Could not send. Try again shortly.');

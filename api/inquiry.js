@@ -1,4 +1,4 @@
-/** POST /api/inquiry — emails the studio without exposing an address on the site. */
+/** POST /api/inquiry — emails the studio without putting an address in page HTML. */
 const TO = process.env.INQUIRY_TO || "dixit27592@gmail.com";
 
 function sendJson(res, status, body) {
@@ -45,6 +45,25 @@ function buildMessage(data) {
   return { text, html, subject };
 }
 
+function formsubmitBody(data) {
+  const { subject } = buildMessage(data);
+  return {
+    name: field(data, "name"),
+    email: field(data, "email"),
+    _subject: subject,
+    _template: "table",
+    _captcha: "false",
+    company: field(data, "company"),
+    website: field(data, "site"),
+    project_type: field(data, "ptype"),
+    market: field(data, "market"),
+    service: field(data, "service"),
+    budget: field(data, "budget"),
+    timeline: field(data, "timeline"),
+    details: field(data, "details"),
+  };
+}
+
 async function deliver(data) {
   const email = field(data, "email");
   const { text, html, subject } = buildMessage(data);
@@ -66,15 +85,17 @@ async function deliver(data) {
       }),
     });
     if (!r.ok) throw new Error("resend " + r.status + " " + (await r.text()));
-    return;
+    return { channel: "resend" };
   }
 
   if (process.env.GMAIL_APP_PASSWORD) {
     const nodemailer = require("nodemailer");
     const user = process.env.GMAIL_USER || TO;
     const tx = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user, pass: process.env.GMAIL_APP_PASSWORD },
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: { user, pass: process.env.GMAIL_APP_PASSWORD.replace(/\s/g, "") },
     });
     await tx.sendMail({
       from: "KRIVA <" + user + ">",
@@ -84,29 +105,17 @@ async function deliver(data) {
       text,
       html,
     });
-    return;
+    return { channel: "gmail" };
   }
 
-  const r = await fetch("https://formsubmit.co/ajax/" + encodeURIComponent(TO), {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({
-      name: field(data, "name"),
-      email,
-      _subject: subject,
-      _template: "table",
-      _captcha: "false",
-      company: field(data, "company"),
-      website: field(data, "site"),
-      project_type: field(data, "ptype"),
-      market: field(data, "market"),
-      service: field(data, "service"),
-      budget: field(data, "budget"),
-      timeline: field(data, "timeline"),
-      details: field(data, "details"),
-    }),
-  });
-  if (!r.ok) throw new Error("mail " + r.status);
+  // FormSubmit blocks Vercel IPs (403). The browser can deliver after this API validates.
+  return {
+    channel: "browser",
+    relay: {
+      url: "https://formsubmit.co/ajax/" + encodeURIComponent(TO),
+      payload: formsubmitBody(data),
+    },
+  };
 }
 
 module.exports = async function handler(req, res) {
@@ -147,7 +156,11 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    await deliver(data);
+    const result = await deliver(data);
+    if (result.channel === "browser") {
+      sendJson(res, 200, { ok: true, relay: result.relay });
+      return;
+    }
     sendJson(res, 200, { ok: true });
   } catch (err) {
     console.error("inquiry send failed", err && err.message);
