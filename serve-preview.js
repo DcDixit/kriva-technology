@@ -89,14 +89,23 @@ const server = http.createServer((req, res) => {
     return;
   }
   const mapped = resolveUrl(raw);
+  const notFound = path.join(ROOT, "404.html");
   if (!mapped) {
     res.writeHead(404, { "Content-Type": "text/html; charset=utf-8" });
+    if (fs.existsSync(notFound)) {
+      fs.createReadStream(notFound).pipe(res);
+      return;
+    }
     res.end("<h1>404</h1><p>No rewrite for " + String(req.url) + "</p>");
     return;
   }
   const filePath = path.join(ROOT, mapped);
   if (!filePath.startsWith(ROOT) || !fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
-    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.writeHead(404, { "Content-Type": "text/html; charset=utf-8" });
+    if (fs.existsSync(notFound)) {
+      fs.createReadStream(notFound).pipe(res);
+      return;
+    }
     res.end("Not found");
     return;
   }
