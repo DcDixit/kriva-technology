@@ -302,12 +302,32 @@ body.page-work .hero{
 }
 @supports(backdrop-filter:blur(1px)){@media(min-width:900px){.wk-bar{backdrop-filter:blur(12px) saturate(1.4)}}}
 .wk-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:12px;min-width:0}
-.wk-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;min-width:0;max-width:100%}
+.wk-chips-wrap{
+  position:relative;flex:1;min-width:0;max-width:100%;
+  --wk-fade:linear-gradient(90deg,var(--paper) 0%,transparent 100%)
+}
+.wk-chips-wrap:before,.wk-chips-wrap:after{
+  content:"";position:absolute;top:0;bottom:0;width:28px;pointer-events:none;opacity:0;
+  transition:opacity .25s var(--e);z-index:2
+}
+.wk-chips-wrap:before{left:0;background:var(--wk-fade);transform:scaleX(-1)}
+.wk-chips-wrap:after{right:0;background:var(--wk-fade)}
+.wk-chips-wrap.can-left:before,.wk-chips-wrap.can-right:after{opacity:1}
+.wk-scroll-hint{
+  display:none;margin:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--steel);align-items:center;gap:6px
+}
+.wk-scroll-hint i{font-style:normal;color:var(--cta)}
+.wk-chips{
+  display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;min-width:0;max-width:100%;padding-bottom:2px;
+  scroll-padding-inline:4px
+}
 .wk-chips::-webkit-scrollbar{display:none}
 .wk-chip{
   flex:none;scroll-snap-align:start;display:inline-flex;align-items:center;gap:7px;
   min-height:44px;padding:8px 14px;border:1px solid var(--rule);white-space:nowrap;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);
   background:transparent;
   transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e),background var(--t-fast) var(--e)
 }
@@ -646,6 +666,7 @@ body.page-work .hero{
 @media(max-width:860px){
   .wk-bar .wrap{flex-direction:column;align-items:stretch;gap:10px}
   .wk-count{align-self:flex-end}
+  .wk-scroll-hint{display:inline-flex}
 }
 @media(max-width:640px){
   .hero-actions{flex-direction:column;align-items:stretch}
@@ -675,7 +696,7 @@ body.page-work .hero{
 }
 </style>
 
-<link rel="stylesheet" href="/shared/chrome.css?v=tap1">
+<link rel="stylesheet" href="/shared/chrome.css?v=tap2">
 </head>
 <body class="page-work">
 <a class="skip" href="#main">Skip to content</a>
@@ -743,12 +764,20 @@ body.page-work .hero{
             <li class="nav-item" data-mm>
               <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-services" aria-haspopup="true">Services<span class="nav-chev" aria-hidden="true"></span></button>
               <div class="mm" id="mm-services" role="menu">
-                <div class="mm-head"><b>Services</b><span>Capabilities</span></div>
+                <div class="mm-head"><b>Services</b><span>Product studio</span></div>
                 <ul class="mm-list">
-                  <li><a role="menuitem" href="/services/graphic-design"><strong>Graphic Design</strong><em>Identity, print, social, packaging, and marketing kits.</em></a></li>
-                  <li><a role="menuitem" href="/services/seo-digital-marketing"><strong>SEO &amp; Digital Marketing</strong><em>Search, ads, social, and reporting you can audit.</em></a></li>
+                  <li class="mm-label" aria-hidden="true">Product &amp; engineering</li>
                   <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
-                  <li><a role="menuitem" href="/services/web-development"><strong>Web Design &amp; Development</strong><em>Sites and apps that convert as well as they rank.</em></a></li>
+                  <li><a role="menuitem" href="/services/saas-platforms"><strong>SaaS product design</strong><em>Multi-tenant UX, admin panels, permissions.</em></a></li>
+                  <li><a role="menuitem" href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><em>Consoles, bulk actions, supervisor oversight.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboards &amp; admin panels</strong><em>Operational views built for daily use.</em></a></li>
+                  <li><a role="menuitem" href="/services/web-development"><strong>Web design &amp; development</strong><em>Sites and apps that convert as well as they rank.</em></a></li>
+                  <li><a role="menuitem" href="/services/mobile-applications"><strong>Mobile applications</strong><em>Driver tools, field apps, and launch-ready mobile UX.</em></a></li>
+                  <li><a role="menuitem" href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><em>QuickBooks, Xero, and connectors that hold under load.</em></a></li>
+                  <li><a role="menuitem" href="/services/automation-systems"><strong>Automation systems</strong><em>Human-gated workflows, triage, and internal tooling.</em></a></li>
+                  <li class="mm-label" aria-hidden="true">Marketing &amp; brand</li>
+                  <li><a role="menuitem" href="/services/graphic-design"><strong>Graphic design</strong><em>Identity, print, social, packaging, and marketing kits.</em></a></li>
+                  <li><a role="menuitem" href="/services/seo-digital-marketing"><strong>SEO &amp; digital marketing</strong><em>Search, ads, social, and reporting you can audit.</em></a></li>
                 </ul>
                 <div class="mm-foot"><a href="/services">All services <i>→</i></a></div>
               </div>
@@ -805,8 +834,16 @@ body.page-work .hero{
     <div class="sheet-item">
       <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-services">Services<span class="plus" aria-hidden="true"></span></button>
       <ul class="sheet-sub" id="sheet-services">
-        <li><a href="/services/graphic-design"><strong>Graphic Design</strong><span>Identity, print, social</span></a></li>
-        <li><a href="/services/seo-digital-marketing"><strong>SEO &amp; Digital Marketing</strong><span>Search, ads, performance</span></a></li>
+        <li><a href="/services/product-design"><strong>Product design &amp; UX</strong><span>Flows to launch UI</span></a></li>
+        <li><a href="/services/saas-platforms"><strong>SaaS product design</strong><span>Multi-tenant UX</span></a></li>
+        <li><a href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><span>Consoles &amp; supervisor tools</span></a></li>
+        <li><a href="/services/dashboard-design"><strong>Dashboards &amp; admin</strong><span>Daily-use views</span></a></li>
+        <li><a href="/services/web-development"><strong>Web design &amp; development</strong><span>Sites &amp; apps</span></a></li>
+        <li><a href="/services/mobile-applications"><strong>Mobile applications</strong><span>Field &amp; driver apps</span></a></li>
+        <li><a href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><span>Finance &amp; connectors</span></a></li>
+        <li><a href="/services/automation-systems"><strong>Automation systems</strong><span>Workflows &amp; tooling</span></a></li>
+        <li><a href="/services/graphic-design"><strong>Graphic design</strong><span>Identity, print, social</span></a></li>
+        <li><a href="/services/seo-digital-marketing"><strong>SEO &amp; digital marketing</strong><span>Search, ads, performance</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -859,7 +896,9 @@ body.page-work .hero{
 
 <div class="wk-bar" id="filters">
   <div class="wrap">
-    <div class="wk-chips" role="group" aria-label="Filter case studies by category">
+    <p class="wk-scroll-hint" id="wkScrollHint" hidden><i aria-hidden="true">→</i> Swipe for more filters</p>
+    <div class="wk-chips-wrap" id="wkChipsWrap">
+      <div class="wk-chips" role="group" aria-label="Filter case studies by category">
       <button type="button" class="wk-chip" data-f="all" aria-pressed="true">All <u class="num">08</u></button>
       <button type="button" class="wk-chip" data-f="trucking" aria-pressed="false">Trucking <u class="num">01</u></button>
       <button type="button" class="wk-chip" data-f="saas" aria-pressed="false">SaaS <u class="num">04</u></button>
@@ -867,6 +906,7 @@ body.page-work .hero{
       <button type="button" class="wk-chip" data-f="mobile" aria-pressed="false">Mobile <u class="num">01</u></button>
       <button type="button" class="wk-chip" data-f="brand" aria-pressed="false">Brand <u class="num">01</u></button>
       <button type="button" class="wk-chip" data-f="marketplace" aria-pressed="false">Marketplace <u class="num">01</u></button>
+      </div>
     </div>
     <p class="wk-count" id="count" aria-live="polite">Showing 8 of 8</p>
   </div>
@@ -1493,6 +1533,22 @@ function apply(f, push){
 }
 chips.forEach(c=>c.addEventListener('click',()=>apply(c.dataset.f)));
 const chipRow=document.querySelector('.wk-chips');
+const chipsWrap=document.getElementById('wkChipsWrap');
+const scrollHint=document.getElementById('wkScrollHint');
+function syncChipScroll(){
+  if(!chipRow||!chipsWrap) return;
+  const overflow=chipRow.scrollWidth>chipRow.clientWidth+2;
+  const left=chipRow.scrollLeft>4;
+  const right=chipRow.scrollLeft+chipRow.clientWidth<chipRow.scrollWidth-4;
+  chipsWrap.classList.toggle('can-left',overflow&&left);
+  chipsWrap.classList.toggle('can-right',overflow&&right);
+  if(scrollHint) scrollHint.hidden=!overflow||window.innerWidth>860;
+}
+if(chipRow){
+  chipRow.addEventListener('scroll',syncChipScroll,{passive:true});
+  window.addEventListener('resize',syncChipScroll);
+  syncChipScroll();
+}
 if(chipRow) chipRow.addEventListener('keydown',e=>{
   if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
   const i=chips.indexOf(document.activeElement);
