@@ -135,12 +135,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .c-tabs button[aria-selected="true"]{color:#fff}
 .c-tabs button[aria-selected="true"]:after{transform:scaleX(1)}
 .c-live{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--amber);white-space:nowrap}
-/* below ~400px the tab row plus the live label exceeded the viewport by ~12px */
-@media(max-width:430px){
-  .c-head{padding:0 12px;gap:8px}
-  .c-live{font-size:9px;letter-spacing:.06em;gap:6px}
-  .c-tabs button{padding-left:10px;padding-right:10px}
-}
 .dot{width:5px;height:5px;border-radius:50%;background:currentColor}
 
 .c-kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
@@ -197,19 +191,28 @@ html.js [data-s].in>*{opacity:1;transform:none}
   .hero-copy .d1{max-width:none}
   .hero-visual:before{display:none}
 }
-@media(max-width:560px){
+@media(max-width:900px){
+  .c-head{flex-wrap:wrap;row-gap:0}
+  .c-live{margin-left:auto}
   .c-kpis{grid-template-columns:1fr 1fr}
   .c-kpis .kpi:nth-child(3){display:none}
   .c-table thead{display:none}
   .c-table,.c-table tbody,.c-table tr,.c-table td{display:block;width:100%}
+  .c-table td{white-space:normal}
   .c-table tr{padding:10px 16px;border-bottom:1px solid #1A2027;display:grid;grid-template-columns:auto 1fr;gap:2px 12px}
   .c-table td{border:0;padding:2px 0}
-  .c-table td:first-child{grid-row:1;font-size:12.5px}
+  .c-table td:first-child{grid-row:1;font-size:13px}
   .c-table td:nth-child(2){grid-row:1;text-align:right}
   .c-table td:nth-child(3){grid-row:2;color:#717F8C}
   .c-table td:nth-child(4){grid-row:2;text-align:right}
   .lane-row,.exc-row{grid-template-columns:1fr auto;gap:8px}
   .lane-bar{grid-column:1 / -1;width:100%}
+}
+@media(max-width:430px){
+  .c-head{padding:8px 12px 0}
+  .c-live{width:100%;margin:0 0 4px;padding-bottom:8px;border-bottom:1px solid var(--ink-line);font-size:12px}
+  .c-tabs{width:100%}
+  .c-tabs button{padding:12px 10px;font-size:12px}
 }
 
 /* ═══════════ CLIENTS ═══════════ */
