@@ -76,8 +76,7 @@ body{font-family:var(--f-body);line-height:1.68}
 }
 
 /* Homepage display can stay larger; still clamp down on small phones. */
-body:not(.case) .hero .d1,
-.hero-copy .d1,
+body:not(.home):not(.case) .hero .d1,
 .lp-hero .d1{
   font-size:clamp(1.85rem,1rem + 3.55vw,4.65rem);
   line-height:.94;
@@ -103,6 +102,8 @@ body.case .cs-proof b{
   .hero-actions .btn,.ph-actions .btn,.cta-row .btn,.sheet-cta .btn{
     width:100%;justify-content:center
   }
+  .hero-actions .hero-link{width:auto;align-self:flex-start}
+}
   .sect,.lp-hero,.lp-ink{padding-block:clamp(52px,16vw,88px)}
   .cta-band .wrap{padding-block:clamp(56px,18vw,96px)}
   .chapters{display:none !important}
@@ -164,6 +165,7 @@ body.case .cs-proof b{
 /* iPad landscape / small laptop: keep density, don't go full desktop nav assumptions */
 @media(min-width:1024px) and (max-width:1279px){
   .hero-stage{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr) !important;align-items:center}
+  body.home .hero-stage{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr) !important;gap:32px}
   .lp-hero .hero-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) !important}
   .idx-row{grid-template-columns:40px minmax(0,1.1fr) minmax(0,1.4fr) auto !important}
   .idx-row p{grid-column:auto}
@@ -172,24 +174,26 @@ body.case .cs-proof b{
 /* Large desktop: editorial measure, not a stretch */
 @media(min-width:1600px){
   .d1,h1.d1,.ph .d1{font-size:3.85rem}
-  .hero-copy .d1,.lp-hero .d1,body:not(.case) .hero .d1{font-size:4.55rem}
+  body:not(.case) .hero .d1,body:not(.case) .hero h1,.hero-copy .d1,.lp-hero .d1{font-size:4.55rem}
   .cta-band h2{font-size:4.4rem}
 }
 
-/* Hero H1s: smaller than the original oversized clamp, but not undersized. */
-body:not(.home) .hero .d1,
-body:not(.home) .hero h1,
+/* Hero H1: one scale on homepage and inner pages */
+body:not(.case) .hero .d1,
+body:not(.case) .hero h1,
+.hero-copy .d1,
 .lp-hero .d1,
-body:not(.home) .hero-copy .d1,
 .ph .d1,
 .ph h1,
 .wh .d1,
 .wh h1{
   font-size:clamp(1.85rem,1rem + 3.55vw,4.65rem) !important;
-  line-height:.94
+  line-height:.94;
+  letter-spacing:-.03em
 }
 @media(min-width:1600px){
-  .hero .d1,.hero h1,.lp-hero .d1,.hero-copy .d1,.ph .d1,.ph h1,.wh .d1,.wh h1{
+  body:not(.case) .hero .d1,body:not(.case) .hero h1,
+  .hero-copy .d1,.lp-hero .d1,.ph .d1,.ph h1,.wh .d1,.wh h1{
     font-size:4.55rem !important
   }
 }
@@ -206,7 +210,7 @@ select,textarea{
 /* Touch: don't leave hover-lift stuck */
 @media(hover:none){
   .card:hover,.path:hover,.pm > a:hover,
-  .mm-list a:hover,.featwork-shot:hover .case-ui,.domain-feat:hover .domain-shot .browser{
+  .mm-list a:hover,.featwork-shot:hover .srdesk,.domain-feat:hover .domain-shot .browser{
     transform:none
   }
 }
@@ -217,21 +221,12 @@ select,textarea{
   }
 }
 
-/* Homepage type lock: last word after the global recast */
+/* Homepage layout tokens and chrome (hero type uses the global hero scale above) */
 body.home{
   --maxw:1240px;
   --gutter:clamp(20px,4.2vw,64px);
   --sect-space:clamp(52px,8.5vw,112px);
   --space-8:clamp(52px,8vw,112px)
-}
-body.home .hero .d1,
-body.home .hero-copy .d1,
-body.home .hero h1{
-  font-size:clamp(42px,2.2rem + 2.6vw,72px) !important;
-  line-height:1.05;
-  letter-spacing:-.028em;
-  font-weight:700;
-  max-width:16ch
 }
 body.home .d2,
 body.home h2.d2{
@@ -265,12 +260,4 @@ body.home .nav.scrolled .nav-cta .btn.sm{
 }
 @media(max-width:400px){
   body.home .nav-cta .btn.sm{display:none !important}
-}
-@media(max-width:479px){
-  body.home .hero .d1,
-  body.home .hero-copy .d1,
-  body.home .hero h1{
-    font-size:clamp(42px,11.4vw,48px) !important;
-    max-width:none
-  }
 }

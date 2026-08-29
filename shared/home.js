@@ -11,7 +11,11 @@
       io.unobserve(e.target);
     }
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('[data-r],[data-s]').forEach((el) => io.observe(el));
+  document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach((el) => {
+    if (el.hasAttribute('data-mask')) el.classList.add('mask');
+    io.observe(el);
+  });
+  if (reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach((el) => el.classList.add('in'));
 
   /* ── hero board play ── */
   const board = document.getElementById('heroBoard');
@@ -128,23 +132,80 @@
     });
   }
 
-  /* ── workflow one-time progression ── */
-  const flow = document.getElementById('loadFlow');
-  if (flow) {
-    const steps = [...flow.children];
-    const done = () => steps.forEach((s) => s.classList.add('on'));
-    const flowIO = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting) return;
-      flowIO.disconnect();
-      if (reduce()) {
-        done();
-        return;
-      }
-      steps.forEach((s, i) => {
-        setTimeout(() => s.classList.add('on'), 80 + i * 70);
+  /* ── workflow load console ── */
+  const path = document.getElementById('wfPath');
+  if (path) {
+    const tabs = [...path.querySelectorAll('[role="tab"]')];
+    const panels = [...document.querySelectorAll('#wfStage .wf-panel')];
+    const sub = document.getElementById('wfSub');
+    const live = document.getElementById('wfLive');
+    const count = document.getElementById('wfCount');
+    const meter = document.getElementById('wfMeter');
+    let userTouched = false;
+    let playTimer;
+    let primed = false;
+
+    const select = (btn, { focus = false } = {}) => {
+      const id = btn.getAttribute('aria-controls');
+      const idx = tabs.indexOf(btn);
+      tabs.forEach((t, i) => {
+        const on = t === btn;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        t.classList.toggle('is-done', i < idx);
       });
-    }, { threshold: 0.18 });
-    flowIO.observe(flow);
+      panels.forEach((p) => {
+        const on = p.id === id;
+        p.classList.toggle('on', on);
+        p.hidden = !on;
+      });
+      if (sub) sub.textContent = btn.dataset.sub || '';
+      if (live) {
+        live.textContent = btn.dataset.live || '';
+        live.parentElement.classList.remove('is-risk', 'is-ok');
+        if (btn.dataset.tone) live.parentElement.classList.add('is-' + btn.dataset.tone);
+      }
+      if (count) count.textContent = btn.dataset.n || '';
+      if (meter) meter.style.setProperty('--p', btn.dataset.p || '.125');
+      if (focus) btn.focus();
+      if (primed) btn.scrollIntoView({ inline: 'center', block: 'nearest', behavior: reduce() ? 'auto' : 'smooth' });
+      primed = true;
+    };
+
+    tabs.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        userTouched = true;
+        clearTimeout(playTimer);
+        select(btn);
+      });
+      btn.addEventListener('keydown', (e) => {
+        const map = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
+        if (!(e.key in map)) return;
+        e.preventDefault();
+        userTouched = true;
+        clearTimeout(playTimer);
+        const next = tabs[(map[e.key] + tabs.length) % tabs.length];
+        select(next, { focus: true });
+      });
+    });
+    select(tabs[0]);
+
+    const consoleEl = document.getElementById('loadFlow');
+    if (consoleEl && !reduce()) {
+      const playIO = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+        playIO.disconnect();
+        let i = 0;
+        const tick = () => {
+          if (userTouched || i >= tabs.length - 1) return;
+          i += 1;
+          select(tabs[i]);
+          playTimer = setTimeout(tick, 2400);
+        };
+        playTimer = setTimeout(tick, 2200);
+      }, { threshold: 0.28 });
+      playIO.observe(consoleEl);
+    }
   }
 
   /* ── FAQ accordion ── */

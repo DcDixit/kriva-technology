@@ -130,6 +130,7 @@ body.page-truck .hero{
 @media(min-width:1025px){
   body.page-truck .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 56px}
   body.page-truck .hero > .wrap{width:100%}
+  .trk-hero-grid{align-items:center}
 }
 
 .trk-hero-grid{
@@ -145,6 +146,14 @@ body.page-truck .hero{
 }
 .trk-trust span{display:inline-flex;align-items:center;gap:8px}
 .trk-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
+.trk-hero-path{
+  display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:22px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)
+}
+.trk-hero-path span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:4px 0}
+.trk-hero-path span:not(:last-child):after{content:"→";color:var(--steel-2);font-size:11px;letter-spacing:0}
+.trk-hero-path .on{color:var(--ink);font-weight:600}
+.trk-hero-path .on:before{content:"";width:6px;height:6px;background:var(--cta);flex:none;border-radius:50%}
 .trk-hero-visual{position:relative;min-width:0}
 @media(min-width:641px){.trk-hero-visual{padding-bottom:clamp(20px,4vw,40px)}}
 .cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
@@ -168,20 +177,7 @@ body.page-truck .hero{
 .trk-frame img{
   width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top
 }
-.trk-feat:hover .trk-frame,.trk-alt:hover .trk-frame,
-.trk-feat:focus-within .trk-frame,.trk-alt:focus-within .trk-frame{transform:translate3d(0,-4px,0)}
-.trk-phone{max-width:300px;margin-inline:auto;width:100%}
-
-.trk-callout{
-  position:absolute;left:-4%;bottom:8%;z-index:4;
-  background:var(--white);border:1px solid var(--rule);padding:14px 16px 12px;
-  box-shadow:var(--shadow-lift);min-width:148px;transition:transform var(--t-fast) var(--e),border-color var(--t-fast)
-}
-.trk-callout:hover{transform:translateY(-3px);border-color:var(--ink)}
-.trk-callout b{display:block;font-family:var(--f-display);font-weight:800;font-size:2.15rem;letter-spacing:-.05em;line-height:.9;color:var(--green)}
-.trk-callout span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);max-width:16ch}
-
-.trk-desk{background:linear-gradient(180deg,#12181E 0%,#0E1216 100%);min-width:0;color:#DDE2E7}
+.trk-phone{max-width:300px;margin-inline:auto;width:100%}background:linear-gradient(180deg,#12181E 0%,#0E1216 100%);min-width:0;color:#DDE2E7}
 .trk-desk-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--ink-line)}
 .trk-desk-kpis .kpi{padding:12px 14px;border-right:1px solid var(--ink-line)}
 .trk-desk-kpis .kpi:last-child{border-right:0}
@@ -238,6 +234,7 @@ body.page-truck .hero{
 .trk-board-kpis .kpi span{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#717F8C}
 .trk-board-kpis .kpi b{display:block;margin-top:6px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.15rem,1.8vw,1.4rem);letter-spacing:-.02em;color:#fff}
 .trk-board-kpis .kpi.up b{color:#5FD3A0}
+.trk-board-kpis .kpi-risk b{color:var(--amber)}
 .trk-tick{width:14px;height:14px;border:1px solid #3A444E;background:#0E1216;display:block;flex:none}
 .trk-tick.on{
   border-color:var(--cta);background:var(--cta);
@@ -345,7 +342,6 @@ body.page-truck .hero{
   .trk-desk-dock i:nth-child(2){width:54%;background:rgba(95,211,160,.35)}
   .trk-desk-dock i:nth-child(3){width:40%}
   .trk-desk-dock i:nth-child(4){width:62%}
-  .trk-callout{left:-2%;bottom:11%}
 }
 .trk-fleet{padding:14px 16px 16px;border-right:1px solid var(--ink-line);min-width:0}
 .trk-desk-h{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:10px}
@@ -358,69 +354,26 @@ body.page-truck .hero{
 .trk-driver-hos{margin-top:10px;font-size:12.5px;color:#8C98A4}
 .trk-driver-hos b{color:var(--amber);font-weight:700}
 
-.trk-strip{background:var(--white);border-block:1px solid var(--rule);padding-block:clamp(22px,3vw,36px)}
-.trk-sect-nav{
-  position:sticky;top:72px;z-index:60;background:rgba(255,255,255,.96);
-  border-block:1px solid var(--rule);backdrop-filter:blur(8px);
-  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-margin-top:72px
+.leaks{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
+.leaks .wrap{padding-block:clamp(80px,10vw,140px)}
+.leaks .eyebrow{color:var(--ink-dim)}
+.leaks h2{color:#fff;margin-top:18px;max-width:22ch}
+.leaks .lede{color:#8C98A4;margin-top:18px}
+.trk-frac{margin-top:clamp(32px,4.5vw,56px);border-top:1px solid var(--ink-line)}
+.trk-frac article{
+  display:grid;grid-template-columns:56px minmax(0,.85fr) minmax(0,1.25fr);
+  gap:clamp(16px,2.4vw,32px);align-items:start;
+  padding:clamp(22px,2.6vw,32px) 0;border-bottom:1px solid var(--ink-line)
 }
-.trk-sect-nav::-webkit-scrollbar{display:none}
-.trk-sect-nav ol{
-  list-style:none;display:flex;gap:0;min-width:min-content;
-  padding-inline:max(var(--gutter),calc((100% - var(--maxw))/2 + var(--gutter)))
+.trk-frac .n{
+  font-family:var(--f-display);font-weight:800;font-size:clamp(1.35rem,2vw,1.7rem);
+  letter-spacing:-.04em;color:#3A444E;line-height:1;padding-top:4px;transition:color .45s var(--e)
 }
-.trk-sect-nav a{
-  display:block;padding:13px 16px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--steel);border-bottom:2px solid transparent;white-space:nowrap;
-  transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)
-}
-.trk-sect-nav a:hover,.trk-sect-nav a:focus-visible{color:var(--ink)}
-.trk-sect-nav a[aria-current="true"]{color:var(--ink);border-bottom-color:var(--cta)}
+.trk-frac article:hover .n{color:var(--cta)}
+.trk-frac h3{color:#fff;margin-bottom:0;max-width:18ch}
+.trk-frac p{color:#8C98A4;font-size:15px;line-height:1.62;max-width:48ch;margin:0}
 
-.trk-problems{background:var(--paper);scroll-margin-top:120px}
-.trk-problems .d2{margin-top:18px;max-width:22ch}
-.trk-prob-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);
-  margin-top:clamp(32px,4vw,48px)
-}
-.trk-prob-card{
-  padding:clamp(20px,2.4vw,28px);border:1px solid var(--rule);background:var(--white)
-}
-.trk-prob-card--lead{border-color:var(--ink);background:var(--paper)}
-.trk-prob-k{
-  display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--cta);margin-bottom:12px
-}
-.trk-prob-card h3{font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:8px}
-.trk-prob-card p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:36ch}
-.trk-prob-more{margin-top:clamp(24px,3vw,36px);border-top:1px solid var(--rule);padding-top:clamp(20px,2.4vw,28px)}
-.trk-prob-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.trk-prob-tabs button{
-  padding:8px 12px;border:1px solid var(--rule);background:var(--paper);
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
-}
-.trk-prob-tabs button[aria-selected="true"]{border-color:var(--ink);color:var(--ink);background:var(--white)}
-.trk-prob-panel{display:none}
-.trk-prob-panel.on{display:block}
-.trk-prob-panel h3{font-family:var(--f-display);font-weight:700;font-size:1.05rem;margin-bottom:8px;letter-spacing:-.02em}
-.trk-prob-panel p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:52ch}
-
-.trk-proof-cols{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px);
-  margin-top:clamp(24px,3vw,32px)
-}
-.trk-proof-cols h3{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
-.trk-proof-cols ul{list-style:none;display:grid;gap:8px}
-.trk-proof-cols li{font-size:14.5px;line-height:1.5;color:#8C98A4;padding-left:14px;position:relative;max-width:42ch}
-.trk-proof-cols li:before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:#5A6570}
-
-.trk-flow dl{display:grid;gap:10px;margin-top:14px}
-.trk-flow dl div{display:grid;grid-template-columns:minmax(72px,.55fr) minmax(0,1fr);gap:8px 12px;align-items:baseline}
-.trk-flow dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel)}
-.trk-flow dd{font-size:14px;line-height:1.5;color:var(--steel);max-width:40ch}
-
-.trk-integ{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px}
+.trk-integ{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px;padding-block:clamp(64px,8vw,112px)}
 .trk-integ .d2{margin-top:18px;max-width:20ch}
 .trk-integ-cats{
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,20px);
@@ -432,33 +385,27 @@ body.page-truck .hero{
 }
 .trk-integ-cats li.is-verified{display:flex;align-items:center;gap:10px}
 .trk-integ-cats li.is-verified img{height:18px;width:auto;max-width:88px;object-fit:contain;object-position:left}
-.trk-integ-rel{margin-top:clamp(28px,3.5vw,40px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--rule)}
-.trk-integ-rel h3{font-family:var(--f-display);font-weight:700;font-size:1.05rem;margin-bottom:14px;letter-spacing:-.02em}
-.trk-integ-rel ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px}
-.trk-integ-rel li{font-size:14.5px;line-height:1.5;color:var(--steel);padding-left:14px;position:relative;max-width:42ch}
-.trk-integ-rel li:before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--steel)}
-
-.trk-decide{background:var(--paper);scroll-margin-top:88px}
+.trk-decide{background:var(--paper);scroll-margin-top:88px;padding-block:clamp(64px,8vw,112px)}
 .trk-decide .d2{margin-top:18px;max-width:22ch}
 .trk-decide-grid{
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);
   margin-top:clamp(32px,4vw,48px)
 }
-.trk-decide-grid article{padding:clamp(20px,2.4vw,28px);border:1px solid var(--rule);background:var(--white)}
-.trk-decide-grid h3{font-family:var(--f-display);font-weight:700;font-size:1.02rem;margin-bottom:12px;letter-spacing:-.02em;max-width:24ch}
-.trk-decide-grid ul{list-style:none;display:grid;gap:8px}
-.trk-decide-grid li{font-size:14px;line-height:1.52;color:var(--steel);padding-left:14px;position:relative;max-width:36ch}
-.trk-decide-grid li:before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--steel)}
-.trk-decide-cta{margin-top:clamp(28px,3vw,40px)}
+.trk-decide-grid article{
+  display:flex;flex-direction:column;padding:clamp(20px,2.4vw,28px);
+  border:1px solid var(--rule);background:var(--white);min-width:0
+}
+.trk-decide-grid .k{
+  display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--cta);margin-bottom:12px
+}
+.trk-decide-grid h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.15rem);margin-bottom:10px;letter-spacing:-.02em;max-width:18ch;line-height:1.16}
+.trk-decide-grid p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:36ch;flex:1}
+.trk-switch .trk-frame{transition:transform .9s var(--e)}
+.trk-switch:focus-within .trk-frame,.trk-proof-split .trk-frame{transform:translate3d(0,-4px,0)}
+.proof-cta{margin-top:28px}
 
 .trk-delivery{background:var(--paper);scroll-margin-top:88px}
-.trk-trust-rail{
-  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:clamp(28px,3.5vw,44px);padding-top:clamp(24px,3vw,32px);
-  border-top:1px solid var(--rule);
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
-}
-.trk-trust-rail span{display:inline-flex;align-items:center;gap:8px}
-.trk-trust-rail span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
 
 .trk-hero-board .trk-load{transition:background .28s var(--e)}
 .trk-hero-board .trk-tick{transition:border-color .28s var(--e),background .28s var(--e)}
@@ -475,102 +422,94 @@ body.page-truck .hero{
 .trk-hero-exc li.is-up{background:rgba(219,155,31,.1);color:#EDEFF1}
 .trk-hero-exc-h{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:10px}
 
-.trk-strip .wrap{display:flex;align-items:center;gap:clamp(20px,4vw,48px)}
-.trk-strip .k{flex:none;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);max-width:10ch;line-height:1.45}
-.trk-strip ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px 8px;flex:1;min-width:0}
-.trk-strip li{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);color:var(--ink);background:var(--paper)}
+.trk-stage{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px}
+.trk-stage .d2{max-width:18ch}
+.trk-switch{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(28px,4vw,52px)}
+.trk-switch > *{min-width:0}
+.trk-tabs{display:flex;flex-wrap:wrap;gap:0;margin-bottom:22px;border-bottom:1px solid var(--rule);max-width:100%}
+.trk-tabs button{
+  padding:12px 14px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--steel);position:relative;min-height:48px
+}
+.trk-tabs button:after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:2px;background:var(--cta);transform:scaleX(0);transition:transform .4s var(--e)}
+.trk-tabs button:hover{color:var(--ink)}
+.trk-tabs button[aria-selected="true"]{color:var(--ink)}
+.trk-tabs button[aria-selected="true"]:after{transform:scaleX(1)}
+.trk-copy h3{margin-bottom:10px;max-width:18ch}
+.trk-copy ul{list-style:none;display:grid;gap:9px;margin-top:18px}
+.trk-copy li{padding-left:14px;position:relative;font-size:14.5px;line-height:1.5;color:var(--ink);max-width:40ch}
+.trk-copy li:before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--steel)}
+.trk-panel[hidden]{display:none}
+.trk-view[hidden]{display:none}
+.trk-view:not([hidden]),.trk-panel:not([hidden]){animation:trk-in .38s var(--e) both}
+@keyframes trk-in{from{opacity:.5;transform:translateY(6px)}to{opacity:1;transform:none}}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:22px;min-height:44px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link i{font-style:normal;transition:transform .42s var(--e)}
+.p-link:hover i{transform:translateX(6px)}
 
-.trk-feat{
-  display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);
-  gap:clamp(28px,4.5vw,72px);align-items:start;
-  padding-block:clamp(36px,5vw,72px);border-top:1px solid var(--rule)
+.trk-journey{background:var(--paper);border-block:1px solid var(--rule);scroll-margin-top:88px}
+.trk-journey .d2{max-width:18ch}
+.trk-act-rail{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+  margin-top:clamp(32px,4.5vw,56px);list-style:none;border:1px solid var(--rule);background:var(--white)
 }
-.trk-alt{
-  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
-  gap:clamp(28px,4.5vw,72px);align-items:start;
-  padding-block:clamp(36px,5vw,72px);border-top:1px solid var(--rule)
+.trk-act-rail li{
+  position:relative;min-width:0;padding:clamp(18px,2.2vw,26px);
+  border-right:1px solid var(--rule)
 }
-.trk-alt:last-of-type{border-bottom:1px solid var(--rule)}
-.trk-flip .trk-media{order:2}
-.trk-no{
-  display:block;font-family:var(--f-display);font-weight:800;
-  font-size:clamp(1.2rem,2vw,1.55rem);letter-spacing:-.04em;color:var(--rule);
-  line-height:1;margin-bottom:14px;transition:color .45s var(--e)
-}
-.trk-feat:hover .trk-no,.trk-alt:hover .trk-no{color:var(--ink)}
-.trk-feat h3,.trk-alt h3{margin-bottom:12px;max-width:18ch}
-.trk-bullets{list-style:none;display:grid;gap:8px;margin-top:20px}
-.trk-bullets li{padding-left:14px;position:relative;font-size:14.5px;line-height:1.5;color:var(--ink);max-width:42ch}
-.trk-bullets li:before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--steel)}
-.trk-go{
-  display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding-top:4px;padding-bottom:3px;
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor
-}
-.trk-go i{font-style:normal;transition:transform .42s var(--e)}
-.trk-go:hover i{transform:translateX(6px)}
+.trk-act-rail li:last-child{border-right:0}
+.trk-act-rail li.on{background:var(--paper)}
+.trk-act-rail li.on:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--cta)}
+.trk-act-rail li:hover{background:var(--paper-2)}
+.trk-act-rail .sn{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+.trk-act-rail li.on .sn{color:var(--cta)}
+.trk-act-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1rem,1.5vw,1.15rem);letter-spacing:-.02em;line-height:1.2;margin-bottom:12px;max-width:16ch}
+.trk-act-toggle{display:none}
+.trk-act-meta{display:grid;gap:8px}
+.trk-act-meta div{display:grid;gap:2px}
+.trk-act-meta dt{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
+.trk-act-meta dd{font-size:13.5px;line-height:1.5;color:var(--ink);max-width:32ch}
 
-.trk-life{background:var(--paper-2);border-block:1px solid var(--rule)}
-.trk-life-head{margin-bottom:clamp(36px,4.5vw,64px)}
-.trk-life-head .d2{margin-top:18px;max-width:16ch}
-.trk-life-head .lede{margin-top:18px}
-.trk-flow{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--rule)}
-.trk-flow-step{
-  display:grid;grid-template-columns:clamp(48px,6vw,72px) minmax(0,1fr);
-  gap:clamp(14px,2vw,24px);align-items:start;
-  padding:clamp(22px,2.8vw,32px);border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)
-}
-.trk-flow-step:nth-child(2n){border-right:0}
-.trk-flow-step:nth-last-child(-n+2){border-bottom:0}
-.trk-flow-n{
-  font-family:var(--f-display);font-weight:800;font-size:clamp(1.25rem,2vw,1.65rem);
-  letter-spacing:-.04em;line-height:1;color:var(--rule);padding-top:2px;transition:color .45s var(--e)
-}
-.trk-kicker{
-  display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--steel);margin-bottom:10px;transition:color .45s var(--e)
-}
-.trk-flow-step h3{color:var(--steel-2);transition:color .45s var(--e);max-width:28ch;margin-bottom:8px;font-size:clamp(1.12rem,1.7vw,1.42rem)}
-.trk-flow-step.on .trk-flow-n{color:var(--ink)}
-.trk-flow-step.on .trk-kicker{color:var(--cta)}
-.trk-flow-step.on h3{color:var(--ink)}
-.trk-flow-step.alert.on .trk-kicker{color:#8A6200}
+.trk-proof-light{background:var(--white);border-block:1px solid var(--rule);scroll-margin-top:88px}
+.trk-proof-split{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(28px,4vw,64px);align-items:center;margin-top:clamp(32px,4vw,56px)}
+.proof-story{display:grid;margin-top:clamp(20px,2.4vw,28px);border-top:1px solid var(--rule)}
+.proof-story div{display:grid;grid-template-columns:clamp(88px,12vw,120px) minmax(0,1fr);gap:16px;padding:clamp(14px,1.8vw,18px) 0;border-bottom:1px solid var(--rule)}
+.proof-story dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);padding-top:3px}
+.proof-story dd{color:var(--ink);font-size:15px;line-height:1.58;max-width:48ch}
+.trk-proof-metrics{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,32px);margin-top:24px;padding-top:20px;border-top:1px solid var(--rule)}
+.trk-proof-metrics div{min-width:0}
+.trk-proof-metrics b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,2.8vw,2rem);letter-spacing:-.04em;color:var(--ink);line-height:.95}
+.trk-proof-metrics span{display:block;margin-top:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
+.proof-note{margin-top:22px;font-size:13.5px;line-height:1.6;color:var(--steel-2);max-width:52ch}
+.inline-link{border-bottom:1px solid var(--rule)}
 
-.trk-proof{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
-.trk-proof .wrap{padding-block:clamp(80px,10vw,140px)}
-.trk-proof .eyebrow{color:var(--ink-dim)}
-.trk-proof h2{color:#fff;margin-top:18px;max-width:16ch}
-.trk-proof-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.trk-proof-head .d2{max-width:none}
-.trk-proof-outcome{
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
-  gap:clamp(28px,4vw,56px);align-items:start;margin-top:clamp(32px,4vw,48px);
-  padding:clamp(24px,3vw,36px);border:1px solid var(--ink-line)
+.run-bar{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(36px,5vw,56px)}
+.run-bar .wk{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
+.run-bar .bar{display:block;height:3px;background:var(--rule);position:relative;margin-bottom:18px}
+.run-bar .bar:after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--cta)}
+.run-bar h3{margin-bottom:8px}
+.run-bar p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
+
+.mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
+  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
+  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch
 }
-.trk-proof-k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
-.trk-proof-story .body-sm{color:#8C98A4;margin-top:12px;max-width:52ch}
-.trk-proof-story .body-sm strong{color:#DDE2E7;font-weight:600}
-.trk-proof-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--ink-line);margin:0}
-.trk-proof-stats div{padding:clamp(16px,2vw,22px);border-bottom:1px solid var(--ink-line);border-right:1px solid var(--ink-line)}
-.trk-proof-stats div:nth-child(2n){border-right:0}
-.trk-proof-stats div:nth-last-child(-n+2){border-bottom:0}
-.trk-proof-stats dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#717F8C;margin-bottom:8px}
-.trk-proof-stats dd{font-family:var(--f-display);font-weight:800;font-size:clamp(1.75rem,3.2vw,2.5rem);letter-spacing:-.04em;color:var(--lime);line-height:.9}
-.trk-proof-note{margin-top:28px;font-size:13.5px;line-height:1.6;color:#8C98A4;max-width:62ch}
-
-.trk-why{background:var(--paper);border-block:1px solid var(--rule);padding-block:clamp(64px,8vw,100px);scroll-margin-top:88px}
-.trk-why .d2{margin-top:18px;max-width:18ch}
-.trk-why-list{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:clamp(32px,4vw,48px)}
-.trk-why-list li{display:flex;gap:16px;align-items:flex-start}
-.trk-why-list b{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--cta);flex:none;padding-top:4px}
-.trk-why-list h3{font-family:var(--f-display);font-weight:700;font-size:1.05rem;margin-bottom:6px;letter-spacing:-.02em}
-.trk-why-list p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
-
-.trk-phases{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:clamp(36px,5vw,56px)}
-.trk-phases .wk{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
-.trk-phases .bar{display:block;height:3px;background:var(--rule);position:relative;margin-bottom:18px}
-.trk-phases .bar:after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--cta)}
-.trk-phases h3{margin-bottom:8px}
-.trk-phases p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
+.mob-chips a:first-child{margin-left:0}
+.mob-chips::-webkit-scrollbar{display:none}
+.mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+}
+.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1280px){
+  body.page-truck .mob-chips{display:flex !important}
+  body.page-truck .hero,
+  body.page-truck .leaks,
+  body.page-truck .sect{scroll-margin-top:calc(88px + 48px)}
+}
 
 .faq-sec{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px}
 .faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
@@ -598,32 +537,36 @@ body.page-truck .hero{
 .faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
 .faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
 .faq-side .btn{margin-top:24px}
-.trk-also{
-  margin-top:clamp(28px,3vw,40px);padding-top:22px;border-top:1px solid var(--rule);
-  font-size:15px;line-height:1.6;color:var(--steel);max-width:62ch
-}
-.trk-also a{border-bottom:1px solid currentColor}
-.trk-also a:hover{color:var(--ink)}
 
 @media(max-width:1024px){
-  .trk-hero-grid,.trk-feat,.trk-alt,.trk-flip,.trk-proof-outcome,.trk-flow,.trk-prob-grid,.trk-integ-cats,.trk-integ-rel ul,.trk-decide-grid,.faq-grid{grid-template-columns:1fr}
-  .trk-proof-cols{grid-template-columns:1fr}
-  .trk-flow-step{border-right:0}
-  .trk-flow-step:nth-last-child(-n+2){border-bottom:1px solid var(--rule)}
-  .trk-flow-step:last-child{border-bottom:0}
+  .trk-hero-grid,.trk-proof-split,.trk-integ-cats,.trk-decide-grid,.faq-grid{grid-template-columns:1fr}
+  .trk-proof-split{display:flex;flex-direction:column;gap:clamp(28px,4vw,40px)}
+  .trk-proof-split > div:last-child{order:-1}
+  .trk-switch{display:flex;flex-direction:column;gap:clamp(24px,4vw,36px);align-items:stretch}
+  .trk-switch .trk-views{order:-1}
+  .run-bar{grid-template-columns:1fr 1fr}
+  .trk-act-rail{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .trk-act-rail li{border-bottom:1px solid var(--rule)}
+  .trk-act-rail li:nth-child(2n){border-right:0}
+  .trk-act-rail li:nth-last-child(-n+2){border-bottom:0}
+  .trk-act-toggle{
+    display:inline-flex;margin-top:10px;padding:6px 0;font-family:var(--f-mono);font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--cta);border-bottom:1px solid currentColor
+  }
+  .trk-act-rail li:not(.open) .trk-act-meta{display:none}
   .trk-hero-copy .d1{max-width:none}
   .faq-grid > div:first-child{position:static}
-  .trk-callout{position:static;margin-top:14px;display:inline-block}
   .trk-hero-visual{padding-bottom:0}
-  .trk-flip .trk-media{order:0}
   .cta-row{align-items:flex-start}
-  .trk-load.trk-load--desk,
-  .trk-scan-lanes li.trk-scan--desk,
-  .trk-scan-hist li.trk-scan--desk{display:none}
+  .trk-integ .s-head,.trk-delivery .s-head{align-items:flex-start}
+  .trk-load.trk-load--desk{display:none}
   .trk-fleet li span{display:none}
 }
+@media(max-width:900px){
+  .trk-frac article{grid-template-columns:48px minmax(0,1fr);gap:14px}
+  .trk-frac p{grid-column:1 / -1}
+}
 @media(max-width:767px){
-  body.page-truck .trk-phases{grid-template-columns:1fr}
   .trk-integ-cats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .trk-decide-grid{grid-template-columns:1fr}
   .trk-hero-exc{display:none}
@@ -640,18 +583,28 @@ body.page-truck .hero{
 }
 @media(max-width:640px){
   .trk-integ-cats{grid-template-columns:1fr}
-  .trk-prob-grid{grid-template-columns:1fr}
+  .run-bar{grid-template-columns:1fr}
+  .trk-act-rail{grid-template-columns:1fr}
+  .trk-act-rail li{border-right:0;border-bottom:1px solid var(--rule)}
+  .trk-act-rail li:last-child{border-bottom:0}
+  .trk-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .trk-tabs::-webkit-scrollbar{display:none}
+  .trk-tabs button{flex:none}
+  .trk-hero-path{display:none}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .trk-flow-step{grid-template-columns:40px minmax(0,1fr);gap:14px;padding:20px 16px}
   .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
   .faq-a-in{padding-left:44px}
   .cta-row{flex-direction:column;align-items:stretch}
-  .trk-strip .wrap{flex-direction:column;align-items:flex-start;gap:16px}
+  .trk-integ .s-head,.trk-delivery .s-head{flex-direction:column;align-items:stretch;gap:20px}
+  .trk-integ .s-head .btn,.trk-delivery .s-head .btn{align-self:stretch;justify-content:center}
   .trk-phone{max-width:min(280px,100%)}
   .trk-desk-kpis .kpi,.trk-board-kpis .kpi,.trk-scan-kpis .kpi{padding:10px 12px}
   .trk-load{padding:10px 14px}
   .trk-board-act:not(.trk-board-act--pri){display:none}
+}
+@media(max-width:560px){
+  .trk-frac article{grid-template-columns:1fr;gap:8px}
 }
 @media(max-width:390px){
   body.page-truck .d1{font-size:2.28rem}
@@ -659,8 +612,8 @@ body.page-truck .hero{
 }
 
 @media(hover:none){
-  .trk-feat:hover .trk-frame,.trk-alt:hover .trk-frame{transform:none}
-  .trk-callout:hover{transform:none}
+  .trk-switch:focus-within .trk-frame,.trk-proof-split .trk-frame{transform:none}
+  .trk-act-rail li:hover{background:inherit}
   .faq-q:hover{padding-left:0}
 }
 @media (prefers-reduced-motion:reduce){
@@ -670,7 +623,7 @@ body.page-truck .hero{
   .mask span i{transform:none!important}
   .trk-live b{animation:none!important}
   .trk-frame{transform:none!important}
-  .trk-callout:hover{transform:none}
+  .trk-view:not([hidden]),.trk-panel:not([hidden]){animation:none!important}
 }
 </style>
 <script type="application/ld+json">
@@ -687,18 +640,17 @@ body.page-truck .hero{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Can you improve our current TMS without replacing it?","acceptedAnswer":{"@type":"Answer","text":"Yes. We often extend or integrate beside the TMS that remains your source of record, dispatch console, driver app, or a single workflow at a time. Redesigns roll out in phases with feature flags and parallel paths so dispatch keeps running."}},
-    {"@type":"Question","name":"Which systems and integrations can you work with?","acceptedAnswer":{"@type":"Answer","text":"Existing TMS or CRM, ELD and telematics, maps and routing, driver documents, QuickBooks and Xero, plus APIs and webhooks to internal services. We build connectors with visible failures, retries, and reconciliation states."}},
-    {"@type":"Question","name":"Can you redesign dispatch software without stopping operations?","acceptedAnswer":{"@type":"Answer","text":"We plan phased rollouts and parallel workflows so dispatch keeps running during migration. ShiftRail used flags, schema tests, and a staged go-live before cutover."}},
-    {"@type":"Question","name":"How does KRIVA collaborate with US trucking teams?","acceptedAnswer":{"@type":"Answer","text":"Remote-first from Ahmedabad with US-hour overlap for stand-ups and reviews. Async updates in Slack, weekly demos on a live URL, and shadow sessions with dispatch before design starts."}},
-    {"@type":"Question","name":"Who owns the product after launch?","acceptedAnswer":{"@type":"Answer","text":"You do. Source code, design files, and documentation transfer to your accounts. We can stay on retainer for iteration, but you are never locked in."}}
+    {"@type":"Question","name":"Can you improve our current TMS without replacing it?","acceptedAnswer":{"@type":"Answer","text":"Yes. We extend or integrate beside your TMS—dispatch console, driver app, or one workflow at a time. Phased rollouts with feature flags keep dispatch running."}},
+    {"@type":"Question","name":"Which systems and integrations can you work with?","acceptedAnswer":{"@type":"Answer","text":"TMS/CRM, ELD, maps, driver documents, QuickBooks, Xero, and internal APIs. Connectors show failures, retries, and reconciliation states."}},
+    {"@type":"Question","name":"Can you redesign dispatch software without stopping operations?","acceptedAnswer":{"@type":"Answer","text":"Phased rollouts and parallel workflows. ShiftRail used feature flags and staged go-live before cutover."}},
+    {"@type":"Question","name":"Who owns the product after launch?","acceptedAnswer":{"@type":"Answer","text":"You do. Source, designs, and docs transfer to your accounts. Retainer optional—no lock-in."}}
   ]
 }
 </script>
 
 <link rel="stylesheet" href="/shared/chrome.css?v=tap2">
 </head>
-<body class="page-truck">
+<body class="solution page-truck">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -867,12 +819,26 @@ body.page-truck .hero{
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
+  <a href="#problems"><span>Problems</span><i></i></a>
+  <a href="#journey"><span>Journey</span><i></i></a>
+  <a href="#surfaces"><span>Surfaces</span><i></i></a>
+  <a href="#decide"><span>Decision</span><i></i></a>
   <a href="#proof"><span>Proof</span><i></i></a>
-  <a href="#products"><span>Products</span><i></i></a>
-  <a href="#workflow"><span>Workflow</span><i></i></a>
   <a href="#integrations"><span>Integrations</span><i></i></a>
   <a href="#delivery"><span>Delivery</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
+</nav>
+
+<nav class="mob-chips" id="mobChips" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#problems">Problems</a>
+  <a href="#journey">Journey</a>
+  <a href="#surfaces">Surfaces</a>
+  <a href="#decide">Decision</a>
+  <a href="#proof">Proof</a>
+  <a href="#integrations">Integrations</a>
+  <a href="#delivery">Delivery</a>
+  <a href="#faq">FAQ</a>
 </nav>
 
 <main id="main">
@@ -891,11 +857,18 @@ body.page-truck .hero{
           <span><i>Trucking software</i></span>
           <span><i>shaped around the dispatch desk.</i></span>
         </h1>
-        <p class="lede" data-r>KRIVA designs and builds dispatch CRM, fleet dashboards, driver apps, and integrations for US carriers, freight brokers, and logistics teams that have outgrown spreadsheets or rigid TMS workflows.</p>
+        <p class="lede" data-r>Dispatch CRM, fleet dashboards, driver apps, and integrations for US carriers that outgrew spreadsheets and rigid TMS workflows.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Discuss your workflow</span><i>→</i></a>
           <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See the ShiftRail case</span><i>→</i></a>
         </div>
+        <p class="trk-hero-path" id="heroPathLabels" data-r aria-label="Load path from tender to close">
+          <span class="on">Tender</span>
+          <span>Assign</span>
+          <span>Rolling</span>
+          <span>Exception</span>
+          <span>Close</span>
+        </p>
         <p class="trk-trust" data-r>
           <span>US-hour collaboration</span>
           <span>No subcontracting</span>
@@ -979,401 +952,258 @@ body.page-truck .hero{
   </div>
 </header>
 
-<nav class="trk-sect-nav" id="sectNav" aria-label="Page sections">
-  <ol>
-    <li><a href="#overview" aria-current="true">Overview</a></li>
-    <li><a href="#proof">Proof</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#workflow">Workflow</a></li>
-    <li><a href="#integrations">Integrations</a></li>
-    <li><a href="#decide">Decision</a></li>
-    <li><a href="#delivery">Delivery</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ol>
-</nav>
-
-<section class="sect trk-problems" id="problems" aria-labelledby="probH">
+<section class="leaks on-ink" id="problems" aria-labelledby="probH">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Operational problems</p>
-        <h2 class="d2" id="probH" data-r>The TMS records the load. The workaround runs the operation.</h2>
-        <p class="lede" data-r>KRIVA is a custom product-design and engineering partner, not an off-the-shelf TMS vendor. These are the gaps we see before a rebuild is even on the table.</p>
-      </div>
-    </div>
-    <div class="trk-prob-grid" data-s>
-      <article class="trk-prob-card trk-prob-card--lead">
-        <span class="trk-prob-k">Dispatch queue</span>
-        <h3>Spreadsheet dispatch queues</h3>
-        <p>The TMS holds the load record. Assignments, priorities, and the real queue still live in a shared sheet dispatch trusts more.</p>
+    <p class="eyebrow" data-r>Operational problems</p>
+    <h2 class="d2" id="probH" data-r>The TMS records the load. The workaround runs the operation.</h2>
+    <p class="lede" data-r>Three gaps we see before a rebuild is on the table.</p>
+    <div class="trk-frac" data-r>
+      <article>
+        <span class="n num">01</span>
+        <h3 class="d3">Spreadsheet dispatch queues</h3>
+        <p>The real queue lives in a shared sheet dispatch trusts more than the TMS.</p>
       </article>
-      <article class="trk-prob-card">
-        <span class="trk-prob-k">Status chasing</span>
-        <h3>Manual status chasing</h3>
-        <p>Dispatch calls drivers, checks chat, and refreshes reports because status in the system lags what the floor already knows.</p>
+      <article>
+        <span class="n num">02</span>
+        <h3 class="d3">Manual status chasing</h3>
+        <p>Status in the system lags what dispatch already knows from calls and chat.</p>
       </article>
-      <article class="trk-prob-card">
-        <span class="trk-prob-k">Exception timing</span>
-        <h3>Late exception visibility</h3>
-        <p>SLA risk surfaces after the pickup window slips or the customer calls, not on the row where the dispatcher can act.</p>
+      <article>
+        <span class="n num">03</span>
+        <h3 class="d3">Late exception visibility</h3>
+        <p>SLA risk surfaces after the window slips—not on the row where dispatch can act.</p>
       </article>
-    </div>
-    <div class="trk-prob-more" data-r>
-      <div class="trk-prob-tabs" role="tablist" aria-label="Supporting operational scenarios">
-        <button type="button" role="tab" id="trkTabDocs" aria-selected="true" aria-controls="trkPanelDocs">Disconnected driver documents</button>
-        <button type="button" role="tab" id="trkTabBill" aria-selected="false" aria-controls="trkPanelBill" tabindex="-1">Duplicate billing work</button>
-      </div>
-      <div class="trk-prob-panel on" id="trkPanelDocs" role="tabpanel" aria-labelledby="trkTabDocs">
-        <h3>Disconnected driver documents</h3>
-        <p>POD photos, signatures, and stop updates sit on a phone or in email until someone manually closes the loop in dispatch and accounting.</p>
-      </div>
-      <div class="trk-prob-panel" id="trkPanelBill" role="tabpanel" aria-labelledby="trkTabBill" hidden>
-        <h3>Duplicate billing or accounting work</h3>
-        <p>Finance re-enters accessorials and POD proof because the TMS, spreadsheet, and QuickBooks or Xero never stayed in sync.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<section class="trk-proof on-ink" id="proof" aria-labelledby="pfH">
+<section class="sect trk-journey" id="journey" aria-labelledby="lcH">
   <div class="wrap">
-    <div class="trk-proof-head">
-      <div>
-        <p class="eyebrow" data-r>Proof</p>
-        <h2 class="d2" id="pfH" data-r>ShiftRail dispatch console</h2>
-        <p class="body-sm" data-r style="margin-top:14px;color:#8C98A4;max-width:52ch">A US trucking dispatch CRM rebuilt around bulk work, SLA on the row, and supervisor overrides that are audited.</p>
-      </div>
-      <a href="/work/shiftrail-dispatch" class="btn ghost on-dark trk-proof-link" data-r><span>Read the ShiftRail case study</span><i>→</i></a>
-    </div>
-    <div class="trk-proof-cols" data-r>
-      <div>
-        <h3>Before</h3>
-        <ul>
-          <li>One-load-at-a-time reassignment</li>
-          <li>SLA risk difficult to see on the board</li>
-          <li>Decisions split across TMS and spreadsheet</li>
-          <li>Exceptions found too late in the shift</li>
-        </ul>
-      </div>
-      <div>
-        <h3>What changed</h3>
-        <ul>
-          <li>Bulk assignment as one audited event</li>
-          <li>Row-level SLA visibility</li>
-          <li>Risk-based exception ordering</li>
-          <li>Supervisor override history</li>
-          <li>Role-based interface density</li>
-          <li>Phased rollout without stopping dispatch</li>
-        </ul>
-      </div>
-    </div>
-    <div class="trk-proof-outcome" data-r>
-      <div class="trk-proof-story">
-        <p class="trk-proof-k">Verified outcome · ShiftRail project only</p>
-        <p class="body-sm">Signed-off metrics from the ShiftRail engagement. Not industry benchmarks or third-party ratings.</p>
-      </div>
-      <dl class="trk-proof-stats">
-        <div><dt>Manual handle time</dt><dd class="num">&minus;32%</dd></div>
-        <div><dt>Avg. exception response</dt><dd class="num">11 min</dd></div>
-        <div><dt>Console uptime</dt><dd class="num">99.4%</dd></div>
-        <div><dt>Daily routes on board</dt><dd class="num">400+</dd></div>
-      </dl>
-    </div>
-    <p class="trk-proof-note" data-r>Client name changed where applicable. Outcomes approved or signed off. UI data reconstructed or illustrative. Results belong to this project only.</p>
-  </div>
-</section>
-
-<section class="sect" id="products" aria-labelledby="capH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Role-based products</p>
-        <h2 class="d2" id="capH" data-r>One operation. Different decisions at every role.</h2>
-        <p class="lede" data-r>Dispatch CRM, fleet dashboards, and driver apps, designed and built by the same team. No marketplace handoffs.</p>
-      </div>
-    </div>
-
-    <article class="trk-feat" data-r>
-      <a class="trk-media" href="/services/crm-development" aria-label="Dispatch CRM design">
-        <div class="trk-frame">
-          <div class="trk-chrome" aria-hidden="true"><i></i><i></i><i></i><span>dispatch CRM · board 04</span><span class="trk-live"><b></b>Live</span></div>
-          <div class="trk-board" role="img" aria-label="Illustrative dispatch CRM: four loads selected for bulk assignment, SLA on every row, last action audited.">
-            <div class="trk-board-bar">
-              <div>
-                <p class="trk-board-title">Board 04</p>
-                <p class="trk-board-meta">Central desk · live</p>
-              </div>
-              <div class="trk-board-bulk">
-                <span class="trk-board-count">4 selected</span>
-                <span class="trk-board-act trk-board-act--pri">Assign</span>
-                <span class="trk-board-act">Override</span>
-              </div>
-            </div>
-            <div class="trk-board-kpis">
-              <div class="kpi"><span>On board</span><b class="num">86</b></div>
-              <div class="kpi up"><span>Assigned</span><b class="num">62</b></div>
-              <div class="kpi"><span>Clear</span><b class="num">4</b></div>
-            </div>
-            <div class="trk-board-rows">
-              <div class="trk-load trk-load--head" aria-hidden="true">
-                <span class="trk-tick"></span>
-                <span>Load</span>
-                <span>Lane</span>
-                <span class="trk-hide-sla">SLA</span>
-                <span>Status</span>
-              </div>
-              <div class="trk-load is-on">
-                <span class="trk-tick on" aria-hidden="true"></span>
-                <span class="trk-id">#5104</span>
-                <span class="trk-lane">HOU &rarr; MEM</span>
-                <span class="trk-sla"><b>14m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.36"></i></i></span>
-                <span class="chip s1">Assigned</span>
-              </div>
-              <div class="trk-load trk-load--desk">
-                <span class="trk-tick" aria-hidden="true"></span>
-                <span class="trk-id">#5108</span>
-                <span class="trk-lane">MCI &rarr; OKC</span>
-                <span class="trk-sla"><b>41m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.82"></i></i></span>
-                <span class="chip s2">Rolling</span>
-              </div>
-              <div class="trk-load is-on is-risk">
-                <span class="trk-tick on" aria-hidden="true"></span>
-                <span class="trk-id">#5112</span>
-                <span class="trk-lane">IND &rarr; CMH</span>
-                <span class="trk-sla"><b>7m</b><i class="trk-sla-track"><i class="trk-sla-fill trk-sla-fill--warn" style="--p:.16"></i></i></span>
-                <span class="chip s1">At risk</span>
-              </div>
-              <div class="trk-load is-on">
-                <span class="trk-tick on" aria-hidden="true"></span>
-                <span class="trk-id">#5119</span>
-                <span class="trk-lane">DEN &rarr; SLC</span>
-                <span class="trk-sla"><b>22m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.48"></i></i></span>
-                <span class="chip s0">Pending</span>
-              </div>
-              <div class="trk-load is-on">
-                <span class="trk-tick on" aria-hidden="true"></span>
-                <span class="trk-id">#5124</span>
-                <span class="trk-lane">MIA &rarr; JAX</span>
-                <span class="trk-sla"><b>33m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.66"></i></i></span>
-                <span class="chip s0">Loading</span>
-              </div>
-            </div>
-            <div class="trk-board-audit">
-              <span>Last bulk</span>
-              <b>Assign · 4 loads · R. Hale · 14:22</b>
-              <em>Audited</em>
-            </div>
-          </div>
-        </div>
-      </a>
-      <div>
-        <span class="trk-no num" aria-hidden="true">01</span>
-        <h3 class="d3">Dispatcher</h3>
-        <p class="body-sm">The console where loads move, built for volume, not database completeness.</p>
-        <ul class="trk-bullets">
-          <li>Bulk assignment across the board</li>
-          <li>Search, filters, and row-level SLA visibility</li>
-          <li>Exception priority and fast confirmation</li>
-          <li>Recovery paths when a window slips</li>
-        </ul>
-        <a href="/services/crm-development" class="trk-go">Dispatch CRM &amp; TMS <i>→</i></a>
-      </div>
-    </article>
-
-    <article class="trk-alt" data-r>
-      <a class="trk-media" href="/services/dashboard-design" aria-label="Fleet dashboard design">
-        <div class="trk-frame">
-          <div class="trk-chrome" aria-hidden="true"><i></i><i></i><i></i><span>fleet · morning scan</span><span class="trk-live"><b></b>Exceptions</span></div>
-          <div class="trk-scan" role="img" aria-label="Illustrative fleet dashboard: lane performance and an exception queue ordered by SLA risk, with supervisor override history.">
-            <div class="trk-scan-bar">
-              <div>
-                <p class="trk-scan-title">Morning scan</p>
-                <p class="trk-scan-meta">East region · 06:40</p>
-              </div>
-            </div>
-            <div class="trk-scan-kpis">
-              <div class="kpi up"><span>Rolling</span><b class="num">24</b></div>
-              <div class="kpi kpi-risk"><span>Exceptions</span><b class="num">5</b></div>
-              <div class="kpi"><span>On time</span><b class="num">94%</b></div>
-            </div>
-            <div class="trk-scan-body">
-              <div class="trk-scan-lanes">
-                <p class="trk-scan-h">Lane · 7 days</p>
-                <ul>
-                  <li><b>DAL–PHX</b><i class="trk-bar"><i style="--p:.96"></i></i><span>96%</span></li>
-                  <li><b>ATL–CLT</b><i class="trk-bar"><i style="--p:.81"></i></i><span>81%</span></li>
-                  <li><b>HOU–MEM</b><i class="trk-bar"><i style="--p:.88"></i></i><span>88%</span></li>
-                  <li class="is-warn"><b>CHI–DET</b><i class="trk-bar"><i class="trk-bar-warn" style="--p:.64"></i></i><span>64%</span></li>
-                  <li class="trk-scan--desk"><b>SEA–PDX</b><i class="trk-bar"><i style="--p:.91"></i></i><span>91%</span></li>
-                </ul>
-              </div>
-              <div class="trk-scan-ex">
-                <p class="trk-scan-h">Queue · by SLA risk</p>
-                <ol>
-                  <li class="is-risk">
-                    <span class="trk-id">#5112</span>
-                    <span class="trk-lane">CHI &rarr; DET</span>
-                    <b class="trk-left">6m</b>
-                    <span class="chip s1">At risk</span>
-                  </li>
-                  <li>
-                    <span class="trk-id">#5088</span>
-                    <span class="trk-lane">JAX &rarr; MIA</span>
-                    <b class="trk-left">11m</b>
-                    <span class="chip s1">Watch</span>
-                  </li>
-                  <li>
-                    <span class="trk-id">#5140</span>
-                    <span class="trk-lane">DEN &rarr; ABQ</span>
-                    <b class="trk-left">18m</b>
-                    <span class="chip s0">Late</span>
-                  </li>
-                  <li>
-                    <span class="trk-id">#5091</span>
-                    <span class="trk-lane">MCI &rarr; OKC</span>
-                    <b class="trk-left">22m</b>
-                    <span class="chip s1">Watch</span>
-                  </li>
-                </ol>
-              </div>
-            </div>
-            <div class="trk-scan-hist">
-              <p class="trk-scan-h">Override history</p>
-              <ul>
-                <li><b>R. Hale</b><span>#5112 · hold 12m</span><em>06:14</em></li>
-                <li><b>J. Ortiz</b><span>TK-08 · reroute</span><em>05:51</em></li>
-                <li class="trk-scan--desk"><b>M. Diaz</b><span>#5088 · extend SLA</span><em>05:22</em></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </a>
-      <div>
-        <span class="trk-no num" aria-hidden="true">02</span>
-        <h3 class="d3">Operations or fleet supervisor</h3>
-        <p class="body-sm">Visibility that answers the question before the customer calls, and leaves a trail when someone overrides.</p>
-        <ul class="trk-bullets">
-          <li>Fleet status, risk, and delay ownership</li>
-          <li>Supervisor overrides with audit history</li>
-          <li>Escalation ordered by SLA risk, not arrival time</li>
-          <li>Lane and route performance over time</li>
-        </ul>
-        <a href="/services/dashboard-design" class="trk-go">Fleet dashboards <i>→</i></a>
-      </div>
-    </article>
-
-    <article class="trk-alt trk-flip" data-r>
-      <a class="trk-media trk-phone" href="/services/mobile-applications" aria-label="Driver mobile app design">
-        <div class="trk-frame">
-          <div class="trk-chrome" aria-hidden="true"><i></i><i></i><i></i><span>driver · yard</span><span class="trk-live"><b></b>Queued</span></div>
-          <div class="trk-yard" role="img" aria-label="Illustrative driver app: load #4825 SEA to PDX, one-hand accept, POD photos queued on a weak signal.">
-            <div class="trk-yard-top">
-              <span>Yard · weak signal</span>
-              <span class="num">06:42</span>
-            </div>
-            <p class="trk-yard-name">M. Diaz</p>
-            <p class="trk-yard-hos">HOS window <b class="num">3h 12m</b></p>
-            <div class="trk-yard-load">
-              <span class="trk-id">#4825</span>
-              <p class="trk-yard-lane">SEA &rarr; PDX</p>
-              <p class="trk-yard-win">Pickup 07:00–09:00 · 42,000 lb</p>
-            </div>
-            <div class="trk-yard-doc">
-              <div>
-                <p>POD · 2 frames on device</p>
-                <span>Sends when signal returns</span>
-              </div>
-              <em class="chip s1">Queued</em>
-            </div>
-            <div class="trk-yard-actions">
-              <span class="trk-yard-pri">Accept load</span>
-              <span class="trk-yard-sec">On site</span>
-            </div>
-          </div>
-        </div>
-      </a>
-      <div>
-        <span class="trk-no num" aria-hidden="true">03</span>
-        <h3 class="d3">Driver</h3>
-        <p class="body-sm">Acceptance, stop progression, and POD on a phone in a yard, often one-handed, often on weak signal.</p>
-        <ul class="trk-bullets">
-          <li>Load acceptance and stop progression</li>
-          <li>Queued updates when signal drops</li>
-          <li>POD and photo capture that syncs later</li>
-          <li>Large touch targets for daylight and gloves</li>
-        </ul>
-        <a href="/services/mobile-applications" class="trk-go">Driver mobile apps <i>→</i></a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="sect trk-life" id="workflow" aria-labelledby="lcH">
-  <div class="wrap">
-    <div class="trk-life-head">
-      <p class="eyebrow" data-r>Load workflow</p>
-      <h2 class="d2" id="lcH" data-r>One load. Every handoff accounted for.</h2>
-      <p class="lede" data-r>Four phases dispatch, operations, and finance have to agree on. If a handoff needs three tabs, the product has already failed.</p>
-    </div>
-
-    <ol class="trk-flow" aria-label="Load lifecycle from tender to close">
-      <li class="trk-flow-step on" data-r>
-        <span class="trk-flow-n num" aria-hidden="true">01</span>
-        <div>
-          <span class="trk-kicker">Tender &amp; assign</span>
-          <h3 class="d3">Readable tender, bulk assignment.</h3>
-          <dl>
-            <div><dt>Role</dt><dd>Dispatcher</dd></div>
-            <div><dt>Data</dt><dd>Lane, weight, pickup window, accessorials</dd></div>
-            <div><dt>Decision</dt><dd>Assign driver and equipment in one action</dd></div>
-            <div><dt>Failure risk</dt><dd>One-row clicks with no audit trail</dd></div>
-            <div><dt>Product</dt><dd>Multi-select board with SLA on every row</dd></div>
-          </dl>
-        </div>
+    <p class="eyebrow" data-r>Load lifecycle</p>
+    <h2 class="d2 s-title" id="lcH" data-r>One load. Every handoff on the record.</h2>
+    <p class="lede" data-r>Four handoffs dispatch, operations, and finance must agree on.</p>
+    <ol class="trk-act-rail" id="actRail">
+      <li class="on open">
+        <span class="sn">Stage 01</span>
+        <h3>Tender &amp; assign</h3>
+        <button type="button" class="trk-act-toggle" aria-expanded="true">Hide detail</button>
+        <dl class="trk-act-meta">
+          <div><dt>Role</dt><dd>Dispatcher</dd></div>
+          <div><dt>Product</dt><dd>Multi-select board with SLA on every row</dd></div>
+        </dl>
       </li>
-      <li class="trk-flow-step" data-r>
-        <span class="trk-flow-n num" aria-hidden="true">02</span>
-        <div>
-          <span class="trk-kicker">Driver &amp; transit</span>
-          <h3 class="d3">Yard acceptance, shared visibility.</h3>
-          <dl>
-            <div><dt>Role</dt><dd>Driver · operations</dd></div>
-            <div><dt>Data</dt><dd>Offer, directions, HOS, ETA</dd></div>
-            <div><dt>Decision</dt><dd>Accept load and progress stops</dd></div>
-            <div><dt>Failure risk</dt><dd>Status only after a phone call</dd></div>
-            <div><dt>Product</dt><dd>One-tap accept and fleet view on weak signal</dd></div>
-          </dl>
-        </div>
+      <li>
+        <span class="sn">Stage 02</span>
+        <h3>Driver &amp; transit</h3>
+        <button type="button" class="trk-act-toggle" aria-expanded="false">Stage detail</button>
+        <dl class="trk-act-meta">
+          <div><dt>Role</dt><dd>Driver · operations</dd></div>
+          <div><dt>Product</dt><dd>One-tap accept and queued updates on weak signal</dd></div>
+        </dl>
       </li>
-      <li class="trk-flow-step alert" data-r>
-        <span class="trk-flow-n num" aria-hidden="true">03</span>
-        <div>
-          <span class="trk-kicker">Exception &amp; override</span>
-          <h3 class="d3">Risk on the board, overrides audited.</h3>
-          <dl>
-            <div><dt>Role</dt><dd>Dispatcher · supervisor</dd></div>
-            <div><dt>Data</dt><dd>SLA remaining, reason, owner</dd></div>
-            <div><dt>Decision</dt><dd>Hold, reroute, or extend window</dd></div>
-            <div><dt>Failure risk</dt><dd>Exceptions found after the window slips</dd></div>
-            <div><dt>Product</dt><dd>Queue by SLA risk with override history</dd></div>
-          </dl>
-        </div>
+      <li>
+        <span class="sn">Stage 03</span>
+        <h3>Exception &amp; override</h3>
+        <button type="button" class="trk-act-toggle" aria-expanded="false">Stage detail</button>
+        <dl class="trk-act-meta">
+          <div><dt>Role</dt><dd>Dispatcher · supervisor</dd></div>
+          <div><dt>Product</dt><dd>Queue by SLA risk with override history</dd></div>
+        </dl>
       </li>
-      <li class="trk-flow-step" data-r>
-        <span class="trk-flow-n num" aria-hidden="true">04</span>
-        <div>
-          <span class="trk-kicker">Delivery &amp; close</span>
-          <h3 class="d3">POD captured, ledger in sync.</h3>
-          <dl>
-            <div><dt>Role</dt><dd>Driver · finance</dd></div>
-            <div><dt>Data</dt><dd>POD, accessorials, bill-to</dd></div>
-            <div><dt>Decision</dt><dd>Close load and post to accounting</dd></div>
-            <div><dt>Failure risk</dt><dd>Re-entry into QuickBooks or Xero</dd></div>
-            <div><dt>Product</dt><dd>Queued POD upload and sync with retry states</dd></div>
-          </dl>
-        </div>
+      <li>
+        <span class="sn">Stage 04</span>
+        <h3>Delivery &amp; close</h3>
+        <button type="button" class="trk-act-toggle" aria-expanded="false">Stage detail</button>
+        <dl class="trk-act-meta">
+          <div><dt>Role</dt><dd>Driver · finance</dd></div>
+          <div><dt>Product</dt><dd>Queued POD upload and finance sync with retry states</dd></div>
+        </dl>
       </li>
     </ol>
+  </div>
+</section>
+
+<section class="sect trk-stage" id="surfaces" aria-labelledby="capH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Product surfaces</p>
+        <h2 class="d2 s-title" id="capH" data-r>One load record. Three surfaces.</h2>
+        <p class="lede" data-r>Dispatch console, fleet scan, and driver app—designed and built as one product.</p>
+      </div>
+    </div>
+
+    <div class="trk-switch" data-r>
+      <div>
+        <div class="trk-tabs" role="tablist" aria-label="Trucking product surfaces">
+          <button type="button" role="tab" id="tab-dispatch" aria-controls="panel-dispatch" aria-selected="true" tabindex="0">Dispatch CRM</button>
+          <button type="button" role="tab" id="tab-fleet" aria-controls="panel-fleet" aria-selected="false" tabindex="-1">Fleet dashboard</button>
+          <button type="button" role="tab" id="tab-driver" aria-controls="panel-driver" aria-selected="false" tabindex="-1">Driver app</button>
+        </div>
+        <div class="trk-panel trk-copy" id="panel-dispatch" role="tabpanel" aria-labelledby="tab-dispatch">
+          <h3 class="d3">Dispatcher console</h3>
+          <p class="body-sm">Bulk assignment, row-level SLA, and audited overrides for high-volume dispatch.</p>
+          <ul>
+            <li>Multi-select board with one assign action</li>
+            <li>Exception queue sorted by SLA risk</li>
+          </ul>
+          <a href="/services/crm-development" class="p-link">Dispatch CRM &amp; TMS <i>→</i></a>
+        </div>
+        <div class="trk-panel trk-copy" id="panel-fleet" role="tabpanel" aria-labelledby="tab-fleet" hidden>
+          <h3 class="d3">Fleet morning scan</h3>
+          <p class="body-sm">Exceptions and lane performance before the customer calls.</p>
+          <ul>
+            <li>Exception queue above the fold</li>
+            <li>Seven-day lane performance</li>
+          </ul>
+          <a href="/services/dashboard-design" class="p-link">Fleet dashboards <i>→</i></a>
+        </div>
+        <div class="trk-panel trk-copy" id="panel-driver" role="tabpanel" aria-labelledby="tab-driver" hidden>
+          <h3 class="d3">Driver yard app</h3>
+          <p class="body-sm">Acceptance, stop progression, and POD on weak signal—one-handed.</p>
+          <ul>
+            <li>One-tap load acceptance</li>
+            <li>Queued updates and POD sync offline</li>
+          </ul>
+          <a href="/services/mobile-applications" class="p-link">Driver mobile apps <i>→</i></a>
+        </div>
+      </div>
+      <div class="trk-views">
+        <div class="trk-view" id="view-dispatch">
+          <div class="trk-frame">
+            <div class="trk-chrome" aria-hidden="true"><i></i><i></i><i></i><span>dispatch CRM · board 04</span><span class="trk-live"><b></b>Live</span></div>
+            <div class="trk-board" role="img" aria-label="Dispatch CRM: four loads selected, SLA on every row, last bulk action audited.">
+              <div class="trk-board-bar">
+                <div><p class="trk-board-title">Board 04</p><p class="trk-board-meta">Central desk · live</p></div>
+                <div class="trk-board-bulk"><span class="trk-board-count">4 selected</span><span class="trk-board-act trk-board-act--pri">Assign</span></div>
+              </div>
+              <div class="trk-board-kpis">
+                <div class="kpi"><span>On board</span><b class="num">86</b></div>
+                <div class="kpi up"><span>Assigned</span><b class="num">62</b></div>
+                <div class="kpi kpi-risk"><span>At risk</span><b class="num">3</b></div>
+              </div>
+              <div class="trk-board-rows">
+                <div class="trk-load is-on is-risk"><span class="trk-tick on" aria-hidden="true"></span><span class="trk-id">#5112</span><span class="trk-lane">IND &rarr; CMH</span><span class="trk-sla"><b>7m</b><i class="trk-sla-track"><i class="trk-sla-fill trk-sla-fill--warn" style="--p:.16"></i></i></span><span class="chip s1">At risk</span></div>
+                <div class="trk-load is-on"><span class="trk-tick on" aria-hidden="true"></span><span class="trk-id">#5104</span><span class="trk-lane">HOU &rarr; MEM</span><span class="trk-sla"><b>14m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.36"></i></i></span><span class="chip s1">Assigned</span></div>
+                <div class="trk-load is-on"><span class="trk-tick on" aria-hidden="true"></span><span class="trk-id">#5119</span><span class="trk-lane">DEN &rarr; SLC</span><span class="trk-sla"><b>22m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.48"></i></i></span><span class="chip s0">Pending</span></div>
+              </div>
+              <div class="trk-board-audit"><span>Last bulk</span><b>Assign · 4 loads · R. Hale · 14:22</b><em>Audited</em></div>
+            </div>
+          </div>
+          <p class="cap-note"><span class="flag">Illustrative</span> Reconstructed UI · not client data</p>
+        </div>
+        <div class="trk-view" id="view-fleet" hidden>
+          <div class="trk-frame">
+            <div class="trk-chrome" aria-hidden="true"><i></i><i></i><i></i><span>fleet · morning scan</span><span class="trk-live"><b></b>Exceptions</span></div>
+            <div class="trk-scan" role="img" aria-label="Fleet dashboard: exception queue by SLA risk.">
+              <div class="trk-scan-bar"><div><p class="trk-scan-title">Morning scan</p><p class="trk-scan-meta">East region · 06:40</p></div></div>
+              <div class="trk-scan-kpis">
+                <div class="kpi up"><span>Rolling</span><b class="num">24</b></div>
+                <div class="kpi kpi-risk"><span>Exceptions</span><b class="num">5</b></div>
+                <div class="kpi"><span>On time</span><b class="num">94%</b></div>
+              </div>
+              <div class="trk-scan-body">
+                <div class="trk-scan-ex">
+                  <p class="trk-scan-h">Queue · by SLA risk</p>
+                  <ol>
+                    <li class="is-risk"><span class="trk-id">#5112</span><span class="trk-lane">CHI &rarr; DET</span><b class="trk-left">6m</b><span class="chip s1">At risk</span></li>
+                    <li><span class="trk-id">#5088</span><span class="trk-lane">JAX &rarr; MIA</span><b class="trk-left">11m</b><span class="chip s1">Watch</span></li>
+                    <li><span class="trk-id">#5140</span><span class="trk-lane">DEN &rarr; ABQ</span><b class="trk-left">18m</b><span class="chip s0">Late</span></li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="cap-note"><span class="flag">Illustrative</span> Reconstructed UI · not client data</p>
+        </div>
+        <div class="trk-view" id="view-driver" hidden>
+          <div class="trk-frame trk-phone">
+            <div class="trk-chrome" aria-hidden="true"><i></i><i></i><i></i><span>driver · yard</span><span class="trk-live"><b></b>Queued</span></div>
+            <div class="trk-yard" role="img" aria-label="Driver app: load acceptance and POD queued on weak signal.">
+              <div class="trk-yard-top"><span>Yard · weak signal</span><span class="num">06:42</span></div>
+              <p class="trk-yard-name">M. Diaz</p>
+              <div class="trk-yard-load"><span class="trk-id">#4825</span><p class="trk-yard-lane">SEA &rarr; PDX</p><p class="trk-yard-win">Pickup 07:00–09:00</p></div>
+              <div class="trk-yard-doc"><div><p>POD · 2 frames on device</p><span>Sends when signal returns</span></div><em class="chip s1">Queued</em></div>
+              <div class="trk-yard-actions"><span class="trk-yard-pri">Accept load</span><span class="trk-yard-sec">On site</span></div>
+            </div>
+          </div>
+          <p class="cap-note"><span class="flag">Illustrative</span> Reconstructed UI · not client data</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect trk-decide" id="decide" aria-labelledby="decH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Keep, extend, or build</p>
+        <h2 class="d2" id="decH" data-r>Configure, extend, or rebuild.</h2>
+        <p class="lede" data-r>Custom work earns its place when the operation outgrew the system.</p>
+      </div>
+    </div>
+    <div class="trk-decide-grid" data-s>
+      <article>
+        <span class="k">Keep</span>
+        <h3>Configure what works</h3>
+        <p>TMS handles the workflow. Integrations are stable. Workarounds are minor.</p>
+      </article>
+      <article>
+        <span class="k">Extend</span>
+        <h3>One gap at a time</h3>
+        <p>TMS stays source of record. Fix one surface or integration beside the stack.</p>
+      </article>
+      <article>
+        <span class="k">Build</span>
+        <h3>When the desk outgrew the system</h3>
+        <p>Spreadsheets run dispatch. Exceptions surface too late. The TMS cannot support the model.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sect trk-proof-light" id="proof" aria-labelledby="pfH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>ShiftRail proof</p>
+    <h2 class="d2 s-title" id="pfH" data-r>When the spreadsheet ran the shift</h2>
+    <div class="trk-proof-split" data-r>
+      <div>
+        <p class="lede">US dispatch CRM rebuilt for bulk work, row-level SLA, and audited overrides—400+ daily routes.</p>
+        <dl class="proof-story">
+          <div><dt>Problem</dt><dd>Dispatch ran the shift in a spreadsheet beside the TMS. SLA risk lived in a report, not on the board.</dd></div>
+          <div><dt>Product decision</dt><dd>Bulk assignment as one audited event. SLA remaining on every row. Exceptions sorted by urgency.</dd></div>
+        </dl>
+        <div class="trk-proof-metrics">
+          <div><b class="num">−32%</b><span>Handle time</span></div>
+          <div><b class="num">11 min</b><span>Exception response</span></div>
+          <div><b class="num">400+</b><span>Daily routes</span></div>
+        </div>
+        <div class="proof-cta">
+          <a href="/work/shiftrail-dispatch" class="btn"><span>Read the ShiftRail case study</span><i>→</i></a>
+        </div>
+        <p class="proof-note">Illustrative UI. Metrics are signed-off project outcomes.</p>
+      </div>
+      <div>
+        <div class="trk-frame">
+          <div class="trk-chrome" aria-hidden="true"><i></i><i></i><i></i><span>shiftrail · dispatch console</span></div>
+          <div class="trk-board" role="img" aria-label="ShiftRail console: bulk reassign, SLA on row, exception queue.">
+            <div class="trk-board-bar"><div><p class="trk-board-title">ShiftRail</p><p class="trk-board-meta">Dispatch · load board</p></div><div class="trk-board-bulk"><span class="trk-board-count">3 selected</span><span class="trk-board-act trk-board-act--pri">Reassign</span></div></div>
+            <div class="trk-board-kpis">
+              <div class="kpi"><span>Active</span><b class="num">128</b></div>
+              <div class="kpi up"><span>On time</span><b class="num">94%</b></div>
+              <div class="kpi kpi-risk"><span>At risk</span><b class="num">3</b></div>
+            </div>
+            <div class="trk-board-rows">
+              <div class="trk-load is-on is-risk"><span class="trk-id">#4822</span><span class="trk-lane">ATL &rarr; CLT</span><span class="trk-sla"><b>9m</b><i class="trk-sla-track"><i class="trk-sla-fill trk-sla-fill--warn" style="--p:.22"></i></i></span><span class="chip s1">At risk</span></div>
+              <div class="trk-load"><span class="trk-id">#4821</span><span class="trk-lane">DAL &rarr; PHX</span><span class="trk-sla"><b>42m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.72"></i></i></span><span class="chip s2">Rolling</span></div>
+              <div class="trk-load is-risk"><span class="trk-id">#4823</span><span class="trk-lane">CHI &rarr; DET</span><span class="trk-sla"><b>6m</b><i class="trk-sla-track"><i class="trk-sla-fill trk-sla-fill--warn" style="--p:.14"></i></i></span><span class="chip s1">At risk</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="cap-note"><span class="flag">Illustrative</span> Reconstructed UI · not client data</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1382,8 +1212,8 @@ body.page-truck .hero{
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>Integrations</p>
-        <h2 class="d2" id="intH" data-r>The new product has to work with the systems already running the business.</h2>
-        <p class="lede" data-r>We extend or integrate with your TMS, telematics, maps, and finance stack, not replace everything on day one.</p>
+        <h2 class="d2" id="intH" data-r>Works beside your existing stack.</h2>
+        <p class="lede" data-r>TMS, telematics, maps, and finance—connected with visible retries, not silent drift.</p>
       </div>
       <a href="/services/api-integrations" class="btn ghost"><span>Integrations &amp; APIs</span><i>→</i></a>
     </div>
@@ -1399,61 +1229,6 @@ body.page-truck .hero{
       </li>
       <li>APIs, webhooks, and internal services</li>
     </ul>
-    <div class="trk-integ-rel" data-r>
-      <h3>Reliability operators can trust</h3>
-      <ul>
-        <li>Visible failed syncs, not silent drift into month-end</li>
-        <li>Retry and reconciliation states finance can read</li>
-        <li>Queued offline actions from driver devices</li>
-        <li>Audit history on overrides and bulk events</li>
-        <li>Permissioned supervisor actions</li>
-        <li>Clear human resolution paths, not raw API errors</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="sect trk-decide" id="decide" aria-labelledby="decH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Keep, extend, or build</p>
-        <h2 class="d2" id="decH" data-r>Build only where the workflow creates an advantage.</h2>
-        <p class="lede" data-r>Custom software is useful when the operation outgrew the system, not when a vendor demo looked easier.</p>
-      </div>
-    </div>
-    <div class="trk-decide-grid" data-s>
-      <article>
-        <h3>Keep or configure</h3>
-        <ul>
-          <li>Current TMS handles the main workflow effectively</li>
-          <li>Integrations are stable enough to trust</li>
-          <li>Workarounds are minor, not operation-critical</li>
-          <li>User adoption is acceptable across roles</li>
-        </ul>
-      </article>
-      <article>
-        <h3>Extend or integrate</h3>
-        <ul>
-          <li>Current system stays the source of record</li>
-          <li>One role, workflow, or integration needs improvement</li>
-          <li>Dispatch desk or driver app is the gap, not the whole stack</li>
-          <li>Phased rollout can run beside the existing TMS</li>
-        </ul>
-      </article>
-      <article>
-        <h3>Build</h3>
-        <ul>
-          <li>Spreadsheets run core dispatch decisions</li>
-          <li>Exceptions stay hidden until too late</li>
-          <li>Existing system cannot support the business model</li>
-          <li>Settlements or integrations are the product</li>
-        </ul>
-      </article>
-    </div>
-    <p class="trk-decide-cta" data-r>
-      <a href="/contact#book" class="btn"><span>Talk through the decision</span><i>→</i></a>
-    </p>
   </div>
 </section>
 
@@ -1463,49 +1238,36 @@ body.page-truck .hero{
       <div>
         <p class="eyebrow" data-r>Delivery &amp; migration</p>
         <h2 class="d2" id="prH" data-r>Change the system without stopping the dispatch desk.</h2>
-        <p class="lede" data-r>Shadow the workflow, prototype with operators, integrate beside the current stack, and cut over when dispatch signs off.</p>
+        <p class="lede" data-r>Shadow, prototype, integrate beside the stack, cut over when dispatch signs off.</p>
       </div>
       <a href="/process" class="btn ghost"><span>Full process</span><i>→</i></a>
     </div>
-    <ol class="trk-phases" data-s>
+    <ol class="run-bar" data-s>
       <li>
         <span class="wk">01 · Shadow</span>
-        <span class="bar" style="--w:20%"></span>
+        <span class="bar" style="--w:25%"></span>
         <h3 class="d3">Shadow and map</h3>
-        <p>Sit with dispatch. Map the board, exceptions, handoffs, and workarounds before anything is designed.</p>
+        <p>Map the board, exceptions, and workarounds with dispatch before design starts.</p>
       </li>
       <li>
         <span class="wk">02 · Prototype</span>
-        <span class="bar" style="--w:40%"></span>
+        <span class="bar" style="--w:50%"></span>
         <h3 class="d3">Prototype the workflow</h3>
-        <p>Review realistic interfaces with operators, speed, error recovery, and high-volume actions first.</p>
+        <p>Test with operators—speed, error recovery, and bulk actions first.</p>
       </li>
       <li>
-        <span class="wk">03 · Build</span>
-        <span class="bar" style="--w:60%"></span>
-        <h3 class="d3">Build and integrate</h3>
-        <p>Connect TMS, ELD, maps, and finance with retries and audit trails ops will accept.</p>
+        <span class="wk">03 · Build &amp; integrate</span>
+        <span class="bar" style="--w:75%"></span>
+        <h3 class="d3">Build &amp; integrate</h3>
+        <p>Connect TMS, ELD, maps, and finance. Pilot beside the stack with flags and parallel paths.</p>
       </li>
       <li>
-        <span class="wk">04 · Pilot</span>
-        <span class="bar" style="--w:80%"></span>
-        <h3 class="d3">Pilot or run in parallel</h3>
-        <p>Feature flags and parallel workflows so the current operation keeps running.</p>
-      </li>
-      <li>
-        <span class="wk">05 · Cutover</span>
+        <span class="wk">04 · Launch</span>
         <span class="bar" style="--w:100%"></span>
-        <h3 class="d3">Cut over and improve</h3>
-        <p>Phased launch, operator docs, and iteration after the desk is live on the new path.</p>
+        <h3 class="d3">Launch</h3>
+        <p>Phased cutover when dispatch signs off. Operator docs and iteration after go-live.</p>
       </li>
     </ol>
-    <p class="trk-trust-rail" data-r>
-      <span>Same team throughout</span>
-      <span>No subcontracting</span>
-      <span>US-hour collaboration</span>
-      <span>Client-owned code and designs</span>
-      <span>NDA available</span>
-    </p>
   </div>
 </section>
 
@@ -1514,7 +1276,7 @@ body.page-truck .hero{
     <div class="faq-side">
       <p class="eyebrow" data-r>Before the call</p>
       <h2 class="d2" id="faqH" data-r>Questions carriers actually ask.</h2>
-      <p class="lede" data-r>High-intent answers, including whether custom is even the right move.</p>
+      <p class="lede" data-r>Direct answers—including when custom is not the right move.</p>
       <a href="/contact#book" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
     </div>
     <div class="faq-list" data-r>
@@ -1525,7 +1287,7 @@ body.page-truck .hero{
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa1" role="region" aria-labelledby="faqb1"><div><div class="faq-a-in">
-          <p>Yes. We often extend or integrate beside the TMS that remains your source of record, dispatch console, driver app, or a single workflow at a time. Redesigns roll out in phases with feature flags and parallel paths so dispatch keeps running.</p>
+          <p>Yes. We extend or integrate beside your TMS—dispatch console, driver app, or one workflow at a time. Phased rollouts with feature flags keep dispatch running.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -1535,7 +1297,7 @@ body.page-truck .hero{
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa2" role="region" aria-labelledby="faqb2"><div><div class="faq-a-in">
-          <p>Existing TMS or CRM, ELD and telematics, maps and routing, driver documents, QuickBooks and Xero, plus APIs and webhooks to internal services. We build connectors with visible failures, retries, and reconciliation states, not silent drift.</p>
+          <p>TMS/CRM, ELD, maps, driver documents, QuickBooks, Xero, and internal APIs. Connectors show failures, retries, and reconciliation states.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -1545,33 +1307,20 @@ body.page-truck .hero{
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa3" role="region" aria-labelledby="faqb3"><div><div class="faq-a-in">
-          <p>We plan phased rollouts and parallel workflows so dispatch keeps running during migration. ShiftRail used flags, schema tests, and a staged go-live before cutover.</p>
+          <p>Phased rollouts and parallel workflows. ShiftRail used feature flags and staged go-live before cutover.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa4" id="faqb4">
           <span class="qn num">04</span>
-          <span class="qt">How does KRIVA collaborate with US trucking teams?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa4" role="region" aria-labelledby="faqb4"><div><div class="faq-a-in">
-          <p>Remote-first from Ahmedabad with US-hour overlap for stand-ups and reviews. Async updates in Slack, weekly demos on a live URL, and shadow sessions with dispatch before design starts.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa5" id="faqb5">
-          <span class="qn num">05</span>
           <span class="qt">Who owns the product after launch?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa5" role="region" aria-labelledby="faqb5"><div><div class="faq-a-in">
-          <p>You do. Source code, design files, and documentation transfer to your accounts. We can stay on retainer for iteration, but you are never locked in.</p>
+        <div class="faq-a" id="fa4" role="region" aria-labelledby="faqb4"><div><div class="faq-a-in">
+          <p>You do. Source, designs, and docs transfer to your accounts. Retainer optional—no lock-in.</p>
         </div></div></div>
       </div>
     </div>
-  </div>
-  <div class="wrap">
-    <p class="trk-also">Moving vehicles rather than freight? See <a href="/solutions/car-transportation">car transportation</a>. Related services: <a href="/services/crm-development">dispatch CRM</a>, <a href="/services/dashboard-design">fleet dashboards</a>, <a href="/services/mobile-applications">driver apps</a>.</p>
   </div>
 </section>
 
@@ -1579,7 +1328,7 @@ body.page-truck .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>Next step</p>
     <h2 class="d2" id="ctaH" data-r>Show us the screen, spreadsheet, or handoff your team is working around.</h2>
-    <p class="lede" data-r>Share the workflow, system constraint, or operational problem. KRIVA will tell you whether it should be configured, integrated, redesigned, rebuilt, or left alone.</p>
+    <p class="lede" data-r>We will tell you if it needs configuration, integration, redesign, or nothing at all.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Request a 20-minute fit call</span><i>→</i></a>
@@ -1695,32 +1444,116 @@ if(bar) readers.push(y=>{
   bar.style.transform='scaleX('+(h>0?Math.min(1,y/h):0)+')';
 });
 const chLinks=[...document.querySelectorAll('#chapters a')];
-const sectLinks=[...document.querySelectorAll('#sectNav a')];
-const navLinks=[...chLinks,...sectLinks];
 const chTargets=chLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-const sectTargets=sectLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-const allTargets=[...new Set([...chTargets,...sectTargets])];
 const chRail=document.getElementById('chapters');
 if(chRail) readers.push(y=>chRail.classList.toggle('show', y>420));
-const navIO=new IntersectionObserver(es=>{
+const chIO=new IntersectionObserver(es=>{
   for(const e of es){
     if(!e.isIntersecting) continue;
-    const id='#'+e.target.id;
-    navLinks.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')===id?'true':'false'));
+    const i=chTargets.indexOf(e.target);
+    chLinks.forEach((a,j)=>a.setAttribute('aria-current', j===i?'true':'false'));
   }
 },{rootMargin:'-40% 0px -55% 0px'});
-allTargets.forEach(t=>navIO.observe(t));
+chTargets.forEach(t=>chIO.observe(t));
 
-const beats=[...document.querySelectorAll('.trk-flow-step')];
-if(beats.length){
-  const bIO=new IntersectionObserver(es=>{
+const mob=[...document.querySelectorAll('#mobChips a')];
+if(mob.length){
+  const mobIO=new IntersectionObserver(es=>{
     for(const e of es){
       if(!e.isIntersecting) continue;
-      beats.forEach(b=>b.classList.toggle('on', b===e.target));
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
     }
-  },{rootMargin:'-42% 0px -42% 0px'});
-  beats.forEach(b=>bIO.observe(b));
-  beats[0].classList.add('on');
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
+
+const tabs=[...document.querySelectorAll('.trk-tabs [role="tab"]')];
+const panels={
+  'tab-dispatch':['panel-dispatch','view-dispatch'],
+  'tab-fleet':['panel-fleet','view-fleet'],
+  'tab-driver':['panel-driver','view-driver']
+};
+function selectSurface(id){
+  tabs.forEach(t=>{
+    const on=t.id===id;
+    t.setAttribute('aria-selected', String(on));
+    t.tabIndex=on?0:-1;
+  });
+  Object.entries(panels).forEach(([key, ids])=>{
+    const show=key===id;
+    ids.forEach(pid=>{
+      const el=document.getElementById(pid);
+      if(!el) return;
+      el.hidden=!show;
+      el.setAttribute('aria-hidden', String(!show));
+    });
+  });
+}
+tabs.forEach((btn,i)=>{
+  btn.tabIndex=i===0?0:-1;
+  btn.addEventListener('click',()=>selectSurface(btn.id));
+  btn.addEventListener('keydown',e=>{
+    let next=i;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown') next=i+1;
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp') next=i-1;
+    else if(e.key==='Home') next=0;
+    else if(e.key==='End') next=tabs.length-1;
+    else return;
+    e.preventDefault();
+    next=(next+tabs.length)%tabs.length;
+    tabs[next].focus();
+    selectSurface(tabs[next].id);
+  });
+});
+if(tabs.length){
+  const active=tabs.find(t=>t.getAttribute('aria-selected')==='true')||tabs[0];
+  selectSurface(active.id);
+}
+
+const actRail=document.getElementById('actRail');
+if(actRail){
+  const items=[...actRail.querySelectorAll('li')];
+  const compactRail=()=>matchMedia('(max-width:1024px)').matches;
+  const setActive=(li)=>{
+    items.forEach(x=>x.classList.remove('on'));
+    li?.classList.add('on');
+  };
+  if(matchMedia('(min-width:1025px)').matches){
+    actRail.addEventListener('mouseleave',()=>setActive(items[0]));
+    items.forEach(li=>{
+      li.addEventListener('mouseenter',()=>setActive(li));
+    });
+  }
+  actRail.querySelectorAll('.trk-act-toggle').forEach(btn=>{
+    const item=btn.closest('li');
+    btn.addEventListener('click',()=>{
+      if(compactRail()){
+        const willOpen=!item.classList.contains('open');
+        items.forEach(li=>{
+          li.classList.remove('open');
+          const t=li.querySelector('.trk-act-toggle');
+          if(t){ t.setAttribute('aria-expanded','false'); t.textContent='Stage detail'; }
+        });
+        if(willOpen){
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+          btn.textContent='Hide detail';
+          setActive(item);
+        }else{
+          items[0]?.classList.add('open');
+          const t0=items[0]?.querySelector('.trk-act-toggle');
+          if(t0){ t0.setAttribute('aria-expanded','true'); t0.textContent='Hide detail'; }
+          setActive(items[0]);
+        }
+        return;
+      }
+      const open=item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent=open?'Hide detail':'Stage detail';
+      if(open) setActive(item);
+    });
+  });
 }
 
 document.querySelectorAll('.faq-q').forEach(btn=>{
@@ -1736,35 +1569,6 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     item.classList.toggle('open', !open);
   });
 });
-
-const probTabs=[...document.querySelectorAll('.trk-prob-tabs [role="tab"]')];
-const probPanels=[...document.querySelectorAll('.trk-prob-panel')];
-if(probTabs.length){
-  const pickTab=(btn)=>{
-    const id=btn.getAttribute('aria-controls');
-    probTabs.forEach(t=>{
-      const on=t===btn;
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex=on?0:-1;
-    });
-    probPanels.forEach(p=>{
-      const on=p.id===id;
-      p.classList.toggle('on', on);
-      p.hidden=!on;
-    });
-  };
-  probTabs.forEach((btn,i)=>{
-    btn.addEventListener('click',()=>pickTab(btn));
-    btn.addEventListener('keydown',(e)=>{
-      const map={ArrowRight:i+1,ArrowLeft:i-1,Home:0,End:probTabs.length-1};
-      if(!(e.key in map)) return;
-      e.preventDefault();
-      const next=probTabs[(map[e.key]+probTabs.length)%probTabs.length];
-      pickTab(next);
-      next.focus();
-    });
-  });
-}
 
 const heroBoard=document.getElementById('trkHeroBoard');
 if(heroBoard){
@@ -1818,7 +1622,17 @@ if(heroBoard){
       if(exc&&excMove) exc.insertBefore(excMove, exc.firstElementChild);
       excMove?.classList.add('is-up');
     });
-    wait(1560,()=>heroBoard.classList.add('played'));
+    wait(1560,()=>{
+      heroBoard.classList.add('played');
+      const pathLabels=document.getElementById('heroPathLabels');
+      if(pathLabels){
+        const steps=[...pathLabels.children];
+        steps.forEach((s,i)=>setTimeout(()=>{
+          steps.forEach(x=>x.classList.remove('on'));
+          s.classList.add('on');
+        },i*420));
+      }
+    });
   };
   const heroIO=new IntersectionObserver(es=>{
     if(!es[0].isIntersecting) return;

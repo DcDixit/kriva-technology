@@ -112,6 +112,23 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
+.mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
+  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
+  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch
+}
+.mob-chips::-webkit-scrollbar{display:none}
+.mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+}
+.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1280px){
+  body.page-dashboard .mob-chips{display:flex !important}
+  body.page-dashboard .hero,body.page-dashboard .sect,body.page-dashboard .dash-proof{scroll-margin-top:calc(88px + 48px)}
+}
 </style>
 <link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
@@ -220,12 +237,12 @@ body.page-dashboard .hero{
 .dash-hierarchy-col ul{list-style:none;display:grid;gap:9px}
 .dash-hierarchy-col li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.4}
 .dash-hierarchy-col li:before{content:"";width:6px;height:6px;margin-top:6px;background:var(--blue);flex:none}
-.dash-hierarchy-example{background:var(--paper-2);border:1px solid var(--rule);padding:clamp(20px,2.4vw,28px);margin-top:clamp(28px,4vw,52px)}
+.dash-hierarchy-example{margin-top:clamp(28px,4vw,52px);min-width:0}
 .dash-hierarchy-example .lab{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2);margin-bottom:12px}
-.dash-hierarchy-example .item{margin-bottom:16px}
-.dash-hierarchy-example .item:last-child{margin-bottom:0}
-.dash-hierarchy-example b{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:4px}
-.dash-hierarchy-example p{font-size:13.5px;line-height:1.5;color:var(--steel);margin:0}
+.dash-hierarchy-example .pu{box-shadow:var(--shadow-product)}
+.dash-hierarchy-example .pu-rows li{grid-template-columns:minmax(44px,.65fr) minmax(0,1fr) auto auto}
+.dash-hierarchy-example .pu-rows .pu-act{padding:5px 8px;font-size:9px;letter-spacing:.08em;background:transparent;border:1px solid var(--ink-line);color:#DDE2E7}
+.dash-hierarchy-example .pu-rows .pu-act:hover{background:rgba(79,70,229,.16);border-color:var(--cta);color:#fff}
 
 /* ── Role-based views ── */
 .dash-roles{background:var(--paper-2);border-top:1px solid var(--rule)}
@@ -253,7 +270,7 @@ body.page-dashboard .hero{
 .dash-proof h2{color:#fff;margin-top:18px;max-width:16ch}
 .dash-proof .lede{color:#8C98A4;margin-top:16px}
 .dash-proof-cols{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
   gap:1px;background:var(--ink-line);margin-top:clamp(28px,4vw,52px);border:1px solid var(--ink-line)
 }
 .dash-proof-col{background:#12181E;padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,24px)}
@@ -269,17 +286,6 @@ body.page-dashboard .hero{
 .dash-metrics span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
 .dash-proof-cta{margin-top:28px}
 .dash-proof-note{margin-top:22px;font-size:13.5px;line-height:1.6;color:#8C98A4;max-width:62ch}
-
-/* ── What KRIVA delivers ── */
-.dash-delivers{background:var(--white);border-top:1px solid var(--rule)}
-.dash-delivers-list{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,4vw,52px)
-}
-.dash-delivers-item{background:var(--paper);padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,24px)}
-.dash-delivers-item ul{list-style:none;display:grid;gap:8px}
-.dash-delivers-item li{display:grid;grid-template-columns:auto 1fr;gap:8px;font-size:14px;color:var(--ink);line-height:1.4}
-.dash-delivers-item li:before{content:"";width:4px;height:4px;margin-top:7px;background:var(--blue);flex:none}
 
 /* ── Related services ── */
 .dash-related{background:var(--paper-2);border-top:1px solid var(--rule)}
@@ -325,7 +331,7 @@ body.page-dashboard .hero{
 .faq-side .btn{margin-top:24px}
 
 @media(max-width:1024px){
-  .dash-hero-grid,.dash-hierarchy-grid,.dash-role-tabs + .dash-role-panel,.dash-proof-cols,.dash-delivers-list,.dash-related-grid,.faq-grid{grid-template-columns:1fr}
+  .dash-hero-grid,.dash-hierarchy-grid,.dash-role-tabs + .dash-role-panel,.dash-proof-cols,.dash-related-grid,.faq-grid{grid-template-columns:1fr}
   .dash-hero-copy .d1{max-width:none}
   .faq-grid > div:first-child{position:static}
   .dash-prob-grid{grid-template-columns:1fr}
@@ -537,9 +543,18 @@ body.page-dashboard .hero{
   <a href="#hierarchy"><span>Hierarchy</span><i></i></a>
   <a href="#roles"><span>Roles</span><i></i></a>
   <a href="#proof"><span>ShiftRail</span><i></i></a>
-  <a href="#delivers"><span>Delivers</span><i></i></a>
   <a href="#related"><span>Related</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
+</nav>
+
+<nav class="mob-chips" id="mobChips" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#problems">Problems</a>
+  <a href="#hierarchy">Hierarchy</a>
+  <a href="#roles">Roles</a>
+  <a href="#proof">ShiftRail</a>
+  <a href="#related">Related</a>
+  <a href="#faq">FAQ</a>
 </nav>
 
 <main id="main">
@@ -669,23 +684,26 @@ body.page-dashboard .hero{
         <p>Example: Assign owner, resolve exception, or mark complete—all from the row.</p>
       </div>
     </div>
-    <div class="dash-hierarchy-example">
-      <p class="lab">Realistic dashboard example</p>
-      <div class="item">
-        <b>Fleet Performance</b>
-        <p>Question: Are routes on schedule today?</p>
-      </div>
-      <div class="item">
-        <b>5 routes delayed · avg. 34 min late</b>
-        <p>Signal: Pink background, placed above the fold. Shows the count and severity.</p>
-      </div>
-      <div class="item">
-        <b>Table: Route ID, Driver, Current Location, Expected vs Actual Time, Exception Type</b>
-        <p>Records: Every delayed route listed with location data so dispatch can see why delays happened (traffic, stop time, etc.)</p>
-      </div>
-      <div class="item">
-        <b>Inline: Notify customer, Skip stop, Reassign driver</b>
-        <p>Action: Three buttons per row. Operators can resolve without navigating elsewhere.</p>
+    <div class="dash-hierarchy-example" data-r>
+      <p class="lab">Fleet performance · illustrative UI</p>
+      <div class="pu" role="img" aria-label="Fleet performance dashboard: 5 routes delayed, exception table with inline actions.">
+        <div class="pu-bar">
+          <div>
+            <p class="pu-title">Fleet Performance</p>
+            <p class="pu-meta">Route status · Today</p>
+          </div>
+          <span class="pu-chip warn">5 delayed</span>
+        </div>
+        <div class="pu-kpis">
+          <div class="up"><span>On schedule</span><b>395</b></div>
+          <div class="risk"><span>Delayed</span><b>5</b></div>
+          <div><span>Avg. late</span><b>34m</b></div>
+        </div>
+        <ul class="pu-rows">
+          <li class="risk"><b>R-1042</b><span>M. Torres · I-85 near GSP</span><em>+28m</em><span class="pu-act">Notify</span></li>
+          <li class="risk"><b>R-1087</b><span>J. Reed · Stop 3 overdue</span><em>+41m</em><span class="pu-act">Reassign</span></li>
+          <li class="on"><b>R-1103</b><span>Unassigned · CLT yard</span><em>No driver</em><span class="pu-act">Assign</span></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -734,66 +752,30 @@ body.page-dashboard .hero{
   </div>
 </section>
 
-<section class="crm-proof on-ink" id="proof" aria-labelledby="proofH">
+<section class="dash-proof on-ink" id="proof" aria-labelledby="proofH">
   <div class="wrap">
     <p class="eyebrow" data-r>Verified work</p>
-    <h2 class="d2" id="proofH" data-r>ShiftRail dispatch dashboard</h2>
-    <p class="lede" data-r>US trucking dispatch. Exception risk lived in a weekly report. The dashboard made SLA visible and actionable every shift.</p>
+    <h2 class="d2" id="proofH" data-r>ShiftRail fleet morning scan</h2>
+    <p class="lede" data-r>Exception risk lived in a weekly report. The dashboard put SLA and ownership above the fold every shift.</p>
     <div class="dash-proof-cols" data-s>
       <article class="dash-proof-col">
-        <p class="k">Problem</p>
-        <h3 class="d3">Breach risk in a report</h3>
-        <p>SLA risk lived in a weekly report. The product dashboard did not answer: Which loads need attention right now?</p>
+        <p class="k">Hierarchy</p>
+        <h3 class="d3">Exceptions first</h3>
+        <p>Unowned and at-risk loads above the fold. SLA remaining on each row—not a separate report.</p>
       </article>
       <article class="dash-proof-col">
-        <p class="k">Design decision</p>
-        <h3 class="d3">Exception hierarchy first</h3>
-        <p>Put unowned and at-risk loads above the fold. Show SLA remaining on each row. Allow assignment from the board.</p>
-      </article>
-      <article class="dash-proof-col">
-        <p class="k">Workflow</p>
-        <h3 class="d3">Operators assign and resolve</h3>
-        <p>Operators view exceptions, assign owners, and close tickets—all from one dashboard without context switching.</p>
+        <p class="k">Outcome</p>
+        <h3 class="d3">Morning scan that holds</h3>
+        <p>Operators assign and resolve from one view. Supervisors audit overrides without leaving the board.</p>
       </article>
     </div>
     <div class="dash-metrics">
-      <div><b class="num">−32%</b><span>Manual handle time</span></div>
-      <div><b class="num">11 weeks</b><span>To production</span></div>
+      <div><b class="num">−32%</b><span>Handle time</span></div>
+      <div><b class="num">11 min</b><span>Exception response</span></div>
       <div><b class="num">400+</b><span>Daily routes</span></div>
     </div>
     <a href="/work/shiftrail-dispatch" class="btn on-dark dash-proof-cta"><span>Read the ShiftRail case study</span><i>→</i></a>
-    <p class="dash-proof-note">Client names are changed. The metrics above are signed-off project outcomes, not third-party ratings.</p>
-  </div>
-</section>
-
-<section class="sect dash-delivers" id="delivers" aria-labelledby="delsH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>What KRIVA delivers</p>
-    <h2 class="d2" id="delsH" data-r>Dashboard design capabilities</h2>
-    <p class="lede" data-r>KRIVA designs dashboards inside your existing product or builds new ones. Platform rebuild is not required.</p>
-    <div class="dash-delivers-list" data-s>
-      <article class="dash-delivers-item">
-        <ul>
-          <li>Information architecture</li>
-          <li>KPI and signal prioritization</li>
-          <li>Question definition and validation</li>
-        </ul>
-      </article>
-      <article class="dash-delivers-item">
-        <ul>
-          <li>Operational tables and filters</li>
-          <li>Exception and queue design</li>
-          <li>Inline actions and workflows</li>
-        </ul>
-      </article>
-      <article class="dash-delivers-item">
-        <ul>
-          <li>Admin and permission workflows</li>
-          <li>Drill-down and record actions</li>
-          <li>Responsive dashboard patterns</li>
-        </ul>
-      </article>
-    </div>
+    <p class="dash-proof-note">Illustrative UI elsewhere on site. Metrics are signed-off project outcomes.</p>
   </div>
 </section>
 
@@ -803,19 +785,19 @@ body.page-dashboard .hero{
     <h2 class="d2 s-title" id="relH" data-r>Related services</h2>
     <div class="dash-related-grid" data-s>
       <article class="dash-related-card">
-        <h3 class="d3">CRM &amp; Ops Consoles</h3>
-        <p>Dispatch boards, operational CRM, and TMS consoles with bulk actions, SLA, and supervisor oversight.</p>
+        <h3 class="d3">Dispatch CRM &amp; TMS</h3>
+        <p>Bulk actions, SLA on the row, and supervisor oversight on the console that feeds this dashboard.</p>
         <a href="/services/crm-development">Explore <i>→</i></a>
       </article>
       <article class="dash-related-card">
-        <h3 class="d3">SaaS Product Design</h3>
-        <p>Multi-tenant dashboards, admin panels, analytics, and permission workflows for B2B SaaS platforms.</p>
-        <a href="/services/saas-platforms">Explore <i>→</i></a>
+        <h3 class="d3">Trucking solutions</h3>
+        <p>Dispatch, fleet, driver, and integration surfaces designed as one product for US carriers.</p>
+        <a href="/solutions/trucking-logistics">Explore <i>→</i></a>
       </article>
       <article class="dash-related-card">
-        <h3 class="d3">Product Design &amp; UX</h3>
-        <p>End-to-end design: research, information architecture, flows, prototypes, and launch-ready UI.</p>
-        <a href="/services/product-design">Explore <i>→</i></a>
+        <h3 class="d3">Dashboard UX patterns</h3>
+        <p>Insight on hierarchy, KPI placement, and exception queues for operational products.</p>
+        <a href="/insights/crm-dashboard-ux-patterns">Read <i>→</i></a>
       </article>
     </div>
   </div>
@@ -1097,6 +1079,18 @@ const chIO=new IntersectionObserver(es=>{
   }
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
+
+const mob=[...document.querySelectorAll('#mobChips a')];
+if(mob.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
 
 document.querySelectorAll('.faq-q').forEach(btn=>{
   const item=btn.closest('.faq-item');

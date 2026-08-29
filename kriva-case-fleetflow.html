@@ -109,6 +109,23 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
+.mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
+  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
+  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch
+}
+.mob-chips::-webkit-scrollbar{display:none}
+.mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+}
+.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1280px){
+  body.case-fleet .mob-chips{display:flex !important}
+  body.case-fleet .ph,body.case-fleet .sect,body.case-fleet .arch-show,body.case-fleet .cs-proof{scroll-margin-top:calc(88px + 48px)}
+}
 
 /* ══ COMPONENT: project hero ══ */
 .ph{padding:calc(72px + clamp(28px,4.5vw,60px)) 0 0}
@@ -464,7 +481,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 
 <!-- COMPONENT: chapter rail -->
 <nav class="chapters" id="chapters" aria-label="Sections of this case study">
-  <a href="#overview"><span>Product</span><i></i></a>
+  <a href="#overview"><span>Overview</span><i></i></a>
   <a href="#loads"><span>Loads</span><i></i></a>
   <a href="#workflow"><span>Workflow</span><i></i></a>
   <a href="#friction"><span>Friction</span><i></i></a>
@@ -472,6 +489,17 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
   <a href="#system"><span>System</span><i></i></a>
   <a href="#proof"><span>Proof</span><i></i></a>
   <a href="#product"><span>Shipped</span><i></i></a>
+</nav>
+
+<nav class="mob-chips" id="mobChips" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#loads">Loads</a>
+  <a href="#workflow">Workflow</a>
+  <a href="#friction">Friction</a>
+  <a href="#decision">Decision</a>
+  <a href="#system">System</a>
+  <a href="#proof">Proof</a>
+  <a href="#product">Shipped</a>
 </nav>
 
 <main id="main">
@@ -484,7 +512,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       <li><a href="/work">Work</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">ShiftRail</li>
     </ol>
-    <div class="ph-grid" style="margin-top:clamp(22px,3vw,40px)">
+    <div class="ph-grid">
       <div>
         <p class="eyebrow" data-r>Case · US trucking dispatch</p>
         <h1 class="d1 mask" data-mask>
@@ -710,7 +738,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
     <p class="eyebrow" style="color:#8C98A4">Signed-off</p>
     <b aria-hidden="true">−32%</b>
     <h2 class="sr" id="prH">Manual handle time down 32 percent</h2>
-    <span>Manual handle time, measured against the pre-engagement baseline. Average exception response 11 min. Console uptime 99.4% in the post-launch window. Client name changed to protect confidentiality.</span>
+    <span>−32% manual handle time · 11 min avg exception response · 99.4% console uptime post-launch</span>
   </div>
 </section>
 
@@ -741,7 +769,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
       </div>
     </figure>
     <p class="cs-cap">Illustrative · no client data shown</p>
-    <div class="sib" data-r style="margin-top:32px">
+    <div class="sib" data-r>
       <a href="/solutions/trucking-logistics">Trucking solutions</a>
       <a href="/services/crm-development">CRM Design</a>
       <a href="/services/dashboard-design">Dashboard Design</a>
@@ -765,7 +793,7 @@ footer .wrap{padding-block:clamp(46px,5vw,70px) 26px}
 <section class="cta-band on-ink" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
-    <h2 class="d2" id="ctaH" data-r>Want results like these for your product?</h2>
+    <h2 class="d2" id="ctaH" data-r>Building dispatch tooling for a desk that outgrew the TMS?</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
@@ -887,6 +915,18 @@ const chIO = new IntersectionObserver(es=>{
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
 
+const mob=[...document.querySelectorAll('#mobChips a')];
+if(mob.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
+
 /* metric rail count-up, supports negatives and decimals */
 function countTo(el, target, suffix, dec){
   if(reduce()){ el.textContent = target.toFixed(dec) + suffix; return; }
@@ -911,42 +951,6 @@ const mIO = new IntersectionObserver(es=>{
 },{threshold:.4});
 const mrailEl = document.getElementById('mrail');
 if(mrailEl) mIO.observe(mrailEl);
-
-/* sticky screenshot storytelling */
-const beats = [...document.querySelectorAll('.beat')];
-const scenes = [...document.querySelectorAll('.story-scene')];
-const sName = document.getElementById('storyName'), sMeta = document.getElementById('storyMeta');
-let activeBeat = -1;
-if(beats.length){
-const bIO = new IntersectionObserver(es=>{
-  for(const e of es){
-    if(!e.isIntersecting) continue;
-    const i = beats.indexOf(e.target);
-    if(i === activeBeat) continue;
-    activeBeat = i;
-    beats.forEach((b,j)=>b.classList.toggle('on', j===i));
-    scenes.forEach((s,j)=>s.classList.toggle('on', j===i));
-    if(sName) sName.textContent = e.target.dataset.name;
-    if(sMeta) sMeta.textContent = String(i+1).padStart(2,'0') + ' / ' + String(beats.length).padStart(2,'0');
-  }
-},{rootMargin:'-45% 0px -45% 0px'});
-beats.forEach(b=>bIO.observe(b));
-}
-
-/* before / after, range input drives clip-path, so keyboard works for free */
-const ba = document.getElementById('ba'), baRange = document.getElementById('baRange');
-if(ba && baRange){
-const setSplit = v => ba.style.setProperty('--split', v + '%');
-baRange.addEventListener('input', e => setSplit(e.target.value));
-setSplit(baRange.value);
-// pointer drag anywhere on the frame, not just the handle
-ba.addEventListener('pointermove', e=>{
-  if(e.pressure === 0 && e.buttons === 0) return;
-  const r = ba.getBoundingClientRect();
-  const v = Math.max(0, Math.min(100, ((e.clientX - r.left)/r.width)*100));
-  baRange.value = v; setSplit(v);
-});
-}
 
 run();
 })();

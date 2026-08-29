@@ -14,10 +14,10 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css?v=bg1">
 <title>Dispatch CRM for US trucking: what actually works · KRIVA</title>
-<meta name="description" content="How carriers, brokers, and dispatch teams cut handle time, improve fleet visibility, and replace spreadsheet operations with purpose-built CRM workflows.">
+<meta name="description" content="Four dispatch CRM patterns for US trucking: bulk assignment, SLA on the row, role-based density, and phased rollout beside the TMS. From ShiftRail desk work.">
 <link rel="canonical" href="https://krivatechnologies.com/insights/trucking-dispatch-crm-guide">
 <meta property="og:title" content="Dispatch CRM solutions for US trucking companies: what actually works">
-<meta property="og:description" content="How carriers, brokers, and dispatch teams cut handle time, improve fleet visibility, and replace spreadsheet operations with purpose-built CRM workflows.">
+<meta property="og:description" content="Four dispatch CRM patterns for US trucking: bulk assignment, SLA on the row, role-based density, and phased rollout beside the TMS. From ShiftRail desk work.">
 <meta property="og:url" content="https://krivatechnologies.com/insights/trucking-dispatch-crm-guide">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -135,7 +135,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .prose p{margin:0 0 1.15em;color:var(--steel)}
 .prose ul{margin:0 0 1.3em;padding-left:1.2em;color:var(--steel)}
 .prose li{margin:.45em 0;padding-left:.2em}
-.prose li:marker{color:var(--amber)}
+.prose li::marker{color:var(--amber)}
+.prose figure.arch-frame{margin:2.2em 0 2.4em;background:#0a0d10;border:1px solid var(--ink-line);box-shadow:var(--shadow-product);overflow:hidden}
+.prose figure.arch-frame figcaption{padding:10px 14px 12px;background:#0a0d10;border-top:1px solid var(--ink-line);margin-top:0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
 .rel-sol{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(36px,4vw,56px) 0 0;padding-top:22px;border-top:1px solid var(--rule)}
 .rel-sol a{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color .3s,color .3s}
 .rel-sol a:hover{border-color:var(--ink);color:var(--ink)}
@@ -147,7 +149,24 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .rel-grid .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
 .rel-grid b{display:block;margin-top:10px;font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;line-height:1.2}
 @media(max-width:700px){.rel-grid{grid-template-columns:1fr}}
-@media print{.nav,.sheet,.wa,.cta-band,.progress,.back{display:none!important}.art-hero{padding-top:24px}}
+.mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
+  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
+  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch
+}
+.mob-chips::-webkit-scrollbar{display:none}
+.mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+}
+.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1280px){
+  body.page-insight-truck .mob-chips{display:flex !important}
+  body.page-insight-truck .art-hero,body.page-insight-truck .prose h2{scroll-margin-top:calc(88px + 48px)}
+}
+@media print{.nav,.sheet,.wa,.cta-band,.progress,.back,.mob-chips{display:none!important}.art-hero{padding-top:24px}}
 
 </style>
 
@@ -158,7 +177,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <link rel="stylesheet" href="/shared/chrome.css?v=tap2">
 </head>
-<body>
+<body class="page-insight-truck">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="nav">
@@ -327,47 +346,92 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <main id="main">
 
 <div class="progress" id="progress" aria-hidden="true"></div>
+<nav class="mob-chips" id="mobChips" aria-label="Article sections">
+  <a href="#intro">Intro</a>
+  <a href="#bulk">Bulk assign</a>
+  <a href="#sla">SLA on row</a>
+  <a href="#density">Role density</a>
+  <a href="#rollout">Rollout</a>
+</nav>
 <article>
-  <header class="art-hero">
+  <header class="art-hero" id="intro">
     <div class="wrap">
       <a class="back" href="/insights">← Insights</a>
       <p class="cat" data-r>Trucking &amp; Logistics</p>
       <h1 class="d1" id="h1" data-r style="font-size:clamp(1.85rem,4.2vw,3.15rem)">Dispatch CRM solutions for US trucking companies: what actually works</h1>
-      <p class="lede" data-r>How carriers, brokers, and dispatch teams cut handle time, improve fleet visibility, and replace spreadsheet operations with purpose-built CRM workflows.</p>
+      <p class="lede" data-r>Four patterns that work when dispatch has outgrown the TMS but cannot live without it: bulk assignment, SLA on the row, role-based density, and a phased rollout the floor can absorb.</p>
       <div class="art-meta" data-r>
         <span><time datetime="2026-05-20">May 2026</time></span>
-        <span>10 min read</span>
+        <span>8 min read</span>
         <span>KRIVA Logistics Product Team</span>
       </div>
       <div class="cover cover--editorial" data-r aria-hidden="true">
         <div>
           <span class="cover-k">Trucking &amp; Logistics</span>
-          <p class="cover-q">How carriers, brokers, and dispatch teams can reduce handle time, improve fleet visibility, and replace spreadsheet-driven operations with p…</p>
+          <p class="cover-q">The TMS holds the record. The spreadsheet runs the shift. A dispatch CRM has to close that gap.</p>
         </div>
-        <span class="cover-meta">10 min read · May 2026</span>
+        <span class="cover-meta">8 min read · May 2026</span>
       </div>
     </div>
   </header>
   <div class="wrap">
     <div class="prose" data-r>
-      <p>Most US trucking teams do not fail because they lack software. They fail because dispatch workflows are split across spreadsheets, email threads, and legacy systems that were never designed for today's volume. A modern dispatch CRM should remove friction where operators lose the most time.</p>
-<h2>Where dispatch teams lose time</h2>
-<ul><li>Load assignments handled across disconnected tools.</li><li>No clear SLA visibility for at-risk routes.</li><li>Manual exception handling with no audit trail.</li><li>Poor communication between dispatch, drivers, and supervisors.</li></ul>
-<h2>What a high-performing dispatch CRM includes</h2>
-<ul><li>Bulk actions for repetitive dispatch decisions.</li><li>Live fleet and route dashboard with exception prioritization.</li><li>Role-based views for dispatchers, supervisors, and executives.</li><li>Integration layer for accounting, TMS, and communication tools.</li></ul>
-<h2>Design for the ops floor, not demo screens</h2>
-<p>Dispatch UX should prioritize speed, clarity, and recovery. Dense tables are fine when they are structured for fast scanning. Every critical action needs visible confirmation, easy undo paths, and clear status language for shift handovers.</p>
-<h2>Implementation approach</h2>
-<p>Start with workflow mapping and shift shadowing. Then design a phased rollout: first dispatch board, then exceptions, then analytics and integrations. This keeps operations stable while new tooling proves value.</p>
-<h2>Metrics that matter</h2>
-<ul><li>Dispatch handle time per load</li><li>Exception response time</li><li>On-time delivery risk alerts resolved</li><li>Daily active usage by dispatch team</li></ul>
+      <p>US carriers post loads in the TMS because billing, compliance, and customer records live there. Dispatchers run the shift in a spreadsheet because that is where bulk reassignment, detention notes, and SLA burndown actually happen. The gap is not missing software. It is two systems of record, reconciled after the shift instead of during it.</p>
+<h2 id="bulk">1. Bulk assignment is one event, not forty clicks</h2>
+<p>When volume crosses a few hundred daily routes, per-row assignment becomes the bottleneck. Select the loads, pick the driver or lane owner, confirm once. The supervisor gets one audit trail, not forty silent edits spread across a sheet tab. If your TMS cannot batch reassignment with a reason code, the desk will keep doing it elsewhere.</p>
+<figure class="arch-frame">
+        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>dispatch board · bulk select</span></div>
+        <div class="pu" role="img" aria-label="Dispatch board with three loads selected for bulk reassign.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Load board</p>
+              <p class="pu-meta">Bulk select · 3 selected</p>
+            </div>
+            <span class="pu-act">Reassign</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>On</em></li>
+            <li class="on"><b>#4824</b><span>LAX &rarr; LAS</span><em>On</em></li>
+            <li class="on risk"><b>#4826</b><span>DEN &rarr; SLC</span><em>On</em></li>
+            <li><b>#4821</b><span>DAL &rarr; PHX</span><em>42m</em></li>
+            <li class="pu-desk"><b>#4825</b><span>SEA &rarr; PDX</span><em>51m</em></li>
+          </ul>
+        </div>
+        <figcaption>Illustrative · bulk reassignment as a single audited action</figcaption>
+      </figure>
+<h2 id="sla">2. Put SLA on the row, not in a separate dashboard</h2>
+<p>Exception dashboards that live three clicks away get checked once an hour. SLA remaining belongs on every load row, color-weighted, sorted by urgency. Dispatchers should answer "what breaks in the next fifteen minutes?" from the board they already have open, not from a chart they have to hunt for. When we rebuilt ShiftRail's console for a 400-route US desk, moving burndown onto the row cut average exception response to eleven minutes.</p>
+<figure class="arch-frame">
+        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>exception queue · sla burndown</span></div>
+        <div class="pu" role="img" aria-label="Exception queue sorted by SLA remaining: 4m, 6m, 9m.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Exceptions</p>
+              <p class="pu-meta">By SLA remaining</p>
+            </div>
+            <span class="pu-chip warn">Amber</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="risk"><b>#4826</b><span>DEN &rarr; SLC</span><em>4m</em></li>
+            <li class="risk"><b>#4823</b><span>CHI &rarr; DET</span><em>6m</em></li>
+            <li class="risk"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m</em></li>
+            <li><b>#4824</b><span>LAX &rarr; LAS</span><em>18m</em></li>
+          </ul>
+        </div>
+        <figcaption>Illustrative · queue worked by urgency, not arrival order</figcaption>
+      </figure>
+<h2 id="density">3. Match density to the role, not the demo screen</h2>
+<p>A dispatcher scanning 120 rows needs compact type, sticky headers, and keyboard-friendly multi-select. A field supervisor on a tablet needs thumb-sized actions and fewer rows per screen. An executive summary can be sparse. One layout for every persona means someone is squinting or scrolling. Shadow three shifts before you pick column density: the person doing bulk work at 6am is not the person signing off overrides at 2pm.</p>
+<h2 id="rollout">4. Roll out in phases the floor can absorb</h2>
+<p>Do not swap TMS, spreadsheet, and CRM on the same Monday. Week one: dispatch board with read-only TMS sync. Week two: bulk assignment and SLA on the row. Week three: exception queue and supervisor overrides with audit. Integrations and analytics after daily usage proves out. Measure handle time per load and exception response from day one, not after a quarter of parallel running.</p>
     </div>
     <nav class="rel-sol" aria-label="Related pages" data-r><a href="/solutions/trucking-logistics">Trucking solutions</a><a href="/services/crm-development">Dispatch CRM &amp; TMS</a><a href="/work/shiftrail-dispatch">ShiftRail case study</a></nav>
     <aside class="related" aria-labelledby="relH">
       <p class="eyebrow" data-r>Keep reading</p>
       <h2 class="d2" id="relH" data-r>Related insights</h2>
       <div class="rel-grid" data-s>
-        <a href="/insights/saas-mvp-uk-guide"><span class="k">SaaS Growth</span><b>SaaS MVP guide for UK startups: from idea to launch</b></a><a href="/insights/ai-in-product-design-2026"><span class="k">AI &amp; Design</span><b>How AI is changing product design workflows in 2026</b></a>
+        <a href="/insights/crm-dashboard-ux-patterns"><span class="k">Product</span><b>CRM dashboard UX patterns that sales teams actually use</b></a>
+        <a href="/work/shiftrail-dispatch"><span class="k">Case study</span><b>ShiftRail: dispatch console for a 400-route US desk</b></a>
       </div>
     </aside>
   </div>
@@ -376,7 +440,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <section class="cta-band on-ink" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Next step</p>
-    <h2 class="d2" id="ctaH" data-r>Tell us what you're building.</h2>
+    <h2 class="d2" id="ctaH" data-r>Show us the workflow your desk runs outside the TMS.</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
@@ -469,6 +533,19 @@ const onScroll=()=>{
 };
 addEventListener('scroll', onScroll, {passive:true});
 onScroll();
+
+const mob=[...document.querySelectorAll('#mobChips a')];
+const chTargets=[...document.querySelectorAll('#intro,#bulk,#sla,#density,#rollout')].filter(Boolean);
+if(mob.length && chTargets.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
 })();
 </script>
 <!-- KRIVA_SCHEMA_START -->

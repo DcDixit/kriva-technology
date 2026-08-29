@@ -139,11 +139,16 @@ body.page-car .hero{
   body.page-car .hero > .wrap{width:100%}
 }
 
-/* Problems grid */
+/* Problems band */
+.leaks{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
+.leaks .wrap{padding-block:clamp(80px,10vw,140px)}
+.leaks .eyebrow{color:var(--ink-dim)}
+.leaks h2{color:#fff;margin-top:18px;max-width:16ch}
+.leaks .lede{color:#8C98A4;margin-top:18px}
 .car-prob-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,3.6vw,48px);margin-top:clamp(30px,3.6vw,54px)}
-.car-prob-card{padding:clamp(24px,2.8vw,32px);border:1px solid var(--rule);background:var(--white)}
-.car-prob-card h3{margin-bottom:12px;max-width:20ch}
-.car-prob-card p{font-size:14.5px;line-height:1.6;color:var(--steel)}
+.car-prob-card{padding:clamp(24px,2.8vw,32px);border:1px solid var(--ink-line);background:#12181E}
+.car-prob-card h3{margin-bottom:12px;max-width:20ch;color:#fff}
+.car-prob-card p{font-size:14.5px;line-height:1.6;color:#8C98A4}
 @media(max-width:900px){
   .car-prob-grid{grid-template-columns:1fr}
 }
@@ -290,29 +295,7 @@ body.page-car .hero{
 .aud{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;color:var(--steel-2)}
 .beat.cust .aud{color:var(--violet)}
 
-/* Three audiences */
-.aud-sect,.proof,.car-faq{scroll-margin-top:88px}
-.aud-sect{background:var(--ink);color:#DDE2E7}
-.aud-sect .wrap{padding-block:clamp(80px,10vw,140px)}
-.aud-sect .eyebrow{color:var(--ink-dim)}
-.aud-sect h2{color:#fff;margin-top:18px;max-width:18ch}
-.aud-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(30px,3.6vw,54px);border-top:1px solid var(--ink-line)}
-.aud-col{padding:clamp(24px,2.8vw,34px) clamp(14px,2vw,28px) clamp(24px,2.8vw,34px) 0;border-right:1px solid var(--ink-line);position:relative;min-width:0}
-.aud-col:last-child{border-right:0;padding-right:0}
-.aud-col:before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;transform:scaleX(0);transform-origin:0 50%;transition:transform .7s var(--e)}
-.aud-grid.in .aud-col:before{transform:scaleX(1)}
-.aud-col:nth-child(1):before{background:var(--lilac)}
-.aud-col:nth-child(2):before{background:var(--sky);transition-delay:.12s}
-.aud-col:nth-child(3):before{background:var(--lime);transition-delay:.24s}
-.aud-col .who{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
-.aud-col:nth-child(1) .who{color:var(--lilac)}
-.aud-col:nth-child(2) .who{color:var(--sky)}
-.aud-col:nth-child(3) .who{color:var(--lime)}
-.aud-col h3{font-family:var(--f-display);font-weight:700;font-size:1.18rem;letter-spacing:-.02em;color:#fff;margin-bottom:10px}
-.aud-col p{font-size:14.5px;line-height:1.6;color:#8C98A4;margin-bottom:16px;max-width:32ch}
-.aud-col ul{list-style:none;display:grid;gap:7px}
-.aud-col li{display:grid;grid-template-columns:auto 1fr;gap:9px;font-family:var(--f-mono);font-size:10.5px;color:#B9C3CC}
-.aud-col li:before{content:"·";color:#4E5A66}
+.leaks,.proof,.car-faq{scroll-margin-top:88px}
 
 /* Quote engine */
 .car-qgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(26px,4vw,72px);align-items:start;margin-top:clamp(30px,3.6vw,54px)}
@@ -458,22 +441,7 @@ body.page-car .hero{
 .run-bar h3{margin-bottom:8px}
 .run-bar p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
 
-/* Related */
 .car-rel{background:var(--white);border-top:1px solid var(--rule)}
-.idx-list{margin-top:clamp(24px,3vw,40px)}
-.idx-row{
-  display:grid;grid-template-columns:48px minmax(0,1.1fr) minmax(0,1.4fr) auto;
-  gap:24px;align-items:baseline;padding:22px 0;min-height:48px;border-bottom:1px solid var(--rule);color:inherit;
-  transition:padding-left .4s var(--e)
-}
-.idx-row:first-child{border-top:1px solid var(--rule)}
-.idx-row:hover{padding-left:8px}
-.idx-row .n{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--cta)}
-.idx-row h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.03em;font-size:clamp(1.15rem,2vw,1.45rem)}
-.idx-row p{color:var(--steel);font-size:14.5px;max-width:46ch}
-.idx-row i{font-style:normal;color:var(--cta);transition:transform .42s var(--e)}
-.idx-row:hover i{transform:translateX(6px)}
-.svc-note{margin-top:26px}
 .inline-link{border-bottom:1px solid var(--rule)}
 
 /* FAQ */
@@ -504,14 +472,29 @@ body.page-car .hero{
 .faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
 .faq-side .btn{margin-top:24px}
 
+.mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
+  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
+  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch
+}
+.mob-chips::-webkit-scrollbar{display:none}
+.mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+}
+.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1280px){
+  body.page-car .mob-chips{display:flex !important}
+  body.page-car .hero,body.page-car .sect,body.page-car .leaks,body.page-car .cta-band{scroll-margin-top:calc(88px + 48px)}
+}
+
 @media(max-width:1024px){
   .car-hero-grid,.car-story-grid,.car-qgrid,.car-cap,.faq-grid,.run-bar{grid-template-columns:1fr}
   .car-hero-copy .d1{max-width:none}
   .car-cap.alt .car-stage{order:0}
   .faq-grid > div:first-child{position:static}
-  .idx-row{grid-template-columns:40px minmax(0,1fr);gap:12px 20px}
-  .idx-row p{grid-column:2}
-  .idx-row i{display:none}
   .car-story-stick{position:sticky;top:72px;z-index:40;padding-bottom:12px;background:var(--paper-2)}
   .car-story-stick .o-log,.car-story-stick .pod,.car-story-stick .carrier,.car-story-stick .o-chrome{display:none}
   .lc-rail{position:sticky;top:72px;z-index:35;background:var(--paper-2);margin-top:18px}
@@ -520,9 +503,6 @@ body.page-car .hero{
   .int-links{grid-template-columns:1fr}
 }
 @media(max-width:900px){
-  .aud-grid{grid-template-columns:1fr}
-  .aud-col{border-right:0;border-bottom:1px solid var(--ink-line);padding-right:0}
-  .aud-col:last-child{border-bottom:0}
   .adj{grid-template-columns:1fr}
   .beat{padding-block:20px}
 }
@@ -536,8 +516,6 @@ body.page-car .hero{
   .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
   .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px;min-height:48px}
   .faq-a-in{padding-left:44px}
-  .idx-row{grid-template-columns:1fr}
-  .idx-row p{grid-column:1}
   .qf-row{grid-template-columns:1fr;gap:4px}
   .cta-row{flex-direction:column;align-items:stretch}
   .car-phone{width:min(100%,260px)}
@@ -745,11 +723,24 @@ body.page-car .hero{
   <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
   <a href="#problems"><span>Problems</span><i></i></a>
   <a href="#lifecycle"><span>Lifecycle</span><i></i></a>
-  <a href="#audiences"><span>Audiences</span><i></i></a>
+  <a href="#quoting"><span>Quoting</span><i></i></a>
+  <a href="#capabilities"><span>Capabilities</span><i></i></a>
   <a href="#integrations"><span>Integrations</span><i></i></a>
   <a href="#proof"><span>Proof</span><i></i></a>
   <a href="#delivery"><span>Delivery</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
+</nav>
+
+<nav class="mob-chips" id="mobChips" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#problems">Problems</a>
+  <a href="#lifecycle">Lifecycle</a>
+  <a href="#quoting">Quoting</a>
+  <a href="#capabilities">Capabilities</a>
+  <a href="#integrations">Integrations</a>
+  <a href="#proof">Proof</a>
+  <a href="#delivery">Delivery</a>
+  <a href="#faq">FAQ</a>
 </nav>
 
 <main id="main">
@@ -818,28 +809,24 @@ body.page-car .hero{
   </div>
 </header>
 
-<section class="sect" id="problems" aria-labelledby="probH">
+<section class="leaks on-ink" id="problems" aria-labelledby="probH">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Core challenges</p>
-        <h2 class="d2 s-title" id="probH" data-r>One order should not become five disconnected workflows</h2>
-        <p class="lede" data-r>Most auto-transport platforms solve for one side of the business. The customer books, the carrier picks up, ops handles exceptions, and nothing connects cleanly.</p>
-      </div>
-    </div>
+    <p class="eyebrow" data-r>Core challenges</p>
+    <h2 class="d2" id="probH" data-r>One order should not become five disconnected workflows</h2>
+    <p class="lede" data-r>Most auto-transport platforms solve for one side of the business. The customer books, the carrier picks up, ops handles exceptions, and nothing connects cleanly.</p>
 
     <div class="car-prob-grid" data-s>
       <article class="car-prob-card">
         <h3 class="d3">Quote and Ops Disagree</h3>
-        <p class="body-sm">The customer sees one price while operations must reconstruct the actual lane, vehicle, equipment, and timing. This gap between the quote and what ops can actually fulfill forces manual corrections, customer calls, and lower conversion.</p>
+        <p class="body-sm">The customer sees one price while ops must reconstruct lane, vehicle, and timing. That gap forces manual corrections, support calls, and lost conversions.</p>
       </article>
       <article class="car-prob-card">
         <h3 class="d3">Carrier Coordination Lives Elsewhere</h3>
-        <p class="body-sm">Assignment, verification, driver updates, and exceptions move into group chats, text threads, or spreadsheets outside the platform. The console becomes a reference only, not the source of truth.</p>
+        <p class="body-sm">Assignment, driver updates, and exceptions move into texts and spreadsheets outside the platform. The console becomes reference only, not the source of truth.</p>
       </article>
       <article class="car-prob-card">
         <h3 class="d3">Delivery Does Not Close the Workflow</h3>
-        <p class="body-sm">POD capture, customer confirmation, invoicing, and CRM updates require separate manual actions. What should end the order with one event still requires the ops team to touch three systems.</p>
+        <p class="body-sm">POD capture, invoicing, and CRM updates still require separate manual steps. One delivery event should close the order—not trigger three systems.</p>
       </article>
     </div>
   </div>
@@ -930,33 +917,6 @@ body.page-car .hero{
           <p class="body-sm">Signature, photos, and delivery confirmation from one event: delivery, billing, CRM follow-ups, and accounting integration fire together. Customers see status and ETA updates before they ask. One shareable tracking link handles customer communication.</p>
           <span class="aud">Driver app · Ops automation · Customer tracking</span>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="aud-sect on-ink" id="audiences" aria-labelledby="auH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Why this isn’t a dispatch board</p>
-    <h2 class="d2" id="auH" data-r>Three people use this product. Only one of them works for you.</h2>
-    <div class="aud-grid" id="audGrid">
-      <div class="aud-col">
-        <span class="who">Audience 01</span>
-        <h3>The customer</h3>
-        <p>Shipping one vehicle, probably for the first time, comparing you against four other quotes.</p>
-        <ul><li>Quote and pay flow</li><li>Pricing they can understand</li><li>Tracking and ETA</li><li>Proactive notifications</li></ul>
-      </div>
-      <div class="aud-col">
-        <span class="who">Audience 02</span>
-        <h3>The carrier &amp; driver</h3>
-        <p>Accepting loads on the road, capturing condition and documents in a driveway.</p>
-        <ul><li>Load acceptance</li><li>Pickup and delivery confirmation</li><li>Document capture</li><li>Mobile-first, low signal</li></ul>
-      </div>
-      <div class="aud-col">
-        <span class="who">Audience 03</span>
-        <h3>Your ops team</h3>
-        <p>Coordinating both sides, handling the exceptions neither of them sees.</p>
-        <ul><li>Carrier dispatch console</li><li>Exception handling</li><li>Quote review and overrides</li><li>Invoicing and CRM triggers</li></ul>
       </div>
     </div>
   </div>
@@ -1206,8 +1166,8 @@ body.page-car .hero{
 <section class="proof on-ink" id="proof" aria-labelledby="pfH">
   <div class="wrap">
     <p class="eyebrow" data-r>Proof · stated honestly</p>
-    <h2 class="d2" id="pfH" data-r>We haven’t published an auto transport case study yet</h2>
-    <p class="proof-note" data-r>The two projects below show our closest published work. ShiftRail demonstrates dispatch consoles, bulk assignment, and SLA visibility. LocalServe shows booking flows and two-sided operations. Together they cover most capabilities auto-transport platforms need. We're happy to walk through relevant unpublished work under NDA on a call.</p>
+    <h2 class="d2" id="pfH" data-r>Closest published work</h2>
+    <p class="proof-note" data-r>ShiftRail covers dispatch consoles and exception handling; LocalServe covers booking flows and two-sided ops. We can walk through relevant unpublished work under NDA on a fit call.</p>
     <div class="adj" data-s>
       <a href="/work/shiftrail-dispatch">
         <div>
@@ -1270,39 +1230,6 @@ body.page-car .hero{
   </div>
 </section>
 
-<section class="sect car-rel" aria-labelledby="rsH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Services</p>
-        <h2 class="d2 s-title" id="rsH" data-r>Related capabilities</h2>
-        <p class="lede" data-r>Most auto transport platforms combine these three first.</p>
-      </div>
-    </div>
-    <div class="idx-list">
-      <a class="idx-row" href="/services/web-development">
-        <span class="n">01</span>
-        <h3>Web design &amp; development</h3>
-        <p>Booking portals and quote-to-pay flows built for conversion.</p>
-        <i>→</i>
-      </a>
-      <a class="idx-row" href="/services/crm-development">
-        <span class="n">02</span>
-        <h3>CRM &amp; dispatch consoles</h3>
-        <p>Carrier assignment and ops boards matched to how the desk actually works.</p>
-        <i>→</i>
-      </a>
-      <a class="idx-row" href="/services/mobile-applications">
-        <span class="n">03</span>
-        <h3>Mobile applications</h3>
-        <p>Driver apps for load acceptance, condition capture, and POD on the road.</p>
-        <i>→</i>
-      </a>
-    </div>
-    <p class="body-sm svc-note">Moving freight rather than vehicles? See <a class="inline-link" href="/solutions/trucking-logistics">trucking &amp; logistics solutions</a>.</p>
-  </div>
-</section>
-
 <section class="sect car-faq" id="faq" aria-labelledby="faqH">
   <div class="wrap faq-grid">
     <div class="faq-side">
@@ -1315,57 +1242,41 @@ body.page-car .hero{
     <div class="faq-list" data-r>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa1" id="fqb1">
-          <span class="qn num">01</span><span class="qt">Do you build for auto-transport brokers and carriers?</span><span class="qi" aria-hidden="true"></span>
+          <span class="qn num">01</span><span class="qt">Can you improve our current platform without replacing it?</span><span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
-          <p>Yes. We design and build both customer-facing portals and internal ops tools: quote engines, dispatch consoles, tracking links, and driver workflows.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa2" id="fqb2">
-          <span class="qn num">02</span><span class="qt">Can you improve our current platform without replacing it?</span><span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
           <p>Often. We can build a custom booking portal that feeds your existing ops tools, add a tracking link to existing orders, or layer dispatch logic on top of your current TMS.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa3" id="fqb3">
-          <span class="qn num">03</span><span class="qt">Can this connect with our existing TMS or CRM?</span><span class="qi" aria-hidden="true"></span>
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa2" id="fqb2">
+          <span class="qn num">02</span><span class="qt">Can this connect with our existing TMS or CRM?</span><span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
+        <div class="faq-a" id="fa2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
           <p>Yes. We integrate via API with common logistics and CRM platforms, or build custom connectors where needed. One order ID flows across quote, dispatch, driver, and invoice.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa4" id="fqb4">
-          <span class="qn num">04</span><span class="qt">Do you build quote engines and customer tracking?</span><span class="qi" aria-hidden="true"></span>
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa3" id="fqb3">
+          <span class="qn num">03</span><span class="qt">Do you build quote engines and customer tracking?</span><span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
+        <div class="faq-a" id="fa3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
           <p>Yes. Quote logic is configurable without engineering tickets: pricing adjusts with lane, equipment, and delivery window. Tracking is a shareable link that updates without the customer calling.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa5" id="fqb5">
-          <span class="qn num">05</span><span class="qt">Can the driver workflow support low-signal conditions?</span><span class="qi" aria-hidden="true"></span>
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa4" id="fqb4">
+          <span class="qn num">04</span><span class="qt">Can the driver workflow support low-signal conditions?</span><span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
+        <div class="faq-a" id="fa4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
           <p>Yes. Status updates, condition photos, and POD queues locally when signal is weak, then sync automatically when connection returns. Large touch targets, no shrunk desktop UI.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa6" id="fqb6">
-          <span class="qn num">06</span><span class="qt">Do you have a published auto-transport case study?</span><span class="qi" aria-hidden="true"></span>
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa5" id="fqb5">
+          <span class="qn num">05</span><span class="qt">Who owns the final code and design files?</span><span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fa6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
-          <p>Not yet. The closest published work is ShiftRail for dispatch and LocalServe for booking flows. We can walk through relevant unpublished work under NDA on a fit call.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa7" id="fqb7">
-          <span class="qn num">07</span><span class="qt">Who owns the final code and design files?</span><span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa7" role="region" aria-labelledby="fqb7"><div><div class="faq-a-in">
+        <div class="faq-a" id="fa5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
           <p>You do. Full source code, design files, and documentation stay with you. No vendor lock-in, no ongoing licensing fees for what we build.</p>
         </div></div></div>
       </div>
@@ -1520,9 +1431,16 @@ const chIO=new IntersectionObserver(es=>{
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
 
-const audGrid = document.getElementById('audGrid');
-if(audGrid){
-  new IntersectionObserver((es,o)=>{ if(es[0].isIntersecting){ audGrid.classList.add('in'); o.disconnect(); } },{threshold:.3}).observe(audGrid);
+const mob=[...document.querySelectorAll('#mobChips a')];
+if(mob.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
 }
 
 const ord = document.getElementById('ord');

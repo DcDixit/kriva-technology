@@ -112,6 +112,23 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
+.mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
+  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
+  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch
+}
+.mob-chips::-webkit-scrollbar{display:none}
+.mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+}
+.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1280px){
+  body.page-mobile .mob-chips{display:flex !important}
+  body.page-mobile .hero,body.page-mobile .sect,body.page-mobile .app-selected{scroll-margin-top:calc(88px + 48px)}
+}
 </style>
 <link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
@@ -196,6 +213,8 @@ body.page-mobile .hero{
 
 /* ── Paths ── */
 .app-paths{background:var(--white)}
+.app-path-switch{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,64px);align-items:start;margin-top:clamp(28px,4vw,52px)}
+.app-path-switch > *{min-width:0}
 .app-path-tabs{display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0;list-style:none}
 .app-path-tabs li{flex:1}
 .app-path-tab{
@@ -205,12 +224,36 @@ body.page-mobile .hero{
   cursor:pointer;transition:all var(--t-fast) var(--e)
 }
 .app-path-tab.on{color:var(--cta);border-color:var(--cta);background:var(--white)}
-.app-path-panel{display:none;padding:clamp(24px,2.8vw,36px) clamp(20px,2vw,28px);background:var(--white)}
+.app-path-panel{display:none;padding:clamp(24px,2.8vw,36px) clamp(20px,2vw,28px);background:var(--white);border:1px solid var(--rule);border-top:0}
 .app-path-panel.on{display:block}
 .app-path-panel h3{margin-bottom:12px}
 .app-path-panel ul{list-style:none;display:grid;gap:9px;margin-top:14px}
 .app-path-panel li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.4}
 .app-path-panel li:before{content:"";width:6px;height:6px;margin-top:6px;background:var(--blue);flex:none}
+.app-path-visual{align-self:stretch;display:grid}
+.app-path-view{display:none;min-width:0}
+.app-path-view.on{display:block}
+.app-path-phone{
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  box-shadow:var(--shadow-product);overflow:hidden;border-radius:22px;max-width:260px;margin:0 auto
+}
+.app-path-phone .app-status{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:7px 12px;background:#12181E;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
+}
+.app-path-phone .app-screen{padding:16px 12px;display:grid;gap:12px}
+.app-path-phone .app-header{display:grid;gap:5px}
+.app-path-phone .app-header p{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;margin:0}
+.app-path-phone .app-header h2{font-family:var(--f-display);font-weight:700;font-size:1.1rem;letter-spacing:-.02em;color:#fff;margin:0;line-height:1.2}
+.app-path-phone .app-action{
+  padding:12px;background:rgba(79,70,229,.16);border:1px solid var(--cta);
+  font-family:var(--f-display);font-weight:600;color:var(--cta);text-align:center;font-size:13px;border-radius:8px;min-height:42px;display:grid;place-items:center
+}
+.app-path-phone .app-detail{display:grid;gap:4px;font-size:12px;line-height:1.4}
+.app-path-phone .app-detail p{margin:0;color:#8C98A4}
+.app-path-phone .app-detail span{display:block;color:#DDE2E7;font-weight:500}
+.app-path-visual .pu{box-shadow:var(--shadow-product);height:100%}
 
 /* ── Workflow ── */
 .app-workflow-grid{
@@ -308,7 +351,7 @@ body.page-mobile .hero{
 .faq-side .btn{margin-top:24px}
 
 @media(max-width:1024px){
-  .app-hero-grid,.app-work-grid,.faq-grid{grid-template-columns:1fr}
+  .app-hero-grid,.app-work-grid,.faq-grid,.app-path-switch{grid-template-columns:1fr}
   .app-hero-copy .d1{max-width:none}
   .faq-grid > div:first-child{position:static}
   .app-prob-grid{grid-template-columns:1fr}
@@ -516,9 +559,20 @@ body.page-mobile .hero{
   <a href="#paths"><span>Paths</span><i></i></a>
   <a href="#workflow"><span>Workflow</span><i></i></a>
   <a href="#backend"><span>Backend</span><i></i></a>
-  <a href="#work"><span>Selected</span><i></i></a>
+  <a href="#work"><span>ShiftRail</span><i></i></a>
   <a href="#delivery"><span>Delivery</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
+</nav>
+
+<nav class="mob-chips" id="mobChips" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#problems">Problems</a>
+  <a href="#paths">Paths</a>
+  <a href="#workflow">Workflow</a>
+  <a href="#backend">Backend</a>
+  <a href="#work">ShiftRail</a>
+  <a href="#delivery">Delivery</a>
+  <a href="#faq">FAQ</a>
 </nav>
 
 <main id="main">
@@ -614,40 +668,91 @@ body.page-mobile .hero{
     <p class="eyebrow" data-r>Three product paths</p>
     <h2 class="d2" id="pathsH" data-r>Different mobile users need different product behavior.</h2>
     <p class="lede" data-r>Driver apps run on-site with weak signals. Field apps work outdoors. SaaS companions extend desktop platforms with focused tasks.</p>
-    <ul class="app-path-tabs" role="tablist" aria-label="Mobile app types">
-      <li role="presentation"><button class="app-path-tab on" role="tab" data-path="driver" aria-selected="true" aria-controls="path-driver">Driver Apps</button></li>
-      <li role="presentation"><button class="app-path-tab" role="tab" data-path="field" aria-selected="false" aria-controls="path-field">Field Apps</button></li>
-      <li role="presentation"><button class="app-path-tab" role="tab" data-path="saas" aria-selected="false" aria-controls="path-saas">SaaS Companions</button></li>
-    </ul>
-    <div class="app-path-panel on" id="path-driver" role="tabpanel">
-      <h3>Driver Apps: Load acceptance and status on site</h3>
-      <ul>
-        <li>Load acceptance and details</li>
-        <li>Status progression (picked up, en route, delivered)</li>
-        <li>POD and photos</li>
-        <li>Weak-signal workflows and offline recovery</li>
-        <li>Large touch targets</li>
-      </ul>
-    </div>
-    <div class="app-path-panel" id="path-field" role="tabpanel">
-      <h3>Field Apps: Job details and capture in outdoor conditions</h3>
-      <ul>
-        <li>Job details and location</li>
-        <li>High-contrast outdoor readability</li>
-        <li>Interrupted workflows and task save points</li>
-        <li>Camera and document capture</li>
-        <li>Clear completion states</li>
-      </ul>
-    </div>
-    <div class="app-path-panel" id="path-saas" role="tabpanel">
-      <h3>SaaS Companions: Focused tasks away from desktop</h3>
-      <ul>
-        <li>Focused tasks not requiring full admin</li>
-        <li>Notifications and alerts</li>
-        <li>Approvals and quick updates</li>
-        <li>Account or record access</li>
-        <li>No copied admin interface</li>
-      </ul>
+    <div class="app-path-switch" data-s>
+      <div>
+        <ul class="app-path-tabs" role="tablist" aria-label="Mobile app types">
+          <li role="presentation"><button class="app-path-tab on" role="tab" data-path="driver" aria-selected="true" aria-controls="path-driver">Driver Apps</button></li>
+          <li role="presentation"><button class="app-path-tab" role="tab" data-path="field" aria-selected="false" aria-controls="path-field">Field Apps</button></li>
+          <li role="presentation"><button class="app-path-tab" role="tab" data-path="saas" aria-selected="false" aria-controls="path-saas">SaaS Companions</button></li>
+        </ul>
+        <div class="app-path-panel on" id="path-driver" role="tabpanel">
+          <h3>Driver Apps: Load acceptance and status on site</h3>
+          <ul>
+            <li>Load acceptance with lane, stop, and appointment window</li>
+            <li>One-tap status progression from pickup to delivery</li>
+            <li>POD photos and signatures with offline queue</li>
+            <li>Large touch targets for cab and dock use</li>
+          </ul>
+        </div>
+        <div class="app-path-panel" id="path-field" role="tabpanel">
+          <h3>Field Apps: Job details and capture in outdoor conditions</h3>
+          <ul>
+            <li>Job location, access notes, and completion checklist</li>
+            <li>High-contrast UI readable in direct sunlight</li>
+            <li>Camera and document capture with save points</li>
+            <li>Interrupted workflows that resume where the user left off</li>
+          </ul>
+        </div>
+        <div class="app-path-panel" id="path-saas" role="tabpanel">
+          <h3>SaaS Companions: Focused tasks away from desktop</h3>
+          <ul>
+            <li>Approvals and quick record updates—not full admin</li>
+            <li>Push alerts tied to one clear next action</li>
+            <li>Account lookup without desktop navigation depth</li>
+            <li>Companion scope defined around mobile-sized jobs</li>
+          </ul>
+        </div>
+      </div>
+      <div class="app-path-visual" aria-hidden="true">
+        <div class="app-path-view on" id="view-driver">
+          <div class="app-path-phone" role="img" aria-label="Driver app: accept load, view appointment, confirm assignment.">
+            <div class="app-status"><span>9:42</span><span>Live</span></div>
+            <div class="app-screen">
+              <div class="app-header">
+                <p>Load #4822</p>
+                <h2>Accept Load</h2>
+              </div>
+              <div class="app-action">Accept Load</div>
+              <div class="app-detail">
+                <p>Next stop</p>
+                <span>CLT · 14:22 appointment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-path-view" id="view-field">
+          <div class="pu" role="img" aria-label="Field app: job checklist with photo proof step in progress.">
+            <div class="pu-bar">
+              <div>
+                <p class="pu-title">Job #8841</p>
+                <p class="pu-meta">Field · Site visit</p>
+              </div>
+              <span class="pu-chip warn">Queued</span>
+            </div>
+            <ul class="pu-steps">
+              <li class="done"><i aria-hidden="true"></i>Arrive on site<em>Done</em></li>
+              <li class="now"><i aria-hidden="true"></i>Photo proof<em>Now</em></li>
+              <li class="later"><i aria-hidden="true"></i>Sign-off<em>Next</em></li>
+            </ul>
+          </div>
+        </div>
+        <div class="app-path-view" id="view-saas">
+          <div class="pu" role="img" aria-label="SaaS companion: approve vendor spend from mobile.">
+            <div class="pu-bar">
+              <div>
+                <p class="pu-title">Approve spend</p>
+                <p class="pu-meta">SaaS companion</p>
+              </div>
+            </div>
+            <p class="pu-q">$2,400 · Vendor invoice #4412</p>
+            <p class="pu-k">Needs approval · 2h left</p>
+            <div class="pu-acts">
+              <span class="pu-ok">Approve</span>
+              <span class="pu-no">Decline</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -733,42 +838,46 @@ body.page-mobile .hero{
 
 <section class="sect app-selected on-ink" id="work" aria-labelledby="workH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Selected work</p>
-    <h2 class="d2" id="workH" data-r>HealthTrack: Mobile care coordination</h2>
-    <p class="lede" data-r>Care workers visit homes using outdated paper workflows and phone calls. HealthTrack brings job details, status updates, and document capture to the phone in weak-signal environments.</p>
+    <p class="eyebrow" data-r>Verified work</p>
+    <h2 class="d2" id="workH" data-r>ShiftRail driver field app</h2>
+    <p class="lede" data-r>US trucking carrier. Drivers accepted loads, captured POD, and updated status from the yard and route—with an offline queue when signal dropped.</p>
     <div class="app-work-grid" data-s>
       <div class="app-work-col">
-        <h3>User problem</h3>
-        <p>Care workers documented visits on paper, then retyped notes in the system after returning to the office. No real-time visibility for coordinators.</p>
+        <h3>Field problem</h3>
+        <p>Paper BOLs and phone calls to dispatch. Status updates waited until end of shift—no real-time visibility for the desk.</p>
       </div>
       <div class="app-work-col">
         <h3>Mobile design decision</h3>
-        <p>Design for weak signal: offline queue, batch sync on network recovery, clear retry states. Large touch targets for gloved hands. Minimal data entry.</p>
+        <p>Offline-first queue with visible sync state. One primary action per screen. Large touch targets for yard and gloved use.</p>
       </div>
     </div>
     <div class="app-work-grid" data-s style="margin-top:0">
       <div class="app-work-col">
-        <h3>Main workflow delivered</h3>
+        <h3>Driver workflow shipped</h3>
         <ul>
-          <li>Visit detail and appointment window</li>
-          <li>Arrival and departure status</li>
-          <li>Notes and photo capture</li>
-          <li>Signature for care completion</li>
-          <li>Offline sync on connection</li>
+          <li>Accept or decline assigned load</li>
+          <li>Pickup and delivery status updates</li>
+          <li>Photo POD and signature capture</li>
+          <li>Offline queue with retry on reconnect</li>
+          <li>Dispatch sync to TMS via API</li>
         </ul>
       </div>
       <div class="app-work-col">
-        <h3>Field-specific consideration</h3>
+        <h3>Field constraints handled</h3>
         <ul>
+          <li>Weak signal in yards and rural lanes</li>
           <li>High contrast for outdoor reading</li>
-          <li>Glove-friendly 48px+ touch targets</li>
-          <li>Works over 3G in rural areas</li>
-          <li>Battery and data limits respected</li>
-          <li>Timeout handling for weak signal</li>
+          <li>Battery-conscious background sync</li>
+          <li>Clear failure and retry states</li>
+          <li>Minimal typing—tap-first inputs</li>
         </ul>
       </div>
     </div>
-    <p class="app-work-note"><span class="flag">Project notes</span> Client name may be changed. No signed-off metrics are available for this case. ShiftRail driver app is covered in the dispatch solution; we reference the backend integration here to show how field and driver apps connect operational systems.</p>
+    <div class="cta-row" style="margin-top:28px" data-r>
+      <a href="/work/shiftrail-dispatch" class="btn on-dark"><span>Read the ShiftRail case study</span><i>→</i></a>
+      <a href="/solutions/trucking-logistics" class="btn ghost on-dark"><span>Trucking solutions</span><i>→</i></a>
+    </div>
+    <p class="app-work-note"><span class="flag">Project notes</span> Client name changed. Metrics and dispatch console detail live in the case study and trucking solution pages.</p>
   </div>
 </section>
 
@@ -1031,6 +1140,18 @@ const chIO=new IntersectionObserver(es=>{
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
 
+const mob=[...document.querySelectorAll('#mobChips a')];
+if(mob.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
+
 document.querySelectorAll('.faq-q').forEach(btn=>{
   const item=btn.closest('.faq-item');
   btn.addEventListener('click',()=>{
@@ -1050,9 +1171,12 @@ document.querySelectorAll('.app-path-tab').forEach(btn=>{
     const path=btn.getAttribute('data-path');
     document.querySelectorAll('.app-path-tab').forEach(t=>{ t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
     document.querySelectorAll('.app-path-panel').forEach(p=>p.classList.remove('on'));
+    document.querySelectorAll('.app-path-view').forEach(v=>v.classList.remove('on'));
     btn.classList.add('on');
     btn.setAttribute('aria-selected','true');
     document.getElementById('path-'+path).classList.add('on');
+    const view=document.getElementById('view-'+path);
+    if(view) view.classList.add('on');
   });
 });
 
