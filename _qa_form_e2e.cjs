@@ -47,7 +47,7 @@ const snapshot = () => {
   const report = { pass: [], fail: [] };
   const ok = (name, cond, detail) => {
     (cond ? report.pass : report.fail).push(detail ? `${name}: ${detail}` : name);
-    console.log(`${cond ? 'PASS' : 'FAIL'}  ${name}${detail ? ' — ' + detail : ''}`);
+    console.log(`${cond ? 'PASS' : 'FAIL'}  ${name}${detail ? ': ' + detail : ''}`);
   };
 
   /* ── live Formspree probe (no browser) ── */
@@ -60,7 +60,7 @@ const snapshot = () => {
         name: 'KRIVA form verification',
         email: 'verify@krivatechnologies.com',
         details: 'Automated wiring check. Ignore.',
-        _subject: 'KRIVA form verification — discard',
+        _subject: 'KRIVA form verification: discard',
       }),
     });
     live.status = res.status;

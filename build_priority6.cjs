@@ -1,5 +1,5 @@
 /**
- * Phase 6 — 12 standalone service pages (Option 1).
+ * Phase 6: 12 standalone service pages (Option 1).
  * Run: node build_priority6.cjs
  */
 const fs = require("fs");
@@ -52,7 +52,7 @@ const PAGE_CSS = `
 .aside-card h2{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:400;margin-bottom:14px}
 .aside-card ul{list-style:none;display:grid;gap:10px}
 .aside-card li{font-size:14.5px;display:flex;gap:9px;align-items:flex-start}
-.aside-card li::before{content:"—";color:var(--rule);flex:none}
+.aside-card li::before{content:", ";color:var(--rule);flex:none}
 .contrast{margin-top:18px;padding:14px 16px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:14.5px;line-height:1.55;color:var(--ink);max-width:54ch}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
@@ -109,7 +109,7 @@ const PAGE_CSS = `
 .sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
 .sib a:hover{border-color:var(--blue);color:var(--blue)}
 
-/* Phase 11 — intentional brief board (no empty screenshot theater) */
+/* Phase 11: intentional brief board (no empty screenshot theater) */
 .brief{margin-top:clamp(28px,3.5vw,48px);border:1px solid var(--rule);background:var(--white);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
 .brief-main{padding:clamp(22px,2.8vw,36px);border-right:1px solid var(--rule)}
 .brief-side{padding:clamp(22px,2.8vw,36px);background:var(--paper-2);display:grid;align-content:space-between;gap:24px}
@@ -203,7 +203,7 @@ function buildService(s) {
     .slice(0, 3)
     .map(
       (a, i) =>
-        `<li><span class="n">0${i + 1}</span><span><b>${esc(a.title)}</b> — ${esc(a.body)}</span></li>`
+        `<li><span class="n">0${i + 1}</span><span><b>${esc(a.title)}</b>: ${esc(a.body)}</span></li>`
     )
     .join("");
   const approach = s.approach
@@ -397,7 +397,7 @@ ${PAGE_CSS}
       <div data-r>
         <p class="eyebrow">Outcomes</p>
         <h2 class="d2" id="outH" style="margin-top:14px;max-width:16ch">${esc(s.outcomesH2 || "What you gain")}</h2>
-        <p class="body-sm" style="margin-top:12px">Qualitative outcomes from the published service brief — not measured case metrics.</p>
+        <p class="body-sm" style="margin-top:12px">Qualitative outcomes from the published service brief, not measured case metrics.</p>
       </div>
       <ul data-s>
           ${benefitsHtml(s.benefits)}
@@ -469,13 +469,13 @@ function maskLines(h1) {
     "AI in the toolchain. Humans on the gate.": ["AI in the toolchain.", "Humans on the gate."],
     "Marketing sites your team can actually run.": ["Marketing sites your team", "can actually run."],
     "Validate the MVP before months of custom build.": ["Validate the MVP before", "months of custom build."],
-    "End-to-end product design — strategy to ship.": ["End-to-end product design —", "strategy to ship."],
+    "End-to-end product design: strategy to ship.": ["End-to-end product design:", "strategy to ship."],
     "Flows, systems, and UI teams can hand off.": ["Flows, systems, and UI", "teams can hand off."],
     "Brand systems that survive real product surfaces.": ["Brand systems that survive", "real product surfaces."],
     "Evidence before the expensive build.": ["Evidence before", "the expensive build."],
     "Align the room before you write code.": ["Align the room before", "you write code."],
     "Tokens and components that survive releases.": ["Tokens and components", "that survive releases."],
-    "Authenticated product UX — not a marketing site.": ["Authenticated product UX —", "not a marketing site."],
+    "Authenticated product UX, not a marketing site.": ["Authenticated product UX:", "not a marketing site."],
     "Marks that scale from favicon to fleet.": ["Marks that scale from", "favicon to fleet."],
   };
   if (special[h1]) return special[h1];

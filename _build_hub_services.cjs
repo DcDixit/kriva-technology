@@ -41,28 +41,28 @@ function cat(items) {
 }
 
 const graphicItems = [
-  { h: "Corporate Identity", p: "Name, mark, color, and type as one system — so cards, decks, and product UI do not look like three vendors." },
+  { h: "Corporate Identity", p: "Name, mark, color, and type as one system: so cards, decks, and product UI do not look like three vendors." },
   { h: "Logo Design", p: "A mark that holds from favicon to vehicle wrap. Clear space, lockups, and misuse rules included.", href: "/services/logo-design", link: "Logo Design" },
   { h: "Brand Identity &amp; Branding", p: "The wider language: photography, layout, tone. Not a PDF that marketing outgrows in a quarter.", href: "/services/branding", link: "Branding" },
-  { h: "Business Card Design", p: "Print-ready cards with the same type and color as the site — not a leftover from a clip-art pack." },
+  { h: "Business Card Design", p: "Print-ready cards with the same type and color as the site, not a leftover from a clip-art pack." },
   { h: "Letterheads and Stationery", p: "Letterhead, envelopes, and templates your team can use without opening Illustrator." },
   { h: "Brochures", p: "Sales and product brochures with a hierarchy a buyer can scan in thirty seconds." },
-  { h: "Flyers", p: "Single-surface pieces for events, offers, and yard ops — print and PDF, same art." },
+  { h: "Flyers", p: "Single-surface pieces for events, offers, and yard ops: print and PDF, same art." },
   { h: "Posters", p: "Large-format that still reads from the aisle. Type and contrast first, decoration second." },
   { h: "Social Media Creatives", p: "Templates for the channels you actually post on. Sizes, safe areas, and a reusable grid." },
   { h: "Marketing &amp; Promotional Materials", p: "Campaign kits: ads, one-pagers, booth graphics. One art direction, many crops." },
   { h: "Presentation Design", p: "Pitch and ops decks that follow the brand, not a default theme with a logo pasted on slide one." },
-  { h: "Packaging Design", p: "D2C and kit packaging that matches the storefront — dielines, print specs, and photography notes." },
+  { h: "Packaging Design", p: "D2C and kit packaging that matches the storefront: dielines, print specs, and photography notes." },
   { h: "Campaign systems", p: "When the brief is “make it all look like one company”: ads, landing, email, and print on the same rules." },
 ];
 
 const seoItems = [
   { h: "Search Engine Optimization", p: "Technical hygiene, intent-matched pages, and measurement. We do not sell guaranteed rankings." },
   { h: "Local SEO", p: "Google Business Profile, NAP consistency, and location pages that match how people search nearby." },
-  { h: "On-Page SEO", p: "Titles, headings, internal links, and copy that answer the query — not keyword stuffing." },
+  { h: "On-Page SEO", p: "Titles, headings, internal links, and copy that answer the query, not keyword stuffing." },
   { h: "Off-Page SEO", p: "Citations and links earned from real mentions. No PBNs, no purchased link packages." },
   { h: "Technical SEO", p: "Crawl, index, Core Web Vitals, sitemap, canonicals, and structured data on the site you already have.", href: "/services/web-development", link: "Web development" },
-  { h: "Google Ads / PPC", p: "Search and Performance Max with conversion tracking you can open in the account — not a screenshot PDF." },
+  { h: "Google Ads / PPC", p: "Search and Performance Max with conversion tracking you can open in the account, not a screenshot PDF." },
   { h: "Meta / Facebook Advertising", p: "Audience, creative, and pixel hygiene. Creative that matches the landing page, not a random stock set." },
   { h: "Instagram Advertising", p: "Feed, stories, and reels ads with the same brand system as your organic posts." },
   { h: "Social Media Marketing", p: "A posting system and creative kit. We will not pretend daily posting is a strategy by itself." },
@@ -165,7 +165,7 @@ const seoFaqs = [
 page({
   file: "kriva-service-graphic-design.html",
   title: "Graphic Design Services · Identity to campaign · KRIVA",
-  meta: "Corporate identity, logo, print, social, packaging, and marketing systems — one studio, not a trend pack dropped onto last year’s files.",
+  meta: "Corporate identity, logo, print, social, packaging, and marketing systems: one studio, not a trend pack dropped onto last year’s files.",
   ogTitle: "Graphic Design Services · Identity to campaign",
   canonical: "https://krivatechnologies.com/services/graphic-design",
   crumb: "Graphic Design",
@@ -247,7 +247,7 @@ page({
         <span class="offer-no">03 · Production</span>
         <div>
           <h3 class="d3">No file anyone else can use</h3>
-          <p class="body-sm" style="margin-top:8px">No templates, no print specs, no social grid — so every campaign starts from a blank artboard.</p>
+          <p class="body-sm" style="margin-top:8px">No templates, no print specs, no social grid: so every campaign starts from a blank artboard.</p>
         </div>
       </article>
     </div>
@@ -258,7 +258,7 @@ page({
   <div class="wrap">
     <p class="eyebrow" data-r>Method</p>
     <h2 class="d2" id="apH" data-r style="margin-top:16px">Rules first. Then the kit.</h2>
-    <p class="lede" data-r style="margin-top:16px">We lock type, color, and layout — then produce the surfaces you actually ship this quarter.</p>
+    <p class="lede" data-r style="margin-top:16px">We lock type, color, and layout, then produce the surfaces you actually ship this quarter.</p>
     <ol class="run-bar" data-s style="margin-top:clamp(32px,4vw,48px);list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,32px)">
       <li>
         <span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">01</span>
@@ -268,7 +268,7 @@ page({
       <li>
         <span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">02</span>
         <h3 class="d3">System</h3>
-        <p class="body-sm" style="margin-top:8px">Type, color, grid, and lockups — or we follow an existing branding engagement.</p>
+        <p class="body-sm" style="margin-top:8px">Type, color, grid, and lockups, or we follow an existing branding engagement.</p>
       </li>
       <li>
         <span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">03</span>
@@ -295,7 +295,7 @@ page({
     <div>
       <p class="eyebrow">Selected work</p>
       <h3 class="d2" id="pfH">BrandLift</h3>
-      <p>D2C rebrand: storefront, identity, and marketing surfaces as one system — the same discipline we apply to print and social kits.</p>
+      <p>D2C rebrand: storefront, identity, and marketing surfaces as one system: the same discipline we apply to print and social kits.</p>
       <a href="/work/brandlift-ecommerce" class="btn on-dark" style="margin-top:22px"><span>Read the case</span><i>→</i></a>
     </div>
   </article>
@@ -339,7 +339,7 @@ page({
 page({
   file: "kriva-service-seo-digital-marketing.html",
   title: "SEO &amp; Digital Marketing · Search, ads, reporting · KRIVA",
-  meta: "SEO, local and technical search, Google and Meta ads, social, and performance marketing — with tracking you can open in the account, not a ranking promise.",
+  meta: "SEO, local and technical search, Google and Meta ads, social, and performance marketing: with tracking you can open in the account, not a ranking promise.",
   ogTitle: "SEO &amp; Digital Marketing · Search, ads, reporting",
   canonical: "https://krivatechnologies.com/services/seo-digital-marketing",
   crumb: "SEO & Digital Marketing",
@@ -455,12 +455,12 @@ page({
   <div class="wrap">
     <p class="eyebrow" data-r>Proof · stated honestly</p>
     <h2 class="d2" id="msH" data-r style="margin-top:16px">What you should see in the account.</h2>
-    <p class="lede" data-r style="margin-top:16px">Not a purchased rank screenshot. Access to Search Console, ads, and analytics — and a written list of what moved.</p>
+    <p class="lede" data-r style="margin-top:16px">Not a purchased rank screenshot. Access to Search Console, ads, and analytics, and a written list of what moved.</p>
     <div class="deliv" style="margin-top:clamp(28px,3.5vw,48px)">
-      <div><b>01 · Search</b><p>Index coverage, canonicals, and queries you actually care about — not a vanity keyword list.</p></div>
+      <div><b>01 · Search</b><p>Index coverage, canonicals, and queries you actually care about, not a vanity keyword list.</p></div>
       <div><b>02 · Ads</b><p>Campaigns you can log into. Conversion actions that match the CRM or form, not a duplicate thank-you fire.</p></div>
       <div><b>03 · Site</b><p>When the template is the bottleneck, we pair with <a href="/services/web-development" style="border-bottom:1px solid var(--rule)">Web Design &amp; Development</a>.</p></div>
-      <div><b>04 · Creative</b><p>Landing and ads that share one system — often with <a href="/services/graphic-design" style="border-bottom:1px solid var(--rule)">Graphic Design</a>.</p></div>
+      <div><b>04 · Creative</b><p>Landing and ads that share one system: often with <a href="/services/graphic-design" style="border-bottom:1px solid var(--rule)">Graphic Design</a>.</p></div>
     </div>
   </div>
 </section>

@@ -1,5 +1,5 @@
 /**
- * Phase 5 — Remaining 7 case studies (FleetFlow UX pattern).
+ * Phase 5: Remaining 7 case studies (FleetFlow UX pattern).
  * Run: node build_priority5.cjs
  */
 const fs = require("fs");
@@ -100,8 +100,8 @@ function nextCase(slug) {
   if (nextSlug === "fleetflow-dispatch") {
     return {
       href: "/work/fleetflow-dispatch",
-      title: "FleetFlow — US trucking dispatch CRM",
-      titleHtml: "FleetFlow —<br>US trucking dispatch CRM",
+      title: "FleetFlow: US trucking dispatch CRM",
+      titleHtml: "FleetFlow:<br>US trucking dispatch CRM",
       summary:
         "Modernized a US trucking dispatch CRM with bulk actions, SLA intelligence, and supervisor controls for 400+ daily routes.",
       thumbSlot: "Slot · 1280×800 · FleetFlow",
@@ -294,7 +294,7 @@ ${CASE_CSS}
   <figcaption class="shot-cap"><span class="flag">Illustrative</span> Interface reference · approved screenshots replace this frame</figcaption>
 </div>
 
-<!-- Project context — not a fake metrics bar -->
+<!-- Project context, not a fake metrics bar -->
 <section class="mrail on-ink" aria-labelledby="mH" style="margin-top:clamp(44px,5vw,80px)">
   <div class="wrap">
     <h2 class="sr" id="mH">Project context</h2>
@@ -498,10 +498,10 @@ function updateWorkIndex() {
   const file = path.join(ROOT, "kriva-work-index.html");
   let html = fs.readFileSync(file, "utf8");
   const linkFixes = [
-    ['href="/work">HealthTrack — patient mobile app', 'href="/work/healthtrack-mobile">HealthTrack — patient mobile app'],
-    ['href="/work">CRMPulse — sales dashboard', 'href="/work/crm-pulse-dashboard">CRMPulse — sales dashboard'],
-    ['href="/work">SupportAI — ticket automation', 'href="/work/ai-support-automation">SupportAI — ticket automation'],
-    ['href="/work">LocalServe — marketplace MVP', 'href="/work/marketplace-mvp">LocalServe — marketplace MVP'],
+    ['href="/work">HealthTrack: patient mobile app', 'href="/work/healthtrack-mobile">HealthTrack: patient mobile app'],
+    ['href="/work">CRMPulse: sales dashboard', 'href="/work/crm-pulse-dashboard">CRMPulse: sales dashboard'],
+    ['href="/work">SupportAI: ticket automation', 'href="/work/ai-support-automation">SupportAI: ticket automation'],
+    ['href="/work">LocalServe: marketplace MVP', 'href="/work/marketplace-mvp">LocalServe: marketplace MVP'],
   ];
   for (const [a, b] of linkFixes) {
     if (html.includes(a)) html = html.replace(a, b);

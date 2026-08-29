@@ -1,4 +1,4 @@
-/* KRIVA canonical chrome, mega menu, mobile sheet, scroll nav, WhatsApp */
+/* KRIVA canonical chrome, mega menu, mobile sheet, scroll nav */
 (function () {
   'use strict';
   if (window.__KRIVA_CHROME__) return;
@@ -12,7 +12,6 @@
   const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const desktop = () => matchMedia('(min-width: 1100px)').matches;
 
-  /* ── sticky header: shrink on scroll, never hide ── */
   let ticking = false;
   const onScroll = () => {
     if (ticking) return;
@@ -26,11 +25,12 @@
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ── desktop mega menus ── */
   const items = [...nav.querySelectorAll('.nav-item[data-mm]')];
   let openItem = null;
   let openTimer = null;
   let closeTimer = null;
+
+  const linksOf = (li) => [...li.querySelectorAll('.mm a[href]')];
 
   const clearTimers = () => {
     if (openTimer) clearTimeout(openTimer);
@@ -43,7 +43,9 @@
     items.forEach((li) => {
       li.classList.remove('open');
       const btn = li.querySelector('.nav-trigger');
+      const panel = li.querySelector('.mm');
       if (btn) btn.setAttribute('aria-expanded', 'false');
+      if (panel) panel.setAttribute('hidden', '');
     });
     openItem = null;
   };
@@ -54,7 +56,12 @@
       const isTarget = other === li;
       other.classList.toggle('open', isTarget);
       const btn = other.querySelector('.nav-trigger');
+      const panel = other.querySelector('.mm');
       if (btn) btn.setAttribute('aria-expanded', String(isTarget));
+      if (panel) {
+        if (isTarget) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+      }
     });
     openItem = li;
   };
@@ -63,6 +70,7 @@
     const btn = li.querySelector('.nav-trigger');
     const panel = li.querySelector('.mm');
     if (!btn || !panel) return;
+    if (!li.classList.contains('open')) panel.setAttribute('hidden', '');
 
     li.addEventListener('mouseenter', () => {
       if (!desktop()) return;
@@ -72,19 +80,58 @@
     li.addEventListener('mouseleave', () => {
       if (!desktop()) return;
       clearTimers();
-      closeTimer = setTimeout(closeAll, 120);
+      closeTimer = setTimeout(closeAll, 140);
     });
 
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      if (openItem === li) closeAll();
-      else openOne(li);
+      if (openItem === li) {
+        closeAll();
+        btn.focus();
+      } else {
+        openOne(li);
+      }
     });
 
     btn.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
+        e.preventDefault();
         closeAll();
         btn.focus();
+        return;
+      }
+      if (e.key === 'ArrowDown' || e.key === 'Enter') {
+        e.preventDefault();
+        openOne(li);
+        const first = linksOf(li)[0];
+        if (first) first.focus();
+      }
+    });
+
+    panel.addEventListener('keydown', (e) => {
+      const links = linksOf(li);
+      const i = links.indexOf(document.activeElement);
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeAll();
+        btn.focus();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (links.length) links[(Math.max(i, 0) + 1) % links.length].focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (i <= 0) btn.focus();
+        else links[i - 1].focus();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        links[0]?.focus();
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        links[links.length - 1]?.focus();
+      } else if (e.key === 'Tab' && !e.shiftKey && i === links.length - 1) {
+        closeAll();
+      } else if (e.key === 'Tab' && e.shiftKey && i <= 0) {
+        closeAll();
       }
     });
   });
@@ -93,7 +140,18 @@
     if (openItem && !openItem.contains(e.target)) closeAll();
   });
 
-  /* ── mobile sheet ── */
+  nav.addEventListener('focusout', (e) => {
+    if (!openItem) return;
+    const next = e.relatedTarget;
+    if (next && openItem.contains(next)) return;
+    requestAnimationFrame(() => {
+      if (!openItem) return;
+      if (openItem.contains(document.activeElement)) return;
+      if (openItem.matches(':hover')) return;
+      closeAll();
+    });
+  });
+
   const setSheet = (open) => {
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -133,6 +191,13 @@
       item.classList.toggle('open', willOpen);
       btn.setAttribute('aria-expanded', String(willOpen));
     });
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setSheet(false);
+        burger.focus();
+      }
+    });
   });
 
   sheet.addEventListener('click', (e) => {
@@ -141,13 +206,14 @@
   });
 
   addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      if (nav.classList.contains('open')) {
-        setSheet(false);
-        burger.focus();
-      } else if (openItem) {
-        closeAll();
-      }
+    if (e.key !== 'Escape') return;
+    if (nav.classList.contains('open')) {
+      setSheet(false);
+      burger.focus();
+    } else if (openItem) {
+      const btn = openItem.querySelector('.nav-trigger');
+      closeAll();
+      if (btn) btn.focus();
     }
   });
 
@@ -156,7 +222,6 @@
     if (!desktop()) closeAll();
   });
 
-  /* How we work · five-phase strip in Operations chrome */
   const processSteps = [
     ['01', 'Discovery', 'Clear the problem'],
     ['02', 'Strategy', 'Defined direction'],

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Phase 12 — final QA: assets, SEO, a11y, consistency signals */
+/** Phase 12: final QA: assets, SEO, a11y, consistency signals */
 const fs = require("fs");
 const path = require("path");
 const http = require("http");

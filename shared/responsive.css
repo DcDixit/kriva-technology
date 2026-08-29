@@ -1,47 +1,57 @@
 /* KRIVA · last-loaded type + responsive recomposition
-   Loaded after page CSS. One family (Manrope). Tablet is not mobile. */
+   Loaded after page CSS. One family (Bricolage Grotesque). Tablet is not mobile. */
 
 img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .wrap,.hero-stage,.hero-grid,.ph-grid,.lp-split,.cs-asym,main,article,section{min-width:0}
 h1,h2,h3,.d1,.d2,.d3,.lede{overflow-wrap:break-word}
 .d1,.d2,h1,h2{text-wrap:balance}
 
-/* Manrope reads wider than Archivo condensed. Recast the scale. */
+/* Bricolage is condensed with a large x-height. Open leading; 700 for display. */
 .d1,h1.d1{
   font-family:var(--f-display);
-  font-weight:800;
-  letter-spacing:-.028em;
-  line-height:.94;
-  font-size:clamp(1.85rem,1.05rem + 3.5vw,3.9rem)
+  font-weight:700;
+  letter-spacing:-.022em;
+  line-height:1.04;
+  font-size:clamp(1.95rem,1.08rem + 3.4vw,3.85rem)
 }
 .d2,h2.d2{
   font-family:var(--f-display);
   font-weight:700;
-  letter-spacing:-.022em;
-  line-height:1.12;
-  font-size:clamp(1.55rem,1.05rem + 2.2vw,3.15rem)
+  letter-spacing:-.018em;
+  line-height:1.16;
+  font-size:clamp(1.55rem,1.05rem + 2vw,2.95rem)
 }
 .d3{
-  font-weight:700;
-  letter-spacing:-.018em;
-  line-height:1.22;
-  font-size:clamp(1.15rem,.95rem + .7vw,1.55rem)
+  font-weight:600;
+  letter-spacing:-.01em;
+  line-height:1.28;
+  font-size:clamp(1.12rem,.95rem + .6vw,1.45rem)
 }
 .lede{
   font-weight:400;
-  line-height:1.62;
-  letter-spacing:-.008em;
-  max-width:min(42ch,100%)
+  line-height:1.7;
+  letter-spacing:0;
+  max-width:min(44ch,100%)
 }
-.body,.body-sm{line-height:1.65;max-width:min(58ch,100%)}
+.body,.body-sm{line-height:1.7;font-weight:400;max-width:min(58ch,100%)}
 .cta-band h2{
-  font-weight:800;
-  letter-spacing:-.03em;
-  line-height:.96;
-  font-size:clamp(2rem,1.1rem + 4.4vw,4.4rem);
-  max-width:14ch
+  font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1.06;
+  font-size:clamp(1.85rem,1.05rem + 3.8vw,3.85rem);
+  max-width:16ch
 }
+body{font-family:var(--f-body);line-height:1.68}
 .nav-cta .btn.sm{font-weight:600}
+.eyebrow{letter-spacing:.12em;font-weight:500}
+.mono,.crumbs,.tag{letter-spacing:.08em;font-weight:500}
+.nav-link,.nav-trigger{letter-spacing:.06em;font-weight:500}
+.featwork-stat b,.featwork-proof-stat b,.wk-lead .stat,.sol-feat .stat,.work-feat .stat,
+.proof-metrics b,.mrail .m b{
+  font-weight:700;
+  letter-spacing:-.03em;
+  line-height:.95
+}
 
 /* Phone + tablet: labels and chrome at readable size; header CTA is tappable */
 @media(max-width:1099px){
@@ -167,10 +177,10 @@ body.case .cs-proof b{
 }
 
 /* Hero H1s: smaller than the original oversized clamp, but not undersized. */
-.hero .d1,
-.hero h1,
+body:not(.home) .hero .d1,
+body:not(.home) .hero h1,
 .lp-hero .d1,
-.hero-copy .d1,
+body:not(.home) .hero-copy .d1,
 .ph .d1,
 .ph h1,
 .wh .d1,
@@ -204,5 +214,63 @@ select,textarea{
 @media(prefers-reduced-motion:reduce){
   .d1,.d2,.mask span i,[data-r],[data-s]>*{
     transition:none !important;transform:none !important;opacity:1 !important
+  }
+}
+
+/* Homepage type lock: last word after the global recast */
+body.home{
+  --maxw:1240px;
+  --gutter:clamp(20px,4.2vw,64px);
+  --sect-space:clamp(52px,8.5vw,112px);
+  --space-8:clamp(52px,8vw,112px)
+}
+body.home .hero .d1,
+body.home .hero-copy .d1,
+body.home .hero h1{
+  font-size:clamp(42px,2.2rem + 2.6vw,72px) !important;
+  line-height:1.05;
+  letter-spacing:-.028em;
+  font-weight:700;
+  max-width:16ch
+}
+body.home .d2,
+body.home h2.d2{
+  font-size:clamp(2rem,1.1rem + 2.05vw,3.25rem);
+  line-height:1.12;
+  letter-spacing:-.022em;
+  font-weight:700
+}
+body.home .cta-band h2{
+  font-size:clamp(2.1rem,1.15rem + 2.6vw,3.4rem);
+  max-width:16ch;
+  line-height:1.1
+}
+body.home .btn,
+body.home .nav-cta .btn.sm,
+body.home .nav.scrolled .nav-cta .btn.sm{
+  font-size:15px !important;
+  letter-spacing:.01em;
+  text-transform:none;
+  font-weight:600
+}
+@media(max-width:1099px){
+  body.home .hero-stage{grid-template-columns:1fr !important;gap:28px}
+  body.home .nav-cta .btn.sm,
+  body.home .nav.scrolled .nav-cta .btn.sm{
+    height:44px !important;
+    min-height:44px !important;
+    font-size:13px !important;
+    padding:0 12px
+  }
+}
+@media(max-width:400px){
+  body.home .nav-cta .btn.sm{display:none !important}
+}
+@media(max-width:479px){
+  body.home .hero .d1,
+  body.home .hero-copy .d1,
+  body.home .hero h1{
+    font-size:clamp(42px,11.4vw,48px) !important;
+    max-width:none
   }
 }

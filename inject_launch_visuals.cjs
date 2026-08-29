@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Inject generated SVG visuals into case-study data-visual hosts.
- * Targets data-visual="hero|story-0|story-1|story-2|before|after" only —
+ * Targets data-visual="hero|story-0|story-1|story-2|before|after" only:
  * avoids corrupting unrelated .slot elements.
  */
 const fs = require("fs");

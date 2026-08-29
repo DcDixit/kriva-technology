@@ -1,5 +1,5 @@
 /**
- * INTERNAL attribution registry — launch final.
+ * INTERNAL attribution registry: launch final.
  * All entries omitted until client confirms name/role/company in writing.
  */
 
@@ -11,7 +11,7 @@ const attributions = [
     status: "omit",
     confirmed: { publishQuote: false },
     applyTargets: [
-      { file: "kriva-redesign.html", section: "Proof — lead quote" },
+      { file: "kriva-redesign.html", section: "Proof: lead quote" },
       { file: "kriva-case-fleetflow.html", section: "Case quote block" },
     ],
   },
@@ -22,7 +22,7 @@ const attributions = [
     status: "omit",
     confirmed: { publishQuote: false },
     applyTargets: [
-      { file: "kriva-redesign.html", section: "Proof — second quote" },
+      { file: "kriva-redesign.html", section: "Proof: second quote" },
       { file: "kriva-case-payroll-pro.html", section: "Case quote block" },
       { file: "content/cases-data.cjs", section: "PayrollPro testimonial" },
     ],
@@ -43,7 +43,7 @@ const attributions = [
     priority: "P0",
     status: "omit",
     confirmed: { publishQuote: false },
-    applyTargets: [{ file: "kriva-redesign.html", section: "Proof — third quote" }],
+    applyTargets: [{ file: "kriva-redesign.html", section: "Proof: third quote" }],
   },
 ];
 

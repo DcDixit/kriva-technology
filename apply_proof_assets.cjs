@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Drop-in approved proof assets — no fake generation.
+ * Drop-in approved proof assets: no fake generation.
  *
  * Usage:
  *   1. Drop approved JPG/PNG files at the paths below

@@ -1,4 +1,4 @@
-/** POST /api/inquiry — emails the studio without putting an address in page HTML. */
+/** POST /api/inquiry: emails the studio without putting an address in page HTML. */
 const TO = process.env.INQUIRY_TO || "dixit27592@gmail.com";
 
 function sendJson(res, status, body) {
@@ -45,7 +45,7 @@ function buildMessage(data) {
     "</table>";
   const typeLabel = inquiryType === "fit_call" ? "Fit call request" : "Project brief";
   const subject =
-    "KRIVA " + typeLabel + " — " + (field(data, "company") || field(data, "name") || "Website");
+    "KRIVA " + typeLabel + ": " + (field(data, "company") || field(data, "name") || "Website");
   return { text, html, subject };
 }
 

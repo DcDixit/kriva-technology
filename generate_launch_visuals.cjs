@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Premium on-brand product visuals — unique per asset via seeded variation.
+ * Premium on-brand product visuals: unique per asset via seeded variation.
  * Honest interface references, not client screenshots. No generic watermarks.
  */
 const fs = require("fs");
@@ -70,7 +70,7 @@ function tableBlock(w, y, seed, accent, cols) {
   const rows = pick(seed, [
     [["#4821", "DAL → ATL", "18m", "IN TRANSIT"], ["#4822", "PHX → DEN", "42m", "ASSIGNED"], ["#4823", "CHI → DET", "6m", "AT RISK"]],
     [["#7710", "SEA → PDX", "22m", "DISPATCHED"], ["#7711", "MIA → ATL", "9m", "LOADING"], ["#7712", "DEN → SLC", "31m", "PENDING"]],
-    [["INV-2291", "QB match", "—", "MATCHED"], ["INV-2292", "Xero", "—", "MATCHED"], ["INV-2293", "Delta", "—", "REVIEW"]],
+    [["INV-2291", "QB match", ", ", "MATCHED"], ["INV-2292", "Xero", ", ", "MATCHED"], ["INV-2293", "Delta", ", ", "REVIEW"]],
     [["TK-8812", "Billing", "2m", "REVIEW"], ["TK-8813", "API", "8m", "AUTO"], ["TK-8814", "Setup", "14m", "OPEN"]],
   ], 1);
   let out = `<rect x="18" y="${y}" width="${w - 36}" height="${rows.length * 40 + 34}" fill="${C.ink2}" stroke="${C.line}"/>
@@ -237,7 +237,7 @@ ${Array.from({ length: 9 }, (_, i) => `<rect x="36" y="${52 + i * 34}" width="${
   },
 };
 
-// Asset list — same paths as before
+// Asset list: same paths as before
 const ASSETS = require("./content/visual-assets-manifest.cjs");
 
 function localPath(publicPath) {

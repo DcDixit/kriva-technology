@@ -222,7 +222,7 @@ const solutionsBody = `
           <h3 class="sol-title">Trucking &amp; Logistics Solutions</h3>
         </div>
         <div class="sol-sum-wrap">
-          <p class="sol-sum">Dispatch boards, fleet dashboards, driver apps, and load management tools — built for how trucking ops teams actually work.</p>
+          <p class="sol-sum">Dispatch boards, fleet dashboards, driver apps, and load management tools: built for how trucking ops teams actually work.</p>
           <div class="caps"><span class="cap">Custom TMS &amp; dispatch CRM</span><span class="cap">Fleet dashboards</span><span class="cap">Driver mobile apps</span></div>
         </div>
         <span class="sol-go">Explore <i>→</i></span>
@@ -258,7 +258,7 @@ const solutionsBody = `
           <h3 class="sol-title">Car Transportation</h3>
         </div>
         <div class="sol-sum-wrap">
-          <p class="sol-sum">Quote calculators, shipment tracking, and operations tools for auto transport companies — designed around the workflow dispatch and sales already follow.</p>
+          <p class="sol-sum">Quote calculators, shipment tracking, and operations tools for auto transport companies: designed around the workflow dispatch and sales already follow.</p>
           <div class="caps"><span class="cap">Booking portals</span><span class="cap">Carrier dispatch</span><span class="cap">Customer tracking</span></div>
         </div>
         <span class="sol-go">Explore <i>→</i></span>
@@ -276,7 +276,7 @@ const solutionsBody = `
       <a href="/work/payroll-pro-saas"><span class="k">SaaS</span><b>PayrollPro</b><p>B2B SaaS onboarding and permission clarity after SSO rollout.</p></a>
       <a href="/work/finance-sync-hub"><span class="k">Integrations</span><b>FinanceSync</b><p>QuickBooks &amp; Xero reconciliation workflows for finance ops.</p></a>
     </div>
-    <p class="body-sm" data-r style="margin-top:18px"><span class="flag tbd">TBD</span> Car transportation case study not yet published — link stays on the solution page until one ships.</p>
+    <p class="body-sm" data-r style="margin-top:18px"><span class="flag tbd">TBD</span> Car transportation case study not yet published: link stays on the solution page until one ships.</p>
     <a href="/work" class="p-link" data-r>View all work <i>→</i></a>
   </div>
 </section>
@@ -288,7 +288,7 @@ const solutionsBody = `
       <h2 class="d2" id="helpH" data-r style="margin-top:16px">Tell us about your product and market.</h2>
     </div>
     <div data-r>
-      <p class="body">We'll suggest a starting point — SaaS MVP, dispatch CRM, accounting integration, or car transport software — and what a sensible first engagement looks like.</p>
+      <p class="body">We'll suggest a starting point: SaaS MVP, dispatch CRM, accounting integration, or car transport software, and what a sensible first engagement looks like.</p>
       <div class="hero-actions">
         <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
         <a href="/services" class="btn ghost"><span>Browse services</span><i>→</i></a>
@@ -407,8 +407,8 @@ const aboutBody = `
     </div>
     <div class="letter" data-r>
       <p>We design and build dispatch tools, fleet software, SaaS dashboards, and accounting integrations that operators and product teams actually want to use.</p>
-      <p>The team has spent years designing and shipping software — SaaS dashboards, trucking dispatch tools, QuickBooks integrations, mobile apps. Most of that work happened inside agencies and product companies where the same problems repeated: design teams handing off specs that engineering couldn't build, clients managing three vendors for one project, and products that looked polished in Figma but fell apart in production.</p>
-      <p>KRIVA started in 2025 to be a studio where design and engineering work together from day one — where the person who designs the interface understands the API it connects to, and where clients talk to the people doing the work, not a project manager relaying messages.</p>
+      <p>The team has spent years designing and shipping software: SaaS dashboards, trucking dispatch tools, QuickBooks integrations, mobile apps. Most of that work happened inside agencies and product companies where the same problems repeated: design teams handing off specs that engineering couldn't build, clients managing three vendors for one project, and products that looked polished in Figma but fell apart in production.</p>
+      <p>KRIVA started in 2025 to be a studio where design and engineering work together from day one: where the person who designs the interface understands the API it connects to, and where clients talk to the people doing the work, not a project manager relaying messages.</p>
       <p>We're based in Ahmedabad, India. Our clients are in the US, UK, and across the world. What they have in common: they need software built by people who've already solved problems like theirs.</p>
       <p class="sign">KRIVA Technologies<small>Product studio · Ahmedabad</small></p>
       <p class="body-sm" style="margin-top:20px"><span class="flag tbd">Note</span> “Nine years” refers to team experience, not company age. KRIVA was founded in 2025.</p>
@@ -448,7 +448,7 @@ const aboutBody = `
         <div class="mark" aria-hidden="true">DP</div>
         <h3 class="d3">Design Practice</h3>
         <p class="role">Product &amp; UI/UX design</p>
-        <p class="body-sm">SaaS dashboards, trucking ops consoles, onboarding flows, and design systems — designed by people who've built these specific interfaces before.</p>
+        <p class="body-sm">SaaS dashboards, trucking ops consoles, onboarding flows, and design systems: designed by people who've built these specific interfaces before.</p>
         <ul><li>UI/UX</li><li>Product design</li><li>Design systems</li></ul>
       </article>
       <article>
@@ -485,7 +485,7 @@ const aboutBody = `
       </article>
       <article>
         <h3 class="d3">Build it to last</h3>
-        <p>Clean Figma files, typed code, and documentation your team can use after we're done — not artifacts that only make sense to us.</p>
+        <p>Clean Figma files, typed code, and documentation your team can use after we're done, not artifacts that only make sense to us.</p>
       </article>
     </div>
   </div>
@@ -502,7 +502,7 @@ const aboutBody = `
       </article>
       <article>
         <h3 class="d3">Faster delivery with AI tools</h3>
-        <p>We use Claude, Cursor, and Figma AI to move faster on the work that benefits from it — with human review before anything ships.</p>
+        <p>We use Claude, Cursor, and Figma AI to move faster on the work that benefits from it: with human review before anything ships.</p>
       </article>
       <article>
         <h3 class="d3">Honest communication</h3>
@@ -510,7 +510,7 @@ const aboutBody = `
       </article>
       <article>
         <h3 class="d3">Products that scale without us</h3>
-        <p>Design systems, typed codebases, and documentation — so your team isn't dependent on us for every future change.</p>
+        <p>Design systems, typed codebases, and documentation: so your team isn't dependent on us for every future change.</p>
       </article>
     </div>
   </div>
@@ -520,7 +520,7 @@ const aboutBody = `
   <div class="wrap">
     <p class="eyebrow" data-r>How we work</p>
     <h2 class="d2" id="indH" data-r style="margin-top:16px;max-width:18ch">Clear ownership. Measurable delivery.</h2>
-    <p class="body" data-r style="margin-top:14px">In-house design and engineering, NDA-first collaboration, and weekly demos — without fabricated review scores.</p>
+    <p class="body" data-r style="margin-top:14px">In-house design and engineering, NDA-first collaboration, and weekly demos: without fabricated review scores.</p>
     <p class="mono" data-r style="margin-top:36px;color:var(--steel)">Industries we focus on</p>
     <div class="ind" data-s>
       <a href="/solutions/trucking-logistics"><b>US Trucking</b><small>Dispatch &amp; fleet</small></a>
@@ -648,7 +648,7 @@ const processBody = `
       <div>
         <p class="eyebrow" data-r>Process</p>
         <h1 class="d1 mask" data-mask id="h1"><span><i>Five phases.</i></span><span><i>Visible progress.</i></span></h1>
-        <p class="lede" data-r>Discovery, design, build, launch, and support. Each phase has milestones, weekly demos, and deliverables you sign off before we move on. Tools help us move faster — people own every decision.</p>
+        <p class="lede" data-r>Discovery, design, build, launch, and support. Each phase has milestones, weekly demos, and deliverables you sign off before we move on. Tools help us move faster: people own every decision.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
           <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
@@ -794,7 +794,7 @@ const pages = [
     file: "kriva-solutions-index.html",
     title: "Solutions · SaaS, Trucking, Integrations &amp; Auto Transport · KRIVA",
     description:
-      "Four KRIVA solution areas — trucking &amp; logistics, SaaS products, QuickBooks &amp; Xero integrations, and car transportation — with capabilities, process, and related work.",
+      "Four KRIVA solution areas: trucking &amp; logistics, SaaS products, QuickBooks &amp; Xero integrations, and car transportation: with capabilities, process, and related work.",
     canonical: "https://krivatechnologies.com/solutions",
     ogTitle: "Solutions · SaaS, Trucking, Integrations &amp; Auto Transport",
     pageCss: solutionsCss,
@@ -804,7 +804,7 @@ const pages = [
     file: "kriva-about.html",
     title: "About KRIVA Technologies · Team, Story &amp; Experience",
     description:
-      "KRIVA is a product studio in Ahmedabad designing and building software for US trucking ops and SaaS product teams — design and engineering under one roof.",
+      "KRIVA is a product studio in Ahmedabad designing and building software for US trucking ops and SaaS product teams: design and engineering under one roof.",
     canonical: "https://krivatechnologies.com/about",
     ogTitle: "About KRIVA Technologies · Team, Story &amp; Experience",
     pageCss: aboutCss,
@@ -814,7 +814,7 @@ const pages = [
     file: "kriva-process.html",
     title: "Process · How we deliver · KRIVA",
     description:
-      "KRIVA's five-phase delivery process for SaaS and trucking software — discovery, design, build, launch, and support with weekly demos and clear sign-off gates.",
+      "KRIVA's five-phase delivery process for SaaS and trucking software: discovery, design, build, launch, and support with weekly demos and clear sign-off gates.",
     canonical: "https://krivatechnologies.com/process",
     ogTitle: "Process · How we deliver",
     pageCss: processCss,

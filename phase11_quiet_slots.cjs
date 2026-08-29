@@ -1,5 +1,5 @@
 /**
- * Phase 11 — quiet solution/work/FleetFlow empty frames into intentional hosts.
+ * Phase 11: quiet solution/work/FleetFlow empty frames into intentional hosts.
  */
 const fs = require("fs");
 const path = require("path");
@@ -62,7 +62,7 @@ patch("kriva-case-fleetflow.html", [
   ],
 ]);
 
-// Services index — ensure no deferred language remains
+// Services index: ensure no deferred language remains
 patch("kriva-services-index.html", [
   ["Standalone redesign deferred.", ""],
   ["Canonical URL reserved:", "Service page:"],

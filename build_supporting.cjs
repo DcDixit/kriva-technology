@@ -110,7 +110,7 @@ ${SCRIPT}
 
 const careers = pageShell({
   title: "Careers · Join KRIVA",
-  meta: "Join KRIVA — open roles for designers, engineers, and automation specialists. Remote-first with UK and US client overlap.",
+  meta: "Join KRIVA: open roles for designers, engineers, and automation specialists. Remote-first with UK and US client overlap.",
   canonical: "https://krivatechnologies.com/careers",
   ogTitle: "Careers",
   eyebrow: "Company · Careers",
@@ -151,23 +151,23 @@ const careers = pageShell({
         <a class="btn sm" href="/contact#brief"><span>Apply</span><i>→</i></a>
       </article>
     </div>
-    <p class="aside-note body-sm" data-r>Don't see your role? <a href="/contact#brief" style="border-bottom:1px solid var(--rule)">Send a general application</a> — we review every note and reply when there's a fit.</p>
+    <p class="aside-note body-sm" data-r>Don't see your role? <a href="/contact#brief" style="border-bottom:1px solid var(--rule)">Send a general application</a>: we review every note and reply when there's a fit.</p>
   </div>
 </section>`,
 });
 
 const industries = pageShell({
   title: "Industries · SaaS, Trucking, Integrations & CRM · KRIVA",
-  meta: "How KRIVA delivers for SaaS, trucking, QuickBooks/Xero integrations, car transportation, and CRM — with tailored approaches and illustrative work.",
+  meta: "How KRIVA delivers for SaaS, trucking, QuickBooks/Xero integrations, car transportation, and CRM: with tailored approaches and illustrative work.",
   canonical: "https://krivatechnologies.com/industries",
   ogTitle: "Industries",
   eyebrow: "Company · Industries",
   h1Lines: ["Markets we know", "well enough to", "be specific."],
-  lede: "Each industry links to a dedicated solution path and illustrative work — so you can see how we approach your market before a fit call.",
+  lede: "Each industry links to a dedicated solution path and illustrative work: so you can see how we approach your market before a fit call.",
   schema: {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Industries — KRIVA Technologies",
+    name: "Industries: KRIVA Technologies",
     url: "https://krivatechnologies.com/industries",
   },
   body: `
@@ -188,7 +188,7 @@ const industries = pageShell({
         <div>
           <p class="k">02 · Trucking</p>
           <h3 class="d3">Trucking &amp; Logistics</h3>
-          <p class="body-sm" style="margin-top:10px">US trucking software — custom TMS-style tools, dispatch CRM, fleet dashboards, and driver apps.</p>
+          <p class="body-sm" style="margin-top:10px">US trucking software: custom TMS-style tools, dispatch CRM, fleet dashboards, and driver apps.</p>
         </div>
         <span class="go">View solution →</span>
       </a>

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Responsive overflow probe — priority pages × key widths */
+/** Responsive overflow probe: priority pages × key widths */
 const http = require("http");
 const PORT = Number(process.env.PORT || 5199);
 const WIDTHS = [320, 375, 768, 1024, 1440];
@@ -30,5 +30,5 @@ function get(path) {
     if (emptyAlt > 0) { console.log("  ⚠ empty alt on", p); issues++; }
   }
   console.log("Responsive structure checks:", issues === 0 ? "PASS" : issues + " issues");
-  console.log("Note: full overflow QA requires browser — CSS breakpoints verified in chrome.css + page styles.");
+  console.log("Note: full overflow QA requires browser: CSS breakpoints verified in chrome.css + page styles.");
 })();

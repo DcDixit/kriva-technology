@@ -58,7 +58,7 @@ const AUDIT = () => {
 
     const r = el.getBoundingClientRect();
 
-    // horizontal overflow — only when the document actually scrolls sideways
+    // horizontal overflow: only when the document actually scrolls sideways
     if (scrolls && r.width > 0 && r.right > docEl.clientWidth + 2) {
       const sig = el.tagName + '.' + (el.className || '').toString().slice(0, 40);
       if (!seen.has('o' + sig)) {
@@ -67,7 +67,7 @@ const AUDIT = () => {
       }
     }
 
-    // tap targets — WCAG 2.2 SC 2.5.8 exempts links inline in a sentence
+    // tap targets: WCAG 2.2 SC 2.5.8 exempts links inline in a sentence
     if (/^(A|BUTTON)$/.test(el.tagName) && r.width > 0 && r.height > 0 && r.height < 24) {
       const p = el.parentElement;
       const inlineInText = p && /^(P|LI|SPAN|EM|STRONG|TD)$/.test(p.tagName)

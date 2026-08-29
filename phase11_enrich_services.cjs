@@ -1,5 +1,5 @@
 /**
- * Phase 11 — enrich service data for 9.5+ quality without inventing claims.
+ * Phase 11: enrich service data for 9.5+ quality without inventing claims.
  * Run: node phase11_enrich_services.cjs
  * Then: node build_priority6.cjs
  */
@@ -18,13 +18,13 @@ const H1 = {
   "ai-assisted-development": "AI in the toolchain. Humans on the gate.",
   "web-development": "Marketing sites your team can actually run.",
   "no-code-low-code": "Validate the MVP before months of custom build.",
-  "product-design": "End-to-end product design — strategy to ship.",
+  "product-design": "End-to-end product design: strategy to ship.",
   "ui-ux-design": "Flows, systems, and UI teams can hand off.",
   "branding": "Brand systems that survive real product surfaces.",
   "ux-research": "Evidence before the expensive build.",
   "wireframing-prototyping": "Align the room before you write code.",
   "design-systems": "Tokens and components that survive releases.",
-  "web-application-design": "Authenticated product UX — not a marketing site.",
+  "web-application-design": "Authenticated product UX, not a marketing site.",
   "logo-design": "Marks that scale from favicon to fleet.",
 };
 
@@ -146,9 +146,9 @@ for (const s of data.services) {
 }
 
 const out = `/**
- * Phase 9/11 — all 17 standalone services.
+ * Phase 9/11: all 17 standalone services.
  * Factual fields from web/src/content/services.ts.
- * Positioning / differentiation copy is editorial framing of those fields — not new claims.
+ * Positioning / differentiation copy is editorial framing of those fields, not new claims.
  * Phase 11: outcome H1s, challenge title/body pairs, section H2 variance, brief visuals.
  */
 module.exports = ${JSON.stringify({ deferred: data.deferred, services: data.services }, null, 2)};

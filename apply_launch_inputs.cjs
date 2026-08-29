@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Phase 9 — apply launch inputs without architecture changes.
+ * Phase 9: apply launch inputs without architecture changes.
  *
  * Usage:
  *   node apply_launch_inputs.cjs              # stamp markers + link CSS + sync OG state
@@ -249,8 +249,8 @@ function applyConfirmedAttribution() {
     if (a.status !== "confirmed" || !a.confirmed) continue;
     const c = a.confirmed;
     if (c.publishQuote === false) {
-      // Leave structural remove to a future pass — mark only
-      console.log(`Attribution ${a.id}: confirmed omit — remove quotes manually or extend applicator`);
+      // Leave structural remove to a future pass: mark only
+      console.log(`Attribution ${a.id}: confirmed omit: remove quotes manually or extend applicator`);
       continue;
     }
     const byline = `${c.name}<small>${c.role} · ${c.company}</small>`;
@@ -298,7 +298,7 @@ function ensureBrandDir() {
 
 Place the real OG image here (do not invent a placeholder PNG):
 
-- \`og-default.png\` — **1200 × 630**
+- \`og-default.png\`: **1200 × 630**
 
 Then run:
 

@@ -1,83 +1,113 @@
-/* KRIVA homepage motion — reveals, console, offerings, process rail */
+/* KRIVA homepage motion: reveals, hero board, workflow, FAQ */
 (function () {
   'use strict';
   const mqReduce = matchMedia('(prefers-reduced-motion: reduce)');
   const reduce = () => mqReduce.matches;
 
-  const readers = [];
-  let ticking = false;
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(run);
-      ticking = true;
-    }
-  }
-  function run() {
-    const y = scrollY;
-    for (const r of readers) r(y);
-    ticking = false;
-  }
-  addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', onScroll, { passive: true });
-
-  const io = new IntersectionObserver((es) => {
-    for (const e of es) {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
     }
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach((el) => io.observe(el));
+  document.querySelectorAll('[data-r],[data-s]').forEach((el) => io.observe(el));
 
-  function countTo(el, target, suffix) {
-    if (!el) return;
-    if (reduce()) {
-      el.textContent = target + suffix;
-      return;
-    }
-    const dur = 1100;
-    const t0 = performance.now();
-    const tick = (t) => {
-      const p = Math.min((t - t0) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3.4);
-      el.textContent = Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(tick);
+  /* ── hero board play ── */
+  const board = document.getElementById('heroBoard');
+  if (board) {
+    const pick = document.getElementById('heroPickRow');
+    const pickChip = document.getElementById('heroPickChip');
+    const bulk = document.getElementById('heroBulk');
+    const assign = document.getElementById('heroAssign');
+    const riskRow = document.getElementById('heroRiskRow');
+    const slaChip = document.getElementById('heroSlaChip');
+    const riskN = document.getElementById('heroRisk');
+    const exc = document.getElementById('heroExc');
+    const excMove = document.getElementById('heroExcMove');
+    const audit = document.getElementById('heroAudit');
+
+    const finish = () => {
+      board.classList.add('lit', 'played');
+      if (pick) {
+        pick.classList.add('is-on');
+        const tick = pick.querySelector('.tick');
+        if (tick) tick.classList.add('on');
+      }
+      if (pickChip) {
+        pickChip.textContent = 'Assigned';
+        pickChip.className = 'chip s1';
+      }
+      if (bulk) bulk.textContent = '1 selected';
+      if (assign) assign.classList.add('shift-act--pri');
+      if (riskRow) riskRow.classList.add('is-risk');
+      if (slaChip) {
+        slaChip.textContent = 'At risk';
+        slaChip.className = 'chip s1';
+      }
+      if (riskN) riskN.textContent = '3';
+      if (exc && excMove) exc.insertBefore(excMove, exc.firstElementChild);
+      if (audit) audit.hidden = false;
     };
-    requestAnimationFrame(tick);
+
+    const play = () => {
+      if (reduce()) {
+        finish();
+        return;
+      }
+      const wait = (ms, fn) => setTimeout(fn, ms);
+      board.classList.add('lit');
+      wait(220, () => {
+        if (pick) {
+          pick.classList.add('is-on');
+          const tick = pick.querySelector('.tick');
+          if (tick) tick.classList.add('on');
+        }
+        if (bulk) bulk.textContent = '1 selected';
+      });
+      wait(520, () => {
+        if (assign) assign.classList.add('shift-act--pri');
+        if (pickChip) {
+          pickChip.textContent = 'Assigned';
+          pickChip.className = 'chip s1';
+        }
+      });
+      wait(900, () => {
+        if (riskRow) riskRow.classList.add('is-risk');
+        if (slaChip) {
+          slaChip.textContent = 'At risk';
+          slaChip.className = 'chip s1';
+        }
+        if (riskN) riskN.textContent = '3';
+      });
+      wait(1220, () => {
+        if (exc && excMove) exc.insertBefore(excMove, exc.firstElementChild);
+        excMove?.classList.add('is-up');
+      });
+      wait(1500, () => {
+        if (audit) audit.hidden = false;
+        board.classList.add('played');
+      });
+    };
+
+    const boardIO = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      boardIO.disconnect();
+      play();
+    }, { threshold: 0.28 });
+    boardIO.observe(board);
   }
 
-  /* ── console ── */
-  const con = document.getElementById('console');
-  if (con) {
-    const rows = [...document.querySelectorAll('#board tbody tr')];
-    const conIO = new IntersectionObserver((es) => {
-      if (!es[0].isIntersecting) return;
-      conIO.disconnect();
-      con.classList.add('lit');
-      rows.forEach((r, i) => {
-        const d = reduce() ? 0 : 280 + Math.pow(i, 0.82) * 90;
-        setTimeout(() => r.classList.add('on'), d);
-      });
-      setTimeout(() => {
-        document.querySelectorAll('[data-kpi]').forEach((el) => countTo(el, +el.dataset.kpi, ''));
-        countTo(document.getElementById('ontime'), 96, '%');
-        const sla = document.getElementById('sla');
-        if (sla) sla.style.transform = 'scaleX(.94)';
-        countTo(document.getElementById('slaPct'), 94, '%');
-      }, reduce() ? 0 : 720);
-    }, { threshold: 0.28 });
-    conIO.observe(con);
-
-    const tabs = [...con.querySelectorAll('.c-tabs button')];
-    const panels = [...con.querySelectorAll('.c-panel')];
-
+  /* ── problem tabs ── */
+  const tabs = [...document.querySelectorAll('.prob-tabs [role="tab"]')];
+  const panels = [...document.querySelectorAll('.prob-panel')];
+  if (tabs.length) {
     const select = (btn) => {
       const id = btn.getAttribute('aria-controls');
-      tabs.forEach((x) => {
-        const on = x === btn;
-        x.setAttribute('aria-selected', String(on));
-        x.tabIndex = on ? 0 : -1;
+      tabs.forEach((t) => {
+        const on = t === btn;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
       });
       panels.forEach((p) => {
         const on = p.id === id;
@@ -85,10 +115,7 @@
         p.hidden = !on;
       });
     };
-
-    // roving tabindex: the tablist is one stop, arrows move between tabs
     tabs.forEach((btn, i) => {
-      btn.tabIndex = btn.getAttribute('aria-selected') === 'true' ? 0 : -1;
       btn.addEventListener('click', () => select(btn));
       btn.addEventListener('keydown', (e) => {
         const map = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
@@ -101,6 +128,25 @@
     });
   }
 
+  /* ── workflow one-time progression ── */
+  const flow = document.getElementById('loadFlow');
+  if (flow) {
+    const steps = [...flow.children];
+    const done = () => steps.forEach((s) => s.classList.add('on'));
+    const flowIO = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      flowIO.disconnect();
+      if (reduce()) {
+        done();
+        return;
+      }
+      steps.forEach((s, i) => {
+        setTimeout(() => s.classList.add('on'), 80 + i * 70);
+      });
+    }, { threshold: 0.18 });
+    flowIO.observe(flow);
+  }
+
   /* ── FAQ accordion ── */
   const faqs = [...document.querySelectorAll('.faq-q')];
   faqs.forEach((btn) => {
@@ -110,7 +156,7 @@
       faqs.forEach((other) => {
         if (other === btn) return;
         other.setAttribute('aria-expanded', 'false');
-        other.closest('.faq-item').classList.remove('open');
+        other.closest('.faq-item')?.classList.remove('open');
       });
       btn.setAttribute('aria-expanded', String(!open));
       item.classList.toggle('open', !open);
@@ -122,31 +168,15 @@
     });
   });
 
-  /* ── hero float ── */
-  const stack = document.querySelector('.hero-stack');
-  const flt = document.querySelector('.hero-float');
-  if (stack && flt && !reduce()) {
-    readers.push(() => {
-      const r = stack.getBoundingClientRect();
-      const p = Math.max(-1, Math.min(1, (innerHeight * 0.5 - r.top) / innerHeight));
-      flt.style.transform = `rotate(-2.5deg) translate3d(0, ${p * 18}px, 0)`;
-    });
-  }
-
-  /* ── process rail ── */
-  const rail = document.getElementById('rail');
-  const fill = document.getElementById('railFill');
-  const steps = [...document.querySelectorAll('.step')];
-  if (rail && fill) {
-    readers.push(() => {
-      const r = rail.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > innerHeight + 200) return;
-      const mid = innerHeight * 0.58;
-      const p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
-      fill.style.height = p * r.height + 'px';
-      for (const s of steps) s.classList.toggle('on', s.getBoundingClientRect().top < mid);
-    });
-  }
-
-  run();
+  /* ── horizontal scroll cue ── */
+  document.querySelectorAll('.shift-scroll').forEach((scroller) => {
+    const cue = scroller.querySelector('.scroll-cue');
+    if (!cue) return;
+    const check = () => {
+      const overflow = scroller.scrollWidth > scroller.clientWidth + 8;
+      cue.hidden = !overflow;
+    };
+    check();
+    addEventListener('resize', check, { passive: true });
+  });
 })();

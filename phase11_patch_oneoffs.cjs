@@ -1,5 +1,5 @@
 /**
- * Phase 11 — one-off patches for solutions, work index, legal notes, home crop captions.
+ * Phase 11: one-off patches for solutions, work index, legal notes, home crop captions.
  * Run after builders.
  */
 const fs = require("fs");
@@ -65,7 +65,7 @@ for (const file of fs.readdirSync(ROOT).filter((f) => f.startsWith("kriva-") && 
   });
 }
 
-// Privacy / Terms — honest analytics language without yellow TBD theater
+// Privacy / Terms: honest analytics language without yellow TBD theater
 patch("kriva-privacy.html", (html) =>
   html.replace(
     /<p class="body-sm" style="margin-top:12px"><span class="flag tbd">TBD<\/span>[^<]*<\/p>/,
@@ -80,7 +80,7 @@ patch("kriva-terms.html", (html) =>
   )
 );
 
-// Home crop slots — quieter labels
+// Home crop slots: quieter labels
 patch("kriva-redesign.html", (html) =>
   html
     .replace(/Slot · 1600×1000 · console screenshot/g, "FleetFlow · console reference")
@@ -88,7 +88,7 @@ patch("kriva-redesign.html", (html) =>
     .replace(/Slot · 1600×1000 · reconciliation view/g, "FinanceSync · reconciliation reference")
 );
 
-// Work index — quieter thumbs
+// Work index: quieter thumbs
 patch("kriva-work-index.html", (html) =>
   html
     .replace(/Slot · 1920×1080 · dispatch console/g, "FleetFlow · featured reference")

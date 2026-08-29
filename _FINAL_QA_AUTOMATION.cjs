@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FINAL QA AUTOMATION — Phases 10-15
+ * FINAL QA AUTOMATION: Phases 10-15
  * Verify logo, colors, responsive design, and content on all pages
  */
 
@@ -35,7 +35,7 @@ const checks = {
 
 const results = {};
 
-console.log('FINAL QA AUTOMATION — PHASES 10-15\n');
+console.log('FINAL QA AUTOMATION: PHASES 10-15\n');
 console.log('=' .repeat(80));
 console.log(`Testing ${ALL_TEST_PAGES.length} pages for:\n`);
 console.log('  ✓ Logo SVG present and correct');
@@ -162,9 +162,9 @@ async function runQA() {
   console.log(`Success rate: ${Math.round((totalPassed / (totalPassed + totalFailed)) * 100)}%\n`);
 
   if (totalFailed === 0) {
-    console.log('✓ ALL CHECKS PASSED — Ready for production!\n');
+    console.log('✓ ALL CHECKS PASSED: Ready for production!\n');
   } else {
-    console.log(`⚠ ${totalFailed} checks failed — Review above\n`);
+    console.log(`⚠ ${totalFailed} checks failed: Review above\n`);
   }
 
   // Save results

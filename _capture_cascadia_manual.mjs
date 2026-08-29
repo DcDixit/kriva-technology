@@ -12,7 +12,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 console.log('Manual Cascadia capture');
 console.log('1. Connect your VPN (WARP/Proton/etc.)');
-console.log('2. A Chrome window will open — pass any Cloudflare check if shown');
+console.log('2. A Chrome window will open: pass any Cloudflare check if shown');
 console.log('3. Wait on the live homepage, then screenshot saves automatically\n');
 
 const browser = await puppeteer.launch({

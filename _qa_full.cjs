@@ -130,7 +130,7 @@ for (const f of [...files, ...CSS]) {
 for (const [hex, count] of [...colorUse.entries()].sort((a, b) => b[1] - a[1])) {
   const best = Object.entries(BGS).map(([n, bg]) => ({ n, r: ratio(hex, bg) })).sort((a, b) => b.r - a.r)[0];
   if (best.r < 4.5) {
-    R.contrast.push(`${hex} (${count}x) best=${best.r.toFixed(2)}:1 on ${best.n} — below AA 4.5`);
+    R.contrast.push(`${hex} (${count}x) best=${best.r.toFixed(2)}:1 on ${best.n}: below AA 4.5`);
   }
 }
 

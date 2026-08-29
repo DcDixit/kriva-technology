@@ -1,5 +1,5 @@
 /**
- * Phase 11 — enrich case data (BA headlines, outcome framing). No invented metrics.
+ * Phase 11: enrich case data (BA headlines, outcome framing). No invented metrics.
  * Run: node phase11_enrich_cases.cjs && node build_priority5.cjs
  */
 const fs = require("fs");
@@ -7,13 +7,13 @@ const path = require("path");
 const data = require("./content/cases-data.cjs");
 
 const BA_H2 = {
-  "payroll-pro-saas": "Empty states after SSO — then role-based setup.",
-  "finance-sync-hub": "Opaque logs — then reconciliation operators can act on.",
-  "healthtrack-mobile": "Fragmented care tasks — then a patient flow that holds.",
-  "brandlift-ecommerce": "Inconsistent storefront — then a system the brand can run.",
-  "crm-pulse-dashboard": "Forecast noise — then leadership views people open.",
-  "ai-support-automation": "Ticket piles — then routed work with human gates.",
-  "marketplace-mvp": "Wishlist features — then an MVP that proves demand.",
+  "payroll-pro-saas": "Empty states after SSO, then role-based setup.",
+  "finance-sync-hub": "Opaque logs, then reconciliation operators can act on.",
+  "healthtrack-mobile": "Fragmented care tasks, then a patient flow that holds.",
+  "brandlift-ecommerce": "Inconsistent storefront, then a system the brand can run.",
+  "crm-pulse-dashboard": "Forecast noise, then leadership views people open.",
+  "ai-support-automation": "Ticket piles, then routed work with human gates.",
+  "marketplace-mvp": "Wishlist features, then an MVP that proves demand.",
 };
 
 const OUTCOME_H2 = {
@@ -31,7 +31,7 @@ for (const c of data.cases) {
   c.outcomeH2 = OUTCOME_H2[c.slug] || "What shipped.";
   c.outcomeNote =
     "Measured outcome metrics are not published on this case until signed off. The narrative above is from the verified case source.";
-  // Drop public TBD testimonials — keep quote out until attribution confirmed
+  // Drop public TBD testimonials: keep quote out until attribution confirmed
   if (c.testimonial && /TBD|do not publish/i.test(c.testimonial.name + c.testimonial.role)) {
     c.testimonialPublic = false;
   } else {

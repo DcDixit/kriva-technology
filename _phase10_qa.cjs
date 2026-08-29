@@ -1,5 +1,5 @@
 /**
- * Phase 10 — Final Production QA (read-only audit; writes report JSON only).
+ * Phase 10: Final Production QA (read-only audit; writes report JSON only).
  * Run: node _phase10_qa.cjs
  */
 const fs = require("fs");

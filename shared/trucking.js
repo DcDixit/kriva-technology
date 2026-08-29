@@ -1,4 +1,4 @@
-/* KRIVA trucking solution — reveals, lifecycle highlight, FAQ, process rail */
+/* KRIVA trucking solution: reveals, lifecycle highlight, FAQ, process rail */
 (function () {
   'use strict';
 

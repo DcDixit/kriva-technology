@@ -1,4 +1,4 @@
-/** Asset manifest for visual generator — single source of truth */
+/** Asset manifest for visual generator: single source of truth */
 module.exports = [
   { path: "/work/fleetflow/home-console.svg", t: "dispatch", w: 1600, h: 1000, opts: { title: "FleetFlow", subtitle: "Dispatch console" } },
   { path: "/work/fleetflow/console-full.svg", t: "dispatch", w: 1920, h: 1080, opts: { title: "FleetFlow", subtitle: "Dispatch console full" } },

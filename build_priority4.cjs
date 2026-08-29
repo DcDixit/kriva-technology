@@ -1,5 +1,5 @@
 /**
- * Phase 4 — Insights (index + 7 articles) + FAQ, Technologies, Privacy, Terms
+ * Phase 4: Insights (index + 7 articles) + FAQ, Technologies, Privacy, Terms
  */
 const fs = require("fs");
 const path = require("path");
@@ -165,7 +165,7 @@ const insightsIndexBody = `
       <div>
         <p class="eyebrow" data-r>Insights</p>
         <h1 class="d1 mask" data-mask id="h1"><span><i>Notes for SaaS</i></span><span><i>and operations teams.</i></span></h1>
-        <p class="lede" data-r>Practical writing on onboarding, dispatch CRM, MVP trade-offs, and how we deliver — aimed at founders and operators, not keyword filler.</p>
+        <p class="lede" data-r>Practical writing on onboarding, dispatch CRM, MVP trade-offs, and how we deliver: aimed at founders and operators, not keyword filler.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
           <a href="/solutions" class="btn ghost"><span>Explore solutions</span><i>→</i></a>
@@ -311,7 +311,7 @@ const articleCss = `
 `;
 
 function articleSchema(post) {
-  // Dates verified. Author bylines are published org labels, not named people — use Organization.
+  // Dates verified. Author bylines are published org labels, not named people: use Organization.
   return `<script type="application/ld+json">
 ${JSON.stringify({
     "@context": "https://schema.org",
@@ -401,7 +401,7 @@ onScroll();
 
 /* ── FAQ ── */
 const faqItems = [
-  { q: "What services do you offer?", a: "We design and build two types of software: trucking and logistics tools (dispatch CRM, fleet dashboards, driver apps) and SaaS products (onboarding, dashboards, MVPs, design systems). We also build QuickBooks and Xero integrations and set up workflow automation. We don't do everything — we do these things well because we've spent years on them." },
+  { q: "What services do you offer?", a: "We design and build two types of software: trucking and logistics tools (dispatch CRM, fleet dashboards, driver apps) and SaaS products (onboarding, dashboards, MVPs, design systems). We also build QuickBooks and Xero integrations and set up workflow automation. We don't do everything: we do these things well because we've spent years on them." },
   { q: "How long does a typical project take?", a: "A focused MVP or redesign is usually 6 to 10 weeks. A full-stack SaaS platform with integrations runs 12 to 20 weeks. Discovery sprints are 1 to 2 weeks. We'll give you an honest timeline in our first call. We don't inflate estimates to soften the truth." },
   { q: "Do you subcontract any work?", a: "No. Every designer and engineer on your project is a permanent KRIVA team member. We don't use freelance marketplaces or offshore subcontractors. The team you meet in the first call is the team that builds your product." },
   { q: "Do you work with startups and enterprises?", a: "Both. For startups, we're used to fast timelines, limited scope, and investor-facing deliverables. For scale-ups and enterprises, we're used to compliance requirements, complex integrations, and multi-stakeholder sign-off. We scope projects accordingly." },
@@ -439,7 +439,7 @@ const faqBody = `
     </ol>
     <p class="eyebrow" data-r style="margin-top:clamp(22px,3vw,40px)">FAQ</p>
     <h1 class="d1 mask" data-mask id="h1"><span><i>Straight answers</i></span><span><i>before you book a call.</i></span></h1>
-    <p class="lede" data-r>Services, timelines, pricing, ownership, and how we collaborate with your team — without the usual agency vagueness.</p>
+    <p class="lede" data-r>Services, timelines, pricing, ownership, and how we collaborate with your team: without the usual agency vagueness.</p>
     <div class="hero-actions" data-r>
       <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
       <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
@@ -518,7 +518,7 @@ const techBody = `
     </ol>
     <p class="eyebrow" data-r style="margin-top:clamp(22px,3vw,40px)">Tools &amp; stack</p>
     <h1 class="d1 mask" data-mask id="h1"><span><i>A practical stack</i></span><span><i>with senior oversight.</i></span></h1>
-    <p class="lede" data-r>Figma, Next.js, React Native, APIs, and carefully reviewed AI tooling. We choose for maintainability — and people approve what ships.</p>
+    <p class="lede" data-r>Figma, Next.js, React Native, APIs, and carefully reviewed AI tooling. We choose for maintainability, and people approve what ships.</p>
     <div class="hero-actions" data-r>
       <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
       <a href="/process" class="btn ghost"><span>See our process</span><i>→</i></a>
@@ -539,7 +539,7 @@ const techBody = `
         )
         .join("")}
     </div>
-    <p class="note" data-r><span class="flag tbd">Note</span> “Design systems” and “iOS &amp; Android UI” appear on the live stack page; they are capabilities as well as tooling labels. Framer is listed under both Design and No-Code on the live site — preserved here.</p>
+    <p class="note" data-r><span class="flag tbd">Note</span> “Design systems” and “iOS &amp; Android UI” appear on the live stack page; they are capabilities as well as tooling labels. Framer is listed under both Design and No-Code on the live site: preserved here.</p>
   </div>
 </section>
 <section class="cta-band on-ink" aria-labelledby="ctaH">
@@ -608,7 +608,7 @@ function legalPage({ crumb, h1, lede, sections, contactLine }) {
           )
           .join("")}
         <p class="body-sm" style="margin-top:28px">${contactLine}</p>
-        <p class="body-sm" style="margin-top:12px"><span class="flag tbd">TBD</span> Analytics provider / cookie inventory not named on the live site — confirm before launch.</p>
+        <p class="body-sm" style="margin-top:12px"><span class="flag tbd">TBD</span> Analytics provider / cookie inventory not named on the live site: confirm before launch.</p>
       </div>
     </div>
   </div>

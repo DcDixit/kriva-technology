@@ -21,9 +21,9 @@ module.exports = {
       "slug": "payroll-pro-saas",
       "file": "kriva-case-payroll-pro.html",
       "shortName": "PayrollPro",
-      "title": "PayrollPro — B2B SaaS onboarding",
+      "title": "PayrollPro: B2B SaaS onboarding",
       "titleLines": [
-        "PayrollPro —",
+        "PayrollPro:",
         "B2B SaaS",
         "onboarding"
       ],
@@ -37,14 +37,14 @@ module.exports = {
       "client": "PayrollPro · B2B SaaS · UK & EU",
       "sector": "UK & EU B2B payroll SaaS",
       "scope": "Onboarding paths, permissions, integration health",
-      "problem": "Activation stalled after SSO — admins saw empty states while end users bounced between docs and support.",
+      "problem": "Activation stalled after SSO: admins saw empty states while end users bounced between docs and support.",
       "research": "Funnel analysis, session replays, and eight stakeholder interviews across finance and IT buyers.",
       "challenges": "Conflicting KPIs between growth and compliance, noisy legacy segment data.",
       "solution": "Role-based onboarding paths, seeded templates per vertical, and integration health surfaced in-product.",
       "ui": "Parallel admin vs champion flows, clear permission copy, and progress indicators tied to real setup tasks.",
       "dev": "Experiment flags, Entra/Okta edge-case handling, and event taxonomy aligned to growth dashboards.",
       "approachH2": "Onboarding that mirrors how payroll teams actually set up.",
-      "uxH2": "Parallel admin and champion flows — permission copy that explains missing access.",
+      "uxH2": "Parallel admin and champion flows: permission copy that explains missing access.",
       "contextH2": "SSO was live. Activation was not.",
       "buildH2": "Instrumented for growth, careful with identity.",
       "beforeCopy": "Admins landed in empty states; end users bounced between docs and support after SSO.",
@@ -77,19 +77,19 @@ module.exports = {
       "beats": [
         {
           "name": "Role paths",
-          "n": "01 — Role-based onboarding",
+          "n": "01: Role-based onboarding",
           "h3": "Admin and champion flows run in parallel.",
-          "body": "Role-based onboarding paths and seeded templates per vertical — not a single generic checklist."
+          "body": "Role-based onboarding paths and seeded templates per vertical, not a single generic checklist."
         },
         {
           "name": "Permissions",
-          "n": "02 — Permission clarity",
+          "n": "02: Permission clarity",
           "h3": "Copy that explains missing access instead of a dead end.",
           "body": "Clear permission copy and progress indicators tied to real setup tasks, not decorative steps."
         },
         {
           "name": "Integration health",
-          "n": "03 — UI process",
+          "n": "03: UI process",
           "h3": "Integration health surfaced in-product.",
           "body": "Parallel admin vs champion flows with integration status visible where operators need it."
         }
@@ -143,11 +143,11 @@ module.exports = {
         "quote": "Activation moved within six weeks of the onboarding rebuild going live.",
         "initials": "·",
         "name": "Client attribution TBD",
-        "role": "Internal · FlowLedger ↔ PayrollPro — do not publish until confirmed",
+        "role": "Internal · FlowLedger ↔ PayrollPro: do not publish until confirmed",
         "caveat": "Unverified person/company byline withheld from public. Confirm FlowLedger vs PayrollPro (and speaker) before republishing attribution."
       },
       "metricsSignedOff": false,
-      "baH2": "Empty states after SSO — then role-based setup.",
+      "baH2": "Empty states after SSO, then role-based setup.",
       "outcomeH2": "What shipped for activation.",
       "outcomeNote": "Measured outcome metrics are not published on this case until signed off. The narrative above is from the verified case source.",
       "testimonialPublic": false
@@ -156,9 +156,9 @@ module.exports = {
       "slug": "finance-sync-hub",
       "file": "kriva-case-finance-sync.html",
       "shortName": "FinanceSync",
-      "title": "FinanceSync — QuickBooks & Xero reconciliation hub",
+      "title": "FinanceSync: QuickBooks & Xero reconciliation hub",
       "titleLines": [
-        "FinanceSync —",
+        "FinanceSync:",
         "QuickBooks & Xero",
         "reconciliation hub"
       ],
@@ -172,14 +172,14 @@ module.exports = {
       "client": "FinanceSync · FinOps platform · UK & US",
       "sector": "UK & US FinOps / accounting ops",
       "scope": "QB/Xero sync, anomaly triage, operator dashboards",
-      "problem": "QuickBooks and Xero sync drifted silently across entities — finance stopped trusting automated accruals before month-end.",
+      "problem": "QuickBooks and Xero sync drifted silently across entities: finance stopped trusting automated accruals before month-end.",
       "research": "Three cycle reconciliations, connector log forensics, and controller interviews in US and UK entities.",
       "challenges": "Partial accounting schemas, rate limits, and multi-entity mapping across UK/US books.",
       "solution": "Idempotent QuickBooks/Xero sync workers, anomaly surfacing before close, and triage UI with human-readable deltas.",
-      "ui": "Discrepancy cards with remediation steps — no raw JSON — optimized for outsourced finance teams.",
+      "ui": "Discrepancy cards with remediation steps: no raw JSON: optimized for outsourced finance teams.",
       "dev": "Queue-based workers, canary deployments, PagerDuty alerting with executive rollup views.",
-      "approachH2": "Reconcile before close — not after the fire drill.",
-      "uxH2": "Discrepancy cards with remediation steps — no raw JSON in the operator view.",
+      "approachH2": "Reconcile before close, not after the fire drill.",
+      "uxH2": "Discrepancy cards with remediation steps: no raw JSON in the operator view.",
       "contextH2": "Silent drift, then a finance team that stopped trusting the sync.",
       "buildH2": "Workers, canaries, and alerts finance can act on.",
       "beforeCopy": "Silent sync drift across entities; controllers lost trust in automated accruals before month-end.",
@@ -212,21 +212,21 @@ module.exports = {
       "beats": [
         {
           "name": "Sync workers",
-          "n": "01 — Idempotent sync",
+          "n": "01: Idempotent sync",
           "h3": "QuickBooks and Xero workers that can be trusted to retry.",
           "body": "Idempotent QuickBooks/Xero sync workers designed for multi-entity UK/US books and rate limits."
         },
         {
           "name": "Anomalies",
-          "n": "02 — Anomaly surfacing",
-          "h3": "Exceptions before close — not after.",
+          "n": "02: Anomaly surfacing",
+          "h3": "Exceptions before close, not after.",
           "body": "Anomaly surfacing before close, with triage UI that shows human-readable deltas."
         },
         {
           "name": "Discrepancy UI",
-          "n": "03 — UI process",
+          "n": "03: UI process",
           "h3": "Remediation steps, not raw JSON.",
-          "body": "Discrepancy cards with remediation steps — optimized for outsourced finance teams."
+          "body": "Discrepancy cards with remediation steps: optimized for outsourced finance teams."
         }
       ],
       "stack": {
@@ -277,7 +277,7 @@ module.exports = {
       ],
       "testimonial": null,
       "metricsSignedOff": false,
-      "baH2": "Opaque logs — then reconciliation operators can act on.",
+      "baH2": "Opaque logs, then reconciliation operators can act on.",
       "outcomeH2": "What shipped for month-end trust.",
       "outcomeNote": "Measured outcome metrics are not published on this case until signed off. The narrative above is from the verified case source.",
       "testimonialPublic": false
@@ -286,9 +286,9 @@ module.exports = {
       "slug": "healthtrack-mobile",
       "file": "kriva-case-healthtrack.html",
       "shortName": "HealthTrack",
-      "title": "HealthTrack — patient mobile app",
+      "title": "HealthTrack: patient mobile app",
       "titleLines": [
-        "HealthTrack —",
+        "HealthTrack:",
         "patient mobile",
         "app"
       ],
@@ -303,14 +303,14 @@ module.exports = {
       "sector": "US digital health",
       "scope": "Patient booking, records, care reminders",
       "problem": "Legacy patient portal frustrated booking and records access, and support volume was high.",
-      "problemNote": "Source cited 2.1★ App Store rating — withheld pending verification",
+      "problemNote": "Source cited 2.1★ App Store rating: withheld pending verification",
       "research": "Patient interviews, support ticket taxonomy, and competitive audit of top-rated health apps.",
       "challenges": "Strict compliance reviews, offline edge cases, and provider-specific scheduling rules.",
       "solution": "Mobile-first IA with clear appointment flows, record access, and proactive care reminders.",
       "ui": "Accessible typography, calm visual language, and step-by-step flows tested with older patient cohorts.",
       "dev": "React Native app, biometric login, HIPAA-conscious data handling patterns, App Store optimization assets.",
       "approachH2": "Calm flows for booking, records, and reminders.",
-      "contextH2": "A portal patients avoided — and support could not keep up with.",
+      "contextH2": "A portal patients avoided, and support could not keep up with.",
       "buildH2": "React Native, with compliance reviews in the loop.",
       "beforeCopy": "Legacy portal friction around booking and records; high support volume.",
       "afterCopy": "Mobile-first appointment flows, record access, and proactive care reminders with accessible typography.",
@@ -342,19 +342,19 @@ module.exports = {
       "beats": [
         {
           "name": "Booking",
-          "n": "01 — Appointment flows",
+          "n": "01: Appointment flows",
           "h3": "Booking without the portal maze.",
           "body": "Mobile-first IA with clear appointment flows designed around how patients actually schedule care."
         },
         {
           "name": "Records",
-          "n": "02 — Records access",
+          "n": "02: Records access",
           "h3": "Records patients can find without calling support.",
           "body": "Record access patterns informed by support ticket taxonomy and patient interviews."
         },
         {
           "name": "Reminders",
-          "n": "03 — UI process",
+          "n": "03: UI process",
           "h3": "Calm, accessible steps for older cohorts.",
           "body": "Accessible typography, calm visual language, and step-by-step flows tested with older patient cohorts."
         }
@@ -406,7 +406,7 @@ module.exports = {
       ],
       "testimonial": null,
       "metricsSignedOff": false,
-      "baH2": "Fragmented care tasks — then a patient flow that holds.",
+      "baH2": "Fragmented care tasks, then a patient flow that holds.",
       "outcomeH2": "What shipped for patients.",
       "outcomeNote": "Measured outcome metrics are not published on this case until signed off. The narrative above is from the verified case source.",
       "testimonialPublic": false
@@ -415,9 +415,9 @@ module.exports = {
       "slug": "brandlift-ecommerce",
       "file": "kriva-case-brandlift.html",
       "shortName": "BrandLift",
-      "title": "BrandLift — D2C rebrand & storefront",
+      "title": "BrandLift: D2C rebrand & storefront",
       "titleLines": [
-        "BrandLift —",
+        "BrandLift:",
         "D2C rebrand &",
         "storefront"
       ],
@@ -470,19 +470,19 @@ module.exports = {
       "beats": [
         {
           "name": "Identity",
-          "n": "01 — Visual identity",
+          "n": "01: Visual identity",
           "h3": "A brand system built for product photography.",
-          "body": "New visual identity with a bold product photography system — not a logo swap alone."
+          "body": "New visual identity with a bold product photography system, not a logo swap alone."
         },
         {
           "name": "PDP",
-          "n": "02 — PDP templates",
+          "n": "02: PDP templates",
           "h3": "PDPs optimized for mobile conversion.",
           "body": "Componentized Shopify theme and PDP templates shaped by heatmap and funnel analysis."
         },
         {
           "name": "Checkout",
-          "n": "03 — UI process",
+          "n": "03: UI process",
           "h3": "Fewer distractions at the moment of purchase.",
           "body": "Trust badges near CTAs and a simplified checkout with fewer distractions."
         }
@@ -533,7 +533,7 @@ module.exports = {
       ],
       "testimonial": null,
       "metricsSignedOff": false,
-      "baH2": "Inconsistent storefront — then a system the brand can run.",
+      "baH2": "Inconsistent storefront, then a system the brand can run.",
       "outcomeH2": "What shipped for the brand system.",
       "outcomeNote": "Measured outcome metrics are not published on this case until signed off. The narrative above is from the verified case source.",
       "testimonialPublic": false
@@ -542,9 +542,9 @@ module.exports = {
       "slug": "crm-pulse-dashboard",
       "file": "kriva-case-crm-pulse.html",
       "shortName": "CRMPulse",
-      "title": "CRMPulse — sales dashboard",
+      "title": "CRMPulse: sales dashboard",
       "titleLines": [
-        "CRMPulse —",
+        "CRMPulse:",
         "sales",
         "dashboard"
       ],
@@ -558,13 +558,13 @@ module.exports = {
       "client": "CRMPulse · B2B sales org · 80 reps",
       "sector": "B2B sales operations",
       "scope": "Pipeline views, stage definitions, leadership dashboards",
-      "problem": "HubSpot dashboards showed conflicting numbers — reps exported to Excel for every forecast call.",
+      "problem": "HubSpot dashboards showed conflicting numbers: reps exported to Excel for every forecast call.",
       "research": "Sales stage workshops, CRM hygiene audit, and shadowing of weekly forecast meetings.",
       "challenges": "Historical data mess, conflicting definitions across regions, change management with senior reps.",
       "solution": "Custom pipeline views, stage definitions aligned to reality, and leadership dashboards with single source of truth.",
       "ui": "Role-specific home screens, deal health indicators, and mobile-friendly views for field reps.",
       "dev": "HubSpot custom objects, automation rules with rollback, and scheduled data quality alerts.",
-      "approachH2": "One forecast truth — built around how reps actually sell.",
+      "approachH2": "One forecast truth: built around how reps actually sell.",
       "contextH2": "Conflicting dashboards. Excel for every forecast call.",
       "buildH2": "HubSpot objects and alerts with a rollback path.",
       "beforeCopy": "Conflicting HubSpot numbers; reps exported to Excel before every forecast.",
@@ -597,19 +597,19 @@ module.exports = {
       "beats": [
         {
           "name": "Pipeline",
-          "n": "01 — Pipeline views",
+          "n": "01: Pipeline views",
           "h3": "Stages that match how the team actually sells.",
           "body": "Custom pipeline views and stage definitions aligned to reality from sales workshops and forecast shadowing."
         },
         {
           "name": "Deal health",
-          "n": "02 — Deal indicators",
+          "n": "02: Deal indicators",
           "h3": "Health signals for reps and leaders.",
-          "body": "Role-specific home screens and deal health indicators — including mobile-friendly views for field reps."
+          "body": "Role-specific home screens and deal health indicators, including mobile-friendly views for field reps."
         },
         {
           "name": "Leadership",
-          "n": "03 — UI process",
+          "n": "03: UI process",
           "h3": "One source of truth for forecast calls.",
           "body": "Leadership dashboards designed so forecast meetings stop starting in Excel."
         }
@@ -662,7 +662,7 @@ module.exports = {
       "testimonial": null,
       "metricsSignedOff": false,
       "slugNote": "Slug `/work/crm-pulse-dashboard` confirmed in live source (`portfolio.ts` / static params).",
-      "baH2": "Forecast noise — then leadership views people open.",
+      "baH2": "Forecast noise, then leadership views people open.",
       "outcomeH2": "What shipped for sales leadership.",
       "outcomeNote": "Measured outcome metrics are not published on this case until signed off. The narrative above is from the verified case source.",
       "testimonialPublic": false
@@ -671,9 +671,9 @@ module.exports = {
       "slug": "ai-support-automation",
       "file": "kriva-case-ai-support.html",
       "shortName": "SupportAI",
-      "title": "SupportAI — ticket automation",
+      "title": "SupportAI: ticket automation",
       "titleLines": [
-        "SupportAI —",
+        "SupportAI:",
         "ticket",
         "automation"
       ],
@@ -687,7 +687,7 @@ module.exports = {
       "client": "SupportAI · SaaS · 12k MAU",
       "sector": "SaaS customer support",
       "scope": "Triage workflow, draft replies, human approval console",
-      "problem": "Tier-1 tickets consumed 60% of support capacity — response times slipped during product launches.",
+      "problem": "Tier-1 tickets consumed 60% of support capacity: response times slipped during product launches.",
       "research": "Ticket categorization study, macro analysis, and review of 500 closed conversations.",
       "challenges": "Tone consistency, PII handling, and agent trust in AI drafts.",
       "solution": "Make workflow with Claude triage, draft replies, and human approval before send.",
@@ -695,7 +695,7 @@ module.exports = {
       "dev": "Make scenarios, Zendesk integration, logging for audit, fallback to manual queue on low confidence.",
       "approachH2": "AI drafts. Humans approve. Nothing sends itself.",
       "contextH2": "Tier-1 volume ate the queue every launch week.",
-      "buildH2": "Make, Claude, Zendesk — with a manual fallback.",
+      "buildH2": "Make, Claude, Zendesk: with a manual fallback.",
       "beforeCopy": "Tier-1 volume dominated capacity; response times slipped during launches.",
       "afterCopy": "Make + Claude triage with draft replies and human approval before send, plus low-confidence fallback.",
       "heroSlot": "Slot · hero · 2400×1029 · SupportAI review console",
@@ -726,19 +726,19 @@ module.exports = {
       "beats": [
         {
           "name": "Triage",
-          "n": "01 — Ticket triage",
+          "n": "01: Ticket triage",
           "h3": "Claude routes; humans stay in control.",
           "body": "Make workflow with Claude triage informed by ticket categorization and macro analysis."
         },
         {
           "name": "Drafts",
-          "n": "02 — Draft replies",
-          "h3": "Drafts for approval — never auto-send.",
+          "n": "02: Draft replies",
+          "h3": "Drafts for approval: never auto-send.",
           "body": "Draft replies land in an internal review console with confidence scores and one-click edit/send."
         },
         {
           "name": "Fallback",
-          "n": "03 — Engineering",
+          "n": "03: Engineering",
           "h3": "Low confidence falls back to the manual queue.",
           "body": "Zendesk integration, audit logging, and fallback to the manual queue when confidence is low."
         }
@@ -793,7 +793,7 @@ module.exports = {
       "testimonial": null,
       "metricsSignedOff": false,
       "slugNote": "Slug `/work/ai-support-automation` confirmed in live source (`portfolio.ts` / static params).",
-      "baH2": "Ticket piles — then routed work with human gates.",
+      "baH2": "Ticket piles, then routed work with human gates.",
       "outcomeH2": "What shipped for support ops.",
       "outcomeNote": "Measured outcome metrics are not published on this case until signed off. The narrative above is from the verified case source.",
       "testimonialPublic": false
@@ -802,14 +802,14 @@ module.exports = {
       "slug": "marketplace-mvp",
       "file": "kriva-case-marketplace.html",
       "shortName": "LocalServe",
-      "title": "LocalServe — marketplace MVP",
+      "title": "LocalServe: marketplace MVP",
       "titleLines": [
-        "LocalServe —",
+        "LocalServe:",
         "marketplace",
         "MVP"
       ],
       "eyebrow": "Case study · Marketplace",
-      "description": "No-code marketplace MVP with vendor onboarding, bookings, and admin ops — validated before custom build.",
+      "description": "No-code marketplace MVP with vendor onboarding, bookings, and admin ops: validated before custom build.",
       "tags": [
         "No-Code",
         "Marketplace",
@@ -825,9 +825,9 @@ module.exports = {
       "ui": "Clean mobile-first booking UX, vendor profiles, and admin views for ops without engineering.",
       "dev": "Bubble app, Stripe Connect setup, Make notifications, analytics for conversion tracking.",
       "approachH2": "Validate the marketplace before you rebuild it.",
-      "contextH2": "Prove supply and demand — then decide what to custom-build.",
-      "buildH2": "Bubble, Stripe Connect, Make — scoped for learning.",
-      "beforeCopy": "No product yet — founders needed supply/demand proof before a custom build.",
+      "contextH2": "Prove supply and demand, then decide what to custom-build.",
+      "buildH2": "Bubble, Stripe Connect, Make: scoped for learning.",
+      "beforeCopy": "No product yet: founders needed supply/demand proof before a custom build.",
       "afterCopy": "Bubble marketplace with vendor onboarding, booking, payments hook, and lightweight admin ops.",
       "heroSlot": "Slot · hero · 2400×1029 · LocalServe marketplace",
       "storySlots": [
@@ -857,19 +857,19 @@ module.exports = {
       "beats": [
         {
           "name": "Vendors",
-          "n": "01 — Vendor onboarding",
-          "h3": "Supply side first — without an engineering backlog.",
+          "n": "01: Vendor onboarding",
+          "h3": "Supply side first: without an engineering backlog.",
           "body": "Bubble marketplace with vendor onboarding shaped by vendor interviews and competitive scan."
         },
         {
           "name": "Booking",
-          "n": "02 — Bookings",
+          "n": "02: Bookings",
           "h3": "Mobile-first booking to test demand.",
           "body": "Clean mobile-first booking UX and payments hook, smoke-tested in two cities."
         },
         {
           "name": "Admin",
-          "n": "03 — Admin ops",
+          "n": "03: Admin ops",
           "h3": "Ops views founders can run without engineers.",
           "body": "Lightweight admin ops and Make notifications so the MVP can be operated while learning."
         }
@@ -924,7 +924,7 @@ module.exports = {
       "testimonial": null,
       "metricsSignedOff": false,
       "slugNote": "Slug `/work/marketplace-mvp` confirmed in live source (`portfolio.ts` / static params). Published title is LocalServe.",
-      "baH2": "Wishlist features — then an MVP that proves demand.",
+      "baH2": "Wishlist features, then an MVP that proves demand.",
       "outcomeH2": "What shipped to validate the market.",
       "outcomeNote": "Measured outcome metrics are not published on this case until signed off. The narrative above is from the verified case source.",
       "testimonialPublic": false

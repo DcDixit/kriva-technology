@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Final HTML polish — remove stale placeholders, clean markup */
+/** Final HTML polish: remove stale placeholders, clean markup */
 const fs = require("fs");
 const path = require("path");
 const ROOT = __dirname;

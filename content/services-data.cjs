@@ -1,7 +1,7 @@
 /**
- * Phase 9/11 — all 17 standalone services.
+ * Phase 9/11: all 17 standalone services.
  * Factual fields from web/src/content/services.ts.
- * Positioning / differentiation copy is editorial framing of those fields — not new claims.
+ * Positioning / differentiation copy is editorial framing of those fields, not new claims.
  * Phase 11: outcome H1s, challenge title/body pairs, section H2 variance, brief visuals.
  */
 module.exports = {
@@ -12,8 +12,8 @@ module.exports = {
       "file": "kriva-service-crm-development.html",
       "h1": "CRM Design",
       "title": "CRM Design · Dispatch & sales consoles · KRIVA",
-      "meta": "CRM and ops console design for dispatch, pipelines, and reporting teams actually trust — HubSpot, Salesforce, or custom.",
-      "ogTitle": "CRM Design — Dispatch & sales consoles",
+      "meta": "CRM and ops console design for dispatch, pipelines, and reporting teams actually trust: HubSpot, Salesforce, or custom.",
+      "ogTitle": "CRM Design: Dispatch & sales consoles",
       "eyebrow": "Service · Product interfaces",
       "family": "Apps & dashboards",
       "bullets": [
@@ -22,7 +22,7 @@ module.exports = {
         "Data visualization"
       ],
       "summary": "Sales pipelines, reporting views, and operational dashboards teams actually trust day to day.",
-      "positioning": "Built for desks that live in the CRM — dispatch supervisors, sales leaders, and ops — not marketing-site mockups of a pipeline.",
+      "positioning": "Built for desks that live in the CRM: dispatch supervisors, sales leaders, and ops, not marketing-site mockups of a pipeline.",
       "contrast": "Separate from Dashboard Design: this service owns stage models, pipeline UX, and CRM-platform fit. Dashboards own scanability and widget hierarchy for analytics views.",
       "challenges": [
         {
@@ -43,7 +43,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Stage reality workshop",
-          "body": "Pipeline and stage model workshop so definitions match how deals and loads actually move — not the default CRM template."
+          "body": "Pipeline and stage model workshop so definitions match how deals and loads actually move, not the default CRM template."
         },
         {
           "n": "02",
@@ -53,7 +53,7 @@ module.exports = {
         {
           "n": "03",
           "title": "Automation map",
-          "body": "Automation rule map with room for rollback — so ops trust the system after go-live."
+          "body": "Automation rule map with room for rollback: so ops trust the system after go-live."
         }
       ],
       "deliverables": [
@@ -73,21 +73,21 @@ module.exports = {
           "a": "HubSpot, Salesforce, Pipedrive, and custom CRM builds. We design for the tool you use or the one you're building."
         }
       ],
-      "processNote": "Usually follows discovery on stage definitions, then UI, then automation rules — reviewed before engineering commits.",
+      "processNote": "Usually follows discovery on stage definitions, then UI, then automation rules: reviewed before engineering commits.",
       "heroSlot": "Slot · 1600×1000 · CRM pipeline / dispatch console",
       "ctaH2": "Need a CRM the floor will trust?",
       "heroAsset": "/work/fleetflow/console-full.jpg",
-      "heroAssetAlt": "FleetFlow dispatch console — related CRM work",
+      "heroAssetAlt": "FleetFlow dispatch console: related CRM work",
       "proof": [
         {
           "href": "/work/fleetflow-dispatch",
           "k": "Work",
-          "label": "FleetFlow — dispatch CRM"
+          "label": "FleetFlow: dispatch CRM"
         },
         {
           "href": "/work/crm-pulse-dashboard",
           "k": "Work",
-          "label": "CRMPulse — sales dashboard"
+          "label": "CRMPulse: sales dashboard"
         },
         {
           "href": "/solutions/trucking-logistics",
@@ -122,8 +122,8 @@ module.exports = {
       "file": "kriva-service-dashboard-design.html",
       "h1": "Dashboard Design",
       "title": "Dashboard Design · Analytics & ops views · KRIVA",
-      "meta": "Analytics, admin, and operational dashboards designed for clarity, scanability, and daily use — not spreadsheet exports.",
-      "ogTitle": "Dashboard Design — Analytics & ops views",
+      "meta": "Analytics, admin, and operational dashboards designed for clarity, scanability, and daily use, not spreadsheet exports.",
+      "ogTitle": "Dashboard Design: Analytics & ops views",
       "eyebrow": "Service · Product interfaces",
       "family": "Apps & dashboards",
       "bullets": [
@@ -132,7 +132,7 @@ module.exports = {
         "Filter & drill-down UX"
       ],
       "summary": "Analytics, admin, and operational dashboards designed for clarity, scanability, and daily use.",
-      "positioning": "For teams who open a dashboard every morning — fleet exceptions, finance close, sales forecast — and need signal without another export.",
+      "positioning": "For teams who open a dashboard every morning: fleet exceptions, finance close, sales forecast, and need signal without another export.",
       "contrast": "Complements CRM Design: dashboards focus on widget hierarchy, filters, and drill-downs. CRM Design owns pipeline stages and CRM-platform workflows.",
       "challenges": [
         {
@@ -163,7 +163,7 @@ module.exports = {
         {
           "n": "03",
           "title": "Filter & drill-down",
-          "body": "Filter, date-range, and drill-down flows designed for operators — not one-off report builders."
+          "body": "Filter, date-range, and drill-down flows designed for operators, not one-off report builders."
         }
       ],
       "deliverables": [
@@ -183,26 +183,26 @@ module.exports = {
           "a": "Yes. We design internal admin consoles, customer analytics, and executive summary dashboards."
         }
       ],
-      "processNote": "Starts from the questions operators ask on a shift, then maps widgets and filters — before visual polish.",
+      "processNote": "Starts from the questions operators ask on a shift, then maps widgets and filters, before visual polish.",
       "heroSlot": "Slot · 1600×1000 · operational dashboard",
       "ctaH2": "Need dashboards leadership actually opens?",
       "heroAsset": "/work/crmpulse/thumb.jpg",
-      "heroAssetAlt": "CRMPulse sales dashboard — related dashboard work",
+      "heroAssetAlt": "CRMPulse sales dashboard: related dashboard work",
       "proof": [
         {
           "href": "/work/fleetflow-dispatch",
           "k": "Work",
-          "label": "FleetFlow — SLA views"
+          "label": "FleetFlow: SLA views"
         },
         {
           "href": "/work/finance-sync-hub",
           "k": "Work",
-          "label": "FinanceSync — reconciliation"
+          "label": "FinanceSync: reconciliation"
         },
         {
           "href": "/work/crm-pulse-dashboard",
           "k": "Work",
-          "label": "CRMPulse — leadership views"
+          "label": "CRMPulse: leadership views"
         }
       ],
       "related": [
@@ -232,8 +232,8 @@ module.exports = {
       "file": "kriva-service-api-integrations.html",
       "h1": "Integrations & APIs",
       "title": "Integrations & APIs · Reliable connectors · KRIVA",
-      "meta": "Reliable connectors between your product, CRM, ERP, and third-party tools — with clear error handling and monitoring.",
-      "ogTitle": "Integrations & APIs — Reliable connectors",
+      "meta": "Reliable connectors between your product, CRM, ERP, and third-party tools: with clear error handling and monitoring.",
+      "ogTitle": "Integrations & APIs: Reliable connectors",
       "eyebrow": "Service · Build & integration",
       "family": "Build & integration",
       "bullets": [
@@ -242,7 +242,7 @@ module.exports = {
         "Monitoring & alerts"
       ],
       "summary": "Reliable connectors between your product, CRM, ERP, and third-party tools, with clear error handling and monitoring.",
-      "positioning": "For products where silent sync drift is more expensive than a slow feature — QuickBooks, Xero, CRM, payments, and ops tools that must stay honest.",
+      "positioning": "For products where silent sync drift is more expensive than a slow feature: QuickBooks, Xero, CRM, payments, and ops tools that must stay honest.",
       "contrast": "Pairs with Automation Workflows when the job is Make/Zapier orchestration; this service owns connector architecture, error surfaces, and operator docs.",
       "challenges": [
         {
@@ -263,7 +263,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Architecture map",
-          "body": "Integration architecture map across entities, rate limits, and ownership — before writing connectors."
+          "body": "Integration architecture map across entities, rate limits, and ownership, before writing connectors."
         },
         {
           "n": "02",
@@ -273,7 +273,7 @@ module.exports = {
         {
           "n": "03",
           "title": "Alerting & docs",
-          "body": "Error alerting, logs, and operator documentation so failures are triageable — not tribal knowledge."
+          "body": "Error alerting, logs, and operator documentation so failures are triageable, not tribal knowledge."
         }
       ],
       "deliverables": [
@@ -297,12 +297,12 @@ module.exports = {
       "heroSlot": "Slot · 1600×1000 · sync status / anomaly triage",
       "ctaH2": "Need integrations finance can trust?",
       "heroAsset": "/work/financesync/home-reconciliation.jpg",
-      "heroAssetAlt": "FinanceSync reconciliation — related integrations work",
+      "heroAssetAlt": "FinanceSync reconciliation: related integrations work",
       "proof": [
         {
           "href": "/work/finance-sync-hub",
           "k": "Work",
-          "label": "FinanceSync — QB/Xero hub"
+          "label": "FinanceSync: QB/Xero hub"
         },
         {
           "href": "/solutions/accounting-integrations",
@@ -342,8 +342,8 @@ module.exports = {
       "file": "kriva-service-mobile-applications.html",
       "h1": "Mobile App Design",
       "title": "Mobile App Design · iOS & Android UX · KRIVA",
-      "meta": "Native-quality mobile UX for iOS and Android — focused on clarity, onboarding, and retention for patient, driver, and field apps.",
-      "ogTitle": "Mobile App Design — iOS & Android UX",
+      "meta": "Native-quality mobile UX for iOS and Android: focused on clarity, onboarding, and retention for patient, driver, and field apps.",
+      "ogTitle": "Mobile App Design: iOS & Android UX",
       "eyebrow": "Service · Product interfaces",
       "family": "Apps & dashboards",
       "bullets": [
@@ -352,7 +352,7 @@ module.exports = {
         "Prototype testing"
       ],
       "summary": "Native-quality mobile UX for iOS and Android, focused on clarity, onboarding, and retention.",
-      "positioning": "Mobile-first product UX — booking, records, load acceptance, status — designed for thumbs and interrupted attention, not shrunk desktop layouts.",
+      "positioning": "Mobile-first product UX: booking, records, load acceptance, status: designed for thumbs and interrupted attention, not shrunk desktop layouts.",
       "contrast": "UI/UX Design covers cross-platform interface systems; this service owns mobile-specific flows, store assets, and iOS/Android pattern fidelity.",
       "challenges": [
         {
@@ -373,7 +373,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Mobile UX flows",
-          "body": "Mobile UX flows for iOS and Android — including offline and interruption-friendly paths where the domain needs them."
+          "body": "Mobile UX flows for iOS and Android, including offline and interruption-friendly paths where the domain needs them."
         },
         {
           "n": "02",
@@ -403,16 +403,16 @@ module.exports = {
           "a": "Yes. We offer design-only or design and development with React Native, Flutter, or native paths."
         }
       ],
-      "processNote": "Design-only or design-and-build. React Native, Flutter, or native paths are chosen with your constraints — not as a default slogan.",
+      "processNote": "Design-only or design-and-build. React Native, Flutter, or native paths are chosen with your constraints, not as a default slogan.",
       "heroSlot": "Slot · 1600×1000 · mobile app flows",
       "ctaH2": "Need a mobile app operators will use?",
       "heroAsset": "/work/healthtrack/thumb.jpg",
-      "heroAssetAlt": "HealthTrack mobile — related app work",
+      "heroAssetAlt": "HealthTrack mobile: related app work",
       "proof": [
         {
           "href": "/work/healthtrack-mobile",
           "k": "Work",
-          "label": "HealthTrack — patient mobile"
+          "label": "HealthTrack: patient mobile"
         },
         {
           "href": "/solutions/trucking-logistics",
@@ -453,7 +453,7 @@ module.exports = {
       "h1": "SaaS Product Design",
       "title": "SaaS Product Design · Multi-tenant UX · KRIVA",
       "meta": "Multi-tenant SaaS UX, admin panels, permissions, and release-friendly design systems for UK and US product teams.",
-      "ogTitle": "SaaS Product Design — Multi-tenant UX",
+      "ogTitle": "SaaS Product Design: Multi-tenant UX",
       "eyebrow": "Service · Product interfaces",
       "family": "Apps & dashboards",
       "bullets": [
@@ -513,16 +513,16 @@ module.exports = {
           "a": "Yes. We typically roll out redesigns in phases to reduce risk and maintain continuity."
         }
       ],
-      "processNote": "Phased rollouts are the default for live SaaS — continuity over big-bang launches.",
+      "processNote": "Phased rollouts are the default for live SaaS: continuity over big-bang launches.",
       "heroSlot": "Slot · 1600×1000 · SaaS admin / tenant UX",
       "ctaH2": "Need SaaS UX that activates?",
       "heroAsset": "/work/payrollpro/home-onboarding.jpg",
-      "heroAssetAlt": "PayrollPro onboarding — related SaaS work",
+      "heroAssetAlt": "PayrollPro onboarding: related SaaS work",
       "proof": [
         {
           "href": "/work/payroll-pro-saas",
           "k": "Work",
-          "label": "PayrollPro — onboarding"
+          "label": "PayrollPro: onboarding"
         },
         {
           "href": "/solutions/saas",
@@ -563,7 +563,7 @@ module.exports = {
       "h1": "Automation Workflows",
       "title": "Automation Workflows · Make, Zapier & human gates · KRIVA",
       "meta": "Make, Zapier, and custom automations that remove repetitive work while keeping humans in control of send and approve steps.",
-      "ogTitle": "Automation Workflows — Make, Zapier & human gates",
+      "ogTitle": "Automation Workflows: Make, Zapier & human gates",
       "eyebrow": "Service · AI & automation",
       "family": "AI & automation",
       "bullets": [
@@ -572,7 +572,7 @@ module.exports = {
         "AI workflow design"
       ],
       "summary": "Make, Zapier, and custom automations that remove repetitive work while keeping humans in control.",
-      "positioning": "For ops and support teams drowning in repeatable steps — with approval gates so automation never sends on its own.",
+      "positioning": "For ops and support teams drowning in repeatable steps: with approval gates so automation never sends on its own.",
       "contrast": "Distinct from AI-Assisted Product Development (how we ship design/code) and from Integrations (connector reliability). This service owns workflow orchestration.",
       "challenges": [
         {
@@ -593,7 +593,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Workflow audit",
-          "body": "Workflow audit of the steps people repeat — and where a human must stay in the loop."
+          "body": "Workflow audit of the steps people repeat, and where a human must stay in the loop."
         },
         {
           "n": "02",
@@ -623,16 +623,16 @@ module.exports = {
           "a": "Yes. We chain LLM steps into Make workflows for summarization, routing, and draft generation, with approval gates throughout."
         }
       ],
-      "processNote": "Human approval gates are default for anything customer-facing — same posture as SupportAI.",
+      "processNote": "Human approval gates are default for anything customer-facing: same posture as SupportAI.",
       "heroSlot": "Slot · 1600×1000 · automation review console",
       "ctaH2": "Need automation with humans in the loop?",
       "heroAsset": "/work/supportai/thumb.jpg",
-      "heroAssetAlt": "SupportAI automation — related workflow work",
+      "heroAssetAlt": "SupportAI automation: related workflow work",
       "proof": [
         {
           "href": "/work/ai-support-automation",
           "k": "Work",
-          "label": "SupportAI — ticket automation"
+          "label": "SupportAI: ticket automation"
         },
         {
           "href": "/solutions/accounting-integrations",
@@ -672,8 +672,8 @@ module.exports = {
       "file": "kriva-service-ai-assisted-development.html",
       "h1": "AI-Assisted Product Development",
       "title": "AI-Assisted Product Development · Human oversight · KRIVA",
-      "meta": "Ship with AI-augmented design, development, and QA — Claude, GPT, Copilot, and modern toolchains with human oversight at every step.",
-      "ogTitle": "AI-Assisted Product Development — Human oversight",
+      "meta": "Ship with AI-augmented design, development, and QA: Claude, GPT, Copilot, and modern toolchains with human oversight at every step.",
+      "ogTitle": "AI-Assisted Product Development: Human oversight",
       "eyebrow": "Service · AI & automation",
       "family": "AI & automation",
       "bullets": [
@@ -682,7 +682,7 @@ module.exports = {
         "Quality automation"
       ],
       "summary": "Ship faster with AI-augmented design, development, and QA. We use Claude, GPT, Copilot, and modern toolchains with human oversight at every step.",
-      "positioning": "An engagement model for product teams who want AI speed without giving up craft — human review gates on every critical step.",
+      "positioning": "An engagement model for product teams who want AI speed without giving up craft: human review gates on every critical step.",
       "contrast": "Not the same as Automation Workflows (ops Make/Zapier). This is how we design and build product work with AI in the toolchain.",
       "challenges": [
         {
@@ -703,7 +703,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Workflow playbook",
-          "body": "AI workflow playbook for your team — where assistants help and where they stay out."
+          "body": "AI workflow playbook for your team: where assistants help and where they stay out."
         },
         {
           "n": "02",
@@ -725,7 +725,7 @@ module.exports = {
       "benefits": [
         {
           "text": "Faster iteration on suitable workstreams",
-          "tbd": "Source listed a numeric speed claim — withheld until verified"
+          "tbd": "Source listed a numeric speed claim: withheld until verified"
         },
         "Consistent output with human review gates",
         "Modern positioning for investors and clients"
@@ -740,7 +740,7 @@ module.exports = {
       "heroSlot": "Slot · 1600×1000 · AI-assisted product workflow",
       "ctaH2": "Need AI-assisted delivery with clear ownership?",
       "heroAsset": "/work/supportai/thumb.jpg",
-      "heroAssetAlt": "AI-assisted product workflow — related work",
+      "heroAssetAlt": "AI-assisted product workflow: related work",
       "proof": [
         {
           "href": "/work/ai-support-automation",
@@ -785,8 +785,8 @@ module.exports = {
       "file": "kriva-service-web-development.html",
       "h1": "Web Design & Development",
       "title": "Web Design & Development · Next.js sites · KRIVA",
-      "meta": "Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations — typically Next.js, React, TypeScript.",
-      "ogTitle": "Web Design & Development — Next.js sites",
+      "meta": "Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations: typically Next.js, React, TypeScript.",
+      "ogTitle": "Web Design & Development: Next.js sites",
       "eyebrow": "Service · Build & integration",
       "family": "Build & brand",
       "bullets": [
@@ -795,7 +795,7 @@ module.exports = {
         "Performance & SEO"
       ],
       "summary": "Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations.",
-      "positioning": "For teams who need a premium web presence that marketing can update — without waiting on a developer for every copy change.",
+      "positioning": "For teams who need a premium web presence that marketing can update: without waiting on a developer for every copy change.",
       "contrast": "Implementation-focused. Product Design / UI/UX own authenticated product UX; this service ships the marketing site or web surface with performance and SEO structure.",
       "challenges": [
         {
@@ -846,16 +846,16 @@ module.exports = {
           "a": "Next.js, React, and TypeScript for most marketing and product sites. Chosen for speed, SEO, and maintainability."
         }
       ],
-      "processNote": "Preferred stack is Next.js, React, and TypeScript for most marketing and product sites — confirmed in source FAQ.",
+      "processNote": "Preferred stack is Next.js, React, and TypeScript for most marketing and product sites: confirmed in source FAQ.",
       "heroSlot": "Slot · 1600×1000 · marketing site / web app",
       "ctaH2": "Need a site or web app that holds up?",
       "heroAsset": "/work/brandlift/thumb.jpg",
-      "heroAssetAlt": "BrandLift storefront — related web work",
+      "heroAssetAlt": "BrandLift storefront: related web work",
       "proof": [
         {
           "href": "/work/brandlift-ecommerce",
           "k": "Work",
-          "label": "BrandLift — storefront"
+          "label": "BrandLift: storefront"
         },
         {
           "href": "/insights/no-code-vs-custom-mvp",
@@ -895,8 +895,8 @@ module.exports = {
       "file": "kriva-service-no-code-low-code.html",
       "h1": "No-Code / Low-Code Solutions",
       "title": "No-Code / Low-Code Solutions · MVP validation · KRIVA",
-      "meta": "Webflow, Bubble, Framer, and Make-powered MVPs and internal tools — validate before months of custom build.",
-      "ogTitle": "No-Code / Low-Code Solutions — MVP validation",
+      "meta": "Webflow, Bubble, Framer, and Make-powered MVPs and internal tools: validate before months of custom build.",
+      "ogTitle": "No-Code / Low-Code Solutions: MVP validation",
       "eyebrow": "Service · AI & automation",
       "family": "AI & automation",
       "bullets": [
@@ -905,7 +905,7 @@ module.exports = {
         "Rapid MVPs"
       ],
       "summary": "Webflow, Bubble, Framer, and Make-powered MVPs and internal tools without months of custom build time.",
-      "positioning": "For founders and operators who need to learn from a live product before committing to a custom build — marketplaces, landing systems, internal tools.",
+      "positioning": "For founders and operators who need to learn from a live product before committing to a custom build: marketplaces, landing systems, internal tools.",
       "contrast": "Complements Web Development and Product Design. We recommend no-code when validation speed wins; we say no when compliance or scale demands custom code.",
       "challenges": [
         {
@@ -926,7 +926,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Platform choice",
-          "body": "Platform selection recommendation — Webflow, Framer, Bubble — matched to the risk you are testing."
+          "body": "Platform selection recommendation: Webflow, Framer, Bubble: matched to the risk you are testing."
         },
         {
           "n": "02",
@@ -960,12 +960,12 @@ module.exports = {
       "heroSlot": "Slot · 1600×1000 · no-code marketplace / MVP",
       "ctaH2": "Need a no-code MVP that can grow?",
       "heroAsset": "/work/localserve/thumb.jpg",
-      "heroAssetAlt": "Marketplace MVP — related no-code work",
+      "heroAssetAlt": "Marketplace MVP: related no-code work",
       "proof": [
         {
           "href": "/work/marketplace-mvp",
           "k": "Work",
-          "label": "LocalServe — marketplace MVP"
+          "label": "LocalServe: marketplace MVP"
         },
         {
           "href": "/insights/no-code-vs-custom-mvp",
@@ -1005,8 +1005,8 @@ module.exports = {
       "file": "kriva-service-product-design.html",
       "h1": "Product Design",
       "title": "Product Design · Strategy to launch-ready UI · KRIVA",
-      "meta": "Full product design for SaaS, dashboards, and digital platforms — from concept through launch-ready UI, not just individual screens.",
-      "ogTitle": "Product Design — Strategy to launch-ready UI",
+      "meta": "Full product design for SaaS, dashboards, and digital platforms: from concept through launch-ready UI, not just individual screens.",
+      "ogTitle": "Product Design: Strategy to launch-ready UI",
       "eyebrow": "Service · Product & UX",
       "family": "Product & UX",
       "bullets": [
@@ -1015,7 +1015,7 @@ module.exports = {
         "High-fidelity UI"
       ],
       "summary": "Full product design for SaaS, dashboards, and digital platforms, from concept through to launch-ready UI.",
-      "positioning": "End-to-end product scope: strategy, flows, and UI for the whole product — so stakeholders share one prototype before engineering starts.",
+      "positioning": "End-to-end product scope: strategy, flows, and UI for the whole product: so stakeholders share one prototype before engineering starts.",
       "contrast": "Different from UI/UX Design: Product Design spans strategy, flows, and UI for the full product, not just individual screens or marketing pages. UI/UX owns research-led flows, prototypes, and interface systems that stay coherent as features land.",
       "challenges": [
         {
@@ -1036,12 +1036,12 @@ module.exports = {
         {
           "n": "01",
           "title": "Product UX map",
-          "body": "Product UX map that covers core journeys — including the settings and dashboards that usually get left behind."
+          "body": "Product UX map that covers core journeys, including the settings and dashboards that usually get left behind."
         },
         {
           "n": "02",
           "title": "Flows & edge cases",
-          "body": "Core user flows plus edge cases, so priorities are visible in a shared prototype — not a slide deck."
+          "body": "Core user flows plus edge cases, so priorities are visible in a shared prototype, not a slide deck."
         },
         {
           "n": "03",
@@ -1070,7 +1070,7 @@ module.exports = {
       "heroSlot": "Slot · 1600×1000 · product UX map / launch UI",
       "ctaH2": "Need product design that ships?",
       "heroAsset": "/work/payrollpro/thumb.jpg",
-      "heroAssetAlt": "PayrollPro product UX — related design work",
+      "heroAssetAlt": "PayrollPro product UX: related design work",
       "proof": [
         {
           "href": "/work/payroll-pro-saas",
@@ -1091,7 +1091,7 @@ module.exports = {
       "related": [
         {
           "href": "/services/ui-ux-design",
-          "label": "UI/UX Design — sibling"
+          "label": "UI/UX Design: sibling"
         },
         {
           "href": "/services/saas-platforms",
@@ -1103,7 +1103,7 @@ module.exports = {
         }
       ],
       "chromeNav": "saas",
-      "h1Display": "End-to-end product design — strategy to ship.",
+      "h1Display": "End-to-end product design: strategy to ship.",
       "serviceLabel": "Product Design",
       "challengesH2": "When screens ship without a product story",
       "deliverablesH2": "What the product team leaves with",
@@ -1115,8 +1115,8 @@ module.exports = {
       "file": "kriva-service-ui-ux-design.html",
       "h1": "UI/UX Design",
       "title": "UI/UX Design · Flows, prototypes & systems · KRIVA",
-      "meta": "Research-led flows, prototypes, and interface systems that stay intuitive as products grow — Figma-first with dev-ready specs.",
-      "ogTitle": "UI/UX Design — Flows, prototypes & systems",
+      "meta": "Research-led flows, prototypes, and interface systems that stay intuitive as products grow: Figma-first with dev-ready specs.",
+      "ogTitle": "UI/UX Design: Flows, prototypes & systems",
       "eyebrow": "Service · Product & UX",
       "family": "Product & UX",
       "bullets": [
@@ -1125,7 +1125,7 @@ module.exports = {
         "Design systems"
       ],
       "summary": "Research-led flows, prototypes, and interface systems that stay intuitive as products grow.",
-      "positioning": "For teams shipping features into a live product — keeping flows coherent, prototypes crisp, and handoffs fast as the interface grows.",
+      "positioning": "For teams shipping features into a live product: keeping flows coherent, prototypes crisp, and handoffs fast as the interface grows.",
       "contrast": "Different from Product Design: UI/UX focuses on research-led flows, prototypes, and interface systems for screens and journeys. Product Design covers full-product strategy through launch-ready UI. See Product Design when you need the whole narrative, not a surface.",
       "challenges": [
         {
@@ -1146,7 +1146,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Research summary",
-          "body": "User research summary so interface decisions are evidence-led — not opinion wars."
+          "body": "User research summary so interface decisions are evidence-led, not opinion wars."
         },
         {
           "n": "02",
@@ -1156,7 +1156,7 @@ module.exports = {
         {
           "n": "03",
           "title": "UI kit & specs",
-          "body": "UI kit with component specs — Figma-first, with optional FigJam workshops and tokens for engineering."
+          "body": "UI kit with component specs: Figma-first, with optional FigJam workshops and tokens for engineering."
         }
       ],
       "deliverables": [
@@ -1180,11 +1180,11 @@ module.exports = {
           "a": "Figma-first, with optional FigJam for workshops. We deliver dev-ready specs and tokens."
         }
       ],
-      "processNote": "Often nests inside a Product Design or SaaS engagement — or stands alone when the product narrative already exists.",
+      "processNote": "Often nests inside a Product Design or SaaS engagement, or stands alone when the product narrative already exists.",
       "heroSlot": "Slot · 1600×1000 · Figma flows / UI kit",
       "ctaH2": "Need UI/UX that clears the next release?",
       "heroAsset": "/work/payrollpro/permissions.jpg",
-      "heroAssetAlt": "Permission clarity UI — related UX work",
+      "heroAssetAlt": "Permission clarity UI: related UX work",
       "proof": [
         {
           "href": "/work/payroll-pro-saas",
@@ -1205,7 +1205,7 @@ module.exports = {
       "related": [
         {
           "href": "/services/product-design",
-          "label": "Product Design — sibling"
+          "label": "Product Design: sibling"
         },
         {
           "href": "/services/mobile-applications",
@@ -1230,7 +1230,7 @@ module.exports = {
       "h1": "Branding & Graphic Design",
       "title": "Branding & Graphic Design · Identity systems · KRIVA",
       "meta": "Cohesive brand identity, visual systems, and marketing assets that elevate perception without trend-chasing.",
-      "ogTitle": "Branding & Graphic Design — Identity systems",
+      "ogTitle": "Branding & Graphic Design: Identity systems",
       "eyebrow": "Service · Brand",
       "family": "Build & brand",
       "bullets": [
@@ -1239,7 +1239,7 @@ module.exports = {
         "Marketing collateral"
       ],
       "summary": "Cohesive brand identity, visual systems, and marketing assets that elevate perception without trend-chasing.",
-      "positioning": "For products and D2C brands that feel generic next to competitors — or whose marketing and product visuals no longer match.",
+      "positioning": "For products and D2C brands that feel generic next to competitors, or whose marketing and product visuals no longer match.",
       "contrast": "Broader than logo-only work (logo remains a hub capability). Includes guidelines, templates, and systems marketing can reuse.",
       "challenges": [
         {
@@ -1255,7 +1255,7 @@ module.exports = {
           "body": "No reusable templates; everything built from scratch"
         }
       ],
-      "approachH2": "Stabilize the system — or rebuild what has to change.",
+      "approachH2": "Stabilize the system, or rebuild what has to change.",
       "approach": [
         {
           "n": "01",
@@ -1290,16 +1290,16 @@ module.exports = {
           "a": "No. We often stabilize existing brands with a focused visual system refresh."
         }
       ],
-      "processNote": "Full rebrand or focused visual-system refresh — confirmed in source FAQ. Logo-only work can run standalone or as phase one.",
+      "processNote": "Full rebrand or focused visual-system refresh: confirmed in source FAQ. Logo-only work can run standalone or as phase one.",
       "heroSlot": "Slot · 1600×1000 · brand system / storefront",
       "ctaH2": "Need branding that earns trust?",
       "heroAsset": "/work/brandlift/thumb.jpg",
-      "heroAssetAlt": "BrandLift brand system — related branding work",
+      "heroAssetAlt": "BrandLift brand system: related branding work",
       "proof": [
         {
           "href": "/work/brandlift-ecommerce",
           "k": "Work",
-          "label": "BrandLift — D2C rebrand"
+          "label": "BrandLift: D2C rebrand"
         },
         {
           "href": "/services/web-development",
@@ -1340,7 +1340,7 @@ module.exports = {
       "h1": "UX Research",
       "title": "UX Research · Evidence before build · KRIVA",
       "meta": "Interviews, usability tests, and journey mapping that turn assumptions into evidence-backed product decisions.",
-      "ogTitle": "UX Research — Evidence before build",
+      "ogTitle": "UX Research: Evidence before build",
       "eyebrow": "Service · Product interfaces",
       "family": "Product & UX",
       "bullets": [
@@ -1349,7 +1349,7 @@ module.exports = {
         "Journey & persona maps"
       ],
       "summary": "Interviews, usability tests, and journey mapping that turn assumptions into evidence-backed product decisions.",
-      "positioning": "For teams about to rebuild dispatch, onboarding, or a core workflow — when opinions are loud and evidence is thin.",
+      "positioning": "For teams about to rebuild dispatch, onboarding, or a core workflow: when opinions are loud and evidence is thin.",
       "contrast": "Feeds Product Design and Wireframing & Prototyping. Research owns the evidence; those services own the flows and UI that follow.",
       "challenges": [
         {
@@ -1370,7 +1370,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Plan & recruit",
-          "body": "Research plan and recruitment guide scoped to the decision you need to make — not a generic study."
+          "body": "Research plan and recruitment guide scoped to the decision you need to make, not a generic study."
         },
         {
           "n": "02",
@@ -1404,17 +1404,17 @@ module.exports = {
       "heroSlot": "Slot · 1600×1000 · research workshop / journey map",
       "ctaH2": "Need research before the next build?",
       "heroAsset": "/work/payrollpro/role-path.jpg",
-      "heroAssetAlt": "Onboarding research path — related research work",
+      "heroAssetAlt": "Onboarding research path: related research work",
       "proof": [
         {
           "href": "/work/fleetflow-dispatch",
           "k": "Work",
-          "label": "FleetFlow — ops research"
+          "label": "FleetFlow: ops research"
         },
         {
           "href": "/work/payroll-pro-saas",
           "k": "Work",
-          "label": "PayrollPro — activation"
+          "label": "PayrollPro: activation"
         },
         {
           "href": "/services/product-design",
@@ -1450,7 +1450,7 @@ module.exports = {
       "h1": "Wireframing & Prototyping",
       "title": "Wireframing & Prototyping · Align before code · KRIVA",
       "meta": "Low- and high-fidelity prototypes that align stakeholders and de-risk development before code starts.",
-      "ogTitle": "Wireframing & Prototyping — Align before code",
+      "ogTitle": "Wireframing & Prototyping: Align before code",
       "eyebrow": "Service · Product interfaces",
       "family": "Product & UX",
       "bullets": [
@@ -1459,7 +1459,7 @@ module.exports = {
         "Stakeholder walkthroughs"
       ],
       "summary": "Low- and high-fidelity prototypes that align stakeholders and de-risk development before code starts.",
-      "positioning": "For founders and product leads who need something tangible before engineering commits — MVP scope, onboarding, or a contested workflow.",
+      "positioning": "For founders and product leads who need something tangible before engineering commits: MVP scope, onboarding, or a contested workflow.",
       "contrast": "Sits between UX Research and UI/UX Design. Prototypes prove the flow; visual systems and production UI come next.",
       "challenges": [
         {
@@ -1485,7 +1485,7 @@ module.exports = {
         {
           "n": "02",
           "title": "Clickable prototype",
-          "body": "Interactive Figma prototype for walkthroughs — including mobile and web when both matter."
+          "body": "Interactive Figma prototype for walkthroughs, including mobile and web when both matter."
         },
         {
           "n": "03",
@@ -1514,12 +1514,12 @@ module.exports = {
       "heroSlot": "Slot · 1600×1000 · wireframe / prototype board",
       "ctaH2": "Need wireframes and prototypes that decide?",
       "heroAsset": "/work/fleetflow/load-board.jpg",
-      "heroAssetAlt": "Load board prototype frame — related wireframe work",
+      "heroAssetAlt": "Load board prototype frame: related wireframe work",
       "proof": [
         {
           "href": "/work/payroll-pro-saas",
           "k": "Work",
-          "label": "PayrollPro — onboarding"
+          "label": "PayrollPro: onboarding"
         },
         {
           "href": "/work/marketplace-mvp",
@@ -1560,7 +1560,7 @@ module.exports = {
       "h1": "Design Systems",
       "title": "Design Systems · Tokens & components · KRIVA",
       "meta": "Scalable component libraries, tokens, and documentation that keep product teams shipping consistent UI.",
-      "ogTitle": "Design Systems — Tokens & components",
+      "ogTitle": "Design Systems: Tokens & components",
       "eyebrow": "Service · Product interfaces",
       "family": "Product & UX",
       "bullets": [
@@ -1569,7 +1569,7 @@ module.exports = {
         "Dev-ready specs"
       ],
       "summary": "Scalable component libraries, tokens, and documentation that keep product teams shipping consistent UI.",
-      "positioning": "For SaaS and multi-surface products where every feature reinvents buttons, tables, and forms — and design-to-dev drift is slowing releases.",
+      "positioning": "For SaaS and multi-surface products where every feature reinvents buttons, tables, and forms, and design-to-dev drift is slowing releases.",
       "contrast": "Complements SaaS Product Design and UI/UX Design. Those own product flows; this service owns the shared language that keeps them consistent.",
       "challenges": [
         {
@@ -1590,7 +1590,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Audit & tokens",
-          "body": "Token and typography scale that matches how the product already behaves — or how it needs to."
+          "body": "Token and typography scale that matches how the product already behaves, or how it needs to."
         },
         {
           "n": "02",
@@ -1624,7 +1624,7 @@ module.exports = {
       "heroSlot": "Slot · 1600×1000 · design system / component board",
       "ctaH2": "Need a design system teams will keep?",
       "heroAsset": "/work/payrollpro/after.jpg",
-      "heroAssetAlt": "Product UI kit frame — related design system work",
+      "heroAssetAlt": "Product UI kit frame: related design system work",
       "proof": [
         {
           "href": "/solutions/saas",
@@ -1670,7 +1670,7 @@ module.exports = {
       "h1": "Web Application Design",
       "title": "Web Application Design · Authenticated product UX · KRIVA",
       "meta": "Complex web app UX for authenticated products, multi-step flows, and data-heavy interfaces.",
-      "ogTitle": "Web Application Design — Authenticated product UX",
+      "ogTitle": "Web Application Design: Authenticated product UX",
       "eyebrow": "Service · Apps & dashboards",
       "family": "Apps & dashboards",
       "bullets": [
@@ -1679,7 +1679,7 @@ module.exports = {
         "Interaction patterns"
       ],
       "summary": "Complex web app UX for authenticated products, multi-step flows, and data-heavy interfaces.",
-      "positioning": "For authenticated products where marketing-site patterns fail — ops portals, customer apps, and multi-step workflows that must stay clear on every breakpoint.",
+      "positioning": "For authenticated products where marketing-site patterns fail: ops portals, customer apps, and multi-step workflows that must stay clear on every breakpoint.",
       "contrast": "Different from Web Design & Development (marketing sites / build) and from Dashboard Design (analytics hierarchy). This service owns app IA and interaction patterns.",
       "challenges": [
         {
@@ -1700,12 +1700,12 @@ module.exports = {
         {
           "n": "01",
           "title": "App IA",
-          "body": "Information architecture for signed-in experiences — navigation, roles, and primary jobs-to-be-done."
+          "body": "Information architecture for signed-in experiences: navigation, roles, and primary jobs-to-be-done."
         },
         {
           "n": "02",
           "title": "Workflow UI",
-          "body": "Core workflow screens with empty states, errors, and edge cases designed in — not bolted on."
+          "body": "Core workflow screens with empty states, errors, and edge cases designed in, not bolted on."
         },
         {
           "n": "03",
@@ -1734,7 +1734,7 @@ module.exports = {
       "heroSlot": "Slot · 1600×1000 · authenticated web app UI",
       "ctaH2": "Need authenticated web app UX?",
       "heroAsset": "/work/fleetflow/console-full.jpg",
-      "heroAssetAlt": "Ops console UI — related web application work",
+      "heroAssetAlt": "Ops console UI: related web application work",
       "proof": [
         {
           "href": "/solutions/car-transportation",
@@ -1767,7 +1767,7 @@ module.exports = {
         }
       ],
       "chromeNav": "services",
-      "h1Display": "Authenticated product UX — not a marketing site.",
+      "h1Display": "Authenticated product UX, not a marketing site.",
       "serviceLabel": "Web Application Design",
       "challengesH2": "When the app UX is treated like a brochure",
       "deliverablesH2": "What authenticated users navigate",
@@ -1780,7 +1780,7 @@ module.exports = {
       "h1": "Logo Design",
       "title": "Logo Design · Marks that scale · KRIVA",
       "meta": "Distinctive marks and logo systems that work across digital, print, and social touchpoints.",
-      "ogTitle": "Logo Design — Marks that scale",
+      "ogTitle": "Logo Design: Marks that scale",
       "eyebrow": "Service · Brand",
       "family": "Build & brand",
       "bullets": [
@@ -1810,7 +1810,7 @@ module.exports = {
         {
           "n": "01",
           "title": "Concept exploration",
-          "body": "Concept exploration deck across directions that fit your category and naming — not trend templates."
+          "body": "Concept exploration deck across directions that fit your category and naming, not trend templates."
         },
         {
           "n": "02",
@@ -1840,11 +1840,11 @@ module.exports = {
           "a": "It can be standalone or the first phase of a broader branding engagement, depending on your needs."
         }
       ],
-      "processNote": "Standalone mark work or phase one of a broader branding engagement — confirmed in source FAQ.",
+      "processNote": "Standalone mark work or phase one of a broader branding engagement: confirmed in source FAQ.",
       "heroSlot": "Slot · 1600×1000 · logo lockups / brand mark",
       "ctaH2": "Need a logo system that scales?",
       "heroAsset": "/work/brandlift/thumb.jpg",
-      "heroAssetAlt": "Brand mark frame — related logo work",
+      "heroAssetAlt": "Brand mark frame: related logo work",
       "proof": [
         {
           "href": "/work/brandlift-ecommerce",

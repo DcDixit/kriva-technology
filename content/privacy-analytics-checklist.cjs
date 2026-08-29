@@ -1,5 +1,5 @@
 /**
- * Privacy / analytics decision checklist — Phase 9 (internal).
+ * Privacy / analytics decision checklist: Phase 9 (internal).
  * Do not add tracking scripts here. Policy choice is yours.
  */
 
@@ -18,22 +18,22 @@ const detected = {
     notes: "No tracking scripts in kriva-*.html / shared chrome.",
   },
   liveNextApp: {
-    ga4: "optional — NEXT_PUBLIC_GA_MEASUREMENT_ID (empty in .env.local)",
-    gtm: "optional — NEXT_PUBLIC_GTM_ID (empty in .env.local)",
+    ga4: "optional: NEXT_PUBLIC_GA_MEASUREMENT_ID (empty in .env.local)",
+    gtm: "optional: NEXT_PUBLIC_GTM_ID (empty in .env.local)",
     metaPixel: false,
     linkedInInsight: false,
     hotjar: false,
     clarity: false,
     vercelAnalytics: false,
     themeLocalStorage: true,
-    contactEmailProcessor: "Privacy mentions Resend-class email — confirm actual provider",
+    contactEmailProcessor: "Privacy mentions Resend-class email: confirm actual provider",
     notes:
       "Scripts load only when env IDs are set. AnalyticsProvider is inert without gtag/dataLayer.",
   },
 };
 
 /**
- * Choose one decision key. apply_launch_inputs does not invent legal copy —
+ * Choose one decision key. apply_launch_inputs does not invent legal copy:
  * it only lists which Privacy/Terms TBD paragraphs to update.
  */
 const decisions = {

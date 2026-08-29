@@ -1,5 +1,5 @@
 /**
- * Deferred service URLs — Phase 9.
+ * Deferred service URLs: Phase 9.
  * Do not build pages, redirects, or change canonical strategy until you decide hosting.
  */
 

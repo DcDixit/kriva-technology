@@ -1,4 +1,4 @@
-/* KRIVA SaaS / Sales — reveals, product stage, phases, FAQ */
+/* KRIVA SaaS / Sales: reveals, product stage, phases, FAQ */
 (function () {
   'use strict';
 
