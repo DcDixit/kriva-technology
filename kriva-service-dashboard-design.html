@@ -14,11 +14,11 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
 <title>Dashboard Design · Ops, Admin &amp; Analytics UX · KRIVA</title>
-<meta name="description" content="Operational dashboard and admin panel design for SaaS and ops teams — exception queues, role-aware views, and tables that resolve work, not another chart wall.">
+<meta name="description" content="Dashboard and admin panel design for SaaS and ops teams: operational dashboards, exception queues, role-aware views, and tables that resolve work — hierarchy before charts.">
 <link rel="canonical" href="https://krivatechnologies.com/services/dashboard-design">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dashboard Design · Ops, Admin &amp; Analytics UX">
-<meta property="og:description" content="Operational dashboard and admin panel design for SaaS and ops teams — exception queues, role-aware views, and tables that resolve work, not another chart wall.">
+<meta property="og:description" content="Dashboard and admin panel design for SaaS and ops teams: operational dashboards, exception queues, role-aware views, and tables that resolve work — hierarchy before charts.">
 <meta property="og:url" content="https://krivatechnologies.com/services/dashboard-design">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -144,23 +144,17 @@ body.page-dashboard .hero{
 }
 .dash-trust span{display:inline-flex;align-items:center;gap:8px}
 .dash-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
+.dash-hero-tag{
+  display:block;margin-top:18px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta)
+}
 .dash-hero-visual{position:relative;min-width:0}
 .cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 
 .shell{
   background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
-  box-shadow:var(--shadow-product);overflow:hidden;display:grid;grid-template-columns:132px minmax(0,1fr);min-width:0
+  box-shadow:var(--shadow-product);overflow:hidden;min-width:0
 }
-.dash-side{
-  background:#12181E;border-right:1px solid var(--ink-line);padding:12px 0 16px;
-  display:flex;flex-direction:column;gap:2px
-}
-.dash-side .brand{padding:4px 12px 14px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff}
-.dash-side span{
-  display:block;padding:8px 12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C
-}
-.dash-side .on{color:#fff;background:rgba(79,70,229,.14);border-left:2px solid var(--cta)}
-.dash-main{min-width:0}
+.shell--scan{max-width:100%}
 .dash-chrome{
   display:flex;align-items:center;gap:6px;padding:10px 14px;
   background:#12181E;border-bottom:1px solid var(--ink-line);
@@ -196,13 +190,11 @@ input.dash-search:focus{border-color:#5C6670}
 .dash-stat{text-align:right;font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,2.2vw,1.9rem);letter-spacing:-.04em;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums}
 .dash-stat span{display:block}
 .dash-stat small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C;font-weight:400}
-.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--ink-line)}
-.kpi{padding:12px;border-right:1px solid var(--ink-line);min-width:0}
-.kpi:last-child{border-right:0}
-.kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#717F8C}
-.kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.02rem,1.5vw,1.18rem);letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
-.kpi em{display:block;margin-top:4px;font-style:normal;font-family:var(--f-mono);font-size:9px;color:var(--lime)}
-.kpi.warn em{color:var(--amber)}
+.dash-scan-hint{
+  padding:8px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
+}
+.dash-scan-hint em{font-style:normal;color:var(--amber);margin-left:8px}
 .split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-width:0}
 .chart{padding:14px;border-right:1px solid var(--ink-line);display:flex;flex-direction:column;gap:10px;min-width:0}
 .lab{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
@@ -247,17 +239,14 @@ input.dash-search:focus{border-color:#5C6670}
 .sla.hot i:after{background:var(--amber)}
 
 .dash-frame{background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);box-shadow:var(--shadow-product);overflow:hidden}
-.dash-hero-meta{
-  margin-top:14px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 24px
+.dash-hero-meta{margin-top:14px}
+.dash-proof-link{
+  display:inline-flex;align-items:center;gap:8px;margin-top:10px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);
+  border-bottom:1px solid var(--rule);padding-bottom:2px;min-height:44px
 }
-.dash-callout{
-  display:inline-flex;align-items:baseline;gap:10px;
-  background:var(--white);border:1px solid var(--rule);padding:10px 14px;
-  box-shadow:var(--shadow-lift);transition:border-color var(--t-fast)
-}
-.dash-callout:hover{border-color:var(--ink)}
-.dash-callout b{font-family:var(--f-display);font-weight:800;font-size:1.35rem;letter-spacing:-.05em;line-height:1;color:var(--green)}
-.dash-callout span{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);max-width:22ch}
+.dash-proof-link b{color:var(--green);font-weight:700;letter-spacing:-.02em}
+.dash-proof-link:hover{color:var(--ink)}
 
 .dash-qs{background:var(--white);border-block:1px solid var(--rule);padding-block:clamp(28px,3.6vw,44px)}
 .dash-qs .wrap{display:grid;grid-template-columns:minmax(8ch,.7fr) repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,36px);align-items:start}
@@ -334,7 +323,7 @@ input.dash-search:focus{border-color:#5C6670}
 .proof-flow div{display:grid;grid-template-columns:clamp(88px,12vw,118px) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--ink-line);font-size:14.5px}
 .proof-flow dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;padding-top:3px}
 .proof-flow dd{color:#DDE2E7;max-width:46ch}
-.proof-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:8px;border:1px solid var(--ink-line)}
+.proof-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:0;border:1px solid var(--ink-line)}
 .proof-metrics div{padding:18px 16px;border-right:1px solid var(--ink-line);min-width:0}
 .proof-metrics div:last-child{border-right:0}
 .proof-metrics b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.45rem,2.4vw,1.9rem);letter-spacing:-.04em;color:#fff;line-height:1}
@@ -404,8 +393,6 @@ input.dash-search:focus{border-color:#5C6670}
   .idx-row i{display:none}
   .dash-hero-visual{padding-bottom:0}
   .cta-row{align-items:flex-start}
-  .shell{grid-template-columns:1fr}
-  .dash-side{display:none}
   .dash-qs .k{max-width:none}
 }
 @media(min-width:641px) and (max-width:1024px){
@@ -451,14 +438,8 @@ input.dash-search:focus{border-color:#5C6670}
   .idx-row{grid-template-columns:1fr}
   .idx-row p{grid-column:1}
   .cta-row{flex-direction:column;align-items:stretch}
-  .dash-hero-meta{flex-direction:column;align-items:stretch}
-  .dash-callout{width:100%}
-  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .kpi{padding:10px 8px}
-  .kpi span{font-size:8px;letter-spacing:.08em}
 }
 @media(max-width:430px){
-  .dash-hero-visual .kpis{display:none}
   .dash-top .shift-mark{display:none}
 }
 @media(max-width:560px){
@@ -673,54 +654,36 @@ input.dash-search:focus{border-color:#5C6670}
           <span><i>Complex data.</i></span>
           <span><i>A scan they finish.</i></span>
         </h1>
-        <p class="lede" data-r>Operational dashboards and admin panels for teams who open a view every morning — ops, finance, or sales — and need the shift question answered without another export.</p>
+        <p class="lede" data-r>Good dashboards answer the important question first, show evidence second, and let users act without exporting. Hierarchy before charts.</p>
+        <span class="dash-hero-tag" data-r>Question → signal → records → action</span>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
           <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See ShiftRail</span><i>→</i></a>
         </div>
         <p class="dash-trust" data-r>
-          <span>Hierarchy before charts</span>
-          <span>Tables that resolve</span>
           <span>Ops · admin · exec</span>
+          <span>Exception queues</span>
+          <span>UK &amp; US teams</span>
         </p>
       </div>
 
       <div class="dash-hero-visual" data-r>
-        <p class="sr">Northstar morning scan: the shift question is which exceptions still need an owner. Four records are unowned. The oldest has been open eleven minutes. The view leads with that question, then supporting counts, then a table with assign actions — not a wall of charts.</p>
-        <div class="shell" id="dashFrame" aria-hidden="true">
-          <nav class="dash-side">
-            <div class="brand">Northstar</div>
-            <span class="on">Scan</span>
-            <span>Exceptions</span>
-            <span>Users</span>
-            <span>Reports</span>
-            <span>Settings</span>
-          </nav>
+        <p class="sr">Northstar morning scan: the shift question is which exceptions still need an owner. Three unowned records show in the table with assign actions — one question, one signal, then evidence on the row.</p>
+        <div class="shell shell--scan" id="dashFrame" aria-hidden="true">
           <div class="dash-main">
-            <div class="dash-chrome"><i></i><i></i><i></i><span>admin · morning scan</span></div>
+            <div class="dash-chrome"><i></i><i></i><i></i><span>ops · morning scan</span></div>
             <div class="dash-top">
-              <input class="dash-search" id="dashScanSearch" type="search" placeholder="Search exceptions" tabindex="-1" autocomplete="off">
               <span class="shift-mark">Today · 07:14</span>
-              <span class="dash-user">PC</span>
-            </div>
-            <div class="dash-filters">
-              <button type="button" class="dash-chip on" data-filter="unowned" tabindex="-1">Unowned</button>
-              <button type="button" class="dash-chip" data-filter="open" tabindex="-1">Open</button>
-              <button type="button" class="dash-chip" data-filter="watch" tabindex="-1">Watching</button>
-              <span class="dash-chip quiet">Export</span>
+              <span class="dash-user" aria-hidden="true">PC</span>
             </div>
             <div class="answer">
               <div>
                 <span class="q">Shift question</span>
                 <b>Which exceptions still need an owner?</b>
               </div>
-              <div class="dash-stat"><span data-unowned>4</span><small data-unowned-label>Need a decision now</small></div>
+              <div class="dash-stat"><span data-unowned>3</span><small data-unowned-label>Need a decision now</small></div>
             </div>
-            <div class="kpis">
-              <div class="kpi warn"><span>Unowned</span><b class="num" data-unowned>4</b><em>This shift</em></div>
-              <div class="kpi"><span>Oldest open</span><b>11m</b><em>Needs owner</em></div>
-              <div class="kpi"><span>Resolved 24h</span><b class="num">86%</b><em>↑ 3.2 pts</em></div>
-            </div>
+            <p class="dash-scan-hint">Showing <em>Unowned</em> · assign from the row</p>
             <div class="dash-scan">
               <span class="lab">Open exceptions</span>
               <table class="dt">
@@ -747,13 +710,6 @@ input.dash-search:focus{border-color:#5C6670}
                     <td data-l="Age">6m</td>
                     <td data-l="Action"><button type="button" class="go" data-act="assign" tabindex="-1">Assign</button></td>
                   </tr>
-                  <tr data-owner="none" data-status="open">
-                    <td data-l="ID">EX-155</td>
-                    <td data-l="Issue"><span class="st">Provisioning</span></td>
-                    <td data-l="Owner" class="own none">Unassigned</td>
-                    <td data-l="Age">4m</td>
-                    <td data-l="Action"><button type="button" class="go" data-act="assign" tabindex="-1">Assign</button></td>
-                  </tr>
                   <tr data-owner="tom" data-status="watch">
                     <td data-l="ID">EX-171</td>
                     <td data-l="Issue"><span class="st">Sync lag</span></td>
@@ -767,11 +723,8 @@ input.dash-search:focus{border-color:#5C6670}
           </div>
         </div>
         <div class="dash-hero-meta">
-          <p class="cap-note"><span class="flag">Demo</span> Ops scan. Same hierarchy for finance close and sales forecast</p>
-          <a class="dash-callout" href="/work/shiftrail-dispatch">
-            <b class="num">−32%</b>
-            <span>Handle time · ShiftRail, signed-off</span>
-          </a>
+          <p class="cap-note"><span class="flag">Demo</span> One shift question · ops scan pattern</p>
+          <a class="dash-proof-link" href="/work/shiftrail-dispatch"><b>−32%</b> handle time · ShiftRail, signed-off →</a>
         </div>
       </div>
     </div>
@@ -783,8 +736,8 @@ input.dash-search:focus{border-color:#5C6670}
     <p class="k" id="qsH">Same hierarchy. Different questions.</p>
     <article>
       <span class="role">Operations</span>
-      <p class="d3">Which exceptions still need an owner?</p>
-      <p>Unowned work, SLA risk, and the row they act on — before historical volume.</p>
+      <p class="d3">What requires attention on this shift?</p>
+      <p>Exceptions, owners, and SLA risk — the row they act on before historical volume.</p>
     </article>
     <article>
       <span class="role">Finance</span>
@@ -863,11 +816,8 @@ input.dash-search:focus{border-color:#5C6670}
           <p>Show the signal first, then evidence and the relevant records. Filters land on the source row, not another export.</p>
         </div>
         <div class="scan-frag">
-          <span class="n-stat num">4</span>
-          <div class="scan-rows" style="margin-top:8px">
-            <span>EX-184 · Payment failed<em>Unassigned</em></span>
-            <span>EX-179 · Seat limit<em>Unassigned</em></span>
-          </div>
+          <b>Signal first · evidence on the row</b>
+          Count, severity, owner — then the record they act on
         </div>
       </li>
       <li class="scan-layer">
@@ -1021,8 +971,8 @@ input.dash-search:focus{border-color:#5C6670}
         </div>
       </div>
       <div data-r>
-        <p class="work-stat"><b class="num">−32%</b><span>manual handle time · signed-off</span></p>
         <div class="proof-metrics">
+          <div class="hi"><b class="num">−32%</b><span>Manual handle time · signed-off</span></div>
           <div><b class="num">400+</b><span>Daily routes on the board</span></div>
           <div><b class="num">11 wks</b><span>To production</span></div>
         </div>
@@ -1110,27 +1060,7 @@ input.dash-search:focus{border-color:#5C6670}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
-          <p>Yes. We redesign views inside your current app, or define patterns for a new console. The deliverable is layout and interaction, not a mandatory platform swap.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
-          <span class="qn num">05</span>
-          <span class="qt">What do we need before a kickoff?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
-          <p>The top questions operators ask on a shift, access to a few users for a walkthrough, and a sample of the current view or export. An NDA is available before the first call.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
-          <span class="qn num">06</span>
-          <span class="qt">Can you work with our existing design system and data architecture?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
-          <p>Yes. We design against your system and the data you already have. Kickoff needs the operator questions and a sample of the current view — not a platform swap.</p>
+          <p>Yes. We redesign views inside your current app or define patterns for a new console — against your design system and data architecture. Layout and interaction, not a mandatory platform swap.</p>
         </div></div></div>
       </div>
     </div>
@@ -1214,7 +1144,7 @@ input.dash-search:focus{border-color:#5C6670}
   "name": "Dashboard Design",
   "alternateName": "Dashboards & Admin Panels",
   "serviceType": "Operational dashboard, admin panel, and analytics interface design",
-  "description": "Operational dashboard and admin panel design for SaaS and ops teams — exception queues, role-aware views, and tables that resolve work.",
+  "description": "Operational dashboard, admin panel, and analytics interface design — exception queues, role-aware views, and hierarchy-first layouts for SaaS and ops teams.",
   "provider": {"@type": "Organization", "name": "KRIVA Technologies"},
   "url": "https://krivatechnologies.com/services/dashboard-design"
 }
@@ -1227,9 +1157,7 @@ input.dash-search:focus{border-color:#5C6670}
     {"@type":"Question","name":"Do you design admin and analytics views?","acceptedAnswer":{"@type":"Answer","text":"Yes. We design internal admin consoles, customer analytics, and executive summary dashboards, with hierarchy matched to who opens the view and why."}},
     {"@type":"Question","name":"How is this different from CRM Design?","acceptedAnswer":{"@type":"Answer","text":"Dashboard Design owns widget hierarchy, filters, and drill-downs for analytics and ops views. CRM Design owns stage models, pipeline UX, and desk workflows. Many engagements use both."}},
     {"@type":"Question","name":"How is this different from SaaS Product Design?","acceptedAnswer":{"@type":"Answer","text":"SaaS Product Design owns tenant-aware UX, permissions, and admin versus customer surfaces. This service owns the scan: hierarchy, filters, tables, and exception views operators open every morning. A live SaaS product often needs both."}},
-    {"@type":"Question","name":"Can you redesign dashboards inside our existing product?","acceptedAnswer":{"@type":"Answer","text":"Yes. We redesign views inside your current app, or define patterns for a new console. The deliverable is layout and interaction, not a mandatory platform swap."}},
-    {"@type":"Question","name":"What do we need before a kickoff?","acceptedAnswer":{"@type":"Answer","text":"The top questions operators ask on a shift, access to a few users for a walkthrough, and a sample of the current view or export. An NDA is available before the first call."}},
-    {"@type":"Question","name":"Can you work with our existing design system and data architecture?","acceptedAnswer":{"@type":"Answer","text":"Yes. We design against your system and the data you already have. Kickoff needs the operator questions and a sample of the current view — not a platform swap."}}
+    {"@type":"Question","name":"Can you redesign dashboards inside our existing product?","acceptedAnswer":{"@type":"Answer","text":"Yes. We redesign views inside your current app or define patterns for a new console — against your design system and data architecture. Layout and interaction, not a mandatory platform swap."}}
   ]
 }
 </script>
@@ -1333,34 +1261,16 @@ if(drill) drill.addEventListener('click',()=>selectView('tab-ops'));
 (function scanDemo(){
   if(!frame) return;
   const rows=[...frame.querySelectorAll('tbody tr')];
-  const chips=[...frame.querySelectorAll('[data-filter]')];
-  const search=document.getElementById('dashScanSearch');
   const counts=frame.querySelectorAll('[data-unowned]');
   const label=frame.querySelector('[data-unowned-label]');
-  let filter='unowned';
-  function ownerNone(tr){return tr.getAttribute('data-owner')==='none'}
-  function show(tr){
-    const q=(search&&search.value||'').trim().toLowerCase();
-    if(q && !tr.textContent.toLowerCase().includes(q)) return false;
-    if(filter==='unowned') return ownerNone(tr);
-    if(filter==='watch') return tr.getAttribute('data-status')==='watch';
-    return true;
+  function countUnowned(){
+    return rows.filter(tr=>tr.getAttribute('data-owner')==='none' && !tr.classList.contains('is-hide')).length;
   }
   function render(){
-    let n=0;
-    rows.forEach(tr=>{
-      tr.classList.toggle('is-hide', !show(tr));
-      if(ownerNone(tr)) n++;
-    });
+    const n=countUnowned();
     counts.forEach(el=>{ el.textContent=String(n); });
     if(label) label.textContent=n===1?'Needs a decision now':'Need a decision now';
   }
-  chips.forEach(c=>c.addEventListener('click',()=>{
-    filter=c.getAttribute('data-filter');
-    chips.forEach(x=>x.classList.toggle('on', x===c));
-    render();
-  }));
-  if(search) search.addEventListener('input', render);
   frame.addEventListener('click',e=>{
     const btn=e.target.closest('[data-act="assign"]');
     if(!btn) return;

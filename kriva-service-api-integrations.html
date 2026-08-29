@@ -13,12 +13,12 @@
 <meta name="theme-color" content="#0E1216">
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
-<title>Integrations &amp; APIs · Connectors operators can trust · KRIVA</title>
-<meta name="description" content="Reliable connectors between your product, CRM, ERP, payments, and accounting APIs, with idempotent jobs, readable errors, and monitoring operators can act on.">
+<title>API Integration Services · Connectors operators can trust · KRIVA</title>
+<meta name="description" content="API integration services for SaaS and ops teams — custom connectors with idempotency, source-record traceability, exception handling, and operator resolution for QuickBooks, Xero, and platform APIs.">
 <link rel="canonical" href="https://krivatechnologies.com/services/api-integrations">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Integrations &amp; APIs · Connectors operators can trust">
-<meta property="og:description" content="Reliable connectors between your product, CRM, ERP, payments, and accounting APIs, with idempotent jobs, readable errors, and monitoring operators can act on.">
+<meta property="og:description" content="API integration services for SaaS and ops teams — custom connectors with idempotency, source-record traceability, exception handling, and operator resolution for QuickBooks, Xero, and platform APIs.">
 <meta property="og:url" content="https://krivatechnologies.com/services/api-integrations">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -166,8 +166,115 @@ html.js [data-s].in>*{opacity:1;transform:none}
 }
 .conn-board__bar b{color:#fff;font-weight:400}
 .conn-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--lime)}
-.conn-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:conn-pulse 2.4s var(--e-io) infinite}
-@keyframes conn-pulse{0%{box-shadow:0 0 0 0 rgba(95,211,160,.45)}70%{box-shadow:0 0 0 7px rgba(95,211,160,0)}100%{box-shadow:0 0 0 0 rgba(95,211,160,0)}}
+.conn-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block}
+.conn-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+
+.hero-pipe{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px;margin-top:22px;
+  font-family:var(--f-mono);font-size:clamp(9px,1.8vw,10px);letter-spacing:.08em;text-transform:uppercase;color:var(--steel)
+}
+.hero-pipe span{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 10px;background:var(--white);
+  border:1px solid var(--rule);white-space:nowrap;min-height:44px
+}
+.hero-pipe span b{color:var(--ink);font-weight:600}
+.hero-pipe i{font-style:normal;color:var(--steel-2);padding:0 2px}
+@media(max-width:480px){.hero-pipe{flex-direction:column;align-items:stretch}.hero-pipe i{display:none}.hero-pipe span{justify-content:space-between}}
+
+/* Integration ops panel */
+.int-panel{background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);box-shadow:0 28px 60px -42px rgba(14,18,22,.55)}
+.int-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:11px 14px;border-bottom:1px solid var(--ink-line);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
+.int-bar b{color:#fff;font-weight:400}
+.int-flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;padding:10px 14px;border-bottom:1px solid var(--ink-line);font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C}
+.int-flow span{padding:5px 8px;border:1px solid var(--ink-line);color:#B9C3CC}
+.int-flow span.on{color:#fff;border-color:var(--sky)}
+.int-flow i{font-style:normal;color:#4E5A66}
+.int-rows{border-bottom:1px solid var(--ink-line)}
+.int-row{
+  display:grid;grid-template-columns:minmax(72px,.9fr) minmax(0,1.1fr) auto auto;gap:10px;align-items:center;
+  padding:11px 14px;border-bottom:1px solid #1A2027;font-family:var(--f-mono);font-size:11.5px;color:#B9C3CC
+}
+.int-row:last-child{border-bottom:0}
+.int-row .ref{color:#fff;font-weight:500}
+.int-row .lane em{display:block;font-style:normal;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C;margin-top:3px}
+.int-row.flagged{background:#171310}
+.int-detail{padding:12px 14px;border-left:2px solid var(--amber);background:#171310;font-size:11px;line-height:1.55;color:#8C98A4}
+.int-detail b{display:block;color:#fff;font-weight:400;margin-bottom:4px;font-family:var(--f-mono);font-size:11px}
+@media(max-width:620px){
+  .int-row{grid-template-columns:1fr auto;gap:4px 10px;padding:12px 14px;border:1px solid var(--ink-line);margin:0 10px 8px;background:#12181E}
+  .int-row:last-child{margin-bottom:10px}
+  .int-rows{border-bottom:0;padding-top:8px;background:#0A0D10}
+  .int-row .ref{grid-column:1}.int-row .lane{grid-column:1 / -1;font-size:10px}.int-row .st{grid-column:2;grid-row:1}
+  .int-row .act{grid-column:2;grid-row:2;justify-self:end}
+}
+
+.ex-points{list-style:none;display:grid;gap:12px;margin-top:22px}
+.ex-points li{padding:16px 18px;background:var(--white);border:1px solid var(--rule)}
+.ex-points strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.02rem;letter-spacing:-.02em;margin-bottom:4px}
+.ex-points span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel)}
+
+.life{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
+.life article{background:var(--white);padding:clamp(22px,2.8vw,34px)}
+.life .path{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.life .path.ok{color:var(--green)}.life .path.fail{color:var(--amber)}
+.life ol{list-style:none;display:grid;gap:10px;margin-top:16px}
+.life li{font-size:14.5px;line-height:1.55;color:var(--steel);padding-left:16px;position:relative}
+.life li:before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;background:var(--rule)}
+.life article.fail li:before{background:var(--amber)}
+.life article.ok li:before{background:var(--green)}
+@media(max-width:700px){.life{grid-template-columns:1fr}}
+
+/* Exception card */
+.exgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start;margin-top:clamp(28px,3.5vw,48px)}
+.ex-card{background:var(--ink);color:#DDE2E7}
+.ex-card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--ink-line)}
+.ex-card-h b{font-family:var(--f-display);font-weight:700;font-size:1.05rem;color:#fff;letter-spacing:-.02em}
+.ex-card-h .sev{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border:1px solid var(--amber);color:var(--amber)}
+.ex-delta{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink-line);border-bottom:1px solid var(--ink-line)}
+.ex-delta div{background:#12181E;padding:14px 16px}
+.ex-delta .k{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:6px}
+.ex-delta .v{font-family:var(--f-display);font-weight:700;font-size:1.1rem;color:#fff;font-variant-numeric:tabular-nums}
+.ex-src{padding:12px 16px;border-bottom:1px solid var(--ink-line);font-size:14px;line-height:1.55;color:#B9C3CC}
+.ex-src b{color:#fff;font-weight:600}
+.ex-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 16px;border-bottom:1px solid var(--ink-line)}
+.ex-actions span{display:flex;align-items:center;justify-content:center;min-height:44px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--ink-line);color:#B9C3CC}
+.ex-actions span.primary{background:var(--cta);border-color:var(--cta);color:#fff}
+.ex-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;font-family:var(--f-mono);font-size:10.5px;color:#717F8C}
+.ex-foot b{color:#fff;font-weight:400}
+@media(max-width:900px){.exgrid{grid-template-columns:1fr}}
+@media(max-width:480px){.ex-delta{grid-template-columns:1fr}.ex-actions{grid-template-columns:1fr}}
+
+/* Architecture */
+.int-arch{background:var(--ink);color:#DDE2E7}
+.int-arch .wrap{padding-block:clamp(60px,7vw,116px)}
+.int-arch .eyebrow{color:var(--ink-dim)}
+.int-arch h2{color:#fff;margin-top:18px;max-width:22ch}
+.int-arch .lede{color:#8C98A4}
+.iflow{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:clamp(32px,4vw,58px);border-top:1px solid var(--ink-line)}
+.inode{position:relative;padding:clamp(18px,2.4vw,28px) clamp(12px,1.6vw,20px) clamp(18px,2.4vw,28px) 0;border-right:1px solid var(--ink-line)}
+.inode:last-child{border-right:0}
+.inode .nn{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#4E5A66;margin-bottom:10px}
+.inode b{display:block;font-family:var(--f-display);font-weight:700;font-size:1rem;letter-spacing:-.02em;color:#fff;margin-bottom:8px}
+.inode p{font-size:13px;line-height:1.5;color:#8C98A4}
+.inode:before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--sky);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s var(--e)}
+.iflow.in .inode:before{transform:scaleX(1)}
+.iflow.in .inode:nth-child(2):before{transition-delay:.12s}
+.iflow.in .inode:nth-child(3):before{transition-delay:.24s}
+.iflow.in .inode:nth-child(4):before{transition-delay:.36s}
+.iflow.in .inode:nth-child(5):before{transition-delay:.48s}
+.iflow.in .inode:nth-child(6):before{transition-delay:.6s}
+.iflow.in .inode:last-child:before{background:var(--lime)}
+@media(max-width:1000px){.iflow{grid-template-columns:1fr 1fr}.inode{border-bottom:1px solid var(--ink-line)}.inode:nth-child(2n){border-right:0}}
+@media(max-width:560px){.iflow{grid-template-columns:1fr}.inode{border-right:0;padding-right:0}}
+
+/* Proof */
+.proof-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,60px);align-items:start;margin-top:clamp(26px,3vw,46px)}
+.proof-steps{display:grid;gap:0;border-top:1px solid var(--ink-line)}
+.proof-steps div{display:grid;grid-template-columns:clamp(72px,9vw,96px) 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--ink-line);font-size:14.5px;color:#B9C3CC;line-height:1.55}
+.proof-steps dt{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#717F8C;padding-top:3px}
+.proof-note{margin-top:24px;padding-top:18px;border-top:1px solid var(--ink-line);font-size:13px;line-height:1.6;color:var(--ink-dim);max-width:80ch}
+@media(max-width:900px){.proof-grid{grid-template-columns:1fr}}
+
 .conn-board__meta{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink-line)}
 .conn-board__cell{padding:12px 12px 14px;border-right:1px solid var(--ink-line)}
 .conn-board__cell:last-child{border-right:0}
@@ -189,7 +296,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .st{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;white-space:nowrap}
 .st:before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
 .st-ok{color:var(--lime)}.st-sync{color:var(--sky)}.st-warn{color:var(--amber)}
-.conn-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+.int-row .act:empty{display:none}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 @media(max-width:560px){
   .conn-board__meta{grid-template-columns:1fr 1fr}
@@ -455,8 +562,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview"><span>Overview</span><i></i></a>
   <a href="#staging"><span>Staging</span><i></i></a>
+  <a href="#lifecycle"><span>Lifecycle</span><i></i></a>
+  <a href="#exceptions"><span>Exceptions</span><i></i></a>
   <a href="#own"><span>Ownership</span><i></i></a>
-  <a href="#work"><span>Work</span><i></i></a>
+  <a href="#architecture"><span>Architecture</span><i></i></a>
+  <a href="#proof"><span>Proof</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
@@ -469,84 +579,272 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">Integrations &amp; APIs</li>
     </ol>
-    <div class="lp-stack" style="margin-top:clamp(22px,3vw,40px)">
+    <nav class="mob-chips" id="mobChips" aria-label="On this page">
+      <a href="#overview" aria-current="true">Overview</a>
+      <a href="#staging">Staging</a>
+      <a href="#lifecycle">Lifecycle</a>
+      <a href="#exceptions">Exceptions</a>
+      <a href="#own">Ownership</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#proof">Proof</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="hero-grid">
       <div>
         <p class="eyebrow" data-r>Service · Connectors ops can trust</p>
         <h1 class="d1 mask" data-mask>
           <span><i>Connectors that hold</i></span>
           <span><i>after staging.</i></span>
         </h1>
-        <p class="lede" data-r>Map ownership first. Write connectors second. Failures surface for an operator, not a silent mismatch at month-end.</p>
+        <p class="lede" data-r>System-to-system integrations with idempotent sync, source-record traceability, and exception views operators can finish — not raw API errors at month-end.</p>
+        <p class="hero-pipe" data-r aria-label="Integration flow">
+          <span><b>Source</b></span><i aria-hidden="true">→</i>
+          <span><b>Connector</b></span><i aria-hidden="true">→</i>
+          <span><b>Validate</b></span><i aria-hidden="true">→</i>
+          <span><b>Destination</b></span><i aria-hidden="true">→</i>
+          <span><b>Exception</b></span><i aria-hidden="true">→</i>
+          <span><b>Resolve</b></span>
+        </p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
-          <a href="/work/finance-sync-hub" class="btn ghost"><span>See FinanceSync</span><i>→</i></a>
+          <a href="#proof" class="btn ghost"><span>See FinanceSync</span><i>→</i></a>
         </div>
       </div>
+      <div data-r>
+        <div class="int-panel" role="img" aria-label="Connector job: Product to QuickBooks matched, Product to Xero exception with retry action. Illustrative demo.">
+          <div class="int-bar"><span>Job <b>#4421-08</b> · sync run</span><span>248 events</span></div>
+          <div class="int-flow" aria-hidden="true">
+            <span class="on">Source</span><i>→</i><span class="on">Connector</span><i>→</i><span class="on">Validate</span><i>→</i><span>Destination</span>
+          </div>
+          <div class="int-rows">
+            <div class="int-row"><span class="ref">EVT-8812</span><span class="lane">Product → QuickBooks<em>Invoice · USD</em></span><span class="st st-ok">Matched</span><span class="act" aria-hidden="true"></span></div>
+            <div class="int-row flagged"><span class="ref">EVT-8814</span><span class="lane">Product → Xero<em>Payment · GBP</em></span><span class="st st-warn">Exception</span><span class="st st-sync act">Retry</span></div>
+          </div>
+          <div class="int-detail"><b>EVT-8814 · mapping mismatch</b>Source ref PMT-091 · ledger expects INV-2041 · owner: Ops</div>
+        </div>
+        <p class="conn-board__note"><span class="flag">Demo</span> Connector pattern · illustrative records</p>
+      </div>
+    </div>
+
+    <div class="fit-rail" data-s>
+      <article>
+        <p class="k">Best for</p>
+        <h2>SaaS and ops platforms with live integrations</h2>
+        <p>Products that must stay in agreement with CRM, payments, accounting, or industry APIs under real load.</p>
+      </article>
+      <article>
+        <p class="k">What we own</p>
+        <h2>Connectors, exceptions, operator UX</h2>
+        <p>Architecture, idempotent workers, source records, and the resolution surface when sync breaks.</p>
+      </article>
+      <article>
+        <p class="k">Core message</p>
+        <h2>Finished when failures are owned</h2>
+        <p class="contrast">A connector is not finished when the API call succeeds. It is finished when failures are visible, owned, recoverable, and auditable.</p>
+        <p class="body-sm" style="margin-top:12px;max-width:none;font-size:13px">Ledger-specific close UX lives on <a href="/solutions/accounting-integrations" style="border-bottom:1px solid currentColor">QuickBooks &amp; Xero</a>.</p>
+      </article>
     </div>
   </div>
 </header>
 
-<section class="arch-show" id="staging" aria-labelledby="apiShow">
+<section class="sect sect--rule" id="staging" aria-labelledby="stH">
   <div class="wrap">
-    <p class="k">When “it worked in staging” is not an answer</p>
-    <h2 id="apiShow">Exceptions, retries, and the source record.</h2>
-    <div class="arch-layer">
-      <div class="arch-frame">
-        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>financesync · exceptions</span></div>
-        <div class="pu" role="img" aria-label="Unmatched queue, close risk first.">
-          <div class="pu-bar"><div><p class="pu-title">Unmatched</p><p class="pu-meta">Exceptions · source record</p></div><span class="pu-chip warn">4 open</span></div>
-          <ul class="pu-rows">
-            <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
-            <li class="risk"><b>PMT-091</b><span>PSP &rarr; Ledger</span><em>Retry</em></li>
-            <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Park</em></li>
-          </ul>
-        </div>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Why staging success is not enough</p>
+        <h2 class="d2" id="stH" data-r>Production is where connectors actually fail</h2>
+        <p class="lede" data-r>The demo passed. Month-end, rate limits, and edge cases are where silent drift starts.</p>
       </div>
-      <div class="side arch-frame">
-        <div class="pu" role="img" aria-label="March close unmatched.">
-          <div class="pu-bar"><div><p class="pu-title">March close</p><p class="pu-meta">QuickBooks · Xero</p></div><span class="pu-chip warn">4 unmatched</span></div>
-          <ul class="pu-rows">
-            <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
-            <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
-          </ul>
-          <span class="pu-cta lime">Resolve</span>
+    </div>
+    <div class="chal" data-s>
+      <article>
+        <span class="n">01</span>
+        <h3 class="d3">Staging hides ownership gaps</h3>
+        <p class="body-sm">Nobody is paged when a record fails. Production exposes who should act — and whether anyone can.</p>
+      </article>
+      <article>
+        <span class="n">02</span>
+        <h3 class="d3">Retries without idempotency</h3>
+        <p class="body-sm">A timeout posts twice. Without keys and a match step, every retry makes the books worse.</p>
+      </article>
+      <article>
+        <span class="n">03</span>
+        <h3 class="d3">Errors operators cannot use</h3>
+        <p class="body-sm">Raw 500s and JSON blobs. Finance and ops need source value, destination value, and a next step.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sect sect--band" id="lifecycle" aria-labelledby="lcH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Integration lifecycle</p>
+    <h2 class="d2" id="lcH" data-r style="margin-top:16px">Two paths every connector must support</h2>
+    <p class="body" data-r style="margin-top:16px">Success is quiet. Failure must create an exception someone can finish.</p>
+    <div class="life" data-s>
+      <article class="ok">
+        <p class="path ok">Sync succeeds</p>
+        <h3 class="d3">Record completes</h3>
+        <ol>
+          <li>Source event queued with stable key</li>
+          <li>Connector validates schema and mapping</li>
+          <li>Destination API accepts write</li>
+          <li>Match confirms source and destination agree</li>
+          <li>Audit entry written · job continues</li>
+        </ol>
+      </article>
+      <article class="fail">
+        <p class="path fail">Sync fails</p>
+        <h3 class="d3">Exception → resolution → audit</h3>
+        <ol>
+          <li>Exception created · batch can still close</li>
+          <li>Source record visible with both values</li>
+          <li>Reason explained · owner assigned</li>
+          <li>Retry, Match, or Park — operator action</li>
+          <li>Final audited state · no engineering ticket</li>
+        </ol>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="exceptions" aria-labelledby="exH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Exception UX</p>
+        <h2 class="d2" id="exH" data-r>What the operator sees when sync breaks</h2>
+        <p class="lede" data-r>Not a stack trace — source record, destination delta, suspected cause, and actions that map to real work.</p>
+      </div>
+    </div>
+    <div class="exgrid">
+      <div>
+        <p class="body-sm" data-r>Every exception ties back to a source event. Operators see what was sent, what the destination holds, who owns it, and whether Retry, Match, or Park is the right move.</p>
+        <ul class="ex-points" data-r>
+          <li><strong>Source record</strong><span>Stable event ID, payload reference, and mapping context — not a log line.</span></li>
+          <li><strong>Readable reason</strong><span>Mapping mismatch, rate limit, or validation fail — in language ops understands.</span></li>
+          <li><strong>Named resolution</strong><span>Owner, timestamp, and final audit state when the record closes.</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ex-card" role="img" aria-label="Exception EVT-8814: source PMT-091, destination expects INV-2041, owner Ops, actions retry match park">
+          <div class="ex-card-h">
+            <b>EVT-8814 · Mapping mismatch</b>
+            <span class="sev">Blocks sync</span>
+          </div>
+          <div class="ex-delta">
+            <div><span class="k">Source</span><span class="v">PMT-091</span></div>
+            <div><span class="k">Destination</span><span class="v">INV-2041</span></div>
+          </div>
+          <p class="ex-src"><b>Reason:</b> payment ref does not match open invoice · Product → Xero</p>
+          <div class="ex-actions" aria-hidden="true">
+            <span class="primary">Retry</span>
+            <span>Match</span>
+            <span>Park</span>
+          </div>
+          <div class="ex-foot">
+            <span>Owner <b>Ops · Lee</b> · 14:22</span>
+            <span>Audit <b>Open</b></span>
+          </div>
         </div>
+        <p class="conn-board__note"><span class="flag">Demo</span> Operator UI pattern · illustrative data</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sect" id="own" aria-labelledby="apH">
+<section class="sect sect--rule" id="own" aria-labelledby="apH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Ownership, then code</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px">Who owns the failure when sync breaks.</h2>
+    <p class="eyebrow" data-r>Ownership before code</p>
+    <h2 class="d2" id="apH" data-r style="margin-top:16px">Map → Build → Operate</h2>
+    <p class="body" data-r style="margin-top:16px">Three phases. Each has a definition of done — not a generic development process.</p>
     <ol class="lp-time" data-s>
-      <li><span class="wk">01 · Map</span><div><h3 class="d3">Systems, owners, retry policy</h3><p class="body-sm" style="margin-top:8px">What posts where, who is paged, and what “done” means at close, before a connector is written.</p></div></li>
-      <li><span class="wk">02 · Build</span><div><h3 class="d3">Original APIs, not a CSV dump</h3><p class="body-sm" style="margin-top:8px">QuickBooks, Xero, and the rest of the stack through documented APIs. Pair with the accounting solutions page when the job is the ledger.</p></div></li>
-      <li><span class="wk">03 · Operate</span><div><h3 class="d3">Exception views engineering and ops can own</h3><p class="body-sm" style="margin-top:8px">Retries, source record, and a path to resolve, so the connector does not become a ticket pile.</p></div></li>
+      <li><span class="wk">01 · Map</span><div><h3 class="d3">Systems, records, owners, retry policy</h3><p class="body-sm" style="margin-top:8px">What posts where, who is paged, what “done” means, and how idempotency works — signed off before code.</p></div></li>
+      <li><span class="wk">02 · Build</span><div><h3 class="d3">Documented APIs with safe sync logic</h3><p class="body-sm" style="margin-top:8px">QuickBooks, Xero, payments, CRM, and platform APIs through native connectors — not CSV dumps or undocumented shortcuts.</p></div></li>
+      <li><span class="wk">03 · Operate</span><div><h3 class="d3">Exception, retry, and resolution tooling</h3><p class="body-sm" style="margin-top:8px">Engineering and ops get clear surfaces to resolve failures. The connector does not become a ticket pile.</p></div></li>
     </ol>
   </div>
 </section>
 
-<section class="featwork" id="work" aria-labelledby="pfH" style="padding:0">
-  <article class="lp-case" data-r>
-    <a href="/work/finance-sync-hub">
-      <div class="pu" role="img" aria-label="March close unmatched.">
-        <div class="pu-bar"><div><p class="pu-title">March close</p><p class="pu-meta">QuickBooks · Xero</p></div><span class="pu-chip warn">4 unmatched</span></div>
-        <ul class="pu-rows">
-          <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
-          <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
-        </ul>
-        <span class="pu-cta lime">Resolve</span>
+<section class="sect" id="platforms" aria-labelledby="plH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Platforms</p>
+        <h2 class="d2" id="plH" data-r>Accounting depth · broader connector craft</h2>
+        <p class="lede" data-r>QuickBooks and Xero are primary paths with dedicated close UX. Other APIs follow the same connector discipline.</p>
       </div>
-    </a>
-    <div>
-      <p class="eyebrow">Selected work</p>
-      <h3 class="d2" id="pfH">FinanceSync</h3>
-      <p>QuickBooks and Xero reconciliation with operator dashboards finance teams use at month-end close. Narrative case, no invented metrics.</p>
-      <a href="/work/finance-sync-hub" class="btn on-dark" style="margin-top:22px"><span>Read the case</span><i>→</i></a>
     </div>
-  </article>
+    <div class="sys" data-s>
+      <article>
+        <span class="lockup">
+          <img src="/brand/logos/quickbooks.svg" alt="QuickBooks Online logo" width="28" height="28" loading="lazy" decoding="async">
+          <span><b>QuickBooks Online</b><small>Accounting · Intuit API</small></span>
+        </span>
+        <p class="body-sm">US books, invoices, payments, customers, tax mapping. Deep close UX on the <a href="/solutions/accounting-integrations" style="border-bottom:1px solid currentColor">accounting integrations</a> page.</p>
+        <ul>
+          <li>Invoices, payments, and chart mapping</li>
+          <li>Multi-entity tokens and rate-limit backoff</li>
+        </ul>
+      </article>
+      <article>
+        <span class="lockup">
+          <img src="/brand/logos/xero.svg" alt="Xero logo" width="28" height="28" loading="lazy" decoding="async">
+          <span><b>Xero</b><small>Accounting · Xero API</small></span>
+        </span>
+        <p class="body-sm">UK/US orgs, bank transactions, tracking categories, VAT and multi-currency — same operator exception language as QBO.</p>
+        <ul>
+          <li>Invoices, contacts, and bank transactions</li>
+          <li>Webhook + poll so silent drift cannot hide</li>
+        </ul>
+      </article>
+    </div>
+    <div class="sys-more" data-s>
+      <div><span class="k">Payments</span><h3>Stripe, Razorpay, PSP APIs</h3><p class="body-sm">Payout and settlement lines with source-record traceability.</p></div>
+      <div><span class="k">CRM &amp; ops</span><h3>HubSpot, Zoho, custom APIs</h3><p class="body-sm">When the job is reliable sync, not a one-way export.</p></div>
+      <div><span class="k">Industry</span><h3>ELD, fleet, logistics APIs</h3><p class="body-sm">Scoped to documented endpoints — see trucking solutions for dispatch context.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="int-arch on-ink" id="architecture" aria-labelledby="arH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Architecture</p>
+    <h2 class="d2" id="arH" data-r>A path both engineering and ops can read</h2>
+    <p class="lede" data-r>Source systems through validation and destination APIs to an exception queue operators can finish.</p>
+    <div class="iflow" id="iflow">
+      <div class="inode"><span class="nn">01</span><b>Source systems</b><p>Your product, CRM, payments, or ops platform events.</p></div>
+      <div class="inode"><span class="nn">02</span><b>Integration layer</b><p>Connectors, queues, and workers with backoff.</p></div>
+      <div class="inode"><span class="nn">03</span><b>Validation</b><p>Schema, mapping, and idempotency before write.</p></div>
+      <div class="inode"><span class="nn">04</span><b>Destination APIs</b><p>QBO, Xero, PSP, or third-party endpoints.</p></div>
+      <div class="inode"><span class="nn">05</span><b>Exception queue</b><p>Operator triage with Retry, Match, Park.</p></div>
+      <div class="inode"><span class="nn">06</span><b>Operator / audit</b><p>Named resolution and attributable trail.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="int-arch on-ink" id="proof" aria-labelledby="pfH" style="border-top:1px solid var(--ink-line)">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Proof</p>
+    <h2 class="d2" id="pfH" data-r>FinanceSync · connector design in production</h2>
+    <div class="proof-grid">
+      <div>
+        <dl class="proof-steps">
+          <div><dt>Problem</dt><dd>QuickBooks and Xero sync worked in staging. Month-end exposed silent drift — finance found variances outside the product.</dd></div>
+          <div><dt>Connector design</dt><dd>Idempotent workers, source-record keys, match engine, and exception queue with webhook + poll hybrid.</dd></div>
+          <div><dt>Operator resolution</dt><dd>Discrepancy cards with retry, confirm, park — queue ordered by close risk, not arrival time.</dd></div>
+          <div><dt>Outcome</dt><dd>Reliable close workflow with operator dashboards finance teams use. Parallel run before cutover.</dd></div>
+        </dl>
+      </div>
+      <div>
+        <p class="body" style="color:#B9C3CC;margin-bottom:20px">Selected anonymized case. Narrative proof — no invented sync volumes, uptime, or client metrics.</p>
+        <a href="/work/finance-sync-hub" class="btn on-dark"><span>Read the FinanceSync case</span><i>→</i></a>
+        <a href="/solutions/accounting-integrations" class="btn ghost on-dark" style="margin-top:12px"><span>QuickBooks &amp; Xero solution</span><i>→</i></a>
+      </div>
+    </div>
+    <p class="proof-note">Client names and identifying details may be changed for confidentiality. Metrics on case pages are measured delivery outcomes — not fabricated or third-party ratings.</p>
+  </div>
 </section>
 
 <section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--white);border-top:1px solid var(--rule)">
@@ -644,7 +942,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Integrations & APIs",
-  "description": "Reliable connectors between your product, CRM, ERP, payments, and accounting APIs, with idempotent jobs, readable errors, and monitoring operators can act on.",
+  "description": "API integration services for SaaS and ops teams — custom connectors with idempotency, source-record traceability, exception handling, and operator resolution for QuickBooks, Xero, and platform APIs.",
   "provider": {
     "@type": "Organization",
     "name": "KRIVA Technologies"
@@ -662,7 +960,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       "name": "Do you integrate with payment or accounting systems?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. QuickBooks Online and Xero are a primary path. We also ship Stripe, Razorpay, HubSpot, Zoho, and common ERP or ELD APIs depending on the stack. Desktop QuickBooks is scoped only when the ledger cannot move to Online."
+        "text": "Yes. QuickBooks Online and Xero are a primary path. Payment and other APIs are in scope when the ownership map is clear."
       }
     },
     {
@@ -670,7 +968,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       "name": "How is this different from QuickBooks & Xero integrations?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "That solution page is the finance close: matching, exception UX, and audit for QBO and Xero. This service is the broader connector practice, CRM, payments, ELD, and those same accounting APIs when the job is architecture, retries, and operator docs. Many products need both."
+        "text": "That solution page is the finance market path. This service is the connector craft used there and on other APIs."
       }
     },
     {
@@ -678,7 +976,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       "name": "How is this different from Automation Workflows?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Automation owns Make, Zapier, and human-gated queues. This service owns connector architecture, idempotency, webhooks, and error surfaces. Use automation when a person is still in the loop on send. Use this when two systems must stay in agreement without a nightly spreadsheet."
+        "text": "Integrations move data between systems of record. Automation orchestrates steps, often with a human on send. Many briefs need both."
       }
     },
     {
@@ -686,7 +984,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       "name": "How do you handle sync failures?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every job logs the record, retries with backoff and an idempotency key, and surfaces the exception with a next step. Failures are visible in the product before finance or dispatch notices them in another tool."
+        "text": "Exception views, retries, and the source record, not a silent skip. Operators get a resolve path."
       }
     },
     {
@@ -694,7 +992,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       "name": "Will you work with an API we already started?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We often inherit a half-built connector, map what actually posts, add idempotency and alerting, then document the failure modes. A rewrite is the last option, not the first."
+        "text": "Yes. We finish, harden, and add the operational surface the first pass skipped."
       }
     }
   ]
@@ -743,6 +1041,10 @@ if(mob.length){
   },{rootMargin:'-35% 0px -55% 0px'});
   chTargets.forEach(t=>mobIO.observe(t));
 }
+const iflow=document.getElementById('iflow');
+if(iflow){
+  new IntersectionObserver((es,o)=>{ if(es[0].isIntersecting){ iflow.classList.add('in'); o.disconnect(); } },{threshold:.25}).observe(iflow);
+}
 run();
 })();
 </script>
@@ -767,7 +1069,7 @@ run();
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Integrations that fail where operators can see them.",
+      "name": "Integrations & APIs",
       "item": "https://krivatechnologies.com/services/api-integrations"
     }
   ]

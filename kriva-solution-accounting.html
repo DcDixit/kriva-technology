@@ -14,11 +14,11 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
 <title>QuickBooks &amp; Xero Integrations for Finance Teams · KRIVA</title>
-<meta name="description" content="QuickBooks Online and Xero integrations with idempotent sync, exception dashboards, and reconciliation workflows finance teams trust at month-end close.">
+<meta name="description" content="QuickBooks Online and Xero API integrations with reconciliation automation, exception dashboards, and idempotent sync workflows finance teams trust at month-end close.">
 <link rel="canonical" href="https://krivatechnologies.com/solutions/accounting-integrations">
 <meta property="og:type" content="website">
 <meta property="og:title" content="QuickBooks &amp; Xero Integrations for Finance Teams">
-<meta property="og:description" content="QuickBooks Online and Xero integrations with idempotent sync, exception dashboards, and reconciliation workflows finance teams trust at month-end close.">
+<meta property="og:description" content="QuickBooks Online and Xero API integrations with reconciliation automation, exception dashboards, and idempotent sync workflows finance teams trust at month-end close.">
 <meta property="og:url" content="https://krivatechnologies.com/solutions/accounting-integrations">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -146,7 +146,18 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .lockup b{font-family:var(--f-display);font-weight:700;font-size:13.5px;letter-spacing:-.02em;line-height:1}
 .lockup span{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
 .lockup .meta{display:grid;gap:2px}
+.hero-pipe{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px;margin-top:22px;
+  font-family:var(--f-mono);font-size:clamp(9px,1.8vw,10px);letter-spacing:.08em;text-transform:uppercase;color:var(--steel)
+}
+.hero-pipe span{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 10px;background:var(--white);
+  border:1px solid var(--rule);white-space:nowrap;min-height:44px
+}
+.hero-pipe span b{color:var(--ink);font-weight:600}
+.hero-pipe i{font-style:normal;color:var(--steel-2);padding:0 2px}
 @media(max-width:1000px){.hero-grid{grid-template-columns:1fr;align-items:start}.hero-facts{grid-template-columns:1fr}.hf{border-right:0;border-bottom:1px solid var(--rule);padding:0 0 12px;margin:0 0 12px}.hf:last-child{border-bottom:0;padding-bottom:0;margin-bottom:0}}
+@media(max-width:480px){.hero-pipe{flex-direction:column;align-items:stretch}.hero-pipe i{display:none}.hero-pipe span{justify-content:space-between}}
 
 .fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
 .fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px)}
@@ -193,8 +204,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .syncbar .lbl{font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#717F8C}
 .syncbar .track{position:relative;height:2px;background:var(--ink-line);overflow:hidden}
 .syncbar .track i{position:absolute;inset:0;background:var(--sky);transform:scaleX(var(--p,0));transform-origin:0 50%;transition:transform .8s var(--e),background .5s var(--e)}
-.ledger[data-state="5"] .syncbar .track i{background:var(--amber)}
-.ledger[data-state="7"] .syncbar .track i,.ledger[data-state="8"] .syncbar .track i{background:var(--lime)}
+.ledger[data-state="4"] .syncbar .track i{background:var(--amber)}
+.ledger[data-state="6"] .syncbar .track i,.ledger[data-state="7"] .syncbar .track i{background:var(--lime)}
 .syncbar .val{font-family:var(--f-mono);font-size:10.5px;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap}
 .recs{border-bottom:1px solid var(--ink-line)}
 .rec{
@@ -208,7 +219,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .rec .amt{text-align:right;font-variant-numeric:tabular-nums}
 .rec .st{justify-self:end}
 .rec.flagged{background:#171310}
-.ledger[data-state="6"] .rec.flagged,.ledger[data-state="7"] .rec.flagged,.ledger[data-state="8"] .rec.flagged{background:#101714}
+.ledger[data-state="5"] .rec.flagged,.ledger[data-state="6"] .rec.flagged,.ledger[data-state="7"] .rec.flagged{background:#101714}
 .tag{
   display:inline-flex;align-items:center;gap:6px;padding:3px 8px;
   font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;
@@ -218,7 +229,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .t-idle{color:#717F8C}.t-sync{color:var(--sky)}.t-warn{color:var(--amber)}.t-ok{color:var(--lime)}
 .exdetail{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .55s var(--e),opacity .4s var(--e)}
 .exdetail>div{overflow:hidden}
-.ledger[data-state="5"] .exdetail,.ledger[data-state="6"] .exdetail{grid-template-rows:1fr;opacity:1}
+.ledger[data-state="4"] .exdetail,.ledger[data-state="5"] .exdetail{grid-template-rows:1fr;opacity:1}
 .exdetail-in{padding:12px 14px;border-left:2px solid var(--amber);background:#171310;border-bottom:1px solid #1A2027}
 .exdetail-in b{display:block;font-family:var(--f-mono);font-size:11px;color:#fff;font-weight:400}
 .exdetail-in span{display:block;margin-top:5px;font-family:var(--f-mono);font-size:10px;color:#8C98A4}
@@ -238,11 +249,17 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .pips i.done{background:var(--lime)}
 .pips i.warn{background:var(--amber)}
 @media(max-width:620px){
-  .rec{grid-template-columns:1fr auto;gap:3px 12px;padding:11px 14px}
-  .rec .ref{grid-row:1;grid-column:1}
-  .rec .amt{grid-row:1;grid-column:2;text-align:right}
-  .rec .desc{grid-row:2;grid-column:1;color:#717F8C;font-size:10px}
-  .rec .st{grid-row:2;grid-column:2}
+  .recs{display:grid;gap:8px;padding:10px 12px 12px;border-bottom:1px solid var(--ink-line);background:#0A0D10}
+  .rec{
+    grid-template-columns:1fr auto;gap:4px 12px;padding:12px 14px;
+    border:1px solid var(--ink-line);border-bottom:1px solid var(--ink-line);border-radius:0;background:#12181E
+  }
+  .rec:last-child{border-bottom:1px solid var(--ink-line)}
+  .rec .ref{grid-row:1;grid-column:1;font-size:12px}
+  .rec .amt{grid-row:1;grid-column:2;text-align:right;font-size:13px;color:#fff}
+  .rec .desc{grid-row:2;grid-column:1 / -1;color:#717F8C;font-size:11px}
+  .rec .st{grid-row:3;grid-column:1 / -1;justify-self:start;margin-top:4px}
+  .rec.flagged{border-color:rgba(219,155,31,.35)}
   .audit{min-height:74px}
 }
 
@@ -285,9 +302,61 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .node b{display:block;font-family:var(--f-display);font-weight:700;font-size:1.02rem;letter-spacing:-.02em;color:#fff;margin-bottom:8px}
 .node p{font-size:13px;line-height:1.5;color:#8C98A4}
 @media(max-width:1000px){.flow{grid-template-columns:1fr 1fr}.node{border-bottom:1px solid var(--ink-line);padding-right:clamp(12px,2vw,20px)}.node:nth-child(2n){border-right:0}}
-@media(max-width:560px){.flow{grid-template-columns:1fr}.node{border-right:0}}
+@media(max-width:560px){.flow{grid-template-columns:1fr}.node{border-right:0;padding-right:0}}
+.flow-v{display:none}
+@media(max-width:560px){
+  .flow{display:none}
+  .flow-v{display:grid;gap:0;margin-top:clamp(28px,4vw,48px);border-top:1px solid var(--ink-line)}
+  .flow-v .node{border-right:0;border-bottom:1px solid var(--ink-line);padding:20px 0 20px 16px;border-left:2px solid var(--ink-line)}
+  .flow-v .node:before{left:-2px;right:auto;width:2px;height:100%;top:0;transform:scaleY(0);transform-origin:50% 0}
+  .flow-v.in .node:before{transform:scaleY(1)}
+  .flow-v.in .node:nth-child(2):before{transition-delay:.12s}
+  .flow-v.in .node:nth-child(3):before{transition-delay:.24s}
+  .flow-v.in .node:nth-child(4):before{transition-delay:.36s}
+  .flow-v.in .node:nth-child(5):before{transition-delay:.48s}
+  .flow-v.in .node:nth-child(6):before{transition-delay:.6s}
+  .flow-v.in .node:last-child:before{background:var(--lime)}
+}
 
 /* ══ EXCEPTIONS ══ */
+.ex-card{background:var(--ink);color:#DDE2E7;margin-top:clamp(24px,3vw,40px)}
+.ex-card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--ink-line)}
+.ex-card-h b{font-family:var(--f-display);font-weight:700;font-size:1.05rem;color:#fff;letter-spacing:-.02em}
+.ex-card-h .sev{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border:1px solid var(--amber);color:var(--amber)}
+.ex-delta{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink-line);border-bottom:1px solid var(--ink-line)}
+.ex-delta div{background:#12181E;padding:14px 16px}
+.ex-delta .k{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:6px}
+.ex-delta .v{font-family:var(--f-display);font-weight:700;font-size:1.15rem;color:#fff;font-variant-numeric:tabular-nums}
+.ex-delta .v.warn{color:var(--amber)}
+.ex-cause{padding:12px 16px;border-bottom:1px solid var(--ink-line);font-size:14px;line-height:1.55;color:#B9C3CC}
+.ex-cause b{color:#fff;font-weight:600}
+.ex-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 16px;border-bottom:1px solid var(--ink-line)}
+.ex-actions span{
+  display:flex;align-items:center;justify-content:center;min-height:44px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--ink-line);color:#B9C3CC
+}
+.ex-actions span.primary{background:var(--cta);border-color:var(--cta);color:#fff}
+.ex-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;font-family:var(--f-mono);font-size:10.5px;color:#717F8C}
+.ex-foot b{color:#fff;font-weight:400}
+@media(max-width:480px){.ex-delta{grid-template-columns:1fr}.ex-actions{grid-template-columns:1fr}}
+
+/* ══ CAPABILITIES (compact) ══ */
+.deliver{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.4vw,48px)}
+.deliver article{background:var(--white);padding:clamp(22px,2.6vw,32px)}
+.deliver .k{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
+.deliver h3{font-family:var(--f-display);font-weight:700;font-size:1.08rem;letter-spacing:-.02em;margin-bottom:10px}
+.deliver ul{list-style:none;display:grid;gap:8px;margin-top:14px}
+.deliver li{font-size:14.5px;line-height:1.55;color:var(--steel);padding-left:14px;position:relative}
+.deliver li:before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;background:var(--rule)}
+@media(max-width:860px){.deliver{grid-template-columns:1fr}}
+
+/* ══ PROOF narrative ══ */
+.proof-steps{display:grid;gap:0;border-top:1px solid var(--ink-line);margin-top:22px}
+.proof-steps div{display:grid;grid-template-columns:clamp(72px,9vw,96px) 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--ink-line);font-size:14.5px;color:#B9C3CC;line-height:1.55}
+.proof-steps dt{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#717F8C;padding-top:3px}
+.proof-demo{margin-top:14px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-dim)}
+
 .exgrid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(26px,4vw,72px);align-items:start;margin-top:clamp(30px,3.6vw,54px)}
 .extypes{border-top:1px solid var(--rule)}
 .extype{display:grid;grid-template-columns:48px 1fr;gap:clamp(12px,2vw,22px);align-items:start;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid var(--rule)}
@@ -594,10 +663,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <a href="#overview"><span>Overview</span><i></i></a>
   <a href="#platforms"><span>Platforms</span><i></i></a>
   <a href="#close"><span>Close</span><i></i></a>
+  <a href="#exceptions"><span>Exceptions</span><i></i></a>
   <a href="#architecture"><span>Architecture</span><i></i></a>
-  <a href="#capabilities"><span>Capabilities</span><i></i></a>
-  <a href="#process"><span>Process</span><i></i></a>
+  <a href="#matrix"><span>Multi-entity</span><i></i></a>
   <a href="#proof"><span>Proof</span><i></i></a>
+  <a href="#process"><span>Process</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
@@ -614,10 +684,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <a href="#overview" aria-current="true">Overview</a>
       <a href="#platforms">Platforms</a>
       <a href="#close">Close</a>
+      <a href="#exceptions">Exceptions</a>
       <a href="#architecture">Architecture</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="#process">Process</a>
+      <a href="#matrix">Multi-entity</a>
       <a href="#proof">Proof</a>
+      <a href="#process">Process</a>
       <a href="#faq">FAQ</a>
     </nav>
 
@@ -626,11 +697,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <p class="eyebrow" data-r>Finance &amp; operations</p>
         <div class="logo-row" data-r>
           <span class="lockup">
-            <img src="/brand/logos/quickbooks.svg" alt="" width="22" height="22" loading="eager">
+            <img src="/brand/logos/quickbooks.svg" alt="QuickBooks Online logo" width="22" height="22" loading="eager">
             <span class="meta"><b>QuickBooks</b><span>Online · Intuit API</span></span>
           </span>
           <span class="lockup">
-            <img src="/brand/logos/xero.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
+            <img src="/brand/logos/xero.svg" alt="Xero logo" width="22" height="22" loading="lazy" decoding="async">
             <span class="meta"><b>Xero</b><span>UK &amp; US orgs</span></span>
           </span>
         </div>
@@ -638,7 +709,15 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <span><i>Your sync drifts every</i></span>
           <span><i>month-end. Ours doesn't.</i></span>
         </h1>
-        <p class="lede" data-r>Connect your product or ops platform to QuickBooks Online and Xero. Idempotent sync jobs, operator dashboards, and alerts when something breaks, so finance closes the books without a fire drill.</p>
+        <p class="lede" data-r>Connect your product or ops platform to QuickBooks Online and Xero. When something breaks, finance sees a next step, not a log file, so close does not start in a spreadsheet.</p>
+        <p class="hero-pipe" data-r aria-label="Integration flow">
+          <span><b>Product / ops</b></span><i aria-hidden="true">→</i>
+          <span><b>QBO / Xero</b></span><i aria-hidden="true">→</i>
+          <span><b>Match</b></span><i aria-hidden="true">→</i>
+          <span><b>Exception</b></span><i aria-hidden="true">→</i>
+          <span><b>Reconcile</b></span><i aria-hidden="true">→</i>
+          <span><b>Audit</b></span>
+        </p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
           <a href="#close" class="btn ghost"><span>Watch a close cycle</span><i>→</i></a>
@@ -651,7 +730,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       </div>
 
       <div data-r>
-        <div class="ledger" data-state="8" aria-hidden="true">
+        <div class="ledger" data-state="7" aria-hidden="true">
           <div class="lg-bar">
             <span class="src">
               <span class="act"><img src="/brand/logos/quickbooks.svg" alt="" loading="lazy" decoding="async" width="12" height="12">QuickBooks Online</span>
@@ -664,8 +743,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
             <span class="track" style="--p:1"><i></i></span>
             <span class="val">248 / 248</span>
           </div>
-          <div class="recs">
-            <div class="rec"><span class="ref">INV-2291</span><span class="desc">Acme Ltd · Aug</span><span class="amt">4,120.00</span><span class="st"><span class="tag t-ok">Matched</span></span></div>
+          <div class="recs" role="table" aria-label="Reconciliation records">
+            <div class="rec" role="row"><span class="ref" role="cell">INV-2291</span><span class="desc" role="cell">Acme Ltd · Aug</span><span class="amt" role="cell">4,120.00</span><span class="st" role="cell"><span class="tag t-ok">Matched</span></span></div>
             <div class="rec"><span class="ref">INV-2292</span><span class="desc">Northgate · Aug</span><span class="amt">880.50</span><span class="st"><span class="tag t-ok">Matched</span></span></div>
             <div class="rec flagged"><span class="ref">INV-2293</span><span class="desc">Halden Co · Aug</span><span class="amt">1,240.75</span><span class="st"><span class="tag t-ok">Reconciled</span></span></div>
             <div class="rec"><span class="ref">INV-2294</span><span class="desc">Brightside · Aug</span><span class="amt">310.00</span><span class="st"><span class="tag t-ok">Matched</span></span></div>
@@ -696,7 +775,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <p class="k">Not this page</p>
         <h2>Generic API glue or Zapier-only</h2>
         <p>CRM, payments, and ops connectors live under Integrations &amp; APIs. Make/Zapier orchestration lives under Automation.</p>
-        <p class="contrast">Need both? Most finance syncs pair this page with Integrations &amp; APIs or Dashboard Design.</p>
+        <p class="contrast">The integration is not finished when data syncs. It is finished when finance can confidently close the books.</p>
+        <p class="body-sm" style="margin-top:12px;max-width:none;font-size:13px">Need CRM or payment connectors too? See <a href="/services/api-integrations" style="border-bottom:1px solid currentColor">Integrations &amp; APIs</a>.</p>
       </article>
     </div>
   </div>
@@ -776,8 +856,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>One close cycle</p>
-        <h2 class="d2" id="clH" data-r>From import to an audit trail your accountant will accept</h2>
-        <p class="lede" data-r>Scroll to run one job. The ledger updates with each beat: match, exception, operator review, close.</p>
+        <h2 class="d2" id="clH" data-r>Import to audit trail — one close cycle</h2>
+        <p class="lede" data-r>Seven stages. Scroll to run one job: <strong>247 matched + 1 exception</strong> is better than a fake “100% success.”</p>
       </div>
     </div>
 
@@ -811,16 +891,15 @@ html.js [data-s].in>*{opacity:1;transform:none}
             </div>
           </div>
           <ul class="audit" id="auditLog">
-            <li data-from="1"><u>14:02</u> Job started · 248 records</li>
-            <li data-from="2"><u>14:03</u> Sync running · 86 of 248</li>
-            <li data-from="3"><u>14:03</u> Validated against ledger schema</li>
-            <li data-from="4"><u>14:04</u> 247 matched · 1 remaining</li>
-            <li class="warn" data-from="5"><u>14:04</u> 1 exception · amount variance</li>
-            <li data-from="6"><u>14:09</u> Operator review · reference corrected</li>
-            <li class="ok" data-from="7"><u>14:11</u> Reconciled · amount aligned</li>
-            <li class="ok" data-from="8"><u>14:11</u> Audit entry written</li>
+            <li data-from="1"><u>14:02</u> Job started · 248 records imported</li>
+            <li data-from="2"><u>14:03</u> Validated against ledger schema</li>
+            <li data-from="3"><u>14:04</u> 247 matched · 1 remaining</li>
+            <li class="warn" data-from="4"><u>14:04</u> 1 exception · amount variance</li>
+            <li data-from="5"><u>14:09</u> Operator review · Shaw confirmed value</li>
+            <li class="ok" data-from="6"><u>14:11</u> Reconciled · amount aligned</li>
+            <li class="ok" data-from="7"><u>14:11</u> Audit entry written</li>
           </ul>
-          <div class="pips" id="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pips" id="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         </div>
         <p class="sr" aria-live="polite" id="announce"></p>
       </div>
@@ -829,43 +908,109 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <div class="beat" data-beat="1">
           <span class="n">01 · Import</span>
           <h3 class="d3">Source events land as records, not a JSON dump.</h3>
-          <p class="body-sm">Invoices, payments, and credit notes queue with a stable key. Finance sees counts, not a log file.</p>
+          <p class="body-sm">Invoices, payments, and credit notes queue with stable keys and idempotent workers. Finance sees counts, not a log file.</p>
         </div>
         <div class="beat" data-beat="2">
-          <span class="n">02 · Sync</span>
-          <h3 class="d3">Workers that can be trusted to retry.</h3>
-          <p class="body-sm">Idempotent QuickBooks and Xero workers respect rate limits. A timeout does not post the same invoice twice.</p>
-        </div>
-        <div class="beat" data-beat="3">
-          <span class="n">03 · Validate</span>
+          <span class="n">02 · Validate</span>
           <h3 class="d3">Schema and tax codes before the match.</h3>
           <p class="body-sm">Missing accounts, unknown tax, or a currency the org does not hold fail here, not inside the ledger.</p>
         </div>
-        <div class="beat" data-beat="4">
-          <span class="n">04 · Match</span>
+        <div class="beat" data-beat="3">
+          <span class="n">03 · Match</span>
           <h3 class="d3">247 of 248 is a result, not a silent 100%.</h3>
           <p class="body-sm">The job reports what matched. The one that did not stays visible instead of disappearing into “success.”</p>
         </div>
-        <div class="beat warn" data-beat="5">
-          <span class="n">05 · Exception</span>
+        <div class="beat warn" data-beat="4">
+          <span class="n">04 · Exception</span>
           <h3 class="d3">A variance with a human-readable delta.</h3>
           <p class="body-sm">Source 1,204.75 against ledger 1,240.75. Transposition suspected. No raw Intuit or Xero payload in the operator view.</p>
         </div>
-        <div class="beat warn" data-beat="6">
-          <span class="n">06 · Review</span>
+        <div class="beat warn" data-beat="5">
+          <span class="n">05 · Review</span>
           <h3 class="d3">Finance acts without an engineering ticket.</h3>
           <p class="body-sm">Retry, confirm the correct value, or park it. Every action is attributable. Outsourced controllers can finish this step.</p>
         </div>
-        <div class="beat" data-beat="7">
-          <span class="n">07 · Reconcile</span>
+        <div class="beat" data-beat="6">
+          <span class="n">06 · Reconcile</span>
           <h3 class="d3">The line closes. The amount is honest.</h3>
           <p class="body-sm">Once confirmed, the record matches both books. Close does not wait on a Slack thread.</p>
         </div>
-        <div class="beat" data-beat="8">
-          <span class="n">08 · Audit</span>
+        <div class="beat" data-beat="7">
+          <span class="n">07 · Audit</span>
           <h3 class="d3">Who changed what, when, and why.</h3>
-          <p class="body-sm">The trail is written in language an accountant will accept. That is the bar, not a developer log.</p>
+          <p class="body-sm">The trail is written in language an accountant will accept. That is the bar — the integration is finished when finance can confidently close the books.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sect" id="exceptions" aria-labelledby="exH">
+  <div class="wrap">
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>Exception handling</p>
+        <h2 class="d2" id="exH" data-r>When a line does not match, someone still has to close</h2>
+        <p class="lede" data-r>Real finance workflows — not raw API errors. Each exception shows what failed, both values, and a path forward.</p>
+      </div>
+    </div>
+    <div class="exgrid">
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Types we surface</p>
+        <div class="extypes">
+          <div class="extype">
+            <span class="code">AMT</span>
+            <div>
+              <h3>Amount variance</h3>
+              <p class="body-sm">Source and ledger disagree. Both values and suspected cause — not a status code.</p>
+            </div>
+          </div>
+          <div class="extype">
+            <span class="code">TAX</span>
+            <div>
+              <h3>Tax / VAT mismatch</h3>
+              <p class="body-sm">Wrong code, missing rate, or a US/UK org using the other region’s rules.</p>
+            </div>
+          </div>
+          <div class="extype">
+            <span class="code">ENT</span>
+            <div>
+              <h3>Entity mapping</h3>
+              <p class="body-sm">Posted to the wrong company file or Xero org. Multi-entity is first-class.</p>
+            </div>
+          </div>
+          <div class="extype">
+            <span class="code">DUP</span>
+            <div>
+              <h3>Duplicate or orphan</h3>
+              <p class="body-sm">A retry that already posted, or a payment with no matching invoice.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Operator view</p>
+        <div class="ex-card" role="img" aria-label="Exception card: amount variance on INV-2293, source 1204.75, ledger 1240.75, close risk, actions retry confirm park, operator Shaw">
+          <div class="ex-card-h">
+            <b>INV-2293 · Amount variance</b>
+            <span class="sev">Close risk</span>
+          </div>
+          <div class="ex-delta">
+            <div><span class="k">Source value</span><span class="v">1,204.75</span></div>
+            <div><span class="k">Ledger value</span><span class="v warn">1,240.75</span></div>
+          </div>
+          <p class="ex-cause"><b>Suspected cause:</b> digit transposition · Halden Co · Aug close</p>
+          <div class="ex-actions" aria-hidden="true">
+            <span class="primary">Retry</span>
+            <span>Confirm</span>
+            <span>Park</span>
+          </div>
+          <div class="ex-foot">
+            <span>Operator <b>Shaw</b> · 14:09</span>
+            <span>Audit <b>Pending review</b></span>
+          </div>
+        </div>
+        <p class="cap-note" style="margin-top:12px"><span class="flag">Demo</span> Operator UI pattern · illustrative data</p>
       </div>
     </div>
   </div>
@@ -875,7 +1020,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="wrap">
     <p class="eyebrow" data-r>Architecture</p>
     <h2 class="d2" id="arH" data-r>A path from source event to a closed ledger</h2>
-    <p class="lede" data-r>Six stages we design and build. Failures surface at the stage they belong, not as a generic 500 at month-end.</p>
+    <p class="lede" data-r>Six stages we design and build. Failures surface at the stage they belong — not as a generic 500 at month-end.</p>
     <div class="flow" id="flow">
       <div class="node">
         <span class="nn">01</span>
@@ -900,7 +1045,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <div class="node">
         <span class="nn">05</span>
         <b>Exception queue</b>
-        <p>Operator triage with next steps, not a dump of API error strings.</p>
+        <p>Operator triage with next steps — see the exception card above.</p>
       </div>
       <div class="node">
         <span class="nn">06</span>
@@ -908,62 +1053,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <p>Closed records and an attributable trail finance can keep.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sect" id="exceptions" aria-labelledby="exH">
-  <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Exception handling</p>
-        <h2 class="d2" id="exH" data-r>When a line does not match, someone still has to close</h2>
-        <p class="lede" data-r>We design the queue around the cases that actually stall month-end, then give finance a path that does not require an engineer.</p>
-      </div>
-    </div>
-    <div class="exgrid">
-      <div>
-        <p class="eyebrow" style="margin-bottom:8px">Types we surface</p>
-        <div class="extypes">
-          <div class="extype">
-            <span class="code">AMT</span>
-            <div>
-              <h3>Amount variance</h3>
-              <p class="body-sm">Source and ledger disagree. Show both values and the suspected cause, not a status code.</p>
-            </div>
-          </div>
-          <div class="extype">
-            <span class="code">TAX</span>
-            <div>
-              <h3>Tax / VAT mismatch</h3>
-              <p class="body-sm">Wrong code, missing rate, or a US/UK org using the other region’s rules.</p>
-            </div>
-          </div>
-          <div class="extype">
-            <span class="code">ENT</span>
-            <div>
-              <h3>Entity mapping</h3>
-              <p class="body-sm">Posted to the wrong company file or Xero org. Multi-entity is a first-class case, not an afterthought.</p>
-            </div>
-          </div>
-          <div class="extype">
-            <span class="code">DUP</span>
-            <div>
-              <h3>Duplicate or orphan</h3>
-              <p class="body-sm">A retry that already posted, or a payment with no matching invoice. Idempotency keys catch most of this before the queue.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <p class="eyebrow" style="margin-bottom:8px">Operator path</p>
-        <ol class="exflow">
-          <li><u>Detect</u><span>Job flags the record. The rest of the batch can still close.</span></li>
-          <li><u>Explain</u><span>Human-readable delta: what we sent, what the ledger holds, why we think they differ.</span></li>
-          <li><u>Retry</u><span>Safe retry with the same idempotency key. If it still fails, it stays in review.</span></li>
-          <li><u>Decide</u><span>Confirm, correct the reference, or park. Named operator, timestamped.</span></li>
-          <li><u>Close</u><span>Record matches. Audit entry written. No engineering ticket required.</span></li>
-        </ol>
-      </div>
+    <div class="flow flow-v" id="flowV" aria-hidden="true">
+      <div class="node"><span class="nn">01</span><b>Source events</b><p>Product or ops platform events.</p></div>
+      <div class="node"><span class="nn">02</span><b>Queue &amp; workers</b><p>Idempotent jobs with backoff.</p></div>
+      <div class="node"><span class="nn">03</span><b>QBO / Xero API</b><p>Official connectors per org.</p></div>
+      <div class="node"><span class="nn">04</span><b>Match engine</b><p>Readable deltas, not silent match.</p></div>
+      <div class="node"><span class="nn">05</span><b>Exception queue</b><p>Operator triage and actions.</p></div>
+      <div class="node"><span class="nn">06</span><b>Ledger + audit</b><p>Closed records with trail.</p></div>
     </div>
   </div>
 </section>
@@ -972,85 +1068,41 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="wrap">
     <p class="eyebrow" data-r>Capabilities</p>
     <h2 class="d2" id="capH" data-r style="margin-top:18px;max-width:22ch">What we deliver for QuickBooks and Xero</h2>
-    <p class="body" data-r style="margin-top:18px">Connectors and operator UX from the same in-house team. No marketplace handoff between “the API person” and “the dashboard person.”</p>
+    <p class="body" data-r style="margin-top:18px">Connectors and operator UX from the same in-house team — no handoff between “the API person” and “the dashboard person.”</p>
 
-    <div style="margin-top:clamp(34px,4vw,60px)">
-      <article class="cap-row" data-r>
-        <div class="cap-media">
-          <div class="pu" role="img" aria-label="March close unmatched.">
-            <div class="pu-bar"><div><p class="pu-title">March close</p><p class="pu-meta">QuickBooks · Xero</p></div><span class="pu-chip warn">4 unmatched</span></div>
-            <ul class="pu-rows">
-              <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
-              <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
-            </ul>
-            <span class="pu-cta lime">Resolve</span>
-          </div>
-          <div class="slot"><div class="skel"><i></i><i></i><i></i></div>
-            <div class="tagline"><span>Capability · 01</span><span>Reconciliation</span></div></div>
-        </div>
-        <div>
-          <span class="cap-no num">01</span>
-          <h3 class="d3">Reconciliation that holds at close</h3>
-          <p class="body-sm">Match invoices, payments, and credit notes against QBO or Xero with counts finance can trust, not a green check that hid a variance.</p>
-          <ul class="feature-list">
-            <li>Idempotent workers for Intuit and Xero APIs</li>
-            <li>Per-entity tokens and rate-limit backoff</li>
-            <li>Parallel run before cutover, not a Friday night flip</li>
-          </ul>
-          <a href="/services/api-integrations" class="cap-link">Integrations &amp; APIs <i>→</i></a>
-        </div>
+    <div class="deliver" data-s>
+      <article>
+        <span class="k">01 · Reconciliation</span>
+        <h3>Sync that holds at close</h3>
+        <p class="body-sm">Match invoices, payments, and credit notes with counts finance can trust.</p>
+        <ul>
+          <li>Idempotent Intuit and Xero workers</li>
+          <li>Per-entity tokens and rate-limit backoff</li>
+          <li>Parallel run before cutover</li>
+        </ul>
+        <a href="/services/api-integrations" class="cap-link" style="margin-top:18px">Integrations &amp; APIs <i>→</i></a>
       </article>
-
-      <article class="cap-row alt" data-r>
-        <div class="cap-media">
-          <div class="pu" role="img" aria-label="Unmatched queue, close risk first.">
-            <div class="pu-bar"><div><p class="pu-title">Unmatched</p><p class="pu-meta">Close risk · queue</p></div><span class="pu-chip warn">4 open</span></div>
-            <ul class="pu-rows">
-              <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
-              <li class="risk"><b>PMT-091</b><span>PSP &rarr; Ledger</span><em>Retry</em></li>
-              <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Park</em></li>
-            </ul>
-          </div>
-          <div class="slot"><div class="skel"><i></i><i></i><i></i></div>
-            <div class="tagline"><span>Capability · 02</span><span>Exceptions</span></div></div>
-        </div>
-        <div>
-          <span class="cap-no num">02</span>
-          <h3 class="d3">Exception dashboards operators can finish</h3>
-          <p class="body-sm">Discrepancy cards with remediation steps. Built for outsourced finance teams, not for the engineer who wrote the connector.</p>
-          <ul class="feature-list">
-            <li>Human-readable deltas, no raw JSON in the operator view</li>
-            <li>Queue ordered by close risk, not arrival time</li>
-            <li>Named actions: retry, confirm, park</li>
-          </ul>
-          <a href="/services/dashboard-design" class="cap-link">Dashboard design <i>→</i></a>
-        </div>
+      <article>
+        <span class="k">02 · Exceptions</span>
+        <h3>Dashboards operators can finish</h3>
+        <p class="body-sm">Discrepancy cards with remediation steps for outsourced finance teams.</p>
+        <ul>
+          <li>Queue ordered by close risk</li>
+          <li>Named actions: retry, confirm, park</li>
+          <li>No raw JSON in the operator view</li>
+        </ul>
+        <a href="/services/dashboard-design" class="cap-link" style="margin-top:18px">Dashboard design <i>→</i></a>
       </article>
-
-      <article class="cap-row" data-r>
-        <div class="cap-media">
-          <div class="pu" role="img" aria-label="Retry history, named operator.">
-            <div class="pu-bar"><div><p class="pu-title">INV-2041</p><p class="pu-meta">Retry history</p></div><span class="pu-chip warn">Open</span></div>
-            <ul class="pu-rows">
-              <li class="risk"><b>14:02</b><span>Timeout</span><em>Job</em></li>
-              <li><b>14:11</b><span>Queued</span><em>Job</em></li>
-              <li class="on"><b>14:18</b><span>Park · Shaw</span><em>Named</em></li>
-            </ul>
-          </div>
-          <div class="slot"><div class="skel"><i></i><i></i><i></i></div>
-            <div class="tagline"><span>Capability · 03</span><span>Audit</span></div></div>
-        </div>
-        <div>
-          <span class="cap-no num">03</span>
-          <h3 class="d3">An audit trail an accountant will accept</h3>
-          <p class="body-sm">Who changed the amount, which job retried, and why the line closed. Written for finance review, not log aggregation.</p>
-          <ul class="feature-list">
-            <li>Attributable operator actions with timestamps</li>
-            <li>Job-level history across QBO and Xero orgs</li>
-            <li>Alerts when a run stalls before close</li>
-          </ul>
-          <a href="/services/automation-systems" class="cap-link">Automation workflows <i>→</i></a>
-        </div>
+      <article>
+        <span class="k">03 · Audit</span>
+        <h3>Trail an accountant will accept</h3>
+        <p class="body-sm">Who changed the amount, which job retried, and why the line closed.</p>
+        <ul>
+          <li>Attributable operator actions</li>
+          <li>Job history across QBO and Xero orgs</li>
+          <li>Alerts when a run stalls before close</li>
+        </ul>
+        <a href="/services/automation-systems" class="cap-link" style="margin-top:18px">Automation workflows <i>→</i></a>
       </article>
     </div>
   </div>
@@ -1085,11 +1137,50 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </section>
 
+<section class="proof on-ink" id="proof" aria-labelledby="pfH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Proof</p>
+    <h2 class="d2" id="pfH" data-r>FinanceSync · QuickBooks &amp; Xero reconciliation hub</h2>
+    <div class="proof-grid">
+      <div>
+        <figure class="proof-shot" data-shot>
+          <div class="pu" role="img" aria-label="March close hub: 186 matched, 4 open exceptions, resolve action. Illustrative demo data.">
+            <div class="pu-bar"><div><p class="pu-title">March close</p><p class="pu-meta">QuickBooks · Xero · bank</p></div><span class="pu-chip warn">4 unmatched</span></div>
+            <div class="pu-kpis"><div><span>Matched</span><b>186</b></div><div class="risk"><span>Open</span><b>4</b></div><div><span>Retry</span><b>1</b></div></div>
+            <ul class="pu-rows">
+              <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
+              <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
+            </ul>
+            <span class="pu-cta lime">Resolve</span>
+          </div>
+        </figure>
+        <p class="proof-demo"><span class="flag" style="border-color:#3A444E;color:#717F8C">Illustrative demo</span> UI from FinanceSync case · not live client data</p>
+      </div>
+      <div>
+        <dl class="proof-steps">
+          <div><dt>Problem</dt><dd>Month-end close stalled on silent sync drift — finance found variances in spreadsheets, not in the product.</dd></div>
+          <div><dt>Architecture</dt><dd>Idempotent QBO/Xero workers, match engine, and exception queue with webhook + poll hybrid.</dd></div>
+          <div><dt>Operator workflow</dt><dd>Discrepancy cards with retry, confirm, and park — queue ordered by close risk, not arrival time.</dd></div>
+          <div><dt>Outcome</dt><dd>Finance teams clear exceptions without engineering tickets. Parallel run validated before cutover.</dd></div>
+        </dl>
+        <dl class="scope">
+          <div><dt>Sector</dt><dd>UK &amp; US FinOps / accounting ops</dd></div>
+          <div><dt>Focus</dt><dd>QB/Xero sync, anomaly triage, operator dashboards</dd></div>
+        </dl>
+        <div class="cta-actions" style="margin-top:24px">
+          <a href="/work/finance-sync-hub" class="btn on-dark"><span>Read the FinanceSync case</span><i>→</i></a>
+        </div>
+      </div>
+    </div>
+    <p class="proof-note">Selected anonymized case in this space. Client names and identifying details may be changed for confidentiality. Metrics on case pages are measured delivery outcomes — not invented or third-party ratings.</p>
+  </div>
+</section>
+
 <section class="sect" id="process" aria-labelledby="prH">
   <div class="wrap">
     <p class="eyebrow" data-r>Process</p>
     <h2 class="d2" id="prH" data-r style="margin-top:18px;max-width:18ch">How we deliver a connector finance will use</h2>
-    <p class="body" data-r style="margin-top:18px">Four gated phases. Each gate is a finance-readable artefact, not a slide that says “done.”</p>
+    <p class="body" data-r style="margin-top:18px">Four gated phases — Map → Build → Operator UX → Parallel run/go-live. Each gate is a finance-readable artefact.</p>
 
     <div class="pipeline" id="pipeline">
       <div class="phase">
@@ -1100,7 +1191,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <div class="phase">
         <span class="pn num">02</span>
         <div><h3 class="d3">Connector build</h3><span class="gate">Staging validated</span></div>
-        <p class="body-sm">Idempotent sync jobs, webhooks, and retries against a sandbox company. Staging must survive a forced timeout without duplicating a post.</p>
+        <p class="body-sm">Sync jobs, webhooks, and retries against a sandbox company. Staging must survive a forced timeout without duplicating a post.</p>
       </div>
       <div class="phase">
         <span class="pn num">03</span>
@@ -1113,43 +1204,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <p class="body-sm">Parallel run against live books, reconciliation checks, and a monitoring playbook. Cutover only after a clean close cycle.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="proof on-ink" id="proof" aria-labelledby="pfH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Proof</p>
-    <h2 class="d2" id="pfH" data-r>FinanceSync · QuickBooks &amp; Xero reconciliation hub</h2>
-    <div class="proof-grid">
-      <div>
-        <figure class="proof-shot" data-shot>
-          <div class="pu" role="img" aria-label="March close hub: unmatched, retry, Resolve.">
-            <div class="pu-bar"><div><p class="pu-title">March close</p><p class="pu-meta">QuickBooks · Xero · bank</p></div><span class="pu-chip warn">4 unmatched</span></div>
-            <div class="pu-kpis"><div><span>Matched</span><b>186</b></div><div class="risk"><span>Open</span><b>4</b></div><div><span>Retry</span><b>1</b></div></div>
-            <ul class="pu-rows">
-              <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
-              <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
-            </ul>
-            <span class="pu-cta lime">Resolve</span>
-          </div>
-          <div class="slot"><div class="skel"><i></i><i></i><i></i></div>
-            <div class="tagline"><span>Proof reference · 16:9</span><span>FinanceSync</span></div></div>
-        </figure>
-      </div>
-      <div>
-        <p class="body" style="color:#B9C3CC">Built reliable QuickBooks and Xero reconciliation workflows with operator dashboards finance teams trust at month-end close. Idempotent workers, anomaly surfacing before close, and discrepancy cards with remediation steps.</p>
-        <dl class="scope">
-          <div><dt>Sector</dt><dd>UK &amp; US FinOps / accounting ops</dd></div>
-          <div><dt>Focus</dt><dd>QB/Xero sync, anomaly triage, operator dashboards</dd></div>
-          <div><dt>Moment</dt><dd>Month-end close</dd></div>
-          <div><dt>Tags</dt><dd>Integrations · Dashboard · Automation</dd></div>
-        </dl>
-        <div class="cta-actions" style="margin-top:24px">
-          <a href="/work/finance-sync-hub" class="btn on-dark"><span>Read the FinanceSync case</span><i>→</i></a>
-        </div>
-      </div>
-    </div>
-    <p class="proof-note">Selected anonymized case in this space. Client names and identifying details may be changed for confidentiality. Metrics shown on case pages are measured delivery outcomes, not third-party ratings.</p>
   </div>
 </section>
 
@@ -1428,8 +1482,9 @@ if(mob.length){
 }
 
 const flow = document.getElementById('flow');
+const flowV = document.getElementById('flowV');
 if(flow){
-  new IntersectionObserver((es,o)=>{ if(es[0].isIntersecting){ flow.classList.add('in'); o.disconnect(); } },{threshold:.3}).observe(flow);
+  new IntersectionObserver((es,o)=>{ if(es[0].isIntersecting){ flow.classList.add('in'); if(flowV) flowV.classList.add('in'); o.disconnect(); } },{threshold:.3}).observe(flow);
 }
 
 const lg = document.getElementById('lg');
@@ -1441,14 +1496,13 @@ const tags = {};
 const el = id => document.getElementById(id);
 
 const S = {
-  1:{job:'queued',    lbl:'Import',  p:.18, val:'248 / 248', clean:['Imported','t-idle'],  ex:['Imported','t-idle'], label:'Imported'},
-  2:{job:'running',   lbl:'Sync',    p:.35, val:'86 / 248',  clean:['Syncing','t-sync'],   ex:['Syncing','t-sync'],  label:'Sync job running'},
-  3:{job:'running',   lbl:'Validate',p:.58, val:'248 / 248', clean:['Validated','t-sync'], ex:['Validated','t-sync'],label:'Validated'},
-  4:{job:'running',   lbl:'Match',   p:.82, val:'247 / 248', clean:['Matched','t-ok'],     ex:['Matching','t-sync'], label:'Matched'},
-  5:{job:'exception', lbl:'Match',   p:.82, val:'247 / 248', clean:['Matched','t-ok'],     ex:['Exception','t-warn'],label:'Exception detected'},
-  6:{job:'retrying',  lbl:'Retry',   p:.9,  val:'247 / 248', clean:['Matched','t-ok'],     ex:['In review','t-warn'],label:'Retry and operator review'},
-  7:{job:'resolved',  lbl:'Close',   p:1,   val:'248 / 248', clean:['Matched','t-ok'],     ex:['Reconciled','t-ok'], label:'Reconciled'},
-  8:{job:'closed',    lbl:'Audit',   p:1,   val:'248 / 248', clean:['Matched','t-ok'],     ex:['Reconciled','t-ok'], label:'Audit trail written'}
+  1:{job:'queued',    lbl:'Import',  p:.2,  val:'248 / 248', clean:['Imported','t-idle'],  ex:['Imported','t-idle'], label:'Imported'},
+  2:{job:'running',   lbl:'Validate',p:.45, val:'248 / 248', clean:['Validated','t-sync'], ex:['Validated','t-sync'],label:'Validated'},
+  3:{job:'running',   lbl:'Match',   p:.72, val:'247 / 248', clean:['Matched','t-ok'],     ex:['Matching','t-sync'], label:'Matched'},
+  4:{job:'exception', lbl:'Match',   p:.72, val:'247 / 248', clean:['Matched','t-ok'],     ex:['Exception','t-warn'],label:'Exception detected'},
+  5:{job:'retrying',  lbl:'Review',  p:.88, val:'247 / 248', clean:['Matched','t-ok'],     ex:['In review','t-warn'],label:'Operator review'},
+  6:{job:'resolved',  lbl:'Close',   p:1,   val:'248 / 248', clean:['Matched','t-ok'],     ex:['Reconciled','t-ok'], label:'Reconciled'},
+  7:{job:'closed',    lbl:'Audit',   p:1,   val:'248 / 248', clean:['Matched','t-ok'],     ex:['Reconciled','t-ok'], label:'Audit trail written'}
 };
 
 let state = 0;
@@ -1463,10 +1517,10 @@ function setState(n){
   const syncTrack = el('syncTrack'); if(syncTrack) syncTrack.style.setProperty('--p', s.p);
   ['a','b','d'].forEach(k=>{ if(tags[k]){ tags[k].textContent = s.clean[0]; tags[k].className = 'tag ' + s.clean[1]; } });
   if(tags.c){ tags.c.textContent = s.ex[0]; tags.c.className = 'tag ' + s.ex[1]; }
-  const amtC = el('amtC'); if(amtC) amtC.textContent = n >= 7 ? '1,240.75' : '1,204.75';
+  const amtC = el('amtC'); if(amtC) amtC.textContent = n >= 6 ? '1,240.75' : '1,204.75';
   const exTitle = el('exTitle');
   const exBody = el('exBody');
-  if(n >= 6){
+  if(n >= 5){
     if(exTitle) exTitle.textContent = 'Exception · queued for operator review';
     if(exBody) exBody.textContent  = 'Retry did not clear · finance to confirm correct value';
   } else {
@@ -1477,10 +1531,10 @@ function setState(n){
   pips.forEach((p,i)=>{
     p.classList.remove('on','done','warn');
     if(i < n-1) p.classList.add('done');
-    else if(i === n-1) p.classList.add(n === 5 || n === 6 ? 'warn' : 'on');
+    else if(i === n-1) p.classList.add(n === 4 || n === 5 ? 'warn' : 'on');
   });
   const announce = el('announce');
-  if(announce) announce.textContent = 'Stage ' + n + ' of 8: ' + s.label;
+  if(announce) announce.textContent = 'Stage ' + n + ' of 7: ' + s.label;
 }
 
 if(lg && beats.length){
@@ -1541,7 +1595,7 @@ run();
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Your sync drifts every month-end. Ours doesn't.",
+      "name": "QuickBooks & Xero Integrations",
       "item": "https://krivatechnologies.com/solutions/accounting-integrations"
     }
   ]

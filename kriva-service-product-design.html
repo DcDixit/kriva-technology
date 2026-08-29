@@ -13,12 +13,12 @@
 <meta name="theme-color" content="#0E1216">
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
-<title>Product Design · Strategy to launch-ready UI · KRIVA</title>
-<meta name="description" content="Full product design for SaaS, dashboards, and digital platforms, from concept through launch-ready UI, not just individual screens.">
+<title>Product Design Services · Strategy to launch-ready UI · KRIVA</title>
+<meta name="description" content="Senior product design and UX for SaaS and digital products: strategy, user journeys, prototyping, and launch-ready UI with engineering-ready handoff — not just hero screens.">
 <link rel="canonical" href="https://krivatechnologies.com/services/product-design">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Product Design · Strategy to launch-ready UI">
-<meta property="og:description" content="Full product design for SaaS, dashboards, and digital platforms, from concept through launch-ready UI, not just individual screens.">
+<meta property="og:title" content="Product Design Services · Strategy to launch-ready UI · KRIVA">
+<meta property="og:description" content="Product strategy, user journeys, prototyping, and launch-ready UI for SaaS and digital products — one complete story before engineering starts.">
 <meta property="og:url" content="https://krivatechnologies.com/services/product-design">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -110,7 +110,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
   *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
-  .prod-board__live i{animation:none!important}
 }
 
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
@@ -138,10 +137,15 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
-.hero{
-  background:var(--paper);
+.hero{background:var(--paper)}
+.prod-hero-path{
+  display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:18px;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
 }
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
+.prod-hero-path span{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:6px 0}
+.prod-hero-path span:not(:last-child):after{content:"→";color:var(--steel-2);font-size:11px;letter-spacing:0}
+.prod-hero-path .on{color:var(--ink);font-weight:600}
+.prod-hero-path .on:before{content:"";width:6px;height:6px;background:var(--cta);flex:none;border-radius:50%}
 .s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(18px,3vw,48px);flex-wrap:wrap}
 .s-head .lede,.s-intro{margin-top:16px;max-width:54ch}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
@@ -158,9 +162,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
   font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
 }
 .prod-board__bar b{color:#fff;font-weight:400}
-.prod-board__live{display:inline-flex;align-items:center;gap:7px;color:var(--amber)}
-.prod-board__live i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block;box-shadow:0 0 0 0 currentColor;animation:prod-pulse 2.4s var(--e-io) infinite}
-@keyframes prod-pulse{0%{box-shadow:0 0 0 0 rgba(183,169,255,.45)}70%{box-shadow:0 0 0 7px rgba(183,169,255,0)}100%{box-shadow:0 0 0 0 rgba(183,169,255,0)}}
 .prod-board__body{display:grid;grid-template-columns:1.05fr .95fr;min-height:220px}
 .prod-board__pane{padding:14px;display:grid;align-content:start;gap:8px}
 .prod-board__pane:first-child{border-right:1px solid var(--ink-line)}
@@ -178,53 +179,34 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .flow-step.on i{border-color:var(--sky);background:rgba(91,140,255,.25)}
 .flow-step.edge{color:#8C98A4}
 .flow-step.edge i{border-color:var(--amber)}
-.prod-board__note{margin-top:12px;display:flex;gap:10px;align-items:baseline;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.prod-board__note{margin-top:14px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
+.work-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,48px);align-items:start;margin-top:clamp(24px,3vw,36px)}
+.proof-flow{margin-top:24px;border-top:1px solid var(--ink-line)}
+.proof-flow div{display:grid;grid-template-columns:clamp(88px,12vw,118px) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--ink-line);font-size:14.5px}
+.proof-flow dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;padding-top:3px}
+.proof-flow dd{color:#DDE2E7;max-width:46ch}
+.proof-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--ink-line)}
+.proof-metrics div{padding:18px 16px;border-right:1px solid var(--ink-line);min-width:0}
+.proof-metrics div:last-child{border-right:0}
+.proof-metrics b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.45rem,2.4vw,1.9rem);letter-spacing:-.04em;color:#fff;line-height:1}
+.proof-metrics .hi b{color:var(--lime)}
+.proof-metrics span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;max-width:16ch}
+.proof-cta{margin-top:28px}
+.proof-note{margin-top:clamp(28px,3.5vw,40px);font-size:14.5px;line-height:1.58;color:#8C98A4;max-width:58ch}
+.proof-note a{color:#DDE2E7;border-bottom:1px solid #3A444E}
+.process-steps{margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,32px);list-style:none;padding:0}
+@media(max-width:720px){.process-steps{grid-template-columns:1fr}}
 @media(max-width:640px){
   .prod-board__body{grid-template-columns:1fr}
   .prod-board__pane:first-child{border-right:0;border-bottom:1px solid var(--ink-line)}
+  .prod-hero-path{flex-direction:column;align-items:flex-start;gap:4px}
+  .prod-hero-path span:not(:last-child):after{content:"↓"}
+  .work-grid{grid-template-columns:1fr}
+  .proof-metrics{grid-template-columns:1fr}
+  .proof-metrics div{border-right:0;border-bottom:1px solid var(--ink-line)}
+  .proof-metrics div:last-child{border-bottom:0}
+  .proof-flow div{grid-template-columns:1fr;gap:4px}
 }
-
-.fit-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.fit-rail article{background:var(--white);padding:clamp(18px,2.2vw,26px);transition:background .4s var(--e)}
-.fit-rail article:hover{background:var(--paper-2)}
-.fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.fit-rail h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
-.fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:28ch}
-.fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
-@media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
-
-.chal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px);transition:background .4s var(--e)}
-.chal article:hover{background:var(--white)}
-.chal .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:12px}
-.chal h3{margin-bottom:12px}
-.chal p{color:var(--steel);max-width:34ch}
-@media(max-width:860px){.chal{grid-template-columns:1fr}}
-
-.approach{display:grid;gap:0;margin-top:clamp(28px,3.5vw,48px);border-top:1px solid var(--rule)}
-.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr) minmax(0,.85fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule);align-items:start}
-.ap-row .idx{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1}
-.ap-row .body-sm{margin-top:10px}
-.ap-row .out{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);padding-top:6px}
-.ap-row .out b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
-@media(max-width:900px){.ap-row{grid-template-columns:64px minmax(0,1fr);gap:14px}.ap-row .out{grid-column:2}}
-@media(max-width:560px){.ap-row{grid-template-columns:1fr;gap:8px}.ap-row .out{grid-column:1}}
-
-.deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.deliv article{background:var(--white);padding:clamp(22px,2.6vw,34px)}
-.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
-.deliv h3{margin-bottom:10px}
-.deliv p{font-size:15px;line-height:1.58;color:var(--steel);max-width:42ch}
-@media(max-width:700px){.deliv{grid-template-columns:1fr}}
-
-.gain{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:start}
-.gain ul{list-style:none;display:grid;gap:12px}
-.gain li{padding:18px 20px;background:var(--white);border:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
-.gain li .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:4px}
-.gain li strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
-.gain li span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel)}
-@media(max-width:800px){.gain{grid-template-columns:1fr}}
 
 .faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:760px}
 .faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px;transition:border-color .35s var(--e)}
@@ -432,11 +414,20 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview"><span>Overview</span><i></i></a>
-  <a href="#product"><span>The product</span><i></i></a>
+  <a href="#product"><span>Whole product</span><i></i></a>
   <a href="#leftover"><span>Leftover surfaces</span><i></i></a>
-  <a href="#story"><span>One story</span><i></i></a>
-  <a href="#work"><span>Work</span><i></i></a>
+  <a href="#story"><span>Process</span><i></i></a>
+  <a href="#work"><span>Proof</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
+</nav>
+
+<nav class="mob-chips" id="mobChips" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#product">Product</a>
+  <a href="#leftover">Leftover</a>
+  <a href="#story">Process</a>
+  <a href="#work">Proof</a>
+  <a href="#faq">FAQ</a>
 </nav>
 
 <main id="main">
@@ -455,7 +446,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <span><i>One product story</i></span>
           <span><i>before code.</i></span>
         </h1>
-        <p class="lede" data-r>Strategy, flows, and UI for the whole product, including the settings and dashboards that usually get left behind, so stakeholders share one prototype before engineering starts.</p>
+        <p class="lede" data-r>Senior product design partner for SaaS and digital products. One complete story — strategy through launch-ready UI — before engineering starts.</p>
+        <p class="prod-hero-path" data-r aria-label="Product design path from strategy to launch-ready UI">
+          <span>Strategy</span>
+          <span>Flows</span>
+          <span class="on">Prototype</span>
+          <span>Launch-ready UI</span>
+        </p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
           <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See ShiftRail</span><i>→</i></a>
@@ -465,33 +462,43 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </header>
 
-<section class="arch-show" id="product" aria-labelledby="pdShow">
+<section class="sect" id="product" aria-labelledby="pdShow">
   <div class="wrap">
-    <p class="k">The product, not the hero screens</p>
-    <h2 id="pdShow">Core journeys plus the surfaces that get skipped.</h2>
-    <div class="arch-layer">
-      <div class="arch-frame">
-        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>shiftrail · console</span></div>
-        <div class="pu" role="img" aria-label="ShiftRail dispatch: bulk reassign, SLA on the row.">
-          <div class="pu-bar"><div><p class="pu-title">ShiftRail</p><p class="pu-meta">Dispatch · 3 selected</p></div><span class="pu-act">Reassign</span></div>
-          <div class="pu-kpis"><div><span>Active</span><b>128</b></div><div class="up"><span>On time</span><b>94%</b></div><div class="risk"><span>At risk</span><b>3</b></div></div>
-          <ul class="pu-rows">
-            <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m</em></li>
-            <li class="risk"><b>#4823</b><span>CHI &rarr; DET</span><em>6m SLA</em></li>
-          </ul>
-        </div>
+    <div class="s-head">
+      <div>
+        <p class="eyebrow" data-r>The whole product</p>
+        <h2 class="d2" id="pdShow" data-r style="margin-top:16px">Hero screens are not the whole product.</h2>
+        <p class="lede s-intro" data-r>One flow visual: core journey, alternate paths, failures, permissions, and the operational surfaces that usually get skipped.</p>
       </div>
-      <div class="side arch-frame">
-        <div class="pu" role="img" aria-label="Admin leftover: first sitting, roles later.">
-          <div class="pu-bar"><div><p class="pu-title">First sitting</p><p class="pu-meta">After SSO</p></div><span class="pu-chip warn">Roles later</span></div>
-          <ol class="pu-steps" style="padding:14px 16px">
-            <li class="done"><i></i><span>SSO</span><em>Done</em></li>
-            <li class="now"><i></i><span>Run test cycle</span><em>Now</em></li>
-            <li class="later"><i></i><span>Invite roles</span><em>After value</em></li>
-          </ol>
+    </div>
+    <div class="prod-board" data-r role="img" aria-label="Whole-product design flow: core journey through alternate paths, empty and error states, permission changes, dashboard and settings, to launch-ready system.">
+      <div class="prod-board__bar">
+        <span>Product map · <b>one prototype</b></span>
+        <span>Core → edge → ship</span>
+      </div>
+      <div class="prod-board__body">
+        <div class="prod-board__pane">
+          <p class="lab">Core journey</p>
+          <div class="flow">
+            <div class="flow-step done"><i></i><span>Sign in → first task</span></div>
+            <div class="flow-step on"><i></i><span>Alternate path · bulk action</span></div>
+            <div class="flow-step edge"><i></i><span>Empty queue · nothing to assign</span></div>
+            <div class="flow-step edge"><i></i><span>Failed invite · retry or skip</span></div>
+            <div class="flow-step"><i></i><span>Permission change · role unlocks admin</span></div>
+            <div class="flow-step done"><i></i><span>Dashboard + settings · launch-ready</span></div>
+          </div>
+        </div>
+        <div class="prod-board__pane">
+          <p class="lab">Leftover surfaces</p>
+          <div class="j-row on"><span class="n">01</span><span>Settings</span><small>In scope</small></div>
+          <div class="j-row"><span class="n">02</span><span>Invites + permissions</span><small>Edge cases</small></div>
+          <div class="j-row warn"><span class="n">03</span><span>Empty + error states</span><small>Designed</small></div>
+          <div class="j-row"><span class="n">04</span><span>Loading + confirmation</span><small>Not afterthought</small></div>
+          <div class="j-row ok"><span class="n">05</span><span>Admin + dashboards</span><small>Same story</small></div>
         </div>
       </div>
     </div>
+    <p class="prod-board__note" data-r><span class="flag">One visual</span> Core journey → edge case → permission → settings → launch-ready system</p>
   </div>
 </section>
 
@@ -510,35 +517,43 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <section class="sect" id="story" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
   <div class="wrap">
     <p class="eyebrow" data-r>How we run it</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px">Map. Prototype. UI engineering can build.</h2>
-    <p class="lede" data-r style="margin-top:16px">This is often the umbrella engagement. UI/UX, research, and prototyping nest inside when the brief is narrower.</p>
-    <ol class="run-bar" data-s style="margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,32px)">
-      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">01 · Map</span><h3 class="d3">Product UX map</h3><p class="body-sm" style="margin-top:8px">Core journeys plus leftover surfaces: settings, empty states, dashboards.</p></li>
-      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">02 · Walk</span><h3 class="d3">Shared prototype</h3><p class="body-sm" style="margin-top:8px">Failed invites, empty settings, missing permissions, edges the team can argue over once.</p></li>
-      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">03 · Ship</span><h3 class="d3">Launch-ready UI</h3><p class="body-sm" style="margin-top:8px">System foundations and screens engineering can build against. Visual quality in service of the story already agreed.</p></li>
+    <h2 class="d2" id="apH" data-r style="margin-top:16px">Map → Walk → Ship</h2>
+    <p class="lede" data-r style="margin-top:16px">Three phases — not a six-step agency deck. UI/UX, research, and prototyping nest inside when the brief is narrower.</p>
+    <ol class="process-steps" data-s>
+      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">01 · Map</span><h3 class="d3">Product UX map</h3><p class="body-sm" style="margin-top:8px">Core journeys and the operational surfaces easy to skip in a pitch deck.</p></li>
+      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">02 · Walk</span><h3 class="d3">Shared prototype</h3><p class="body-sm" style="margin-top:8px">One clickable path — including failures, empty states, and permission edges the team argues over once.</p></li>
+      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">03 · Ship</span><h3 class="d3">Launch-ready UI</h3><p class="body-sm" style="margin-top:8px">Design system foundations and screens engineering can build against — handoff included.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="featwork" id="work" aria-labelledby="pfH" style="padding:0">
-  <article class="lp-case" data-r>
-    <a href="/work/shiftrail-dispatch">
-      <div class="pu" role="img" aria-label="ShiftRail dispatch: bulk reassign, SLA on the row.">
-        <div class="pu-bar"><div><p class="pu-title">ShiftRail</p><p class="pu-meta">Dispatch · 3 selected</p></div><span class="pu-act">Reassign</span></div>
-        <div class="pu-kpis"><div><span>Active</span><b>128</b></div><div class="up"><span>On time</span><b>94%</b></div><div class="risk"><span>At risk</span><b>3</b></div></div>
-        <ul class="pu-rows">
-          <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m</em></li>
-          <li class="risk"><b>#4823</b><span>CHI &rarr; DET</span><em>6m SLA</em></li>
-        </ul>
+<section class="sect on-ink" id="work" aria-labelledby="pfH" style="background:var(--ink);color:#DDE2E7">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Selected work · signed-off</p>
+    <h2 class="d2" id="pfH" data-r style="margin-top:16px;color:#fff">ShiftRail · whole-product dispatch UX</h2>
+    <div class="work-grid">
+      <div data-r>
+        <p class="lede" style="color:#8C98A4">US dispatch found breach risk in a weekly report. The product decision was a whole dispatch story — console, SLA on the row, supervisor tooling — not hero screens alone.</p>
+        <dl class="proof-flow">
+          <div><dt>Problem</dt><dd>Breach risk lived in a weekly report. Operators rebuilt the answer in spreadsheets every shift.</dd></div>
+          <div><dt>Decision</dt><dd>Whole-product dispatch UX: morning scan, bulk reassign, exception hierarchy — one shared prototype.</dd></div>
+          <div><dt>Workflow</dt><dd>Clickable path from first login through bulk actions, failed states, and supervisor override.</dd></div>
+          <div><dt>Outcome</dt><dd>−32% manual handle time. 400+ daily routes. 11 weeks to production.</dd></div>
+        </dl>
+        <div class="proof-cta">
+          <a href="/work/shiftrail-dispatch" class="btn on-dark"><span>Read the ShiftRail case</span><i>→</i></a>
+        </div>
       </div>
-    </a>
-    <div>
-      <p class="eyebrow">Selected work · signed-off</p>
-      <h3 class="d2" id="pfH">ShiftRail</h3>
-      <p>Whole-product dispatch UX: console, SLA, supervisor tooling. Published −32% handle time on the case study.</p>
-      <a href="/work/shiftrail-dispatch" class="btn on-dark" style="margin-top:22px"><span>Read the case</span><i>→</i></a>
+      <div data-r>
+        <div class="proof-metrics">
+          <div class="hi"><b class="num">−32%</b><span>Manual handle time · signed-off</span></div>
+          <div><b class="num">400+</b><span>Daily routes on the board</span></div>
+          <div><b class="num">11 wks</b><span>To production</span></div>
+        </div>
+      </div>
     </div>
-  </article>
+    <p class="proof-note" data-r>ShiftRail is the published proof for whole-product design. Adjacent: <a href="/work/payroll-pro-saas">PayrollPro onboarding</a> and <a href="/services/saas-platforms">SaaS product design</a>.</p>
+  </div>
 </section>
 
 <section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--white);border-top:1px solid var(--rule)">
@@ -635,7 +650,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Product Design",
-  "description": "Full product design for SaaS, dashboards, and digital platforms, from concept through launch-ready UI, not just individual screens.",
+  "description": "Senior product design and UX for SaaS and digital products: strategy, user journeys, prototyping, and launch-ready UI with engineering-ready handoff — not just hero screens.",
   "provider": {
     "@type": "Organization",
     "name": "KRIVA Technologies"
@@ -750,7 +765,7 @@ run();
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "End-to-end product design strategy to ship.",
+      "name": "Product Design",
       "item": "https://krivatechnologies.com/services/product-design"
     }
   ]
