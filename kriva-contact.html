@@ -200,6 +200,7 @@ body.page-contact legend:before{content:"";width:18px;height:1px;background:curr
   transition:border-color var(--t-fast) var(--e),box-shadow var(--t-fast) var(--e)
 }
 .f textarea{min-height:150px;resize:vertical;line-height:1.6}
+#fitForm textarea{min-height:100px}
 .f select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--steel) 50%),linear-gradient(135deg,var(--steel) 50%,transparent 50%);background-position:calc(100% - 19px) 21px,calc(100% - 14px) 21px;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:40px}
 .f input:hover,.f select:hover,.f textarea:hover{border-color:var(--steel-2)}
 .f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,68,200,.14)}
@@ -448,9 +449,9 @@ form.sent{display:none}
         <h1 class="d1 mask" id="h1" data-mask>
           <span><i>Start a conversation.</i></span>
         </h1>
-        <p class="lede" data-r>Send a brief and we will reply within one business day to schedule a 20-minute fit call if it is a match. No public calendar, no sales queue.</p>
+        <p class="lede" data-r>Request a 20-minute fit call for quick qualification, or send a detailed brief if you already know the scope. We respond within one business day.</p>
         <div class="hero-actions" data-r>
-          <a href="#book" class="btn"><span>Request a fit call</span><i>↓</i></a>
+          <a href="#book" class="btn"><span>Request a 20-min fit call</span><i>↓</i></a>
           <a href="#brief" class="btn ghost"><span>Send a project brief</span><i>↓</i></a>
         </div>
         <div class="ct-promise" data-s>
@@ -489,33 +490,111 @@ form.sent{display:none}
 
 <section class="ct-book" id="book" aria-labelledby="bkH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Request a call</p>
-    <h2 class="d2" id="bkH" data-r>Request a fit call</h2>
+    <p class="eyebrow" data-r>Quick qualification</p>
+    <h2 class="d2" id="bkH" data-r>Request a 20-min fit call</h2>
+    <p class="body-sm" data-r style="margin-top:14px;max-width:52ch">Five fields, about two minutes. We reply within one business day to schedule a call across US or UK hours — no sales queue, no chatbot.</p>
 
     <div class="ct-book-grid">
       <div data-r>
-        <p class="body-sm" id="bookCopy">Fit calls are booked from a project brief. Send the form and we schedule a 20-minute slot in US or UK working hours. You hear back within one business day. No sales queue, no chatbot.</p>
-
-        <div class="ct-book-actions" id="bookFallbacks">
-          <a href="#brief" class="btn"><span>Send a project brief</span><i>→</i></a>
+        <div class="summary" id="fitSummary" tabindex="-1" role="alert">
+          <b>Check these fields before sending</b>
+          <ul id="fitSummaryList"></ul>
         </div>
 
-        <!-- Activate: set data-cal-link="username/20min" (Cal.com event path). Leave empty until production calendar is ready. -->
-        <div class="cal-embed" id="calEmbed" hidden data-cal-link="" data-cal-ready="false" aria-label="Request a fit call">
-          <div id="calInline" style="width:100%;min-height:420px"></div>
+        <form id="fitForm" novalidate method="post" action="/api/inquiry">
+          <input type="hidden" name="inquiry_type" value="fit_call">
+          <input type="hidden" name="_subject" value="Fit call request from krivatechnologies.com">
+          <div class="hp" aria-hidden="true">
+            <label for="fit-hp">Website</label>
+            <input type="text" id="fit-hp" name="website_hp" tabindex="-1" autocomplete="off">
+          </div>
+
+          <fieldset>
+            <legend>About you</legend>
+            <div class="fields">
+              <div class="f">
+                <label for="fit-name">Name <span class="req">Required</span></label>
+                <input type="text" id="fit-name" name="name" autocomplete="name" required aria-describedby="fit-name-err">
+                <p class="err" id="fit-name-err">Add your name so we know who to reply to.</p>
+              </div>
+              <div class="f">
+                <label for="fit-email">Work email <span class="req">Required</span></label>
+                <input type="email" id="fit-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="fit-email-err">
+                <p class="err" id="fit-email-err">Add a valid work email.</p>
+              </div>
+              <div class="f full">
+                <label for="fit-company">Company</label>
+                <input type="text" id="fit-company" name="company" autocomplete="organization">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>What you need</legend>
+            <div class="fields">
+              <div class="f full">
+                <label for="fit-ptype">Project type <span class="req">Required</span></label>
+                <select id="fit-ptype" name="ptype" required aria-describedby="fit-ptype-err">
+                  <option value="">Select project type</option>
+                  <option>Trucking &amp; logistics (US)</option>
+                  <option>SaaS product (UK / US)</option>
+                  <option>QuickBooks / Xero integration</option>
+                  <option>Car transportation platform</option>
+                  <option>Not sure yet</option>
+                </select>
+                <p class="err" id="fit-ptype-err">Pick the closest match.</p>
+              </div>
+              <div class="f full">
+                <label for="fit-details">What&rsquo;s breaking? <span class="req">Required</span></label>
+                <p class="hint">The desk, the shift, or the product — a few sentences is enough for a fit call.</p>
+                <textarea id="fit-details" name="details" required aria-describedby="fit-details-err" rows="4"></textarea>
+                <p class="err" id="fit-details-err">Tell us what you need help with.</p>
+              </div>
+              <div class="f">
+                <label for="fit-timeline">Timeline</label>
+                <select id="fit-timeline" name="timeline">
+                  <option value="">When do you need this?</option>
+                  <option>ASAP (within 4 weeks)</option>
+                  <option>1-2 months</option>
+                  <option>3-6 months</option>
+                  <option>Flexible / exploring</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="submit-row">
+            <button type="submit" class="btn" id="fitSubmitBtn">
+              <span class="spin" aria-hidden="true"></span><span id="fitSubmitLabel">Request fit call</span><i>→</i>
+            </button>
+            <p class="submit-note">Reply within one business day · NDA on request</p>
+          </div>
+          <p class="sr" aria-live="polite" id="fitFormStatus"></p>
+        </form>
+
+        <div class="done" id="fitDone" tabindex="-1">
+          <span class="tick" aria-hidden="true">✓</span>
+          <h3 class="d3">Request received. Here&rsquo;s what happens next.</h3>
+          <p class="body-sm">A person on the KRIVA team reads this — not a sales desk.</p>
+          <ol>
+            <li><u>01</u><span>We review your request against what we actually do well.</span></li>
+            <li><u>02</u><span>You get a reply within one business day with honest next steps.</span></li>
+            <li><u>03</u><span>If it looks like a fit, we schedule a 20-minute call across US/UK hours.</span></li>
+          </ol>
         </div>
-        <p class="body-sm" style="margin-top:16px">Prefer async? <a href="#brief">Send a written brief</a>, same team, same response time.</p>
+
+        <p class="body-sm" style="margin-top:20px">Already have a full scope written up? <a href="#brief">Send a detailed project brief</a> instead.</p>
       </div>
 
       <div data-r>
-        <h3 class="d3" style="margin-bottom:16px">Worth having ready</h3>
+        <h3 class="d3" style="margin-bottom:16px">What the fit call covers</h3>
         <ul class="ct-prep">
-          <li><u>01</u><span>What you're building, or what's breaking in what you already have.</span></li>
-          <li><u>02</u><span>Which market you're in, United States, United Kingdom, or global.</span></li>
+          <li><u>01</u><span>What you&rsquo;re building, or what&rsquo;s breaking in what you already have.</span></li>
+          <li><u>02</u><span>Which market you&rsquo;re in — United States, United Kingdom, or global.</span></li>
           <li><u>03</u><span>Roughly when you need it live.</span></li>
-          <li><u>04</u><span>Anything we can look at beforehand, a link, a login, a screenshot.</span></li>
+          <li><u>04</u><span>A clear yes, no, or not-yet before the call ends.</span></li>
         </ul>
-        <p class="body-sm" style="margin-top:20px">If you'd rather write it all down than talk first, <a href="#brief">send a project brief</a> instead, it's the same team reading it.</p>
+        <p class="body-sm" style="margin-top:20px">Need to share files, budgets, and full scope upfront? The <a href="#brief">project brief form</a> is the better path — same team, same response time.</p>
       </div>
     </div>
   </div>
@@ -545,6 +624,7 @@ form.sent{display:none}
         </div>
 
         <form id="briefForm" novalidate method="post" action="/api/inquiry">
+          <input type="hidden" name="inquiry_type" value="project_brief">
           <input type="hidden" name="_subject" value="New project brief from krivatechnologies.com">
           <!-- honeypot, mirrors the hidden field on the live form -->
           <div class="hp" aria-hidden="true">
@@ -815,14 +895,13 @@ const nextIO = new IntersectionObserver((es,o)=>{
 },{threshold:.4});
 if(steps.length) nextIO.observe(steps[0].parentElement);
 
-/* ── Cal.com: activate by setting data-cal-link on #calEmbed ── */
+/* ── forms: validation, states, success ── */
+const INQUIRY_ENDPOINT = '/api/inquiry';
+
+/* ── Cal.com: optional embed if #calEmbed exists with data-cal-link ── */
 const calEmbed = document.getElementById('calEmbed');
 const calLink = (calEmbed && (calEmbed.getAttribute('data-cal-link') || '').trim()) || '';
 if (calEmbed && calLink) {
-  const bookCopy = document.getElementById('bookCopy');
-  if (bookCopy) {
-    bookCopy.textContent = 'Pick a time that works across US and UK hours. The call is 20 minutes, short, specific, no pitch deck.';
-  }
   calEmbed.hidden = false;
   calEmbed.dataset.calReady = 'true';
   const s = document.createElement('script');
@@ -845,10 +924,146 @@ if (calEmbed && calLink) {
   document.head.appendChild(s);
 }
 
-/* ── form: validation, states, success ── */
-/* Brief posts to /api/inquiry (Vercel + local preview). */
-const INQUIRY_ENDPOINT = '/api/inquiry';
+function wireInquiryForm(form, opts) {
+  const summary = document.getElementById(opts.summaryId);
+  const summaryList = document.getElementById(opts.summaryListId);
+  const btn = document.getElementById(opts.submitBtnId);
+  const label = document.getElementById(opts.submitLabelId);
+  const status = document.getElementById(opts.statusId);
+  const done = document.getElementById(opts.doneId);
+  if (!form || !btn) return;
 
+  const check = f => {
+    if(!f.required) return true;
+    if(!f.value.trim()) return false;
+    if(f.type === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.value.trim());
+    return true;
+  };
+  const mark = f => {
+    const ok = check(f);
+    const err = document.getElementById(f.id + '-err');
+    f.setAttribute('aria-invalid', String(!ok));
+    if(err) err.classList.toggle('on', !ok);
+    return ok;
+  };
+
+  let sending = false;
+
+  const showDone = (msg) => {
+    sending = false;
+    form.removeAttribute('aria-busy');
+    btn.classList.remove('loading');
+    btn.removeAttribute('aria-disabled');
+    label.textContent = opts.submitDefault;
+    form.classList.add('sent');
+    if (done) { done.classList.add('on'); done.focus(); }
+    if (status) status.textContent = msg || opts.successMsg;
+  };
+
+  const showFail = (msg) => {
+    sending = false;
+    form.removeAttribute('aria-busy');
+    btn.classList.remove('loading');
+    btn.removeAttribute('aria-disabled');
+    label.textContent = opts.submitDefault;
+    if (summaryList) summaryList.innerHTML = '<li>' + (msg || opts.failMsg) + '</li>';
+    if (summary) { summary.classList.add('on'); summary.focus(); }
+    if (status) status.textContent = msg || opts.failMsg;
+  };
+
+  form.querySelectorAll('[required]').forEach(f=>{
+    f.addEventListener('blur', ()=>mark(f));
+    f.addEventListener('input', ()=>{
+      if(f.getAttribute('aria-invalid') === 'true' && check(f)) mark(f);
+    });
+    f.addEventListener('change', ()=>{
+      if(f.getAttribute('aria-invalid') === 'true') mark(f);
+    });
+  });
+
+  form.addEventListener('submit', async e=>{
+    e.preventDefault();
+    if(form.querySelector('[name="website_hp"]').value) return;
+    if(sending) return;
+
+    const bad = [...form.querySelectorAll('[required]')].filter(f=>!mark(f));
+    if(bad.length){
+      if (summaryList) {
+        summaryList.innerHTML = bad.map(f=>{
+          const lblEl = form.querySelector('label[for="' + f.id + '"]');
+          const lbl = lblEl ? lblEl.textContent.replace('Required','').trim() : f.name;
+          return '<li><a href="#' + f.id + '">' + lbl + '</a></li>';
+        }).join('');
+      }
+      if (summary) { summary.classList.add('on'); summary.focus(); }
+      if (status) status.textContent = bad.length + ' field' + (bad.length > 1 ? 's' : '') + ' need attention.';
+      return;
+    }
+
+    if (summary) summary.classList.remove('on');
+    sending = true;
+    btn.classList.add('loading');
+    btn.setAttribute('aria-disabled','true');
+    form.setAttribute('aria-busy','true');
+
+    const fd = new FormData(form);
+    label.textContent = 'Sending';
+    if (status) status.textContent = 'Sending securely.';
+    try {
+      const payload = {};
+      fd.forEach((v, k) => { payload[k] = v; });
+      const res = await fetch(INQUIRY_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok || body.ok === false) throw new Error(body.error || ('HTTP ' + res.status));
+      if (body.relay && body.relay.url) {
+        const relayRes = await fetch(body.relay.url, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(body.relay.payload || payload)
+        });
+        const relayBody = await relayRes.json().catch(() => ({}));
+        const ok = relayBody.success === true || String(relayBody.success) === 'true';
+        if (!ok) {
+          const msg = String(relayBody.message || '');
+          if (/activat/i.test(msg)) {
+            throw new Error('First send: open the activation email in the studio inbox, click Activate Form, then try again.');
+          }
+          throw new Error(msg || 'Could not send. Try again shortly.');
+        }
+      }
+      showDone(opts.successMsg);
+    } catch (err) {
+      showFail(err && err.message ? err.message : opts.failMsg);
+    }
+  });
+
+  if (summaryList) {
+    summaryList.addEventListener('click', e=>{
+      const a = e.target.closest('a'); if(!a) return;
+      e.preventDefault();
+      const f = document.querySelector(a.getAttribute('href'));
+      if(f) f.focus();
+    });
+  }
+}
+
+wireInquiryForm(document.getElementById('fitForm'), {
+  summaryId: 'fitSummary',
+  summaryListId: 'fitSummaryList',
+  submitBtnId: 'fitSubmitBtn',
+  submitLabelId: 'fitSubmitLabel',
+  statusId: 'fitFormStatus',
+  doneId: 'fitDone',
+  submitDefault: 'Request fit call',
+  successMsg: 'Fit call request received. We reply within one business day.',
+  failMsg: 'Could not send. Try again shortly.'
+});
+
+/* ── project brief form ── */
 const form = document.getElementById('briefForm');
 const summary = document.getElementById('summary');
 const summaryList = document.getElementById('summaryList');
@@ -857,125 +1072,20 @@ const label = document.getElementById('submitLabel');
 const status = document.getElementById('formStatus');
 const done = document.getElementById('done');
 
-const check = f => {
-  if(!f.required) return true;
-  if(!f.value.trim()) return false;
-  if(f.type === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.value.trim());
-  return true;
-};
-const mark = f => {
-  const ok = check(f);
-  const err = document.getElementById(f.id + '-err');
-  f.setAttribute('aria-invalid', String(!ok));
-  if(err) err.classList.toggle('on', !ok);
-  return ok;
-};
-
-let sending = false;
-
-const showDone = (msg) => {
-  sending = false;
-  form.removeAttribute('aria-busy');
-  btn.classList.remove('loading');
-  btn.removeAttribute('aria-disabled');
-  label.textContent = 'Send project brief';
-  form.classList.add('sent');
-  done.classList.add('on');
-  done.focus();
-  status.textContent = msg || 'Brief received. We reply within one business day.';
-};
-
-const showFail = (msg) => {
-  sending = false;
-  form.removeAttribute('aria-busy');
-  btn.classList.remove('loading');
-  btn.removeAttribute('aria-disabled');
-  label.textContent = 'Send project brief';
-  summaryList.innerHTML = '<li>' + (msg || 'Something went wrong. Wait a moment and send the brief again.') + '</li>';
-  summary.classList.add('on');
-  summary.focus();
-  status.textContent = msg || 'Submission failed. Please try again.';
-};
-
-form.querySelectorAll('[required]').forEach(f=>{
-  f.addEventListener('blur', ()=>mark(f));
-  f.addEventListener('input', ()=>{
-    if(f.getAttribute('aria-invalid') === 'true' && check(f)) mark(f);
-  });
-  f.addEventListener('change', ()=>{
-    if(f.getAttribute('aria-invalid') === 'true') mark(f);
-  });
+if (form) wireInquiryForm(form, {
+  summaryId: 'summary',
+  summaryListId: 'summaryList',
+  submitBtnId: 'submitBtn',
+  submitLabelId: 'submitLabel',
+  statusId: 'formStatus',
+  doneId: 'done',
+  submitDefault: 'Send project brief',
+  successMsg: 'Brief received. We reply within one business day.',
+  failMsg: 'Could not send. Try again shortly.'
 });
 
-form.addEventListener('submit', async e=>{
-  e.preventDefault();
-  if(form.querySelector('[name="website_hp"]').value) return; // bot
-  // aria-disabled + pointer-events stops mouse clicks but not Enter or keyboard
-  // activation, so guard the handler itself against a second in-flight submission
-  if(sending) return;
-
-  const bad = [...form.querySelectorAll('[required]')].filter(f=>!mark(f));
-  if(bad.length){
-    summaryList.innerHTML = bad.map(f=>{
-      const lbl = form.querySelector('label[for="' + f.id + '"]').textContent.replace('Required','').trim();
-      return '<li><a href="#' + f.id + '">' + lbl + '</a></li>';
-    }).join('');
-    summary.classList.add('on');
-    summary.focus();
-    status.textContent = bad.length + ' field' + (bad.length > 1 ? 's' : '') + ' need attention before the brief can be sent.';
-    return;
-  }
-
-  summary.classList.remove('on');
-  sending = true;
-  btn.classList.add('loading');
-  btn.setAttribute('aria-disabled','true');
-  form.setAttribute('aria-busy','true');
-
-  const fd = new FormData(form);
-  const apiEndpoint = INQUIRY_ENDPOINT;
-
-  label.textContent = 'Sending';
-  status.textContent = 'Sending your brief securely.';
-  try {
-    const payload = {};
-    fd.forEach((v, k) => { payload[k] = v; });
-    const res = await fetch(apiEndpoint, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    const body = await res.json().catch(() => ({}));
-    if (!res.ok || body.ok === false) throw new Error(body.error || ('HTTP ' + res.status));
-    if (body.relay && body.relay.url) {
-      const relayRes = await fetch(body.relay.url, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify(body.relay.payload || payload)
-      });
-      const relayBody = await relayRes.json().catch(() => ({}));
-      const ok = relayBody.success === true || String(relayBody.success) === 'true';
-      if (!ok) {
-        const msg = String(relayBody.message || '');
-        if (/activat/i.test(msg)) {
-          throw new Error('First send: open the activation email in the studio inbox, click Activate Form, then send this brief once more.');
-        }
-        throw new Error(msg || 'Could not send. Try again shortly.');
-      }
-    }
-    showDone('Brief received. We reply within one business day.');
-  } catch (err) {
-    showFail(err && err.message ? err.message : 'Could not send. Try again shortly.');
-  }
-});
-
-// clicking a summary link focuses the field it names
-summaryList.addEventListener('click', e=>{
-  const a = e.target.closest('a'); if(!a) return;
-  e.preventDefault();
-  const f = document.querySelector(a.getAttribute('href'));
-  if(f) f.focus();
-});
+/* legacy refs kept for any external hooks */
+void summary; void summaryList; void btn; void label; void status; void done;
 
 if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
 run();

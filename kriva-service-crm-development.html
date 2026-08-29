@@ -13,19 +13,21 @@
 <meta name="theme-color" content="#0E1216">
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
-<title>CRM Design · Dispatch &amp; sales consoles · KRIVA</title>
-<meta name="description" content="CRM and ops console design for dispatch boards, sales pipelines, and reporting views desks actually trust, HubSpot, Salesforce, or custom.">
+<title>Custom CRM Development · Dispatch consoles &amp; pipeline UX · KRIVA</title>
+<meta name="description" content="Dispatch CRM, HubSpot and Salesforce UX, and custom operational consoles. Designed for bulk work, SLA, and the people who actually run the desk.">
 <link rel="canonical" href="https://krivatechnologies.com/services/crm-development">
 <meta property="og:type" content="website">
-<meta property="og:title" content="CRM Design · Dispatch &amp; sales consoles">
-<meta property="og:description" content="CRM and ops console design for dispatch boards, sales pipelines, and reporting views desks actually trust, HubSpot, Salesforce, or custom.">
+<meta property="og:title" content="Custom CRM Development · Dispatch consoles &amp; pipeline UX">
+<meta property="og:description" content="Dispatch CRM, HubSpot and Salesforce UX, and custom operational consoles. Designed for bulk work, SLA, and the people who actually run the desk.">
 <meta property="og:url" content="https://krivatechnologies.com/services/crm-development">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · CRM design, dispatch and sales consoles">
+<meta property="og:image:alt" content="KRIVA · Custom CRM development, dispatch consoles and pipeline UX">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Custom CRM Development · Dispatch consoles &amp; pipeline UX">
+<meta name="twitter:description" content="Dispatch CRM, HubSpot and Salesforce UX, and custom operational consoles. Designed for bulk work, SLA, and the people who actually run the desk.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -141,18 +143,18 @@ body.page-crm .hero{
 .crm-hero-copy .lede{max-width:40ch}
 .crm-trust{
   display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2)
 }
 .crm-trust span{display:inline-flex;align-items:center;gap:8px}
 .crm-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
 .crm-hero-visual{position:relative;min-width:0}
-@media(min-width:641px){.crm-hero-visual{padding-bottom:clamp(20px,4vw,40px)}}
 .cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 
+/* ── Operational board ── */
 .crm-board{
   background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
   box-shadow:var(--shadow-product);overflow:hidden;
-  display:grid;grid-template-columns:124px minmax(0,1fr);min-width:0
+  display:grid;grid-template-columns:118px minmax(0,1fr);min-width:0
 }
 .crm-side{
   background:#12181E;border-right:1px solid var(--ink-line);padding:12px 0 16px;
@@ -160,154 +162,216 @@ body.page-crm .hero{
 }
 .crm-side .crm-brand{padding:4px 12px 14px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff}
 .crm-side span{
-  display:block;padding:8px 12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C
+  display:block;padding:8px 12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8C98A4
 }
 .crm-side .on{color:#fff;background:rgba(79,70,229,.14);border-left:2px solid var(--cta)}
 .crm-main{min-width:0}
 .crm-chrome{
   display:flex;align-items:center;gap:6px;padding:10px 14px;
   background:#12181E;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4
 }
 .crm-chrome i{width:8px;height:8px;border-radius:50%;background:#2A333C;flex:none}
 .crm-chrome i:first-child{background:#5C6670}
-.crm-chrome span{margin-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.crm-chrome .crm-win{margin-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .crm-live{margin-left:auto;display:inline-flex;align-items:center;gap:7px;color:var(--amber);white-space:nowrap}
 .crm-live b{width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:crm-pulse 2.4s var(--e-io) infinite}
 @keyframes crm-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 currentColor}}
-.crm-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--ink-line)}
-.crm-kpi{padding:12px 14px;border-right:1px solid var(--ink-line);min-width:0}
-.crm-kpi:last-child{border-right:0}
-.crm-kpi span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#717F8C}
-.crm-kpi b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.02rem,1.5vw,1.18rem);letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums}
-.crm-kpi em{display:block;margin-top:4px;font-style:normal;font-family:var(--f-mono);font-size:9px;color:var(--lime)}
-.crm-kpi.warn em{color:var(--amber)}
+.crm-filters{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  padding:8px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4
+}
+.crm-chip{padding:4px 8px;border:1px solid var(--ink-line);color:#B9C3CC}
+.crm-chip.on{border-color:var(--cta);color:#fff;background:rgba(79,70,229,.18)}
 .crm-tools{
   display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-  padding:9px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
+  padding:9px 14px;border-bottom:1px solid var(--ink-line);background:#141A20;
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4
 }
-.crm-act{padding:3px 8px;border:1px solid var(--ink-line);color:#DDE2E7}
-.crm-act.on{border-color:var(--sky);color:var(--sky)}
-.crm-row{
-  display:grid;grid-template-columns:16px 64px minmax(0,1fr) 56px 78px;gap:10px;align-items:center;
-  padding:9px 14px;border-bottom:1px solid #1A2027;font-size:11.5px;color:#B9C3CC
+.crm-act{padding:5px 9px;border:1px solid var(--ink-line);color:#DDE2E7;min-height:28px;display:inline-flex;align-items:center}
+.crm-act.on{border-color:var(--sky);color:#fff;background:rgba(91,140,255,.16)}
+.crm-act.pri{border-color:var(--cta);background:var(--cta);color:#fff}
+.crm-audit-tag{margin-left:auto}
+.crm-head,.crm-row{
+  display:grid;grid-template-columns:18px 58px minmax(0,1.15fr) minmax(72px,.7fr) 70px 86px;
+  gap:8px;align-items:center;padding:8px 14px
 }
+.crm-head{
+  border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8C98A4
+}
+.crm-row{border-bottom:1px solid #1A2027;font-size:12px;color:#B9C3CC}
 .crm-row:last-child{border-bottom:0}
-.crm-row.on{background:#171310}
-.crm-box{width:12px;height:12px;border:1px solid #3A444E}
-.crm-row.on .crm-box{border-color:var(--sky);background:rgba(91,140,255,.2)}
-.crm-ref{font-family:var(--f-mono);font-size:10.5px;color:#fff;letter-spacing:.04em}
+.crm-row.on{background:rgba(79,70,229,.12)}
+.crm-row.hot{background:rgba(219,155,31,.07)}
+.crm-box{width:13px;height:13px;border:1px solid #3A444E;flex:none;display:block}
+.crm-row.on .crm-box,.crm-mcard.on .crm-box{border-color:var(--sky);background:var(--sky);box-shadow:inset 0 0 0 2px var(--ink)}
+.crm-ref{font-family:var(--f-mono);font-size:11px;color:#fff;letter-spacing:.04em;font-variant-numeric:tabular-nums}
 .crm-lane{min-width:0}
-.crm-lane b{display:block;font-weight:500;color:#fff;font-size:12px;letter-spacing:-.01em}
-.crm-lane em{display:block;font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C}
-.crm-eta{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;color:#8C98A4;font-variant-numeric:tabular-nums;justify-self:end}
-.crm-st{display:inline-flex;align-items:center;gap:5px;padding:3px 7px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;white-space:nowrap;justify-self:end}
+.crm-lane b{display:block;font-weight:600;color:#fff;font-size:12.5px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crm-lane em{display:block;font-style:normal;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:#8C98A4;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crm-drv{font-family:var(--f-mono);font-size:11px;color:#DDE2E7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crm-drv.none{color:var(--amber)}
+.crm-remain{justify-self:end;text-align:right;font-family:var(--f-mono);font-size:11px;font-variant-numeric:tabular-nums;color:#DDE2E7;white-space:nowrap}
+.crm-remain small{display:block;margin-top:3px;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#8C98A4}
+.crm-remain.hot{color:var(--amber)}
+.crm-remain.hot small{color:var(--amber)}
+.crm-st{display:inline-flex;align-items:center;justify-content:center;padding:3px 7px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;white-space:nowrap;justify-self:end}
 .crm-st.go{color:var(--sky)}.crm-st.ok{color:var(--lime)}.crm-st.warn{color:var(--amber)}
-.crm-sla{display:block;height:3px;background:#2A333C;margin-top:6px;min-width:48px}
-.crm-sla i{display:block;height:100%;width:var(--p,60%);background:var(--lime)}
-.crm-sla.hot i{background:var(--amber);width:var(--p,22%)}
+.crm-cards{display:none}
 
+.crm-desk-ui{min-width:0}
 .crm-callout{
-  position:absolute;left:-4%;bottom:6%;z-index:4;
+  display:inline-block;margin-top:14px;
   background:var(--white);border:1px solid var(--rule);padding:14px 16px 12px;
   box-shadow:var(--shadow-lift);min-width:148px;transition:transform var(--t-fast) var(--e),border-color var(--t-fast)
 }
 .crm-callout:hover{transform:translateY(-3px);border-color:var(--ink)}
 .crm-callout b{display:block;font-family:var(--f-display);font-weight:800;font-size:2.15rem;letter-spacing:-.05em;line-height:.9;color:var(--green)}
-.crm-callout span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);max-width:16ch}
+.crm-callout span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2);max-width:16ch}
 
-.crm-beside{
-  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-  gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(28px,4vw,52px)
+/* ── Spreadsheet contrast ── */
+.crm-flows{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(16px,2.4vw,28px);margin-top:clamp(28px,4vw,52px)
 }
-.crm-sheet{
-  background:var(--white);border:1px solid var(--rule);box-shadow:var(--shadow-lift);overflow:hidden
+.crm-flow{border:1px solid var(--rule);background:var(--white);min-width:0;overflow:hidden}
+.crm-flow.is-fix{background:var(--ink);border-color:var(--ink-line);color:#DDE2E7}
+.crm-flow .k{
+  padding:14px 18px 12px;border-bottom:1px solid var(--rule);
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2)
 }
-.crm-sheet-bar{
-  display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--rule);
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);background:var(--paper-2)
+.crm-flow.is-fix .k{border-color:var(--ink-line);color:var(--lime)}
+.crm-flow ol{list-style:none;counter-reset:flow;padding:6px 0}
+.crm-flow li{
+  counter-increment:flow;position:relative;
+  display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:baseline;
+  padding:11px 18px;font-size:15px;line-height:1.35;color:var(--ink)
 }
-.crm-sheet table{width:100%;border-collapse:collapse}
-.crm-sheet th,.crm-sheet td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);font-size:12px;color:var(--steel)}
-.crm-sheet th{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;background:var(--paper)}
-.crm-sheet td:first-child{color:var(--ink);font-variant-numeric:tabular-nums}
-.crm-sheet tr.warn td{background:rgba(219,155,31,.08)}
-.crm-sheet-note{padding:10px 14px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;background:#171310;color:var(--amber)}
+.crm-flow.is-fix li{color:#fff}
+.crm-flow li:not(:last-child){border-bottom:1px solid var(--rule-soft)}
+.crm-flow.is-fix li:not(:last-child){border-color:var(--ink-line)}
+.crm-flow li:before{
+  content:counter(flow, decimal-leading-zero);
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--steel-2)
+}
+.crm-flow.is-fix li:before{color:var(--lime)}
+.crm-flow.is-broke li:last-child{color:var(--red);font-weight:600}
+.crm-flow.is-fix li:last-child{color:var(--lime);font-weight:600}
 
-.crm-fails{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
-.crm-fails .wrap{padding-block:clamp(80px,10vw,140px)}
-.crm-fails .eyebrow{color:var(--ink-dim)}
-.crm-fails h2{color:#fff;margin-top:18px;max-width:16ch}
-.crm-fails .lede{color:#8C98A4;margin-top:18px}
-.crm-frac{margin-top:clamp(32px,4.5vw,56px);border-top:1px solid var(--ink-line)}
-.crm-frac article{
-  display:grid;grid-template-columns:56px minmax(0,.85fr) minmax(0,1.25fr);
-  gap:clamp(16px,2.4vw,32px);align-items:start;
-  padding:clamp(22px,2.6vw,32px) 0;border-bottom:1px solid var(--ink-line)
-}
-.crm-frac .n{font-family:var(--f-display);font-weight:800;font-size:clamp(1.35rem,2vw,1.7rem);letter-spacing:-.04em;color:#3A444E;line-height:1;padding-top:4px;transition:color .45s var(--e)}
-.crm-frac article:hover .n{color:var(--cta)}
-.crm-frac h3{color:#fff;max-width:16ch}
-.crm-frac p{color:#8C98A4;font-size:15px;line-height:1.62;max-width:48ch;margin:0}
-
+/* ── Dispatch vs sales ── */
 .crm-desks{
-  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,4vw,52px)
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
+  gap:clamp(16px,2vw,24px);margin-top:clamp(28px,4vw,52px);align-items:stretch
 }
-.crm-desks article{background:var(--white);padding:clamp(22px,2.8vw,40px)}
+.crm-desks article{padding:clamp(22px,2.8vw,36px);min-width:0}
 .crm-desks .primary{background:var(--ink);color:#DDE2E7}
 .crm-desks .primary .k{color:var(--amber)}
 .crm-desks .primary h3{color:#fff}
 .crm-desks .primary .body-sm{color:#8C98A4}
-.crm-desks .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:12px}
-.crm-desks h3{margin-bottom:12px}
+.crm-desks .sales{background:var(--white);border:1px solid var(--rule)}
+.crm-desks .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2);margin-bottom:12px}
+.crm-desks h3{margin-bottom:10px}
+.crm-mini{
+  margin:16px 0 4px;border:1px solid var(--ink-line);background:#12181E;overflow:hidden
+}
+.crm-mini .crm-mrow{
+  display:grid;grid-template-columns:52px minmax(0,1fr) auto auto;gap:8px;align-items:center;
+  padding:8px 12px;border-bottom:1px solid #1A2027;
+  font-family:var(--f-mono);font-size:11px;color:#B9C3CC
+}
+.crm-mini .crm-mrow:last-child{border-bottom:0}
+.crm-mini .crm-mrow b{color:#fff;font-weight:600}
+.crm-mini .crm-mrow.hot{background:rgba(219,155,31,.08)}
+.crm-pipe{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0 4px}
+.crm-pipe div{padding:12px 12px 14px;background:var(--paper);border:1px solid var(--rule);min-width:0}
+.crm-pipe span{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2);margin-bottom:8px}
+.crm-pipe b{display:block;font-size:13.5px;font-weight:600;letter-spacing:-.015em;color:var(--ink);line-height:1.3}
 .crm-desks ul{list-style:none;display:grid;gap:9px;margin-top:18px}
-.crm-desks li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink)}
+.crm-desks li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.4}
 .crm-desks .primary li{color:#DDE2E7}
-.crm-desks li:before{content:"";width:6px;height:6px;margin-top:7px;background:var(--amber)}
-.crm-desks article:last-child li:before{background:var(--blue)}
+.crm-desks li:before{content:"";width:6px;height:6px;margin-top:7px;background:var(--amber);flex:none}
+.crm-desks .sales li:before{background:var(--blue)}
 
+/* ── Bulk assign demo ── */
 .crm-rowzoom{background:var(--paper-2);border-block:1px solid var(--rule)}
 .crm-zoom-grid{
-  display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
-  gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(28px,4vw,52px)
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(24px,4vw,64px);align-items:start;margin-top:clamp(28px,4vw,52px)
 }
-.crm-zoom-copy h3{margin-bottom:10px;max-width:16ch}
-.crm-zoom-copy ul{list-style:none;display:grid;gap:9px;margin-top:18px}
-.crm-zoom-copy li{padding-left:14px;position:relative;font-size:14.5px;line-height:1.5;color:var(--ink);max-width:40ch}
-.crm-zoom-copy li:before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--steel)}
+.crm-seq{list-style:none;display:grid;gap:0;margin-top:8px}
+.crm-seq li{
+  display:grid;grid-template-columns:42px minmax(0,1fr);gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--rule)
+}
+.crm-seq .sn{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2);padding-top:3px
+}
+.crm-seq b{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
+.crm-seq p{font-size:14.5px;line-height:1.5;color:var(--steel);max-width:36ch}
+.crm-seq li.on .sn{color:var(--cta)}
+.crm-seq li.on b{color:var(--cta)}
 .crm-board.solo{display:block}
+.crm-board.solo .crm-head,.crm-board.solo .crm-row{
+  grid-template-columns:18px 58px minmax(0,1fr) 70px 86px
+}
+.crm-board.solo .crm-drv{display:none}
+.crm-result{
+  display:none;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px 14px;background:#102018;border-top:1px solid #1B7A54;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)
+}
+.crm-demo[data-phase="result"] .crm-result{display:flex}
+.crm-demo[data-phase="before"] .crm-row.on{background:transparent}
+.crm-demo[data-phase="before"] .crm-row.on .crm-box{border-color:#3A444E;background:transparent;box-shadow:none}
+.crm-demo[data-phase="before"] .crm-act.pri{background:transparent;border-color:var(--ink-line);color:#8C98A4}
+.crm-demo[data-phase="apply"] .crm-act.pri{box-shadow:0 0 0 3px rgba(79,70,229,.35)}
+.crm-solo-tools .crm-each{display:none}
+.crm-demo[data-phase="before"] .crm-solo-tools .crm-each{display:inline-flex}
+.crm-demo[data-phase="before"] .crm-solo-tools .crm-bulk{display:none}
 
-.crm-proof{background:var(--ink);color:#DDE2E7}
+/* ── Compact failure modes ── */
+.crm-fails{background:var(--paper);border-top:1px solid var(--rule);scroll-margin-top:88px}
+.crm-fails .wrap{padding-block:clamp(56px,7vw,88px)}
+.crm-frac{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(24px,3vw,40px)
+}
+.crm-frac article{background:var(--white);padding:clamp(20px,2.4vw,28px) clamp(18px,2vw,24px)}
+.crm-frac .n{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--cta);margin-bottom:10px}
+.crm-frac h3{max-width:16ch;margin-bottom:8px}
+.crm-frac p{color:var(--steel);font-size:14.5px;line-height:1.5;max-width:32ch;margin:0}
+
+/* ── ShiftRail proof ── */
+.crm-proof{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
 .crm-proof .wrap{padding-block:clamp(80px,10vw,140px)}
 .crm-proof .eyebrow{color:var(--ink-dim)}
 .crm-proof h2{color:#fff;margin-top:18px;max-width:16ch}
-.crm-proof-grid{
-  display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
-  gap:clamp(28px,4vw,64px);align-items:center;margin-top:clamp(32px,4vw,56px)
+.crm-proof .lede{color:#8C98A4;margin-top:16px}
+.crm-arc{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;background:var(--ink-line);margin-top:clamp(28px,4vw,48px);border:1px solid var(--ink-line)
 }
-.crm-proof .lede{color:#8C98A4}
-.crm-shot{
-  display:block;background:#0A0D10;overflow:hidden;border:1px solid var(--ink-line);box-shadow:var(--shadow-product)
+.crm-arc article{background:#12181E;padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,24px)}
+.crm-arc .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.crm-arc h3{color:#fff;font-size:clamp(1.05rem,1.5vw,1.25rem);margin-bottom:8px}
+.crm-arc p{color:#8C98A4;font-size:14.5px;line-height:1.55;margin:0}
+.crm-metrics{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;background:var(--ink-line);margin-top:1px;border:1px solid var(--ink-line);border-top:0
 }
-.crm-shot img{
-  width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;
-  transition:transform .9s var(--e)
-}
-.crm-shot:hover img,.crm-shot:focus-visible img{transform:scale(1.035)}
-.crm-metrics{display:grid;margin-top:24px;border-top:1px solid var(--ink-line)}
-.crm-metrics div{display:grid;grid-template-columns:clamp(72px,10vw,110px) minmax(0,1fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--ink-line);align-items:baseline}
-.crm-metrics b{font-family:var(--f-display);font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.04em;color:var(--lime);line-height:.9}
-.crm-metrics span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
-.crm-proof-cta{margin-top:24px}
-.crm-proof-note{margin-top:28px;font-size:13.5px;line-height:1.6;color:#8C98A4;max-width:62ch}
+.crm-metrics div{background:var(--ink);padding:clamp(18px,2.2vw,26px) clamp(14px,1.8vw,22px)}
+.crm-metrics b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.45rem,2.6vw,2rem);letter-spacing:-.04em;color:var(--lime);line-height:.9}
+.crm-metrics span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
+.crm-proof-cta{margin-top:28px}
+.crm-proof-note{margin-top:22px;font-size:13.5px;line-height:1.6;color:#8C98A4;max-width:62ch}
 
 .crm-more{background:var(--white);border-top:1px solid var(--rule)}
 .crm-idx{margin-top:clamp(24px,3vw,40px)}
 .crm-idx-row{
   display:grid;grid-template-columns:48px minmax(0,1.1fr) minmax(0,1.4fr) auto;
-  gap:24px;align-items:baseline;padding:22px 0;min-height:48px;border-bottom:1px solid var(--rule);color:inherit;
+  gap:24px;align-items:baseline;padding:18px 0;min-height:48px;border-bottom:1px solid var(--rule);color:inherit;
   transition:padding-left .4s var(--e)
 }
 .crm-idx-row:first-child{border-top:1px solid var(--rule)}
@@ -328,10 +392,10 @@ body.page-crm .hero{
 .faq-q{
   width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
   gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
-  padding:clamp(20px,2.4vw,26px) 0;transition:padding-left .45s var(--e)
+  padding:clamp(20px,2.4vw,26px) 0;min-height:48px;transition:padding-left .45s var(--e)
 }
 .faq-q:hover,.faq-q:focus-visible{padding-left:8px}
-.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel);transition:color var(--t-fast) var(--e);padding-top:5px}
+.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel-2);transition:color var(--t-fast) var(--e);padding-top:5px}
 .faq-item.open .qn{color:var(--cta)}
 .faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
 .faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
@@ -343,52 +407,76 @@ body.page-crm .hero{
 .faq-a>div{overflow:hidden}
 .faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
 .faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
+.faq-a-in a{border-bottom:1px solid var(--rule)}
+.faq-a-in a:hover{border-color:var(--ink);color:var(--ink)}
 .faq-side .btn{margin-top:24px}
 
+@media(max-width:1100px){
+  .crm-head,.crm-row{grid-template-columns:18px 54px minmax(0,1fr) 64px 80px}
+  .crm-head span:nth-child(4),.crm-drv{display:none}
+}
 @media(max-width:1024px){
-  .crm-hero-grid,.crm-beside,.crm-desks,.crm-zoom-grid,.crm-proof-grid,.faq-grid{grid-template-columns:1fr}
+  .crm-hero-grid,.crm-flows,.crm-desks,.crm-zoom-grid,.faq-grid{grid-template-columns:1fr}
   .crm-hero-copy .d1{max-width:none}
   .faq-grid > div:first-child{position:static}
-  .crm-callout{position:static;margin-top:14px;display:inline-block}
-  .crm-hero-visual{padding-bottom:0}
   .crm-idx-row{grid-template-columns:40px minmax(0,1fr);gap:12px 20px}
   .crm-idx-row p{grid-column:2}
   .crm-idx-row i{display:none}
   .cta-row{align-items:flex-start}
   .crm-board{grid-template-columns:1fr}
   .crm-side{display:none}
+  .crm-arc,.crm-metrics,.crm-frac{grid-template-columns:1fr 1fr}
 }
-@media(max-width:900px){
-  .crm-frac article{grid-template-columns:48px minmax(0,1fr);gap:14px}
-  .crm-frac p{grid-column:1 / -1}
+@media(max-width:720px){
+  .crm-pipe{grid-template-columns:1fr}
+  .crm-metrics{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .crm-kpis{grid-template-columns:1fr 1fr}
-  .crm-kpi:nth-child(3){display:none}
-  .crm-row{grid-template-columns:16px 1fr auto;gap:8px}
-  .crm-ref,.crm-eta,.crm-sla{display:none}
-  .crm-st{grid-column:3;grid-row:1}
+  .crm-desk-ui,.crm-head,.crm-row,.crm-filters{display:none}
+  .crm-cards{display:grid;gap:0}
+  .crm-mcard{
+    display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:8px 10px;align-items:start;
+    padding:12px 14px;border-bottom:1px solid #1A2027
+  }
+  .crm-mcard.on{background:rgba(79,70,229,.12)}
+  .crm-mcard.hot{background:rgba(219,155,31,.07)}
+  .crm-mcard .crm-box{margin-top:3px}
+  .crm-mcard .crm-st{justify-self:end;grid-column:3;grid-row:1}
+  .crm-mcard .crm-ref{grid-column:2;grid-row:1;padding-top:1px}
+  .crm-mcard .crm-lane{grid-column:2 / -1}
+  .crm-mact{
+    grid-column:2 / -1;justify-self:start;margin-top:4px;
+    padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+    font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid var(--cta);color:#fff;background:var(--cta)
+  }
+  .crm-mcard:not(.on) .crm-mact{display:none}
+  .crm-mini .crm-mrow{grid-template-columns:52px minmax(0,1fr) auto}
+  .crm-mini .crm-mrow > span:nth-child(3){display:none}
+  .crm-frac,.crm-arc{grid-template-columns:1fr}
+  .crm-demo[data-phase="before"] .crm-mcard.on{background:transparent}
+  .crm-demo[data-phase="before"] .crm-mcard.on .crm-box{border-color:#3A444E;background:transparent;box-shadow:none}
   .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
   .faq-a-in{padding-left:44px}
   .crm-idx-row{grid-template-columns:1fr}
   .crm-idx-row p{grid-column:1}
   .cta-row{flex-direction:column;align-items:stretch}
-}
-@media(max-width:560px){
-  .crm-frac article{grid-template-columns:1fr;gap:8px}
+  .crm-demo[data-phase="before"] .crm-solo-tools{display:none}
+  .crm-demo:not([data-phase="before"]) .crm-mact{display:none}
+  .crm-board.solo .crm-head,.crm-board.solo .crm-row{display:none}
+  .crm-board.solo .crm-cards{display:grid}
+  .crm-audit-tag{margin-left:0;width:100%}
 }
 @media(max-width:390px){
   body.page-crm .d1{font-size:2.28rem}
-  .crm-chrome span:not(.crm-live){display:none}
+  .crm-chrome .crm-win{display:none}
 }
 
 @media(hover:none){
   .crm-callout:hover{transform:none}
-  .crm-shot:hover img{transform:none}
   .crm-idx-row:hover,.faq-q:hover{padding-left:0}
-  .crm-frac article:hover .n{color:#3A444E}
 }
 @media (prefers-reduced-motion:reduce){
   html:focus-within{scroll-behavior:auto}
@@ -396,7 +484,6 @@ body.page-crm .hero{
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
   .crm-live b{animation:none!important}
-  .crm-shot img{transform:none!important}
   .crm-callout:hover{transform:none}
 }
 </style>
@@ -572,9 +659,9 @@ body.page-crm .hero{
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
-  <a href="#beside"><span>Beside</span><i></i></a>
+  <a href="#beside"><span>Problem</span><i></i></a>
   <a href="#desks"><span>Two desks</span><i></i></a>
-  <a href="#row"><span>On the row</span><i></i></a>
+  <a href="#row"><span>Bulk assign</span><i></i></a>
   <a href="#work"><span>Proof</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
@@ -595,49 +682,74 @@ body.page-crm .hero{
           <span><i>A CRM the floor</i></span>
           <span><i>will trust.</i></span>
         </h1>
-        <p class="lede" data-r>Dispatch boards first. Sales pipelines second. Built around how the desk already works — HubSpot, Salesforce, or a custom console — so bulk actions and exceptions live on the board, not in a spreadsheet beside it.</p>
+        <p class="lede" data-r>Dispatch boards first. Sales pipelines second. TMS consoles, HubSpot and Salesforce UX, and custom operational CRM — built around bulk work, SLA, and the people who actually run the desk.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
           <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See ShiftRail</span><i>→</i></a>
         </div>
         <p class="crm-trust" data-r>
-          <span>Loads · drivers · SLA</span>
-          <span>Bulk assign on the row</span>
-          <span>Sales pipeline second</span>
+          <span>Dispatch / TMS consoles</span>
+          <span>HubSpot · Salesforce</span>
+          <span>Custom operational CRM</span>
         </p>
       </div>
       <div class="crm-hero-visual" data-r>
-        <div class="crm-board" aria-hidden="true">
-          <nav class="crm-side">
+        <div class="crm-board" role="img" aria-label="Dispatch board: three unassigned loads selected for one assign action. SLA remaining and exception status sit on every row. Supervisor overrides are audited.">
+          <nav class="crm-side" aria-hidden="true">
             <div class="crm-brand">Board 04</div>
             <span class="on">Loads</span>
             <span>Drivers</span>
             <span>Schedule</span>
             <span>Exceptions</span>
-            <span>Reports</span>
+            <span>Audit</span>
           </nav>
           <div class="crm-main">
-            <div class="crm-chrome"><i></i><i></i><i></i><span>dispatch · board 04</span><span class="crm-live"><b></b>SLA watch</span></div>
-            <div class="crm-kpis">
-              <div class="crm-kpi"><span>Open loads</span><b>12</b><em>Board 04</em></div>
-              <div class="crm-kpi warn"><span>At risk</span><b>2</b><em>Need owner</em></div>
-              <div class="crm-kpi"><span>Assigned today</span><b>6</b><em>Bulk action</em></div>
+            <div class="crm-chrome"><i></i><i></i><i></i><span class="crm-win">dispatch · board 04</span><span class="crm-live"><b></b>SLA watch</span></div>
+            <div class="crm-filters" aria-hidden="true">
+              <span class="crm-chip on">Unassigned</span><span class="crm-chip">At risk</span><span class="crm-chip">Exceptions</span><span class="crm-chip">All loads</span>
             </div>
-            <div class="crm-tools">
-              <span class="crm-act on">3 selected</span><span class="crm-act">Assign</span><span class="crm-act">SLA sort</span>
-              <span>Supervisor · override audited</span>
+            <div class="crm-tools" aria-hidden="true">
+              <span class="crm-act on">3 selected</span>
+              <span class="crm-act pri">Assign</span>
+              <span class="crm-act">Hold</span>
+              <span class="crm-audit-tag">Supervisor · last override audited</span>
             </div>
-            <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4821</span><span class="crm-lane"><b>DAL → PHX</b><em>R. Alvarez · rolling</em><span class="crm-sla"><i style="--p:72%"></i></span></span><span class="crm-eta">14:20</span><span class="crm-st go">On SLA</span></div>
-            <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4822</span><span class="crm-lane"><b>ATL → CLT</b><em>Unassigned · tendered</em><span class="crm-sla hot"><i style="--p:18%"></i></span></span><span class="crm-eta">11:05</span><span class="crm-st warn">SLA risk</span></div>
-            <div class="crm-row"><i class="crm-box"></i><span class="crm-ref">#4824</span><span class="crm-lane"><b>CHI → DFW</b><em>M. Chen · detention</em><span class="crm-sla hot"><i style="--p:8%"></i></span></span><span class="crm-eta">—</span><span class="crm-st warn">Exception</span></div>
-            <div class="crm-row"><i class="crm-box"></i><span class="crm-ref">#4827</span><span class="crm-lane"><b>SEA → PDX</b><em>J. Ortiz · delivered</em><span class="crm-sla"><i style="--p:100%"></i></span></span><span class="crm-eta">09:48</span><span class="crm-st ok">POD in</span></div>
+            <div class="crm-desk-ui" aria-hidden="true">
+              <div class="crm-head"><span></span><span>Load</span><span>Lane</span><span>Driver</span><span>SLA</span><span>Status</span></div>
+              <div class="crm-row"><i class="crm-box"></i><span class="crm-ref">#4821</span><span class="crm-lane"><b>DAL → PHX</b><em>Rolling · 14:20 appt</em></span><span class="crm-drv">R. Alvarez</span><span class="crm-remain">18m<small>remaining</small></span><span class="crm-st go">On SLA</span></div>
+              <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4822</span><span class="crm-lane"><b>ATL → CLT</b><em>Tendered · no owner</em></span><span class="crm-drv none">Unassigned</span><span class="crm-remain hot">9m<small>remaining</small></span><span class="crm-st warn">SLA risk</span></div>
+              <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4830</span><span class="crm-lane"><b>HOU → AUS</b><em>Ready · 16:40 appt</em></span><span class="crm-drv none">Unassigned</span><span class="crm-remain">22m<small>remaining</small></span><span class="crm-st go">On SLA</span></div>
+              <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4833</span><span class="crm-lane"><b>JAX → MIA</b><em>Ready · 15:10 appt</em></span><span class="crm-drv none">Unassigned</span><span class="crm-remain">27m<small>remaining</small></span><span class="crm-st go">On SLA</span></div>
+              <div class="crm-row hot"><i class="crm-box"></i><span class="crm-ref">#4824</span><span class="crm-lane"><b>CHI → DFW</b><em>Detention · gate hold</em></span><span class="crm-drv">M. Chen</span><span class="crm-remain hot">6m<small>remaining</small></span><span class="crm-st warn">Exception</span></div>
+            </div>
+            <div class="crm-cards" aria-hidden="true">
+              <div class="crm-mcard on">
+                <i class="crm-box"></i><span class="crm-ref">#4822</span><span class="crm-st warn">SLA risk</span>
+                <span class="crm-lane"><b>ATL → CLT</b><em>Unassigned · 9m remaining</em></span>
+                <span class="crm-mact">Assign</span>
+              </div>
+              <div class="crm-mcard on">
+                <i class="crm-box"></i><span class="crm-ref">#4830</span><span class="crm-st go">On SLA</span>
+                <span class="crm-lane"><b>HOU → AUS</b><em>Unassigned · 22m remaining</em></span>
+                <span class="crm-mact">Assign</span>
+              </div>
+              <div class="crm-mcard on">
+                <i class="crm-box"></i><span class="crm-ref">#4833</span><span class="crm-st go">On SLA</span>
+                <span class="crm-lane"><b>JAX → MIA</b><em>Unassigned · 27m remaining</em></span>
+                <span class="crm-mact">Assign</span>
+              </div>
+              <div class="crm-mcard hot">
+                <i class="crm-box"></i><span class="crm-ref">#4824</span><span class="crm-st warn">Exception</span>
+                <span class="crm-lane"><b>CHI → DFW</b><em>M. Chen · detention · 6m</em></span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="crm-callout">
+        <a class="crm-callout" href="/work/shiftrail-dispatch">
           <b class="num">−32%</b>
           <span>Handle time · ShiftRail, signed-off</span>
-        </div>
-        <p class="cap-note"><span class="flag">Demo</span> Dispatch pattern · sales pipelines use the same stage discipline, different columns</p>
+        </a>
+        <p class="cap-note"><span class="flag">Demo</span> Select · assign once · SLA and exceptions stay on the row</p>
       </div>
     </div>
   </div>
@@ -647,49 +759,27 @@ body.page-crm .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>What fails</p>
     <h2 class="d2" id="bdH" data-r>The spreadsheet beside the board.</h2>
-    <p class="lede" data-r>Bulk assign, SLA, and exceptions live in a sheet. The CRM is a system of record nobody updates until Friday.</p>
-    <div class="crm-beside" data-r>
-      <div class="crm-sheet" aria-hidden="true">
-        <div class="crm-sheet-bar">loads_today.xlsx · not the board</div>
-        <table>
-          <thead><tr><th>Ref</th><th>Lane</th><th>Owner</th><th>SLA</th></tr></thead>
-          <tbody>
-            <tr><td>#4821</td><td>DAL–PHX</td><td>Alvarez?</td><td>ok?</td></tr>
-            <tr class="warn"><td>#4822</td><td>ATL–CLT</td><td>—</td><td>late</td></tr>
-            <tr class="warn"><td>#4824</td><td>CHI–DFW</td><td>Chen</td><td>???</td></tr>
-            <tr><td>#4827</td><td>SEA–PDX</td><td>Ortiz</td><td>done</td></tr>
-          </tbody>
-        </table>
-        <p class="crm-sheet-note">Unowned · two versions · updated after the call</p>
-      </div>
-      <div>
-        <p class="body-sm">If assignment is a per-row chore, the floor invents a second system. We design the board so the high-volume action — multi-select, apply, audit — is the thing people actually do.</p>
-        <p class="body-sm" style="margin-top:16px">Stages without exit criteria fail the same way on a sales desk. Anyone can drag a deal forward. Reporting looks healthy. The floor does not trust it.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="crm-fails on-ink" id="fails" aria-labelledby="frH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>When the CRM becomes a spreadsheet again</p>
-    <h2 class="d2" id="frH" data-r>Three ways the board loses the floor.</h2>
-    <p class="lede" data-r>The tool is still open. The work has already left it.</p>
-    <div class="crm-frac" data-s>
-      <article>
-        <span class="n num">01</span>
-        <h3 class="d3">Work happens beside the tool</h3>
-        <p>Bulk assign, SLA, and exceptions live in a sheet. The CRM is a system of record nobody updates until Friday.</p>
+    <p class="lede" data-r>When the high-volume action is not in the product, the floor invents a second system.</p>
+    <div class="crm-flows" data-s>
+      <article class="crm-flow is-broke">
+        <p class="k">Broken workflow</p>
+        <ol>
+          <li>CRM</li>
+          <li>Manual spreadsheet</li>
+          <li>Duplicate information</li>
+          <li>Unclear owner / SLA</li>
+          <li>Late updates</li>
+        </ol>
       </article>
-      <article>
-        <span class="n num">02</span>
-        <h3 class="d3">Stages without exit criteria</h3>
-        <p>Anyone can drag a deal or a load forward. Reporting looks healthy. The floor does not trust it.</p>
-      </article>
-      <article>
-        <span class="n num">03</span>
-        <h3 class="d3">One layout for every job</h3>
-        <p>Supervisor, dispatcher, and rep see the same density. Overrides are unaudited. Exceptions hide in filters.</p>
+      <article class="crm-flow is-fix">
+        <p class="k">KRIVA-designed workflow</p>
+        <ol>
+          <li>CRM board</li>
+          <li>Bulk action</li>
+          <li>SLA on the row</li>
+          <li>Exceptions visible</li>
+          <li>Audited action</li>
+        </ol>
       </article>
     </div>
   </div>
@@ -699,26 +789,35 @@ body.page-crm .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>Two desks, one discipline</p>
     <h2 class="d2" id="dkH" data-r>Dispatch and sales are not the same board.</h2>
-    <p class="lede" data-r>Stages, bulk work, and exceptions are the shared language. The mistake is forcing a sales template onto a load board.</p>
+    <p class="lede" data-r>Shared language: stages, bulk work, exceptions. Different density, different objects, different controls.</p>
     <div class="crm-desks" data-s>
       <article class="primary">
         <p class="k">01 · Ops floor · primary</p>
         <h3 class="d3">Dispatch CRM &amp; TMS</h3>
         <p class="body-sm">Load boards for US carriers, brokers, and fleets. Assignment is a bulk action. SLA sits on the row. Supervisor overrides are audited.</p>
+        <div class="crm-mini" aria-hidden="true">
+          <div class="crm-mrow"><b>#4822</b><span>ATL → CLT</span><span>Unassigned</span><span class="crm-st warn">SLA risk</span></div>
+          <div class="crm-mrow hot"><b>#4824</b><span>CHI → DFW</span><span>M. Chen</span><span class="crm-st warn">Detention</span></div>
+          <div class="crm-mrow"><b>#4831</b><span>JAX → MIA</span><span>Alvarez</span><span class="crm-st go">On SLA</span></div>
+        </div>
         <ul>
-          <li>Multi-select assign as a single event</li>
-          <li>Exception and detention visible before the customer calls</li>
-          <li>Role density for desk and tablet</li>
-          <li>Scheduling and driver confirmation on the same workflow</li>
+          <li>Loads, drivers, scheduling on one workflow</li>
+          <li>Exceptions visible before the customer calls</li>
+          <li>Role density for dispatcher and supervisor</li>
         </ul>
       </article>
-      <article>
+      <article class="sales">
         <p class="k">02 · Revenue desk · secondary</p>
         <h3 class="d3">Sales pipeline</h3>
-        <p class="body-sm">HubSpot or Salesforce stages with exit criteria the team actually uses. Forecast views that match the floor, not a leadership deck.</p>
+        <p class="body-sm">HubSpot or Salesforce stages with exit criteria the team actually uses — not a leadership deck wearing a pipeline skin.</p>
+        <div class="crm-pipe" aria-hidden="true">
+          <div><span>Qualified</span><b>Budget confirmed</b></div>
+          <div><span>Discovery</span><b>Economic buyer</b></div>
+          <div><span>Commit</span><b>Paperwork in</b></div>
+        </div>
         <ul>
           <li>Stage model with exit criteria</li>
-          <li>Role layouts for rep and manager</li>
+          <li>Rep vs manager layouts</li>
           <li>Rules with rollback, not silent automation</li>
         </ul>
       </article>
@@ -728,28 +827,106 @@ body.page-crm .hero{
 
 <section class="sect crm-rowzoom" id="row" aria-labelledby="rwH">
   <div class="wrap">
-    <p class="eyebrow" data-r>On the row</p>
+    <p class="eyebrow" data-r>The high-volume action</p>
     <h2 class="d2" id="rwH" data-r>Bulk assign. SLA in the same motion.</h2>
     <div class="crm-zoom-grid">
-      <div class="crm-zoom-copy" data-r>
-        <h3 class="d3">The high-volume action is the product.</h3>
-        <p class="body-sm">Multi-select across the board, apply once, audit as a single event. SLA burndown sits on the row — not buried in a report the floor never opens.</p>
-        <ul>
-          <li>Three selected, one assign, one audit trail</li>
-          <li>Risk ordered before arrival time</li>
-          <li>Supervisor override with who, when, and why</li>
-        </ul>
-      </div>
-      <div class="crm-board solo" aria-hidden="true" data-r>
-        <div class="crm-chrome"><i></i><i></i><i></i><span>dispatch · bulk assign</span><span class="crm-live"><b></b>3 selected</span></div>
-        <div class="crm-tools">
-          <span class="crm-act on">3 selected</span><span class="crm-act on">Assign · R. Alvarez</span><span class="crm-act">Confirm</span>
+      <ol class="crm-seq" data-r>
+        <li data-step="before" class="on">
+          <span class="sn">01</span>
+          <div>
+            <b>Before</b>
+            <p>Three separate assigns. SLA lives in a report the floor never opens.</p>
+          </div>
+        </li>
+        <li data-step="select">
+          <span class="sn">02</span>
+          <div>
+            <b>Select</b>
+            <p>Three loads. Risk stays on each row while they are selected.</p>
+          </div>
+        </li>
+        <li data-step="apply">
+          <span class="sn">03</span>
+          <div>
+            <b>Apply</b>
+            <p>One assign to Alvarez. Confirm once.</p>
+          </div>
+        </li>
+        <li data-step="result">
+          <span class="sn">04</span>
+          <div>
+            <b>Result</b>
+            <p>One audited event: who, when, which loads, SLA held.</p>
+          </div>
+        </li>
+      </ol>
+      <div class="crm-demo" id="bulkDemo" data-phase="before" data-r>
+        <div class="crm-board solo" role="img" aria-label="Bulk assign demonstration: three loads selected, assigned in one action, SLA risk still visible, result written to the audit trail.">
+          <div class="crm-chrome"><i></i><i></i><i></i><span class="crm-win">dispatch · bulk assign</span><span class="crm-live"><b></b>Desk 04</span></div>
+          <div class="crm-tools crm-solo-tools" aria-hidden="true">
+            <span class="crm-act crm-each">Assign #4822</span>
+            <span class="crm-act crm-each">Assign #4830</span>
+            <span class="crm-act crm-each">Assign #4833</span>
+            <span class="crm-act on crm-bulk">3 selected</span>
+            <span class="crm-act pri crm-bulk">Assign · R. Alvarez</span>
+            <span class="crm-audit-tag crm-bulk">SLA risk still on #4822</span>
+          </div>
+          <div class="crm-desk-ui" aria-hidden="true">
+            <div class="crm-head"><span></span><span>Load</span><span>Lane</span><span>SLA</span><span>Status</span></div>
+            <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4822</span><span class="crm-lane"><b>ATL → CLT</b><em>Tendered · no owner</em></span><span class="crm-remain hot">9m<small>remaining</small></span><span class="crm-st warn">SLA risk</span></div>
+            <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4830</span><span class="crm-lane"><b>HOU → AUS</b><em>Ready · 16:40 appt</em></span><span class="crm-remain">22m<small>remaining</small></span><span class="crm-st go">On SLA</span></div>
+            <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4833</span><span class="crm-lane"><b>JAX → MIA</b><em>Ready · 15:10 appt</em></span><span class="crm-remain">27m<small>remaining</small></span><span class="crm-st go">On SLA</span></div>
+            <div class="crm-row hot"><i class="crm-box"></i><span class="crm-ref">#4824</span><span class="crm-lane"><b>CHI → DFW</b><em>M. Chen · detention</em></span><span class="crm-remain hot">6m<small>remaining</small></span><span class="crm-st warn">Exception</span></div>
+          </div>
+          <div class="crm-cards" aria-hidden="true">
+            <div class="crm-mcard on">
+              <i class="crm-box"></i><span class="crm-ref">#4822</span><span class="crm-st warn">SLA risk</span>
+              <span class="crm-lane"><b>ATL → CLT</b><em>Unassigned · 9m remaining</em></span>
+              <span class="crm-mact">Assign</span>
+            </div>
+            <div class="crm-mcard on">
+              <i class="crm-box"></i><span class="crm-ref">#4830</span><span class="crm-st go">On SLA</span>
+              <span class="crm-lane"><b>HOU → AUS</b><em>Unassigned · 22m remaining</em></span>
+              <span class="crm-mact">Assign</span>
+            </div>
+            <div class="crm-mcard on">
+              <i class="crm-box"></i><span class="crm-ref">#4833</span><span class="crm-st go">On SLA</span>
+              <span class="crm-lane"><b>JAX → MIA</b><em>Unassigned · 27m remaining</em></span>
+              <span class="crm-mact">Assign</span>
+            </div>
+            <div class="crm-mcard hot">
+              <i class="crm-box"></i><span class="crm-ref">#4824</span><span class="crm-st warn">Exception</span>
+              <span class="crm-lane"><b>CHI → DFW</b><em>M. Chen · detention · 6m</em></span>
+            </div>
+          </div>
+          <p class="crm-result"><span>AUD-118</span><span>R. Alvarez · 3 loads</span><span>14:02 · SLA held</span></p>
         </div>
-        <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4821</span><span class="crm-lane"><b>DAL → PHX</b><em>Assign to Alvarez</em><span class="crm-sla"><i style="--p:72%"></i></span></span><span class="crm-eta">14:20</span><span class="crm-st go">On SLA</span></div>
-        <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4822</span><span class="crm-lane"><b>ATL → CLT</b><em>Assign to Alvarez</em><span class="crm-sla hot"><i style="--p:18%"></i></span></span><span class="crm-eta">11:05</span><span class="crm-st warn">SLA risk</span></div>
-        <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4830</span><span class="crm-lane"><b>HOU → AUS</b><em>Assign to Alvarez</em><span class="crm-sla"><i style="--p:64%"></i></span></span><span class="crm-eta">16:40</span><span class="crm-st go">On SLA</span></div>
-        <div class="crm-row"><i class="crm-box"></i><span class="crm-ref">#4824</span><span class="crm-lane"><b>CHI → DFW</b><em>M. Chen · detention</em><span class="crm-sla hot"><i style="--p:8%"></i></span></span><span class="crm-eta">—</span><span class="crm-st warn">Exception</span></div>
+        <p class="cap-note"><span class="flag">Interaction</span> Exception on #4824 stays visible — it is not in the assign</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="crm-fails" id="fails" aria-labelledby="frH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Why generic CRM still fails</p>
+    <h2 class="d2" id="frH" data-r>Three ways the board loses the floor.</h2>
+    <div class="crm-frac" data-s>
+      <article>
+        <span class="n">01</span>
+        <h3 class="d3">Work happens beside the tool</h3>
+        <p>The high-volume action is not a first-class control, so the desk builds a second system.</p>
+      </article>
+      <article>
+        <span class="n">02</span>
+        <h3 class="d3">Stages have no exit criteria</h3>
+        <p>Anyone can drag a deal or a load forward. Reporting looks healthy. Nobody trusts it.</p>
+      </article>
+      <article>
+        <span class="n">03</span>
+        <h3 class="d3">One layout serves every role</h3>
+        <p>Dispatchers, reps, and supervisors receive the same density. Overrides go unaudited.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -758,28 +935,32 @@ body.page-crm .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>Selected work · signed-off</p>
     <h2 class="d2" id="pfH" data-r>ShiftRail</h2>
-    <div class="crm-proof-grid">
-      <a class="crm-shot" href="/work/shiftrail-dispatch" aria-label="Read the ShiftRail case study">
-        <div class="pu" role="img" aria-label="ShiftRail dispatch: bulk reassign, SLA on the row.">
-          <div class="pu-bar"><div><p class="pu-title">ShiftRail</p><p class="pu-meta">Dispatch · 3 selected</p></div><span class="pu-act">Reassign</span></div>
-          <div class="pu-kpis"><div><span>Active</span><b>128</b></div><div class="up"><span>On time</span><b>94%</b></div><div class="risk"><span>At risk</span><b>3</b></div></div>
-          <ul class="pu-rows">
-            <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m</em></li>
-            <li class="risk"><b>#4823</b><span>CHI &rarr; DET</span><em>6m SLA</em></li>
-          </ul>
-        </div>
-      </a>
-      <div>
-        <p class="lede">US trucking dispatch CRM: bulk actions, SLA on the row, supervisor controls. Operators reassign loads in bulk and see breach risk before it becomes a call — 400+ daily routes.</p>
-        <div class="crm-metrics">
-          <div><b class="num">−32%</b><span>Manual handle time</span></div>
-          <div><b class="num">11 min</b><span>Avg. exception response</span></div>
-          <div><b class="num">99.4%</b><span>Console uptime</span></div>
-        </div>
-        <a href="/work/shiftrail-dispatch" class="btn on-dark crm-proof-cta"><span>Read the case</span><i>→</i></a>
-      </div>
+    <p class="lede" data-r>US trucking dispatch CRM. Operators reassign loads in bulk and see breach risk before it becomes a call.</p>
+    <div class="crm-arc" data-s>
+      <article>
+        <p class="k">Challenge</p>
+        <h3 class="d3">Row-by-row assignment</h3>
+        <p>Dispatchers worked one load at a time. SLA risk sat in a report after the shift.</p>
+      </article>
+      <article>
+        <p class="k">Product change</p>
+        <h3 class="d3">Bulk action + SLA on the row</h3>
+        <p>Multi-select assign, exception visibility, and supervisor overrides in one console.</p>
+      </article>
+      <article>
+        <p class="k">Result</p>
+        <h3 class="d3">The floor stayed in the board</h3>
+        <p>Handle time dropped. Exception response became a shift metric, not a Monday autopsy.</p>
+      </article>
     </div>
-    <p class="crm-proof-note">Client names are changed. The three metrics above are signed-off project outcomes, not third-party ratings.</p>
+    <div class="crm-metrics">
+      <div><b class="num">−32%</b><span>Manual handle time</span></div>
+      <div><b class="num">11 min</b><span>Avg. exception response</span></div>
+      <div><b class="num">99.4%</b><span>Console uptime</span></div>
+      <div><b class="num">400+</b><span>Daily routes</span></div>
+    </div>
+    <a href="/work/shiftrail-dispatch" class="btn on-dark crm-proof-cta"><span>Read the case study</span><i>→</i></a>
+    <p class="crm-proof-note">Client names are changed. The four figures above are signed-off project outcomes, not third-party ratings.</p>
   </div>
 </section>
 
@@ -789,7 +970,7 @@ body.page-crm .hero{
       <div>
         <p class="eyebrow" data-r>Also in this work</p>
         <h2 class="d2 s-title" id="relH" data-r>The board rarely ships alone</h2>
-        <p class="lede" data-r>Dispatch CRM sits next to fleet views, driver apps, and the market page for carriers.</p>
+        <p class="lede" data-r>Dispatch CRM sits next to fleet views and driver apps — and the market page if you run freight.</p>
       </div>
     </div>
     <div class="crm-idx">
@@ -799,20 +980,14 @@ body.page-crm .hero{
         <p>The market page: dispatch, fleet, drivers, and the full ops stack for US operators.</p>
         <i>→</i>
       </a>
-      <a class="crm-idx-row" href="/work/shiftrail-dispatch">
-        <span class="n">02</span>
-        <h3>ShiftRail case</h3>
-        <p>The signed-off dispatch CRM rebuild — bulk assign, SLA on the row, −32% handle time.</p>
-        <i>→</i>
-      </a>
       <a class="crm-idx-row" href="/services/dashboard-design">
-        <span class="n">03</span>
+        <span class="n">02</span>
         <h3>Dashboard Design</h3>
         <p>Widget hierarchy, filters, and drill-downs. Many CRM engagements sit next to a scan.</p>
         <i>→</i>
       </a>
       <a class="crm-idx-row" href="/services/mobile-applications">
-        <span class="n">04</span>
+        <span class="n">03</span>
         <h3>Driver mobile apps</h3>
         <p>Acceptance, status, and POD on a phone in a yard — designed beside the board.</p>
         <i>→</i>
@@ -843,7 +1018,7 @@ body.page-crm .hero{
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">02</span>
-          <span class="qt">Is this dispatch CRM, sales CRM, or both?</span>
+          <span class="qt">Dispatch CRM, sales CRM, or both?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
@@ -853,41 +1028,41 @@ body.page-crm .hero{
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">03</span>
-          <span class="qt">How is this different from Dashboard Design?</span>
+          <span class="qt">Custom CRM, or improve HubSpot / Salesforce?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
-          <p>CRM Design owns stage models, pipeline UX, and desk workflows. Dashboard Design owns widget hierarchy, filters, and drill-downs. Many engagements use both.</p>
+          <p>Either. Platform UX stays inside HubSpot or Salesforce when that is enough. Custom operational CRM or TMS when the template cannot carry bulk work, SLA, or role density.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">04</span>
-          <span class="qt">How is this different from the trucking solutions page?</span>
+          <span class="qt">How is this different from Dashboard Design?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
-          <p>Trucking &amp; logistics is the market page: dispatch, fleet, drivers, and the full ops stack. This service is the CRM/console craft used on those projects, and on sales desks outside trucking. Start on the solution page if you are a carrier or broker; start here if the job is the board itself.</p>
+          <p>CRM Design owns stage models, pipeline UX, and desk workflows. Dashboard Design owns widget hierarchy, filters, and drill-downs. Many engagements use both.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
           <span class="qn num">05</span>
-          <span class="qt">Do you rebuild the CRM or improve the one we have?</span>
+          <span class="qt">Can the CRM connect with QuickBooks or Xero?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
-          <p>Either. Platform UX improvements stay inside HubSpot or Salesforce when that is enough. Custom consoles when the desk outgrew the template.</p>
+          <p>Yes. CRM Design owns the desk. Ledger posting pairs with <a href="/solutions/accounting-integrations">QuickBooks &amp; Xero integrations</a> — original APIs, not a CSV export after close.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
           <span class="qn num">06</span>
-          <span class="qt">What if won deals or delivered loads need to hit QuickBooks or Xero?</span>
+          <span class="qt">Who owns the final system?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
-          <p>CRM Design owns the desk. Ledger posting is a pairing: we connect the board to QuickBooks Online or Xero through the original APIs under QuickBooks &amp; Xero integrations, not a CSV export after close.</p>
+          <p>You do. Source code, Figma files, and documentation transfer to your accounts. We can stay on retainer for iteration, but you are never locked in.</p>
         </div></div></div>
       </div>
     </div>
@@ -898,7 +1073,7 @@ body.page-crm .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
     <h2 class="d2" id="ctaH" data-r>Need a CRM the floor will trust?</h2>
-    <p class="lede" data-r>A short fit call or a written brief. Bring the board people actually use, including the spreadsheet beside it.</p>
+    <p class="lede" data-r>Bring the CRM you run today, the board people actually use, the spreadsheet beside it, the workflow that is breaking, and any ledger or TMS connection you need. A 20-minute fit call — or a written brief if the scope is already on paper.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
@@ -968,13 +1143,16 @@ body.page-crm .hero{
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "CRM Design",
-  "description": "CRM and ops console design for dispatch boards, sales pipelines, and reporting views desks actually trust, HubSpot, Salesforce, or custom.",
+  "name": "CRM Development & Console Design",
+  "serviceType": "Custom CRM development, dispatch CRM, and sales pipeline UX",
+  "description": "Dispatch CRM, HubSpot and Salesforce UX, and custom operational consoles. Designed for bulk work, SLA, and the people who actually run the desk.",
   "provider": {
     "@type": "Organization",
-    "name": "KRIVA Technologies"
+    "name": "KRIVA Technologies",
+    "url": "https://krivatechnologies.com"
   },
-  "url": "https://krivatechnologies.com/services/crm-development"
+  "url": "https://krivatechnologies.com/services/crm-development",
+  "areaServed": ["United States", "United Kingdom"]
 }
 </script>
 <script type="application/ld+json">
@@ -992,10 +1170,18 @@ body.page-crm .hero{
     },
     {
       "@type": "Question",
-      "name": "Is this dispatch CRM, sales CRM, or both?",
+      "name": "Dispatch CRM, sales CRM, or both?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Both. Dispatch boards are a primary KRIVA path, bulk assign, SLA on the row, audited overrides. Sales pipelines use the same stage discipline on HubSpot or Salesforce. We do not force a sales template onto a load board."
+        "text": "Both. Dispatch boards are a primary KRIVA path. Sales pipelines use the same stage discipline on HubSpot or Salesforce. We do not force a sales template onto a load board."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Custom CRM, or improve HubSpot / Salesforce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Either. Platform UX stays inside HubSpot or Salesforce when that is enough. Custom operational CRM or TMS when the template cannot carry bulk work, SLA, or role density."
       }
     },
     {
@@ -1003,31 +1189,23 @@ body.page-crm .hero{
       "name": "How is this different from Dashboard Design?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "CRM Design owns stage models, pipeline UX, and desk workflows. Dashboard Design owns widget hierarchy, filters, and drill-downs for analytics views. Many engagements use both."
+        "text": "CRM Design owns stage models, pipeline UX, and desk workflows. Dashboard Design owns widget hierarchy, filters, and drill-downs. Many engagements use both."
       }
     },
     {
       "@type": "Question",
-      "name": "How is this different from the trucking solutions page?",
+      "name": "Can the CRM connect with QuickBooks or Xero?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Trucking & logistics is the market page: dispatch, fleet, drivers, and the full ops stack. This service is the CRM/console craft used on those projects, and on sales desks outside trucking. Start on the solution page if you are a carrier or broker; start here if the job is the board itself."
+        "text": "Yes. CRM Design owns the desk. Ledger posting pairs with QuickBooks & Xero integrations using the original APIs, not a CSV export after close."
       }
     },
     {
       "@type": "Question",
-      "name": "Do you rebuild the CRM or improve the one we have?",
+      "name": "Who owns the final system?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Either. Platform UX improvements stay inside HubSpot or Salesforce when that is enough. Custom consoles when the desk outgrew the template and the product is the CRM itself."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What if won deals or delivered loads need to hit QuickBooks or Xero?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CRM Design owns the desk. Ledger posting is a pairing: we connect the board to QuickBooks Online or Xero through the original APIs under QuickBooks & Xero integrations, not a CSV export after close."
+        "text": "You do. Source code, Figma files, and documentation transfer to your accounts. We can stay on retainer for iteration, but you are never locked in."
       }
     }
   ]
@@ -1054,7 +1232,7 @@ body.page-crm .hero{
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "A CRM the floor will trust.",
+      "name": "CRM Design",
       "item": "https://krivatechnologies.com/services/crm-development"
     }
   ]
@@ -1110,6 +1288,29 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
 });
 
 if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
+
+const demo=document.getElementById('bulkDemo');
+if(demo){
+  const phases=['before','select','apply','result'];
+  const steps=[...document.querySelectorAll('.crm-seq li')];
+  const setPhase=p=>{
+    demo.setAttribute('data-phase', p);
+    steps.forEach(li=>li.classList.toggle('on', li.getAttribute('data-step')===p));
+  };
+  setPhase(reduce()?'result':'before');
+  if(!reduce()){
+    let i=0, timer=null;
+    const play=()=>{ i=(i+1)%phases.length; setPhase(phases[i]); };
+    const ioDemo=new IntersectionObserver(es=>{
+      for(const e of es){
+        if(e.isIntersecting){ if(!timer) timer=setInterval(play, 2400); }
+        else if(timer){ clearInterval(timer); timer=null; }
+      }
+    },{threshold:.35});
+    ioDemo.observe(demo);
+  }
+}
+
 run();
 })();
 </script>

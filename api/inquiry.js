@@ -15,7 +15,9 @@ function field(data, key) {
 }
 
 function buildMessage(data) {
+  const inquiryType = field(data, "inquiry_type");
   const rows = [
+    ["Type", inquiryType || "project_brief"],
     ["Name", field(data, "name")],
     ["Email", field(data, "email")],
     ["Company", field(data, "company")],
@@ -41,7 +43,9 @@ function buildMessage(data) {
       )
       .join("") +
     "</table>";
-  const subject = "KRIVA inquiry — " + (field(data, "company") || field(data, "name") || "Website");
+  const typeLabel = inquiryType === "fit_call" ? "Fit call request" : "Project brief";
+  const subject =
+    "KRIVA " + typeLabel + " — " + (field(data, "company") || field(data, "name") || "Website");
   return { text, html, subject };
 }
 
@@ -53,6 +57,7 @@ function formsubmitBody(data) {
     _subject: subject,
     _template: "table",
     _captcha: "false",
+    inquiry_type: field(data, "inquiry_type"),
     company: field(data, "company"),
     website: field(data, "site"),
     project_type: field(data, "ptype"),

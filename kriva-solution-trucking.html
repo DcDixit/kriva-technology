@@ -168,8 +168,8 @@ body.page-truck .hero{
 .trk-frame img{
   width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top
 }
-.trk-feat:hover .trk-frame,.trk-alt:hover .trk-frame,.trk-proof .trk-media:hover .trk-frame,
-.trk-feat:focus-within .trk-frame,.trk-alt:focus-within .trk-frame,.trk-proof .trk-media:focus-within .trk-frame{transform:translate3d(0,-4px,0)}
+.trk-feat:hover .trk-frame,.trk-alt:hover .trk-frame,
+.trk-feat:focus-within .trk-frame,.trk-alt:focus-within .trk-frame{transform:translate3d(0,-4px,0)}
 .trk-phone{max-width:300px;margin-inline:auto;width:100%}
 
 .trk-callout{
@@ -397,42 +397,57 @@ body.page-truck .hero{
 .trk-life-head{margin-bottom:clamp(36px,4.5vw,64px)}
 .trk-life-head .d2{margin-top:18px;max-width:16ch}
 .trk-life-head .lede{margin-top:18px}
-.trk-beats{list-style:none;border-top:1px solid var(--rule)}
-.trk-beat{
-  display:grid;grid-template-columns:clamp(52px,7vw,88px) minmax(0,1fr);
-  gap:clamp(16px,3vw,40px);align-items:start;
-  padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule)
+.trk-flow{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--rule)}
+.trk-flow-step{
+  display:grid;grid-template-columns:clamp(48px,6vw,72px) minmax(0,1fr);
+  gap:clamp(14px,2vw,24px);align-items:start;
+  padding:clamp(22px,2.8vw,32px);border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)
 }
-.trk-beat-no{
-  font-family:var(--f-display);font-weight:800;font-size:clamp(1.35rem,2.4vw,1.85rem);
+.trk-flow-step:nth-child(2n){border-right:0}
+.trk-flow-step:nth-last-child(-n+2){border-bottom:0}
+.trk-flow-n{
+  font-family:var(--f-display);font-weight:800;font-size:clamp(1.25rem,2vw,1.65rem);
   letter-spacing:-.04em;line-height:1;color:var(--rule);padding-top:2px;transition:color .45s var(--e)
 }
 .trk-kicker{
   display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--steel);margin-bottom:10px;transition:color .45s var(--e)
 }
-.trk-beat h3{color:var(--steel-2);transition:color .45s var(--e);max-width:28ch;margin-bottom:10px}
-.trk-beat.on .trk-beat-no{color:var(--ink)}
-.trk-beat.on .trk-kicker{color:var(--cta)}
-.trk-beat.on h3{color:var(--ink)}
-.trk-beat.alert.on .trk-kicker{color:#8A6200}
+.trk-flow-step h3{color:var(--steel-2);transition:color .45s var(--e);max-width:28ch;margin-bottom:8px;font-size:clamp(1.12rem,1.7vw,1.42rem)}
+.trk-flow-step.on .trk-flow-n{color:var(--ink)}
+.trk-flow-step.on .trk-kicker{color:var(--cta)}
+.trk-flow-step.on h3{color:var(--ink)}
+.trk-flow-step.alert.on .trk-kicker{color:#8A6200}
 
-.trk-proof{background:var(--ink);color:#DDE2E7}
+.trk-proof{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
 .trk-proof .wrap{padding-block:clamp(80px,10vw,140px)}
 .trk-proof .eyebrow{color:var(--ink-dim)}
 .trk-proof h2{color:#fff;margin-top:18px;max-width:16ch}
-.trk-proof-grid{
-  display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
-  gap:clamp(28px,4vw,64px);align-items:start;margin-top:clamp(32px,4vw,56px)
+.trk-proof-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.trk-proof-head .d2{max-width:none}
+.trk-proof-outcome{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(28px,4vw,56px);align-items:start;margin-top:clamp(32px,4vw,48px);
+  padding:clamp(24px,3vw,36px);border:1px solid var(--ink-line)
 }
-.trk-proof .lede{color:#8C98A4}
-.trk-proof .trk-frame{border-color:var(--ink-line)}
-.trk-metrics{display:grid;margin-top:24px;border-top:1px solid var(--ink-line)}
-.trk-metrics div{display:grid;grid-template-columns:clamp(72px,10vw,110px) minmax(0,1fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--ink-line);align-items:baseline}
-.trk-metrics b{font-family:var(--f-display);font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.04em;color:var(--lime);line-height:.9}
-.trk-metrics span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
-.trk-proof-cta{margin-top:24px}
+.trk-proof-k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.trk-proof-story .body-sm{color:#8C98A4;margin-top:12px;max-width:52ch}
+.trk-proof-story .body-sm strong{color:#DDE2E7;font-weight:600}
+.trk-proof-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--ink-line);margin:0}
+.trk-proof-stats div{padding:clamp(16px,2vw,22px);border-bottom:1px solid var(--ink-line);border-right:1px solid var(--ink-line)}
+.trk-proof-stats div:nth-child(2n){border-right:0}
+.trk-proof-stats div:nth-last-child(-n+2){border-bottom:0}
+.trk-proof-stats dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#717F8C;margin-bottom:8px}
+.trk-proof-stats dd{font-family:var(--f-display);font-weight:800;font-size:clamp(1.75rem,3.2vw,2.5rem);letter-spacing:-.04em;color:var(--lime);line-height:.9}
 .trk-proof-note{margin-top:28px;font-size:13.5px;line-height:1.6;color:#8C98A4;max-width:62ch}
+
+.trk-why{background:var(--paper);border-block:1px solid var(--rule);padding-block:clamp(64px,8vw,100px);scroll-margin-top:88px}
+.trk-why .d2{margin-top:18px;max-width:18ch}
+.trk-why-list{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:clamp(32px,4vw,48px)}
+.trk-why-list li{display:flex;gap:16px;align-items:flex-start}
+.trk-why-list b{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--cta);flex:none;padding-top:4px}
+.trk-why-list h3{font-family:var(--f-display);font-weight:700;font-size:1.05rem;margin-bottom:6px;letter-spacing:-.02em}
+.trk-why-list p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
 
 .trk-phases{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(36px,5vw,56px)}
 .trk-phases .wk{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
@@ -475,7 +490,10 @@ body.page-truck .hero{
 .trk-also a:hover{color:var(--ink)}
 
 @media(max-width:1024px){
-  .trk-hero-grid,.trk-feat,.trk-alt,.trk-flip,.trk-proof-grid,.faq-grid{grid-template-columns:1fr}
+  .trk-hero-grid,.trk-feat,.trk-alt,.trk-flip,.trk-proof-outcome,.trk-flow,.trk-why-list,.faq-grid{grid-template-columns:1fr}
+  .trk-flow-step{border-right:0}
+  .trk-flow-step:nth-last-child(-n+2){border-bottom:1px solid var(--rule)}
+  .trk-flow-step:last-child{border-bottom:0}
   .trk-hero-copy .d1{max-width:none}
   .faq-grid > div:first-child{position:static}
   .trk-callout{position:static;margin-top:14px;display:inline-block}
@@ -503,7 +521,7 @@ body.page-truck .hero{
 @media(max-width:640px){
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .trk-beat{grid-template-columns:40px minmax(0,1fr);gap:14px;padding:20px 0}
+  .trk-flow-step{grid-template-columns:40px minmax(0,1fr);gap:14px;padding:20px 16px}
   .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
   .faq-a-in{padding-left:44px}
   .cta-row{flex-direction:column;align-items:stretch}
@@ -519,7 +537,7 @@ body.page-truck .hero{
 }
 
 @media(hover:none){
-  .trk-feat:hover .trk-frame,.trk-alt:hover .trk-frame,.trk-proof .trk-media:hover .trk-frame{transform:none}
+  .trk-feat:hover .trk-frame,.trk-alt:hover .trk-frame{transform:none}
   .trk-callout:hover{transform:none}
   .faq-q:hover{padding-left:0}
 }
@@ -648,7 +666,7 @@ body.page-truck .hero{
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="/contact#book" class="btn sm"><span>Request a Fit Call</span><i>→</i></a>
+        <a href="/contact#book" class="btn sm"><span>Request a 20-min fit call</span><i>→</i></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -714,22 +732,23 @@ body.page-truck .hero{
     <div class="sheet-item"><a class="big" href="/faq">FAQ</a></div>
     <div class="sheet-item"><a class="big" href="/careers">Careers</a></div>
     <div class="sheet-cta">
-      <a href="/contact#book" class="btn on-dark"><span>Request a Fit Call</span><i>→</i></a>
+      <a href="/contact#book" class="btn on-dark"><span>Request a 20-min fit call</span><i>→</i></a>
       <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
     </div>
   </div>
   <div class="sheet-foot">
     <a href="/contact#brief">Send a project brief</a>
-    <a href="/contact#book">Request a fit call</a>
+    <a href="/contact#book">Request a 20-min fit call</a>
     <span>Ahmedabad, India · Remote-first</span>
   </div>
 </div>
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview" aria-current="true"><span>The desk</span><i></i></a>
+  <a href="#proof"><span>Proof</span><i></i></a>
   <a href="#surfaces"><span>Surfaces</span><i></i></a>
   <a href="#lifecycle"><span>One load</span><i></i></a>
-  <a href="#proof"><span>Proof</span><i></i></a>
+  <a href="#why"><span>Why KRIVA</span><i></i></a>
   <a href="#process"><span>Deliver</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
@@ -752,19 +771,18 @@ body.page-truck .hero{
         </h1>
         <p class="lede" data-r>Dispatch CRM, fleet dashboards, and driver apps for US operators who have outgrown spreadsheets or a rigid off-the-shelf TMS.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Request a 20-min fit call</span><i>→</i></a>
           <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See ShiftRail</span><i>→</i></a>
         </div>
         <p class="trk-trust" data-r>
-          <span>Built for the floor</span>
-          <span>US time zones</span>
-          <span>Same in-house team</span>
+          <span>US trucking focus</span>
+          <span>US &amp; UK hours</span>
         </p>
       </div>
       <div class="trk-hero-visual" data-r>
         <div class="trk-frame">
           <div class="trk-chrome" aria-hidden="true"><i></i><i></i><i></i><span>dispatch · the desk</span><span class="trk-live"><b></b>SLA watch</span></div>
-          <div class="trk-desk" role="img" aria-label="Illustrative dispatch desk: load board with SLA on every row, fleet units, and a driver tool.">
+          <div class="trk-desk" role="img" aria-label="Illustrative dispatch desk: load board with SLA remaining on every row.">
             <div class="trk-desk-kpis">
               <div class="kpi"><span>On desk</span><b class="num">47</b></div>
               <div class="kpi up"><span>Rolling</span><b class="num">38</b></div>
@@ -802,33 +820,12 @@ body.page-truck .hero{
                 <span class="chip s0">Loading</span>
               </div>
             </div>
-            <div class="trk-desk-split">
-              <div class="trk-desk-dock" aria-hidden="true">
-                <span>Signed-off</span>
-                <i></i><i></i><i></i>
-              </div>
-              <div class="trk-fleet">
-                <p class="trk-desk-h">Fleet</p>
-                <ul>
-                  <li><b>TK-12</b><span>DAL &rarr; PHX</span><em class="chip s2">On time</em></li>
-                  <li><b>TK-08</b><span>ATL &rarr; CLT</span><em class="chip s1">Watch</em></li>
-                  <li><b>TK-21</b><span>CHI &rarr; DET</span><em class="chip s0">Idle</em></li>
-                </ul>
-              </div>
-              <div class="trk-driver">
-                <p class="trk-desk-h">Driver</p>
-                <p class="trk-driver-name">M. Diaz</p>
-                <p class="trk-driver-run">SEA &rarr; PDX · #4825</p>
-                <p class="trk-driver-hos">HOS window <b class="num">3h 12m</b></p>
-              </div>
-            </div>
           </div>
         </div>
-        <div class="trk-callout">
+        <a class="trk-callout" href="/work/shiftrail-dispatch">
           <b class="num">&minus;32%</b>
           <span>Handle time · ShiftRail, signed-off</span>
-        </div>
-        <p class="cap-note"><span class="flag">Product</span> Console · bulk assignment and SLA on the row</p>
+        </a>
       </div>
     </div>
   </div>
@@ -846,6 +843,32 @@ body.page-truck .hero{
     </ul>
   </div>
 </div>
+
+<section class="trk-proof on-ink" id="proof" aria-labelledby="pfH">
+  <div class="wrap">
+    <div class="trk-proof-head">
+      <div>
+        <p class="eyebrow" data-r>Proof</p>
+        <h2 class="d2" id="pfH" data-r>ShiftRail dispatch console</h2>
+      </div>
+      <a href="/work/shiftrail-dispatch" class="btn ghost on-dark trk-proof-link" data-r><span>Full case study</span><i>→</i></a>
+    </div>
+    <div class="trk-proof-outcome" data-r>
+      <div class="trk-proof-story">
+        <p class="trk-proof-k">US trucking · dispatch CRM · signed-off outcomes</p>
+        <p class="body-sm"><strong>Problem:</strong> Dispatchers reassigning loads one at a time; SLA breach risk buried in reports after the shift.</p>
+        <p class="body-sm"><strong>Product:</strong> Unified console with bulk actions and SLA visibility on every row — built for 400+ daily routes.</p>
+      </div>
+      <dl class="trk-proof-stats">
+        <div><dt>Manual handle time</dt><dd class="num">&minus;32%</dd></div>
+        <div><dt>Avg. exception response</dt><dd class="num">11 min</dd></div>
+        <div><dt>Console uptime</dt><dd class="num">99.4%</dd></div>
+        <div><dt>Daily routes on board</dt><dd class="num">400+</dd></div>
+      </dl>
+    </div>
+    <p class="trk-proof-note" data-r>Signed-off project outcomes. Client names changed in published materials — not third-party ratings.</p>
+  </div>
+</section>
 
 <section class="sect" id="surfaces" aria-labelledby="capH">
   <div class="wrap">
@@ -1077,154 +1100,52 @@ body.page-truck .hero{
       <p class="lede" data-r>If a dispatcher cannot move a load through this without opening three tabs, the interface has already failed.</p>
     </div>
 
-    <ol class="trk-beats">
-      <li class="trk-beat on" data-r>
-        <span class="trk-beat-no num" aria-hidden="true">01</span>
+    <ol class="trk-flow" aria-label="Load lifecycle from tender to accounting close">
+      <li class="trk-flow-step on" data-r>
+        <span class="trk-flow-n num" aria-hidden="true">01</span>
         <div>
-          <span class="trk-kicker">Load received</span>
-          <h3 class="d3">A tender has to be readable in three seconds.</h3>
-          <p class="body-sm">Lane, weight, pickup window, accessorials, on one row. Decide to take it without leaving the board.</p>
+          <span class="trk-kicker">Tender &amp; assign</span>
+          <h3 class="d3">Readable tender, bulk assignment.</h3>
+          <p class="body-sm">Lane, weight, pickup window, and accessorials on one row. Multi-select across the board — one audited event. That pattern moved handle time on ShiftRail.</p>
         </div>
       </li>
-      <li class="trk-beat" data-r>
-        <span class="trk-beat-no num" aria-hidden="true">02</span>
+      <li class="trk-flow-step" data-r>
+        <span class="trk-flow-n num" aria-hidden="true">02</span>
         <div>
-          <span class="trk-kicker">Assignment</span>
-          <h3 class="d3">Assignment is a bulk action, not a per-row chore.</h3>
-          <p class="body-sm">Multi-select across the board, apply once, audit as a single event. That pattern is what moved handle time on ShiftRail.</p>
+          <span class="trk-kicker">Driver &amp; transit</span>
+          <h3 class="d3">Yard acceptance, fleet visibility.</h3>
+          <p class="body-sm">Load acceptance on a phone in bad signal. Fleet view answers where it is and whether the window still holds — before the customer calls.</p>
         </div>
       </li>
-      <li class="trk-beat" data-r>
-        <span class="trk-beat-no num" aria-hidden="true">03</span>
+      <li class="trk-flow-step alert" data-r>
+        <span class="trk-flow-n num" aria-hidden="true">03</span>
         <div>
-          <span class="trk-kicker">Driver confirmation</span>
-          <h3 class="d3">Acceptance happens on a phone, in a yard, on bad signal.</h3>
-          <p class="body-sm">Load acceptance, status, documents, and a message back to the desk, designed for gloves, glare, and one hand.</p>
+          <span class="trk-kicker">Exception &amp; override</span>
+          <h3 class="d3">Risk on the board, overrides audited.</h3>
+          <p class="body-sm">Detention, breakdown, missed window — worked by SLA risk, not who shouted first. Every supervisor override logged with who, when, and why.</p>
         </div>
       </li>
-      <li class="trk-beat" data-r>
-        <span class="trk-beat-no num" aria-hidden="true">04</span>
+      <li class="trk-flow-step" data-r>
+        <span class="trk-flow-n num" aria-hidden="true">04</span>
         <div>
-          <span class="trk-kicker">In transit</span>
-          <h3 class="d3">Fleet visibility that answers the customer’s question.</h3>
-          <p class="body-sm">Where it is, whether the window still holds, and who owns the exception if it does not.</p>
-        </div>
-      </li>
-      <li class="trk-beat alert" data-r>
-        <span class="trk-beat-no num" aria-hidden="true">05</span>
-        <div>
-          <span class="trk-kicker">Exception</span>
-          <h3 class="d3">The board raises it before the customer calls.</h3>
-          <p class="body-sm">Detention, breakdown, missed window. Worked by SLA risk, not by who shouted first.</p>
-        </div>
-      </li>
-      <li class="trk-beat" data-r>
-        <span class="trk-beat-no num" aria-hidden="true">06</span>
-        <div>
-          <span class="trk-kicker">Supervisor</span>
-          <h3 class="d3">Overrides exist. Every one is audited.</h3>
-          <p class="body-sm">Who changed what, when, and why, recoverable if it was the wrong call.</p>
-        </div>
-      </li>
-      <li class="trk-beat" data-r>
-        <span class="trk-beat-no num" aria-hidden="true">07</span>
-        <div>
-          <span class="trk-kicker">Delivered</span>
-          <h3 class="d3">POD captured, invoice ready, ledger in sync.</h3>
-          <p class="body-sm">Delivery closes into accounting. ELD, mapping, and QuickBooks or Xero connected with retries you can actually read.</p>
+          <span class="trk-kicker">Delivery &amp; close</span>
+          <h3 class="d3">POD captured, ledger in sync.</h3>
+          <p class="body-sm">Delivery closes into accounting. ELD, mapping, and QuickBooks or Xero connected with retries and exceptions you can actually read.</p>
         </div>
       </li>
     </ol>
   </div>
 </section>
 
-<section class="trk-proof on-ink" id="proof" aria-labelledby="pfH">
+<section class="trk-why" id="why" aria-labelledby="whyH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Proof</p>
-    <h2 class="d2" id="pfH" data-r>ShiftRail dispatch console</h2>
-    <div class="trk-proof-grid">
-      <a class="trk-media" href="/work/shiftrail-dispatch" aria-label="Read the ShiftRail case study">
-        <div class="trk-frame">
-          <div class="trk-chrome" aria-hidden="true"><i></i><i></i><i></i><span>ShiftRail · 400+ daily routes</span><span class="trk-live"><b></b>Live</span></div>
-          <div class="trk-board" role="img" aria-label="ShiftRail after launch: three loads selected for bulk reassign, SLA remaining on every row, 400+ daily routes.">
-            <div class="trk-board-bar">
-              <div>
-                <p class="trk-board-title">After · unified console</p>
-                <p class="trk-board-meta">400+ daily routes</p>
-              </div>
-              <div class="trk-board-bulk">
-                <span class="trk-board-count">3 selected</span>
-                <span class="trk-board-act trk-board-act--pri">Reassign</span>
-              </div>
-            </div>
-            <div class="trk-board-kpis">
-              <div class="kpi"><span>Daily</span><b class="num">400+</b></div>
-              <div class="kpi up"><span>Exception</span><b class="num">11m</b></div>
-              <div class="kpi up"><span>Uptime</span><b class="num">99.4%</b></div>
-            </div>
-            <div class="trk-board-rows">
-              <div class="trk-load trk-load--head" aria-hidden="true">
-                <span class="trk-tick"></span>
-                <span>Load</span>
-                <span>Lane</span>
-                <span class="trk-hide-sla">SLA</span>
-                <span>Status</span>
-              </div>
-              <div class="trk-load is-on">
-                <span class="trk-tick on" aria-hidden="true"></span>
-                <span class="trk-id">#8801</span>
-                <span class="trk-lane">SEA &rarr; PDX</span>
-                <span class="trk-sla"><b>11m</b><i class="trk-sla-track"><i class="trk-sla-fill trk-sla-fill--warn" style="--p:.28"></i></i></span>
-                <span class="chip s1">Assigned</span>
-              </div>
-              <div class="trk-load">
-                <span class="trk-tick" aria-hidden="true"></span>
-                <span class="trk-id">#8804</span>
-                <span class="trk-lane">SFO &rarr; LAX</span>
-                <span class="trk-sla"><b>38m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.76"></i></i></span>
-                <span class="chip s2">Rolling</span>
-              </div>
-              <div class="trk-load is-on is-risk">
-                <span class="trk-tick on" aria-hidden="true"></span>
-                <span class="trk-id">#8811</span>
-                <span class="trk-lane">SEA &rarr; SLC</span>
-                <span class="trk-sla"><b>5m</b><i class="trk-sla-track"><i class="trk-sla-fill trk-sla-fill--warn" style="--p:.12"></i></i></span>
-                <span class="chip s1">At risk</span>
-              </div>
-              <div class="trk-load is-on">
-                <span class="trk-tick on" aria-hidden="true"></span>
-                <span class="trk-id">#8818</span>
-                <span class="trk-lane">PDX &rarr; BOI</span>
-                <span class="trk-sla"><b>22m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.48"></i></i></span>
-                <span class="chip s1">Assigned</span>
-              </div>
-              <div class="trk-load trk-load--desk">
-                <span class="trk-tick" aria-hidden="true"></span>
-                <span class="trk-id">#8823</span>
-                <span class="trk-lane">LAX &rarr; PHX</span>
-                <span class="trk-sla"><b>44m</b><i class="trk-sla-track"><i class="trk-sla-fill" style="--p:.88"></i></i></span>
-                <span class="chip s2">Rolling</span>
-              </div>
-            </div>
-            <div class="trk-board-audit">
-              <span>Signed-off</span>
-              <b>Handle time &minus;32%</b>
-              <em>Live</em>
-            </div>
-          </div>
-        </div>
-      </a>
-      <div>
-        <p class="lede">Rebuilt a US trucking dispatch CRM so operators reassign loads in bulk and see SLA breach risk on every row, for 400+ daily routes.</p>
-        <div class="trk-metrics">
-          <div><b class="num">−32%</b><span>Manual handle time</span></div>
-          <div><b class="num">11 min</b><span>Avg. exception response</span></div>
-          <div><b class="num">99.4%</b><span>Console uptime</span></div>
-        </div>
-        <a href="/work/shiftrail-dispatch" class="btn on-dark trk-proof-cta"><span>Read the case study</span><i>→</i></a>
-      </div>
-    </div>
-    <p class="trk-proof-note">Client names are changed. The three metrics above are signed-off project outcomes, not third-party ratings.</p>
+    <p class="eyebrow" data-r>Why KRIVA</p>
+    <h2 class="d2" id="whyH" data-r>Built for the floor, not a feature list.</h2>
+    <ul class="trk-why-list" data-s>
+      <li><b>01</b><div><h3>Same senior team</h3><p>Product design and engineering in one thread — from discovery through launch. No subcontracting.</p></div></li>
+      <li><b>02</b><div><h3>US-time-zone delivery</h3><p>Stand-ups and calls aligned to US and UK hours. We study dispatch desks, not slide decks.</p></div></li>
+      <li><b>03</b><div><h3>Phased rollout</h3><p>Parallel workflows so dispatch keeps running while the new board comes online.</p></div></li>
+    </ul>
   </div>
 </section>
 
@@ -1234,7 +1155,7 @@ body.page-truck .hero{
       <div>
         <p class="eyebrow" data-r>How we deliver</p>
         <h2 class="d2" id="prH" data-r>Shadow the floor. Then ship.</h2>
-        <p class="lede" data-r>Ops discovery through phased rollout. Dispatch keeps running while the new board comes online.</p>
+        <p class="lede" data-r>Ops discovery through phased rollout — without stopping the desk.</p>
       </div>
       <a href="/process" class="btn ghost"><span>Full process</span><i>→</i></a>
     </div>
@@ -1337,10 +1258,10 @@ body.page-truck .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>Next step</p>
     <h2 class="d2" id="ctaH" data-r>Tell us what&rsquo;s breaking on the board.</h2>
-    <p class="lede" data-r>A short fit call. You leave with a yes, no, or not-yet, and whether custom is even the right move.</p>
+    <p class="lede" data-r>A 20-minute fit call for quick qualification, or a written brief if you already know the scope. You leave with a yes, no, or not-yet — and whether custom is even the right move.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Request a 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -1360,7 +1281,7 @@ body.page-truck .hero{
       <div>
         <h3>Get in touch</h3>
         <a href="/contact#brief">Send a project brief</a><br>
-        <a href="/contact#book">Request a fit call</a>
+        <a href="/contact#book">Request a 20-min fit call</a>
         <p class="f-blurb">Design and engineering for US trucking ops and SaaS product teams. Ahmedabad, India · Remote-first · Global clients.</p>
         <div class="fsocial">
           <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
@@ -1465,7 +1386,7 @@ const chIO=new IntersectionObserver(es=>{
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
 
-const beats=[...document.querySelectorAll('.trk-beat')];
+const beats=[...document.querySelectorAll('.trk-flow-step')];
 if(beats.length){
   const bIO=new IntersectionObserver(es=>{
     for(const e of es){

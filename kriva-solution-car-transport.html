@@ -14,11 +14,11 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
 <title>Car Transportation Software · Quote to POD · KRIVA</title>
-<meta name="description" content="Auto transport software for booking portals, carrier dispatch, customer tracking, and proof of delivery — designed for the customer, the driver, and ops.">
+<meta name="description" content="Auto transport software for brokers and carriers — booking portals, quote engines, carrier dispatch, customer tracking, and proof of delivery. Product design and engineering from quote to POD.">
 <link rel="canonical" href="https://krivatechnologies.com/solutions/car-transportation">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Car Transportation Software · Quote to POD">
-<meta property="og:description" content="Auto transport software for booking portals, carrier dispatch, customer tracking, and proof of delivery — designed for the customer, the driver, and ops.">
+<meta property="og:description" content="Auto transport software for brokers and carriers — booking portals, quote engines, carrier dispatch, customer tracking, and proof of delivery. Product design and engineering from quote to POD.">
 <meta property="og:url" content="https://krivatechnologies.com/solutions/car-transportation">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -249,16 +249,36 @@ body.page-car .hero{
 
 /* Lifecycle story */
 .story{background:var(--paper-2);border-block:1px solid var(--rule)}
-.car-story-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,4vw,72px);align-items:start;margin-top:clamp(32px,4vw,60px)}
+.lc-rail{
+  margin-top:clamp(22px,3vw,36px);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding-block:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none
+}
+.lc-rail::-webkit-scrollbar{display:none}
+.lc-rail ol{display:flex;gap:0;list-style:none;min-width:min-content}
+.lc-rail a{
+  display:flex;align-items:center;gap:8px;padding:10px 14px;min-height:44px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--steel-2);white-space:nowrap;border-right:1px solid var(--rule);transition:color var(--t-fast) var(--e)
+}
+.lc-rail a span{
+  display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+  border:1px solid var(--rule);font-size:9px;color:var(--steel);flex:none;transition:border-color var(--t-fast),color var(--t-fast)
+}
+.lc-rail a.on{color:var(--ink)}
+.lc-rail a.on span{border-color:var(--blue);color:var(--blue)}
+.lc-rail a.cust.on span{border-color:var(--violet);color:var(--violet)}
+.lc-rail a.ops.on span{border-color:var(--sky);color:var(--sky)}
+.lc-rail a.drv.on span{border-color:var(--lime);color:var(--lime)}
+.car-story-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,4vw,72px);align-items:start;margin-top:clamp(24px,3vw,48px)}
 .car-story-stick{position:sticky;top:104px;min-width:0}
-.beat{padding:clamp(28px,4.6vw,64px) 0;border-bottom:1px solid var(--rule)}
+.beat{padding:clamp(22px,3.6vw,48px) 0;border-bottom:1px solid var(--rule);scroll-margin-top:120px}
 .beat:last-child{border-bottom:0}
-.beat .n{display:block;margin-bottom:12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);transition:color var(--t-fast)}
-.beat h3{color:var(--steel-2);transition:color .5s var(--e);margin-bottom:12px;max-width:22ch}
+.beat .n{display:block;margin-bottom:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);transition:color var(--t-fast)}
+.beat h3{color:var(--steel-2);transition:color .5s var(--e);margin-bottom:10px;max-width:24ch;font-size:clamp(1.12rem,1.8vw,1.45rem)}
 .beat.on h3{color:var(--ink)}
 .beat.on .n{color:var(--blue)}
 .beat.on.cust .n{color:var(--violet)}
-.aud{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;color:var(--steel-2)}
+.aud{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;color:var(--steel-2)}
 .beat.cust .aud{color:var(--violet)}
 
 /* Three audiences */
@@ -373,8 +393,36 @@ body.page-car .hero{
 .ph-grid i{display:block;aspect-ratio:4/3;background:#1A2129;border:1px solid var(--ink-line);position:relative}
 .ph-grid i:after{content:attr(data-l);position:absolute;left:6px;bottom:5px;font-family:var(--f-mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#5C6670}
 .ph-ok{margin:12px;padding:10px;border-left:2px solid var(--lime);background:#151C18;font-family:var(--f-mono);font-size:10px;color:#B9C3CC}
-.ph-cta{margin:auto 12px 12px;text-align:center;padding:12px;background:var(--violet);color:#fff;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+.ph-cta{margin:auto 12px 12px;text-align:center;padding:12px;background:var(--violet);color:#fff;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;min-height:44px;display:flex;align-items:center;justify-content:center}
 .ph-home{width:92px;height:4px;background:#2A333C;border-radius:4px;margin:8px auto 2px}
+.ph-form{padding:0 12px 8px;display:grid;gap:8px}
+.ph-field{padding:10px 12px;border:1px solid var(--ink-line);background:#1A2129}
+.ph-field span{display:block;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:5px}
+.ph-field b{display:block;font-size:12.5px;color:#fff;font-weight:500;letter-spacing:-.01em}
+.ph-field b.dim{color:#5C6670;font-weight:400}
+.ph-steps{display:flex;gap:4px;padding:0 12px 10px}
+.ph-steps i{flex:1;height:2px;background:#2A333C}
+.ph-steps i.on{background:var(--violet)}
+
+/* Integrations flow */
+.int-flow{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 4px;
+  margin-top:clamp(28px,3.4vw,48px);padding:clamp(18px,2.4vw,28px);
+  background:var(--paper-2);border:1px solid var(--rule)
+}
+.int-node{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 14px;border:1px solid var(--rule);background:var(--white);min-height:44px;
+  display:flex;align-items:center;color:var(--steel)
+}
+.int-node.hot{border-color:var(--violet);color:var(--violet);background:rgba(183,169,255,.06)}
+.int-arrow{font-family:var(--f-mono);font-size:11px;color:var(--steel-2);padding:0 2px;flex:none}
+.int-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.6vw,18px);margin-top:clamp(18px,2.2vw,28px)}
+.int-link{display:flex;flex-direction:column;gap:8px;padding:clamp(16px,2vw,22px);border:1px solid var(--rule);min-height:44px;transition:border-color .4s var(--e),padding-left .4s var(--e)}
+.int-link:hover{border-color:var(--violet);padding-left:calc(clamp(16px,2vw,22px) + 6px)}
+.int-link .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--cta)}
+.int-link h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1rem,1.5vw,1.18rem);letter-spacing:-.02em}
+.int-link p{font-size:14px;line-height:1.55;color:var(--steel)}
 
 /* Proof */
 .proof{background:var(--ink);color:#DDE2E7}
@@ -457,41 +505,52 @@ body.page-car .hero{
   .idx-row i{display:none}
   .car-story-stick{position:sticky;top:72px;z-index:40;padding-bottom:12px;background:var(--paper-2)}
   .car-story-stick .o-log,.car-story-stick .pod,.car-story-stick .carrier,.car-story-stick .o-chrome{display:none}
+  .lc-rail{position:sticky;top:72px;z-index:35;background:var(--paper-2);margin-top:18px}
   .cta-row{align-items:flex-start}
   .car-toast{position:static;width:100%;margin-top:14px;box-shadow:none}
+  .int-links{grid-template-columns:1fr}
 }
 @media(max-width:900px){
   .aud-grid{grid-template-columns:1fr}
   .aud-col{border-right:0;border-bottom:1px solid var(--ink-line);padding-right:0}
   .aud-col:last-child{border-bottom:0}
   .adj{grid-template-columns:1fr}
-  .beat{padding-block:26px}
+  .beat{padding-block:20px}
 }
 @media(max-width:640px){
-  .car-toast{position:static;width:100%;margin-top:14px;box-shadow:none}
+  .car-toast{display:none}
   .car-hero-visual{padding-bottom:0}
   .car-story-stick .o-fields{display:none}
+  .car-story-stick .quote-block{padding:10px 12px}
   .quote-block{padding:12px}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
+  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px;min-height:48px}
   .faq-a-in{padding-left:44px}
   .idx-row{grid-template-columns:1fr}
   .idx-row p{grid-column:1}
   .qf-row{grid-template-columns:1fr;gap:4px}
   .cta-row{flex-direction:column;align-items:stretch}
-  .car-phone{width:min(100%,240px)}
+  .car-phone{width:min(100%,260px)}
+  .int-flow{flex-direction:column;align-items:stretch}
+  .int-arrow{align-self:center;transform:rotate(90deg)}
+  .lc-rail{top:68px}
+  .beat h3{max-width:none}
+  .run-bar{gap:20px}
 }
 @media(max-width:560px){
   .o-fields{grid-template-columns:1fr}
   .of,.of:nth-child(2n){border-right:0}
   .o-log{min-height:72px}
   .qnotes li{grid-template-columns:1fr;gap:8px}
+  .car-trust{flex-direction:column;gap:8px}
 }
 @media(max-width:390px){
   body.page-car .d1{font-size:2.28rem}
   .o-chrome span,.prod-chrome span{display:none}
   .quote-fig{font-size:1.85rem}
+  .lc-rail a{padding:10px 11px;font-size:9.5px}
+  .lc-rail a span{width:20px;height:20px;font-size:8px}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -679,6 +738,8 @@ body.page-car .hero{
   <a href="#audiences"><span>Audiences</span><i></i></a>
   <a href="#quoting"><span>Quoting</span><i></i></a>
   <a href="#capabilities"><span>Product</span><i></i></a>
+  <a href="#integrations"><span>Integrations</span><i></i></a>
+  <a href="#proof"><span>Proof</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
@@ -699,15 +760,14 @@ body.page-car .hero{
           <span><i>Quote to POD.</i></span>
           <span><i>One order.</i></span>
         </h1>
-        <p class="lede" data-r>Booking portals, carrier dispatch, customer tracking, and proof of delivery for vehicle logistics — built for the customer shipping one car, the driver in the driveway, and the desk coordinating both.</p>
+        <p class="lede" data-r>Booking portals, quote engines, carrier dispatch, and proof of delivery — product design and engineering for auto transport brokers, carriers, and the ops desk running quote-to-POD.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
-          <a href="#lifecycle" class="btn ghost"><span>See the order lifecycle</span><i>→</i></a>
+          <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
         </div>
         <p class="car-trust" data-r>
-          <span>Quote · dispatch · POD</span>
-          <span>Customer · carrier · ops</span>
-          <span>6–14 weeks to platform</span>
+          <span>Booking · dispatch · driver apps</span>
+          <span>One order ID · quote to POD</span>
         </p>
       </div>
 
@@ -754,10 +814,23 @@ body.page-car .hero{
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>Quote to proof of delivery</p>
-        <h2 class="d2 s-title" id="lcH" data-r>Eight moments that decide the review</h2>
-        <p class="lede" data-r>Auto transport is a purchase before it is an operation. Scroll to follow one vehicle from quote request to signed POD — and watch whose screen it is at each stage.</p>
+        <h2 class="d2 s-title" id="lcH" data-r>One vehicle. Eight stages.</h2>
+        <p class="lede" data-r>Follow one order from quote request to signed POD — whose screen it is at each step, and what has to work before the next one starts.</p>
       </div>
     </div>
+
+    <nav class="lc-rail" id="lcRail" aria-label="Quote-to-POD stages">
+      <ol>
+        <li><a href="#beat-1" data-rail="1" class="cust"><span>01</span> Quote</a></li>
+        <li><a href="#beat-2" data-rail="2" class="cust"><span>02</span> Vehicle</a></li>
+        <li><a href="#beat-3" data-rail="3" class="cust"><span>03</span> Pickup</a></li>
+        <li><a href="#beat-4" data-rail="4" class="ops"><span>04</span> Carrier</a></li>
+        <li><a href="#beat-5" data-rail="5" class="ops"><span>05</span> Dispatch</a></li>
+        <li><a href="#beat-6" data-rail="6" class="drv"><span>06</span> Transit</a></li>
+        <li><a href="#beat-7" data-rail="7" class="cust"><span>07</span> Delivery</a></li>
+        <li><a href="#beat-8" data-rail="8" class="ops"><span>08</span> POD</a></li>
+      </ol>
+    </nav>
 
     <div class="car-story-grid">
       <div class="car-story-stick">
@@ -805,52 +878,52 @@ body.page-car .hero{
       </div>
 
       <div id="beats">
-        <div class="beat cust" data-beat="1">
+        <div class="beat cust on" id="beat-1" data-beat="1">
           <span class="n">Stage 01 · Quote requested</span>
           <h3 class="d3">The quote form is the shop window.</h3>
-          <p class="body-sm">Quote, book, and pay have to work on a phone, with a price the customer can defend to themselves. Every ambiguous field here is a quote that never gets submitted.</p>
+          <p class="body-sm">Quote, book, and pay on a phone — with a price the customer can defend. Ambiguous fields here are quotes that never get submitted.</p>
           <span class="aud">Customer-facing</span>
         </div>
-        <div class="beat cust" data-beat="2">
+        <div class="beat cust" id="beat-2" data-beat="2">
           <span class="n">Stage 02 · Vehicle details</span>
           <h3 class="d3">Running or not running changes everything.</h3>
-          <p class="body-sm">Vehicle type, condition, and modifications drive both the price and which carriers can take it. Asked clearly once, not corrected on a phone call later.</p>
+          <p class="body-sm">Type, condition, and modifications drive price and carrier fit. Ask once, clearly — not on a correction call later.</p>
           <span class="aud">Customer-facing</span>
         </div>
-        <div class="beat cust" data-beat="3">
+        <div class="beat cust" id="beat-3" data-beat="3">
           <span class="n">Stage 03 · Pickup location &amp; window</span>
           <h3 class="d3">A price without a window is not a quote.</h3>
-          <p class="body-sm">Configurable quote logic with transparent breakdowns for customers and ops review, so the number the customer sees is the number ops can honour.</p>
+          <p class="body-sm">Pickup address, delivery address, and a realistic window — captured before payment. Ops needs this to assign a carrier who can actually make the date.</p>
           <span class="aud">Customer-facing</span>
         </div>
-        <div class="beat" data-beat="4">
+        <div class="beat" id="beat-4" data-beat="4">
           <span class="n">Stage 04 · Carrier assignment</span>
           <h3 class="d3">Match the load to a carrier who can actually take it.</h3>
-          <p class="body-sm">Slots, lane, equipment type, and verification in one assignment view. Exceptions stay on the console instead of a group chat.</p>
+          <p class="body-sm">Slots, lane, equipment, and verification in one assignment view. Exceptions stay on the console — not in a group chat.</p>
           <span class="aud">Ops console</span>
         </div>
-        <div class="beat" data-beat="5">
+        <div class="beat" id="beat-5" data-beat="5">
           <span class="n">Stage 05 · Dispatched</span>
           <h3 class="d3">The moment the customer starts wondering.</h3>
-          <p class="body-sm">A dispatch notification reduces support volume more than any other single message in the flow. Silence here is a call to the competitor they almost booked.</p>
+          <p class="body-sm">One dispatch notification cuts support volume more than any other message. Silence here is a call to the competitor they almost booked.</p>
           <span class="aud">Ops console</span>
         </div>
-        <div class="beat" data-beat="6">
+        <div class="beat" id="beat-6" data-beat="6">
           <span class="n">Stage 06 · Picked up &amp; in transit</span>
           <h3 class="d3">Condition capture protects both sides.</h3>
-          <p class="body-sm">Photos, notes, and a running/not-running check in a driveway, in daylight, one-handed. The condition report is the product at pickup.</p>
+          <p class="body-sm">Photos, notes, and running/not-running check — in a driveway, daylight, one-handed. The condition report is the product at pickup.</p>
           <span class="aud">Driver app</span>
         </div>
-        <div class="beat" data-beat="7">
+        <div class="beat cust" id="beat-7" data-beat="7">
           <span class="n">Stage 07 · Delivered</span>
           <h3 class="d3">Status and ETA, without a phone call.</h3>
-          <p class="body-sm">The tracking page is the product for most of the engagement. One shareable link. An ETA that updates before they ask.</p>
+          <p class="body-sm">One shareable tracking link. An ETA that updates before they ask — the product for most of the engagement.</p>
           <span class="aud">Customer-facing</span>
         </div>
-        <div class="beat" data-beat="8">
+        <div class="beat" id="beat-8" data-beat="8">
           <span class="n">Stage 08 · Proof of delivery</span>
           <h3 class="d3">POD closes the order and starts the invoice.</h3>
-          <p class="body-sm">Signature, photos, and an invoicing trigger from one event — so delivery, billing, and the follow-up review fire together.</p>
+          <p class="body-sm">Signature, photos, and an invoicing trigger from one event — delivery, billing, and follow-up review fire together.</p>
           <span class="aud">Ops automation</span>
         </div>
       </div>
@@ -925,10 +998,10 @@ body.page-car .hero{
       <div data-r>
         <h3 class="d3 qnotes-h">Why the breakdown sits on the quote</h3>
         <ul class="qnotes">
-          <li><u>Trust</u><span>A single unexplained number invites a call to a competitor. An itemised one invites a booking.</span></li>
-          <li><u>Conversion</u><span>Clear pricing and trust signals throughout quote, book, and pay — the difference between a lead and an order.</span></li>
-          <li><u>Ops review</u><span>The same breakdown ops sees, so an override is a conversation about one line, not the whole quote.</span></li>
-          <li><u>Configurable</u><span>Quote logic your team can adjust as lanes, equipment, and fuel move, without an engineering ticket.</span></li>
+          <li><u>Trust</u><span>Itemised pricing invites a booking. One unexplained number invites a competitor call.</span></li>
+          <li><u>Conversion</u><span>Price, window, and vehicle condition on one screen — where hesitation happens.</span></li>
+          <li><u>Ops review</u><span>Same breakdown ops sees, so an override targets one line — not the whole quote.</span></li>
+          <li><u>Configurable</u><span>Logic your team adjusts as lanes, equipment, and fuel move — without an engineering ticket.</span></li>
         </ul>
       </div>
     </div>
@@ -947,25 +1020,30 @@ body.page-car .hero{
 
     <article class="car-cap" data-r>
       <div class="car-stage">
-        <div class="prod" aria-hidden="true">
-          <div class="prod-chrome"><i></i><i></i><i></i><span>book.kriva.transport / TR-4471</span></div>
-          <div class="qf-row"><span>Lane</span><b>Dallas → Phoenix · 12–14 Aug</b></div>
-          <div class="qf-row"><span>Vehicle</span><b>Sedan · 2019 · running</b></div>
-          <div class="qf-row"><span>Pay</span><b>Card authorised · $1,085</b></div>
-          <div class="qf-total">
-            <div><span class="lbl">Booking confirmed</span><strong class="num">TR-4471</strong></div>
-            <span class="qstate q-go">Paid</span>
+        <div class="car-phone" aria-hidden="true">
+          <div class="car-island"></div>
+          <div class="car-screen">
+            <div class="ph-bar"><span>9:41</span><span>LTE</span></div>
+            <div class="ph-head">
+              <span>Get a quote · step 1 of 3</span>
+              <b>Where is the vehicle?</b>
+            </div>
+            <div class="ph-steps"><i class="on"></i><i></i><i></i></div>
+            <div class="ph-form">
+              <div class="ph-field"><span>Pickup</span><b>Atlanta, GA 30303</b></div>
+              <div class="ph-field"><span>Delivery</span><b>Miami, FL 33130</b></div>
+              <div class="ph-field"><span>Vehicle</span><b class="dim">Year, make, model…</b></div>
+            </div>
+            <div class="ph-cta">Continue to vehicle details</div>
           </div>
-          <div class="qf-lines">
-            <div class="qf-line"><span>Shareable tracking link</span><b>On</b></div>
-            <div class="qf-line"><span>Pickup window</span><b>12 Aug · 08–12</b></div>
-          </div>
+          <div class="ph-home"></div>
         </div>
       </div>
       <div>
         <span class="cap-no num">01</span>
         <h3 class="d3">Transport booking portals</h3>
-        <p class="body-sm">Quote, book, and pay without a phone call. Trust signals sit where hesitation happens — price, window, and vehicle condition on one screen.</p>
+        <p class="body-sm">Quote, book, and pay without a phone call. Mobile-first entry — lane and vehicle captured before price, where drop-off kills conversion.</p>
+        <p class="cap-note"><span class="flag">Illustrative</span> Mobile quote entry · step 1 of 3</p>
         <ul class="feature-list">
           <li>Quote to payment on mobile first</li>
           <li>Itemised price the customer can screenshot</li>
@@ -1005,7 +1083,7 @@ body.page-car .hero{
           <li>Exceptions handled without leaving the console</li>
           <li>Verification and insurance status on the assignment</li>
         </ul>
-        <a href="/services/crm-development" class="cap-link">CRM Design <i>→</i></a>
+        <a href="/services/crm-development" class="cap-link">CRM development <i>→</i></a>
       </div>
     </article>
 
@@ -1079,33 +1157,41 @@ body.page-car .hero{
   </div>
 </section>
 
-<section class="sect car-rel" aria-labelledby="moreH">
+<section class="sect car-rel" id="integrations" aria-labelledby="moreH">
   <div class="wrap">
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>Around the order</p>
         <h2 class="d2 s-title" id="moreH" data-r>Quote logic, automation, and the systems you already run</h2>
-        <p class="lede" data-r>The order console is the centre. These are the pieces most auto transport platforms pull in next.</p>
+        <p class="lede" data-r>The order console is the centre. Most auto transport platforms connect these pieces next — without inventing compatibility you do not have.</p>
       </div>
     </div>
-    <div class="idx-list">
-      <a class="idx-row" href="/services/web-application-design">
+    <div class="int-flow" aria-hidden="true">
+      <span class="int-node hot">Order</span>
+      <span class="int-arrow" aria-hidden="true">→</span>
+      <span class="int-node">TMS / CRM</span>
+      <span class="int-arrow" aria-hidden="true">→</span>
+      <span class="int-node hot">Dispatch</span>
+      <span class="int-arrow" aria-hidden="true">→</span>
+      <span class="int-node">POD</span>
+      <span class="int-arrow" aria-hidden="true">→</span>
+      <span class="int-node">Invoice</span>
+    </div>
+    <div class="int-links">
+      <a class="int-link" href="/services/web-application-design">
         <span class="n">01</span>
         <h3>Pricing &amp; quote engines</h3>
-        <p>Configurable quote logic with transparent breakdowns for customers and ops review.</p>
-        <i>→</i>
+        <p>Configurable logic with transparent breakdowns for customers and ops review.</p>
       </a>
-      <a class="idx-row" href="/services/automation-systems">
+      <a class="int-link" href="/services/automation-systems">
         <span class="n">02</span>
         <h3>Ops automation</h3>
         <p>Status updates, invoicing triggers, and CRM follow-ups from POD — not a nightly spreadsheet.</p>
-        <i>→</i>
       </a>
-      <a class="idx-row" href="/services/api-integrations">
+      <a class="int-link" href="/services/api-integrations">
         <span class="n">03</span>
         <h3>Existing TMS &amp; CRM</h3>
-        <p>Connectors between your product, CRM, ERP, and third-party tools, with clear error handling.</p>
-        <i>→</i>
+        <p>API connectors with clear error handling — built where your stack needs them.</p>
       </a>
     </div>
   </div>
@@ -1183,39 +1269,27 @@ body.page-car .hero{
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>Services</p>
-        <h2 class="d2 s-title" id="rsH" data-r>Related services</h2>
-        <p class="lede" data-r>The building blocks most auto transport platforms pull together.</p>
+        <h2 class="d2 s-title" id="rsH" data-r>Related capabilities</h2>
+        <p class="lede" data-r>Most auto transport platforms combine these three first.</p>
       </div>
     </div>
     <div class="idx-list">
-      <a class="idx-row" href="/services/mobile-applications">
-        <span class="n">01</span>
-        <h3>Mobile App Design</h3>
-        <p>Driver and field apps for load acceptance, status, and document capture on the road.</p>
-        <i>→</i>
-      </a>
       <a class="idx-row" href="/services/web-development">
-        <span class="n">02</span>
-        <h3>Web Design &amp; Development</h3>
-        <p>Booking portals and marketing sites with quote-to-pay flows built for conversion.</p>
+        <span class="n">01</span>
+        <h3>Web design &amp; development</h3>
+        <p>Booking portals and quote-to-pay flows built for conversion.</p>
         <i>→</i>
       </a>
       <a class="idx-row" href="/services/crm-development">
+        <span class="n">02</span>
+        <h3>CRM &amp; dispatch consoles</h3>
+        <p>Carrier assignment and ops boards matched to how the desk actually works.</p>
+        <i>→</i>
+      </a>
+      <a class="idx-row" href="/services/mobile-applications">
         <span class="n">03</span>
-        <h3>CRM Design</h3>
-        <p>Carrier dispatch consoles and ops boards matched to how the desk actually works.</p>
-        <i>→</i>
-      </a>
-      <a class="idx-row" href="/services/dashboard-design">
-        <span class="n">04</span>
-        <h3>Dashboard Design</h3>
-        <p>Ops and leadership views for exceptions, lane performance, and morning scans.</p>
-        <i>→</i>
-      </a>
-      <a class="idx-row" href="/services/api-integrations">
-        <span class="n">05</span>
-        <h3>Integrations &amp; APIs</h3>
-        <p>Connectors between your product, CRM, ERP, and third-party tools with clear error handling.</p>
+        <h3>Mobile applications</h3>
+        <p>Driver apps for load acceptance, condition capture, and POD on the road.</p>
         <i>→</i>
       </a>
     </div>
@@ -1345,7 +1419,7 @@ body.page-car .hero{
 "serviceType":"Auto transport booking portals, carrier dispatch, customer tracking, quote engines",
 "provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},
 "url":"https://krivatechnologies.com/solutions/car-transportation",
-"description":"Digital product design and development for car transportation companies, booking portals, dispatch CRM, and customer tracking experiences."}
+"description":"Auto transport software for brokers and carriers — booking portals, quote engines, carrier dispatch, customer tracking, and proof of delivery. Product design and engineering from quote to POD."}
 </script>
 <script type="application/ld+json">
 {
@@ -1460,6 +1534,7 @@ if(audGrid){
 
 const ord = document.getElementById('ord');
 const beats = [...document.querySelectorAll('.beat')];
+const railLinks = [...document.querySelectorAll('#lcRail a')];
 const logItems = [...document.querySelectorAll('#ordLog li')];
 const pips = [...document.querySelectorAll('#pips i')];
 const el = id => document.getElementById(id);
@@ -1502,6 +1577,7 @@ function setStage(n){
     p.classList.toggle('done', i < n-1);
     p.classList.toggle('on', i === n-1);
   });
+  railLinks.forEach(a => a.classList.toggle('on', +a.dataset.rail === n));
   el('announce').textContent = 'Stage ' + n + ' of 8: ' + s.label;
 }
 

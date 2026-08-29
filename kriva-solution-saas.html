@@ -14,11 +14,11 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
 <title>SaaS Product Solutions · Onboarding, dashboards, MVPs · KRIVA</title>
-<meta name="description" content="Product design and development for UK and US B2B SaaS: first-run onboarding, roles, daily dashboards, and MVPs that reach a real outcome — not an empty home screen.">
+<meta name="description" content="B2B SaaS product design and Next.js development for UK and US teams: onboarding, multi-tenant roles, dashboards, and MVPs built to reach first value — not an empty home screen.">
 <link rel="canonical" href="https://krivatechnologies.com/solutions/saas">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SaaS Product Solutions · Onboarding, dashboards, MVPs">
-<meta property="og:description" content="Product design and development for UK and US B2B SaaS: first-run onboarding, roles, daily dashboards, and MVPs that reach a real outcome — not an empty home screen.">
+<meta property="og:description" content="B2B SaaS product design and Next.js development for UK and US teams: onboarding, multi-tenant roles, dashboards, and MVPs built to reach first value — not an empty home screen.">
 <meta property="og:url" content="https://krivatechnologies.com/solutions/saas">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -153,8 +153,39 @@ body.page-saas .hero{
 }
 .saas-trust span{display:inline-flex;align-items:center;gap:8px}
 .saas-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
+.saas-hero-path{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:22px;
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
+}
+.saas-hero-path span{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:6px 0}
+.saas-hero-path span:not(:last-child):after{content:"→";color:var(--steel-2);font-size:11px;letter-spacing:0}
+.saas-hero-path .on{color:var(--ink);font-weight:600}
+.saas-hero-path .on:before{content:"";width:6px;height:6px;background:var(--cta);flex:none;border-radius:50%}
 .saas-hero-visual{position:relative;min-width:0}
-@media(min-width:641px){.saas-hero-visual{padding-bottom:clamp(24px,5vw,48px)}}
+@media(min-width:641px){.saas-hero-visual{padding-bottom:clamp(12px,3vw,32px)}}
+.saas-path-viz{
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  box-shadow:var(--shadow-product);overflow:hidden
+}
+.saas-path-head{
+  padding:12px 14px;border-bottom:1px solid var(--ink-line);
+  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
+}
+.saas-path-steps{list-style:none;padding:0}
+.saas-path-steps li{
+  display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;
+  padding:12px 14px;border-bottom:1px solid #1A2027;font-size:13px;color:#8C98A4
+}
+.saas-path-steps li:last-child{border-bottom:0}
+.saas-path-steps .sn{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;color:#717F8C;padding-top:2px
+}
+.saas-path-steps b{display:block;color:#fff;font-weight:600;font-size:13px;margin-bottom:3px}
+.saas-path-steps em{display:block;font-style:normal;font-size:12px;line-height:1.45;color:#8C98A4}
+.saas-path-steps li.done{color:#B9C3CC}
+.saas-path-steps li.done .sn{color:var(--lime)}
+.saas-path-steps li.now{background:rgba(79,70,229,.1);border-left:2px solid var(--cta);color:#fff}
+.saas-path-steps li.now .sn{color:var(--cta)}
 .cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 
 .saas-frame{
@@ -205,15 +236,6 @@ body.page-saas .hero{
 .ob-acts .go{background:var(--cta);color:#fff}
 .ob-acts .ghost{border:1px solid #3A444E;color:#B9C3CC}
 
-.saas-callout{
-  position:absolute;left:-5%;bottom:10%;z-index:4;width:min(70%,268px);
-  background:var(--white);border:1px solid var(--rule);padding:14px 16px 12px;
-  box-shadow:var(--shadow-lift)
-}
-.saas-callout .k{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
-.saas-callout b{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;line-height:1.25}
-.saas-callout em{display:block;margin-top:6px;font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
-
 /* Leaks — editorial, not a 3-up farm */
 .leaks{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
 .leaks .wrap{padding-block:clamp(80px,10vw,140px)}
@@ -233,6 +255,52 @@ body.page-saas .hero{
 .saas-frac article:hover .n{color:var(--cta)}
 .saas-frac h3{color:#fff;margin-bottom:0;max-width:16ch}
 .saas-frac p{color:#8C98A4;font-size:15px;line-height:1.62;max-width:48ch;margin:0}
+
+/* Activation journey */
+.saas-journey{background:var(--paper);border-block:1px solid var(--rule);scroll-margin-top:88px}
+.saas-journey .d2{max-width:18ch}
+.saas-act-rail{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,2vw,24px);
+  margin-top:clamp(32px,4.5vw,56px);list-style:none;counter-reset:act
+}
+.saas-act-rail li{
+  position:relative;padding-top:clamp(18px,2vw,24px);border-top:2px solid var(--rule);
+  min-width:0
+}
+.saas-act-rail li.on{border-top-color:var(--cta)}
+.saas-act-rail .sn{
+  display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:10px
+}
+.saas-act-rail li.on .sn{color:var(--cta)}
+.saas-act-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1rem,1.5vw,1.15rem);letter-spacing:-.02em;line-height:1.2;margin-bottom:8px;max-width:14ch}
+.saas-act-rail p{font-size:14px;line-height:1.55;color:var(--steel);max-width:26ch}
+.saas-act-note{
+  margin-top:clamp(28px,3.5vw,40px);padding:16px 18px;border-left:2px solid var(--cta);
+  background:var(--paper-2);font-size:15px;line-height:1.55;color:var(--ink);max-width:52ch
+}
+.saas-act-note strong{font-weight:700}
+
+/* Product interaction */
+.saas-interact{background:var(--white);border-block:1px solid var(--rule);scroll-margin-top:88px}
+.saas-interact .d2{max-width:16ch}
+.interact-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin-top:clamp(32px,4vw,52px)
+}
+.interact-col{background:var(--white);padding:clamp(22px,2.8vw,32px);min-width:0}
+.interact-col h3{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.interact-col.before h3{color:var(--steel)}
+.interact-col.after h3{color:var(--cta)}
+.interact-col p{font-size:14.5px;line-height:1.58;color:var(--steel);max-width:42ch;margin-bottom:16px}
+.interact-ui{
+  background:var(--ink);border:1px solid var(--ink-line);padding:12px 14px;font-size:12px;color:#8C98A4
+}
+.interact-ui b{display:block;color:#fff;font-weight:600;font-size:13px;margin-bottom:8px}
+.interact-ui .row{padding:8px 10px;background:#141A20;border-left:2px solid #3A444E;margin-bottom:6px;line-height:1.4}
+.interact-ui .row.hot{border-left-color:var(--amber);color:#fff}
+.interact-ui .row.ok{border-left-color:var(--lime);color:#B9C3CC}
+.interact-ui .empty{padding:14px 10px;border:1px dashed #3A444E;text-align:center;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
 
 /* Surfaces */
 .saas-stage{background:var(--paper-2);border-block:1px solid var(--rule)}
@@ -288,6 +356,13 @@ body.page-saas .hero{
 .scope dd{color:var(--ink)}
 .proof-cta{margin-top:28px}
 .proof-note{margin-top:28px;font-size:13.5px;line-height:1.6;color:var(--steel-2);max-width:62ch}
+.proof-story{display:grid;margin-top:clamp(28px,3.5vw,40px);border-top:1px solid var(--rule)}
+.proof-story div{
+  display:grid;grid-template-columns:clamp(88px,12vw,120px) minmax(0,1fr);gap:16px;
+  padding:clamp(16px,2vw,22px) 0;border-bottom:1px solid var(--rule)
+}
+.proof-story dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);padding-top:3px}
+.proof-story dd{color:var(--ink);font-size:15px;line-height:1.58;max-width:48ch}
 
 /* Process */
 .run-bar{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(36px,5vw,56px)}
@@ -344,13 +419,13 @@ body.page-saas .hero{
 .faq-side .btn{margin-top:24px}
 
 @media(max-width:1024px){
-  .saas-hero-grid,.saas-switch,.saas-proof-grid,.faq-grid,.run-bar{grid-template-columns:1fr}
+  .saas-hero-grid,.saas-switch,.saas-proof-grid,.faq-grid,.run-bar,.interact-grid{grid-template-columns:1fr}
+  .saas-act-rail{grid-template-columns:1fr 1fr}
   .saas-hero-copy .d1{max-width:none}
   .faq-grid > div:first-child{position:static}
   .idx-row{grid-template-columns:40px minmax(0,1fr);gap:12px 20px}
   .idx-row p{grid-column:2}
   .idx-row i{display:none}
-  .saas-callout{position:static;width:100%;margin-top:14px;box-shadow:none}
   .saas-hero-visual{padding-bottom:0}
   .cta-row{align-items:flex-start}
 }
@@ -364,6 +439,9 @@ body.page-saas .hero{
 @media(max-width:640px){
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
+  .saas-hero-path{flex-direction:column;align-items:flex-start;gap:4px}
+  .saas-hero-path span:not(:last-child):after{content:"↓"}
+  .saas-act-rail{grid-template-columns:1fr}
   .home-kpis{grid-template-columns:1fr 1fr}
   .home-kpi:nth-child(3){display:none}
   .role-row{grid-template-columns:1fr;gap:4px}
@@ -377,6 +455,7 @@ body.page-saas .hero{
   .saas-frac article{grid-template-columns:1fr;gap:8px}
   .ob-item{grid-template-columns:22px minmax(0,1fr)}
   .ob-item small{display:none}
+  .proof-story div{grid-template-columns:1fr;gap:6px}
 }
 @media(max-width:390px){
   body.page-saas .d1{font-size:2.28rem}
@@ -389,6 +468,7 @@ body.page-saas .hero{
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
   .ob-track i,.saas-frame.lit .ob-track i{transform:none!important}
+  .saas-path-viz{box-shadow:none}
 }
 </style>
 
@@ -564,7 +644,9 @@ body.page-saas .hero{
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
   <a href="#leaks"><span>Leaks</span><i></i></a>
+  <a href="#journey"><span>Journey</span><i></i></a>
   <a href="#surfaces"><span>Surfaces</span><i></i></a>
+  <a href="#interaction"><span>Interaction</span><i></i></a>
   <a href="#proof"><span>Proof</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
@@ -586,7 +668,13 @@ body.page-saas .hero{
           <span><i>Signup is not</i></span>
           <span><i>the product.</i></span>
         </h1>
-        <p class="lede" data-r>We design the first run so B2B users reach a real outcome — not an empty dashboard and a product tour they skip.</p>
+        <p class="lede" data-r>We design the first run so B2B users reach a real outcome — workspace, role, data, then the job they came for.</p>
+        <p class="saas-hero-path" data-r aria-label="Product path from signup to daily use">
+          <span>Signup</span>
+          <span>Setup</span>
+          <span class="on">First value</span>
+          <span>Daily use</span>
+        </p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
           <a href="/work/payroll-pro-saas" class="btn ghost"><span>See PayrollPro</span><i>→</i></a>
@@ -599,38 +687,16 @@ body.page-saas .hero{
       </div>
 
       <div class="saas-hero-visual" data-r>
-        <div class="saas-frame" id="heroFrame" aria-hidden="true">
-          <div class="saas-chrome"><i></i><i></i><i></i><span>app.kriva.cloud / get started</span></div>
-          <div class="ob-bar">
-            <b>Northwind Ltd</b>
-            <em>Step 2 of 4</em>
-          </div>
-          <div class="ob-progress">
-            <span>First value · import records</span>
-            <div class="ob-track"><i></i></div>
-          </div>
-          <div class="ob-list">
-            <div class="ob-item done"><i class="dot"></i><span>Workspace created</span><small>Done</small></div>
-            <div class="ob-item done"><i class="dot"></i><span>Role · Finance admin</span><small>Done</small></div>
-            <div class="ob-item now"><i class="dot"></i><span>Import first records</span><small>Now</small></div>
-            <div class="ob-item"><i class="dot"></i><span>Invite the rest of the team</span><small>Later</small></div>
-          </div>
-          <div class="ob-empty">
-            <span>Empty state · designed as a path</span>
-            <b>Nothing to scan yet.</b>
-            <p>Import a CSV or connect HRIS so the home screen has an exception to act on — not a tooltip tour.</p>
-            <div class="ob-acts">
-              <span class="go">Import CSV</span>
-              <span class="ghost">Connect HRIS</span>
-            </div>
-          </div>
+        <div class="saas-path-viz" id="heroPath" role="img" aria-label="Signup to daily use: workspace and role complete, import records for first value, then morning scan">
+          <p class="saas-path-head">First run · Northwind Ltd</p>
+          <ol class="saas-path-steps">
+            <li class="done"><span class="sn">01</span><div><b>Signup</b><em>Account verified · workspace next</em></div></li>
+            <li class="done"><span class="sn">02</span><div><b>Setup</b><em>Workspace named · Finance admin role</em></div></li>
+            <li class="now"><span class="sn">03</span><div><b>First value</b><em>Import CSV or connect HRIS — one exception on home</em></div></li>
+            <li><span class="sn">04</span><div><b>Daily use</b><em>Morning scan · exceptions and next actions</em></div></li>
+          </ol>
         </div>
-        <aside class="saas-callout" aria-hidden="true">
-          <span class="k">Activated means</span>
-          <b>First payroll locked — not “completed setup.”</b>
-          <em>Named with you before UI begins</em>
-        </aside>
-        <p class="cap-note"><span class="flag">Demo</span> Illustrative first run · no client data</p>
+        <p class="cap-note"><span class="flag">Demo</span> Illustrative path · no client data</p>
       </div>
     </div>
   </div>
@@ -640,7 +706,7 @@ body.page-saas .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>Where signup leaks</p>
     <h2 class="d2" id="lkH" data-r>Users signed up. Then they left.</h2>
-    <p class="lede" data-r>Activation is not “completed setup.” It is the first outcome they came for. Most products lose people in the same three places.</p>
+    <p class="lede" data-r>Most B2B products lose new accounts in the same three places — before anyone reaches the job they came for.</p>
     <div class="saas-frac">
       <article data-r>
         <span class="n num">01</span>
@@ -661,13 +727,49 @@ body.page-saas .hero{
   </div>
 </section>
 
+<section class="sect saas-journey" id="journey" aria-labelledby="jnH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>From signup to activated</p>
+    <h2 class="d2 s-title" id="jnH" data-r>Setup complete is not the same as activated</h2>
+    <p class="lede" data-r>Activation means the buyer reaches the job they came for — not when your checklist turns green.</p>
+    <ol class="saas-act-rail" data-s>
+      <li>
+        <span class="sn">Step 01</span>
+        <h3 class="d3">Signup</h3>
+        <p>Account created. Identity verified. No product value yet.</p>
+      </li>
+      <li>
+        <span class="sn">Step 02</span>
+        <h3 class="d3">Workspace</h3>
+        <p>Named tenant, scoped data, and a home screen waiting for something useful.</p>
+      </li>
+      <li>
+        <span class="sn">Step 03</span>
+        <h3 class="d3">Role</h3>
+        <p>Safe default permissions — enough to work, not a policy matrix on day one.</p>
+      </li>
+      <li>
+        <span class="sn">Step 04</span>
+        <h3 class="d3">Connect data</h3>
+        <p>Import, sync, or connect so the product has real records to act on.</p>
+      </li>
+      <li class="on">
+        <span class="sn">Step 05</span>
+        <h3 class="d3">First outcome</h3>
+        <p>The moment that proves the product — locked payroll, reconciled batch, shipped order.</p>
+      </li>
+    </ol>
+    <p class="saas-act-note" data-r><strong>Setup complete ≠ activated.</strong> We name that outcome with you before UI begins — then design every surface toward it.</p>
+  </div>
+</section>
+
 <section class="sect saas-stage" id="surfaces" aria-labelledby="sfH">
   <div class="wrap">
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>What we design</p>
         <h2 class="d2 s-title" id="sfH" data-r>The surfaces that decide whether people stay</h2>
-        <p class="lede" data-r>Onboarding, roles, and the daily home — designed as one first run, not three products bolted together.</p>
+        <p class="lede" data-r>Onboarding, roles, and the daily home — three surfaces, each with a distinct job in the first run.</p>
       </div>
     </div>
 
@@ -685,7 +787,7 @@ body.page-saas .hero{
           <ul>
             <li>Progressive setup matched to who is signing in</li>
             <li>One guided action that delivers the job they came for</li>
-            <li>Activation events product and design can both name</li>
+            <li>Checklist steps tied to real product states</li>
           </ul>
           <a href="/services/saas-platforms" class="p-link">SaaS product design <i>→</i></a>
         </div>
@@ -701,11 +803,11 @@ body.page-saas .hero{
         </div>
         <div class="saas-panel saas-copy" id="panel-home" role="tabpanel" aria-labelledby="tab-home" hidden>
           <h3 class="d3">A home for the morning scan</h3>
-          <p class="body-sm">Dashboards and admin panels designed for exceptions and next actions — density that holds up in a demo without becoming a metrics museum.</p>
+          <p class="body-sm">Dashboards and admin panels designed for exceptions and next actions — density that holds up without becoming a metrics museum.</p>
           <ul>
             <li>Hierarchy for what needs a decision today</li>
             <li>Patterns that survive new modules and roles</li>
-            <li>Demo-ready without visual noise</li>
+            <li>Status beyond color for blocked and healthy states</li>
           </ul>
           <a href="/services/dashboard-design" class="p-link">Dashboard design <i>→</i></a>
         </div>
@@ -714,19 +816,18 @@ body.page-saas .hero{
       <div>
         <div class="saas-view" id="view-onboarding" aria-hidden="true">
           <div class="saas-frame lit">
-            <div class="saas-chrome"><i></i><i></i><i></i><span>get started · checklist</span></div>
-            <div class="ob-bar"><b>Northwind Ltd</b><em>2 of 4 complete</em></div>
-            <div class="ob-progress"><span>Activation path</span><div class="ob-track"><i></i></div></div>
+            <div class="saas-chrome"><i></i><i></i><i></i><span>get started · role route</span></div>
+            <div class="ob-bar"><b>What brings you here?</b><em>Routes the checklist</em></div>
             <div class="ob-list">
-              <div class="ob-item done"><i class="dot"></i><span>Create workspace</span><small>Done</small></div>
-              <div class="ob-item done"><i class="dot"></i><span>Choose your role</span><small>Done</small></div>
+              <div class="ob-item done"><i class="dot"></i><span>Finance admin</span><small>Selected</small></div>
+              <div class="ob-item"><i class="dot"></i><span>Ops lead</span><small>Alt path</small></div>
               <div class="ob-item now"><i class="dot"></i><span>Import first records</span><small>Now</small></div>
               <div class="ob-item"><i class="dot"></i><span>Invite teammates</span><small>Later</small></div>
             </div>
             <div class="ob-empty">
-              <span>One action</span>
+              <span>Empty state · one action</span>
               <b>Get data on the home screen.</b>
-              <div class="ob-acts"><span class="go">Import CSV</span></div>
+              <div class="ob-acts"><span class="go">Import CSV</span><span class="ghost">Connect HRIS</span></div>
             </div>
           </div>
         </div>
@@ -781,41 +882,70 @@ body.page-saas .hero{
   </div>
 </section>
 
+<section class="sect saas-interact" id="interaction" aria-labelledby="inH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>What changes in the product</p>
+    <h2 class="d2 s-title" id="inH" data-r>One interaction replaces the empty home screen</h2>
+    <p class="lede" data-r>Problem → workflow → interaction → outcome. The shift is not more onboarding steps — it is what appears after connect or import.</p>
+    <div class="interact-grid" data-r>
+      <div class="interact-col before">
+        <h3>Before · setup complete</h3>
+        <p>Workspace exists. Checklist done. Home screen is empty — a product tour stands in for value.</p>
+        <div class="interact-ui" aria-hidden="true">
+          <b>Home · Northwind Ltd</b>
+          <div class="empty">Nothing to scan yet · start the tour</div>
+        </div>
+      </div>
+      <div class="interact-col after">
+        <h3>After · first value</h3>
+        <p>Import or sync lands real records. The home shows one exception and a clear next action.</p>
+        <div class="interact-ui" aria-hidden="true">
+          <b>Home · Northwind Ltd</b>
+          <div class="row hot">3 employees missing NI numbers · fix before pay run</div>
+          <div class="row ok">CSV import completed · 48 records</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sect saas-proof" id="proof" aria-labelledby="pfH">
   <div class="wrap">
     <p class="eyebrow" data-r>Proof</p>
-    <h2 class="d2 s-title" id="pfH" data-r>PayrollPro · first value after SSO</h2>
+    <h2 class="d2 s-title" id="pfH" data-r>PayrollPro · proof after SSO</h2>
     <div class="saas-proof-grid">
       <div data-r>
-        <div class="saas-frame" aria-hidden="true">
-          <div class="saas-chrome"><i></i><i></i><i></i><span>payrollpro / first run</span></div>
-          <div class="ob-bar"><b>SSO complete</b><em>Permissions deferred</em></div>
-          <div class="ob-progress"><span>First value · lock a pay run</span><div class="ob-track mid"><i></i></div></div>
-          <div class="ob-list">
-            <div class="ob-item done"><i class="dot"></i><span>Identity via SSO</span><small>Done</small></div>
-            <div class="ob-item done"><i class="dot"></i><span>Safe default role</span><small>Done</small></div>
-            <div class="ob-item now"><i class="dot"></i><span>Lock first payroll</span><small>Now</small></div>
-            <div class="ob-item"><i class="dot"></i><span>Advanced policy matrix</span><small>Later</small></div>
-          </div>
-          <div class="ob-empty">
-            <span>The leak we closed</span>
-            <b>Setup no longer sits in front of the job.</b>
-            <p>SSO still authenticates. Advanced permissions wait until someone needs them.</p>
-          </div>
-        </div>
-        <p class="cap-note"><span class="flag">Case</span> Pattern from the published PayrollPro study</p>
-      </div>
-      <div data-r>
-        <p class="lede">Progressive onboarding and permission clarity for a UK &amp; EU payroll platform after SSO pushed setup ahead of first value.</p>
+        <p class="lede">Progressive onboarding and permission clarity for a UK &amp; EU payroll platform — after SSO pushed setup ahead of first value.</p>
+        <dl class="proof-story">
+          <div><dt>Problem</dt><dd>SSO made permission setup block the first payroll run. Buyers authenticated but never reached the job.</dd></div>
+          <div><dt>Decision</dt><dd>Default safe role on entry. Defer the policy matrix until someone needs advanced admin.</dd></div>
+          <div><dt>Workflow</dt><dd>First sitting completes a real pay run — link bank, run test cycle, then invite roles.</dd></div>
+        </dl>
         <dl class="scope">
           <div><dt>Sector</dt><dd>B2B SaaS · payroll</dd></div>
-          <div><dt>Trigger</dt><dd>SSO made permission setup block first value</dd></div>
-          <div><dt>Focus</dt><dd>Progressive onboarding, role clarity</dd></div>
           <div><dt>Scope</dt><dd>Onboarding paths, permissions, integration health</dd></div>
         </dl>
         <div class="proof-cta">
           <a href="/work/payroll-pro-saas" class="btn"><span>Read the PayrollPro case study</span><i>→</i></a>
         </div>
+      </div>
+      <div data-r>
+        <div class="saas-frame" aria-hidden="true">
+          <div class="saas-chrome"><i></i><i></i><i></i><span>payrollpro / first sitting</span></div>
+          <div class="ob-bar"><b>First sitting</b><em>After SSO</em></div>
+          <div class="ob-list">
+            <div class="ob-item done"><i class="dot"></i><span>SSO</span><small>Done</small></div>
+            <div class="ob-item done"><i class="dot"></i><span>Link bank</span><small>Done</small></div>
+            <div class="ob-item now"><i class="dot"></i><span>Run test cycle</span><small>Now</small></div>
+            <div class="ob-item"><i class="dot"></i><span>Invite roles</span><small>After value</small></div>
+          </div>
+          <div class="ob-empty">
+            <span>12 staff · this cycle</span>
+            <b>Complete first value.</b>
+            <p>Permissions wait until after the run — not before it.</p>
+          </div>
+        </div>
+        <p class="cap-note"><span class="flag">Case</span> Pattern from the published PayrollPro study</p>
       </div>
     </div>
     <p class="proof-note">PayrollPro is a published case study. Client labels may be portfolio names. Signed-off numeric outcomes appear only on ShiftRail.</p>
@@ -880,7 +1010,7 @@ body.page-saas .hero{
       <a class="idx-row" href="/services/product-design">
         <span class="n">02</span>
         <h3>Product Design &amp; UX</h3>
-        <p>Research, flows, and launch-ready UI for the path from signup to first value.</p>
+        <p>Research, flows, and launch-ready UI from signup through the first run.</p>
         <i>→</i>
       </a>
       <a class="idx-row" href="/services/dashboard-design">
@@ -1041,7 +1171,7 @@ body.page-saas .hero{
 "provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},
 "areaServed":["GB","US"],
 "url":"https://krivatechnologies.com/solutions/saas",
-"description":"Product design and development for UK B2B SaaS, onboarding UX, dashboards, MVP builds, and design systems that scale with your roadmap."}
+"description":"B2B SaaS product design, onboarding UX, multi-tenant roles, dashboards, and MVP development for UK and US product teams."}
 </script>
 <script type="application/ld+json">
 {
@@ -1121,14 +1251,6 @@ const chIO=new IntersectionObserver(es=>{
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
 
-const frame=document.getElementById('heroFrame');
-if(frame){
-  const fio=new IntersectionObserver(es=>{
-    for(const e of es){ if(e.isIntersecting){ e.target.classList.add('lit'); fio.unobserve(e.target); } }
-  },{threshold:.35});
-  fio.observe(frame);
-}
-
 const tabs=[...document.querySelectorAll('.saas-tabs [role="tab"]')];
 const panels={
   'tab-onboarding':['panel-onboarding','view-onboarding'],
@@ -1178,7 +1300,6 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
 
 if(reduce()){
   document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
-  if(frame) frame.classList.add('lit');
 }
 
 run();

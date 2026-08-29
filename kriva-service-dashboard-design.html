@@ -13,18 +13,18 @@
 <meta name="theme-color" content="#0E1216">
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
-<title>Dashboards &amp; Admin Panels · Analytics for daily use · KRIVA</title>
-<meta name="description" content="Analytics and operational dashboards, admin panels, and exception views designed for the morning scan — not another spreadsheet export.">
+<title>Dashboard Design · Ops, Admin &amp; Analytics UX · KRIVA</title>
+<meta name="description" content="Operational dashboard and admin panel design for SaaS and ops teams — exception queues, role-aware views, and tables that resolve work, not another chart wall.">
 <link rel="canonical" href="https://krivatechnologies.com/services/dashboard-design">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Dashboards &amp; Admin Panels · Analytics for daily use">
-<meta property="og:description" content="Analytics and operational dashboards, admin panels, and exception views designed for the morning scan — not another spreadsheet export.">
+<meta property="og:title" content="Dashboard Design · Ops, Admin &amp; Analytics UX">
+<meta property="og:description" content="Operational dashboard and admin panel design for SaaS and ops teams — exception queues, role-aware views, and tables that resolve work, not another chart wall.">
 <meta property="og:url" content="https://krivatechnologies.com/services/dashboard-design">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Dashboards and admin panels, analytics for daily use">
+<meta property="og:image:alt" content="KRIVA · Dashboard design for ops, admin, and analytics">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
@@ -145,7 +145,6 @@ body.page-dashboard .hero{
 .dash-trust span{display:inline-flex;align-items:center;gap:8px}
 .dash-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
 .dash-hero-visual{position:relative;min-width:0}
-@media(min-width:641px){.dash-hero-visual{padding-bottom:clamp(20px,4vw,40px)}}
 .cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 
 .shell{
@@ -176,15 +175,17 @@ body.page-dashboard .hero{
 }
 .dash-search{
   flex:1;min-width:120px;max-width:280px;padding:7px 10px;border:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:11px;color:#8C98A4
+  font-family:var(--f-mono);font-size:11px;color:#8C98A4;background:transparent
 }
+input.dash-search{color:#DDE2E7;outline:none;min-height:32px}
+input.dash-search::placeholder{color:#8C98A4}
+input.dash-search:focus{border-color:#5C6670}
 .dash-user{width:24px;height:24px;border-radius:50%;background:var(--cta);color:#fff;font-family:var(--f-mono);font-size:9px;letter-spacing:.04em;display:grid;place-items:center;flex:none}
-.live{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);white-space:nowrap}
-.live i{width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:dash-pulse 2.4s var(--e-io) infinite}
-@keyframes dash-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 currentColor}}
+.shift-mark{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;white-space:nowrap}
 .dash-filters{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-bottom:1px solid var(--ink-line);background:transparent}
-.dash-chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--ink-line);color:#717F8C}
+.dash-chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border:1px solid var(--ink-line);color:#717F8C;background:transparent;cursor:pointer}
 .dash-chip.on{border-color:var(--amber);color:var(--amber);background:rgba(219,155,31,.1)}
+.dash-chip.quiet{cursor:default;color:#5C6670}
 .answer{
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:end;
   padding:14px;border-bottom:1px solid var(--ink-line);
@@ -193,6 +194,7 @@ body.page-dashboard .hero{
 .answer .q{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
 .answer b{display:block;margin-top:7px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.08rem,1.8vw,1.35rem);letter-spacing:-.03em;color:#fff;line-height:1.2}
 .dash-stat{text-align:right;font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,2.2vw,1.9rem);letter-spacing:-.04em;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums}
+.dash-stat span{display:block}
 .dash-stat small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C;font-weight:400}
 .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--ink-line)}
 .kpi{padding:12px;border-right:1px solid var(--ink-line);min-width:0}
@@ -210,40 +212,61 @@ body.page-dashboard .hero{
 .shell.lit .bars i:after,.dash-frame.lit .bars i:after{transform:scaleY(1)}
 .bars i.hot:after{background:var(--amber)}
 .dash-list{padding:12px 14px;display:grid;align-content:start;gap:7px;min-width:0}
-.ex{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:7px 8px;background:#141A20;font-size:11.5px;color:#B9C3CC;border-left:2px solid #3A444E}
-.ex span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ex{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:7px 8px;background:#141A20;font-size:11.5px;color:#B9C3CC;border-left:2px solid #3A444E;align-items:center}
+.ex > span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ex.hot{border-left-color:var(--amber);color:#fff}
 .ex.ok{border-left-color:var(--lime)}
 .ex small{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C}
+.ex.is-hide{display:none}
 
 .dt{width:100%;border-collapse:collapse;min-width:0}
 .dt th,.dt td{padding:9px 12px;text-align:left;border-bottom:1px solid #1A2027;font-size:12px;color:#B9C3CC}
 .dt th{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C;font-weight:500}
 .dt td:first-child{color:#fff;font-variant-numeric:tabular-nums}
 .dt tr:last-child td{border-bottom:0}
+.dt tr.is-hide{display:none}
+.dt .own{color:#8C98A4}
+.dt .own.none{color:var(--amber)}
 .dash-list .dt th,.dash-list .dt td{padding:7px 8px 7px 0}
-.dash-list .dt th:last-child,.dash-list .dt td:last-child{text-align:right;padding-right:0;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#717F8C}
+.dash-list .dt th:last-child,.dash-list .dt td:last-child{text-align:right;padding-right:0}
+.dash-scan{padding:4px 0 8px}
+.dash-scan .lab{padding:10px 14px 2px}
+.dash-scan .dt th,.dash-scan .dt td{padding:8px 12px}
+.dash-scan .dt th:last-child,.dash-scan .dt td:last-child{text-align:right}
 .st{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase}
 .st:before{content:"";width:5px;height:5px;border-radius:50%;background:#3A444E}
 .st.hot:before{background:var(--amber)}
 .st.ok:before{background:var(--lime)}
-.go{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--sky);color:var(--sky);white-space:nowrap}
+.go{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border:1px solid var(--sky);color:var(--sky);white-space:nowrap;background:transparent;cursor:pointer}
+.go:hover,.go:focus-visible{background:rgba(91,140,255,.12)}
+.go.done{border-color:#3A444E;color:#717F8C;cursor:default}
+.sla{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#8C98A4;white-space:nowrap}
+.sla i{width:40px;height:3px;background:#1F262E;display:block;position:relative;flex:none}
+.sla i:after{content:"";position:absolute;inset:0 auto 0 0;width:var(--p,50%);background:var(--lime)}
+.sla.hot{color:var(--amber)}
+.sla.hot i:after{background:var(--amber)}
 
 .dash-frame{background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);box-shadow:var(--shadow-product);overflow:hidden}
-.dash-callout{
-  position:absolute;left:-4%;bottom:8%;z-index:4;
-  background:var(--white);border:1px solid var(--rule);padding:14px 16px 12px;
-  box-shadow:var(--shadow-lift);min-width:148px;transition:transform var(--t-fast) var(--e),border-color var(--t-fast)
+.dash-hero-meta{
+  margin-top:14px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 24px
 }
-.dash-callout:hover{transform:translateY(-3px);border-color:var(--ink)}
-.dash-callout b{display:block;font-family:var(--f-display);font-weight:800;font-size:2.15rem;letter-spacing:-.05em;line-height:.9;color:var(--green)}
-.dash-callout span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);max-width:16ch}
+.dash-callout{
+  display:inline-flex;align-items:baseline;gap:10px;
+  background:var(--white);border:1px solid var(--rule);padding:10px 14px;
+  box-shadow:var(--shadow-lift);transition:border-color var(--t-fast)
+}
+.dash-callout:hover{border-color:var(--ink)}
+.dash-callout b{font-family:var(--f-display);font-weight:800;font-size:1.35rem;letter-spacing:-.05em;line-height:1;color:var(--green)}
+.dash-callout span{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);max-width:22ch}
 
-.dash-strip{background:var(--white);border-block:1px solid var(--rule);padding-block:clamp(22px,3vw,36px)}
-.dash-strip .wrap{display:flex;align-items:center;gap:clamp(20px,4vw,48px)}
-.dash-strip .k{flex:none;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);max-width:10ch;line-height:1.45}
-.dash-strip ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px 8px;flex:1;min-width:0}
-.dash-strip li{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);color:var(--ink);background:var(--paper)}
+.dash-qs{background:var(--white);border-block:1px solid var(--rule);padding-block:clamp(28px,3.6vw,44px)}
+.dash-qs .wrap{display:grid;grid-template-columns:minmax(8ch,.7fr) repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,36px);align-items:start}
+.dash-qs .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);max-width:12ch;line-height:1.45;padding-top:4px}
+.dash-qs article{min-width:0}
+.dash-qs .role{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
+.dash-qs .d3{margin:0;color:var(--ink);font-size:clamp(1.05rem,1.5vw,1.22rem);max-width:22ch;line-height:1.16}
+.dash-qs p{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--steel);max-width:32ch}
+.dash-qs .d3 + p{margin-top:8px}
 
 .fails{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
 .fails .wrap{padding-block:clamp(80px,10vw,140px)}
@@ -261,12 +284,28 @@ body.page-dashboard .hero{
 .frac h3{color:#fff;max-width:16ch}
 .frac p{color:#8C98A4;font-size:15px;line-height:1.62;max-width:48ch;margin:0}
 
-.run-bar{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(36px,5vw,56px)}
-.run-bar .wk{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
-.run-bar .bar{display:block;height:3px;background:var(--rule);position:relative;margin-bottom:18px}
-.run-bar .bar:after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--cta)}
-.run-bar h3{margin-bottom:8px}
-.run-bar p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
+.scan-stack{
+  list-style:none;margin-top:clamp(36px,5vw,56px);padding:0;
+  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
+  box-shadow:var(--shadow-product);overflow:hidden
+}
+.scan-layer{
+  display:grid;grid-template-columns:64px minmax(0,1.2fr) minmax(0,.9fr);
+  gap:clamp(12px,2vw,24px);align-items:center;
+  padding:clamp(16px,2vw,20px) clamp(14px,2vw,20px);
+  border-bottom:1px solid var(--ink-line)
+}
+.scan-layer:last-child{border-bottom:0}
+.scan-layer.q{background:linear-gradient(180deg,rgba(219,155,31,.08),transparent 80%)}
+.scan-layer .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cta)}
+.scan-layer h3{color:#fff;font-size:clamp(1.02rem,1.4vw,1.18rem);max-width:18ch}
+.scan-layer p{color:#8C98A4;font-size:13.5px;line-height:1.5;max-width:36ch;margin-top:4px}
+.scan-frag{min-width:0;font-family:var(--f-mono);font-size:11px;color:#B9C3CC}
+.scan-frag b{display:block;color:#fff;font-family:var(--f-display);font-weight:700;font-size:clamp(1rem,1.4vw,1.2rem);letter-spacing:-.03em;margin-bottom:4px}
+.scan-frag .n-stat{color:var(--amber);font-size:1.35rem;letter-spacing:-.04em}
+.scan-rows{display:grid;gap:6px}
+.scan-rows span{display:flex;justify-content:space-between;gap:10px;padding:6px 8px;background:#141A20;border-left:2px solid var(--amber);color:#B9C3CC}
+.scan-rows em{font-style:normal;color:#717F8C;text-transform:uppercase;letter-spacing:.08em;font-size:9px}
 
 .views{background:var(--paper-2);border-block:1px solid var(--rule)}
 .switch{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(28px,4vw,52px)}
@@ -289,19 +328,30 @@ body.page-dashboard .hero{
 .work .wrap{padding-block:clamp(80px,10vw,140px)}
 .work .eyebrow{color:var(--ink-dim)}
 .work h2{color:#fff;margin-top:18px;max-width:16ch}
-.work-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(28px,4vw,64px);align-items:center;margin-top:clamp(32px,4vw,56px)}
+.work-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,4vw,64px);align-items:start;margin-top:clamp(32px,4vw,56px)}
 .work .lede{color:#8C98A4}
-.scope{display:grid;margin-top:24px;border-top:1px solid var(--ink-line)}
-.scope div{display:grid;grid-template-columns:clamp(72px,10vw,110px) minmax(0,1fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--ink-line);font-size:14.5px}
-.scope dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;padding-top:3px}
-.scope dd{color:#DDE2E7}
-.work-stat{margin:22px 0 8px;display:flex;align-items:baseline;gap:12px}
+.proof-flow{margin-top:24px;border-top:1px solid var(--ink-line)}
+.proof-flow div{display:grid;grid-template-columns:clamp(88px,12vw,118px) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--ink-line);font-size:14.5px}
+.proof-flow dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;padding-top:3px}
+.proof-flow dd{color:#DDE2E7;max-width:46ch}
+.proof-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:8px;border:1px solid var(--ink-line)}
+.proof-metrics div{padding:18px 16px;border-right:1px solid var(--ink-line);min-width:0}
+.proof-metrics div:last-child{border-right:0}
+.proof-metrics b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.45rem,2.4vw,1.9rem);letter-spacing:-.04em;color:#fff;line-height:1}
+.proof-metrics .hi b{color:var(--lime)}
+.proof-metrics span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;max-width:16ch}
+.work-stat{margin:0 0 18px;display:flex;align-items:baseline;gap:12px}
 .work-stat b{font-family:var(--f-display);font-weight:800;font-size:clamp(2.4rem,4.5vw,3.4rem);letter-spacing:-.05em;color:var(--lime);line-height:.9}
 .work-stat span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;max-width:16ch}
 .proof-cta{margin-top:24px}
 .proof-note{margin-top:28px;font-size:13.5px;line-height:1.6;color:#8C98A4;max-width:62ch}
 .work .cap-note{color:#8C98A4}
 .work .flag{border-color:#3A444E;color:#8C98A4}
+.exec-note{padding:0 14px 14px;font-size:13px;line-height:1.5;color:#8C98A4;max-width:42ch}
+.drill{margin:0 14px 14px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sky);border:1px solid var(--sky);padding:8px 12px;background:transparent;cursor:pointer}
+.drill:hover{background:rgba(91,140,255,.12)}
+.admin-err{margin:0 14px 12px;padding:8px 10px;border-left:2px solid var(--amber);background:rgba(219,155,31,.08);font-size:12px;color:#DDE2E7}
+.admin-err small{display:block;margin-top:3px;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
 
 .dash-rel{background:var(--white);border-top:1px solid var(--rule)}
 .idx-list{margin-top:clamp(24px,3vw,40px)}
@@ -346,17 +396,21 @@ body.page-dashboard .hero{
 .faq-side .btn{margin-top:24px}
 
 @media(max-width:1024px){
-  .dash-hero-grid,.switch,.work-grid,.faq-grid{grid-template-columns:1fr}
+  .dash-hero-grid,.switch,.work-grid,.faq-grid,.dash-qs .wrap{grid-template-columns:1fr}
   .dash-hero-copy .d1{max-width:none}
   .faq-grid > div:first-child{position:static}
   .idx-row{grid-template-columns:40px minmax(0,1fr);gap:12px 20px}
   .idx-row p{grid-column:2}
   .idx-row i{display:none}
-  .dash-callout{position:static;margin-top:14px;display:inline-block}
   .dash-hero-visual{padding-bottom:0}
   .cta-row{align-items:flex-start}
   .shell{grid-template-columns:1fr}
   .dash-side{display:none}
+  .dash-qs .k{max-width:none}
+}
+@media(min-width:641px) and (max-width:1024px){
+  .dash-qs .wrap{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .dash-qs .k{grid-column:1 / -1}
 }
 @media(max-width:900px){
   .frac article{grid-template-columns:48px minmax(0,1fr);gap:14px}
@@ -366,9 +420,13 @@ body.page-dashboard .hero{
   .dash-tabs button{flex:none}
   .split{grid-template-columns:1fr}
   .chart{border-right:0;border-bottom:1px solid var(--ink-line)}
+  .scan-layer{grid-template-columns:48px minmax(0,1fr);gap:10px 14px}
+  .scan-frag{grid-column:2}
 }
 @media(max-width:767px){
-  body.page-dashboard .run-bar{grid-template-columns:1fr}
+  .proof-metrics{grid-template-columns:1fr}
+  .proof-metrics div{border-right:0;border-bottom:1px solid var(--ink-line)}
+  .proof-metrics div:last-child{border-bottom:0}
 }
 @media(max-width:700px){
   .answer{grid-template-columns:1fr;gap:10px}
@@ -376,27 +434,36 @@ body.page-dashboard .hero{
   .dt thead{display:none}
   .dt,.dt tbody,.dt tr,.dt td{display:block;width:100%}
   .dt tr{padding:10px 12px;border-bottom:1px solid #1A2027}
+  .dt tr.is-hide{display:none}
   .dt td{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border:0;padding:3px 0}
   .dt td:before{content:attr(data-l);font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C}
   .dt td:first-child{color:#fff;font-weight:600}
-  .dash-list .dt tr{padding:8px 0}
-  .dash-list .dt td:last-child{text-align:left;font-size:12px;letter-spacing:0;text-transform:none}
+  .dash-list .dt tr,.dash-scan .dt tr{padding:8px 12px}
+  .dash-list .dt td:last-child,.dash-scan .dt td:last-child{text-align:left;font-size:12px;letter-spacing:0;text-transform:none}
+  .dash-scan td[data-l="Age"]{display:none}
+  .dash-scan tbody tr:nth-child(n+4){display:none}
 }
 @media(max-width:640px){
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .kpis{grid-template-columns:1fr 1fr}
-  .kpi:nth-child(2){border-right:0}
-  .kpi:nth-child(3){border-right:0;border-top:1px solid var(--ink-line);grid-column:1 / -1}
   .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
   .faq-a-in{padding-left:44px}
   .idx-row{grid-template-columns:1fr}
   .idx-row p{grid-column:1}
   .cta-row{flex-direction:column;align-items:stretch}
-  .dash-strip .wrap{flex-direction:column;align-items:flex-start;gap:16px}
+  .dash-hero-meta{flex-direction:column;align-items:stretch}
+  .dash-callout{width:100%}
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .kpi{padding:10px 8px}
+  .kpi span{font-size:8px;letter-spacing:.08em}
+}
+@media(max-width:430px){
+  .dash-hero-visual .kpis{display:none}
+  .dash-top .shift-mark{display:none}
 }
 @media(max-width:560px){
   .frac article{grid-template-columns:1fr;gap:8px}
+  .proof-flow div{grid-template-columns:1fr;gap:4px}
 }
 @media(max-width:390px){
   body.page-dashboard .d1{font-size:2.28rem}
@@ -408,9 +475,7 @@ body.page-dashboard .hero{
   *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
-  .live i{animation:none!important}
   .bars i:after,.shell.lit .bars i:after,.dash-frame.lit .bars i:after{transform:none!important}
-  .dash-callout:hover{transform:none}
 }
 </style>
 
@@ -603,7 +668,7 @@ body.page-dashboard .hero{
     </ol>
     <div class="dash-hero-grid">
       <div class="dash-hero-copy">
-        <p class="eyebrow" data-r>Service · Analytics &amp; admin panels</p>
+        <p class="eyebrow" data-r>Service · Dashboard UX &amp; admin panels</p>
         <h1 class="d1 mask" data-mask>
           <span><i>Complex data.</i></span>
           <span><i>A scan they finish.</i></span>
@@ -621,6 +686,7 @@ body.page-dashboard .hero{
       </div>
 
       <div class="dash-hero-visual" data-r>
+        <p class="sr">Northstar morning scan: the shift question is which exceptions still need an owner. Four records are unowned. The oldest has been open eleven minutes. The view leads with that question, then supporting counts, then a table with assign actions — not a wall of charts.</p>
         <div class="shell" id="dashFrame" aria-hidden="true">
           <nav class="dash-side">
             <div class="brand">Northstar</div>
@@ -633,83 +699,103 @@ body.page-dashboard .hero{
           <div class="dash-main">
             <div class="dash-chrome"><i></i><i></i><i></i><span>admin · morning scan</span></div>
             <div class="dash-top">
-              <div class="dash-search">Search exceptions, users, reports</div>
-              <span class="live"><i></i>Live</span>
+              <input class="dash-search" id="dashScanSearch" type="search" placeholder="Search exceptions" tabindex="-1" autocomplete="off">
+              <span class="shift-mark">Today · 07:14</span>
               <span class="dash-user">PC</span>
             </div>
             <div class="dash-filters">
-              <span class="dash-chip on">Today</span>
-              <span class="dash-chip">Owner · all</span>
-              <span class="dash-chip">Status · open</span>
-              <span class="dash-chip">Export</span>
+              <button type="button" class="dash-chip on" data-filter="unowned" tabindex="-1">Unowned</button>
+              <button type="button" class="dash-chip" data-filter="open" tabindex="-1">Open</button>
+              <button type="button" class="dash-chip" data-filter="watch" tabindex="-1">Watching</button>
+              <span class="dash-chip quiet">Export</span>
             </div>
             <div class="answer">
               <div>
                 <span class="q">Shift question</span>
                 <b>Which exceptions still need an owner?</b>
               </div>
-              <div class="dash-stat">4<small>Need a decision now</small></div>
+              <div class="dash-stat"><span data-unowned>4</span><small data-unowned-label>Need a decision now</small></div>
             </div>
             <div class="kpis">
+              <div class="kpi warn"><span>Unowned</span><b class="num" data-unowned>4</b><em>This shift</em></div>
+              <div class="kpi"><span>Oldest open</span><b>11m</b><em>Needs owner</em></div>
               <div class="kpi"><span>Resolved 24h</span><b class="num">86%</b><em>↑ 3.2 pts</em></div>
-              <div class="kpi warn"><span>Oldest open</span><b>11m</b><em>Needs owner</em></div>
-              <div class="kpi"><span>Active seats</span><b class="num">128</b><em>Stable</em></div>
             </div>
-            <div class="split">
-              <div class="chart">
-                <span class="lab">Volume · 7d</span>
-                <div class="bars">
-                  <i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:51%"></i>
-                  <i class="hot" style="--h:78%"></i><i style="--h:64%"></i><i style="--h:71%"></i><i style="--h:68%"></i>
-                </div>
-              </div>
-              <div class="dash-list">
-                <span class="lab">Open exceptions</span>
-                <table class="dt">
-                  <thead><tr><th>ID</th><th>Issue</th><th>Age</th></tr></thead>
-                  <tbody>
-                    <tr>
-                      <td data-l="ID">EX-184</td>
-                      <td data-l="Issue"><span class="st hot">Payment failed</span></td>
-                      <td data-l="Age">Now</td>
-                    </tr>
-                    <tr>
-                      <td data-l="ID">EX-179</td>
-                      <td data-l="Issue"><span class="st hot">Seat limit</span></td>
-                      <td data-l="Age">1h</td>
-                    </tr>
-                    <tr>
-                      <td data-l="ID">EX-171</td>
-                      <td data-l="Issue"><span class="st">Sync lag</span></td>
-                      <td data-l="Age">Watch</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="dash-scan">
+              <span class="lab">Open exceptions</span>
+              <table class="dt">
+                <thead><tr><th>ID</th><th>Issue</th><th>Owner</th><th>Age</th><th>Action</th></tr></thead>
+                <tbody>
+                  <tr data-owner="none" data-status="open">
+                    <td data-l="ID">EX-184</td>
+                    <td data-l="Issue"><span class="st hot">Payment failed</span></td>
+                    <td data-l="Owner" class="own none">Unassigned</td>
+                    <td data-l="Age">11m</td>
+                    <td data-l="Action"><button type="button" class="go" data-act="assign" tabindex="-1">Assign</button></td>
+                  </tr>
+                  <tr data-owner="none" data-status="open">
+                    <td data-l="ID">EX-179</td>
+                    <td data-l="Issue"><span class="st hot">Seat limit</span></td>
+                    <td data-l="Owner" class="own none">Unassigned</td>
+                    <td data-l="Age">8m</td>
+                    <td data-l="Action"><button type="button" class="go" data-act="assign" tabindex="-1">Assign</button></td>
+                  </tr>
+                  <tr data-owner="none" data-status="open">
+                    <td data-l="ID">EX-162</td>
+                    <td data-l="Issue"><span class="st hot">Invite expired</span></td>
+                    <td data-l="Owner" class="own none">Unassigned</td>
+                    <td data-l="Age">6m</td>
+                    <td data-l="Action"><button type="button" class="go" data-act="assign" tabindex="-1">Assign</button></td>
+                  </tr>
+                  <tr data-owner="none" data-status="open">
+                    <td data-l="ID">EX-155</td>
+                    <td data-l="Issue"><span class="st">Provisioning</span></td>
+                    <td data-l="Owner" class="own none">Unassigned</td>
+                    <td data-l="Age">4m</td>
+                    <td data-l="Action"><button type="button" class="go" data-act="assign" tabindex="-1">Assign</button></td>
+                  </tr>
+                  <tr data-owner="tom" data-status="watch">
+                    <td data-l="ID">EX-171</td>
+                    <td data-l="Issue"><span class="st">Sync lag</span></td>
+                    <td data-l="Owner" class="own">Tom Hale</td>
+                    <td data-l="Age">3h</td>
+                    <td data-l="Action"><button type="button" class="go done" tabindex="-1">View</button></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-        <a class="dash-callout" href="/work/shiftrail-dispatch">
-          <b class="num">−32%</b>
-          <span>Handle time · ShiftRail, signed-off</span>
-        </a>
-        <p class="cap-note"><span class="flag">Demo</span> Ops pattern. Same hierarchy for finance and sales views</p>
+        <div class="dash-hero-meta">
+          <p class="cap-note"><span class="flag">Demo</span> Ops scan. Same hierarchy for finance close and sales forecast</p>
+          <a class="dash-callout" href="/work/shiftrail-dispatch">
+            <b class="num">−32%</b>
+            <span>Handle time · ShiftRail, signed-off</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
-<section class="dash-strip" aria-label="Dashboard types we design">
+<section class="dash-qs" aria-labelledby="qsH">
   <div class="wrap">
-    <p class="k">Views we design</p>
-    <ul>
-      <li>Ops scan</li>
-      <li>Admin consoles</li>
-      <li>Finance close</li>
-      <li>Sales forecast</li>
-      <li>Exception queues</li>
-      <li>Exec summary</li>
-    </ul>
+    <p class="k" id="qsH">Same hierarchy. Different questions.</p>
+    <article>
+      <span class="role">Operations</span>
+      <p class="d3">Which exceptions still need an owner?</p>
+      <p>Unowned work, SLA risk, and the row they act on — before historical volume.</p>
+    </article>
+    <article>
+      <span class="role">Finance</span>
+      <p class="d3">What remains unreconciled before close?</p>
+      <p>Exceptions and aging first. Charts wait until the close question is answered.</p>
+    </article>
+    <article>
+      <span class="role">Sales</span>
+      <p class="d3">Which deals changed forecast risk?</p>
+      <p>Movement and owners, not a pipeline mural. Drill into the record from the summary.</p>
+    </article>
   </div>
 </section>
 
@@ -722,7 +808,7 @@ body.page-dashboard .hero{
       <article data-r>
         <span class="n num">01</span>
         <h3 class="d3">Scan failure</h3>
-        <p>Metrics are on the page, but the shift question is buried under equal-weight widgets. Operators open the view and still ask Slack.</p>
+        <p>Operators open the view and still ask Slack. Every widget has equal weight, so the shift question disappears.</p>
       </article>
       <article data-r>
         <span class="n num">02</span>
@@ -744,33 +830,56 @@ body.page-dashboard .hero{
       <div>
         <p class="eyebrow" data-r>Information architecture</p>
         <h2 class="d2 s-title" id="apH" data-r>Hierarchy first. Charts second.</h2>
-        <p class="lede" data-r>Name the questions, rank the widgets, then design the scan, the table, and the admin workflow that closes the loop.</p>
+        <p class="lede" data-r>Name the question. Rank the layout. Show the signal, then the evidence, then let the action finish in the same view.</p>
       </div>
     </div>
-    <ol class="run-bar" data-s>
-      <li>
-        <span class="wk">01 · Questions</span>
-        <span class="bar" style="--w:25%"></span>
-        <h3 class="d3">Name the shift question</h3>
-        <p>What must be true in the first 90 seconds. Stakeholder chart requests wait until that answer sits above the fold.</p>
+    <ol class="scan-stack" data-s aria-label="Dashboard design method">
+      <li class="scan-layer q">
+        <span class="n">01</span>
+        <div>
+          <h3 class="d3">Questions</h3>
+          <p>What must someone know or decide in the first 60–90 seconds? Stakeholder chart requests wait until that answer sits above the fold.</p>
+        </div>
+        <div class="scan-frag">
+          <b>Which exceptions still need an owner?</b>
+          Shift question · first viewport
+        </div>
       </li>
-      <li>
-        <span class="wk">02 · IA</span>
-        <span class="bar" style="--w:50%"></span>
-        <h3 class="d3">Rank the layout</h3>
-        <p>Primary scan, then density. Ops, admin, and exec are not the same screen — they share a kit, not a canvas.</p>
+      <li class="scan-layer">
+        <span class="n">02</span>
+        <div>
+          <h3 class="d3">Information architecture</h3>
+          <p>Rank information by operational importance. Ops, admin, and exec share a kit — they are not the same screen.</p>
+        </div>
+        <div class="scan-frag">
+          <b>Question → signal → records</b>
+          Density follows the job, not the stakeholder list
+        </div>
       </li>
-      <li>
-        <span class="wk">03 · Scan</span>
-        <span class="bar" style="--w:75%"></span>
-        <h3 class="d3">KPIs, chart, table</h3>
-        <p>Signal, then evidence, then the row they act on. Filters land on the source record, not another export.</p>
+      <li class="scan-layer">
+        <span class="n">03</span>
+        <div>
+          <h3 class="d3">Scan</h3>
+          <p>Show the signal first, then evidence and the relevant records. Filters land on the source row, not another export.</p>
+        </div>
+        <div class="scan-frag">
+          <span class="n-stat num">4</span>
+          <div class="scan-rows" style="margin-top:8px">
+            <span>EX-184 · Payment failed<em>Unassigned</em></span>
+            <span>EX-179 · Seat limit<em>Unassigned</em></span>
+          </div>
+        </div>
       </li>
-      <li>
-        <span class="wk">04 · Workflow</span>
-        <span class="bar" style="--w:100%"></span>
-        <h3 class="d3">Admin that finishes</h3>
-        <p>Assign, override, audit — a console operators can complete a task in, not a settings graveyard.</p>
+      <li class="scan-layer">
+        <span class="n">04</span>
+        <div>
+          <h3 class="d3">Workflow</h3>
+          <p>Allow the user to complete the action without leaving the view — assign, override, or resolve on the row.</p>
+        </div>
+        <div class="scan-frag">
+          <span class="go" style="pointer-events:none">Assign</span>
+          <p style="margin-top:8px;font-size:11px">Action stays on the record</p>
+        </div>
       </li>
     </ol>
   </div>
@@ -782,57 +891,58 @@ body.page-dashboard .hero{
       <div>
         <p class="eyebrow" data-r>Dashboard UX</p>
         <h2 class="d2 s-title" id="roleH" data-r>Ops, admin, and exec are not the same view</h2>
-        <p class="lede" data-r>Real-time visibility for the desk. A table the admin can finish. A quiet summary leadership will actually open.</p>
+        <p class="lede" data-r>The desk needs exceptions. Admin needs a task they can finish. Leadership needs one answer and a way to drill down.</p>
       </div>
     </div>
     <div class="switch" data-r>
       <div class="dash-copy">
         <div class="dash-tabs" role="tablist" aria-label="Dashboard role variants">
-          <button type="button" role="tab" id="tab-ops" aria-selected="true" aria-controls="panel-ops">Ops scan</button>
+          <button type="button" role="tab" id="tab-ops" aria-selected="true" aria-controls="panel-ops">Ops</button>
           <button type="button" role="tab" id="tab-admin" aria-selected="false" aria-controls="panel-admin">Admin</button>
           <button type="button" role="tab" id="tab-exec" aria-selected="false" aria-controls="panel-exec">Exec</button>
         </div>
         <div class="panel" id="panel-ops" role="tabpanel" aria-labelledby="tab-ops">
-          <h3 class="d3">Exception-first ops</h3>
-          <p class="body-sm">The shift question sits above equal-weight KPIs. Open exceptions are a list with owners, not a chart of “issues.”</p>
+          <h3 class="d3">What requires attention right now?</h3>
+          <p class="body-sm">Exception queue with owners, SLA remaining, and an action on the row. Historical volume does not belong here.</p>
           <ul>
-            <li>Primary scan in the first viewport</li>
+            <li>Unowned and at-risk rows first</li>
             <li>Filters that resolve to a record</li>
-            <li>Density matched to a desk, not a projector</li>
+            <li>Assign without leaving the queue</li>
           </ul>
         </div>
         <div class="panel" id="panel-admin" role="tabpanel" aria-labelledby="tab-admin" hidden>
-          <h3 class="d3">Admin that can actually run</h3>
-          <p class="body-sm">Users, roles, and overrides in a table operators can finish — search, status, and an action on the row.</p>
+          <h3 class="d3">What needs to be configured or resolved?</h3>
+          <p class="body-sm">Users, roles, and pending invites in a table an operator can finish — search, status, and the next action on the row.</p>
           <ul>
-            <li>Task-complete layouts, not nested menus</li>
-            <li>Role context visible in the chrome</li>
+            <li>Search and inline actions, not nested menus</li>
             <li>Errors that say what to do next</li>
+            <li>Overrides visible, not buried in settings</li>
           </ul>
         </div>
         <div class="panel" id="panel-exec" role="tabpanel" aria-labelledby="tab-exec" hidden>
-          <h3 class="d3">Quiet executive summary</h3>
-          <p class="body-sm">One answer, a trend, and a path into the ops view. Leadership should not need the same density as the floor.</p>
+          <h3 class="d3">What changed, and where should I drill down?</h3>
+          <p class="body-sm">One primary metric, a short trend, and the exception count as the call to action. Not the operator’s density.</p>
           <ul>
-            <li>One primary metric, not twelve tiles</li>
-            <li>Exception count as the call to action</li>
-            <li>Drill-down into the ops scan, not a new export</li>
+            <li>One answer, not twelve tiles</li>
+            <li>Exception count as the next step</li>
+            <li>Drill into ops evidence, not a new export</li>
           </ul>
         </div>
       </div>
       <div>
         <div class="view" id="view-ops" aria-hidden="true">
           <div class="dash-frame lit">
-            <div class="dash-chrome"><i></i><i></i><i></i><span>ops · exceptions</span></div>
-            <div class="answer">
-              <div><span class="q">Shift question</span><b>Which rows still need an owner?</b></div>
-              <div class="dash-stat">4<small>Need a decision</small></div>
+            <div class="dash-chrome"><i></i><i></i><i></i><span>ops · queue</span></div>
+            <div class="dash-filters">
+              <button type="button" class="dash-chip on" data-ops-filter="risk" tabindex="-1">SLA risk</button>
+              <button type="button" class="dash-chip" data-ops-filter="all" tabindex="-1">All open</button>
             </div>
-            <div class="dash-list">
-              <span class="lab">Open exceptions</span>
-              <div class="ex hot"><span>EX-184 · Payment failed · Priya</span><small>Now</small></div>
-              <div class="ex hot"><span>EX-179 · Seat limit · Unassigned</span><small>1h</small></div>
-              <div class="ex"><span>EX-171 · Sync lag · Tom</span><small>Watch</small></div>
+            <div class="dash-list" id="opsQueue">
+              <span class="lab">Needs attention</span>
+              <div class="ex hot" data-risk="1"><span>EX-184 · Payment failed · Unassigned</span><span class="sla hot"><i style="--p:18%"></i>14m</span></div>
+              <div class="ex hot" data-risk="1"><span>EX-179 · Seat limit · Unassigned</span><span class="sla hot"><i style="--p:32%"></i>38m</span></div>
+              <div class="ex" data-risk="0"><span>EX-162 · Invite expired · Priya</span><span class="sla"><i style="--p:64%"></i>2h</span></div>
+              <div class="ex" data-risk="0"><span>EX-155 · Provisioning · Tom</span><span class="sla"><i style="--p:80%"></i>4h</span></div>
             </div>
           </div>
         </div>
@@ -840,30 +950,31 @@ body.page-dashboard .hero{
           <div class="dash-frame">
             <div class="dash-chrome"><i></i><i></i><i></i><span>admin · users</span></div>
             <div class="dash-top">
-              <div class="dash-search">Search members</div>
-              <span class="dash-chip on">Active</span>
+              <input class="dash-search" id="dashAdminSearch" type="search" placeholder="Search members" tabindex="-1" autocomplete="off">
+              <span class="dash-chip on">Pending</span>
               <span class="dash-user">PC</span>
             </div>
-            <table class="dt">
-              <thead><tr><th>User</th><th>Role</th><th>Status</th><th></th></tr></thead>
+            <p class="admin-err">Invite expired for sara@north.co<small>Resend or revoke from the row</small></p>
+            <table class="dt" id="adminTable">
+              <thead><tr><th>User</th><th>Role</th><th>Status</th><th>Action</th></tr></thead>
               <tbody>
+                <tr>
+                  <td data-l="User">sara@north.co</td>
+                  <td data-l="Role">Member</td>
+                  <td data-l="Status"><span class="st hot">Invite expired</span></td>
+                  <td data-l="Action"><button type="button" class="go" tabindex="-1">Resend</button></td>
+                </tr>
                 <tr>
                   <td data-l="User">Priya Chen</td>
                   <td data-l="Role">Owner</td>
                   <td data-l="Status"><span class="st ok">Active</span></td>
-                  <td data-l="Action"><span class="go">Edit</span></td>
+                  <td data-l="Action"><button type="button" class="go" tabindex="-1">Edit</button></td>
                 </tr>
                 <tr>
                   <td data-l="User">Tom Hale</td>
                   <td data-l="Role">Admin</td>
                   <td data-l="Status"><span class="st ok">Active</span></td>
-                  <td data-l="Action"><span class="go">Edit</span></td>
-                </tr>
-                <tr>
-                  <td data-l="User">sara@north.co</td>
-                  <td data-l="Role">Member</td>
-                  <td data-l="Status"><span class="st hot">Invite</span></td>
-                  <td data-l="Action"><span class="go">Resend</span></td>
+                  <td data-l="Action"><button type="button" class="go" tabindex="-1">Override</button></td>
                 </tr>
               </tbody>
             </table>
@@ -876,13 +987,15 @@ body.page-dashboard .hero{
               <div><span class="q">This week</span><b>Resolution holds. Four exceptions still open.</b></div>
               <div class="dash-stat">86%<small>Resolved · 24h</small></div>
             </div>
-            <div class="chart" style="border:0">
-              <span class="lab">Exception trend</span>
-              <div class="bars" style="min-height:72px">
-                <i style="--h:38%"></i><i style="--h:44%"></i><i style="--h:36%"></i>
-                <i style="--h:52%"></i><i class="hot" style="--h:61%"></i><i style="--h:48%"></i><i style="--h:42%"></i>
+            <p class="exec-note">4 open · −2 vs last week. Drill into the ops queue — not another spreadsheet.</p>
+            <div class="chart" style="border:0;padding-bottom:8px">
+              <span class="lab">Open exceptions · 7d</span>
+              <div class="bars" style="min-height:56px">
+                <i style="--h:62%"></i><i style="--h:58%"></i><i style="--h:70%"></i>
+                <i class="hot" style="--h:78%"></i><i style="--h:52%"></i><i style="--h:48%"></i><i style="--h:42%"></i>
               </div>
             </div>
+            <button type="button" class="drill" id="execDrill" tabindex="-1">Open ops scan →</button>
           </div>
         </div>
       </div>
@@ -896,36 +1009,22 @@ body.page-dashboard .hero{
     <h2 class="d2" id="pfH" data-r>ShiftRail · exceptions on the board</h2>
     <div class="work-grid">
       <div data-r>
-        <div class="dash-frame lit" aria-hidden="true">
-          <div class="dash-chrome"><i></i><i></i><i></i><span>shiftrail · morning scan</span></div>
-          <div class="answer">
-            <div><span class="q">Shift question</span><b>Which loads breach in the next two hours?</b></div>
-            <div class="dash-stat">3<small>Need an owner</small></div>
-          </div>
-          <div class="kpis">
-            <div class="kpi"><span>On time</span><b>94%</b><em>↑ 2.1 pts</em></div>
-            <div class="kpi warn"><span>Oldest open</span><b>11m</b><em>Needs owner</em></div>
-            <div class="kpi"><span>Daily routes</span><b>400+</b><em>Live</em></div>
-          </div>
-          <div class="dash-list">
-            <span class="lab">Open exceptions</span>
-            <div class="ex hot"><span>DAL → PHX · late gate</span><small>Urgent</small></div>
-            <div class="ex"><span>ATL → CLT · DOC hold</span><small>Watch</small></div>
-            <div class="ex ok"><span>SEA → PDX · cleared</span><small>Done</small></div>
-          </div>
-        </div>
-        <p class="cap-note"><span class="flag">Case</span> Pattern from the published ShiftRail study</p>
-      </div>
-      <div data-r>
-        <p class="lede">Exception scanning and SLA views for US dispatch. Operators see breach risk on the board, not in a weekly report.</p>
-        <p class="work-stat"><b class="num">−32%</b><span>manual handle time · signed-off</span></p>
-        <dl class="scope">
-          <div><dt>Sector</dt><dd>US trucking · dispatch CRM</dd></div>
-          <div><dt>Focus</dt><dd>Exception hierarchy, SLA, supervisor controls</dd></div>
-          <div><dt>Scale</dt><dd>400+ daily routes · 11 weeks to production</dd></div>
+        <p class="lede">US dispatch found breach risk in a weekly report. The dashboard decision was exception hierarchy on the morning scan — SLA on the row, unowned work above the fold — so operators assign from the board instead of a side spreadsheet.</p>
+        <dl class="proof-flow">
+          <div><dt>Problem</dt><dd>Breach risk lived in a weekly report. The product view did not answer the shift question.</dd></div>
+          <div><dt>Decision</dt><dd>Exception hierarchy first. SLA visibility on the row. Unowned work above the fold.</dd></div>
+          <div><dt>Workflow</dt><dd>Assign and clear from the board. No export to rebuild the answer.</dd></div>
+          <div><dt>Outcome</dt><dd>−32% manual handle time. 400+ daily routes. 11 weeks to production.</dd></div>
         </dl>
         <div class="proof-cta">
           <a href="/work/shiftrail-dispatch" class="btn on-dark"><span>Read the ShiftRail case</span><i>→</i></a>
+        </div>
+      </div>
+      <div data-r>
+        <p class="work-stat"><b class="num">−32%</b><span>manual handle time · signed-off</span></p>
+        <div class="proof-metrics">
+          <div><b class="num">400+</b><span>Daily routes on the board</span></div>
+          <div><b class="num">11 wks</b><span>To production</span></div>
         </div>
       </div>
     </div>
@@ -1007,7 +1106,7 @@ body.page-dashboard .hero{
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">04</span>
-          <span class="qt">Can you work inside our existing product?</span>
+          <span class="qt">Can you redesign dashboards inside our existing product?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
@@ -1024,6 +1123,16 @@ body.page-dashboard .hero{
           <p>The top questions operators ask on a shift, access to a few users for a walkthrough, and a sample of the current view or export. An NDA is available before the first call.</p>
         </div></div></div>
       </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
+          <span class="qn num">06</span>
+          <span class="qt">Can you work with our existing design system and data architecture?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
+          <p>Yes. We design against your system and the data you already have. Kickoff needs the operator questions and a sample of the current view — not a platform swap.</p>
+        </div></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1032,7 +1141,7 @@ body.page-dashboard .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
     <h2 class="d2" id="ctaH" data-r>Need a scan they actually finish?</h2>
-    <p class="lede" data-r>A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
+    <p class="lede" data-r>Bring the current dashboard — a screenshot, an export, or the spreadsheet the team rebuilt beside the product. A 20-minute fit call to talk, or a written brief if you already have scope.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
@@ -1102,8 +1211,10 @@ body.page-dashboard .hero{
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Dashboards & Admin Panels",
-  "description": "Analytics, admin, and operational dashboards designed for clarity, scanability, and daily use, not spreadsheet exports.",
+  "name": "Dashboard Design",
+  "alternateName": "Dashboards & Admin Panels",
+  "serviceType": "Operational dashboard, admin panel, and analytics interface design",
+  "description": "Operational dashboard and admin panel design for SaaS and ops teams — exception queues, role-aware views, and tables that resolve work.",
   "provider": {"@type": "Organization", "name": "KRIVA Technologies"},
   "url": "https://krivatechnologies.com/services/dashboard-design"
 }
@@ -1116,8 +1227,9 @@ body.page-dashboard .hero{
     {"@type":"Question","name":"Do you design admin and analytics views?","acceptedAnswer":{"@type":"Answer","text":"Yes. We design internal admin consoles, customer analytics, and executive summary dashboards, with hierarchy matched to who opens the view and why."}},
     {"@type":"Question","name":"How is this different from CRM Design?","acceptedAnswer":{"@type":"Answer","text":"Dashboard Design owns widget hierarchy, filters, and drill-downs for analytics and ops views. CRM Design owns stage models, pipeline UX, and desk workflows. Many engagements use both."}},
     {"@type":"Question","name":"How is this different from SaaS Product Design?","acceptedAnswer":{"@type":"Answer","text":"SaaS Product Design owns tenant-aware UX, permissions, and admin versus customer surfaces. This service owns the scan: hierarchy, filters, tables, and exception views operators open every morning. A live SaaS product often needs both."}},
-    {"@type":"Question","name":"Can you work inside our existing product?","acceptedAnswer":{"@type":"Answer","text":"Yes. We redesign views inside your current app, or define patterns for a new console. The deliverable is layout and interaction, not a mandatory platform swap."}},
-    {"@type":"Question","name":"What do we need before a kickoff?","acceptedAnswer":{"@type":"Answer","text":"The top questions operators ask on a shift, access to a few users for a walkthrough, and a sample of the current view or export. An NDA is available before the first call."}}
+    {"@type":"Question","name":"Can you redesign dashboards inside our existing product?","acceptedAnswer":{"@type":"Answer","text":"Yes. We redesign views inside your current app, or define patterns for a new console. The deliverable is layout and interaction, not a mandatory platform swap."}},
+    {"@type":"Question","name":"What do we need before a kickoff?","acceptedAnswer":{"@type":"Answer","text":"The top questions operators ask on a shift, access to a few users for a walkthrough, and a sample of the current view or export. An NDA is available before the first call."}},
+    {"@type":"Question","name":"Can you work with our existing design system and data architecture?","acceptedAnswer":{"@type":"Answer","text":"Yes. We design against your system and the data you already have. Kickoff needs the operator questions and a sample of the current view — not a platform swap."}}
   ]
 }
 </script>
@@ -1214,6 +1326,89 @@ tabs.forEach((btn,i)=>{
     selectView(tabs[n].id);
   });
 });
+
+const drill=document.getElementById('execDrill');
+if(drill) drill.addEventListener('click',()=>selectView('tab-ops'));
+
+(function scanDemo(){
+  if(!frame) return;
+  const rows=[...frame.querySelectorAll('tbody tr')];
+  const chips=[...frame.querySelectorAll('[data-filter]')];
+  const search=document.getElementById('dashScanSearch');
+  const counts=frame.querySelectorAll('[data-unowned]');
+  const label=frame.querySelector('[data-unowned-label]');
+  let filter='unowned';
+  function ownerNone(tr){return tr.getAttribute('data-owner')==='none'}
+  function show(tr){
+    const q=(search&&search.value||'').trim().toLowerCase();
+    if(q && !tr.textContent.toLowerCase().includes(q)) return false;
+    if(filter==='unowned') return ownerNone(tr);
+    if(filter==='watch') return tr.getAttribute('data-status')==='watch';
+    return true;
+  }
+  function render(){
+    let n=0;
+    rows.forEach(tr=>{
+      tr.classList.toggle('is-hide', !show(tr));
+      if(ownerNone(tr)) n++;
+    });
+    counts.forEach(el=>{ el.textContent=String(n); });
+    if(label) label.textContent=n===1?'Needs a decision now':'Need a decision now';
+  }
+  chips.forEach(c=>c.addEventListener('click',()=>{
+    filter=c.getAttribute('data-filter');
+    chips.forEach(x=>x.classList.toggle('on', x===c));
+    render();
+  }));
+  if(search) search.addEventListener('input', render);
+  frame.addEventListener('click',e=>{
+    const btn=e.target.closest('[data-act="assign"]');
+    if(!btn) return;
+    const tr=btn.closest('tr');
+    if(!tr) return;
+    tr.setAttribute('data-owner','you');
+    const own=tr.querySelector('[data-l="Owner"]');
+    if(own){ own.textContent='You'; own.classList.remove('none'); }
+    const st=tr.querySelector('.st.hot');
+    if(st) st.classList.remove('hot');
+    btn.textContent='View';
+    btn.classList.add('done');
+    btn.removeAttribute('data-act');
+    render();
+  });
+  render();
+})();
+
+(function opsDemo(){
+  const queue=document.getElementById('opsQueue');
+  if(!queue) return;
+  const rows=[...queue.querySelectorAll('.ex')];
+  const chips=[...document.querySelectorAll('[data-ops-filter]')];
+  let filter='risk';
+  function render(){
+    rows.forEach(row=>{
+      const risk=row.getAttribute('data-risk')==='1';
+      row.classList.toggle('is-hide', filter==='risk' && !risk);
+    });
+  }
+  chips.forEach(c=>c.addEventListener('click',()=>{
+    filter=c.getAttribute('data-ops-filter');
+    chips.forEach(x=>x.classList.toggle('on', x===c));
+    render();
+  }));
+  render();
+})();
+
+(function adminDemo(){
+  const input=document.getElementById('dashAdminSearch');
+  const table=document.getElementById('adminTable');
+  if(!input||!table) return;
+  const rows=[...table.querySelectorAll('tbody tr')];
+  input.addEventListener('input',()=>{
+    const q=input.value.trim().toLowerCase();
+    rows.forEach(tr=>tr.classList.toggle('is-hide', q && !tr.textContent.toLowerCase().includes(q)));
+  });
+})();
 
 document.querySelectorAll('.faq-q').forEach(btn=>{
   const item=btn.closest('.faq-item');
