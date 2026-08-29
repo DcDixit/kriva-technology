@@ -298,7 +298,8 @@ body.page-work .hero{
 
 .wk-bar{
   position:sticky;top:58px;z-index:60;
-  background:rgba(244,243,238,.94);border-bottom:1px solid var(--rule)
+  background:rgba(244,243,238,.94);border-bottom:1px solid var(--rule);
+  scroll-margin-top:72px
 }
 @supports(backdrop-filter:blur(1px)){@media(min-width:900px){.wk-bar{backdrop-filter:blur(12px) saturate(1.4)}}}
 .wk-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:12px;min-width:0}
@@ -601,6 +602,36 @@ body.page-work .hero{
 .wk-tile .wk-copy{padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,24px) 0}
 .wk-tile h3{font-size:clamp(1.28rem,2vw,1.7rem);max-width:14ch}
 
+.wk-web .wk-media--web{
+  background:var(--paper-2);border-color:var(--rule);
+  box-shadow:0 14px 44px rgba(14,18,22,.07);
+  padding:clamp(12px,1.6vw,18px)
+}
+.wk-browser{
+  background:var(--white);border:1px solid var(--rule);overflow:hidden;min-width:0;margin:0
+}
+.wk-browser-bar{
+  display:flex;align-items:center;gap:6px;padding:10px 14px;
+  background:#F4F3EE;border-bottom:1px solid var(--rule);
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
+}
+.wk-browser-bar i{width:8px;height:8px;border-radius:50%;background:#D4D0C8;font-style:normal;flex:none}
+.wk-browser-bar i:nth-child(1){background:#E8A598}
+.wk-browser-bar i:nth-child(2){background:#E8D49A}
+.wk-browser-bar i:nth-child(3){background:#9BC99B}
+.wk-browser-bar span{
+  margin-left:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  max-width:min(100%,28ch);color:var(--steel-2,#8C98A4)
+}
+.wk-browser img{
+  display:block;width:100%;height:auto;aspect-ratio:16/10;
+  object-fit:cover;object-position:top center;background:var(--white)
+}
+.wk-web .wk-media img{aspect-ratio:16/10;object-position:top center}
+.wk-web-featured .wk-kicker{color:var(--ink)}
+.wk-web .wk-copy h3{max-width:18ch}
+.wk-media:has(.wk-browser) .wk-peek{display:none}
+
 .wk-empty{padding-block:clamp(56px,8vw,100px);text-align:center}
 .wk-empty[hidden]{display:none}
 .wk-empty .body-sm{margin:14px auto 22px}
@@ -874,7 +905,7 @@ body.page-work .hero{
       <li aria-current="page">Work</li>
     </ol>
     <div class="wk-hero-copy">
-      <p class="eyebrow" data-r>Selected work · 8 cases</p>
+      <p class="eyebrow" data-r>Selected work · 16 cases</p>
       <h1 class="d1 mask" id="h1" data-mask>
         <span><i>Held up</i></span>
         <span><i>after launch.</i></span>
@@ -894,13 +925,14 @@ body.page-work .hero{
   </div>
 </header>
 
-<div class="wk-bar" id="filters">
+<div class="wk-bar" id="web-design">
   <div class="wrap">
     <p class="wk-scroll-hint" id="wkScrollHint" hidden><i aria-hidden="true">→</i> Swipe for more filters</p>
     <div class="wk-chips-wrap" id="wkChipsWrap">
       <div class="wk-chips" role="group" aria-label="Filter case studies by category">
-      <button type="button" class="wk-chip" data-f="all" aria-pressed="true">All <u class="num">08</u></button>
-      <button type="button" class="wk-chip" data-f="trucking" aria-pressed="false">Trucking <u class="num">01</u></button>
+      <button type="button" class="wk-chip" data-f="all" aria-pressed="true">All <u class="num">16</u></button>
+      <button type="button" class="wk-chip" data-f="web-design" aria-pressed="false">Web Design &amp; UI/UX <u class="num">08</u></button>
+      <button type="button" class="wk-chip" data-f="trucking" aria-pressed="false">Trucking <u class="num">04</u></button>
       <button type="button" class="wk-chip" data-f="saas" aria-pressed="false">SaaS <u class="num">04</u></button>
       <button type="button" class="wk-chip" data-f="finance" aria-pressed="false">Finance <u class="num">01</u></button>
       <button type="button" class="wk-chip" data-f="mobile" aria-pressed="false">Mobile <u class="num">01</u></button>
@@ -908,7 +940,7 @@ body.page-work .hero{
       <button type="button" class="wk-chip" data-f="marketplace" aria-pressed="false">Marketplace <u class="num">01</u></button>
       </div>
     </div>
-    <p class="wk-count" id="count" aria-live="polite">Showing 8 of 8</p>
+    <p class="wk-count" id="count" aria-live="polite">Showing 16 of 16</p>
   </div>
 </div>
 
@@ -1008,6 +1040,36 @@ body.page-work .hero{
         </div>
       </article>
 
+      <article class="wk-row wk-case wk-web wk-web-featured" data-cats="web-design trucking" aria-labelledby="webEliteOneH">
+        <div class="wk-media wk-media--web">
+          <figure class="wk-browser">
+            <div class="wk-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>elite-one.us</span></div>
+            <img src="/media/work/web/eliteone-transportation.webp" alt="EliteOne Transportation website homepage — heavy-haul trucking, website UI/UX and design by KRIVA" width="1440" height="900" loading="eager" fetchpriority="high" decoding="async">
+          </figure>
+        </div>
+        <div class="wk-copy">
+          <span class="wk-kicker">Web Design &amp; UI/UX · Trucking</span>
+          <h3 id="webEliteOneH">EliteOne Transportation</h3>
+          <p class="body-sm">Heavy-haul and dedicated cargo services with nationwide coverage from Tacoma, Washington.</p>
+          <div class="wk-tags"><span class="wk-tag">Website UI/UX &amp; Design</span><span class="wk-tag">Featured</span></div>
+        </div>
+      </article>
+
+      <article class="wk-row flip wk-case wk-web wk-web-featured" data-cats="web-design" aria-labelledby="webKeepMovingH">
+        <div class="wk-media wk-media--web">
+          <figure class="wk-browser">
+            <div class="wk-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>keepmovingus.com</span></div>
+            <img src="/media/work/web/keep-moving.webp" alt="Keep Moving website homepage — Seattle moving company, website UI/UX and design by KRIVA" width="1440" height="900" loading="eager" fetchpriority="high" decoding="async">
+          </figure>
+        </div>
+        <div class="wk-copy">
+          <span class="wk-kicker">Web Design &amp; UI/UX · Moving</span>
+          <h3 id="webKeepMovingH">Keep Moving</h3>
+          <p class="body-sm">Local and long-distance moving services with a quote-first homepage for the Seattle and Pacific Northwest market.</p>
+          <div class="wk-tags"><span class="wk-tag">Website UI/UX &amp; Design</span><span class="wk-tag">Residential</span><span class="wk-tag">Featured</span></div>
+        </div>
+      </article>
+
       <div class="wrap">
 
       <article class="wk-row wk-case" data-cats="saas">
@@ -1046,6 +1108,36 @@ body.page-work .hero{
           <p class="body-sm">Activation was dying after SSO. We designed a first sitting that completes a real payroll run — permissions wait until after first value.</p>
           <div class="wk-tags"><span class="wk-tag">Onboarding</span><span class="wk-tag">Permissions</span><span class="wk-tag">SaaS</span></div>
           <span class="wk-go">Read case study <i>→</i></span>
+        </div>
+      </article>
+
+      <article class="wk-row wk-case wk-web wk-web-featured" data-cats="web-design" aria-labelledby="webCascadiaH">
+        <div class="wk-media wk-media--web">
+          <figure class="wk-browser">
+            <div class="wk-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>cascadiacollection.com</span></div>
+            <img src="/media/work/web/cascadia-collection.webp" alt="Cascadia Collection website homepage — luxury automotive dealership, website UI/UX and design by KRIVA" width="1440" height="900" loading="eager" decoding="async">
+          </figure>
+        </div>
+        <div class="wk-copy">
+          <span class="wk-kicker">Web Design &amp; UI/UX · Luxury automotive</span>
+          <h3 id="webCascadiaH">Cascadia Collection</h3>
+          <p class="body-sm">Inventory-led homepage and premium brand presentation for a Pacific Northwest luxury and exotic automotive dealership.</p>
+          <div class="wk-tags"><span class="wk-tag">Website UI/UX &amp; Design</span><span class="wk-tag">Automotive</span><span class="wk-tag">Featured</span></div>
+        </div>
+      </article>
+
+      <article class="wk-row flip wk-case wk-web wk-web-featured" data-cats="web-design trucking" aria-labelledby="webSchwarzH">
+        <div class="wk-media wk-media--web">
+          <figure class="wk-browser">
+            <div class="wk-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>schwarzlogistics.com</span></div>
+            <img src="/media/work/web/schwarz-logistics.webp" alt="Schwarz Logistics website homepage — asset-based trucking carrier, website UI/UX and design by KRIVA" width="1440" height="900" loading="eager" fetchpriority="high" decoding="async">
+          </figure>
+        </div>
+        <div class="wk-copy">
+          <span class="wk-kicker">Web Design &amp; UI/UX · Trucking</span>
+          <h3 id="webSchwarzH">Schwarz Logistics</h3>
+          <p class="body-sm">Fleet services, real-time tracking, and quote-led conversion for an asset-based refrigerated and open-deck carrier.</p>
+          <div class="wk-tags"><span class="wk-tag">Website UI/UX &amp; Design</span><span class="wk-tag">Logistics</span><span class="wk-tag">Featured</span></div>
         </div>
       </article>
 
@@ -1154,6 +1246,21 @@ body.page-work .hero{
         </div>
       </article>
 
+      <article class="wk-row flip wk-case wk-web" data-cats="web-design trucking" aria-labelledby="webXmileAutoH">
+        <div class="wk-media wk-media--web">
+          <figure class="wk-browser">
+            <div class="wk-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>xmileautotransport.com</span></div>
+            <img src="/media/work/web/xmile-auto-transport.webp" alt="XmileAuto Transport website homepage — auto shipping broker, website UI/UX and design by KRIVA" width="1440" height="900" loading="eager" decoding="async">
+          </figure>
+        </div>
+        <div class="wk-copy">
+          <span class="wk-kicker">Web Design &amp; UI/UX · Auto transport</span>
+          <h3 id="webXmileAutoH">XmileAuto Transport</h3>
+          <p class="body-sm">Open and enclosed vehicle shipping for dealerships, auctions, and private clients — service-led homepage structure.</p>
+          <div class="wk-tags"><span class="wk-tag">Website UI/UX &amp; Design</span><span class="wk-tag">Auto transport</span></div>
+        </div>
+      </article>
+
       <article class="wk-row flip wk-case" data-cats="brand">
         <div class="wk-media">
           <div class="wk-brand" role="img" aria-label="BrandLift identity and Shopify PDP as one system: wordmark, type, and a product page with the same mark language.">
@@ -1195,6 +1302,52 @@ body.page-work .hero{
           <span class="wk-go">Read case study <i>→</i></span>
         </div>
       </article>
+
+      <article class="wk-row wk-case wk-web" data-cats="web-design" aria-labelledby="webXmileMovingH">
+        <div class="wk-media wk-media--web">
+          <figure class="wk-browser">
+            <div class="wk-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>xmiletransportandmoving.com</span></div>
+            <img src="/media/work/web/xmile-transport-moving.webp" alt="Xmile Transport and Moving website homepage — Chicago moving company, website UI/UX and design by KRIVA" width="1440" height="900" loading="eager" decoding="async">
+          </figure>
+        </div>
+        <div class="wk-copy">
+          <span class="wk-kicker">Web Design &amp; UI/UX · Moving</span>
+          <h3 id="webXmileMovingH">Xmile Transport &amp; Moving</h3>
+          <p class="body-sm">Residential, commercial, storage, packing, and auto shipping for the Chicago market — quote form on the homepage.</p>
+          <div class="wk-tags"><span class="wk-tag">Website UI/UX &amp; Design</span><span class="wk-tag">Moving</span></div>
+        </div>
+      </article>
+
+      <div class="wk-pair">
+        <article class="wk-tile wk-case wk-web" data-cats="web-design" aria-labelledby="webExtraMileH">
+          <div class="wk-media wk-media--web">
+            <figure class="wk-browser">
+              <div class="wk-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>xtramilemovers.com</span></div>
+              <img src="/media/work/web/extra-mile-movers.webp" alt="Extra Mile Movers website homepage — Chicago moving company, website UI/UX and design by KRIVA" width="1440" height="900" loading="eager" decoding="async">
+            </figure>
+          </div>
+          <div class="wk-copy">
+            <span class="wk-kicker">Web Design &amp; UI/UX · Moving</span>
+            <h3 id="webExtraMileH">Extra Mile Movers</h3>
+            <p class="body-sm">Chicago local and long-distance moving with residential, storage, packing, and car transport services.</p>
+            <div class="wk-tags"><span class="wk-tag">Website UI/UX &amp; Design</span></div>
+          </div>
+        </article>
+        <article class="wk-tile wk-case wk-web" data-cats="web-design" aria-labelledby="webKeepFitH">
+          <div class="wk-media wk-media--web">
+            <figure class="wk-browser">
+              <div class="wk-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>fitnesskeepmoving.com</span></div>
+              <img src="/media/work/web/keep-moving-fitness.webp" alt="Keep Moving Fitness website homepage — commercial gym equipment services, website UI/UX and design by KRIVA" width="1440" height="900" loading="eager" decoding="async">
+            </figure>
+          </div>
+          <div class="wk-copy">
+            <span class="wk-kicker">Web Design &amp; UI/UX · Fitness services</span>
+            <h3 id="webKeepFitH">Keep Moving Fitness</h3>
+            <p class="body-sm">Commercial gym equipment assembly, installation, maintenance, and repair — service programs for facility operators.</p>
+            <div class="wk-tags"><span class="wk-tag">Website UI/UX &amp; Design</span><span class="wk-tag">Commercial</span></div>
+          </div>
+        </article>
+      </div>
 
       <div class="wk-pair">
         <article class="wk-tile wk-case" data-cats="saas">
@@ -1527,7 +1680,8 @@ function apply(f, push){
     setTimeout(swap, 180);
   }
   if(push!=='init'){
-    const url=f==='all'?location.pathname:location.pathname+'?filter='+f;
+    const hash=f==='web-design'?'#web-design':'';
+    const url=f==='all'?location.pathname+hash:location.pathname+'?filter='+f+hash;
     history.replaceState(null,'',url);
   }
 }
@@ -1557,7 +1711,16 @@ if(chipRow) chipRow.addEventListener('keydown',e=>{
   chips[(i+(e.key==='ArrowRight'?1:chips.length-1))%chips.length].focus();
 });
 const initial=new URLSearchParams(location.search).get('filter');
-if(initial && chips.some(c=>c.dataset.f===initial)) apply(initial,'init');
+function bootFilters(){
+  const hashFilter=(location.hash||'').replace(/^#/,'');
+  const boot=hashFilter&&chips.some(c=>c.dataset.f===hashFilter)?hashFilter:(initial&&chips.some(c=>c.dataset.f===initial)?initial:'all');
+  apply(boot,'init');
+  if(hashFilter&&chips.some(c=>c.dataset.f===hashFilter)){
+    requestAnimationFrame(()=>document.getElementById('web-design')?.scrollIntoView({behavior:reduce()?'auto':'smooth',block:'start'}));
+  }
+}
+bootFilters();
+addEventListener('hashchange',bootFilters);
 
 if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
 run();
