@@ -67,6 +67,7 @@ const JS_TAG = [
   '<!-- KRIVA_GA_START -->',
   '<link rel="preconnect" href="https://www.googletagmanager.com">',
   '<link rel="dns-prefetch" href="https://www.google-analytics.com">',
+  '<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>',
   '<script src="/shared/analytics.js" defer></script>',
   '<!-- KRIVA_GA_END -->',
 ].join('\n');
