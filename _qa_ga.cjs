@@ -7,9 +7,43 @@ const { getChromePath } = require('chrome-launcher');
 const ROOT = __dirname;
 const PORT = Number(process.env.PORT || 5177);
 const BASE = `http://127.0.0.1:${PORT}`;
+const ID = 'G-FHG12KTF8C';
 
 function htmlFiles() {
   return fs.readdirSync(ROOT).filter((f) => f === '404.html' || /^kriva-.*\.html$/.test(f));
+}
+
+function staticAudit(files) {
+  const issues = [];
+  for (const f of files) {
+    const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
+    const headEnd = src.indexOf('</head>');
+    const head = headEnd >= 0 ? src.slice(0, headEnd) : '';
+    const body = headEnd >= 0 ? src.slice(headEnd) : src;
+    const ga = (head.match(/src="\/shared\/analytics\.js"/g) || []).length;
+    const gtag = (head.match(new RegExp(`gtag/js\\?id=${ID}`, 'g')) || []).length;
+    const start = (head.match(/KRIVA_GA_START/g) || []).length;
+    const end = (head.match(/KRIVA_GA_END/g) || []).length;
+    const bodyGtag = (body.match(/gtag\/js/g) || []).length;
+    const bodyGa = (body.match(/src="\/shared\/analytics\.js"/g) || []).length;
+    const extraGtagInHead = (head.match(/gtag\/js/g) || []).length;
+    const extraGaInHead = (head.match(/src="\/shared\/analytics\.js"/g) || []).length;
+    const dupGtag = extraGtagInHead > 1;
+    const dupGa = extraGaInHead > 1;
+
+    if (ga !== 1 || gtag !== 1 || start !== 1 || end !== 1 || bodyGtag || bodyGa || dupGtag || dupGa) {
+      issues.push({ f, ga, gtag, start, end, bodyGtag, bodyGa, dupGtag, dupGa });
+    }
+  }
+
+  const analytics = fs.readFileSync(path.join(ROOT, 'shared/analytics.js'), 'utf8');
+  const analyticsOk =
+    analytics.includes(`MEASUREMENT_ID = '${ID}'`) &&
+    !analytics.includes('G-XXXXXXXXXX') &&
+    !/createElement\s*\(\s*['"]script['"]\s*\)/.test(analytics) &&
+    /!\s*local\s*\|\|\s*debug/.test(analytics);
+
+  return { issues, analyticsOk };
 }
 
 function layerEvents(dl) {
@@ -28,17 +62,21 @@ function layerEvents(dl) {
 
 (async () => {
   const files = htmlFiles();
+  const audit = staticAudit(files);
+  console.log('pages', files.length);
+  console.log('static issues', audit.issues.length ? audit.issues : 'none');
+  console.log('analytics.js ok', audit.analyticsOk);
+
   const counts = files.map((f) => {
     const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
     return {
       f,
       ga: (src.match(/src="\/shared\/analytics\.js"/g) || []).length,
-      gtag: (src.match(/gtag\/js\?id=G-FHG12KTF8C/g) || []).length,
+      gtag: (src.match(new RegExp(`gtag/js\\?id=${ID}`, 'g')) || []).length,
       start: (src.match(/KRIVA_GA_START/g) || []).length,
     };
   });
   const bad = counts.filter((c) => c.ga !== 1 || c.gtag !== 1 || c.start !== 1);
-  console.log('pages', files.length);
   console.log('duplicate/missing snippet', bad.length ? bad : 'none');
 
   const browser = await puppeteer.launch({
@@ -51,24 +89,33 @@ function layerEvents(dl) {
   page.on('pageerror', (e) => errors.push(String(e)));
 
   const gtagReqs = [];
+  const collectReqs = [];
   page.on('request', (r) => {
-    if (/googletagmanager\.com\/gtag\/js/.test(r.url())) gtagReqs.push(r.url());
+    const u = r.url();
+    if (/googletagmanager\.com\/gtag\/js/.test(u)) gtagReqs.push(u);
+    if (/google-analytics\.com\/g\/collect/.test(u)) collectReqs.push(u);
   });
 
   await page.setViewport({ width: 1280, height: 900 });
   await page.goto(BASE + '/', { waitUntil: 'networkidle2', timeout: 30000 });
-  const home = await page.evaluate(() => {
+  await new Promise((r) => setTimeout(r, 2000));
+  const localhostCollect = collectReqs.filter((u) => /tid=G-FHG12KTF8C/.test(u));
+  const home = await page.evaluate((id) => {
     const dl = window.dataLayer || [];
     return {
       flag: !!window.__KRIVA_ANALYTICS__,
       gtag: typeof window.gtag === 'function',
       track: typeof window.krivaTrack === 'function',
       scripts: [...document.querySelectorAll('script[src*="analytics.js"]')].map((s) => s.src),
+      gtagScripts: [...document.querySelectorAll('script[src*="gtag/js"]')].map((s) => s.src),
       nav: !!document.getElementById('nav'),
       layerLen: dl.length,
+      configs: dl.filter((x) => x && x[0] === 'config').map((x) => x[1]),
+      hostname: location.hostname,
     };
-  });
+  }, ID);
   console.log('home', JSON.stringify(home));
+  console.log('localhost collect hits', localhostCollect.length, localhostCollect.length ? localhostCollect : 'none (expected)');
 
   const afterCta = await page.evaluate(() => {
     const a = document.querySelector('.nav-cta a.btn');
@@ -132,9 +179,14 @@ function layerEvents(dl) {
 
   await browser.close();
   const fail =
+    audit.issues.length ||
+    !audit.analyticsOk ||
     bad.length ||
     !home.flag ||
     home.scripts.length !== 1 ||
+    home.gtagScripts.length !== 1 ||
+    home.configs.length !== 0 ||
+    localhostCollect.length > 0 ||
     afterCta.length < 1 ||
     formStart.formStart.length < 1 ||
     formStart.leads.length < 1 ||
