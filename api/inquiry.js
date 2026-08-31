@@ -16,8 +16,10 @@ function field(data, key) {
 }
 
 function requestOrigin(req) {
-  const xfHost = String(req.headers["x-forwarded-host"] || req.headers.host || "krivatechnologies.com");
+  const live = "https://krivatechnologies.com";
+  const xfHost = String(req.headers["x-forwarded-host"] || req.headers.host || "");
   const host = xfHost.split(",")[0].trim();
+  if (!host || /^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(host)) return live;
   const proto = String(req.headers["x-forwarded-proto"] || "https").split(",")[0].trim();
   return proto + "://" + host;
 }
