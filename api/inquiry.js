@@ -1,5 +1,6 @@
 /** POST /api/inquiry: emails the studio without putting an address in page HTML. */
-const TO = process.env.INQUIRY_TO || "krivatechnlogies@gmail.com";
+const { CONTACT_EMAIL } = require("../shared/studio");
+const TO = CONTACT_EMAIL;
 
 function sendJson(res, status, body) {
   res.statusCode = status;
@@ -95,7 +96,7 @@ async function deliver(data) {
 
   if (process.env.GMAIL_APP_PASSWORD) {
     const nodemailer = require("nodemailer");
-    const user = process.env.GMAIL_USER || TO;
+    const user = process.env.GMAIL_USER || CONTACT_EMAIL;
     const tx = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,

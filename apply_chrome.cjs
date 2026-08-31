@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = __dirname;
-const CONTACT_EMAIL = "krivatechnlogies@gmail.com";
+const { CONTACT_EMAIL } = require("./shared/studio");
 
 const PAGE_CURRENT = {
   "kriva-redesign.html": null,
