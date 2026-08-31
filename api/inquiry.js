@@ -15,6 +15,13 @@ function field(data, key) {
   return String(v).trim().slice(0, 4000);
 }
 
+function requestOrigin(req) {
+  const xfHost = String(req.headers["x-forwarded-host"] || req.headers.host || "krivatechnologies.com");
+  const host = xfHost.split(",")[0].trim();
+  const proto = String(req.headers["x-forwarded-proto"] || "https").split(",")[0].trim();
+  return proto + "://" + host;
+}
+
 function buildMessage(data) {
   const inquiryType = field(data, "inquiry_type");
   const rows = [
@@ -47,17 +54,13 @@ function buildMessage(data) {
   const typeLabel = inquiryType === "fit_call" ? "Fit call request" : "Project brief";
   const subject =
     "KRIVA " + typeLabel + ": " + (field(data, "company") || field(data, "name") || "Website");
-  return { text, html, subject };
+  return { text, html, subject, inquiryType };
 }
 
-function formsubmitBody(data) {
-  const { subject } = buildMessage(data);
+function sharedFields(data) {
   return {
     name: field(data, "name"),
     email: field(data, "email"),
-    _subject: subject,
-    _template: "table",
-    _captcha: "false",
     inquiry_type: field(data, "inquiry_type"),
     company: field(data, "company"),
     website: field(data, "site"),
@@ -70,7 +73,34 @@ function formsubmitBody(data) {
   };
 }
 
-async function deliver(data) {
+function web3formsBody(data) {
+  const { subject, text } = buildMessage(data);
+  return {
+    access_key: process.env.WEB3FORMS_ACCESS_KEY,
+    subject,
+    from_name: "KRIVA website",
+    botcheck: "",
+    message: text,
+    ...sharedFields(data),
+  };
+}
+
+function formsubmitBody(data, origin) {
+  const { subject, inquiryType } = buildMessage(data);
+  const next =
+    inquiryType === "fit_call" ? "/contact?sent=fit#book" : "/contact?sent=brief#brief";
+  return {
+    ...sharedFields(data),
+    _subject: subject,
+    _template: "table",
+    _captcha: "false",
+    _honey: "",
+    _url: origin + "/contact",
+    _next: origin + next,
+  };
+}
+
+async function deliver(data, origin) {
   const email = field(data, "email");
   const { text, html, subject } = buildMessage(data);
 
@@ -114,12 +144,25 @@ async function deliver(data) {
     return { channel: "gmail" };
   }
 
-  // FormSubmit blocks Vercel IPs (403). The browser can deliver after this API validates.
+  if (process.env.WEB3FORMS_ACCESS_KEY) {
+    return {
+      channel: "browser",
+      relay: {
+        kind: "json",
+        url: "https://api.web3forms.com/submit",
+        payload: web3formsBody(data),
+      },
+    };
+  }
+
+  // FormSubmit /ajax/ confirmation emails produce "Confirmation token not found".
+  // A real HTML form POST to the unencoded address is the endpoint they support.
   return {
     channel: "browser",
     relay: {
-      url: "https://formsubmit.co/ajax/" + encodeURIComponent(TO),
-      payload: formsubmitBody(data),
+      kind: "form",
+      url: "https://formsubmit.co/" + TO,
+      payload: formsubmitBody(data, origin),
     },
   };
 }
@@ -162,7 +205,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const result = await deliver(data);
+    const result = await deliver(data, requestOrigin(req));
     if (result.channel === "browser") {
       sendJson(res, 200, { ok: true, relay: result.relay });
       return;

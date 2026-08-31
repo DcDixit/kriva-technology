@@ -1022,20 +1022,32 @@ function wireInquiryForm(form, opts) {
       const body = await res.json().catch(() => ({}));
       if (!res.ok || body.ok === false) throw new Error(body.error || ('HTTP ' + res.status));
       if (body.relay && body.relay.url) {
+        const relayPayload = body.relay.payload || payload;
+        if (body.relay.kind === 'form') {
+          const hop = document.createElement('form');
+          hop.method = 'POST';
+          hop.action = body.relay.url;
+          hop.acceptCharset = 'UTF-8';
+          hop.style.display = 'none';
+          Object.keys(relayPayload).forEach((k) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = k;
+            input.value = relayPayload[k] == null ? '' : String(relayPayload[k]);
+            hop.appendChild(input);
+          });
+          document.body.appendChild(hop);
+          hop.submit();
+          return;
+        }
         const relayRes = await fetch(body.relay.url, {
           method: 'POST',
           headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(body.relay.payload || payload)
+          body: JSON.stringify(relayPayload)
         });
         const relayBody = await relayRes.json().catch(() => ({}));
         const ok = relayBody.success === true || String(relayBody.success) === 'true';
-        if (!ok) {
-          const msg = String(relayBody.message || '');
-          if (/activat/i.test(msg)) {
-            throw new Error('First send: open the activation email in the studio inbox, click Activate Form, then try again.');
-          }
-          throw new Error(msg || 'Could not send. Try again shortly.');
-        }
+        if (!ok) throw new Error(String(relayBody.message || '') || 'Could not send. Try again shortly.');
       }
       showDone(opts.successMsg);
     } catch (err) {
@@ -1051,6 +1063,16 @@ function wireInquiryForm(form, opts) {
       if(f) f.focus();
     });
   }
+
+  try {
+    const params = new URLSearchParams(location.search);
+    if (opts.sentValue && params.get('sent') === opts.sentValue) {
+      showDone(opts.successMsg);
+      params.delete('sent');
+      const q = params.toString();
+      history.replaceState({}, '', location.pathname + (q ? '?' + q : '') + location.hash);
+    }
+  } catch (err) {}
 }
 
 wireInquiryForm(document.getElementById('fitForm'), {
@@ -1060,6 +1082,7 @@ wireInquiryForm(document.getElementById('fitForm'), {
   submitLabelId: 'fitSubmitLabel',
   statusId: 'fitFormStatus',
   doneId: 'fitDone',
+  sentValue: 'fit',
   submitDefault: 'Request fit call',
   successMsg: 'Fit call request received. We reply within one business day.',
   failMsg: 'Could not send. Try again shortly.'
@@ -1081,6 +1104,7 @@ if (form) wireInquiryForm(form, {
   submitLabelId: 'submitLabel',
   statusId: 'formStatus',
   doneId: 'done',
+  sentValue: 'brief',
   submitDefault: 'Send project brief',
   successMsg: 'Brief received. We reply within one business day.',
   failMsg: 'Could not send. Try again shortly.'
