@@ -766,7 +766,7 @@ write(
       lede: "Last updated: May 2026. This policy explains how KRIVA Technologies handles information when you visit our website or contact us about a project.",
       sections: privacySections,
       contactLine:
-        'Office: 511 - I The Address, Ahmedabad, Gujarat 380060, IN',
+        'Location: Ahmedabad, Gujarat, India',
     }),
     extraScript: tocScript,
   })

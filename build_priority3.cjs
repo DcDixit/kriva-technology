@@ -424,7 +424,7 @@ const aboutBody = `
       <div><dt>Legal entity</dt><dd>KRIVA Technologies</dd></div>
       <div><dt>Founded</dt><dd>2025</dd></div>
       <div><dt>Team experience</dt><dd>Product design &amp; engineering</dd></div>
-      <div><dt>Headquarters</dt><dd>511 - I The Address, Ahmedabad, Gujarat 380060, IN<br><span style="color:var(--steel);font-size:14px">Ahmedabad, India · Remote-first · Global clients</span></dd></div>
+      <div><dt>Headquarters</dt><dd>Ahmedabad, Gujarat, India<br><span style="color:var(--steel);font-size:14px">Remote-first · Global clients</span></dd></div>
       <div><dt>How we deliver</dt><dd>Remote-first with dedicated squads for each project.</dd></div>
       <div><dt>Contact</dt><dd><a href="/contact#brief">Send a project brief</a></dd></div>
     </dl>

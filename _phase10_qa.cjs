@@ -94,7 +94,7 @@ async function httpCrawl() {
     out.routing.nestedDirect.push({ path: s, status: res.status });
   }
   // assets
-  const assets = ["/shared/chrome.css", "/shared/chrome.js", "/shared/og.js"];
+  const assets = ["/shared/chrome.css", "/shared/chrome.js", "/shared/analytics.js", "/shared/og.js"];
   out.routing.assets = [];
   for (const s of assets) {
     const res = await get(s);

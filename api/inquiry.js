@@ -1,5 +1,5 @@
 /** POST /api/inquiry: emails the studio without putting an address in page HTML. */
-const TO = process.env.INQUIRY_TO || "dixit27592@gmail.com";
+const TO = process.env.INQUIRY_TO || "krivatechnlogies@gmail.com";
 
 function sendJson(res, status, body) {
   res.statusCode = status;

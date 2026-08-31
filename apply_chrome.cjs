@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = __dirname;
+const CONTACT_EMAIL = "krivatechnlogies@gmail.com";
 
 const PAGE_CURRENT = {
   "kriva-redesign.html": null,
@@ -61,7 +62,14 @@ const PAGE_CURRENT = {
 };
 
 const CSS_LINK = '<link rel="stylesheet" href="/shared/chrome.css">';
-const JS_TAG = '<script src="/shared/chrome.js" defer></script>';
+const JS_TAG = [
+  '<script src="/shared/chrome.js" defer></script>',
+  '<!-- KRIVA_GA_START -->',
+  '<link rel="preconnect" href="https://www.googletagmanager.com">',
+  '<link rel="dns-prefetch" href="https://www.google-analytics.com">',
+  '<script src="/shared/analytics.js" defer></script>',
+  '<!-- KRIVA_GA_END -->',
+].join('\n');
 
 function cur(key, name) {
   return key === name ? ' aria-current="page"' : "";
@@ -226,6 +234,7 @@ function headerHtml(current, opts = {}) {
   <div class="sheet-foot">
     <a href="/contact#brief">Send a project brief</a>
     <a href="/contact#book">Request a fit call</a>
+    <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
     <span>Ahmedabad, India · Remote-first</span>
   </div>
 </div>`;
@@ -237,7 +246,8 @@ const FOOTER_HTML = `<footer>
       <div>
         <h3>Get in touch</h3>
         <a href="/contact#brief">Send a project brief</a><br>
-        <a href="/contact#book">Request a fit call</a>
+        <a href="/contact#book">Request a fit call</a><br>
+        <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
         <p class="f-blurb">Design and engineering for US trucking ops and SaaS product teams. Ahmedabad, India · Remote-first · Global clients.</p>
         <div class="fsocial">
           <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
@@ -304,6 +314,7 @@ function ensureAssets(html) {
   // Collapse all chrome.css links to a single tag before </head>
   html = html.replace(/\s*<link rel="stylesheet" href="\/?shared\/chrome\.css">\s*/g, "\n");
   html = html.replace("</head>", `${CSS_LINK}\n</head>`);
+  html = html.replace(/\s*<!-- KRIVA_GA_START -->[\s\S]*?<!-- KRIVA_GA_END -->\s*/g, "\n");
   html = html.replace(/\s*<script src="\/?shared\/chrome\.js" defer><\/script>\s*/g, "\n");
   const m = html.match(/<script(?![^>]*shared\/chrome\.js)/);
   if (m) {
@@ -393,7 +404,7 @@ function main() {
   return results.every((r) => r.startsWith("OK")) ? 0 : 1;
 }
 
-module.exports = { PAGE_CURRENT, headerHtml, FOOTER_HTML, applyFile, main };
+module.exports = { PAGE_CURRENT, CONTACT_EMAIL, headerHtml, FOOTER_HTML, applyFile, main };
 
 if (require.main === module) {
   process.exit(main());
