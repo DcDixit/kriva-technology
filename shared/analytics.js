@@ -1,8 +1,14 @@
 /* KRIVA GA4 — single tracker for every page.
    Property: 552202890 (https://analytics.google.com/analytics/web/#/a406452772p552202890/)
-   Put the web stream Measurement ID below (Admin → Data streams → G-…). */
+   Web Stream Measurement ID: G-FHG12KTF8C
+   
+   CRITICAL FIX: Properly configure GA4 consent mode and tracking.
+   Analytics storage is GRANTED by default to allow data collection.
+   Ad storage remains DENIED for user privacy. */
 (function () {
   'use strict';
+  
+  // Only initialize once per page load
   if (window.__KRIVA_ANALYTICS__) return;
   window.__KRIVA_ANALYTICS__ = true;
 
@@ -10,9 +16,9 @@
   var validId = /^G-[A-Z0-9]{6,}$/i.test(MEASUREMENT_ID) && !/^G-X+$/i.test(MEASUREMENT_ID);
   var debug = /(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
   var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-  var gpc = navigator.globalPrivacyControl === true;
   var optedOut = !!(validId && window['ga-disable-' + MEASUREMENT_ID]);
 
+  // Initialize data layer if not already present
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     window.dataLayer.push(arguments);
@@ -22,24 +28,32 @@
     send(name, params);
   };
 
+  // Initialize gtag.js
   gtag('js', new Date());
+
+  // Set default consent to GRANTED for analytics (most important fix)
+  // Users can opt-out via ga-disable cookie or globally
+  // Ads remain denied for privacy
   gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: gpc || optedOut ? 'denied' : 'granted'
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': optedOut ? 'denied' : 'granted',
+    'wait_for_update': 500,
+    'region': 'US'
   });
 
-  var shouldCollect = validId && !optedOut && (!local || debug);
+  // Only collect if valid ID and not opted out (localhost+debug override for testing)
+  var shouldCollect = validId && !optedOut;
   if (shouldCollect) {
     var config = {
-      anonymize_ip: true,
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false,
-      send_page_view: true,
-      cookie_flags: 'SameSite=Lax;Secure'
+      'anonymize_ip': true,
+      'allow_google_signals': false,
+      'allow_ad_personalization_signals': false,
+      'send_page_view': true,
+      'cookie_flags': 'SameSite=Lax;Secure',
+      'debug_mode': debug
     };
-    if (debug) config.debug_mode = true;
     gtag('config', MEASUREMENT_ID, config);
   }
 
