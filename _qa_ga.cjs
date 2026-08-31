@@ -33,11 +33,11 @@ function layerEvents(dl) {
     return {
       f,
       ga: (src.match(/src="\/shared\/analytics\.js"/g) || []).length,
-      gtag: (src.match(/gtag\/js\?id=/g) || []).length,
+      gtag: (src.match(/gtag\/js\?id=G-FHG12KTF8C/g) || []).length,
       start: (src.match(/KRIVA_GA_START/g) || []).length,
     };
   });
-  const bad = counts.filter((c) => c.ga !== 1 || c.gtag !== 0 || c.start !== 1);
+  const bad = counts.filter((c) => c.ga !== 1 || c.gtag !== 1 || c.start !== 1);
   console.log('pages', files.length);
   console.log('duplicate/missing snippet', bad.length ? bad : 'none');
 
@@ -128,7 +128,7 @@ function layerEvents(dl) {
   }
   console.log('routes', JSON.stringify(routeFlags));
   console.log('pageerrors', errors);
-  console.log('gtag.js requests (should be 0 until real G- ID)', gtagReqs.length, gtagReqs);
+  console.log('gtag.js requests', gtagReqs.length, gtagReqs.filter((u) => /G-FHG12KTF8C/.test(u)).length ? 'ok' : gtagReqs);
 
   await browser.close();
   const fail =

@@ -41,10 +41,6 @@
     };
     if (debug) config.debug_mode = true;
     gtag('config', MEASUREMENT_ID, config);
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(MEASUREMENT_ID);
-    document.head.appendChild(script);
   }
 
   function send(name, params) {

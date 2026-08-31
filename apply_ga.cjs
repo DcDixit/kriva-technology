@@ -4,10 +4,12 @@ const path = require('path');
 
 const START = '<!-- KRIVA_GA_START -->';
 const END = '<!-- KRIVA_GA_END -->';
+const MEASUREMENT_ID = 'G-FHG12KTF8C';
 const BLOCK = [
   START,
   '<link rel="preconnect" href="https://www.googletagmanager.com">',
   '<link rel="dns-prefetch" href="https://www.google-analytics.com">',
+  `<script async src="https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}"></script>`,
   '<script src="/shared/analytics.js" defer></script>',
   END,
 ].join('\n');
