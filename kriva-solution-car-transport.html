@@ -23,6 +23,7 @@
 <meta name="description" content="Custom auto-transport software: booking portals, quote engines, carrier dispatch, tracking, driver apps, and integrations for brokers and carriers.">
 <link rel="canonical" href="https://krivatechnologies.com/solutions/car-transportation">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="KRIVA Technologies">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Custom Auto Transport Software & Quote-to-POD UX">
 <meta property="og:description" content="Custom auto-transport software: booking portals, quote engines, carrier dispatch, tracking, driver apps, and integrations for brokers and carriers.">
@@ -556,6 +557,7 @@ body.page-car .hero{
 </style>
 
 <link rel="stylesheet" href="/shared/chrome.css?v=tap2">
+<link rel="stylesheet" href="/shared/page-inquiry.css">
 </head>
 <body class="solution page-car">
 <a class="skip" href="#main">Skip to content</a>
@@ -751,7 +753,7 @@ body.page-car .hero{
         </h1>
         <p class="lede" data-r>KRIVA designs booking portals, quote engines, carrier dispatch tools, customer tracking, driver workflows, and integrations for auto-transport brokers and carriers.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Discuss your workflow</span><i>→</i></a>
+          <a href="#inquire" class="btn"><span>Discuss your workflow</span><i>→</i></a>
           <a href="#lifecycle" class="btn ghost"><span>Explore the quote-to-POD flow</span><i>→</i></a>
         </div>
         <p class="car-trust" data-r>
@@ -1226,7 +1228,7 @@ body.page-car .hero{
       <p class="eyebrow" data-r>FAQ</p>
       <h2 class="d2" id="faqH" data-r>Common questions</h2>
       <p class="lede" data-r>Asked most often by auto transport brokers and carriers before a first call.</p>
-      <a href="/contact#book" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
+      <a href="#inquire" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
     </div>
 
     <div class="faq-list" data-r>
@@ -1243,7 +1245,7 @@ body.page-car .hero{
           <span class="qn num">02</span><span class="qt">Can this connect with our existing TMS or CRM?</span><span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
-          <p>Yes. We integrate via API with common logistics and CRM platforms, or build custom connectors where needed. One order ID flows across quote, dispatch, driver, and invoice.</p>
+          <p>Yes. We integrate via API with common logistics and CRM platforms, or build custom connectors where needed. Quote-to-POD for auto transport sits next to <a href="/solutions/trucking-logistics">trucking &amp; logistics</a>; the connector craft is on <a href="/services/api-integrations">Integrations &amp; APIs</a>.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -1274,6 +1276,62 @@ body.page-car .hero{
   </div>
 </section>
 
+
+<section class="inq-sec" id="inquire" aria-labelledby="inqH">
+  <div class="wrap inq-grid">
+    <div class="inq-copy">
+      <p class="eyebrow">Start a conversation</p>
+      <h2 class="d2" id="inqH">Discuss quote-to-POD.</h2>
+      <p class="lede">Describe the booking, quote, dispatch, tracking, or POD step that still lives outside the system.</p>
+      <p class="inq-help">Need a longer brief, files, or a scheduled 20-minute fit call? Use the <a href="/contact#brief">contact page</a>.</p>
+    </div>
+    <div>
+      <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
+        <input type="hidden" name="inquiry_type" value="page_inquiry">
+        <input type="hidden" name="page" value="/solutions/car-transportation">
+        <input type="hidden" name="service" value="Car Transportation">
+        <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
+        <div class="inq-row">
+          <div>
+            <label for="inq-name">Name <span class="req">Required</span></label>
+            <input id="inq-name" name="name" required autocomplete="name">
+            <p class="inq-err" id="inq-name-err">Enter your name.</p>
+          </div>
+          <div>
+            <label for="inq-email">Work email <span class="req">Required</span></label>
+            <input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email">
+            <p class="inq-err" id="inq-email-err">Enter a valid work email.</p>
+          </div>
+        </div>
+        <div class="inq-row">
+          <div>
+            <label for="inq-company">Company</label>
+            <input id="inq-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label for="inq-phone">Phone <span class="opt">Optional</span></label>
+            <input id="inq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+        </div>
+        <div>
+          <label for="inq-details">What do you need help with? <span class="req">Required</span></label>
+          <textarea id="inq-details" name="details" required rows="4" placeholder="Example: quotes are emailed, dispatch is a spreadsheet, customers chase status, POD is a photo in a chat thread."></textarea>
+          <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
+        </div>
+        <p class="inq-fail" role="alert"></p>
+        <div class="inq-actions">
+          <button type="submit" class="btn"><span class="inq-submit-label">Send inquiry</span><i>→</i></button>
+          <p class="inq-note">Reply within one business day. NDA available.</p>
+        </div>
+        <p class="inq-status" data-inq-status aria-live="polite"></p>
+      </form>
+      <div class="inq-done" tabindex="-1">
+        <h3>Inquiry received.</h3>
+        <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="cta-band on-ink" id="contact" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Next step</p>
@@ -1281,7 +1339,7 @@ body.page-car .hero{
     <p class="lede" data-r>Bring the current portal, dispatch process, driver workflow, or integration problem. KRIVA will help determine whether it should be configured, connected, redesigned, or rebuilt.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Request a 20-minute fit call</span><i>→</i></a>
+        <a href="#inquire" class="btn on-dark"><span>Start a conversation</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -1303,7 +1361,7 @@ body.page-car .hero{
         <a href="/contact#brief">Send a project brief</a><br>
         <a href="/contact#book">Request a fit call</a><br>
         <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>
-        <p class="f-blurb">Design and engineering for trucking, SaaS, and finance teams in the US, UK, and Australia. Ahmedabad studio · Remote-first.</p>
+        <p class="f-blurb">Design and engineering for trucking, SaaS, and finance teams in the US, UK, UAE, and Canada. Ahmedabad studio · Remote-first.</p>
         <div class="fsocial">
           <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
           <a href="https://dribbble.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Dribbble</a>
@@ -1353,11 +1411,11 @@ body.page-car .hero{
 "serviceType":"Auto transport booking portals, carrier dispatch, customer tracking, quote engines",
 "provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},
 "url":"https://krivatechnologies.com/solutions/car-transportation",
-"areaServed":["US","GB","AU"],
+"areaServed":["US","GB","AE","CA"],
 "description":"Auto transport software for brokers and carriers: booking portals, quote engines, carrier dispatch, customer tracking, and proof of delivery from quote to POD."}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you build for auto-transport brokers and carriers?","acceptedAnswer":{"@type":"Answer","text":"Yes. We design and build both customer-facing portals and internal ops tools: quote engines, dispatch consoles, tracking links, and driver workflows."}},{"@type":"Question","name":"Can you improve our current platform without replacing it?","acceptedAnswer":{"@type":"Answer","text":"Often. We can build a custom booking portal that feeds your existing ops tools, add a tracking link to existing orders, or layer dispatch logic on top of your current TMS."}},{"@type":"Question","name":"Can this connect with our existing TMS or CRM?","acceptedAnswer":{"@type":"Answer","text":"Yes. We integrate via API with common logistics and CRM platforms, or build custom connectors where needed. One order ID flows across quote, dispatch, driver, and invoice."}},{"@type":"Question","name":"Do you build quote engines and customer tracking?","acceptedAnswer":{"@type":"Answer","text":"Yes. Quote logic is configurable without engineering tickets: pricing adjusts with lane, equipment, and delivery window. Tracking is a shareable link that updates without the customer calling."}},{"@type":"Question","name":"Can the driver workflow support low-signal conditions?","acceptedAnswer":{"@type":"Answer","text":"Yes. Status updates, condition photos, and POD queues locally when signal is weak, then sync automatically when connection returns. Large touch targets, no shrunk desktop UI."}},{"@type":"Question","name":"Do you have a published auto-transport case study?","acceptedAnswer":{"@type":"Answer","text":"Not yet. The closest published work is ShiftRail for dispatch and LocalServe for booking flows. We can walk through relevant unpublished work under NDA on a fit call."}},{"@type":"Question","name":"Who owns the final code and design files?","acceptedAnswer":{"@type":"Answer","text":"You do. Full source code, design files, and documentation stay with you. No vendor lock-in, no ongoing licensing fees for what we build."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you build for auto-transport brokers and carriers?","acceptedAnswer":{"@type":"Answer","text":"Yes. We design and build both customer-facing portals and internal ops tools: quote engines, dispatch consoles, tracking links, and driver workflows."}},{"@type":"Question","name":"Can you improve our current platform without replacing it?","acceptedAnswer":{"@type":"Answer","text":"Often. We can build a custom booking portal that feeds your existing ops tools, add a tracking link to existing orders, or layer dispatch logic on top of your current TMS."}},{"@type":"Question","name":"Can this connect with our existing TMS or CRM?","acceptedAnswer":{"@type":"Answer","text":"Yes. We integrate via API with common logistics and CRM platforms, or build custom connectors where needed. Quote-to-POD for auto transport sits next to trucking and logistics work; connector craft lives on the Integrations and APIs service."}},{"@type":"Question","name":"Do you build quote engines and customer tracking?","acceptedAnswer":{"@type":"Answer","text":"Yes. Quote logic is configurable without engineering tickets: pricing adjusts with lane, equipment, and delivery window. Tracking is a shareable link that updates without the customer calling."}},{"@type":"Question","name":"Can the driver workflow support low-signal conditions?","acceptedAnswer":{"@type":"Answer","text":"Yes. Status updates, condition photos, and POD queues locally when signal is weak, then sync automatically when connection returns. Large touch targets, no shrunk desktop UI."}},{"@type":"Question","name":"Do you have a published auto-transport case study?","acceptedAnswer":{"@type":"Answer","text":"Not yet. The closest published work is ShiftRail for dispatch and LocalServe for booking flows. We can walk through relevant unpublished work under NDA on a fit call."}},{"@type":"Question","name":"Who owns the final code and design files?","acceptedAnswer":{"@type":"Answer","text":"You do. Full source code, design files, and documentation stay with you. No vendor lock-in, no ongoing licensing fees for what we build."}}]}
 </script>
 <!-- KRIVA_SCHEMA_START -->
 <script type="application/ld+json">
@@ -1515,5 +1573,6 @@ if(reduce()){
 run();
 })();
 </script>
+<script src="/shared/page-inquiry.js" defer></script>
 </body>
 </html>

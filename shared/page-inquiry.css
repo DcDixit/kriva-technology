@@ -1,0 +1,49 @@
+/* Compact on-page inquiry — used on high-intent solution/service pages */
+.inq-sec{
+  background:var(--white);border-block:1px solid var(--rule);
+  padding-block:clamp(72px,9vw,128px);scroll-margin-top:88px
+}
+.inq-grid{
+  display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(32px,5vw,80px);align-items:start
+}
+.inq-copy .d2{margin-top:18px;max-width:14ch}
+.inq-copy .lede{margin-top:16px;max-width:42ch}
+.inq-copy .inq-help{margin-top:14px;font-size:15px;line-height:1.7;color:var(--steel);max-width:42ch}
+.inq-copy a,.inq-done a{border-bottom:1px solid currentColor}
+.inq-form{display:grid;gap:16px;position:relative}
+.inq-form .inq-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.inq-form label{
+  display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--steel);margin-bottom:8px
+}
+.inq-form label .req{color:var(--cta);margin-left:6px;letter-spacing:.08em}
+.inq-form label .opt{color:var(--steel);margin-left:6px;letter-spacing:.08em;font-weight:400}
+.inq-form input,.inq-form textarea{
+  font:inherit;font-size:16px;width:100%;min-height:48px;padding:12px 14px;
+  background:var(--paper);border:1px solid var(--rule);color:var(--ink);
+  transition:border-color var(--t-fast) var(--e)
+}
+.inq-form textarea{min-height:120px;resize:vertical;line-height:1.55}
+.inq-form input:focus,.inq-form textarea:focus{outline:none;border-color:var(--blue)}
+.inq-form input[aria-invalid="true"],.inq-form textarea[aria-invalid="true"]{border-color:var(--red);background:#FBF4F3}
+.inq-err{display:none;margin-top:6px;font-family:var(--f-mono);font-size:11px;color:var(--red)}
+.inq-err.on{display:block}
+.inq-hp{
+  position:absolute!important;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0;padding:0;margin:0
+}
+.inq-note{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel)}
+.inq-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:4px}
+.inq-fail{display:none;padding:12px 14px;border:1px solid var(--red);background:#FBF4F3;font-size:14px;color:var(--red)}
+.inq-fail.on{display:block}
+.inq-done{display:none;border:1px solid var(--green);padding:clamp(22px,3vw,36px);background:var(--paper)}
+.inq-done.on{display:block}
+.inq-done h3{margin:0 0 10px;font-family:var(--f-display);font-weight:600;font-size:clamp(1.28rem,.3vw + 1.2rem,1.55rem);line-height:1.28}
+.inq-done p{font-size:15px;line-height:1.7;color:var(--steel);max-width:42ch}
+.inq-form.sent{display:none}
+.inq-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:800px){
+  .inq-grid,.inq-form .inq-row{grid-template-columns:1fr}
+  .inq-actions .btn{width:100%;justify-content:center}
+}

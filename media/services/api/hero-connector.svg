@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-labelledby="title desc">
+  <title id="title">API connector map</title>
+  <desc id="desc">A product posts events through an integration layer to ledger, CRM, and Bitbucket APIs. One path routes to an exception queue.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#D6D5CD"/>
+    </pattern>
+    <linearGradient id="inkfade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#161C22"/>
+      <stop offset="100%" stop-color="#0E1216"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="#F4F3EE"/>
+  <rect width="1200" height="900" fill="url(#grid)" opacity=".7"/>
+
+  <rect x="48" y="48" width="1104" height="804" fill="#FFFFFF" stroke="#D6D5CD"/>
+
+  <!-- Source -->
+  <rect x="96" y="300" width="220" height="168" fill="#F4F3EE" stroke="#D6D5CD"/>
+  <text x="206" y="348" text-anchor="middle" fill="#5C6670" font-family="system-ui,sans-serif" font-size="11" letter-spacing="2.2">SOURCE</text>
+  <text x="206" y="392" text-anchor="middle" fill="#0E1216" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Your product</text>
+  <text x="206" y="422" text-anchor="middle" fill="#5C6670" font-family="system-ui,sans-serif" font-size="13">Events · invoices · jobs</text>
+
+  <!-- Connector -->
+  <rect x="430" y="248" width="340" height="272" fill="url(#inkfade)"/>
+  <rect x="446" y="264" width="10" height="10" fill="#4F46E5"/>
+  <text x="468" y="274" fill="#8C98A4" font-family="system-ui,sans-serif" font-size="11" letter-spacing="2.2">INTEGRATION LAYER</text>
+  <text x="600" y="348" text-anchor="middle" fill="#FFFFFF" font-family="system-ui,sans-serif" font-size="26" font-weight="700">Connector</text>
+  <text x="600" y="380" text-anchor="middle" fill="#8C98A4" font-family="system-ui,sans-serif" font-size="14">Idempotent writes · mapping</text>
+  <rect x="478" y="416" width="244" height="56" fill="#161C22" stroke="#232B33"/>
+  <text x="600" y="438" text-anchor="middle" fill="#8C98A4" font-family="system-ui,sans-serif" font-size="10" letter-spacing="1.6">VALIDATE · KEY · RETRY</text>
+  <text x="600" y="458" text-anchor="middle" fill="#B7A9FF" font-family="system-ui,sans-serif" font-size="12">Stable event ID before write</text>
+
+  <!-- Destinations -->
+  <rect x="884" y="120" width="220" height="112" fill="#F4F3EE" stroke="#D6D5CD"/>
+  <text x="994" y="164" text-anchor="middle" fill="#5C6670" font-family="system-ui,sans-serif" font-size="11" letter-spacing="2">LEDGER</text>
+  <text x="994" y="196" text-anchor="middle" fill="#0E1216" font-family="system-ui,sans-serif" font-size="18" font-weight="700">QBO · Xero</text>
+
+  <rect x="884" y="268" width="220" height="112" fill="#F4F3EE" stroke="#D6D5CD"/>
+  <text x="994" y="312" text-anchor="middle" fill="#5C6670" font-family="system-ui,sans-serif" font-size="11" letter-spacing="2">CRM · OPS</text>
+  <text x="994" y="344" text-anchor="middle" fill="#0E1216" font-family="system-ui,sans-serif" font-size="18" font-weight="700">HubSpot · custom</text>
+
+  <rect x="884" y="416" width="220" height="112" fill="#F4F3EE" stroke="#D6D5CD"/>
+  <text x="994" y="460" text-anchor="middle" fill="#5C6670" font-family="system-ui,sans-serif" font-size="11" letter-spacing="2">PLATFORM API</text>
+  <text x="994" y="492" text-anchor="middle" fill="#0E1216" font-family="system-ui,sans-serif" font-size="18" font-weight="700">Bitbucket</text>
+
+  <!-- Exception -->
+  <rect x="430" y="620" width="340" height="148" fill="#FFFFFF" stroke="#DB9B1F"/>
+  <rect x="430" y="620" width="6" height="148" fill="#DB9B1F"/>
+  <text x="600" y="672" text-anchor="middle" fill="#DB9B1F" font-family="system-ui,sans-serif" font-size="11" letter-spacing="2.2">EXCEPTION QUEUE</text>
+  <text x="600" y="710" text-anchor="middle" fill="#0E1216" font-family="system-ui,sans-serif" font-size="20" font-weight="700">Owned · retry · match</text>
+  <text x="600" y="738" text-anchor="middle" fill="#5C6670" font-family="system-ui,sans-serif" font-size="13">Operators finish what APIs cannot</text>
+
+  <!-- Connectors -->
+  <path d="M316 384 H430" fill="none" stroke="#4F46E5" stroke-width="2"/>
+  <circle cx="316" cy="384" r="4" fill="#4F46E5"/>
+  <circle cx="430" cy="384" r="4" fill="#4F46E5"/>
+
+  <path d="M770 320 H884" fill="none" stroke="#4F46E5" stroke-width="2"/>
+  <path d="M770 384 H884" fill="none" stroke="#4F46E5" stroke-width="2"/>
+  <path d="M770 448 H884" fill="none" stroke="#4F46E5" stroke-width="2"/>
+  <circle cx="770" cy="320" r="4" fill="#4F46E5"/>
+  <circle cx="770" cy="384" r="4" fill="#4F46E5"/>
+  <circle cx="770" cy="448" r="4" fill="#4F46E5"/>
+
+  <path d="M600 520 V620" fill="none" stroke="#DB9B1F" stroke-width="2" stroke-dasharray="5 6"/>
+  <circle cx="600" cy="520" r="4" fill="#DB9B1F"/>
+  <circle cx="600" cy="620" r="4" fill="#DB9B1F"/>
+</svg>

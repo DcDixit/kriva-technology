@@ -31,6 +31,8 @@ function buildMessage(data) {
     ["Name", field(data, "name")],
     ["Email", field(data, "email")],
     ["Company", field(data, "company")],
+    ["Phone", field(data, "phone")],
+    ["Page", safePagePath(data)],
     ["Website", field(data, "site")],
     ["Project type", field(data, "ptype")],
     ["Market", field(data, "market")],
@@ -53,7 +55,12 @@ function buildMessage(data) {
       )
       .join("") +
     "</table>";
-  const typeLabel = inquiryType === "fit_call" ? "Fit call request" : "Project brief";
+  const typeLabel =
+    inquiryType === "fit_call"
+      ? "Fit call request"
+      : inquiryType === "page_inquiry"
+        ? "Page inquiry"
+        : "Project brief";
   const subject =
     "KRIVA " + typeLabel + ": " + (field(data, "company") || field(data, "name") || "Website");
   return { text, html, subject, inquiryType };
@@ -65,6 +72,8 @@ function sharedFields(data) {
     email: field(data, "email"),
     inquiry_type: field(data, "inquiry_type"),
     company: field(data, "company"),
+    phone: field(data, "phone"),
+    page: safePagePath(data),
     website: field(data, "site"),
     project_type: field(data, "ptype"),
     market: field(data, "market"),
@@ -87,10 +96,25 @@ function web3formsBody(data) {
   };
 }
 
+function safePagePath(data) {
+  const raw = field(data, "page");
+  if (!raw.startsWith("/") || raw.startsWith("//") || raw.includes("://")) return "";
+  return raw.split("#")[0].split("?")[0].slice(0, 200);
+}
+
+function formsubmitNext(data, origin) {
+  const inquiryType = field(data, "inquiry_type");
+  if (inquiryType === "fit_call") return origin + "/contact?sent=fit#book";
+  if (inquiryType === "page_inquiry") {
+    const p = safePagePath(data) || "/contact";
+    return origin + p + "?sent=1#inquire";
+  }
+  return origin + "/contact?sent=brief#brief";
+}
+
 function formsubmitBody(data, origin) {
-  const { subject, inquiryType } = buildMessage(data);
-  const next =
-    inquiryType === "fit_call" ? "/contact?sent=fit#book" : "/contact?sent=brief#brief";
+  const { subject } = buildMessage(data);
+  const next = formsubmitNext(data, origin);
   return {
     ...sharedFields(data),
     _subject: subject,
@@ -98,7 +122,7 @@ function formsubmitBody(data, origin) {
     _captcha: "false",
     _honey: "",
     _url: origin + "/contact",
-    _next: origin + next,
+    _next: next,
   };
 }
 

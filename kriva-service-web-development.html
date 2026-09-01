@@ -19,13 +19,14 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css?v=bg1">
 <link rel="preload" href="/brand/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<title>Web Design &amp; Development · Next.js sites · KRIVA</title>
-<meta name="description" content="Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations, typically Next.js, React, TypeScript.">
+<title>Website Design &amp; Development · Next.js &amp; CMS | KRIVA</title>
+<meta name="description" content="Marketing websites and public web surfaces in Next.js, React, and TypeScript. CMS when the team must publish without an engineering ticket. Authenticated product UX is a separate service.">
 <link rel="canonical" href="https://krivatechnologies.com/services/web-development">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="KRIVA Technologies">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Web Design &amp; Development · Next.js sites">
-<meta property="og:description" content="Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations, typically Next.js, React, TypeScript.">
+<meta property="og:title" content="Website Design &amp; Development · Next.js &amp; CMS | KRIVA">
+<meta property="og:description" content="Marketing websites and public web surfaces in Next.js, React, and TypeScript. CMS when the team must publish without an engineering ticket. Authenticated product UX is a separate service.">
 <meta property="og:url" content="https://krivatechnologies.com/services/web-development">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -33,8 +34,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Web Design &amp; Development · Next.js sites">
-<meta name="twitter:description" content="Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations, typically Next.js, React, TypeScript.">
+<meta name="twitter:title" content="Website Design &amp; Development · Next.js &amp; CMS | KRIVA">
+<meta name="twitter:description" content="Marketing websites and public web surfaces in Next.js, React, and TypeScript. CMS when the team must publish without an engineering ticket. Authenticated product UX is a separate service.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <link rel="stylesheet" href="/shared/slot-assets.css">
@@ -228,6 +229,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/archetypes.css?v=hero4">
 
 <link rel="stylesheet" href="/shared/chrome.css?v=tap2">
+<link rel="stylesheet" href="/shared/page-inquiry.css">
 </head>
 <body class="service development arch-web">
 <a class="skip" href="#main">Skip to content</a>
@@ -407,7 +409,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       </h1>
       <p class="lede" data-r>Next.js, React, TypeScript. Performance and SEO structure built in. CMS when the team needs to publish without an engineering ticket.</p>
       <div class="hero-actions" data-r>
-        <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
+        <a href="#inquire" class="btn"><span>Discuss the site</span><i>→</i></a>
         <a href="/work/brandlift-ecommerce" class="btn ghost"><span>See BrandLift storefront</span><i>→</i></a>
       </div>
     </div>
@@ -557,11 +559,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
       </details>
       <details>
         <summary>How is this different from Product Design?</summary>
-        <p>Product Design owns authenticated product UX. This service ships the marketing site or public web surface with performance and SEO structure.</p>
+        <p>Product Design owns authenticated product UX. This service ships the marketing site or public web surface with performance and SEO structure. For logged-in product screens, see <a href="/services/web-application-design">web application design</a>.</p>
       </details>
     </div>
     <div class="sib" data-r style="margin-top:32px">
       <a href="/services/product-design">Product Design</a>
+      <a href="/services/web-application-design">Web application design</a>
       <a href="/services/seo-digital-marketing">SEO &amp; Digital Marketing</a>
       <a href="/services/branding">Branding</a>
       <a href="/work/brandlift-ecommerce">BrandLift case</a>
@@ -570,13 +573,69 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </section>
 
+
+<section class="inq-sec" id="inquire" aria-labelledby="inqH">
+  <div class="wrap inq-grid">
+    <div class="inq-copy">
+      <p class="eyebrow">Start a conversation</p>
+      <h2 class="d2" id="inqH">Discuss the site.</h2>
+      <p class="lede">Tell us whether this is a marketing site, a CMS the team must run, or a public surface that has to convert. Authenticated product UX lives on a different page.</p>
+      <p class="inq-help">Need a longer brief, files, or a scheduled 20-minute fit call? Use the <a href="/contact#brief">contact page</a>.</p>
+    </div>
+    <div>
+      <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
+        <input type="hidden" name="inquiry_type" value="page_inquiry">
+        <input type="hidden" name="page" value="/services/web-development">
+        <input type="hidden" name="service" value="Web Design &amp; Development">
+        <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
+        <div class="inq-row">
+          <div>
+            <label for="inq-name">Name <span class="req">Required</span></label>
+            <input id="inq-name" name="name" required autocomplete="name">
+            <p class="inq-err" id="inq-name-err">Enter your name.</p>
+          </div>
+          <div>
+            <label for="inq-email">Work email <span class="req">Required</span></label>
+            <input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email">
+            <p class="inq-err" id="inq-email-err">Enter a valid work email.</p>
+          </div>
+        </div>
+        <div class="inq-row">
+          <div>
+            <label for="inq-company">Company</label>
+            <input id="inq-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label for="inq-phone">Phone <span class="opt">Optional</span></label>
+            <input id="inq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+        </div>
+        <div>
+          <label for="inq-details">What do you need help with? <span class="req">Required</span></label>
+          <textarea id="inq-details" name="details" required rows="4" placeholder="Example: marketing cannot publish without an engineering ticket, and the current site is slower than the category."></textarea>
+          <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
+        </div>
+        <p class="inq-fail" role="alert"></p>
+        <div class="inq-actions">
+          <button type="submit" class="btn"><span class="inq-submit-label">Send inquiry</span><i>→</i></button>
+          <p class="inq-note">Reply within one business day. NDA available.</p>
+        </div>
+        <p class="inq-status" data-inq-status aria-live="polite"></p>
+      </form>
+      <div class="inq-done" tabindex="-1">
+        <h3>Inquiry received.</h3>
+        <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="cta-band on-ink" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Start a project</p>
     <h2 class="d2" id="ctaH" data-r>Need a site or web app that holds up?</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
+        <a href="#inquire" class="btn on-dark"><span>Start a conversation</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -598,7 +657,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <a href="/contact#brief">Send a project brief</a><br>
         <a href="/contact#book">Request a fit call</a><br>
         <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>
-        <p class="f-blurb">Design and engineering for trucking, SaaS, and finance teams in the US, UK, and Australia. Ahmedabad studio · Remote-first.</p>
+        <p class="f-blurb">Design and engineering for trucking, SaaS, and finance teams in the US, UK, UAE, and Canada. Ahmedabad studio · Remote-first.</p>
         <div class="fsocial">
           <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
           <a href="https://dribbble.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Dribbble</a>
@@ -653,7 +712,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     "name": "KRIVA Technologies"
   },
   "url": "https://krivatechnologies.com/services/web-development",
-  "areaServed": ["United States", "United Kingdom", "Australia"]
+  "areaServed": ["United States", "United Kingdom", "United Arab Emirates", "Canada"]
 }
 </script>
 <script type="application/ld+json">
@@ -747,5 +806,6 @@ run();
 }
 </script>
 <!-- KRIVA_SCHEMA_END -->
+<script src="/shared/page-inquiry.js" defer></script>
 </body>
 </html>
