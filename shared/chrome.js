@@ -155,7 +155,8 @@
   const setSheet = (open) => {
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    document.body.style.overflow = open ? 'hidden' : '';
+    document.body.classList.toggle('nav-scroll-lock', open);
+    document.body.style.overflow = '';
     if (open) {
       sheet.hidden = false;
       closeAll();

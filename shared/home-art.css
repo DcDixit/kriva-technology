@@ -9,7 +9,7 @@
 .hero{
   padding:calc(72px + clamp(36px,6vw,80px)) 0 clamp(48px,6vw,88px);
   background:linear-gradient(135deg, var(--paper) 0%, var(--paper-2) 50%, var(--paper) 100%);
-  overflow:hidden;
+  overflow-x:clip;
   position:relative;
   border-top:3px solid var(--cta);
 }
@@ -108,7 +108,7 @@
   .hero-board .shift-row .chip{grid-column:3;grid-row:1 / span 2;align-self:center}
 }
 .shift-ex li.is-up{background:rgba(219,155,31,.1)}
-.shift-scroll{min-width:0;overflow-x:auto;scrollbar-width:thin}
+.shift-scroll{min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:thin;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .scroll-cue{
   margin:0;padding:8px 14px 0;
   font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8C98A4
@@ -186,7 +186,8 @@
   margin-bottom:clamp(32px,4.5vw,56px)
 }
 .canvas-stage{
-  position:relative;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);z-index:0
+  position:relative;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);z-index:0;
+  overflow:hidden
 }
 .canvas-stage:before{
   content:"";position:absolute;z-index:0;pointer-events:none;
@@ -499,7 +500,7 @@
 .desk-rules b{font-family:var(--f-display);font-weight:800;font-size:1.4rem;letter-spacing:-.04em;color:var(--cta)}
 .desk-rules h3{color:#fff;font-size:1.15rem;margin-bottom:6px}
 .desk-rules p{color:#8C98A4;font-size:14.5px;line-height:1.55;max-width:36ch}
-.desk-ui{margin:0;min-width:0;position:relative}
+.desk-ui{margin:0;min-width:0;position:relative;overflow:hidden}
 .desk-ui:before{
   content:"";position:absolute;z-index:0;pointer-events:none;
   inset:8% -12% -18% 6%;
@@ -796,7 +797,7 @@
   position:relative;z-index:1
 }
 .cta-copy{min-width:0}
-.cta-panel{min-width:0;position:relative}
+.cta-panel{min-width:0;position:relative;overflow:hidden}
 .cta-band .inq-form,.cta-band .inq-done{position:relative;z-index:1}
 .cta-band .inq-form label{color:#8C98A4}
 .cta-band .inq-form input,.cta-band .inq-form textarea{
@@ -922,11 +923,12 @@ a:hover .offer-go i{transform:translateX(6px)}
 .build-shot .browser{transition:transform .28s var(--e),box-shadow .28s var(--e)}
 .build-row:hover .build-shot .browser{transform:translate3d(0,-2px,0)}
 
-.handoff{background:var(--white);border-block:1px solid var(--rule)}
+.handoff{background:var(--white);border-block:1px solid var(--rule);overflow-x:clip}
+.handoff .wrap,.handoff .wf-console{min-width:0}
 .wf-lede{max-width:54ch;margin-top:14px}
 
-.wf-console{margin-top:clamp(28px,3.8vw,52px)}
-.wf-console .browser{background:var(--ink)}
+.wf-console{margin-top:clamp(28px,3.8vw,52px);min-width:0;max-width:100%}
+.wf-console .browser{background:var(--ink);min-width:0;max-width:100%}
 .wf-ticket{
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 20px;align-items:end;
   padding:18px 18px 0;position:relative
@@ -959,7 +961,11 @@ a:hover .offer-go i{transform:translateX(6px)}
   transition:width .45s var(--e)
 }
 
-.wf-path-scroller{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:1px solid var(--ink-line)}
+.wf-path-scroller{
+  overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;border-bottom:1px solid var(--ink-line);
+  min-width:0;max-width:100%;overscroll-behavior-x:contain;touch-action:pan-x pinch-zoom
+}
 .wf-path-scroller::-webkit-scrollbar{display:none}
 .wf-path{
   display:grid;grid-template-columns:repeat(8,minmax(88px,1fr));min-width:720px;position:relative
