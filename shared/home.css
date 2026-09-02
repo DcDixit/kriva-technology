@@ -49,11 +49,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
 [data-s].in>*:nth-child(6){transition-delay:250ms}
 [data-s].in>*:nth-child(7){transition-delay:280ms}
 [data-s].in>*:nth-child(8){transition-delay:310ms}
-.mask span{display:block;overflow:hidden;padding-bottom:.02em}
-.mask span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
-.mask.in span i{transform:none}
-.mask.in span:nth-child(2) i{transition-delay:90ms}
 .mask.in span:nth-child(3) i{transition-delay:170ms}
+/* Legacy mask animation — avoid on H1; use [data-r] fade instead */
+.mask:not(h1):not(.d1) span{display:block;overflow:hidden;padding-bottom:.02em}
+.mask:not(h1):not(.d1) span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
+.mask:not(h1):not(.d1).in span i{transform:none}
 
 .btn{--btn-fg:#fff;--btn-bg:var(--cta);--btn-hover:var(--ink);
   position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
@@ -92,8 +92,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
   align-items:center;
   width:100%;
 }
-.hero-copy .d1{margin:22px 0 20px;max-width:13ch;text-wrap:pretty}
+.hero-copy .d1{margin:22px 0 20px;max-width:none;text-wrap:pretty;line-height:1.08}
 .hero-copy .d1 em{font-style:normal;color:var(--ink)}
+[data-r].hero-copy .d1,[data-r].d1{
+  opacity:0;transform:translate3d(0,16px,0);
+  transition:opacity .85s var(--e),transform .85s var(--e)
+}
+[data-r].hero-copy .d1.in,[data-r].d1.in{opacity:1;transform:none}
 .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin-top:28px;animation:hero-actions 0.8s ease-out 0.4s both}
 @keyframes hero-actions{
   from{opacity:0;transform:translateY(12px)}

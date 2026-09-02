@@ -85,10 +85,13 @@ for (const f of files) {
     try { JSON.parse(m[1]); } catch (e) { R.ldErrors.push(`${f}: ${e.message}`); }
   }
 
-  // duplicate shared assets
+  // duplicate shared assets (normalize ?v= cache-busters)
   for (const [, list] of [['css', [...src.matchAll(/<link[^>]+href="(\/shared\/[^"]+)"/g)]], ['js', [...src.matchAll(/<script[^>]+src="(\/shared\/[^"]+)"/g)]]]) {
     const seen = {};
-    for (const mm of list) { seen[mm[1]] = (seen[mm[1]] || 0) + 1; }
+    for (const mm of list) {
+      const a = mm[1].replace(/\?.*$/, '');
+      seen[a] = (seen[a] || 0) + 1;
+    }
     for (const [a, n] of Object.entries(seen)) if (n > 1) R.dupAssets.push(`${f}: ${a} x${n}`);
   }
 
@@ -108,7 +111,7 @@ for (const [h, from] of localHrefs) {
 const vercel = JSON.parse(fs.readFileSync('vercel.json', 'utf8'));
 const mediaRules = vercel.rewrites.filter((r) => r.destination.startsWith('/media/'));
 for (const [a, from] of localAssets) {
-  let disk = a.slice(1);
+  let disk = a.slice(1).replace(/[?#].*$/, '');
   for (const r of mediaRules) {
     const base = r.source.split('/:')[0];
     if (a.startsWith(base + '/')) { disk = 'media' + a; break; }
@@ -158,7 +161,8 @@ const line = (label, val) => {
   if (VERBOSE && Array.isArray(val)) val.slice(0, 12).forEach((v) => console.log(`    - ${v}`));
 };
 
-console.log('════════ KRIVA VERIFICATION ════════');
+console.log('════════ KRIVA VERIFICATION (structural HTML/CSS audit) ════════');
+console.log('Note: layout, overflow, and visual checks require browser QA (npm run qa:visual).');
 line('Pages checked', R.pages);
 line('Broken internal links', R.brokenLinks);
 line('Broken assets', R.brokenAssets);

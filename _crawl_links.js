@@ -24,6 +24,7 @@ const FILE_MAP = {
   "/solutions/saas": "kriva-solution-saas.html",
   "/solutions/accounting-integrations": "kriva-solution-accounting.html",
   "/solutions/car-transportation": "kriva-solution-car-transport.html",
+  "/work/shiftrail-dispatch": "kriva-case-fleetflow.html",
   "/work/fleetflow-dispatch": "kriva-case-fleetflow.html",
   "/work/payroll-pro-saas": "kriva-case-payroll-pro.html",
   "/work/finance-sync-hub": "kriva-case-finance-sync.html",
@@ -43,6 +44,11 @@ const FILE_MAP = {
   "/services/seo-digital-marketing": "kriva-service-seo-digital-marketing.html",
 };
 
+/** Strip query strings and fragments before checking local asset paths. */
+function assetPath(h) {
+  return String(h).replace(/[?#].*$/, "");
+}
+
 const counts = {};
 const srcs = {};
 for (const f of htmls) {
@@ -58,20 +64,24 @@ for (const f of htmls) {
 }
 
 function resolves(h) {
-  if (h.startsWith("shared/") || h.startsWith("./shared/") || h.startsWith("/shared/")) {
-    return fs.existsSync(path.join(root, h.replace(/^\.\//, "").replace(/^\//, "")));
+  const clean = assetPath(h);
+  if (clean.startsWith("shared/") || clean.startsWith("./shared/") || clean.startsWith("/shared/")) {
+    return fs.existsSync(path.join(root, clean.replace(/^\.\//, "").replace(/^\//, "")));
   }
-  if (h.endsWith(".html")) {
-    return fs.existsSync(path.join(root, path.basename(h)));
+  if (clean.endsWith(".html")) {
+    return fs.existsSync(path.join(root, path.basename(clean)));
   }
-  if (FILE_MAP[h] && fs.existsSync(path.join(root, FILE_MAP[h]))) return true;
-  if (h.startsWith("/services/")) {
-    const slug = h.split("/").pop();
+  if (FILE_MAP[clean] && fs.existsSync(path.join(root, FILE_MAP[clean]))) return true;
+  if (clean.startsWith("/services/")) {
+    const slug = clean.split("/").pop();
     return fs.existsSync(path.join(root, `kriva-service-${slug}.html`));
   }
+  if (clean.startsWith("/brand/") || clean.startsWith("/media/")) {
+    return fs.existsSync(path.join(root, clean.slice(1)));
+  }
   // root-level static assets (favicon, manifest, icons, robots, sitemap)
-  if (/^\/[^/]+\.[a-z0-9]+$/i.test(h)) {
-    return fs.existsSync(path.join(root, h.slice(1)));
+  if (/^\/[^/]+\.[a-z0-9]+$/i.test(clean)) {
+    return fs.existsSync(path.join(root, clean.slice(1)));
   }
   return false;
 }
@@ -87,4 +97,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { FILE_MAP, counts, missing, htmls, resolves };
+module.exports = { FILE_MAP, counts, missing, htmls, resolves, assetPath };

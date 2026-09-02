@@ -85,21 +85,20 @@
 }
 #mm-solutions .mm-list{
   display:grid;
-  grid-template-columns:1.18fr 1fr 1fr;
+  grid-template-columns:1.18fr 1fr;
   grid-template-areas:
-    "feat saas crm"
-    "feat dash driver"
-    "api api api";
+    "feat saas"
+    "feat car"
+    "account account";
   gap:6px;padding:10px
 }
 #mm-solutions .mm-list > li{min-width:0;min-height:0}
 #mm-solutions .mm-sol-feat{grid-area:feat;display:flex}
 #mm-solutions .mm-sol-feat a{flex:1}
 #mm-solutions .mm-list > li:nth-child(2){grid-area:saas}
-#mm-solutions .mm-list > li:nth-child(3){grid-area:crm}
-#mm-solutions .mm-list > li:nth-child(4){grid-area:dash}
-#mm-solutions .mm-list > li:nth-child(5){grid-area:driver}
-#mm-solutions .mm-sol-wide{grid-area:api}
+#mm-solutions .mm-list > li:nth-child(3){grid-area:car}
+#mm-solutions .mm-sol-wide,
+#mm-solutions .mm-list > li:nth-child(4){grid-area:account}
 #mm-solutions .mm-list a{
   display:grid;
   grid-template-columns:44px minmax(0,1fr);
@@ -176,7 +175,7 @@
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='11' y='13' width='22' height='16' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='18' y='21' width='22' height='16' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='25' y='29' width='16' height='10' fill='%234F46E5'/%3E%3C/svg%3E");
   background-size:44px 44px
 }
-/* Dispatch CRM · pipeline stages */
+/* Dispatch CRM · pipeline stages — legacy selector kept for sheet tiles */
 #mm-solutions .mm-list a[href="/services/crm-development"]:before{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='7' y='21' width='11' height='10' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='20.5' y='21' width='11' height='10' fill='%234F46E5'/%3E%3Crect x='34' y='21' width='11' height='10' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Cpath d='M18 26h2.5M31.5 26H34' stroke='%230E1216' stroke-width='1.15'/%3E%3Ccircle cx='12.5' cy='16.5' r='1.7' fill='%235FD3A0'/%3E%3C/svg%3E");
   background-size:44px 44px
@@ -191,11 +190,23 @@
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='18' y='10' width='16' height='32' rx='2' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='21' y='16' width='10' height='14' fill='%234F46E5'/%3E%3Ccircle cx='26' cy='36' r='1.6' fill='%235FD3A0'/%3E%3C/svg%3E");
   background-size:44px 44px
 }
-/* Integrations · endpoint nodes */
-#mm-solutions .mm-list a[href="/services/api-integrations"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='13' cy='26' r='4.2' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%234F46E5'/%3E%3Ccircle cx='39' cy='26' r='4.2' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Cpath d='M17.4 26h3.5M31.1 26h3.5' stroke='%230E1216' stroke-width='1.15'/%3E%3C/svg%3E");
+/* Car transportation · vehicle on trailer */
+#mm-solutions .mm-list a[href="/solutions/car-transportation"]:before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='8' y='24' width='28' height='8' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='36' y='26' width='10' height='6' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34' r='3' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Ccircle cx='32' cy='34' r='3' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='12' y='20' width='10' height='6' fill='%235FD3A0'/%3E%3C/svg%3E");
   background-size:44px 44px
 }
+/* Accounting · connected ledgers */
+#mm-solutions .mm-list a[href="/solutions/accounting-integrations"]:before{
+  background-image:
+    url("/brand/logos/quickbooks.svg"),
+    url("/brand/logos/xero.svg"),
+    linear-gradient(var(--rule),var(--rule)),
+    radial-gradient(circle,var(--lime) 62%,transparent 68%);
+  background-size:17px 17px,17px 17px,7px 1px,6px 6px;
+  background-position:7px 17px,28px 17px,23px 25px,23px 22.5px;
+  background-repeat:no-repeat
+}
+#mm-company{width:min(420px,calc(100vw - 2 * var(--gutter)))}
 
 @media(max-width:1280px){
   #mm-solutions{width:min(560px,calc(100vw - 2 * var(--gutter)))}
@@ -203,9 +214,8 @@
     grid-template-columns:1fr 1fr;
     grid-template-areas:
       "feat feat"
-      "saas crm"
-      "dash driver"
-      "api api"
+      "saas car"
+      "account account"
   }
   #mm-solutions .mm-sol-feat a{min-height:148px}
 }
@@ -237,21 +247,19 @@
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='11' y='13' width='22' height='16' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='18' y='21' width='22' height='16' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='25' y='29' width='16' height='10' fill='%234F46E5'/%3E%3C/svg%3E");
   background-size:44px 44px
 }
-#sheet-solutions a[href="/services/crm-development"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='7' y='21' width='11' height='10' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='20.5' y='21' width='11' height='10' fill='%234F46E5'/%3E%3Crect x='34' y='21' width='11' height='10' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Cpath d='M18 26h2.5M31.5 26H34' stroke='%23EDEFF1' stroke-width='1.15'/%3E%3Ccircle cx='12.5' cy='16.5' r='1.7' fill='%235FD3A0'/%3E%3C/svg%3E");
+#sheet-solutions a[href="/solutions/car-transportation"]:before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='8' y='24' width='28' height='8' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='36' y='26' width='10' height='6' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34' r='3' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Ccircle cx='32' cy='34' r='3' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='12' y='20' width='10' height='6' fill='%235FD3A0'/%3E%3C/svg%3E");
   background-size:44px 44px
 }
-#sheet-solutions a[href="/services/dashboard-design"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Cpath d='M10 16h32' stroke='%23EDEFF1' stroke-width='1.15'/%3E%3Crect x='12' y='28' width='6' height='8' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='23' y='20' width='6' height='16' fill='%234F46E5'/%3E%3Crect x='34' y='24' width='6' height='12' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3C/svg%3E");
-  background-size:44px 44px
-}
-#sheet-solutions a[href="/services/mobile-applications"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='18' y='10' width='16' height='32' rx='2' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='21' y='16' width='10' height='14' fill='%234F46E5'/%3E%3Ccircle cx='26' cy='36' r='1.6' fill='%235FD3A0'/%3E%3C/svg%3E");
-  background-size:44px 44px
-}
-#sheet-solutions a[href="/services/api-integrations"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='13' cy='26' r='4.2' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%234F46E5'/%3E%3Ccircle cx='39' cy='26' r='4.2' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Cpath d='M17.4 26h3.5M31.1 26h3.5' stroke='%23EDEFF1' stroke-width='1.15'/%3E%3C/svg%3E");
-  background-size:44px 44px
+#sheet-solutions a[href="/solutions/accounting-integrations"]:before{
+  background-image:
+    url("/brand/logos/quickbooks.svg"),
+    url("/brand/logos/xero.svg"),
+    linear-gradient(#3A444E,#3A444E),
+    radial-gradient(circle,var(--lime) 62%,transparent 68%);
+  background-size:15px 15px,15px 15px,6px 1px,5px 5px;
+  background-position:8px 16px,26px 16px,22px 24px,22px 21.5px;
+  background-repeat:no-repeat
 }
 #sheet-solutions a.sheet-sol-all{
   display:inline-flex;align-items:center;gap:8px;flex-wrap:nowrap;white-space:nowrap;
@@ -629,11 +637,13 @@
 @media(max-width:1099px){
   .nav-primary{display:none}
   .burger{display:flex}
-  .nav-cta .btn{display:none}
+  .nav-cta .btn,
   .nav-cta .btn.sm,
-  .nav.scrolled .nav-cta .btn.sm{
-    height:44px;min-height:44px;padding:0 14px;font-size:12px
-  }
+  .nav.scrolled .nav-cta .btn.sm{display:none !important}
+  .nav-in{gap:12px;min-width:0}
+  .mark{flex:0 1 auto;min-width:0;max-width:calc(100% - 56px)}
+  .mark-logo{max-width:100%;height:auto;max-height:26px;width:auto}
+  .nav-cta{margin-left:auto;flex:none;gap:0}
   .nav-shell{
     background:rgba(244,243,238,.97);
     border-bottom-color:var(--rule)

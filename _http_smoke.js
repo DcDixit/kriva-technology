@@ -3,7 +3,7 @@ const { FILE_MAP } = require("./_crawl_links.js");
 const fs = require("fs");
 const path = require("path");
 
-const PORT = Number(process.env.PORT || 5188);
+const PORT = Number(process.env.PORT || 5177);
 const routes = new Set(Object.keys(FILE_MAP));
 for (const f of fs.readdirSync(__dirname).filter((x) => /^kriva-service-.*\.html$/i.test(x))) {
   routes.add(`/services/${f.replace(/^kriva-service-/, "").replace(/\.html$/i, "")}`);

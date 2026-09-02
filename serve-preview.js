@@ -8,6 +8,22 @@ const { FILE_MAP } = require("./_crawl_links.js");
 const ROOT = __dirname;
 const PORT = Number(process.env.PORT || 5177);
 
+/** HTML rewrites from vercel.json — keeps local preview aligned with production. */
+const VERCEL_REWRITES = (() => {
+  try {
+    const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "vercel.json"), "utf8"));
+    const map = {};
+    for (const r of cfg.rewrites || []) {
+      if (!r.source || !r.destination || r.destination.includes(":")) continue;
+      if (!r.destination.endsWith(".html")) continue;
+      map[r.source] = r.destination.replace(/^\//, "");
+    }
+    return map;
+  } catch {
+    return {};
+  }
+})();
+
 function loadEnvFile(file) {
   const p = path.join(ROOT, file);
   if (!fs.existsSync(p)) return;
@@ -43,6 +59,7 @@ const MIME = {
 
 function resolveUrl(urlPath) {
   const clean = decodeURIComponent(urlPath.split("?")[0].split("#")[0]);
+  if (VERCEL_REWRITES[clean]) return VERCEL_REWRITES[clean];
   if (FILE_MAP[clean]) return FILE_MAP[clean];
   if (clean.startsWith("/services/")) {
     const slug = clean.split("/").pop();
