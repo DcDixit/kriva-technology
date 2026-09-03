@@ -1,33 +1,285 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Trucking console">
-<defs>
-  <linearGradient id="bgu1ckwxpb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#161C22"/><stop offset="100%" stop-color="#0E1216"/></linearGradient>
-  <pattern id="gridu1ckwxpb" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#232B33" stroke-width="0.45" opacity="0.28"/></pattern>
-</defs>
-<rect width="100%" height="100%" fill="url(#bgu1ckwxpb)"/>
-<rect width="100%" height="100%" fill="url(#gridu1ckwxpb)"/><rect width="1600" height="46" fill="#0E1216"/>
-<line x1="0" y1="46" x2="1600" y2="46" stroke="#232B33"/>
-<rect x="20" y="17" width="9" height="9" fill="#5FD3A0"/>
-<text x="38" y="28" fill="#EDEFF1" font-family="ui-monospace,monospace" font-size="10.5" letter-spacing="0.13em">DISPATCH</text><rect x="18" y="58" width="504.66666666666663" height="68" fill="#161C22" stroke="#232B33"/>
-<text x="28" y="78" fill="#6B7885" font-family="ui-monospace,monospace" font-size="9" letter-spacing="0.1em">TICKETS</text>
-<text x="28" y="108" fill="#EDEFF1" font-family="ui-sans-serif,sans-serif" font-size="21" font-weight="700">86</text><rect x="532.6666666666666" y="58" width="504.66666666666663" height="68" fill="#161C22" stroke="#232B33"/>
-<text x="542.6666666666666" y="78" fill="#6B7885" font-family="ui-monospace,monospace" font-size="9" letter-spacing="0.1em">AUTO</text>
-<text x="542.6666666666666" y="108" fill="#5FD3A0" font-family="ui-sans-serif,sans-serif" font-size="21" font-weight="700">62</text><rect x="1047.3333333333333" y="58" width="504.66666666666663" height="68" fill="#161C22" stroke="#232B33"/>
-<text x="1057.3333333333333" y="78" fill="#6B7885" font-family="ui-monospace,monospace" font-size="9" letter-spacing="0.1em">QUEUE</text>
-<text x="1057.3333333333333" y="108" fill="#EDEFF1" font-family="ui-sans-serif,sans-serif" font-size="21" font-weight="700">4</text><rect x="18" y="140" width="1564" height="154" fill="#161C22" stroke="#232B33"/>
-<text x="32" y="158" fill="#6B7885" font-family="ui-monospace,monospace" font-size="9" letter-spacing="0.11em">LOAD · LANE · SLA · STATUS</text><rect x="18" y="172" width="4" height="34" fill="#5FD3A0"/>
-<text x="34" y="194" fill="#EDEFF1" font-size="13">#4821</text>
-<text x="576" y="194" fill="#B9C3CC" font-family="ui-monospace,monospace" font-size="11">DAL → ATL</text>
-<text x="927.9999999999999" y="194" fill="#B9C3CC" font-family="ui-monospace,monospace" font-size="11">18m</text>
-<rect x="1482" y="180" width="86" height="18" fill="none" stroke="#5FD3A0"/>
-<text x="1525" y="193" text-anchor="middle" fill="#5FD3A0" font-family="ui-monospace,monospace" font-size="8.5">IN TRANSIT</text><line x1="32" y1="206" x2="1568" y2="206" stroke="#232B33"/><rect x="18" y="212" width="4" height="34" fill="transparent"/>
-<text x="34" y="234" fill="#B9C3CC" font-size="13">#4822</text>
-<text x="576" y="234" fill="#B9C3CC" font-family="ui-monospace,monospace" font-size="11">PHX → DEN</text>
-<text x="927.9999999999999" y="234" fill="#B9C3CC" font-family="ui-monospace,monospace" font-size="11">42m</text>
-<rect x="1482" y="220" width="86" height="18" fill="none" stroke="#6B7885"/>
-<text x="1525" y="233" text-anchor="middle" fill="#6B7885" font-family="ui-monospace,monospace" font-size="8.5">ASSIGNED</text><line x1="32" y1="246" x2="1568" y2="246" stroke="#232B33"/><rect x="18" y="252" width="4" height="34" fill="transparent"/>
-<text x="34" y="274" fill="#B9C3CC" font-size="13">#4823</text>
-<text x="576" y="274" fill="#B9C3CC" font-family="ui-monospace,monospace" font-size="11">CHI → DET</text>
-<text x="927.9999999999999" y="274" fill="#B9C3CC" font-family="ui-monospace,monospace" font-size="11">6m</text>
-<rect x="1482" y="260" width="86" height="18" fill="none" stroke="#6B7885"/>
-<text x="1525" y="273" text-anchor="middle" fill="#6B7885" font-family="ui-monospace,monospace" font-size="8.5">AT RISK</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Dispatch load board with SLA, bulk assign, and exception queue">
+  <defs>
+    <linearGradient id="dcBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12181E"/>
+      <stop offset="100%" stop-color="#0E1216"/>
+    </linearGradient>
+    <linearGradient id="dcBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="rgba(79,70,229,.18)"/>
+      <stop offset="48%" stop-color="rgba(79,70,229,0)"/>
+    </linearGradient>
+    <linearGradient id="dcRisk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="rgba(79,70,229,.16)"/>
+      <stop offset="55%" stop-color="rgba(219,155,31,.08)"/>
+      <stop offset="100%" stop-color="rgba(219,155,31,0)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#dcBg)"/>
+
+  <!-- Chrome -->
+  <rect width="1600" height="46" fill="#12181E"/>
+  <line x1="0" y1="46" x2="1600" y2="46" stroke="#232B33"/>
+  <circle cx="26" cy="23" r="4.5" fill="#5C6670"/>
+  <circle cx="42" cy="23" r="4.5" fill="#2A333C"/>
+  <circle cx="58" cy="23" r="4.5" fill="#2A333C"/>
+  <text x="78" y="27" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".12em">DISPATCH · LOAD BOARD</text>
+  <circle cx="1488" cy="23" r="4" fill="#5FD3A0"/>
+  <text x="1500" y="27" fill="#5FD3A0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".12em">LIVE</text>
+
+  <!-- Stage rail — same five handoffs as the section above -->
+  <rect y="46" width="1600" height="86" fill="#10161C"/>
+  <line x1="0" y1="132" x2="1600" y2="132" stroke="#232B33"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+    <rect x="20" y="60" width="292" height="58" fill="#161C22" stroke="#232B33"/>
+    <text x="36" y="82" fill="#717F8C" font-size="10" letter-spacing=".14em">01</text>
+    <text x="36" y="102" fill="#B9C3CC" font-size="13" letter-spacing=".04em">LOAD CREATED</text>
+
+    <text x="318" y="94" fill="#3A444E" font-size="14">→</text>
+
+    <rect x="336" y="60" width="292" height="58" fill="#161C22" stroke="#232B33"/>
+    <text x="352" y="82" fill="#717F8C" font-size="10" letter-spacing=".14em">02</text>
+    <text x="352" y="102" fill="#B9C3CC" font-size="13" letter-spacing=".04em">DISPATCH</text>
+
+    <text x="634" y="94" fill="#3A444E" font-size="14">→</text>
+
+    <rect x="652" y="60" width="292" height="58" fill="rgba(79,70,229,.14)" stroke="#4F46E5"/>
+    <text x="668" y="82" fill="#B7A9FF" font-size="10" letter-spacing=".14em">03 · CURRENT</text>
+    <text x="668" y="102" fill="#EDEFF1" font-size="13" letter-spacing=".04em">DRIVER / CARRIER</text>
+
+    <text x="950" y="94" fill="#3A444E" font-size="14">→</text>
+
+    <rect x="968" y="60" width="292" height="58" fill="#161C22" stroke="#232B33"/>
+    <text x="984" y="82" fill="#717F8C" font-size="10" letter-spacing=".14em">04</text>
+    <text x="984" y="102" fill="#B9C3CC" font-size="13" letter-spacing=".04em">DELIVERY</text>
+
+    <text x="1266" y="94" fill="#3A444E" font-size="14">→</text>
+
+    <rect x="1284" y="60" width="296" height="58" fill="#161C22" stroke="#232B33"/>
+    <text x="1300" y="82" fill="#717F8C" font-size="10" letter-spacing=".14em">05</text>
+    <text x="1300" y="102" fill="#B9C3CC" font-size="13" letter-spacing=".04em">BILLING</text>
+  </g>
+
+  <!-- Board header -->
+  <rect y="132" width="1600" height="62" fill="url(#dcBar)"/>
+  <line x1="0" y1="194" x2="1600" y2="194" stroke="#232B33"/>
+  <text x="24" y="158" fill="#FFFFFF" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="700" letter-spacing="-.02em">Load board</text>
+  <text x="24" y="178" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".1em">CENTRAL DESK · ONE SHIFT</text>
+  <rect x="1268" y="150" width="118" height="28" fill="rgba(79,70,229,.16)" stroke="rgba(183,169,255,.35)"/>
+  <text x="1327" y="169" text-anchor="middle" fill="#C4B8FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".1em">3 SELECTED</text>
+  <rect x="1396" y="150" width="180" height="28" fill="#4F46E5"/>
+  <text x="1486" y="169" text-anchor="middle" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".1em">ASSIGN</text>
+
+  <!-- KPIs -->
+  <line x1="0" y1="274" x2="1600" y2="274" stroke="#232B33"/>
+  <line x1="533" y1="194" x2="533" y2="274" stroke="#232B33"/>
+  <line x1="1067" y1="194" x2="1067" y2="274" stroke="#232B33"/>
+  <text x="24" y="218" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".14em">ON BOARD</text>
+  <text x="24" y="256" fill="#FFFFFF" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="32" font-weight="700">47</text>
+  <text x="557" y="218" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".14em">ROLLING</text>
+  <text x="557" y="256" fill="#5FD3A0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="32" font-weight="700">38</text>
+  <text x="1091" y="218" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".14em">AT RISK</text>
+  <text x="1091" y="256" fill="#DB9B1F" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="32" font-weight="700">2</text>
+
+  <!-- Column headers -->
+  <g fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" letter-spacing=".12em">
+    <text x="56" y="298">LOAD</text>
+    <text x="168" y="298">LANE</text>
+    <text x="400" y="298">SLA</text>
+    <text x="620" y="298">STAGE</text>
+    <text x="860" y="298">STATUS</text>
+    <text x="1124" y="298">EXCEPTIONS · BY SLA RISK</text>
+  </g>
+  <line x1="0" y1="310" x2="1600" y2="310" stroke="#232B33"/>
+  <line x1="1100" y1="274" x2="1100" y2="922" stroke="#232B33"/>
+
+  <!-- Rows -->
+  <!-- 4821 Created -->
+  <rect x="24" y="332" width="14" height="14" fill="#0E1216" stroke="#3A444E"/>
+  <text x="56" y="344" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#4821</text>
+  <text x="168" y="344" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">DAL → PHX</text>
+  <text x="400" y="344" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">—</text>
+  <text x="620" y="344" fill="#8C98A4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">01 · Created</text>
+  <rect x="860" y="328" width="86" height="20" fill="none" stroke="#717F8C"/>
+  <circle cx="872" cy="338" r="2" fill="#717F8C"/>
+  <text x="880" y="342" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">NEW</text>
+  <line x1="24" y1="366" x2="1084" y2="366" stroke="#232B33"/>
+
+  <!-- 4822 Assigned · selected -->
+  <rect x="0" y="366" width="1100" height="56" fill="rgba(79,70,229,.08)"/>
+  <rect x="0" y="366" width="3" height="56" fill="#4F46E5"/>
+  <rect x="24" y="388" width="14" height="14" fill="#4F46E5"/>
+  <path d="M27 395l3 3 6-6" fill="none" stroke="#fff" stroke-width="1.6"/>
+  <text x="56" y="400" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#4822</text>
+  <text x="168" y="400" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">ATL → CLT</text>
+  <text x="400" y="394" fill="#DDE2E7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">42m</text>
+  <rect x="400" y="400" width="120" height="4" fill="#232B33"/>
+  <rect x="400" y="400" width="65" height="4" fill="#5FD3A0"/>
+  <text x="620" y="400" fill="#8C98A4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">02 · Dispatch</text>
+  <rect x="860" y="384" width="110" height="20" fill="none" stroke="#717F8C"/>
+  <circle cx="872" cy="394" r="2" fill="#717F8C"/>
+  <text x="880" y="398" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">ASSIGNED</text>
+  <line x1="24" y1="422" x2="1084" y2="422" stroke="#232B33"/>
+
+  <!-- 5119 Assigned · selected -->
+  <rect x="0" y="422" width="1100" height="56" fill="rgba(79,70,229,.08)"/>
+  <rect x="0" y="422" width="3" height="56" fill="#4F46E5"/>
+  <rect x="24" y="444" width="14" height="14" fill="#4F46E5"/>
+  <path d="M27 451l3 3 6-6" fill="none" stroke="#fff" stroke-width="1.6"/>
+  <text x="56" y="456" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#5119</text>
+  <text x="168" y="456" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">DEN → SLC</text>
+  <text x="400" y="450" fill="#DDE2E7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">22m</text>
+  <rect x="400" y="456" width="120" height="4" fill="#232B33"/>
+  <rect x="400" y="456" width="58" height="4" fill="#5FD3A0"/>
+  <text x="620" y="456" fill="#8C98A4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">02 · Dispatch</text>
+  <rect x="860" y="440" width="110" height="20" fill="none" stroke="#717F8C"/>
+  <circle cx="872" cy="450" r="2" fill="#717F8C"/>
+  <text x="880" y="454" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">ASSIGNED</text>
+  <line x1="24" y1="478" x2="1084" y2="478" stroke="#232B33"/>
+
+  <!-- 4823 In transit -->
+  <rect x="24" y="500" width="14" height="14" fill="#0E1216" stroke="#3A444E"/>
+  <text x="56" y="512" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#4823</text>
+  <text x="168" y="512" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">CHI → DET</text>
+  <text x="400" y="506" fill="#DDE2E7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">18m</text>
+  <rect x="400" y="512" width="120" height="4" fill="#232B33"/>
+  <rect x="400" y="512" width="50" height="4" fill="#5FD3A0"/>
+  <text x="620" y="512" fill="#B7A9FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">03 · Driver</text>
+  <rect x="860" y="496" width="118" height="20" fill="none" stroke="#5FD3A0"/>
+  <circle cx="872" cy="506" r="2" fill="#5FD3A0"/>
+  <text x="880" y="510" fill="#5FD3A0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">IN TRANSIT</text>
+  <line x1="24" y1="534" x2="1084" y2="534" stroke="#232B33"/>
+
+  <!-- 4824 At risk · selected -->
+  <rect x="0" y="534" width="1100" height="72" fill="url(#dcRisk)"/>
+  <rect x="0" y="534" width="3" height="72" fill="#4F46E5"/>
+  <rect x="24" y="562" width="14" height="14" fill="#4F46E5"/>
+  <path d="M27 569l3 3 6-6" fill="none" stroke="#fff" stroke-width="1.6"/>
+  <text x="56" y="574" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#4824</text>
+  <text x="168" y="574" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">SEA → PDX</text>
+  <text x="400" y="568" fill="#DB9B1F" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">6m</text>
+  <rect x="400" y="574" width="120" height="4" fill="#232B33"/>
+  <rect x="400" y="574" width="20" height="4" fill="#DB9B1F"/>
+  <text x="620" y="574" fill="#B7A9FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">03 · Driver</text>
+  <rect x="860" y="558" width="96" height="20" fill="none" stroke="#DB9B1F"/>
+  <circle cx="872" cy="568" r="2" fill="#DB9B1F"/>
+  <text x="880" y="572" fill="#DB9B1F" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">AT RISK</text>
+  <line x1="24" y1="606" x2="1084" y2="606" stroke="#232B33"/>
+
+  <!-- 5104 Delivery -->
+  <rect x="24" y="628" width="14" height="14" fill="#0E1216" stroke="#3A444E"/>
+  <text x="56" y="640" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#5104</text>
+  <text x="168" y="640" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">HOU → MEM</text>
+  <text x="400" y="640" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">—</text>
+  <text x="620" y="640" fill="#8C98A4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">04 · Delivery</text>
+  <rect x="860" y="624" width="92" height="20" fill="none" stroke="#5FD3A0"/>
+  <circle cx="872" cy="634" r="2" fill="#5FD3A0"/>
+  <text x="880" y="638" fill="#5FD3A0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">POD IN</text>
+  <line x1="24" y1="662" x2="1084" y2="662" stroke="#232B33"/>
+
+  <!-- 5088 Billing -->
+  <rect x="24" y="684" width="14" height="14" fill="#0E1216" stroke="#3A444E"/>
+  <text x="56" y="696" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#5088</text>
+  <text x="168" y="696" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">JAX → MIA</text>
+  <text x="400" y="696" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">—</text>
+  <text x="620" y="696" fill="#8C98A4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">05 · Billing</text>
+  <rect x="860" y="680" width="102" height="20" fill="none" stroke="#717F8C"/>
+  <circle cx="872" cy="690" r="2" fill="#717F8C"/>
+  <text x="880" y="694" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">SETTLED</text>
+  <line x1="24" y1="718" x2="1084" y2="718" stroke="#232B33"/>
+
+  <!-- 5140 Watch -->
+  <rect x="24" y="740" width="14" height="14" fill="#0E1216" stroke="#3A444E"/>
+  <text x="56" y="752" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#5140</text>
+  <text x="168" y="752" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">DEN → ABQ</text>
+  <text x="400" y="746" fill="#DDE2E7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">11m</text>
+  <rect x="400" y="752" width="120" height="4" fill="#232B33"/>
+  <rect x="400" y="752" width="32" height="4" fill="#DB9B1F"/>
+  <text x="620" y="752" fill="#B7A9FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">03 · Driver</text>
+  <rect x="860" y="736" width="86" height="20" fill="none" stroke="#DB9B1F"/>
+  <circle cx="872" cy="746" r="2" fill="#DB9B1F"/>
+  <text x="880" y="750" fill="#DB9B1F" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">WATCH</text>
+  <line x1="24" y1="774" x2="1084" y2="774" stroke="#232B33"/>
+
+  <!-- 5091 Rolling -->
+  <rect x="24" y="796" width="14" height="14" fill="#0E1216" stroke="#3A444E"/>
+  <text x="56" y="808" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#5091</text>
+  <text x="168" y="808" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">IND → CMH</text>
+  <text x="400" y="802" fill="#DDE2E7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">27m</text>
+  <rect x="400" y="808" width="120" height="4" fill="#232B33"/>
+  <rect x="400" y="808" width="72" height="4" fill="#5FD3A0"/>
+  <text x="620" y="808" fill="#B7A9FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">03 · Driver</text>
+  <rect x="860" y="792" width="92" height="20" fill="none" stroke="#5FD3A0"/>
+  <circle cx="872" cy="802" r="2" fill="#5FD3A0"/>
+  <text x="880" y="806" fill="#5FD3A0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">ROLLING</text>
+  <line x1="24" y1="830" x2="1084" y2="830" stroke="#232B33"/>
+
+  <!-- 5077 Created -->
+  <rect x="24" y="852" width="14" height="14" fill="#0E1216" stroke="#3A444E"/>
+  <text x="56" y="864" fill="#EDEFF1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">#5077</text>
+  <text x="168" y="864" fill="#B9C3CC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">LAX → LAS</text>
+  <text x="400" y="864" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">—</text>
+  <text x="620" y="864" fill="#8C98A4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">01 · Created</text>
+  <rect x="860" y="848" width="102" height="20" fill="none" stroke="#717F8C"/>
+  <circle cx="872" cy="858" r="2" fill="#717F8C"/>
+  <text x="880" y="862" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="9.5" letter-spacing=".1em">PENDING</text>
+
+  <!-- Exceptions panel -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+    <rect x="1120" y="326" width="456" height="72" fill="rgba(219,155,31,.08)"/>
+    <rect x="1120" y="326" width="3" height="72" fill="#DB9B1F"/>
+    <text x="1140" y="352" fill="#EDEFF1" font-size="14">#4824</text>
+    <text x="1224" y="352" fill="#B9C3CC" font-size="13">SEA → PDX</text>
+    <text x="1508" y="352" fill="#DB9B1F" font-size="13">6m</text>
+    <rect x="1140" y="362" width="86" height="18" fill="none" stroke="#DB9B1F"/>
+    <text x="1152" y="375" fill="#DB9B1F" font-size="9" letter-spacing=".1em">AT RISK</text>
+    <text x="1240" y="375" fill="#8C98A4" font-size="11">SLA window</text>
+
+    <line x1="1120" y1="410" x2="1576" y2="410" stroke="#232B33"/>
+    <text x="1140" y="438" fill="#EDEFF1" font-size="14">#5140</text>
+    <text x="1224" y="438" fill="#B9C3CC" font-size="13">DEN → ABQ</text>
+    <text x="1500" y="438" fill="#DB9B1F" font-size="13">11m</text>
+    <rect x="1140" y="448" width="72" height="18" fill="none" stroke="#DB9B1F"/>
+    <text x="1152" y="461" fill="#DB9B1F" font-size="9" letter-spacing=".1em">WATCH</text>
+    <text x="1228" y="461" fill="#8C98A4" font-size="11">Appointment</text>
+
+    <line x1="1120" y1="486" x2="1576" y2="486" stroke="#232B33"/>
+    <text x="1140" y="514" fill="#EDEFF1" font-size="14">#4819</text>
+    <text x="1224" y="514" fill="#B9C3CC" font-size="13">DAL → OKC</text>
+    <rect x="1140" y="524" width="72" height="18" fill="none" stroke="#717F8C"/>
+    <text x="1152" y="537" fill="#717F8C" font-size="9" letter-spacing=".1em">OPEN</text>
+    <text x="1228" y="537" fill="#8C98A4" font-size="11">Late pickup</text>
+
+    <line x1="1120" y1="562" x2="1576" y2="562" stroke="#232B33"/>
+    <text x="1140" y="590" fill="#EDEFF1" font-size="14">#4804</text>
+    <text x="1224" y="590" fill="#B9C3CC" font-size="13">CHI → IND</text>
+    <rect x="1140" y="600" width="72" height="18" fill="none" stroke="#717F8C"/>
+    <text x="1152" y="613" fill="#717F8C" font-size="9" letter-spacing=".1em">OPEN</text>
+    <text x="1228" y="613" fill="#8C98A4" font-size="11">Missing POD</text>
+
+    <line x1="1120" y1="638" x2="1576" y2="638" stroke="#232B33"/>
+    <text x="1140" y="666" fill="#EDEFF1" font-size="14">#4792</text>
+    <text x="1224" y="666" fill="#B9C3CC" font-size="13">ATL → JAX</text>
+    <rect x="1140" y="676" width="72" height="18" fill="none" stroke="#717F8C"/>
+    <text x="1152" y="689" fill="#717F8C" font-size="9" letter-spacing=".1em">OPEN</text>
+    <text x="1228" y="689" fill="#8C98A4" font-size="11">Detention</text>
+
+    <rect x="1120" y="724" width="456" height="172" fill="#161C22" stroke="#232B33"/>
+    <text x="1140" y="756" fill="#717F8C" font-size="10" letter-spacing=".12em">NEXT ACTION</text>
+    <text x="1140" y="788" fill="#FFFFFF" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="700">Reassign #4824</text>
+    <text x="1140" y="816" fill="#8C98A4" font-size="12">6m remaining · SEA → PDX · R. Hale</text>
+    <rect x="1140" y="836" width="200" height="32" fill="#4F46E5"/>
+    <text x="1240" y="857" text-anchor="middle" fill="#FFFFFF" font-size="11" letter-spacing=".1em">ASSIGN DRIVER</text>
+    <text x="1140" y="880" fill="#5A6570" font-size="11">5 open · sorted by remaining SLA</text>
+  </g>
+
+  <!-- Audit -->
+  <rect y="922" width="1600" height="78" fill="#10161C"/>
+  <line x1="0" y1="922" x2="1600" y2="922" stroke="#232B33"/>
+  <text x="24" y="954" fill="#717F8C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".1em">LAST BULK</text>
+  <text x="140" y="954" fill="#DDE2E7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing=".06em">ASSIGN · 3 LOADS · R. HALE · 14:22</text>
+  <text x="1478" y="954" fill="#5FD3A0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".12em">AUDITED</text>
+  <text x="24" y="978" fill="#5A6570" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" letter-spacing=".08em">Override on #4824 recorded · SLA remaining on every row · spreadsheet queue retired</text>
+</svg>

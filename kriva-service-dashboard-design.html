@@ -19,23 +19,24 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css">
 <link rel="preload" href="/brand/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<title>Dashboard &amp; Admin Panel Design for SaaS and Operations | KRIVA</title>
-<meta name="description" content="KRIVA designs operational dashboards, admin panels, analytics views, exception queues, and role-based workflows for SaaS and logistics teams.">
+<title>Custom Dashboard Design &amp; Development | Kriva</title>
+<meta name="description" content="Kriva designs custom dashboards that turn business data into clear signals, role-based views and actionable operational insights.">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://krivatechnologies.com/services/dashboard-design">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KRIVA Technologies">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Dashboard &amp; Admin Panel Design for SaaS and Operations">
-<meta property="og:description" content="KRIVA designs operational dashboards, admin panels, analytics views, exception queues, and role-based workflows for SaaS and logistics teams.">
+<meta property="og:title" content="Custom Dashboard Design &amp; Development | Kriva">
+<meta property="og:description" content="Kriva designs custom dashboards that turn business data into clear signals, role-based views and actionable operational insights.">
 <meta property="og:url" content="https://krivatechnologies.com/services/dashboard-design">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Dashboard and admin panel design for operations, SaaS, and analytics">
+<meta property="og:image:alt" content="Custom dashboard design and development by Kriva">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dashboard &amp; Admin Panel Design for SaaS and Operations">
-<meta name="twitter:description" content="KRIVA designs operational dashboards, admin panels, analytics views, exception queues, and role-based workflows for SaaS and logistics teams.">
+<meta name="twitter:title" content="Custom Dashboard Design &amp; Development | Kriva">
+<meta name="twitter:description" content="Kriva designs custom dashboards that turn business data into clear signals, role-based views and actionable operational insights.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <style>
@@ -168,6 +169,54 @@ body.page-dashboard .hero{
 }
 .dash-trust span{display:inline-flex;align-items:center;gap:8px}
 .dash-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
+.dash-cap-strip{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:20px;padding-top:18px;border-top:1px solid var(--rule)}
+.dash-cap-strip span{display:inline-flex;align-items:center;min-height:36px;padding:6px 12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1px solid var(--rule);background:var(--white)}
+.dash-fit{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px;padding-block:clamp(48px,6vw,72px)}
+.dash-fit-rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,20px)}
+.dash-fit-rail article{padding:clamp(18px,2.2vw,24px);border:1px solid var(--rule);background:var(--white);min-width:0}
+.dash-fit-rail .k{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:10px}
+.dash-fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.2;margin-bottom:8px;max-width:22ch}
+.dash-fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:36ch}
+.dash-fit-foot{margin-top:clamp(20px,2.4vw,28px);padding-top:18px;border-top:1px solid var(--rule);font-size:15px;line-height:1.62;color:var(--steel);max-width:62ch}
+.dash-prob-card .cons{display:block;margin-top:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cta)}
+.dash-flow{display:flex;align-items:stretch;margin-top:clamp(24px,3vw,36px);border:1px solid var(--rule);background:var(--white);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;list-style:none;padding:0;margin-top:clamp(24px,3vw,36px)}
+.dash-flow-visual .lab{margin-top:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2)}
+.dash-proof-split .dash-metrics{margin-top:clamp(24px,3vw,36px)}
+.dash-cred-points a{border-bottom:1px solid var(--rule)}
+.dash-flow::-webkit-scrollbar{display:none}
+.dash-flow li{position:relative;flex:1 1 0;min-width:min(100%,140px);list-style:none;padding:clamp(16px,2vw,22px);border-right:1px solid var(--rule)}
+.dash-flow li:last-child{border-right:0}
+.dash-flow li:not(:last-child):after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-family:var(--f-mono);font-size:11px;color:var(--steel-2);z-index:1;background:var(--white);padding:2px 0}
+.dash-flow .sn{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
+.dash-flow h3{font-family:var(--f-display);font-weight:700;font-size:clamp(.98rem,1.4vw,1.1rem);letter-spacing:-.02em;margin-bottom:6px}
+.dash-flow p{font-size:13.5px;line-height:1.5;color:var(--steel);max-width:28ch;margin:0}
+.dash-flow-visual{margin-top:clamp(20px,2.4vw,28px)}
+.dash-flow-visual img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border:1px solid var(--rule)}
+.dash-role-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,36px);align-items:start;margin-top:clamp(20px,2.4vw,28px)}
+.dash-role-layout img{width:100%;height:auto;border:1px solid var(--rule);background:var(--ink)}
+.dash-role-panel.on{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,36px);align-items:start}
+.dash-proof-split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,56px);align-items:start}
+.dash-proof-stack{display:grid;gap:14px}
+.dash-proof-before{display:grid;gap:8px;padding:16px;background:#10161C;border:1px solid var(--ink-line);font-family:var(--f-mono);font-size:11.5px;color:#B9C3CC}
+.dash-proof-before b{display:block;color:#fff;font-weight:600;margin-bottom:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.dash-proof-before span{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:8px 0;border-top:1px solid var(--ink-line)}
+.dash-proof-story{display:grid;margin-top:clamp(20px,2.4vw,28px);border-top:1px solid var(--ink-line)}
+.dash-proof-story div{display:grid;grid-template-columns:clamp(88px,12vw,120px) minmax(0,1fr);gap:16px;padding:clamp(14px,1.8vw,18px) 0;border-bottom:1px solid var(--ink-line)}
+.dash-proof-story dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);padding-top:3px}
+.dash-proof-story dd{color:#DDE2E7;font-size:15px;line-height:1.58;max-width:48ch}
+.dash-cred{background:var(--paper);border-block:1px solid var(--rule);scroll-margin-top:88px}
+.dash-cred-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,4vw,56px);align-items:start;margin-top:clamp(28px,4vw,44px)}
+.dash-cred-points{display:grid;gap:clamp(14px,2vw,20px)}
+.dash-cred-points div{padding-bottom:clamp(14px,2vw,18px);border-bottom:1px solid var(--rule)}
+.dash-cred-points dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:6px}
+.dash-cred-points dd{font-size:15px;line-height:1.58;color:var(--steel);max-width:48ch}
+.dash-cred-points a{border-bottom:1px solid var(--rule)}
+.dash-cred-aside{padding:clamp(18px,2.2vw,26px);border:1px solid var(--rule);background:var(--paper-2)}
+.dash-cred-aside h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);margin-bottom:10px;letter-spacing:-.02em}
+.dash-cred-aside p{font-size:14.5px;line-height:1.58;color:var(--steel);max-width:36ch}
+.dash-cred-aside .btn{margin-top:18px}
+body.page-dashboard .fmark img{width:min(100%,390px);opacity:.22}
+body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
 .dash-hero-visual{position:relative;min-width:0}
 .cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
 
@@ -335,8 +384,14 @@ body.page-dashboard .hero{
 .faq-side .btn{margin-top:24px}
 
 @media(max-width:1024px){
-  .dash-hero-grid,.dash-hierarchy-grid,.dash-role-tabs + .dash-role-panel,.dash-proof-cols,.dash-related-grid,.faq-grid{grid-template-columns:1fr}
+  .dash-hero-grid,.dash-hierarchy-grid,.dash-role-tabs + .dash-role-panel,.dash-proof-cols,.dash-proof-split,.dash-related-grid,.faq-grid,.dash-fit-rail,.dash-cred-grid,.dash-role-panel.on,.dash-role-layout{grid-template-columns:1fr}
+  .dash-flow{flex-direction:column}
+  .dash-flow li{border-right:0;border-bottom:1px solid var(--rule);min-width:0}
+  .dash-flow li:last-child{border-bottom:0}
+  .dash-proof-split{display:flex;flex-direction:column;gap:clamp(28px,4vw,40px)}
+  .dash-proof-split > .dash-proof-stack{order:-1}
   .dash-hero-copy .d1{max-width:none}
+  .dash-flow li:not(:last-child):after{content:none}
   .faq-grid > div:first-child{position:static}
   .dash-prob-grid{grid-template-columns:1fr}
   .cta-row{align-items:flex-start}
@@ -371,6 +426,7 @@ body.page-dashboard .hero{
   .dash-board[data-state="done"] .dash-action.done{transform:none}
 }
 </style>
+<link rel="stylesheet" href="/shared/page-inquiry.css">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body class="page-dashboard">
@@ -455,7 +511,7 @@ body.page-dashboard .hero{
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="/contact#book" class="btn sm"><span>Book a discovery call</span><i>→</i></a>
+        <a href="#inquire" class="btn sm"><span>Discuss dashboard</span><i>→</i></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -514,21 +570,25 @@ body.page-dashboard .hero{
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
+  <a href="#about-service"><span>About</span><i></i></a>
   <a href="#problems"><span>Problems</span><i></i></a>
-  <a href="#hierarchy"><span>Hierarchy</span><i></i></a>
+  <a href="#hierarchy"><span>Flow</span><i></i></a>
   <a href="#roles"><span>Roles</span><i></i></a>
   <a href="#proof"><span>ShiftRail</span><i></i></a>
   <a href="#related"><span>Related</span><i></i></a>
+  <a href="#credibility"><span>Credibility</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
 <nav class="mob-chips" id="mobChips" aria-label="Page sections">
   <a href="#overview">Overview</a>
+  <a href="#about-service">About</a>
   <a href="#problems">Problems</a>
-  <a href="#hierarchy">Hierarchy</a>
+  <a href="#hierarchy">Flow</a>
   <a href="#roles">Roles</a>
   <a href="#proof">ShiftRail</a>
   <a href="#related">Related</a>
+  <a href="#credibility">Credibility</a>
   <a href="#faq">FAQ</a>
 </nav>
 
@@ -543,15 +603,22 @@ body.page-dashboard .hero{
     </ol>
     <div class="dash-hero-grid">
       <div class="dash-hero-copy">
-        <p class="eyebrow" data-r>Dashboard UX + admin panel design</p>
+        <p class="eyebrow" data-r>Custom dashboard design &amp; development</p>
         <h1 class="d1 mask" data-mask>
-          <span><i>Dashboards that show</i></span>
+          <span><i>Custom dashboards that show</i></span>
           <span><i>what needs attention.</i></span>
         </h1>
-        <p class="lede" data-r>KRIVA designs operations dashboards, admin panels, and analytics views that prioritize decisions, exceptions, supporting records, and actions—not a wall of equal-weight charts.</p>
+        <p class="lede" data-r>Kriva designs and builds custom dashboards for operational reporting and data visualization—role-based views, exception queues, and actions integrated with your existing systems, not another wall of equal-weight charts.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Discuss your dashboard</span><i>→</i></a>
-          <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See the ShiftRail case</span><i>→</i></a>
+          <a href="#inquire" class="btn"><span>Discuss Your Dashboard</span><i>→</i></a>
+          <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See a Dashboard Case Study</span><i>→</i></a>
+        </div>
+        <div class="dash-cap-strip" data-r aria-label="Dashboard capabilities">
+          <span>Dashboard design</span>
+          <span>Operational reporting</span>
+          <span>Data visualization</span>
+          <span>Role-based views</span>
+          <span>System integration</span>
         </div>
         <p class="dash-trust" data-r>
           <span>US-hour collaboration</span>
@@ -601,11 +668,36 @@ body.page-dashboard .hero{
             </div>
           </div>
         </div>
-        <p class="cap-note"><span class="flag">Demo</span> Exception appears · risk becomes primary · assign from row · count updates</p>
+        <p class="cap-note"><span class="flag">Conceptual UI</span> Exception appears · risk becomes primary · assign from row · count updates</p>
       </div>
     </div>
   </div>
 </header>
+
+<section class="dash-fit" id="about-service" aria-labelledby="fitH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>What Kriva builds</p>
+    <h2 class="sr" id="fitH">Custom dashboard design and development for operational and SaaS teams</h2>
+    <div class="dash-fit-rail" data-s>
+      <article>
+        <p class="k">Who it is for</p>
+        <h3>Ops, management, finance, and service teams drowning in data</h3>
+        <p>Carriers, SaaS products, and service orgs where reporting exists but the morning scan still happens in a spreadsheet—or every role sees the same cluttered screen.</p>
+      </article>
+      <article>
+        <p class="k">What we deliver</p>
+        <h3>Custom dashboard design and development</h3>
+        <p>Operational dashboards, admin panels, and reporting views with clear hierarchy, role-based filters, data visualization, and integration with CRMs, ERPs, APIs, and databases you already run.</p>
+      </article>
+      <article>
+        <p class="k">Problems we solve</p>
+        <h3>Scattered data, weak signals, spreadsheet workarounds</h3>
+        <p>When charts compete for attention, filters do not reach the right records, or exports replace action—we map the decision first, then design the view that moves users from information to action.</p>
+      </article>
+    </div>
+    <p class="dash-fit-foot" data-r>Kriva is a product design and engineering studio—not a dashboard product vendor. You own the designs, code, and documentation after launch.</p>
+  </div>
+</section>
 
 <section class="sect dash-problems" id="problems" aria-labelledby="probH">
   <div class="wrap">
@@ -616,17 +708,17 @@ body.page-dashboard .hero{
       <article class="dash-prob-card">
         <span class="dash-prob-k">01</span>
         <h3 class="d3">Scan failure</h3>
-        <p>Everything has equal visual weight. Users cannot identify what matters first. Priority is invisible.</p>
+        <p>Everything has equal visual weight. Users cannot identify what matters first. Priority is invisible.<span class="cons">Impact · slow decisions, missed exceptions, reactive firefighting</span></p>
       </article>
       <article class="dash-prob-card">
         <span class="dash-prob-k">02</span>
         <h3 class="d3">Widget sprawl</h3>
-        <p>Each stakeholder request adds another chart. Dashboards grow without improving the decision or action.</p>
+        <p>Each stakeholder request adds another chart. Dashboards grow without improving the decision or action.<span class="cons">Impact · cognitive overload, declining daily use</span></p>
       </article>
       <article class="dash-prob-card">
         <span class="dash-prob-k">03</span>
         <h3 class="d3">Spreadsheet workarounds</h3>
-        <p>Users export data because filters, tables, and actions do not match the real workflow.</p>
+        <p>Users export data because filters, tables, and actions do not match the real workflow.<span class="cons">Impact · double entry, stale system data, no audit trail</span></p>
       </article>
     </div>
   </div>
@@ -634,53 +726,35 @@ body.page-dashboard .hero{
 
 <section class="sect dash-hierarchy" id="hierarchy" aria-labelledby="hierH">
   <div class="wrap">
-    <p class="eyebrow" data-r>The hierarchy framework</p>
-    <h2 class="d2" id="hierH" data-r>Question → Signal → Records → Action</h2>
-    <p class="lede" data-r>Every dashboard answers one primary question. The signal shows what requires attention. Records provide evidence. Actions let users complete work without context switching.</p>
-    <div class="dash-hierarchy-grid" data-s>
-      <div class="dash-hierarchy-col">
-        <h3>Question</h3>
-        <p>What must the user understand or decide immediately?</p>
-        <p>Example: Which routes are at SLA risk today?</p>
-      </div>
-      <div class="dash-hierarchy-col">
-        <h3>Signal</h3>
-        <p>Which count, risk, trend, or exception requires attention first?</p>
-        <p>Example: 3 loads unowned and at risk appear above the fold.</p>
-      </div>
-      <div class="dash-hierarchy-col">
-        <h3>Records</h3>
-        <p>What evidence explains the signal?</p>
-        <p>Example: Table shows each unowned load, lane, owner status, and remaining time.</p>
-      </div>
-      <div class="dash-hierarchy-col">
-        <h3>Action</h3>
-        <p>What can the user complete without leaving the view?</p>
-        <p>Example: Assign owner, resolve exception, or mark complete—all from the row.</p>
-      </div>
-    </div>
-    <div class="dash-hierarchy-example" data-r>
-      <p class="lab">Fleet performance · illustrative UI</p>
-      <div class="pu" role="img" aria-label="Fleet performance dashboard: 5 routes delayed, exception table with inline actions.">
-        <div class="pu-bar">
-          <div>
-            <p class="pu-title">Fleet Performance</p>
-            <p class="pu-meta">Route status · Today</p>
-          </div>
-          <span class="pu-chip warn">5 delayed</span>
-        </div>
-        <div class="pu-kpis">
-          <div class="up"><span>On schedule</span><b>395</b></div>
-          <div class="risk"><span>Delayed</span><b>5</b></div>
-          <div><span>Avg. late</span><b>34m</b></div>
-        </div>
-        <ul class="pu-rows">
-          <li class="risk"><b>R-1042</b><span>M. Torres · I-85 near GSP</span><em>+28m</em><span class="pu-act">Notify</span></li>
-          <li class="risk"><b>R-1087</b><span>J. Reed · Stop 3 overdue</span><em>+41m</em><span class="pu-act">Reassign</span></li>
-          <li class="on"><b>R-1103</b><span>Unassigned · CLT yard</span><em>No driver</em><span class="pu-act">Assign</span></li>
-        </ul>
-      </div>
-    </div>
+    <p class="eyebrow" data-r>Decision flow</p>
+    <h2 class="d2" id="hierH" data-r>Question → Signal → Relevant Records → Action</h2>
+    <p class="lede" data-r>Every dashboard answers one primary question. The signal shows what requires attention. Records provide evidence. Actions let users complete work without leaving the view.</p>
+    <ol class="dash-flow" data-r aria-label="Dashboard decision flow">
+      <li>
+        <span class="sn">01 · Question</span>
+        <h3>What must you decide now?</h3>
+        <p>Which routes are at SLA risk today?</p>
+      </li>
+      <li>
+        <span class="sn">02 · Signal</span>
+        <h3>What needs attention first?</h3>
+        <p>3 loads unowned and at risk appear above the fold.</p>
+      </li>
+      <li>
+        <span class="sn">03 · Records</span>
+        <h3>What evidence explains it?</h3>
+        <p>Each load shows lane, owner status, and time remaining.</p>
+      </li>
+      <li>
+        <span class="sn">04 · Action</span>
+        <h3>What can you do here?</h3>
+        <p>Assign owner or resolve—inline, without context switching.</p>
+      </li>
+    </ol>
+    <figure class="dash-flow-visual" data-r>
+      <img src="/media/solutions/trucking/fleet-dashboard.svg" alt="Fleet operations dashboard showing exception signal, filtered records, and inline assignment actions" width="1200" height="750" loading="lazy" decoding="async">
+      <figcaption class="lab">ShiftRail fleet dashboard · operational reporting view</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -688,41 +762,60 @@ body.page-dashboard .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>Role-based views</p>
     <h2 class="d2" id="rolesH" data-r>The same data should not create the same screen for every role.</h2>
-    <p class="lede" data-r>Operations, admin, and executive dashboards answer different questions. Hierarchy, density, and actions are shaped to fit.</p>
-    <ul class="dash-role-tabs" role="tablist" aria-label="Dashboard views">
-      <li role="presentation"><button class="dash-role-tab on" role="tab" data-role="ops" aria-selected="true" aria-controls="role-ops">Operations</button></li>
-      <li role="presentation"><button class="dash-role-tab" role="tab" data-role="admin" aria-selected="false" aria-controls="role-admin">Admin</button></li>
-      <li role="presentation"><button class="dash-role-tab" role="tab" data-role="exec" aria-selected="false" aria-controls="role-exec">Executive</button></li>
+    <p class="lede" data-r>Operations, management, finance, and sales/service teams answer different questions. Hierarchy, KPIs, filters, and actions are shaped to fit—not duplicated across roles.</p>
+    <ul class="dash-role-tabs" role="tablist" aria-label="Dashboard views by role">
+      <li role="presentation"><button class="dash-role-tab on" role="tab" data-role="ops" aria-selected="true" aria-controls="role-ops" id="tab-ops">Operations</button></li>
+      <li role="presentation"><button class="dash-role-tab" role="tab" data-role="mgmt" aria-selected="false" aria-controls="role-mgmt" id="tab-mgmt">Management</button></li>
+      <li role="presentation"><button class="dash-role-tab" role="tab" data-role="finance" aria-selected="false" aria-controls="role-finance" id="tab-finance">Finance</button></li>
+      <li role="presentation"><button class="dash-role-tab" role="tab" data-role="sales" aria-selected="false" aria-controls="role-sales" id="tab-sales">Sales / Service</button></li>
     </ul>
-    <div class="dash-role-panel on" id="role-ops" role="tabpanel">
-      <h3>Operations: Exceptions and SLA risk first</h3>
-      <ul>
-        <li>Exceptions and SLA risk appear above the fold</li>
-        <li>Owners and priorities are visible on every row</li>
-        <li>Filters lead directly to actionable records</li>
-        <li>Inline assignment, reassignment, and resolution</li>
-        <li>Audit trail for every action</li>
-      </ul>
+    <div class="dash-role-panel on" id="role-ops" role="tabpanel" aria-labelledby="tab-ops">
+      <div>
+        <h3>Operations: Exceptions and SLA risk first</h3>
+        <ul>
+          <li>Exceptions and SLA risk above the fold—not buried in a report</li>
+          <li>Owners and priorities visible on every row</li>
+          <li>Filters lead directly to actionable records</li>
+          <li>Inline assignment, reassignment, and resolution</li>
+        </ul>
+      </div>
+      <img src="/media/solutions/trucking/fleet-dashboard.svg" alt="Operations dashboard prioritizing unowned loads and SLA exceptions with inline actions" width="960" height="600" loading="lazy" decoding="async">
     </div>
-    <div class="dash-role-panel" id="role-admin" role="tabpanel">
-      <h3>Admin: Users, roles, and system configuration</h3>
-      <ul>
-        <li>Users, roles, invitations, and access management</li>
-        <li>Search and inline activation or removal</li>
-        <li>Clear validation and error recovery</li>
-        <li>Visible permission overrides and audit history</li>
-        <li>Configuration settings grouped by workflow</li>
-      </ul>
+    <div class="dash-role-panel" id="role-mgmt" role="tabpanel" aria-labelledby="tab-mgmt" hidden>
+      <div>
+        <h3>Management: One primary signal, drill-down to evidence</h3>
+        <ul>
+          <li>One primary KPI or risk count at the top</li>
+          <li>Short trend or forecast below—not twelve competing charts</li>
+          <li>Exception count as the actionable element</li>
+          <li>Drill-down to operational records without leaving context</li>
+        </ul>
+      </div>
+      <img src="/media/solutions/saas/dashboard-admin.svg" alt="Management dashboard with primary KPI signal and supporting trend metrics" width="960" height="600" loading="lazy" decoding="async">
     </div>
-    <div class="dash-role-panel" id="role-exec" role="tabpanel">
-      <h3>Executive: One primary answer, one next action</h3>
-      <ul>
-        <li>One primary KPI or signal at the top</li>
-        <li>Short supporting trend or forecast below</li>
-        <li>Exception count or next item as the actionable element</li>
-        <li>Drill-down to operational evidence</li>
-        <li>Compare across periods without clutter</li>
-      </ul>
+    <div class="dash-role-panel" id="role-finance" role="tabpanel" aria-labelledby="tab-finance" hidden>
+      <div>
+        <h3>Finance: Reconciliation status and exception queues</h3>
+        <ul>
+          <li>Sync status and posting exceptions surfaced first</li>
+          <li>Filters by entity, period, and reconciliation state</li>
+          <li>Row-level detail for audit and investigation</li>
+          <li>Links to source records in accounting systems</li>
+        </ul>
+      </div>
+      <img src="/media/solutions/accounting/reconciliation.svg" alt="Finance reconciliation dashboard showing sync status, posting exceptions, and period filters" width="960" height="600" loading="lazy" decoding="async">
+    </div>
+    <div class="dash-role-panel" id="role-sales" role="tabpanel" aria-labelledby="tab-sales" hidden>
+      <div>
+        <h3>Sales / Service: Pipeline health and next actions</h3>
+        <ul>
+          <li>Pipeline stage density and stalled deals above the fold</li>
+          <li>Rep-level filters and ownership on every row</li>
+          <li>Next-action prompts—not passive record lists</li>
+          <li>Activity and forecast trends as supporting context</li>
+        </ul>
+      </div>
+      <img src="/media/work/crmpulse/hero.svg" alt="Sales dashboard showing pipeline stages, stalled deals, and rep-level next actions" width="960" height="600" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -731,49 +824,82 @@ body.page-dashboard .hero{
   <div class="wrap">
     <p class="eyebrow" data-r>Verified work</p>
     <h2 class="d2" id="proofH" data-r>ShiftRail fleet morning scan</h2>
-    <p class="lede" data-r>Exception risk lived in a weekly report. The dashboard put SLA and ownership above the fold every shift.</p>
-    <div class="dash-proof-cols" data-s>
-      <article class="dash-proof-col">
-        <p class="k">Hierarchy</p>
-        <h3 class="d3">Exceptions first</h3>
-        <p>Unowned and at-risk loads above the fold. SLA remaining on each row—not a separate report.</p>
-      </article>
-      <article class="dash-proof-col">
-        <p class="k">Outcome</p>
-        <h3 class="d3">Morning scan that holds</h3>
-        <p>Operators assign and resolve from one view. Supervisors audit overrides without leaving the board.</p>
-      </article>
+    <div class="dash-proof-split" data-r>
+      <div>
+        <p class="lede">A US trucking dispatch desk running 400+ daily routes rebuilt its morning scan—exception risk moved from a weekly report into a dashboard with SLA and ownership above the fold every shift.</p>
+        <dl class="dash-proof-story">
+          <div><dt>Context</dt><dd>400+ daily routes across three hubs. Operators ran a parallel spreadsheet because the TMS dashboard could not surface unowned loads or SLA risk in one view.</dd></div>
+          <div><dt>Problem</dt><dd>Exception risk lived in a report opened once a week. Assignment and resolution required context switching between TMS, sheet, and phone.</dd></div>
+          <div><dt>What Kriva built</dt><dd>Fleet morning-scan dashboard: exceptions and at-risk loads above the fold, row-level SLA, inline assignment, and supervisor audit on overrides.</dd></div>
+          <div><dt>Result</dt><dd>Operators assign and resolve from one view. Supervisors audit without leaving the board. The spreadsheet queue was retired post-launch.</dd></div>
+        </dl>
+        <div class="dash-metrics">
+          <div><b class="num">−32%</b><span>Manual handle time per load action</span></div>
+          <div><b class="num">11 min</b><span>Avg exception response time</span></div>
+          <div><b class="num">400+</b><span>Daily routes on the desk</span></div>
+        </div>
+        <a href="/work/shiftrail-dispatch" class="btn on-dark dash-proof-cta"><span>Read the ShiftRail case study</span><i>→</i></a>
+        <p class="dash-proof-note">Metrics are signed-off project outcomes from the ShiftRail dispatch engagement.</p>
+      </div>
+      <div class="dash-proof-stack">
+        <div class="dash-proof-before" role="img" aria-label="Before: dispatch exception queue maintained in a spreadsheet beside the TMS">
+          <b>Before · spreadsheet queue</b>
+          <span><i>Load</i><i>Lane</i><i>Owner</i><i>Status</i></span>
+          <span><i>#4821</i><i>DAL→PHX</i><i>—</i><i>Sheet</i></span>
+          <span><i>#4835</i><i>HOU→AUS</i><i>—</i><i>At risk</i></span>
+          <span><i>#4840</i><i>ATL→CLT</i><i>—</i><i>Unowned</i></span>
+        </div>
+        <img src="/media/solutions/trucking/fleet-dashboard.svg" alt="After: ShiftRail fleet dashboard with exception signal, filtered records, and inline assignment" width="960" height="600" loading="lazy" decoding="async">
+      </div>
     </div>
-    <div class="dash-metrics">
-      <div><b class="num">−32%</b><span>Handle time</span></div>
-      <div><b class="num">11 min</b><span>Exception response</span></div>
-      <div><b class="num">400+</b><span>Daily routes</span></div>
-    </div>
-    <a href="/work/shiftrail-dispatch" class="btn on-dark dash-proof-cta"><span>Read the ShiftRail case study</span><i>→</i></a>
-    <p class="dash-proof-note">Illustrative UI elsewhere on site. Metrics are signed-off project outcomes.</p>
   </div>
 </section>
 
 <section class="sect dash-related" id="related" aria-labelledby="relH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Also in our services</p>
-    <h2 class="d2 s-title" id="relH" data-r>Related services</h2>
+    <p class="eyebrow" data-r>Connected capabilities</p>
+    <h2 class="d2 s-title" id="relH" data-r>Services that feed dashboard work</h2>
     <div class="dash-related-grid" data-s>
       <article class="dash-related-card">
-        <h3 class="d3">Dispatch CRM &amp; TMS</h3>
-        <p>Bulk actions, SLA on the row, and supervisor oversight on the console that feeds this dashboard.</p>
-        <a href="/services/crm-development">Explore <i>→</i></a>
+        <h3 class="d3">CRM &amp; ops console development</h3>
+        <p>Operational consoles and workflow surfaces that supply the records, filters, and actions your dashboards depend on.</p>
+        <a href="/services/crm-development">Explore CRM development <i>→</i></a>
       </article>
       <article class="dash-related-card">
-        <h3 class="d3">Trucking solutions</h3>
-        <p>Dispatch, fleet, driver, and integration surfaces designed as one product for US carriers.</p>
-        <a href="/solutions/trucking-logistics">Explore <i>→</i></a>
+        <h3 class="d3">Integrations &amp; APIs</h3>
+        <p>Connect CRMs, ERPs, accounting systems, and internal APIs so dashboard data stays current—with visible sync status and error recovery.</p>
+        <a href="/services/api-integrations">Explore integrations <i>→</i></a>
       </article>
       <article class="dash-related-card">
-        <h3 class="d3">Dashboard UX patterns</h3>
-        <p>Insight on hierarchy, KPI placement, and exception queues for operational products.</p>
-        <a href="/insights/crm-dashboard-ux-patterns">Read <i>→</i></a>
+        <h3 class="d3">Accounting &amp; finance reporting</h3>
+        <p>Reconciliation dashboards and finance reporting views paired with QuickBooks and Xero integration work.</p>
+        <a href="/solutions/accounting-integrations">Explore finance integrations <i>→</i></a>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="sect dash-cred" id="credibility" aria-labelledby="credH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Proof &amp; technical credibility</p>
+    <h2 class="d2" id="credH" data-r>Dashboard work you can verify before the first call.</h2>
+    <div class="dash-cred-grid" data-r>
+      <div>
+        <dl class="dash-cred-points">
+          <div><dt>Dispatch dashboard case study</dt><dd><a href="/work/shiftrail-dispatch">ShiftRail</a> — fleet morning-scan dashboard for 400+ daily routes. −32% manual handle time, 11 min avg exception response, 99.4% console uptime post-launch.</dd></div>
+          <div><dt>Sales dashboard case study</dt><dd><a href="/work/crm-pulse-dashboard">CRMPulse</a> — custom HubSpot dashboards and pipeline UX for a B2B sales org. Role-based views matched to how reps actually sell.</dd></div>
+          <div><dt>Data-source integrations</dt><dd>CRMs, ERPs, QuickBooks, Xero, TMS, ELD, and internal APIs—with scheduled and near-real-time refresh where the workflow requires it.</dd></div>
+          <div><dt>Reporting &amp; data modelling</dt><dd>KPI hierarchy, aggregation layers, and filter design mapped to the decisions each role makes—not generic chart libraries.</dd></div>
+          <div><dt>Role &amp; permission handling</dt><dd>Separate views, filters, and actions per role. Admin configuration surfaces where permissions and overrides need audit trails.</dd></div>
+          <div><dt>Dashboard modernization</dt><dd>Redesign inside existing products when architecture allows—without rebuilding the platform from scratch.</dd></div>
+          <div><dt>Post-launch</dt><dd>Designs, code, and documentation transfer to your accounts. Retainer optional—no lock-in.</dd></div>
+        </dl>
+      </div>
+      <aside class="dash-cred-aside">
+        <h3>Buyer questions we answer directly</h3>
+        <p>Can we improve an existing dashboard? Connect multiple data sources? Build role-based views? Replace spreadsheet reporting? Work with our current software or database? We assess the workflow first—then recommend hierarchy, data structure, or integration changes.</p>
+        <a href="/process" class="btn sm"><span>How we deliver</span><i>→</i></a>
+      </aside>
     </div>
   </div>
 </section>
@@ -784,81 +910,148 @@ body.page-dashboard .hero{
       <p class="eyebrow" data-r>FAQ</p>
       <h2 class="d2" id="faqH" data-r>About dashboard design</h2>
       <p class="lede" data-r>Straight answers so the first call starts further along.</p>
-      <a href="/contact#book" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
+      <a href="#inquire" class="btn ghost" data-r><span>Discuss your dashboard</span><i>→</i></a>
     </div>
     <div class="faq-list" data-r>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
           <span class="qn num">01</span>
-          <span class="qt">Can you redesign dashboards inside our existing product?</span>
+          <span class="qt">Can you improve an existing dashboard?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
-          <p>Yes. We redesign dashboards, admin panels, and operational views inside your existing product without rebuilding the platform. If the architecture allows restyling and restructuring, we can improve UX significantly.</p>
+          <p>Yes. We redesign dashboards, admin panels, and operational views inside your existing product when the architecture allows restyling and restructuring—without rebuilding the platform from scratch.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">02</span>
-          <span class="qt">How is Dashboard Design different from CRM Design?</span>
+          <span class="qt">Can you connect multiple data sources?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
-          <p>CRM Design owns stage models, bulk actions, and operational workflows. Dashboard Design owns information hierarchy, KPI prioritization, filters, and exception queues. Many projects use both.</p>
+          <p>Yes. Dashboards can pull from CRMs, ERPs, accounting systems, internal APIs, and databases—with scheduled refresh or near-real-time updates where the workflow requires it. Sync status and errors stay visible, not silent.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">03</span>
-          <span class="qt">How do you decide which KPIs belong above the fold?</span>
+          <span class="qt">Do you build role-based dashboards?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
-          <p>We start with the user's primary question: What must you know or decide immediately? KPIs that answer that question go above the fold. Supporting metrics and trends follow. We validate this through user research and prototyping.</p>
+          <p>Yes. Operations, management, finance, and sales/service teams get different primary questions, KPIs, filters, and actions—not the same screen with every widget enabled. Permissions and audit trails are part of the design.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">04</span>
-          <span class="qt">Do you design both admin and executive views?</span>
+          <span class="qt">Can dashboards replace spreadsheet reporting?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
-          <p>Yes. Admin dashboards handle users, roles, configuration, and permissions. Executive dashboards surface one primary answer and support drill-down to operational evidence. We design for each role separately.</p>
+          <p>When filters, hierarchy, and inline actions match the real workflow—yes. ShiftRail retired a parallel spreadsheet queue once the morning-scan dashboard surfaced exceptions and assignment in one view. We assess whether the problem is the dashboard or the surrounding data structure first.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
           <span class="qn num">05</span>
-          <span class="qt">Can you work with our current design system and data architecture?</span>
+          <span class="qt">Can you work with our existing software or database?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
-          <p>Yes. We work within your design tokens, component library, and existing data structure. If your API or architecture limits the views we recommend, we propose alternatives or advise on what changes would enable better UX.</p>
+          <p>Yes. We work within your design system, component library, and existing data structure. If your API or schema limits the views we recommend, we propose alternatives or advise on what changes would enable better reporting.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
           <span class="qn num">06</span>
-          <span class="qt">Who owns the final design files and specifications?</span>
+          <span class="qt">How do you decide which KPIs to display?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
-          <p>You do. All Figma files, design specifications, component documentation, and wireframes transfer to your accounts. We can stay on retainer for iterations or guidance, but you own all deliverables.</p>
+          <p>We start with the user's primary question: what must you know or decide immediately? KPIs that answer that question go above the fold. Supporting metrics and trends follow. We validate through user research, shadow sessions, and prototyping—not stakeholder wish lists.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
+          <span class="qn num">07</span>
+          <span class="qt">What happens after launch?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq7" role="region" aria-labelledby="fqb7"><div><div class="faq-a-in">
+          <p>You own Figma files, design specifications, code, and documentation. Everything transfers to your accounts. Retainer support is optional—no lock-in. Most engagements include post-launch iteration as operators work the new dashboard through peak volume.</p>
         </div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-band on-ink" aria-labelledby="ctaH">
+<section class="inq-sec" id="inquire" aria-labelledby="inqH">
+  <div class="wrap inq-grid">
+    <div class="inq-copy">
+      <p class="eyebrow">Start a conversation</p>
+      <h2 class="d2" id="inqH">Discuss your dashboard.</h2>
+      <p class="lede">Tell us about the dashboard your team keeps rebuilding in a spreadsheet—the report nobody opens, or the screen where every chart has equal weight. We'll review the workflow and determine whether the problem is hierarchy, data structure, integration, or the surrounding system.</p>
+      <p class="inq-help">Need a longer brief, files, or a scheduled fit call? Use the <a href="/contact#brief">contact page</a>. We reply within one business day. NDA available.</p>
+    </div>
+    <div>
+      <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
+        <input type="hidden" name="inquiry_type" value="page_inquiry">
+        <input type="hidden" name="page" value="/services/dashboard-design">
+        <input type="hidden" name="service" value="Dashboard design &amp; development">
+        <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
+        <div class="inq-row">
+          <div>
+            <label for="inq-name">Name <span class="req">Required</span></label>
+            <input id="inq-name" name="name" required autocomplete="name">
+            <p class="inq-err" id="inq-name-err">Enter your name.</p>
+          </div>
+          <div>
+            <label for="inq-email">Work email <span class="req">Required</span></label>
+            <input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email">
+            <p class="inq-err" id="inq-email-err">Enter a valid work email.</p>
+          </div>
+        </div>
+        <div class="inq-row">
+          <div>
+            <label for="inq-company">Company <span class="opt">Optional</span></label>
+            <input id="inq-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label for="inq-phone">Phone <span class="opt">Optional</span></label>
+            <input id="inq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+        </div>
+        <div>
+          <label for="inq-details">What dashboard problem are you solving? <span class="req">Required</span></label>
+          <textarea id="inq-details" name="details" required rows="4" placeholder="Example: Operations runs a morning scan from a spreadsheet because our TMS dashboard cannot surface unowned loads or SLA risk in one view." aria-describedby="inq-details-hint"></textarea>
+          <p class="inq-note" id="inq-details-hint" style="margin-top:8px;text-transform:none;letter-spacing:0;font-size:13px;line-height:1.5;color:var(--steel-2)">A few sentences on the reporting workflow or current dashboard is enough. No RFP required.</p>
+          <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
+        </div>
+        <p class="inq-fail" role="alert"></p>
+        <div class="inq-actions">
+          <button type="submit" class="btn"><span class="inq-submit-label">Send dashboard inquiry</span><i>→</i></button>
+          <p class="inq-note">Private · not shared. Reply within one business day.</p>
+        </div>
+        <p class="inq-status" data-inq-status aria-live="polite"></p>
+      </form>
+      <div class="inq-done" tabindex="-1">
+        <h3>Inquiry received.</h3>
+        <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band on-ink" id="contact" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Next step</p>
     <h2 class="d2" id="ctaH" data-r>Show us the dashboard your team keeps rebuilding in a spreadsheet.</h2>
     <p class="lede" data-r>Bring the current dashboard, export, or operational question users still cannot answer. KRIVA will help determine whether the problem is hierarchy, data structure, interaction, or the surrounding workflow.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Request a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a discovery call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -928,9 +1121,9 @@ body.page-dashboard .hero{
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Dashboard &amp; Admin Panel Design",
-  "serviceType": "Dashboard design, admin panel design, and analytics UI",
-  "description": "KRIVA designs operational dashboards, admin panels, analytics views, exception queues, and role-based workflows for SaaS and logistics teams.",
+  "name": "Custom Dashboard Design &amp; Development",
+  "serviceType": "Custom dashboard design, dashboard development, and operational reporting",
+  "description": "Kriva designs custom dashboards that turn business data into clear signals, role-based views and actionable operational insights.",
   "provider": {
     "@type": "Organization",
     "name": "KRIVA Technologies",
@@ -947,50 +1140,58 @@ body.page-dashboard .hero{
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Can you redesign dashboards inside our existing product?",
+      "name": "Can you improve an existing dashboard?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We redesign dashboards, admin panels, and operational views inside your existing product without rebuilding the platform. If the architecture allows restyling and restructuring, we can improve UX significantly."
+        "text": "Yes. We redesign dashboards, admin panels, and operational views inside your existing product when the architecture allows restyling and restructuring—without rebuilding the platform from scratch."
       }
     },
     {
       "@type": "Question",
-      "name": "How is Dashboard Design different from CRM Design?",
+      "name": "Can you connect multiple data sources?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "CRM Design owns stage models, bulk actions, and operational workflows. Dashboard Design owns information hierarchy, KPI prioritization, filters, and exception queues. Many projects use both."
+        "text": "Yes. Dashboards can pull from CRMs, ERPs, accounting systems, internal APIs, and databases—with scheduled refresh or near-real-time updates where the workflow requires it. Sync status and errors stay visible, not silent."
       }
     },
     {
       "@type": "Question",
-      "name": "How do you decide which KPIs belong above the fold?",
+      "name": "Do you build role-based dashboards?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We start with the user's primary question: What must you know or decide immediately? KPIs that answer that question go above the fold. Supporting metrics and trends follow. We validate this through user research and prototyping."
+        "text": "Yes. Operations, management, finance, and sales/service teams get different primary questions, KPIs, filters, and actions—not the same screen with every widget enabled. Permissions and audit trails are part of the design."
       }
     },
     {
       "@type": "Question",
-      "name": "Do you design both admin and executive views?",
+      "name": "Can dashboards replace spreadsheet reporting?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Admin dashboards handle users, roles, configuration, and permissions. Executive dashboards surface one primary answer and support drill-down to operational evidence. We design for each role separately."
+        "text": "When filters, hierarchy, and inline actions match the real workflow—yes. ShiftRail retired a parallel spreadsheet queue once the morning-scan dashboard surfaced exceptions and assignment in one view. We assess whether the problem is the dashboard or the surrounding data structure first."
       }
     },
     {
       "@type": "Question",
-      "name": "Can you work with our current design system and data architecture?",
+      "name": "Can you work with our existing software or database?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We work within your design tokens, component library, and existing data structure. If your API or architecture limits the views we recommend, we propose alternatives or advise on what changes would enable better UX."
+        "text": "Yes. We work within your design system, component library, and existing data structure. If your API or schema limits the views we recommend, we propose alternatives or advise on what changes would enable better reporting."
       }
     },
     {
       "@type": "Question",
-      "name": "Who owns the final design files and specifications?",
+      "name": "How do you decide which KPIs to display?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You do. All Figma files, design specifications, component documentation, and wireframes transfer to your accounts. We can stay on retainer for iterations or guidance, but you own all deliverables."
+        "text": "We start with the user's primary question: what must you know or decide immediately? KPIs that answer that question go above the fold. Supporting metrics and trends follow. We validate through user research, shadow sessions, and prototyping—not stakeholder wish lists."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You own Figma files, design specifications, code, and documentation. Everything transfers to your accounts. Retainer support is optional—no lock-in. Most engagements include post-launch iteration as operators work the new dashboard through peak volume."
       }
     }
   ]
@@ -1088,10 +1289,11 @@ document.querySelectorAll('.dash-role-tab').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const role=btn.getAttribute('data-role');
     document.querySelectorAll('.dash-role-tab').forEach(t=>{ t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
-    document.querySelectorAll('.dash-role-panel').forEach(p=>p.classList.remove('on'));
+    document.querySelectorAll('.dash-role-panel').forEach(p=>{ p.classList.remove('on'); p.hidden=true; });
     btn.classList.add('on');
     btn.setAttribute('aria-selected','true');
-    document.getElementById('role-'+role).classList.add('on');
+    const panel=document.getElementById('role-'+role);
+    if(panel){ panel.classList.add('on'); panel.hidden=false; }
   });
 });
 
@@ -1129,5 +1331,6 @@ if(board && !reduce()){
 run();
 })();
 </script>
+<script src="/shared/page-inquiry.js" defer></script>
 </body>
 </html>

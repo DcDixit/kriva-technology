@@ -106,29 +106,55 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
+<link rel="stylesheet" href="/shared/chrome.css">
 <style>
 /* Page-scoped Work: loaded last */
-body.page-work{overflow-x:clip}
+body.page-work{
+  overflow-x:clip;
+  --wk-s1:clamp(12px,1.6vw,18px);
+  --wk-s2:clamp(20px,2.4vw,28px);
+  --wk-s3:clamp(28px,3.5vw,40px);
+  --wk-s4:clamp(40px,5vw,64px);
+  --wk-s5:clamp(56px,7vw,96px);
+}
 body.page-work .hero .d1{
   font-size:clamp(1.85rem,1rem + 3.55vw,4.65rem);line-height:.94;letter-spacing:-.032em
 }
 body.page-work .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
 body.page-work .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
-body.page-work .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;line-height:.93;letter-spacing:-.032em}
+body.page-work .cta-band h2{font-size:clamp(2.4rem,6.4vw,4.8rem);max-width:14ch;line-height:.93;letter-spacing:-.032em}
+body.page-work .sect{padding-block:var(--wk-s5);scroll-margin-top:96px}
+body.page-work .cta-band .wrap{padding-block:var(--wk-s5)}
+body.page-work .cta-band h2{margin-top:18px}
+body.page-work .cta-band .lede{margin-top:14px}
+body.page-work .cta-row{margin-top:var(--wk-s3)}
+body.page-work .crumbs{margin:0 0 12px}
+body.page-work .eyebrow{margin:0}
 
+/* Hero: denser vertical rhythm, short runway into the filter bar */
 body.page-work .hero{
   background:var(--paper);color:var(--ink);overflow:hidden;
-  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(36px,4vw,56px);
+  padding:calc(72px + clamp(12px,2vw,24px)) 0 0;
   scroll-margin-top:88px
 }
-.wk-hero-copy .d1{margin:18px 0 20px;max-width:10ch}
+body.page-work .hero > .wrap{
+  padding-bottom:var(--wk-s1);
+  border-bottom:1px solid var(--rule)
+}
+.wk-hero-copy .d1{margin:12px 0 14px;max-width:10ch}
+body.page-work .hero .lede{margin:0;max-width:48ch}
+body.page-work .hero-actions{margin-top:20px;gap:10px}
 .wk-trust{
-  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
+  display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:18px;
   font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
 }
 .wk-trust span{display:inline-flex;align-items:center;gap:8px}
 .wk-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
-.wk-note{margin-top:clamp(28px,4vw,44px);padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;line-height:1.6;color:var(--steel);max-width:72ch}
+.wk-note{
+  margin-top:20px;padding-top:14px;
+  border-top:1px solid var(--rule);
+  font-size:13.5px;line-height:1.55;color:var(--steel);max-width:68ch
+}
 
 .wk-lead{background:var(--ink);color:#DDE2E7;overflow:hidden}
 .wk-lead-shot{
@@ -288,8 +314,8 @@ body.page-work .hero{
 }
 .wk-lead-bar{
   display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);
-  gap:clamp(24px,4vw,56px);align-items:center;
-  padding:clamp(32px,5vw,64px) var(--gutter);
+  gap:clamp(20px,4vw,48px);align-items:center;
+  padding:var(--wk-s4) var(--gutter);
   max-width:calc(var(--maxw) + 2 * var(--gutter));margin-inline:auto
 }
 .wk-lead .stat{font-family:var(--f-display);font-weight:800;font-size:clamp(3.6rem,8vw,6rem);letter-spacing:-.06em;line-height:.82;color:var(--lime)}
@@ -303,12 +329,12 @@ body.page-work .hero{
 }
 
 .wk-bar{
-  position:sticky;top:58px;z-index:60;
-  background:rgba(244,243,238,.94);border-bottom:1px solid var(--rule);
+  position:sticky;top:58px;z-index:60;margin:0;
+  background:rgba(244,243,238,.96);border-bottom:1px solid var(--rule);
   scroll-margin-top:72px
 }
 @supports(backdrop-filter:blur(1px)){@media(min-width:900px){.wk-bar{backdrop-filter:blur(12px) saturate(1.4)}}}
-.wk-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:12px;min-width:0}
+.wk-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px 20px;padding-block:10px;min-width:0}
 .wk-chips-wrap{
   position:relative;flex:1;min-width:0;max-width:100%;
   --wk-fade:linear-gradient(90deg,var(--paper) 0%,transparent 100%)
@@ -344,7 +370,7 @@ body.page-work .hero{
 .wk-chip[aria-pressed="true"] u{color:var(--amber)}
 .wk-count{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);white-space:nowrap;flex:none}
 
-.wk-index{padding-block:0 clamp(72px,9vw,128px)}
+.wk-index{padding-block:0 var(--wk-s5)}
 #list{scroll-margin-top:128px;display:grid;gap:0;width:100%}
 #list > .wrap > .wk-row:first-of-type{border-top:1px solid var(--rule)}
 .wk-case{min-width:0;transition:opacity .4s var(--e),transform .4s var(--e)}
@@ -354,7 +380,7 @@ body.page-work .hero{
 .wk-row{
   display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
   gap:clamp(22px,4vw,64px);align-items:start;
-  padding-block:clamp(36px,5vw,72px);border-bottom:1px solid var(--rule)
+  padding-block:var(--wk-s4);border-bottom:1px solid var(--rule)
 }
 .wk-row.flip .wk-media{order:2}
 .wk-media{
@@ -638,21 +664,21 @@ body.page-work .hero{
 .wk-web .wk-copy h3{max-width:18ch}
 .wk-media:has(.wk-browser) .wk-peek{display:none}
 
-.wk-empty{padding-block:clamp(56px,8vw,100px);text-align:center}
+.wk-empty{padding-block:var(--wk-s4);text-align:center}
 .wk-empty[hidden]{display:none}
 .wk-empty .body-sm{margin:14px auto 22px}
 
 .wk-read{background:var(--paper-2);border-block:1px solid var(--rule)}
 .wk-read-grid{
   display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
-  gap:clamp(28px,4vw,72px);align-items:end
+  gap:clamp(24px,4vw,56px);align-items:end
 }
-.wk-read h2{margin-top:18px}
-.wk-read .lede{margin-top:16px}
-.wk-markets{display:grid;gap:0;border-top:1px solid var(--rule);margin-top:8px}
+.wk-read h2{margin-top:14px}
+.wk-read .lede{margin-top:12px}
+.wk-markets{display:grid;gap:0;border-top:1px solid var(--rule);margin-top:4px}
 .wk-markets a{
   display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-  padding:16px 0;border-bottom:1px solid var(--rule);min-height:48px;
+  padding:14px 0;border-bottom:1px solid var(--rule);min-height:48px;
   transition:padding-left .4s var(--e)
 }
 .wk-markets a:hover{padding-left:8px}
@@ -701,11 +727,17 @@ body.page-work .hero{
   .wk-pipe-col.extra,.wk-pipe-col li.extra{display:block}
 }
 @media(max-width:860px){
-  .wk-bar .wrap{flex-direction:column;align-items:stretch;gap:10px}
-  .wk-count{align-self:flex-end}
-  .wk-scroll-hint{display:inline-flex}
+  .wk-bar .wrap{flex-direction:column;align-items:stretch;gap:8px;padding-block:10px 12px}
+  .wk-count{align-self:flex-end;margin:0}
+  .wk-scroll-hint{display:inline-flex;margin:0}
 }
 @media(max-width:640px){
+  body.page-work .hero{padding-top:calc(64px + clamp(12px,3vw,20px))}
+  body.page-work .hero > .wrap{padding-bottom:14px}
+  .wk-hero-copy .d1{margin:10px 0 12px}
+  body.page-work .hero-actions{margin-top:16px}
+  .wk-trust{margin-top:14px}
+  .wk-note{margin-top:16px;padding-top:12px}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
   .cta-row{flex-direction:column;align-items:stretch}
@@ -732,7 +764,6 @@ body.page-work .hero{
   body.page-work .hero .d1{font-size:4.55rem}
 }
 </style>
-<link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body class="page-work">
 <a class="skip" href="#main">Skip to content</a>

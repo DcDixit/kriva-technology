@@ -56,6 +56,7 @@
   if (path) {
     const tabs = [...path.querySelectorAll('[role="tab"]')];
     const panels = [...document.querySelectorAll('#wfStage .wf-panel')];
+    const scroller = path.closest('.wf-path-scroller');
     const sub = document.getElementById('wfSub');
     const live = document.getElementById('wfLive');
     const count = document.getElementById('wfCount');
@@ -63,6 +64,18 @@
     let userTouched = false;
     let playTimer;
     let primed = false;
+    let playIndex = 0;
+
+    const scrollTabIntoScroller = (btn) => {
+      if (!scroller) return;
+      const max = scroller.scrollWidth - scroller.clientWidth;
+      if (max <= 0) return;
+      const left = btn.offsetLeft - (scroller.clientWidth - btn.offsetWidth) / 2;
+      scroller.scrollTo({
+        left: Math.max(0, Math.min(left, max)),
+        behavior: reduce() ? 'auto' : 'smooth',
+      });
+    };
 
     const select = (btn, { focus = false } = {}) => {
       const id = btn.getAttribute('aria-controls');
@@ -87,14 +100,16 @@
       if (count) count.textContent = btn.dataset.n || '';
       if (meter) meter.style.setProperty('--p', btn.dataset.p || '.125');
       if (focus) btn.focus();
-      if (primed) btn.scrollIntoView({ inline: 'center', block: 'nearest', behavior: reduce() ? 'auto' : 'smooth' });
+      if (primed) scrollTabIntoScroller(btn);
       primed = true;
+      playIndex = idx;
     };
 
     tabs.forEach((btn, i) => {
       btn.addEventListener('click', () => {
         userTouched = true;
         clearTimeout(playTimer);
+        playTimer = null;
         select(btn);
       });
       btn.addEventListener('keydown', (e) => {
@@ -103,6 +118,7 @@
         e.preventDefault();
         userTouched = true;
         clearTimeout(playTimer);
+        playTimer = null;
         const next = tabs[(map[e.key] + tabs.length) % tabs.length];
         select(next, { focus: true });
       });
@@ -111,16 +127,20 @@
 
     const consoleEl = document.getElementById('loadFlow');
     if (consoleEl && !reduce()) {
+      const tick = () => {
+        playTimer = null;
+        if (userTouched || playIndex >= tabs.length - 1) return;
+        playIndex += 1;
+        select(tabs[playIndex]);
+        playTimer = setTimeout(tick, 2400);
+      };
       const playIO = new IntersectionObserver((entries) => {
-        if (!entries[0].isIntersecting) return;
-        playIO.disconnect();
-        let i = 0;
-        const tick = () => {
-          if (userTouched || i >= tabs.length - 1) return;
-          i += 1;
-          select(tabs[i]);
-          playTimer = setTimeout(tick, 2400);
-        };
+        if (!entries[0].isIntersecting) {
+          clearTimeout(playTimer);
+          playTimer = null;
+          return;
+        }
+        if (userTouched || playTimer || playIndex >= tabs.length - 1) return;
         playTimer = setTimeout(tick, 2200);
       }, { threshold: 0.28 });
       playIO.observe(consoleEl);

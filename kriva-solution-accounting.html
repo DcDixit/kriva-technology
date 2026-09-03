@@ -158,7 +158,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .fit-rail .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
 .fit-rail h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
 .fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
-.fit-rail .contrast{margin-top:14px;padding:12px 14px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:13.5px;line-height:1.5;color:var(--ink);max-width:none}
 @media(max-width:860px){.fit-rail{grid-template-columns:1fr}}
 
 /* ══ PLATFORMS ══ */
@@ -169,7 +168,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .plat .lockup b{font-size:1.2rem}
 .plat ul{list-style:none;display:grid;gap:9px;margin-top:18px}
 .plat li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink);align-items:start}
-.plat li:before{content:"";width:6px;height:6px;margin-top:7px;background:currentColor;flex:none}
+.plat li:before{content:"";display:block;width:6px;height:6px;margin-top:7px;background:currentColor}
 .plat article:first-child li:before{background:var(--qb)}
 .plat article:last-child li:before{background:var(--xero)}
 @media(max-width:760px){.plat{grid-template-columns:1fr}}
@@ -270,7 +269,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .beat.on.warn .n{color:#8A6200}
 @media(max-width:900px){
   .story-grid{grid-template-columns:1fr;gap:0}
-  .story-stick{position:sticky;top:62px;z-index:50;margin:0 calc(var(--gutter)*-1);padding:10px var(--gutter);background:var(--paper-2);border-bottom:1px solid var(--rule)}
+  .story-stick{position:static;z-index:auto;margin:0;padding:0 0 18px;background:transparent;border-bottom:0}
   .story-stick .audit{display:none}
   .beat{padding-block:26px}
 }
@@ -353,7 +352,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 .exgrid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(26px,4vw,72px);align-items:start;margin-top:clamp(30px,3.6vw,54px)}
 .extypes{border-top:1px solid var(--rule)}
-.extype{display:grid;grid-template-columns:48px 1fr;gap:clamp(12px,2vw,22px);align-items:start;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid var(--rule)}
+.extype{display:grid;grid-template-columns:40px 1fr;gap:clamp(12px,1.6vw,18px);align-items:start;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid var(--rule)}
 .extype .code{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--amber);padding-top:4px}
 .extype h3{font-family:var(--f-display);font-weight:700;font-size:1.08rem;letter-spacing:-.02em;margin-bottom:7px}
 .exflow{list-style:none;display:grid;border-top:1px solid var(--rule)}
@@ -485,8 +484,129 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
 <link rel="stylesheet" href="/shared/page-inquiry.css">
 <link rel="stylesheet" href="/shared/chrome.css">
+<style>
+/* Page-scoped: loaded last so it wins inner.css / system.css */
+body.page-accounting{overflow-x:clip;--qb:#2CA01C;--xero:#13B5EA}
+html:has(body.page-accounting){overflow-x:clip}
+body.page-accounting .d1{font-size:clamp(2rem,4.8vw,4.05rem);line-height:.96;letter-spacing:-.03em}
+body.page-accounting .d2{font-size:clamp(1.9rem,3.6vw,3.2rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
+body.page-accounting .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem)}
+body.page-accounting .sect{padding-block:clamp(72px,9vw,128px);scroll-margin-top:96px}
+body.page-accounting .hero,
+body.page-accounting .arch,
+body.page-accounting .matrix,
+body.page-accounting .proof,
+body.page-accounting .inq-sec,
+body.page-accounting .cta-band{scroll-margin-top:96px}
+body.page-accounting .cta-band h2{font-size:clamp(2.4rem,6.4vw,4.8rem);max-width:14ch;line-height:.93;letter-spacing:-.032em}
+body.page-accounting .hero-actions .p-link{min-height:44px}
+body.page-accounting .s-head h2{margin-top:18px}
+body.page-accounting .cap-lede,
+body.page-accounting .process-lede,
+body.page-accounting .faq-lede{margin-top:18px}
+body.page-accounting #capH,
+body.page-accounting #prH,
+body.page-accounting #faqH,
+body.page-accounting #mxH{margin-top:18px}
+body.page-accounting .matrix-wrap{padding-block:clamp(56px,7vw,104px)}
+body.page-accounting .ex-label{margin-bottom:12px}
+body.page-accounting .proof-flag{border-color:#3A444E;color:#717F8C}
+body.page-accounting .proof-cta{margin-top:24px}
+body.page-accounting .faq-ask{margin-top:24px}
+body.page-accounting .mx > div{display:flex;flex-direction:column}
+body.page-accounting .mx .entities{margin-top:auto;padding-top:18px}
+body.page-accounting .mx .entities b.warn{color:var(--amber)}
+body.page-accounting .wrap-fit{padding-bottom:clamp(40px,5vw,72px)}
+body.page-accounting .chal article > div{display:grid;gap:8px}
+body.page-accounting .chal h3{margin-bottom:0}
+
+body.page-accounting .chal article{
+  grid-template-columns:56px minmax(0,1fr) !important;
+  column-gap:20px;row-gap:0
+}
+body.page-accounting .chal .n{padding-top:4px;color:var(--cta);letter-spacing:.12em}
+body.page-accounting .chal article > div{min-width:0}
+body.page-accounting .chal h3{margin-bottom:8px}
+body.page-accounting .chal p{max-width:54ch}
+
+body.page-accounting .fit-rail article{padding:22px 32px 8px 0}
+body.page-accounting .fit-rail h2{font-size:clamp(1.12rem,1.6vw,1.32rem);max-width:16ch}
+body.page-accounting .fit-foot{
+  display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);
+  gap:clamp(18px,3vw,40px);align-items:start;
+  margin-top:clamp(22px,3vw,36px);padding-top:22px;border-top:1px solid var(--rule)
+}
+body.page-accounting .fit-pull{
+  font-family:var(--f-display);font-weight:700;letter-spacing:-.028em;
+  font-size:clamp(1.12rem,2vw,1.42rem);line-height:1.22;max-width:34ch
+}
+body.page-accounting .fit-next{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:36ch}
+body.page-accounting .fit-next a{border-bottom:1px solid currentColor}
+
+body.page-accounting .plat article{display:flex;flex-direction:column}
+body.page-accounting .plat .lockup span.meta{text-transform:none;font-size:inherit;letter-spacing:0;font-family:inherit;display:grid;gap:3px}
+body.page-accounting .plat .lockup .meta b{font-family:var(--f-display);font-weight:700;font-size:1.22rem;letter-spacing:-.02em;text-transform:none}
+body.page-accounting .plat .lockup .meta > span{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+body.page-accounting .plat ul{margin-top:20px}
+body.page-accounting .plat li:before{display:block;width:6px;height:6px;margin-top:8px}
+body.page-accounting .plat article:first-child li:before{background:var(--qb)}
+body.page-accounting .plat article:last-child li:before{background:var(--xero)}
+body.page-accounting .ledger--lite{box-shadow:var(--shadow-product)}
+
+body.page-accounting .deliver article{display:flex;flex-direction:column;min-height:100%}
+body.page-accounting .deliver .cap-link{margin-top:auto;padding-top:22px}
+
+body.page-accounting .flow{grid-template-columns:repeat(3,minmax(0,1fr))}
+body.page-accounting .node{border-bottom:1px solid var(--ink-line);padding-right:clamp(12px,2vw,22px)}
+body.page-accounting .node:nth-child(3n){border-right:0}
+@media(min-width:1280px){
+  body.page-accounting .flow{grid-template-columns:repeat(6,minmax(0,1fr))}
+  body.page-accounting .node{border-bottom:0}
+  body.page-accounting .node:nth-child(3n){border-right:1px solid var(--ink-line)}
+  body.page-accounting .node:last-child{border-right:0}
+}
+
+body.page-accounting .proof-grid{align-items:start}
+body.page-accounting .rel a{align-items:center}
+body.page-accounting .rel .arrow{flex:none;margin-left:auto}
+
+@media(min-width:901px){
+  body.page-accounting .faq-grid > div:first-child{position:sticky;top:112px}
+}
+
+@media(max-width:1280px){
+  body.page-accounting .mob-chips{display:flex !important}
+  body.page-accounting .mob-chips:after{
+    content:"";position:sticky;right:0;align-self:stretch;flex:none;width:32px;min-height:44px;
+    background:linear-gradient(90deg,transparent,rgba(244,243,238,.96));pointer-events:none
+  }
+  body.page-accounting .sect,
+  body.page-accounting .hero,
+  body.page-accounting .arch,
+  body.page-accounting .matrix,
+  body.page-accounting .proof,
+  body.page-accounting .inq-sec,
+  body.page-accounting .cta-band{scroll-margin-top:118px}
+}
+
+@media(max-width:900px){
+  body.page-accounting .fit-rail article{padding:22px 0}
+  body.page-accounting .fit-foot{grid-template-columns:1fr;gap:14px;align-items:start}
+  body.page-accounting .story-stick{
+    position:static;z-index:auto;margin:0;padding:0 0 18px;
+    background:transparent;border-bottom:0
+  }
+  body.page-accounting .story-grid{gap:8px}
+  body.page-accounting .faq-grid > div:first-child{position:static}
+}
+
+@media(max-width:560px){
+  body.page-accounting .flow{display:none}
+  body.page-accounting .chal article{grid-template-columns:minmax(0,1fr) !important;gap:6px}
+}
+</style>
 </head>
-<body>
+<body class="solution page-accounting">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -683,7 +803,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <div class="recs">
             <div class="rec"><span class="ref">INV-2291</span><span class="desc">Acme Ltd · Aug</span><span class="amt">4,120.00</span><span class="st"><span class="tag t-ok">Matched</span></span></div>
             <div class="rec"><span class="ref">INV-2292</span><span class="desc">Northgate · Aug</span><span class="amt">880.50</span><span class="st"><span class="tag t-ok">Matched</span></span></div>
-            <div class="rec flagged"><span class="ref">INV-2293</span><span class="desc">Halden Co · Aug</span><span class="amt">1,240.75</span><span class="st"><span class="tag t-ok">Reconciled</span></span></div>
+            <div class="rec"><span class="ref">INV-2293</span><span class="desc">Halden Co · Aug</span><span class="amt">1,240.75</span><span class="st"><span class="tag t-ok">Reconciled</span></span></div>
           </div>
         </div>
       </div>
@@ -708,9 +828,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <p class="k">Not this page</p>
         <h2>Generic API glue or Zapier-only</h2>
         <p>CRM, payments, and ops connectors live under Integrations &amp; APIs. Make/Zapier orchestration lives under Automation.</p>
-        <p class="contrast">The integration is not finished when data syncs. It is finished when finance can confidently close the books.</p>
-        <p class="body-sm" style="margin-top:12px;max-width:none;font-size:13px">Need CRM or payment connectors too? See <a href="/services/api-integrations" style="border-bottom:1px solid currentColor">Integrations &amp; APIs</a>.</p>
       </article>
+    </div>
+    <div class="fit-foot" data-r>
+      <p class="fit-pull">The integration is not finished when data syncs. It is finished when finance can confidently close the books.</p>
+      <p class="fit-next">Need CRM or payment connectors too? See <a href="/services/api-integrations">Integrations &amp; APIs</a>.</p>
     </div>
   </div>
 </section>
@@ -767,18 +889,24 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <div class="chal">
       <article data-r>
         <span class="n">01</span>
-        <h3 class="d3">Silent drift</h3>
-        <p class="body-sm">Jobs report success while amounts, tax, or entity mapping quietly diverge. Controllers find it in a spreadsheet, not in the product.</p>
+        <div>
+          <h3 class="d3">Silent drift</h3>
+          <p class="body-sm">Jobs report success while amounts, tax, or entity mapping quietly diverge. Controllers find it in a spreadsheet, not in the product.</p>
+        </div>
       </article>
       <article data-r>
         <span class="n">02</span>
-        <h3 class="d3">Month-end archaeology</h3>
-        <p class="body-sm">Exceptions pile up as raw API errors. Outsourced finance cannot act without engineering, so close slips by days.</p>
+        <div>
+          <h3 class="d3">Month-end archaeology</h3>
+          <p class="body-sm">Exceptions pile up as raw API errors. Outsourced finance cannot act without engineering, so close slips by days.</p>
+        </div>
       </article>
       <article data-r>
         <span class="n">03</span>
-        <h3 class="d3">Retry that duplicates</h3>
-        <p class="body-sm">A timeout posts the invoice twice. Without idempotency keys and a match engine, the books get worse every retry.</p>
+        <div>
+          <h3 class="d3">Retry that duplicates</h3>
+          <p class="body-sm">A timeout posts the invoice twice. Without idempotency keys and a match engine, the books get worse every retry.</p>
+        </div>
       </article>
     </div>
   </div>
@@ -889,7 +1017,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
     <div class="exgrid">
       <div>
-        <p class="eyebrow" style="margin-bottom:8px">Types we surface</p>
+        <p class="eyebrow ex-label">Types we surface</p>
         <div class="extypes">
           <div class="extype">
             <span class="code">AMT</span>
@@ -922,7 +1050,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         </div>
       </div>
       <div>
-        <p class="eyebrow" style="margin-bottom:8px">Operator view</p>
+        <p class="eyebrow ex-label">Operator view</p>
         <div class="ex-card" role="img" aria-label="Exception card: amount variance on INV-2293, source 1204.75, ledger 1240.75, close risk, actions retry confirm park, operator Shaw">
           <div class="ex-card-h">
             <b>INV-2293 · Amount variance</b>
@@ -943,7 +1071,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
             <span>Audit <b>Pending review</b></span>
           </div>
         </div>
-        <p class="cap-note" style="margin-top:12px"><span class="flag">Demo</span> Operator UI pattern · illustrative data</p>
+        <p class="cap-note"><span class="flag">Demo</span> Operator UI pattern · illustrative data</p>
       </div>
     </div>
   </div>
@@ -978,7 +1106,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <div class="node">
         <span class="nn">05</span>
         <b>Exception queue</b>
-        <p>Operator triage with next steps: see the exception card above.</p>
+        <p>Operator triage with retry, confirm, or park — before close, not after.</p>
       </div>
       <div class="node">
         <span class="nn">06</span>
@@ -991,7 +1119,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <div class="node"><span class="nn">02</span><b>Queue &amp; workers</b><p>Idempotent jobs with backoff.</p></div>
       <div class="node"><span class="nn">03</span><b>QBO / Xero API</b><p>Official connectors per org.</p></div>
       <div class="node"><span class="nn">04</span><b>Match engine</b><p>Readable deltas, not silent match.</p></div>
-      <div class="node"><span class="nn">05</span><b>Exception queue</b><p>Operator triage and actions.</p></div>
+      <div class="node"><span class="nn">05</span><b>Exception queue</b><p>Retry, confirm, or park before close.</p></div>
       <div class="node"><span class="nn">06</span><b>Ledger + audit</b><p>Closed records with trail.</p></div>
     </div>
   </div>
@@ -1000,8 +1128,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <section class="sect sect--band" id="capabilities" aria-labelledby="capH">
   <div class="wrap">
     <p class="eyebrow" data-r>Capabilities</p>
-    <h2 class="d2" id="capH" data-r style="margin-top:18px;max-width:22ch">What we deliver for QuickBooks and Xero</h2>
-    <p class="body" data-r style="margin-top:18px">Connectors and operator UX from the same in-house team: no handoff between “the API person” and “the dashboard person.”</p>
+    <h2 class="d2" id="capH" data-r>What we deliver for QuickBooks and Xero</h2>
+    <p class="body cap-lede" data-r>Connectors and operator UX from the same in-house team: no handoff between “the API person” and “the dashboard person.”</p>
 
     <div class="deliver" data-s>
       <article>
@@ -1013,7 +1141,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <li>Per-entity tokens and rate-limit backoff</li>
           <li>Parallel run before cutover</li>
         </ul>
-        <a href="/services/api-integrations" class="cap-link" style="margin-top:18px">Integrations &amp; APIs <i>→</i></a>
+        <a href="/services/api-integrations" class="cap-link">Integrations &amp; APIs <i>→</i></a>
       </article>
       <article>
         <span class="k">02 · Exceptions</span>
@@ -1024,7 +1152,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <li>Named actions: retry, confirm, park</li>
           <li>No raw JSON in the operator view</li>
         </ul>
-        <a href="/services/dashboard-design" class="cap-link" style="margin-top:18px">Dashboard design <i>→</i></a>
+        <a href="/services/dashboard-design" class="cap-link">Dashboard design <i>→</i></a>
       </article>
       <article>
         <span class="k">03 · Audit</span>
@@ -1035,16 +1163,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <li>Job history across QBO and Xero orgs</li>
           <li>Alerts when a run stalls before close</li>
         </ul>
-        <a href="/services/automation-systems" class="cap-link" style="margin-top:18px">Automation workflows <i>→</i></a>
+        <a href="/services/automation-systems" class="cap-link">Automation workflows <i>→</i></a>
       </article>
     </div>
   </div>
 </section>
 
 <section class="matrix" id="matrix" aria-labelledby="mxH">
-  <div class="wrap" style="padding-block:clamp(48px,6vw,88px)">
+  <div class="wrap matrix-wrap">
     <p class="eyebrow" data-r>Books that are not one company, one currency</p>
-    <h2 class="d2" id="mxH" data-r style="margin-top:18px;max-width:20ch">Multi-entity, multi-currency, still one operator view</h2>
+    <h2 class="d2" id="mxH" data-r>Multi-entity, multi-currency, still one operator view</h2>
     <div class="mx">
       <div data-r>
         <span class="k">Entities</span>
@@ -1060,11 +1188,21 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <span class="k">Currency</span>
         <h3>FX lines with a readable delta</h3>
         <p class="body-sm">We do not hide a conversion inside a “matched” tag. Operators see source currency, ledger currency, and the difference that needs a decision.</p>
+        <div class="entities">
+          <span>Source amount<b>GBP 1,204.75</b></span>
+          <span>Ledger amount<b>USD 1,540.20</b></span>
+          <span>FX delta shown<b class="warn">Decision</b></span>
+        </div>
       </div>
       <div data-r>
         <span class="k">Tax</span>
         <h3>VAT and sales tax as mapping, not a guess</h3>
         <p class="body-sm">Tax codes are signed off in discovery. A missing or wrong code is an exception type, not a silent post to the default account.</p>
+        <div class="entities">
+          <span>UK VAT codes<b>Mapped</b></span>
+          <span>US sales tax<b>Mapped</b></span>
+          <span>Missing code<b class="warn">Exception</b></span>
+        </div>
       </div>
     </div>
   </div>
@@ -1087,7 +1225,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
             <span class="pu-cta lime">Resolve</span>
           </div>
         </figure>
-        <p class="proof-demo"><span class="flag" style="border-color:#3A444E;color:#717F8C">Illustrative demo</span> UI from FinanceSync case · not live client data</p>
+        <p class="proof-demo"><span class="flag proof-flag">Illustrative demo</span> UI from FinanceSync case · not live client data</p>
       </div>
       <div>
         <dl class="proof-steps">
@@ -1100,7 +1238,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <div><dt>Sector</dt><dd>UK &amp; US FinOps / accounting ops</dd></div>
           <div><dt>Focus</dt><dd>QB/Xero sync, anomaly triage, operator dashboards</dd></div>
         </dl>
-        <div class="cta-actions" style="margin-top:24px">
+        <div class="cta-actions proof-cta">
           <a href="/work/finance-sync-hub" class="btn on-dark"><span>Read the FinanceSync case</span><i>→</i></a>
         </div>
       </div>
@@ -1112,8 +1250,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <section class="sect" id="process" aria-labelledby="prH">
   <div class="wrap">
     <p class="eyebrow" data-r>Process</p>
-    <h2 class="d2" id="prH" data-r style="margin-top:18px;max-width:18ch">How we deliver a connector finance will use</h2>
-    <p class="body" data-r style="margin-top:18px">Four gated phases: Map → Build → Operator UX → Parallel run/go-live. Each gate is a finance-readable artefact.</p>
+    <h2 class="d2" id="prH" data-r>How we deliver a connector finance will use</h2>
+    <p class="body process-lede" data-r>Four gated phases: Map → Build → Operator UX → Parallel run/go-live. Each gate is a finance-readable artefact.</p>
 
     <div class="pipeline" id="pipeline">
       <div class="phase">
@@ -1189,9 +1327,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="wrap faq-grid">
     <div>
       <p class="eyebrow" data-r>FAQ</p>
-      <h2 class="d2" id="faqH" data-r style="margin-top:18px">About QuickBooks &amp; Xero integrations</h2>
-      <p class="body-sm" data-r style="margin-top:18px">Asked most often by finance and engineering leads before a first call.</p>
-      <a href="/contact#book" class="btn ghost" style="margin-top:24px"><span>Ask us directly</span><i>→</i></a>
+      <h2 class="d2" id="faqH" data-r>About QuickBooks &amp; Xero integrations</h2>
+      <p class="body-sm faq-lede" data-r>Asked most often by finance and engineering leads before a first call.</p>
+      <a href="/contact#book" class="btn ghost faq-ask"><span>Ask us directly</span><i>→</i></a>
     </div>
 
     <div class="faq-list" data-r>

@@ -301,24 +301,128 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/system.css">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
 <link rel="stylesheet" href="/shared/archetypes.css?v=hero4">
+<link rel="stylesheet" href="/shared/chrome.css">
 <style>
-.lp-hero .hero-grid{align-items:end}
-.lp-hero .d1{max-width:12ch}
+/* Page-scoped: loaded last so it wins the cascade */
+body.page-auto{overflow-x:clip}
+html:has(body.page-auto){overflow-x:clip}
+body.page-auto .d1{font-size:clamp(2rem,4.8vw,4.05rem);line-height:.96;letter-spacing:-.03em}
+body.page-auto .d2{font-size:clamp(1.9rem,3.6vw,3.2rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
+body.page-auto .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem)}
+body.page-auto .sect,
+body.page-auto .hero,
+body.page-auto .auto-proof,
+body.page-auto .cta-band{scroll-margin-top:96px}
+body.page-auto .sect{padding-block:clamp(72px,9vw,128px)}
+body.page-auto .cta-band h2{font-size:clamp(2.4rem,6.4vw,4.8rem);max-width:14ch;line-height:.93;letter-spacing:-.032em}
+body.page-auto .lp-hero .hero-grid{align-items:end}
+body.page-auto .lp-hero .d1{max-width:12ch}
+body.page-auto .hero-actions{gap:12px;align-items:center}
+body.page-auto .hero-actions .btn{min-height:48px}
+body.page-auto .tags{margin-top:22px;margin-bottom:4px}
+body.page-auto .auto-board{box-shadow:var(--shadow-product)}
+body.page-auto .auto-board__note{margin-top:14px}
+body.page-auto .fit-rail{
+  margin-top:clamp(40px,5vw,72px);
+  gap:0;background:transparent;border:0;border-top:1px solid var(--rule)
+}
+body.page-auto .fit-rail article{padding:22px 28px 0 0;background:transparent;border:0}
+body.page-auto .fit-rail h2{font-size:clamp(1.12rem,1.6vw,1.32rem);max-width:16ch}
+body.page-auto .fit-rail .k{color:var(--steel-2)}
+body.page-auto .hero-grid{margin-bottom:0}
+body.page-auto .auto-board{margin-top:4px}
+body.page-auto .loop-sec{background:var(--paper-2);border-block:1px solid var(--rule)}
+body.page-auto .loop-sec .d2{margin-top:18px}
+body.page-auto .lp-time{margin-top:clamp(28px,4vw,48px)}
+body.page-auto .lp-time .body-sm{margin-top:8px;max-width:52ch}
+
+body.page-auto .auto-proof{background:var(--ink);color:#DDE2E7}
+body.page-auto .auto-proof .wrap{padding-block:clamp(64px,8vw,120px)}
+body.page-auto .auto-proof .eyebrow{color:var(--ink-dim)}
+body.page-auto .auto-proof h2{color:#fff;margin-top:18px;max-width:18ch}
+body.page-auto .auto-proof .lede{color:#8C98A4;margin-top:16px}
+body.page-auto .auto-proof-grid{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(28px,4vw,64px);align-items:start;margin-top:clamp(28px,3.6vw,52px)
+}
+body.page-auto .auto-proof .arch-frame{min-width:0}
+body.page-auto .auto-story{border-top:1px solid var(--ink-line);margin-top:0}
+body.page-auto .auto-story div{
+  display:grid;grid-template-columns:clamp(88px,11vw,120px) minmax(0,1fr);gap:16px;
+  padding:15px 0;border-bottom:1px solid var(--ink-line)
+}
+body.page-auto .auto-story dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;padding-top:3px}
+body.page-auto .auto-story dd{color:#DDE2E7;font-size:15px;line-height:1.58;max-width:42ch}
+body.page-auto .auto-proof-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+body.page-auto .auto-proof .proof-note{margin-top:22px;font-size:13px;line-height:1.6;color:var(--ink-dim);max-width:52ch}
+
+body.page-auto .faq-sec{background:var(--white);border-block:1px solid var(--rule)}
+body.page-auto .faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
+body.page-auto .faq-grid > div:first-child{position:sticky;top:112px}
+body.page-auto .faq-grid .d2{margin-top:18px;max-width:13ch}
+body.page-auto .faq-grid .lede{margin-top:18px}
+body.page-auto .faq-list{border-top:1px solid var(--rule)}
+body.page-auto .faq-item{border-bottom:1px solid var(--rule)}
+body.page-auto .faq-q{
+  width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
+  gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
+  padding:clamp(20px,2.4vw,26px) 0;min-height:44px;transition:padding-left .45s var(--e)
+}
+body.page-auto .faq-q:hover,body.page-auto .faq-q:focus-visible{padding-left:8px}
+body.page-auto .faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel);transition:color var(--t-fast) var(--e);padding-top:5px}
+body.page-auto .faq-item.open .qn{color:var(--cta)}
+body.page-auto .faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
+body.page-auto .faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
+body.page-auto .faq-q .qi:before,body.page-auto .faq-q .qi:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .4s var(--e)}
+body.page-auto .faq-q .qi:after{transform:rotate(90deg)}
+body.page-auto .faq-item.open .qi:after{transform:rotate(0)}
+body.page-auto .faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--e),visibility 0s linear .5s}
+body.page-auto .faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--e),visibility 0s linear 0s}
+body.page-auto .faq-a>div{overflow:hidden}
+body.page-auto .faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
+body.page-auto .faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
+body.page-auto .faq-side .btn{margin-top:24px}
+body.page-auto .sib{margin-top:28px}
+
+@media(max-width:1280px){
+  body.page-auto .mob-chips{display:flex !important}
+  body.page-auto .mob-chips:after{
+    content:"";position:sticky;right:0;align-self:stretch;flex:none;width:32px;min-height:44px;
+    background:linear-gradient(90deg,transparent,rgba(244,243,238,.96));pointer-events:none
+  }
+  body.page-auto .sect,
+  body.page-auto .hero,
+  body.page-auto .auto-proof,
+  body.page-auto .cta-band{scroll-margin-top:118px}
+}
 @media(max-width:1024px){
-  .lp-hero .hero-grid{grid-template-columns:1fr !important;align-items:start}
-  .auto-board__kpis{grid-template-columns:1fr 1fr}
-  .auto-board__kpi:nth-child(3){display:none}
-  .auto-row{grid-template-columns:minmax(0,1fr) auto;gap:8px}
-  .auto-row .ref,.auto-row .conf{display:none}
-  .auto-row .st{grid-column:2;grid-row:1}
+  body.page-auto .lp-hero .hero-grid{grid-template-columns:1fr !important;align-items:start}
+  body.page-auto .auto-board{margin-top:8px}
+  body.page-auto .auto-board__kpis{grid-template-columns:1fr 1fr}
+  body.page-auto .auto-board__kpi:nth-child(3){display:none}
+  body.page-auto .auto-row{grid-template-columns:minmax(0,1fr) auto;gap:8px}
+  body.page-auto .auto-row .ref,body.page-auto .auto-row .conf{display:none}
+  body.page-auto .auto-row .st{grid-column:2;grid-row:1}
+  body.page-auto .faq-grid,body.page-auto .auto-proof-grid{grid-template-columns:1fr}
+  body.page-auto .faq-grid > div:first-child{position:static}
+  body.page-auto .auto-story div{grid-template-columns:minmax(0,1fr);gap:6px}
+  body.page-auto .auto-proof-cta .btn{width:100%;justify-content:center}
 }
 @media(max-width:860px){
-  .fit-rail{grid-template-columns:1fr !important}
+  body.page-auto .fit-rail{grid-template-columns:1fr !important}
+  body.page-auto .fit-rail article{padding:22px 0;border-bottom:1px solid var(--rule)}
+  body.page-auto .fit-rail article:last-child{border-bottom:0}
+}
+@media(max-width:620px){
+  body.page-auto .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
+  body.page-auto .faq-a-in{padding-left:44px}
+  body.page-auto .faq-q:hover{padding-left:0}
+  body.page-auto .hero-actions{flex-direction:column;align-items:stretch}
+  body.page-auto .hero-actions .btn{width:100%;justify-content:center}
 }
 </style>
-<link rel="stylesheet" href="/shared/chrome.css">
 </head>
-<body class="service strategic arch-industry">
+<body class="service strategic arch-industry page-auto">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -381,7 +485,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
                 <div class="mm-foot"><a href="/process">See the process <i>→</i></a></div>
               </div>
             </li>
-            <li class="nav-item is-active" data-mm>
+            <li class="nav-item" data-mm>
               <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-services" aria-haspopup="true">Services<span class="nav-chev" aria-hidden="true"></span></button>
               <div class="mm" id="mm-services" role="menu">
                 <div class="mm-head"><b>Services</b><span>Capabilities</span></div>
@@ -460,7 +564,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview"><span>Overview</span><i></i></a>
   <a href="#loop"><span>The loop</span><i></i></a>
-  <a href="#human"><span>Human on send</span><i></i></a>
   <a href="#work"><span>Work</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
@@ -474,6 +577,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">Automation Workflows</li>
     </ol>
+    <nav class="mob-chips" id="mobChips" aria-label="On this page">
+      <a href="#overview" aria-current="true">Overview</a>
+      <a href="#loop">The loop</a>
+      <a href="#work">Work</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
     <div class="hero-grid">
       <div>
         <p class="eyebrow" data-r>Service · Human-gated pipelines</p>
@@ -531,7 +641,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <div class="auto-row">
             <span class="ref">INV-09</span>
             <span class="lane"><b>Invoice fire</b><em>Waiting approve · ledger</em></span>
-            <span class="conf">, </span>
+            <span class="conf">—</span>
             <span class="st st-idle">Gate</span>
           </div>
         </div>
@@ -558,72 +668,118 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </header>
 
-<section class="sect" id="loop" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="sect loop-sec" id="loop" aria-labelledby="apH">
   <div class="wrap">
     <p class="eyebrow" data-r>The loop</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px">When the same steps burn every shift.</h2>
+    <h2 class="d2" id="apH" data-r>When the same steps burn every shift.</h2>
     <ol class="lp-time" data-s>
-      <li><span class="wk">01 · Map</span><div><h3 class="d3">Trigger, system, exception</h3><p class="body-sm" style="margin-top:8px">We write the loop as it actually runs, including the spreadsheet and the Slack ping, before we automate it.</p></div></li>
-      <li><span class="wk">02 · Gate</span><div><h3 class="d3">A human on send</h3><p class="body-sm" style="margin-top:8px">Customer-facing or ledger-facing steps get a review gate. Internal triage can run darker.</p></div></li>
-      <li><span class="wk">03 · Own</span><div><h3 class="d3">Your team after launch</h3><p class="body-sm" style="margin-top:8px">Docs, rollback, and who changes the scenario. The workflow does not remain a KRIVA black box.</p></div></li>
+      <li><span class="wk">01 · Map</span><div><h3 class="d3">Trigger, system, exception</h3><p class="body-sm">We write the loop as it actually runs, including the spreadsheet and the Slack ping, before we automate it.</p></div></li>
+      <li><span class="wk">02 · Gate</span><div><h3 class="d3">A human on send</h3><p class="body-sm">Customer-facing or ledger-facing steps get a review gate. Internal triage can run darker.</p></div></li>
+      <li><span class="wk">03 · Own</span><div><h3 class="d3">Your team after launch</h3><p class="body-sm">Docs, rollback, and who changes the scenario. The workflow does not remain a KRIVA black box.</p></div></li>
     </ol>
   </div>
 </section>
 
-<section class="arch-show" id="human" aria-labelledby="auShow">
+<section class="auto-proof on-ink" id="work" aria-labelledby="pfH">
   <div class="wrap">
-    <p class="k">Review before it leaves the building</p>
-    <h2 id="auShow">Triage, drafts, and a gate, not a firehose.</h2>
-    <div class="arch-frame">
-      <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>supportai · review</span></div>
-      <div class="pu" role="img" aria-label="Review queue, human gate.">
-        <div class="pu-bar"><div><p class="pu-title">Review queue</p><p class="pu-meta">Claude draft · human gate</p></div><span class="pu-chip warn">Hold send</span></div>
-        <p class="pu-k">#4812 · Billing · 94%</p>
-        <p class="pu-q">Charge posted twice after the March plan change.</p>
-        <p class="pu-draft"><span>Draft</span>We can reverse the duplicate and credit the difference today.</p>
-        <div class="pu-acts"><span class="pu-ok">Approve</span><span class="pu-no">Hold</span></div>
+    <p class="eyebrow" data-r>Selected work</p>
+    <h2 class="d2" id="pfH" data-r>SupportAI · triage with a human on send</h2>
+    <p class="lede" data-r>Assisted drafts land in a review queue. Nothing customer-facing leaves without a person on the gate.</p>
+    <div class="auto-proof-grid">
+      <div class="arch-frame" data-r>
+        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>supportai · review</span></div>
+        <div class="pu" role="img" aria-label="Review queue with Claude draft and human approve or hold gate. Illustrative demo.">
+          <div class="pu-bar"><div><p class="pu-title">Review queue</p><p class="pu-meta">Claude draft · human gate</p></div><span class="pu-chip warn">Hold send</span></div>
+          <p class="pu-k">#4812 · Billing · 94%</p>
+          <p class="pu-q">Charge posted twice after the March plan change.</p>
+          <p class="pu-draft"><span>Draft</span>We can reverse the duplicate and credit the difference today.</p>
+          <div class="pu-acts"><span class="pu-ok">Approve</span><span class="pu-no">Hold</span></div>
+        </div>
+      </div>
+      <div data-r>
+        <dl class="auto-story">
+          <div><dt>Problem</dt><dd>Support burned shifts on the same billing and access tickets. Drafts existed in tools, but send still needed judgment.</dd></div>
+          <div><dt>Loop</dt><dd>Ticket in → Make + Claude draft → human gate → send or hold. Low confidence falls back to a person.</dd></div>
+          <div><dt>Gate</dt><dd>Approve and Hold are first-class. Customer-facing replies never auto-send.</dd></div>
+          <div><dt>Outcome</dt><dd>Operators clear a queue instead of rewriting the same reply. Narrative case, no invented metrics.</dd></div>
+        </dl>
+        <div class="auto-proof-cta">
+          <a href="/work/ai-support-automation" class="btn on-dark"><span>Read the SupportAI case</span><i>→</i></a>
+          <a href="/services/ai-assisted-development" class="btn ghost on-dark"><span>AI-Assisted Development</span><i>→</i></a>
+        </div>
+        <p class="proof-note">Illustrative UI pattern from the SupportAI case. Client names and identifying details may be changed for confidentiality.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="featwork" id="work" aria-labelledby="pfH" style="padding:0">
-  <article class="lp-case" data-r>
-    <a href="/work/ai-support-automation">
-      <div class="pu" role="img" aria-label="Review queue, human gate.">
-        <div class="pu-bar"><div><p class="pu-title">Review queue</p><p class="pu-meta">Claude draft · human gate</p></div><span class="pu-chip warn">Hold send</span></div>
-        <p class="pu-k">#4812 · Billing · 94%</p>
-        <p class="pu-q">Charge posted twice after the March plan change.</p>
-        <p class="pu-draft"><span>Draft</span>We can reverse the duplicate and credit the difference today.</p>
-        <div class="pu-acts"><span class="pu-ok">Approve</span><span class="pu-no">Hold</span></div>
-      </div>
-    </a>
-    <div>
-      <p class="eyebrow">Selected work</p>
-      <h3 class="d2" id="pfH">SupportAI</h3>
-      <p>Assisted triage with a human on send. Narrative case, no invented metrics.</p>
-      <a href="/work/ai-support-automation" class="btn on-dark" style="margin-top:22px"><span>Read the case</span><i>→</i></a>
-    </div>
-  </article>
-</section>
-
-<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--white);border-top:1px solid var(--rule)">
+<section class="sect faq-sec" id="faq" aria-labelledby="faqH">
   <div class="wrap">
-    <p class="eyebrow" data-r>FAQ</p>
-    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About Automation Workflows</h2>
-    <div class="faq" data-r>
-      <details><summary>Do you only use Make and Zapier?</summary><p>No. We use them when they fit. Custom jobs and original APIs when they do not.</p></details>
-      <details><summary>How is this different from Integrations &amp; APIs?</summary><p>Integrations move data between systems of record. Automation orchestrates steps, often with a human on send.</p></details>
-      <details><summary>How is this different from AI-Assisted Development?</summary><p>This service owns the workflow and the gate. AI-Assisted Development is how we accelerate design and engineering delivery, with human oversight.</p></details>
-      <details><summary>Can you automate AI steps too?</summary><p>Yes, with a review gate on anything customer-facing. We will not put an unattended model on send.</p></details>
-      <details><summary>What if the workflow needs to hit QuickBooks or Xero?</summary><p>Ledger posting pairs with QuickBooks &amp; Xero integrations. Automation can trigger it; the connector owns the books.</p></details>
-      <details><summary>Who owns the workflow after launch?</summary><p>You do. We hand over the scenario, docs, and rollback. We do not keep the keys.</p></details>
-    </div>
-    <div class="sib" data-r style="margin-top:32px">
-      <a href="/services/api-integrations">Integrations &amp; APIs</a>
-      <a href="/services/ai-assisted-development">AI-Assisted Development</a>
-      <a href="/work/ai-support-automation">SupportAI case</a>
-      <a href="/services">All services</a>
+    <div class="faq-grid">
+      <div class="faq-side">
+        <p class="eyebrow" data-r>FAQ</p>
+        <h2 class="d2" id="faqH" data-r>About Automation Workflows</h2>
+        <p class="lede" data-r>Asked most often before a first call when the brief mixes Make, Zapier, and a person on send.</p>
+        <a href="/contact#book" class="btn ghost"><span>Ask us directly</span><i>→</i></a>
+      </div>
+      <div>
+        <div class="faq-list" data-r>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa1">
+              <span class="qn num">01</span><span class="qt">Do you only use Make and Zapier?</span><span class="qi" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="fa1"><div><div class="faq-a-in">
+              <p>Make and Zapier are the default when they fit. We write custom workers when the platform is the bottleneck, the volume is too high, or the gate needs a console the iPaaS cannot host. The engagement starts with the loop, not the logo.</p>
+            </div></div></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa2">
+              <span class="qn num">02</span><span class="qt">How is this different from Integrations &amp; APIs?</span><span class="qi" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="fa2"><div><div class="faq-a-in">
+              <p>Automation owns the queue: triggers, human gates, and fallback. Integrations owns connector architecture, idempotency, webhooks, and error surfaces. Use this page when a person is still in the loop on send. Use Integrations when two systems must stay in agreement without a nightly spreadsheet.</p>
+            </div></div></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa3">
+              <span class="qn num">03</span><span class="qt">How is this different from AI-Assisted Development?</span><span class="qi" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="fa3"><div><div class="faq-a-in">
+              <p>AI-Assisted Development is how KRIVA ships design and code faster. This service is the customer’s ops queue: ticket triage, drafts, invoice triggers, with a human on send. We may use an LLM inside a Make scenario. That is not the same as using AI to build your product.</p>
+            </div></div></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa4">
+              <span class="qn num">04</span><span class="qt">Can you automate AI steps too?</span><span class="qi" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="fa4"><div><div class="faq-a-in">
+              <p>Yes. We chain LLM steps into Make or custom workers for summarization, routing, and draft generation, with approval gates throughout. Low-confidence output falls back to a person. Nothing customer-facing sends on its own.</p>
+            </div></div></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa5">
+              <span class="qn num">05</span><span class="qt">What if the workflow needs to hit QuickBooks or Xero?</span><span class="qi" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="fa5"><div><div class="faq-a-in">
+              <p>Automation owns the trigger and the gate. The write into QuickBooks Online or Xero uses the original APIs under QuickBooks &amp; Xero integrations, not a CSV export after the run. We pair the two services when the queue and the ledger both matter.</p>
+            </div></div></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa6">
+              <span class="qn num">06</span><span class="qt">Who owns the workflow after launch?</span><span class="qi" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a" id="fa6"><div><div class="faq-a-in">
+              <p>Your team. We leave a map, named scenarios, monitoring, and a fallback queue so the pipeline survives the original builder. Maintenance can stay in-house, or we can retain a light ops retainer if you ask for it.</p>
+            </div></div></div>
+          </div>
+        </div>
+        <div class="sib" data-r>
+          <a href="/services/api-integrations">Integrations &amp; APIs</a>
+          <a href="/services/ai-assisted-development">AI-Assisted Development</a>
+          <a href="/work/ai-support-automation">SupportAI case</a>
+          <a href="/services">All services</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -814,6 +970,19 @@ if(mob.length){
   },{rootMargin:'-35% 0px -55% 0px'});
   chTargets.forEach(t=>mobIO.observe(t));
 }
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  const item=btn.closest('.faq-item');
+  btn.addEventListener('click',()=>{
+    const open=btn.getAttribute('aria-expanded')==='true';
+    document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(o=>{
+      if(o===btn) return;
+      o.setAttribute('aria-expanded','false');
+      o.closest('.faq-item').classList.remove('open');
+    });
+    btn.setAttribute('aria-expanded',String(!open));
+    item.classList.toggle('open',!open);
+  });
+});
 run();
 })();
 </script>
@@ -838,7 +1007,7 @@ run();
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Automate the queue. Keep humans on send.",
+      "name": "Automation Workflows",
       "item": "https://krivatechnologies.com/services/automation-systems"
     }
   ]
