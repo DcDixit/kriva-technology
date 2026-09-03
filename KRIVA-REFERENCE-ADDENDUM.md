@@ -102,7 +102,7 @@ All `[Certain]`. **Do not reformat, abbreviate, or replace** unless a later veri
 
 | Fact | Exact value | Where used |
 |---|---|---|
-| Email | `hello@krivatechnologies.com` | `mailto:` links · footer · `/contact` · `/privacy` §8 · `/terms` §9 |
+| Email | `krivatechnlogies@gmail.com` | `mailto:` links · footer · `/contact` · `/privacy` §8 · `/terms` §9 |
 | Phone | `+91 97244 54455` | Display text. `tel:` href must be `tel:+919724454455` (no spaces) |
 | WhatsApp | `https://wa.me/919724454455` | Floating action · mobile sheet · `/contact`. Include the prefilled `?text=` param from §1.6 |
 | Address | `511 - I The Address, Ahmedabad, Gujarat 380060, IN` | `/about` at-a-glance · JSON-LD `PostalAddress` · **required addition to `/privacy`, see §9** |

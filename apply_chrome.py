@@ -151,7 +151,7 @@ def header_html(current: str | None) -> str:
     </div>
   </div>
   <div class="sheet-foot">
-    <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
+    <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>
     <a href="tel:+919724454455">+91 97244 54455</a>
     <span>Ahmedabad, India · Remote-first</span>
   </div>
@@ -163,7 +163,7 @@ FOOTER_HTML = '''<footer>
     <div class="fgrid">
       <div>
         <h3>Get in touch</h3>
-        <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a><br>
+        <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a><br>
         <a href="tel:+919724454455">+91 97244 54455</a>
         <p class="f-blurb">Design and engineering for US trucking ops and SaaS product teams. Ahmedabad, India · Remote-first · Global clients.</p>
         <div class="fsocial">
