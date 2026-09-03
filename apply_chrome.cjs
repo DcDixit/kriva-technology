@@ -8,33 +8,33 @@ const { CONTACT_EMAIL } = require("./shared/studio");
 
 const PAGE_CURRENT = {
   "kriva-redesign.html": null,
-  "kriva-solution-trucking.html": "solutions",
-  "kriva-solution-saas.html": "solutions",
-  "kriva-solution-accounting.html": "solutions",
-  "kriva-solution-car-transport.html": "solutions",
+  "kriva-solution-trucking.html": "trucking",
+  "kriva-solution-saas.html": "saas",
+  "kriva-solution-accounting.html": "integration",
+  "kriva-solution-car-transport.html": "trucking",
   "kriva-services-index.html": "services",
   "kriva-service-crm-development.html": "services",
   "kriva-service-dashboard-design.html": "services",
-  "kriva-service-api-integrations.html": "services",
+  "kriva-service-api-integrations.html": "integration",
   "kriva-service-mobile-applications.html": "services",
-  "kriva-service-saas-platforms.html": "services",
-  "kriva-service-automation-systems.html": "services",
-  "kriva-service-ai-assisted-development.html": "services",
+  "kriva-service-saas-platforms.html": "saas",
+  "kriva-service-automation-systems.html": "operations",
+  "kriva-service-ai-assisted-development.html": "operations",
   "kriva-service-web-development.html": "services",
   "kriva-service-no-code-low-code.html": "services",
-  "kriva-service-product-design.html": "services",
-  "kriva-service-ui-ux-design.html": "services",
+  "kriva-service-product-design.html": "saas",
+  "kriva-service-ui-ux-design.html": "saas",
   "kriva-service-branding.html": "services",
   "kriva-service-ux-research.html": "services",
   "kriva-service-wireframing-prototyping.html": "services",
-  "kriva-service-design-systems.html": "services",
+  "kriva-service-design-systems.html": "saas",
   "kriva-service-web-application-design.html": "services",
   "kriva-service-logo-design.html": "services",
   "kriva-service-graphic-design.html": "services",
   "kriva-service-seo-digital-marketing.html": "services",
   "kriva-work-index.html": "work",
-  "kriva-careers.html": "company",
-  "kriva-industries.html": "company",
+  "kriva-careers.html": null,
+  "kriva-industries.html": null,
   "kriva-case-fleetflow.html": "work",
   "kriva-case-payroll-pro.html": "work",
   "kriva-case-finance-sync.html": "work",
@@ -43,20 +43,20 @@ const PAGE_CURRENT = {
   "kriva-case-crm-pulse.html": "work",
   "kriva-case-ai-support.html": "work",
   "kriva-case-marketplace.html": "work",
-  "kriva-contact.html": "company",
+  "kriva-contact.html": null,
   "kriva-solutions-index.html": "solutions",
-  "kriva-about.html": "company",
-  "kriva-process.html": "company",
-  "kriva-insights-index.html": "company",
-  "kriva-insight-saas-mvp-uk-guide.html": "company",
-  "kriva-insight-trucking-dispatch-crm-guide.html": "company",
-  "kriva-insight-ai-in-product-design-2026.html": "company",
-  "kriva-insight-saas-onboarding-patterns.html": "company",
-  "kriva-insight-no-code-vs-custom-mvp.html": "company",
-  "kriva-insight-crm-dashboard-ux-patterns.html": "company",
-  "kriva-insight-choosing-a-digital-agency.html": "company",
-  "kriva-faq.html": "company",
-  "kriva-technologies.html": "company",
+  "kriva-about.html": "about",
+  "kriva-process.html": "operations",
+  "kriva-insights-index.html": null,
+  "kriva-insight-saas-mvp-uk-guide.html": null,
+  "kriva-insight-trucking-dispatch-crm-guide.html": null,
+  "kriva-insight-ai-in-product-design-2026.html": null,
+  "kriva-insight-saas-onboarding-patterns.html": null,
+  "kriva-insight-no-code-vs-custom-mvp.html": null,
+  "kriva-insight-crm-dashboard-ux-patterns.html": null,
+  "kriva-insight-choosing-a-digital-agency.html": null,
+  "kriva-faq.html": null,
+  "kriva-technologies.html": null,
   "kriva-privacy.html": null,
   "kriva-terms.html": null,
 };
@@ -79,14 +79,14 @@ function active(key, name) {
   return key === name ? " is-active" : "";
 }
 
-/** Top-level nav: Solutions · Services · Work · Company */
+/** Desktop megas: Trucking · SaaS · Integration · Operations · Services · Work · About */
 function resolveNav(current, opts = {}) {
-  return {
-    solutions: current === "solutions" || opts.solutionsCurrent === true,
-    services: current === "services" || opts.servicesCurrent === true,
-    work: current === "work",
-    company: current === "company" || opts.companyCurrent === true,
-  };
+  const mega = ["trucking", "saas", "integration", "operations"].includes(current)
+    ? current
+    : null;
+  const servicesCurrent =
+    current === "services" || opts.servicesCurrent === true;
+  return { mega, servicesCurrent, work: current === "work", about: current === "about" };
 }
 
 function headerHtml(current, opts = {}) {
@@ -101,68 +101,71 @@ function headerHtml(current, opts = {}) {
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
-            <li class="nav-item${nav.solutions ? " is-active" : ""}" data-mm>
-              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-solutions" aria-haspopup="true">Solutions<span class="nav-chev" aria-hidden="true"></span></button>
-              <div class="mm" id="mm-solutions" role="menu">
-                <div class="mm-head"><b>Solutions</b><span>By industry</span></div>
+            <li class="nav-item${active(nav.mega, "trucking")}" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-trucking" aria-haspopup="true">Trucking<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-trucking" role="menu">
+                <div class="mm-head"><b>Trucking &amp; logistics</b><span>Ops software</span></div>
                 <ul class="mm-list">
-                  <li class="mm-sol-feat"><a role="menuitem" href="/solutions/trucking-logistics"><span class="mm-sol-kicker">Featured</span><strong>Trucking &amp; logistics</strong><em>Dispatch CRM, fleet dashboards, driver apps, and TMS workflows.</em><span class="mm-sol-go">Explore trucking <i>→</i></span></a></li>
-                  <li><a role="menuitem" href="/solutions/saas"><strong>SaaS products</strong><em>Onboarding, admin panels, and MVPs built for daily use.</em></a></li>
-                  <li><a role="menuitem" href="/solutions/car-transportation"><strong>Car transportation</strong><em>Quotes, tracking, and auto-transport operations.</em></a></li>
-                  <li class="mm-sol-wide"><a role="menuitem" href="/solutions/accounting-integrations"><strong>Accounting &amp; finance</strong><em>QuickBooks, Xero sync, and reconciliation workflows.</em></a></li>
+                  <li><a role="menuitem" href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics solutions</strong><em>Dispatch, fleet, drivers, and logistics platforms.</em></a></li>
+                  <li><a role="menuitem" href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><em>Consoles, bulk actions, supervisor oversight.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Fleet dashboards</strong><em>Route performance and exception handling.</em></a></li>
+                  <li><a role="menuitem" href="/services/mobile-applications"><strong>Driver mobile apps</strong><em>Load acceptance, status updates, documents.</em></a></li>
+                  <li><a role="menuitem" href="/solutions/car-transportation"><strong>Car transportation</strong><em>Quotes, tracking, and auto-transport ops.</em></a></li>
                 </ul>
-                <div class="mm-foot"><a href="/solutions">All solutions <i>→</i></a></div>
+                <div class="mm-foot"><a href="/solutions/trucking-logistics">All trucking solutions <i>→</i></a></div>
               </div>
             </li>
-            <li class="nav-item${nav.services ? " is-active" : ""}" data-mm>
+            <li class="nav-item${active(nav.mega, "saas")}" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-saas" aria-haspopup="true">SaaS<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-saas" role="menu">
+                <div class="mm-head"><b>SaaS products</b><span>UK &amp; US</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/solutions/saas"><strong>SaaS product solutions</strong><em>Onboarding, dashboards, and MVPs that stick.</em></a></li>
+                  <li><a role="menuitem" href="/services/saas-platforms"><strong>SaaS product design</strong><em>Multi-tenant UX, admin panels, permissions.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboards &amp; admin panels</strong><em>Analytics and operational views for daily use.</em></a></li>
+                  <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/solutions/saas">All SaaS solutions <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item${active(nav.mega, "integration")}" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-integration" aria-haspopup="true">Integration<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-integration" role="menu">
+                <div class="mm-head"><b>Integrations</b><span>Finance &amp; APIs</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/solutions/accounting-integrations"><strong>QuickBooks &amp; Xero</strong><em>Sync and reconciliation finance teams trust.</em></a></li>
+                  <li><a role="menuitem" href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><em>Reliable connectors with clear error handling.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/solutions/accounting-integrations">Explore integrations <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item${active(nav.mega, "operations")}" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-operations" aria-haspopup="true">Operations<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-operations" role="menu">
+                <div class="mm-head"><b>Operations</b><span>Tooling &amp; delivery</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/services/crm-development"><strong>CRM &amp; ops consoles</strong><em>Pipelines and internal tools matched to real desks.</em></a></li>
+                  <li><a role="menuitem" href="/services/automation-systems"><strong>Automation workflows</strong><em>Human-gated triage, docs, and internal tooling.</em></a></li>
+                  <li><a role="menuitem" href="/process"><strong>How we work</strong><em>Discovery through launch: clear gates, weekly demos.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/process">See the process <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item${nav.servicesCurrent ? " is-active" : ""}" data-mm>
               <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-services" aria-haspopup="true">Services<span class="nav-chev" aria-hidden="true"></span></button>
               <div class="mm" id="mm-services" role="menu">
                 <div class="mm-head"><b>Services</b><span>Capabilities</span></div>
                 <ul class="mm-list">
-                  <li class="mm-label" aria-hidden="true">Product &amp; UX</li>
-                  <li><a role="menuitem" href="/services/ui-ux-design"><strong>UI/UX design</strong><em>Interfaces matched to real workflows.</em></a></li>
-                  <li><a role="menuitem" href="/services/product-design"><strong>Product design</strong><em>Flows, prototypes, launch-ready UI.</em></a></li>
-                  <li><a role="menuitem" href="/services/ux-research"><strong>UX research</strong><em>Interviews, testing, and evidence.</em></a></li>
-                  <li><a role="menuitem" href="/services/wireframing-prototyping"><strong>Wireframing &amp; prototyping</strong><em>Clickable flows before build.</em></a></li>
-                  <li><a role="menuitem" href="/services/design-systems"><strong>Design systems</strong><em>Tokens, components, documentation.</em></a></li>
-                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboard design</strong><em>Operational views for daily use.</em></a></li>
-                  <li class="mm-label" aria-hidden="true">Engineering</li>
-                  <li><a role="menuitem" href="/services/web-development"><strong>Web development</strong><em>Sites and apps that convert.</em></a></li>
-                  <li><a role="menuitem" href="/services/web-application-design"><strong>Web application development</strong><em>Custom apps and internal tools.</em></a></li>
-                  <li><a role="menuitem" href="/services/saas-platforms"><strong>SaaS platforms</strong><em>Multi-tenant architecture and UX.</em></a></li>
-                  <li><a role="menuitem" href="/services/mobile-applications"><strong>Mobile applications</strong><em>iOS, Android, and field apps.</em></a></li>
-                  <li><a role="menuitem" href="/services/crm-development"><strong>CRM development</strong><em>Consoles matched to real desks.</em></a></li>
-                  <li><a role="menuitem" href="/services/api-integrations"><strong>API integrations</strong><em>Reliable connectors with clear errors.</em></a></li>
-                  <li class="mm-label" aria-hidden="true">Automation &amp; emerging tech</li>
-                  <li><a role="menuitem" href="/services/automation-systems"><strong>Automation systems</strong><em>Human-gated workflows and tooling.</em></a></li>
-                  <li><a role="menuitem" href="/services/ai-assisted-development"><strong>AI-assisted development</strong><em>Practical AI in product workflows.</em></a></li>
-                  <li><a role="menuitem" href="/services/no-code-low-code"><strong>No-code / low-code</strong><em>Rapid validation and MVPs.</em></a></li>
-                  <li class="mm-label" aria-hidden="true">Brand &amp; growth</li>
-                  <li><a role="menuitem" href="/services/branding"><strong>Branding</strong><em>Identity systems and guidelines.</em></a></li>
-                  <li><a role="menuitem" href="/services/logo-design"><strong>Logo design</strong><em>Marks built for product and print.</em></a></li>
-                  <li><a role="menuitem" href="/services/graphic-design"><strong>Graphic design</strong><em>Marketing kits and collateral.</em></a></li>
-                  <li><a role="menuitem" href="/services/seo-digital-marketing"><strong>SEO &amp; digital marketing</strong><em>Search, ads, and reporting.</em></a></li>
+                  <li><a role="menuitem" href="/services/graphic-design"><strong>Graphic Design</strong><em>Identity, print, social, packaging, and marketing kits.</em></a></li>
+                  <li><a role="menuitem" href="/services/seo-digital-marketing"><strong>SEO &amp; Digital Marketing</strong><em>Search, ads, social, and reporting you can audit.</em></a></li>
+                  <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
+                  <li><a role="menuitem" href="/services/web-development"><strong>Web Design &amp; Development</strong><em>Sites and apps that convert as well as they rank.</em></a></li>
                 </ul>
                 <div class="mm-foot"><a href="/services">All services <i>→</i></a></div>
               </div>
             </li>
             <li><a class="nav-link" href="/work"${nav.work ? ' aria-current="page"' : ""}>Work</a></li>
-            <li class="nav-item${nav.company ? " is-active" : ""}" data-mm>
-              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-company" aria-haspopup="true">Company<span class="nav-chev" aria-hidden="true"></span></button>
-              <div class="mm" id="mm-company" role="menu">
-                <div class="mm-head"><b>Company</b><span>About KRIVA</span></div>
-                <ul class="mm-list">
-                  <li><a role="menuitem" href="/about"><strong>About</strong><em>Who we are and how we work.</em></a></li>
-                  <li><a role="menuitem" href="/process"><strong>Process</strong><em>Discovery through launch with clear gates.</em></a></li>
-                  <li><a role="menuitem" href="/technologies"><strong>Technologies</strong><em>Stack and tooling we use.</em></a></li>
-                  <li><a role="menuitem" href="/industries"><strong>Industries</strong><em>Sectors we design and build for.</em></a></li>
-                  <li><a role="menuitem" href="/insights"><strong>Insights</strong><em>Guides and articles from the studio.</em></a></li>
-                  <li><a role="menuitem" href="/careers"><strong>Careers</strong><em>Join the in-house team.</em></a></li>
-                  <li><a role="menuitem" href="/faq"><strong>FAQ</strong><em>Common questions answered.</em></a></li>
-                  <li><a role="menuitem" href="/contact"><strong>Contact</strong><em>Book a call or send a brief.</em></a></li>
-                </ul>
-              </div>
-            </li>
+            <li><a class="nav-link" href="/about"${nav.about ? ' aria-current="page"' : ""}>About</a></li>
           </ul>
         </nav>
       </div>
@@ -367,10 +370,8 @@ function applyFile(name) {
   if (!fs.existsSync(file)) return `MISS ${name}`;
   const current = PAGE_CURRENT[name];
   let html = fs.readFileSync(file, "utf8");
-  const opts = name === "kriva-contact.html" ? { persist: true, companyCurrent: true } : {};
+  const opts = name === "kriva-contact.html" ? { persist: true } : {};
   if (/^kriva-service-/.test(name)) opts.servicesCurrent = true;
-  if (/^kriva-solution-/.test(name)) opts.solutionsCurrent = true;
-  if (/^kriva-insight-/.test(name)) opts.companyCurrent = true;
 
   html = stripOldNavCss(html);
   const cleaned = cleanChrome(html, current, opts);
