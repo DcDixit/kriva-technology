@@ -40,7 +40,7 @@
 <meta property="article:published_time" content="2025-10-12">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"CRM dashboard UX patterns that sales teams actually use","description":"How to reduce clutter, surface the right KPIs, and design CRM views reps actually open every morning instead of once a quarter.","image":"https://krivatechnologies.com/brand/og-default.png","datePublished":"2025-10-12","dateModified":"2025-10-12","author":{"@type":"Organization","name":"KRIVA Technologies"},"publisher":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},"mainEntityOfPage":"https://krivatechnologies.com/insights/crm-dashboard-ux-patterns"}
+{"@context":"https://schema.org","@type":"Article","headline":"CRM dashboard UX patterns that sales teams actually use","description":"How to reduce clutter, surface the right KPIs, and design CRM views reps actually open every morning instead of once a quarter.","image":"https://krivatechnologies.com/brand/og-default.png","datePublished":"2025-10-12","dateModified":"2026-09-04","author":{"@type":"Organization","name":"KRIVA Technologies"},"publisher":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},"mainEntityOfPage":"https://krivatechnologies.com/insights/crm-dashboard-ux-patterns"}
 </script>
 <style>
 /* Shared KRIVA tokens + primitives */
@@ -326,15 +326,21 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </header>
   <div class="wrap">
     <div class="prose" data-r>
-      <p>Sales teams abandon CRM dashboards that look impressive in demos but fail on Monday morning. The best-performing CRM UIs we ship share a few repeatable patterns.</p>
+      <p>Sales teams abandon CRM dashboards that look impressive in demos but fail on Monday morning. The gap is almost never data. It is that the dashboard was designed for a quarterly review, and the rep lives in a Tuesday at 9:40 with six calls to make. The best-performing CRM UIs we ship share a few repeatable patterns.</p>
 <h2>Lead with today's work, not global analytics</h2>
 <p>Reps need calls to make, deals at risk, and tasks overdue, not company-wide pipeline charts on login. Reserve executive roll-ups for manager roles.</p>
+<p>The test is simple: can a rep act on the first screen without clicking anything? If the landing view is a bar chart, the answer is no. On <a href="/work/crm-pulse-dashboard">CRMPulse</a>, an 80-rep sales org, we replaced the analytics landing page with a work queue: today's follow-ups on top, deals with no next step flagged below, and pipeline totals pushed to a separate manager view. A chart tells a rep how the quarter is going. A queue tells them what to do next. Only one of those gets opened every morning.</p>
 <h2>Deal health at a glance</h2>
 <p>Use consistent visual language for stale deals, missing next steps, and SLA breaches. Color alone is not enough, pair icons and labels for accessibility.</p>
+<p>Health has to be computed from rules the team already agrees on, not from a score nobody can explain. "No activity in 14 days," "no next step scheduled," and "close date in the past" are three flags a rep can act on directly. A proprietary 0&ndash;100 health score is a debate, not a signal. Put the flag on the row itself, in the list view, where the decision happens, the same pattern we use for <a href="/insights/trucking-dispatch-crm-guide">SLA on dispatch boards</a>. If a rep must open the deal to learn it is stale, the dashboard has already failed.</p>
 <h2>Mobile-friendly field views</h2>
 <p>Field reps check CRM between meetings on phones. Thumb-friendly actions, offline-tolerant lists, and quick note capture matter more than dense desktop tables.</p>
+<p>Design the mobile view around the ninety seconds between a parking lot and a lobby: confirm the meeting, scan the last note, log the outcome. That is three taps, not a form with eleven fields. Voice-to-text note capture with a required next-step field beats a perfect layout that nobody fills in. Desktop density and mobile density are different products; shipping the desktop table shrunk to 390px is how field adoption dies.</p>
 <h2>Configurable without chaos</h2>
-<p>Let teams pin widgets and save views, but provide sensible defaults. Empty-state CRMs are a adoption killer, seed each role with a working layout on day one.</p>
+<p>Let teams pin widgets and save views, but provide sensible defaults. Empty-state CRMs are an adoption killer, seed each role with a working layout on day one.</p>
+<p>Configuration works when it is bounded: a rep can reorder and pin, a manager can publish a team view, and only an admin can add new widgets to the library. Unbounded configuration produces eighty private dashboards and no shared definition of pipeline. Seed three role layouts on day one, rep, manager, and ops, and let usage data tell you what to change. If a widget goes unopened for a month, remove it; every unused panel taxes the ones that matter.</p>
+<h2>What to measure after launch</h2>
+<p>Dashboard success is behavioral, not aesthetic. Track three things: how many reps open the view before their first call of the day, how often deals leave the "no next step" state within 24 hours of being flagged, and whether managers stop asking for exported spreadsheets. When the spreadsheet exports stop, the dashboard has become the source of truth. Until then it is decoration beside the real workflow, the same failure mode we see in <a href="/services/crm-development">CRM workflows</a> generally.</p>
     </div>
     <nav class="rel-sol" aria-label="Related pages" data-r><a href="/services/crm-development">CRM design</a><a href="/services/dashboard-design">Dashboard design</a></nav>
     <aside class="related" aria-labelledby="relH">
