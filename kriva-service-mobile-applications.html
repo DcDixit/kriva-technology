@@ -17,7 +17,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0E1216">
 <!-- KRIVA_ICONS_END -->
-<link rel="stylesheet" href="/shared/tokens.css">
+<link rel="stylesheet" href="/shared/tokens.css?v=bg1">
 <link rel="preload" href="/brand/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <title>Mobile App Design &amp; Development for Field and SaaS | KRIVA</title>
 <meta name="description" content="KRIVA designs and builds driver, field, and SaaS companion apps with offline workflows, camera and document capture, backend integrations, and one-thumb UX.">
@@ -47,8 +47,8 @@ a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img,svg{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
-:focus-visible{outline:2px solid var(--blue);offset-outline:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.on-ink :focus-visible,footer :focus-visible,.app-contact :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -85,7 +85,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink);border-color:var(--ink)}
 .btn.sm{padding:9px 15px;font-size:11px;min-height:36px}
 .btn.on-dark{--btn-bg:var(--cta);--btn-fg:#fff;--btn-hover:#fff;border-color:var(--cta)}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--btn-hover)}
+.btn.on-dark:hover{color:var(--ink);border-color:#fff}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
@@ -96,15 +96,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(24px,4vw,72px);flex-wrap:wrap}
 .s-head h2,.s-title{margin-top:18px}
 .s-head .lede{margin-top:18px}
-.cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
-.cta-band .wrap{padding-block:clamp(88px,11vw,160px)}
-.cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,7vw,5.4rem);line-height:.93;letter-spacing:-.032em}
-.cta-band .lede{color:#8C98A4;margin-top:18px;max-width:40ch}
-.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
-.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
-.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
-.assur i{font-style:normal;color:var(--amber);margin-right:7px}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 .chapters{position:fixed;right:calc(var(--gutter) - 8px);top:50%;transform:translateY(-50%);z-index:70;display:grid;gap:2px;opacity:0;transition:opacity var(--t-mid) var(--e);pointer-events:none}
 .chapters.show{opacity:1;pointer-events:auto}
@@ -116,278 +107,43 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
-.mob-chips{
-  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
-  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
-  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
-  -webkit-overflow-scrolling:touch
-}
-.mob-chips::-webkit-scrollbar{display:none}
-.mob-chips a{
-  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
-  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
-}
-.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
-@media(max-width:1280px){
-  body.page-mobile .mob-chips{display:flex !important}
-  body.page-mobile .hero,body.page-mobile .sect,body.page-mobile .app-selected{scroll-margin-top:calc(88px + 48px)}
-}
 </style>
 <link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
-<style>
-/* Page-scoped Mobile Applications — loaded last */
-body.page-mobile{overflow-x:clip}
-body.page-mobile .d1{font-size:clamp(2rem,4.8vw,4.05rem);line-height:.92;letter-spacing:-.03em}
-body.page-mobile .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
-body.page-mobile .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
-body.page-mobile .sect{padding-block:clamp(80px,10vw,140px)}
-body.page-mobile .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;line-height:.93;letter-spacing:-.032em}
-body.page-mobile .hero{
-  background:var(--paper);color:var(--ink);overflow:hidden;
-  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(40px,5vw,80px);
-  scroll-margin-top:88px
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Mobile App Design & Development",
+  "serviceType": "Mobile app design, development, and driver/field/SaaS app engineering",
+  "description": "KRIVA designs and builds driver, field, and SaaS companion apps with offline workflows, camera and document capture, backend integrations, and one-thumb UX.",
+  "provider": {
+    "@type": "Organization",
+    "name": "KRIVA Technologies",
+    "url": "https://krivatechnologies.com"
+  },
+  "url": "https://krivatechnologies.com/services/mobile-applications",
+  "areaServed": ["United States", "United Kingdom", "United Arab Emirates", "Canada"]
 }
-@media(min-width:1025px){
-  body.page-mobile .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 56px}
-  body.page-mobile .hero > .wrap{width:100%}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Should the app be native, React Native, or Flutter?", "acceptedAnswer": {"@type": "Answer", "text": "The product decides, not a default. Camera and GPS depth, push behavior, performance targets, offline requirements, and timeline drive the choice — we validate platform fit during the define stage, before any build commitment."}},
+    {"@type": "Question", "name": "Can Kriva redesign an existing mobile app?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We map the current workflow first — where users avoid, delay, or complete tasks outside the app — then redesign around the first critical action. Engagements are design-only or design-and-build, whichever your team needs."}},
+    {"@type": "Question", "name": "Do you support offline queues, camera, GPS, push, and POD?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — those are the core of driver and field work. Offline-first queues with visible sync state, camera and signature capture with guidance on requirements, and retry without reentry when signal returns."}},
+    {"@type": "Question", "name": "Can the app connect with our existing platform or backend?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mobile actions update the CRM, TMS, SaaS platform, or document store through a defined API contract with error handling — success or visible failure, then retry or human resolution. No silent data loss."}},
+    {"@type": "Question", "name": "Do you provide design-only and design-and-build engagements?", "acceptedAnswer": {"@type": "Answer", "text": "Both. Design-only delivers prototypes, specs, and files your own engineers build from. Design-and-build ships the app and backend contract with weekly demos, testing on-site, beta rollout, and team training."}},
+    {"@type": "Question", "name": "Who owns the final files and source code?", "acceptedAnswer": {"@type": "Answer", "text": "You do. Designs, source code, and documentation transfer to your accounts at launch. Retainer support is optional, with no lock-in."}}
+  ]
 }
-
-.app-hero-grid{
-  display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
-  gap:clamp(28px,4.5vw,72px);align-items:center;margin-top:clamp(22px,3vw,36px)
-}
-.app-hero-grid > *{min-width:0}
-.app-hero-copy .d1{margin:18px 0 20px;max-width:11ch}
-.app-hero-copy .lede{max-width:40ch}
-.app-trust{
-  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2)
-}
-.app-trust span{display:inline-flex;align-items:center;gap:8px}
-.app-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
-.app-hero-visual{position:relative;min-width:0}
-.cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
-
-/* ── Phone visual ── */
-.app-phone{
-  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
-  box-shadow:var(--shadow-product);overflow:hidden;
-  border-radius:24px;min-width:0;max-width:360px;margin:0 auto;
-  display:grid;grid-template-rows:auto 1fr;
-}
-.app-status{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:8px 14px;background:#12181E;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
-}
-.app-screen{
-  padding:20px 14px;display:grid;gap:14px;overflow:hidden
-}
-.app-header{
-  display:grid;gap:6px
-}
-.app-header p{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;margin:0}
-.app-header h2{font-family:var(--f-display);font-weight:700;font-size:1.25rem;letter-spacing:-.02em;color:#fff;margin:0;line-height:1.2}
-.app-action{
-  display:grid;gap:8px;padding:14px;background:rgba(79,70,229,.16);border:1px solid var(--cta);
-  font-family:var(--f-display);font-weight:600;color:var(--cta);text-align:center;font-size:14px;cursor:pointer;border-radius:8px;min-height:44px;display:grid;place-items:center
-}
-.app-action.done{background:rgba(34,197,94,.1);border-color:var(--lime);color:var(--lime)}
-.app-detail{
-  display:grid;gap:6px;font-size:13px;line-height:1.4
-}
-.app-detail p{margin:0;color:#8C98A4}
-.app-detail span{display:block;color:#DDE2E7;font-weight:500}
-.app-status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--amber);margin-right:6px}
-
-/* ── Problems ── */
-.app-problems{background:var(--paper-2);border-top:1px solid var(--rule)}
-.app-problems .wrap{padding-block:clamp(56px,7vw,88px)}
-.app-prob-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(24px,3vw,40px)
-}
-.app-prob-card{background:var(--white);padding:clamp(20px,2.4vw,28px) clamp(18px,2vw,24px)}
-.app-prob-k{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--cta);margin-bottom:10px}
-.app-prob-card h3{max-width:16ch;margin-bottom:8px}
-.app-prob-card p{color:var(--steel);font-size:14.5px;line-height:1.55;max-width:32ch;margin:0}
-
-/* ── Paths ── */
-.app-paths{background:var(--white)}
-.app-path-switch{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,64px);align-items:start;margin-top:clamp(28px,4vw,52px)}
-.app-path-switch > *{min-width:0}
-.app-path-tabs{display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0;list-style:none}
-.app-path-tabs li{flex:1}
-.app-path-tab{
-  display:block;width:100%;padding:12px 14px;text-align:center;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--steel-2);background:var(--paper);border-bottom:2px solid var(--rule);
-  cursor:pointer;transition:all var(--t-fast) var(--e)
-}
-.app-path-tab.on{color:var(--cta);border-color:var(--cta);background:var(--white)}
-.app-path-panel{display:none;padding:clamp(24px,2.8vw,36px) clamp(20px,2vw,28px);background:var(--white);border:1px solid var(--rule);border-top:0}
-.app-path-panel.on{display:block}
-.app-path-panel h3{margin-bottom:12px}
-.app-path-panel ul{list-style:none;display:grid;gap:9px;margin-top:14px}
-.app-path-panel li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.4}
-.app-path-panel li:before{content:"";width:6px;height:6px;margin-top:6px;background:var(--blue);flex:none}
-.app-path-visual{align-self:stretch;display:grid}
-.app-path-view{display:none;min-width:0}
-.app-path-view.on{display:block}
-.app-path-phone{
-  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
-  box-shadow:var(--shadow-product);overflow:hidden;border-radius:22px;max-width:260px;margin:0 auto
-}
-.app-path-phone .app-status{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:7px 12px;background:#12181E;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
-}
-.app-path-phone .app-screen{padding:16px 12px;display:grid;gap:12px}
-.app-path-phone .app-header{display:grid;gap:5px}
-.app-path-phone .app-header p{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;margin:0}
-.app-path-phone .app-header h2{font-family:var(--f-display);font-weight:700;font-size:1.1rem;letter-spacing:-.02em;color:#fff;margin:0;line-height:1.2}
-.app-path-phone .app-action{
-  padding:12px;background:rgba(79,70,229,.16);border:1px solid var(--cta);
-  font-family:var(--f-display);font-weight:600;color:var(--cta);text-align:center;font-size:13px;border-radius:8px;min-height:42px;display:grid;place-items:center
-}
-.app-path-phone .app-detail{display:grid;gap:4px;font-size:12px;line-height:1.4}
-.app-path-phone .app-detail p{margin:0;color:#8C98A4}
-.app-path-phone .app-detail span{display:block;color:#DDE2E7;font-weight:500}
-.app-path-visual .pu{box-shadow:var(--shadow-product);height:100%}
-
-/* ── Workflow ── */
-.app-workflow-grid{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,4vw,52px)
-}
-.app-workflow-step{background:var(--white);padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,24px)}
-.app-workflow-step .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
-.app-workflow-step h3{margin-bottom:8px}
-.app-workflow-step p{color:var(--steel);font-size:14px;line-height:1.55;margin:0 0 8px}
-.app-workflow-step ul{list-style:none;display:grid;gap:6px;margin-top:8px;font-size:13.5px;color:var(--ink)}
-.app-workflow-step li:before{content:"•";margin-right:6px;color:var(--cta)}
-
-/* ── Backend ── */
-.app-backend{background:var(--paper-2);border-top:1px solid var(--rule)}
-.app-backend .wrap{padding-block:clamp(56px,7vw,88px)}
-.app-flow{
-  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:clamp(12px,2vw,20px);margin-top:clamp(28px,4vw,52px);align-items:center
-}
-.app-flow-item{
-  background:var(--white);border:1px solid var(--rule);padding:clamp(18px,2.2vw,24px);
-  text-align:center;min-height:120px;display:grid;place-items:center
-}
-.app-flow-item p{font-size:14px;line-height:1.4;color:var(--ink);margin:0}
-.app-flow-item.neutral{background:var(--paper)}
-.app-flow-arrow{
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--f-mono);font-size:12px;color:var(--steel);text-align:center
-}
-
-/* ── Selected work ── */
-.app-selected{background:var(--ink);color:#DDE2E7}
-.app-selected .wrap{padding-block:clamp(80px,10vw,140px)}
-.app-selected .eyebrow{color:var(--ink-dim)}
-.app-selected h2{color:#fff;margin-top:18px;max-width:16ch}
-.app-selected .lede{color:#8C98A4;margin-top:16px}
-.app-work-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:clamp(32px,5vw,64px);align-items:start;margin-top:clamp(28px,4vw,52px)
-}
-.app-work-col h3{color:#fff;font-size:clamp(1.05rem,1.5vw,1.25rem);margin-bottom:14px}
-.app-work-col p{color:#8C98A4;font-size:14.5px;line-height:1.55;margin:0 0 12px}
-.app-work-col ul{list-style:none;display:grid;gap:10px}
-.app-work-col li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:#DDE2E7;line-height:1.4}
-.app-work-col li:before{content:"";width:6px;height:6px;margin-top:6px;background:var(--lime);flex:none}
-.app-work-note{margin-top:24px;font-size:13px;line-height:1.6;color:#8C98A4;max-width:60ch}
-
-/* ── Delivery ── */
-.app-delivery-stages{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,4vw,52px)
-}
-.app-delivery-stage{background:var(--white);padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,24px)}
-.app-delivery-stage .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
-.app-delivery-stage h3{margin-bottom:8px}
-.app-delivery-stage p{color:var(--steel);font-size:14.5px;line-height:1.55;margin:0}
-.app-delivery-trust{
-  background:var(--ink);color:#DDE2E7;padding:clamp(22px,2.8vw,32px) clamp(20px,2vw,28px);
-  margin-top:1px;border:1px solid var(--ink-line);border-top:0
-}
-.app-delivery-trust h3{color:#fff;margin-bottom:12px}
-.app-delivery-trust ul{list-style:none;display:grid;gap:9px}
-.app-delivery-trust li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14px;color:#DDE2E7;line-height:1.4}
-.app-delivery-trust li:before{content:"";width:6px;height:6px;margin-top:6px;background:var(--amber);flex:none}
-
-/* ── FAQ ── */
-.faq-sec{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px}
-.faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
-.faq-grid > div:first-child{position:sticky;top:112px}
-.faq-grid .d2{margin-top:18px;max-width:13ch}
-.faq-grid .lede{margin-top:18px}
-.faq-list{border-top:1px solid var(--rule)}
-.faq-item{border-bottom:1px solid var(--rule)}
-.faq-q{
-  width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
-  gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
-  padding:clamp(20px,2.4vw,26px) 0;min-height:48px;transition:padding-left .45s var(--e)
-}
-.faq-q:hover,.faq-q:focus-visible{padding-left:8px}
-.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel-2);transition:color var(--t-fast) var(--e);padding-top:5px}
-.faq-item.open .qn{color:var(--cta)}
-.faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
-.faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
-.faq-q .qi:before,.faq-q .qi:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .4s var(--e)}
-.faq-q .qi:after{transform:rotate(90deg)}
-.faq-item.open .qi:after{transform:rotate(0)}
-.faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--e),visibility 0s linear .5s}
-.faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--e),visibility 0s linear 0s}
-.faq-a>div{overflow:hidden}
-.faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
-.faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
-.faq-a-in a{border-bottom:1px solid var(--rule)}
-.faq-a-in a:hover{border-color:var(--ink);color:var(--ink)}
-.faq-side .btn{margin-top:24px}
-
-@media(max-width:1024px){
-  .app-hero-grid,.app-work-grid,.faq-grid,.app-path-switch{grid-template-columns:1fr}
-  .app-hero-copy .d1{max-width:none}
-  .faq-grid > div:first-child{position:static}
-  .app-prob-grid{grid-template-columns:1fr}
-  .app-workflow-grid,.app-delivery-stages{grid-template-columns:1fr}
-  .app-flow{grid-template-columns:1fr}
-  .app-flow-arrow{display:none}
-  .cta-row{align-items:flex-start}
-}
-@media(max-width:640px){
-  .hero-actions{flex-direction:column;align-items:stretch}
-  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .app-path-tabs{flex-direction:column}
-  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
-  .faq-a-in{padding-left:44px}
-  .cta-row{flex-direction:column;align-items:stretch}
-}
-@media(max-width:390px){
-  body.page-mobile .d1{font-size:2.28rem}
-  .hero-actions{align-items:stretch}
-  .hero-actions .btn{width:100%;justify-content:center;min-height:48px}
-}
-
-@media(hover:none){
-}
-@media(prefers-reduced-motion:reduce){
-  html:focus-within{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
-  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
-  .mask span i{transform:none!important}
-}
-</style>
+</script>
+<link rel="stylesheet" href="/shared/page-inquiry.css">
 <link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/mobile.css?v=mob5">
 </head>
 <body class="page-mobile">
 <a class="skip" href="#main">Skip to content</a>
@@ -471,7 +227,7 @@ body.page-mobile .hero{
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="/contact#book" class="btn sm"><span>Book a discovery call</span><i>→</i></a>
+        <a href="#inquire" class="btn sm"><span>Discuss your app workflow</span><i>→</i></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -516,13 +272,13 @@ body.page-mobile .hero{
       </ul>
     </div>
     <div class="sheet-cta">
-      <a href="/contact#book" class="btn on-dark"><span>Book a discovery call</span><i>→</i></a>
+      <a href="#inquire" class="btn on-dark"><span>Discuss your app workflow</span><i>→</i></a>
       <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
     </div>
   </div>
   <div class="sheet-foot">
     <a href="/contact#brief">Send a project brief</a>
-    <a href="/contact#book">Request a discovery call</a>
+    <a href="#inquire">Discuss your app workflow</a>
     <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>
     <span>Ahmedabad, India · Remote-first</span>
   </div>
@@ -537,6 +293,7 @@ body.page-mobile .hero{
   <a href="#work"><span>ShiftRail</span><i></i></a>
   <a href="#delivery"><span>Delivery</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
+  <a href="#inquire"><span>Inquire</span><i></i></a>
 </nav>
 
 <nav class="mob-chips" id="mobChips" aria-label="Page sections">
@@ -548,6 +305,7 @@ body.page-mobile .hero{
   <a href="#work">ShiftRail</a>
   <a href="#delivery">Delivery</a>
   <a href="#faq">FAQ</a>
+  <a href="#inquire">Inquire</a>
 </nav>
 
 <main id="main">
@@ -566,19 +324,19 @@ body.page-mobile .hero{
           <span><i>Mobile apps built</i></span>
           <span><i>around the job.</i></span>
         </h1>
-        <p class="lede" data-r>KRIVA designs and builds driver, field, and SaaS companion apps around fast actions, interrupted attention, offline conditions, camera and document workflows, and the systems behind them.</p>
+        <p class="lede" data-r>Kriva designs and builds driver, field, and SaaS companion apps around fast actions, interrupted attention, offline conditions, camera and document workflows — and the systems behind them.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Discuss your app workflow</span><i>→</i></a>
-          <a href="/work" class="btn ghost"><span>See relevant work</span><i>→</i></a>
+          <a href="#inquire" class="btn"><span>Discuss your app workflow</span><i>→</i></a>
+          <a href="#work" class="btn ghost"><span>See relevant work</span></a>
         </div>
         <p class="app-trust" data-r>
+          <span>Client-owned files and code</span>
           <span>US-hour collaboration</span>
           <span>Design-only or design-and-build</span>
-          <span>Client-owned files</span>
         </p>
       </div>
       <div class="app-hero-visual" data-r>
-        <div class="app-phone" data-state="accept" role="img" aria-label="Mobile app workflow: Accept job, update status, capture document, queue offline, sync successfully.">
+        <div class="app-phone" role="img" aria-label="Driver app Accept Load screen.">
           <div class="app-status">
             <span>9:42</span>
             <span><span class="app-status-dot"></span>Live</span>
@@ -588,246 +346,192 @@ body.page-mobile .hero{
               <p>Load #4822</p>
               <h2>Accept Job</h2>
             </div>
-            <div class="app-action" data-action="accept" data-state="before">Accept Load</div>
-            <div class="app-detail" data-detail="post-accept" style="display:none">
-              <p>Status updated</p>
-              <span>Assigned · 14:22 appointment</span>
-            </div>
-            <div class="app-detail" data-detail="doc" style="display:none">
-              <p>Capture POD</p>
-              <span>Photo required</span>
-            </div>
-            <div class="app-detail" data-detail="offline" style="display:none">
-              <p>Offline queue</p>
-              <span>Syncing · 2 pending</span>
-            </div>
-            <div class="app-detail" data-detail="synced" style="display:none">
-              <p>✓ Synced</p>
-              <span>All actions confirmed</span>
+            <div class="app-action">Accept Load</div>
+            <div class="app-detail">
+              <p>Next stop</p>
+              <span>CLT · 14:22 appointment</span>
             </div>
           </div>
         </div>
-        <p class="cap-note"><span class="flag">Demo</span> Accept → Status → Document → Queue → Sync (one-time, respects reduced motion)</p>
+        <p class="app-cap">Illustrative driver flow: Accept → Status → Document → Queue → Sync.</p>
       </div>
     </div>
   </div>
 </header>
 
-<section class="sect app-problems" id="problems" aria-labelledby="probH">
+<section class="app-problems on-ink" id="problems" aria-labelledby="probH">
   <div class="wrap">
     <p class="eyebrow" data-r>Mobile workflow problems</p>
     <h2 class="d2" id="probH" data-r>The app installs. The workflow still leaves the phone.</h2>
     <p class="lede" data-r>Web shrunk. Attention interrupted. Signal lost. Apps that ignore field conditions lose the workflow back to spreadsheets and voice.</p>
-    <div class="app-prob-grid" data-s>
-      <article class="app-prob-card">
-        <span class="app-prob-k">01</span>
-        <h3 class="d3">Desktop shrink</h3>
-        <p>Web screens become small, slow, and impossible to use with one hand.</p>
+    <div class="app-frac" data-r>
+      <article>
+        <span class="n num">01</span>
+        <div>
+          <h3 class="d3">Desktop shrink</h3>
+          <p>Web screens become small, slow, and impossible to use with one hand.<span class="cons">IMPACT: users abandon the app for calls and paper.</span></p>
+        </div>
       </article>
-      <article class="app-prob-card">
-        <span class="app-prob-k">02</span>
-        <h3 class="d3">Delayed first action</h3>
-        <p>Onboarding and navigation block the task the user opened the app to complete.</p>
+      <article>
+        <span class="n num">02</span>
+        <div>
+          <h3 class="d3">Delayed first action</h3>
+          <p>Onboarding and navigation block the task the user opened the app to complete.<span class="cons">IMPACT: the first critical action never happens in the app.</span></p>
+        </div>
       </article>
-      <article class="app-prob-card">
-        <span class="app-prob-k">03</span>
-        <h3 class="d3">No offline recovery</h3>
-        <p>Status updates and documents fail in weak-signal conditions without a clear retry path.</p>
+      <article>
+        <span class="n num">03</span>
+        <div>
+          <h3 class="d3">No offline recovery</h3>
+          <p>Status updates and documents fail in weak-signal conditions without a clear retry path.<span class="cons">IMPACT: lost PODs, end-of-shift catch-up, no audit trail.</span></p>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sect app-paths" id="paths" aria-labelledby="pathsH">
+<section id="paths" aria-labelledby="pathsH">
   <div class="wrap">
+    <div class="app-paths-head">
+    <div>
     <p class="eyebrow" data-r>Three product paths</p>
     <h2 class="d2" id="pathsH" data-r>Different mobile users need different product behavior.</h2>
     <p class="lede" data-r>Driver apps run on-site with weak signals. Field apps work outdoors. SaaS companions extend desktop platforms with focused tasks.</p>
-    <div class="app-path-switch" data-s>
-      <div>
-        <ul class="app-path-tabs" role="tablist" aria-label="Mobile app types">
-          <li role="presentation"><button class="app-path-tab on" role="tab" data-path="driver" aria-selected="true" aria-controls="path-driver">Driver Apps</button></li>
-          <li role="presentation"><button class="app-path-tab" role="tab" data-path="field" aria-selected="false" aria-controls="path-field">Field Apps</button></li>
-          <li role="presentation"><button class="app-path-tab" role="tab" data-path="saas" aria-selected="false" aria-controls="path-saas">SaaS Companions</button></li>
+    </div>
+    <div class="app-path-visual" data-r>
+      <div class="app-path-phone" role="img" aria-label="Driver app: Load 4821, Accept Load, next stop.">
+        <div class="app-status"><span>9:42</span><span>Live</span></div>
+        <div class="app-screen">
+          <div class="app-header">
+            <p>Load #4821</p>
+            <h2>Accept Load</h2>
+          </div>
+          <div class="app-action">Accept Load</div>
+          <div class="app-detail">
+            <p>Next stop</p>
+            <span>CLT · 14:22 appointment</span>
+          </div>
+        </div>
+      </div>
+      <p class="app-cap">Illustrative driver app — one primary action per screen.</p>
+    </div>
+    </div>
+    <div class="app-path-grid" data-s>
+      <article class="app-card">
+        <svg class="app-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+        <h3>Driver Apps: Load acceptance and status on site</h3>
+        <ul>
+          <li>Load acceptance with lane, stop, and appointment window</li>
+          <li>One-tap status progression from pickup to delivery</li>
+          <li>POD photos and signatures with offline queue</li>
+          <li>Large touch targets for cab and dock use</li>
         </ul>
-        <div class="app-path-panel on" id="path-driver" role="tabpanel">
-          <h3>Driver Apps: Load acceptance and status on site</h3>
-          <ul>
-            <li>Load acceptance with lane, stop, and appointment window</li>
-            <li>One-tap status progression from pickup to delivery</li>
-            <li>POD photos and signatures with offline queue</li>
-            <li>Large touch targets for cab and dock use</li>
-          </ul>
-        </div>
-        <div class="app-path-panel" id="path-field" role="tabpanel">
-          <h3>Field Apps: Job details and capture in outdoor conditions</h3>
-          <ul>
-            <li>Job location, access notes, and completion checklist</li>
-            <li>High-contrast UI readable in direct sunlight</li>
-            <li>Camera and document capture with save points</li>
-            <li>Interrupted workflows that resume where the user left off</li>
-          </ul>
-        </div>
-        <div class="app-path-panel" id="path-saas" role="tabpanel">
-          <h3>SaaS Companions: Focused tasks away from desktop</h3>
-          <ul>
-            <li>Approvals and quick record updates—not full admin</li>
-            <li>Push alerts tied to one clear next action</li>
-            <li>Account lookup without desktop navigation depth</li>
-            <li>Companion scope defined around mobile-sized jobs</li>
-          </ul>
-        </div>
-      </div>
-      <div class="app-path-visual" aria-hidden="true">
-        <div class="app-path-view on" id="view-driver">
-          <div class="app-path-phone" role="img" aria-label="Driver app: accept load, view appointment, confirm assignment.">
-            <div class="app-status"><span>9:42</span><span>Live</span></div>
-            <div class="app-screen">
-              <div class="app-header">
-                <p>Load #4822</p>
-                <h2>Accept Load</h2>
-              </div>
-              <div class="app-action">Accept Load</div>
-              <div class="app-detail">
-                <p>Next stop</p>
-                <span>CLT · 14:22 appointment</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="app-path-view" id="view-field">
-          <div class="pu" role="img" aria-label="Field app: job checklist with photo proof step in progress.">
-            <div class="pu-bar">
-              <div>
-                <p class="pu-title">Job #8841</p>
-                <p class="pu-meta">Field · Site visit</p>
-              </div>
-              <span class="pu-chip warn">Queued</span>
-            </div>
-            <ul class="pu-steps">
-              <li class="done"><i aria-hidden="true"></i>Arrive on site<em>Done</em></li>
-              <li class="now"><i aria-hidden="true"></i>Photo proof<em>Now</em></li>
-              <li class="later"><i aria-hidden="true"></i>Sign-off<em>Next</em></li>
-            </ul>
-          </div>
-        </div>
-        <div class="app-path-view" id="view-saas">
-          <div class="pu" role="img" aria-label="SaaS companion: approve vendor spend from mobile.">
-            <div class="pu-bar">
-              <div>
-                <p class="pu-title">Approve spend</p>
-                <p class="pu-meta">SaaS companion</p>
-              </div>
-            </div>
-            <p class="pu-q">$2,400 · Vendor invoice #4412</p>
-            <p class="pu-k">Needs approval · 2h left</p>
-            <div class="pu-acts">
-              <span class="pu-ok">Approve</span>
-              <span class="pu-no">Decline</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      </article>
+      <article class="app-card">
+        <svg class="app-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+        <h3>Field Apps: Job details and capture in outdoor conditions</h3>
+        <ul>
+          <li>Job location, access notes, and completion checklist</li>
+          <li>High-contrast UI readable in direct sunlight</li>
+          <li>Camera and document capture with save points</li>
+          <li>Interrupted workflows that resume where the user left off</li>
+        </ul>
+      </article>
+      <article class="app-card">
+        <svg class="app-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/><path d="M10 19v-4"/><path d="M7 19h5"/><rect width="6" height="10" x="16" y="12" rx="2"/></svg>
+        <h3>SaaS Companions: Focused tasks away from desktop</h3>
+        <ul>
+          <li>Approvals and quick record updates—not full admin</li>
+          <li>Push alerts tied to one clear next action</li>
+          <li>Account lookup without desktop navigation depth</li>
+          <li>Companion scope defined around mobile-sized jobs</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="sect" id="workflow" aria-labelledby="workflowH">
+<section id="workflow" aria-labelledby="workflowH">
   <div class="wrap">
     <p class="eyebrow" data-r>Core mobile workflow</p>
-    <h2 class="d2" id="workflowH" data-r>Accept → Status → Documents</h2>
-    <p class="lede" data-r>For each action, KRIVA ensures the user goal, minimum information, likely failure, offline behavior, and backend update are aligned.</p>
-    <div class="app-workflow-grid" data-s>
-      <article class="app-workflow-step">
-        <span class="n">01 Accept</span>
-        <h3 class="d3">User confirms the job</h3>
+    <h2 class="d2" id="workflowH" data-r>Accept → Status → Documents.</h2>
+    <p class="lede" data-r>For each action, Kriva ensures the user goal, minimum information, likely failure, offline behavior, and backend update are aligned.</p>
+    <ol class="app-workflow" data-s>
+      <li>
+        <span class="n">01 · Accept</span>
+        <h3>User confirms the job</h3>
         <p>Goal: Know what I'm doing today and where.</p>
         <ul>
           <li>Essential details only</li>
           <li>Location and time</li>
           <li>Offline-safe confirmation</li>
         </ul>
-      </article>
-      <article class="app-workflow-step">
-        <span class="n">02 Status</span>
-        <h3 class="d3">User marks progress</h3>
+      </li>
+      <li>
+        <span class="n">02 · Status</span>
+        <h3>User marks progress</h3>
         <p>Goal: Report current status reliably.</p>
         <ul>
           <li>Clear progression steps</li>
           <li>Single tap per state</li>
           <li>Offline queue on weak signal</li>
         </ul>
-      </article>
-      <article class="app-workflow-step">
-        <span class="n">03 Documents</span>
-        <h3 class="d3">User captures proof</h3>
+      </li>
+      <li>
+        <span class="n">03 · Documents</span>
+        <h3>User captures proof</h3>
         <p>Goal: Photo or signature required for completion.</p>
         <ul>
           <li>Camera or signature capture</li>
           <li>Guidance on requirements</li>
           <li>Offline storage and sync</li>
         </ul>
-      </article>
-      <article class="app-workflow-step">
-        <span class="n">04 Recovery</span>
-        <h3 class="d3">System handles failures</h3>
+      </li>
+      <li>
+        <span class="n">04 · Recovery</span>
+        <h3>System handles failures</h3>
         <p>Goal: User sees what succeeded, what's queued, what needs retry.</p>
         <ul>
           <li>Clear state indicators</li>
           <li>Retry without reentry</li>
           <li>Audit trail visible</li>
         </ul>
-      </article>
-    </div>
+      </li>
+    </ol>
   </div>
 </section>
 
-<section class="sect app-backend" id="backend" aria-labelledby="backendH">
+<section class="app-band" id="backend" aria-labelledby="backendH">
   <div class="wrap">
     <p class="eyebrow" data-r>Engineering + backend</p>
     <h2 class="d2" id="backendH" data-r>The phone is one part of the product.</h2>
     <p class="lede" data-r>Native, React Native, Flutter, or design-only is chosen by product needs: camera, GPS, push, performance, offline requirements, and timeline. Mobile actions must update the CRM, TMS, SaaS platform, or document store reliably.</p>
-    <div class="app-flow">
-      <div class="app-flow-item">
-        <p>Mobile<br>action</p>
+    <div class="app-flow" data-r role="img" aria-label="Mobile action to offline queue or API call to connected system, then success or visible failure to retry or human resolution.">
+      <div class="app-flow-row">
+        <div class="app-flow-box">Mobile action</div>
+        <div class="app-flow-arrow" aria-hidden="true">→</div>
+        <div class="app-flow-box">Offline queue or API call</div>
+        <div class="app-flow-arrow" aria-hidden="true">→</div>
+        <div class="app-flow-box">Connected system</div>
       </div>
-      <div class="app-flow-arrow">→</div>
-      <div class="app-flow-item neutral">
-        <p>Offline queue<br>or API call</p>
-      </div>
-      <div class="app-flow-arrow">→</div>
-      <div class="app-flow-item">
-        <p>Connected<br>system</p>
-      </div>
-      <div class="app-flow-arrow">→</div>
-      <div class="app-flow-item neutral">
-        <p>Success or<br>visible failure</p>
-      </div>
-      <div class="app-flow-arrow">→</div>
-      <div class="app-flow-item">
-        <p>Retry or<br>human resolution</p>
+      <div class="app-flow-row">
+        <div class="app-flow-box">Success or visible failure</div>
+        <div class="app-flow-arrow" aria-hidden="true">→</div>
+        <div class="app-flow-box">Retry or human resolution</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sect app-selected on-ink" id="work" aria-labelledby="workH">
+<section id="work" aria-labelledby="workH">
   <div class="wrap">
     <p class="eyebrow" data-r>Verified work</p>
-    <h2 class="d2" id="workH" data-r>ShiftRail driver field app</h2>
-    <p class="lede" data-r>US trucking carrier. Drivers accepted loads, captured POD, and updated status from the yard and route—with an offline queue when signal dropped.</p>
-    <div class="app-work-grid" data-s>
-      <div class="app-work-col">
+    <h2 class="d2" id="workH" data-r>ShiftRail driver field app.</h2>
+    <p class="app-proof-intro" data-r>US trucking carrier. Drivers accepted loads, captured POD, and updated status from the yard and route — with an offline queue when signal dropped.</p>
+    <div class="app-proof-grid" data-s>
+      <div class="app-proof-col">
         <h3>Field problem</h3>
         <p>Paper BOLs and phone calls to dispatch. Status updates waited until end of shift—no real-time visibility for the desk.</p>
-      </div>
-      <div class="app-work-col">
-        <h3>Mobile design decision</h3>
-        <p>Offline-first queue with visible sync state. One primary action per screen. Large touch targets for yard and gloved use.</p>
-      </div>
-    </div>
-    <div class="app-work-grid" data-s style="margin-top:0">
-      <div class="app-work-col">
         <h3>Driver workflow shipped</h3>
         <ul>
           <li>Accept or decline assigned load</li>
@@ -837,7 +541,9 @@ body.page-mobile .hero{
           <li>Dispatch sync to TMS via API</li>
         </ul>
       </div>
-      <div class="app-work-col">
+      <div class="app-proof-col">
+        <h3>Mobile design decision</h3>
+        <p>Offline-first queue with visible sync state. One primary action per screen. Large touch targets for yard and gloved use.</p>
         <h3>Field constraints handled</h3>
         <ul>
           <li>Weak signal in yards and rural lanes</li>
@@ -848,60 +554,56 @@ body.page-mobile .hero{
         </ul>
       </div>
     </div>
-    <div class="cta-row" style="margin-top:28px" data-r>
-      <a href="/work/shiftrail-dispatch" class="btn on-dark"><span>Read the ShiftRail case study</span><i>→</i></a>
-      <a href="/solutions/trucking-logistics" class="btn ghost on-dark"><span>Trucking solutions</span><i>→</i></a>
+    <div class="proof-cta" data-r>
+      <a href="/work/shiftrail-dispatch" class="btn"><span>Read the ShiftRail case study</span><i>→</i></a>
     </div>
-    <p class="app-work-note"><span class="flag">Project notes</span> Client name changed. Metrics and dispatch console detail live in the case study and trucking solution pages.</p>
+    <a class="app-text-link" href="/solutions/trucking-logistics">Trucking solutions →</a>
+    <p class="proof-note">Client name changed. Metrics and dispatch console detail live in the case study and trucking solution pages.</p>
   </div>
 </section>
 
-<section class="sect" id="delivery" aria-labelledby="deliveryH">
+<section id="delivery" aria-labelledby="deliveryH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Delivery process</p>
+    <p class="eyebrow" data-r>How we work</p>
     <h2 class="d2" id="deliveryH" data-r>Name the job before choosing the platform.</h2>
-    <p class="lede" data-r>Four stages: define the user and first critical action, prototype interrupted and offline paths, build the app and backend contract, test and launch. KRIVA offers design-only or design-and-build engagements.</p>
-    <div class="app-delivery-stages" data-s>
-      <article class="app-delivery-stage">
-        <span class="n">01</span>
-        <h3 class="d3">Define and research</h3>
+    <p class="lede" data-r>Four stages: define the user and first critical action, prototype interrupted and offline paths, build the app and backend contract, test and launch. Kriva offers design-only or design-and-build engagements.</p>
+    <ol class="app-process" data-s>
+      <li>
+        <span class="wk">01</span>
+        <h3>Define and research</h3>
         <p>User, first critical action, offline needs, camera and backend requirements. Validate platform choice.</p>
-      </article>
-      <article class="app-delivery-stage">
-        <span class="n">02</span>
-        <h3 class="d3">Prototype workflows</h3>
+      </li>
+      <li>
+        <span class="wk">02</span>
+        <h3>Prototype workflows</h3>
         <p>Interrupted tasks, weak signal, camera, retry states. Test on-site with real users and conditions.</p>
-      </article>
-      <article class="app-delivery-stage">
-        <span class="n">03</span>
-        <h3 class="d3">Build app and backend</h3>
+      </li>
+      <li>
+        <span class="wk">03</span>
+        <h3>Build app and backend</h3>
         <p>Responsive UI, offline queue, API contract, error handling, and documentation. Weekly demos.</p>
-      </article>
-      <article class="app-delivery-stage">
-        <span class="n">04</span>
-        <h3 class="d3">Launch and transfer</h3>
+      </li>
+      <li>
+        <span class="wk">04</span>
+        <h3>Launch and transfer</h3>
         <p>Testing on-site, beta rollout, team training. Code and design transfer to your control.</p>
-      </article>
-    </div>
-    <div class="app-delivery-trust">
-      <h3>Trust rail</h3>
-      <ul>
-        <li>Same team throughout</li>
-        <li>No subcontracting</li>
-        <li>US-hour collaboration</li>
-        <li>Client-owned code and design</li>
-      </ul>
-    </div>
+      </li>
+    </ol>
+    <p class="app-trust-bar" data-r>
+      <span>Same team throughout</span>
+      <span>No subcontracting</span>
+      <span>US-hour collaboration</span>
+      <span>Client-owned code and design</span>
+    </p>
   </div>
 </section>
 
-<section class="sect faq-sec" id="faq" aria-labelledby="faqH">
+<section class="faq-sec" id="faq" aria-labelledby="faqH">
   <div class="wrap faq-grid">
     <div class="faq-side">
       <p class="eyebrow" data-r>FAQ</p>
-      <h2 class="d2" id="faqH" data-r>About mobile apps</h2>
+      <h2 class="d2" id="faqH" data-r>About mobile apps.</h2>
       <p class="lede" data-r>Practical answers for driver, field, and SaaS app decisions.</p>
-      <a href="/contact#book" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
     </div>
     <div class="faq-list" data-r>
       <div class="faq-item">
@@ -911,17 +613,17 @@ body.page-mobile .hero{
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
-          <p>Platform choice depends on camera, GPS, push, performance requirements, and your current team. Native apps handle demanding conditions better. React Native and Flutter reduce dev time for simpler apps. KRIVA can design for any platform and build native, React Native, or Flutter implementations based on your needs.</p>
+          <p>The product decides, not a default. Camera and GPS depth, push behavior, performance targets, offline requirements, and timeline drive the choice — we validate platform fit during the define stage, before any build commitment.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">02</span>
-          <span class="qt">Can KRIVA redesign an existing mobile app?</span>
+          <span class="qt">Can Kriva redesign an existing mobile app?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
-          <p>Yes. We redesign existing apps to improve UX for mobile-specific conditions: offline behavior, interrupted workflows, and field readability. If the architecture allows, we can improve the current codebase without a full rewrite.</p>
+          <p>Yes. We map the current workflow first — where users avoid, delay, or complete tasks outside the app — then redesign around the first critical action. Engagements are design-only or design-and-build, whichever your team needs.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -931,7 +633,7 @@ body.page-mobile .hero{
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
-          <p>Yes. KRIVA designs and builds mobile apps with offline queues, camera capture, GPS location, push notifications, and proof-of-delivery workflows. We integrate these with backend APIs and manage failure states clearly.</p>
+          <p>Yes — those are the core of driver and field work. Offline-first queues with visible sync state, camera and signature capture with guidance on requirements, and retry without reentry when signal returns.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -941,7 +643,7 @@ body.page-mobile .hero{
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
-          <p>Yes. We design the mobile app workflow and backend API contract together, then build the app to integrate with your CRM, TMS, SaaS platform, or internal systems. We handle offline sync, retry logic, and error states.</p>
+          <p>Yes. Mobile actions update the CRM, TMS, SaaS platform, or document store through a defined API contract with error handling — success or visible failure, then retry or human resolution. No silent data loss.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -951,7 +653,7 @@ body.page-mobile .hero{
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
-          <p>Yes. KRIVA offers design-only for UI/UX and workflow definition, and design-and-build for full development. Choose based on your team's capacity and platform expertise.</p>
+          <p>Both. Design-only delivers prototypes, specs, and files your own engineers build from. Design-and-build ships the app and backend contract with weekly demos, testing on-site, beta rollout, and team training.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -961,28 +663,71 @@ body.page-mobile .hero{
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
-          <p>You do. All design files (Figma, Sketch), source code, documentation, and backend contracts transfer to your accounts and repositories. We can stay on retainer for ongoing development or support, but you own everything.</p>
+          <p>You do. Designs, source code, and documentation transfer to your accounts at launch. Retainer support is optional, with no lock-in.</p>
         </div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-band on-ink" aria-labelledby="ctaH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Next step</p>
-    <h2 class="d2" id="ctaH" data-r>Show us the mobile task users avoid, delay, or complete outside the app.</h2>
-    <p class="lede" data-r>Bring the current app, field workflow, or first action that keeps failing. KRIVA will help determine whether the problem is UX, offline behavior, platform choice, integration, or the wider product workflow.</p>
-    <div class="cta-row">
-      <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Request a 20-minute fit call</span><i>→</i></a>
-        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
-      </div>
-      <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA available</span>
-        <span><i>◆</i>No obligation</span>
+<section class="app-contact" id="inquire" aria-labelledby="inqH">
+  <div class="wrap inq-grid">
+    <div class="inq-copy">
+      <p class="eyebrow">Start a conversation</p>
+      <h2 class="d2" id="inqH">Show us the mobile task users avoid, delay, or complete outside the app.</h2>
+      <p class="lede">Bring the current app, field workflow, or first action that keeps failing. We'll determine whether the problem is UX, offline behavior, platform choice, integration, or the wider product workflow. No RFP required.</p>
+      <p class="app-trust">
+        <span>Reply within one business day</span>
+        <span>NDA available</span>
+        <span>No obligation</span>
       </p>
+    </div>
+    <div>
+      <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
+        <input type="hidden" name="inquiry_type" value="page_inquiry">
+        <input type="hidden" name="page" value="/services/mobile-applications">
+        <input type="hidden" name="service" value="Mobile app design &amp; development">
+        <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
+        <div class="inq-row">
+          <div>
+            <label for="inq-name">Name <span class="req">Required</span></label>
+            <input id="inq-name" name="name" required autocomplete="name">
+            <p class="inq-err" id="inq-name-err">Enter your name.</p>
+          </div>
+          <div>
+            <label for="inq-email">Work email <span class="req">Required</span></label>
+            <input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email">
+            <p class="inq-err" id="inq-email-err">Enter a valid work email.</p>
+          </div>
+        </div>
+        <div class="inq-row">
+          <div>
+            <label for="inq-company">Company <span class="opt">Optional</span></label>
+            <input id="inq-company" name="company" autocomplete="organization">
+          </div>
+          <div>
+            <label for="inq-phone">Phone <span class="opt">Optional</span></label>
+            <input id="inq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+        </div>
+        <div>
+          <label for="inq-details">What mobile task keeps failing? <span class="req">Required</span></label>
+          <textarea id="inq-details" name="details" required rows="4" placeholder="Example: drivers call dispatch instead of updating status, and PODs arrive at end of shift because the app fails on weak signal." aria-describedby="inq-details-hint"></textarea>
+          <p class="inq-note inq-hint" id="inq-details-hint">A few sentences on the app or field workflow is enough.</p>
+          <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
+        </div>
+        <p class="inq-fail" role="alert"></p>
+        <div class="inq-actions">
+          <button type="submit" class="btn"><span class="inq-submit-label">Send app inquiry</span><i>→</i></button>
+          <p class="inq-note">Private · not shared</p>
+        </div>
+        <p class="inq-status" data-inq-status aria-live="polite"></p>
+      </form>
+      <div class="inq-done" tabindex="-1">
+        <h3>Inquiry received.</h3>
+        <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+      </div>
+      <a class="app-fit-link" href="/contact#book">Request a 20-minute fit call</a>
     </div>
   </div>
 </section>
@@ -1041,36 +786,6 @@ body.page-mobile .hero{
 </footer>
 
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Mobile App Design &amp; Development",
-  "serviceType": "Mobile app design, development, and driver/field/SaaS app engineering",
-  "description": "KRIVA designs and builds driver, field, and SaaS companion apps with offline workflows, camera and document capture, backend integrations, and one-thumb UX.",
-  "provider": {
-    "@type": "Organization",
-    "name": "KRIVA Technologies",
-    "url": "https://krivatechnologies.com"
-  },
-  "url": "https://krivatechnologies.com/services/mobile-applications",
-  "areaServed": ["United States", "United Kingdom", "United Arab Emirates", "Canada"]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type": "Question", "name": "Should the app be native, React Native, or Flutter?", "acceptedAnswer": {"@type": "Answer", "text": "Platform choice depends on camera, GPS, push, performance requirements, and your current team. Native apps handle demanding conditions better. React Native and Flutter reduce dev time for simpler apps. KRIVA can design for any platform and build native, React Native, or Flutter implementations based on your needs."}},
-    {"@type": "Question", "name": "Can KRIVA redesign an existing mobile app?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We redesign existing apps to improve UX for mobile-specific conditions: offline behavior, interrupted workflows, and field readability. If the architecture allows, we can improve the current codebase without a full rewrite."}},
-    {"@type": "Question", "name": "Do you support offline queues, camera, GPS, push, and POD?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. KRIVA designs and builds mobile apps with offline queues, camera capture, GPS location, push notifications, and proof-of-delivery workflows. We integrate these with backend APIs and manage failure states clearly."}},
-    {"@type": "Question", "name": "Can the app connect with our existing platform or backend?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We design the mobile app workflow and backend API contract together, then build the app to integrate with your CRM, TMS, SaaS platform, or internal systems. We handle offline sync, retry logic, and error states."}},
-    {"@type": "Question", "name": "Do you provide design-only and design-and-build engagements?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. KRIVA offers design-only for UI/UX and workflow definition, and design-and-build for full development. Choose based on your team's capacity and platform expertise."}},
-    {"@type": "Question", "name": "Who owns the final files and source code?", "acceptedAnswer": {"@type": "Answer", "text": "You do. All design files (Figma, Sketch), source code, documentation, and backend contracts transfer to your accounts and repositories. We can stay on retainer for ongoing development or support, but you own everything."}}
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_START -->
 <script type="application/ld+json">
 {
@@ -1144,63 +859,10 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
   });
 });
 
-document.querySelectorAll('.app-path-tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const path=btn.getAttribute('data-path');
-    document.querySelectorAll('.app-path-tab').forEach(t=>{ t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
-    document.querySelectorAll('.app-path-panel').forEach(p=>p.classList.remove('on'));
-    document.querySelectorAll('.app-path-view').forEach(v=>v.classList.remove('on'));
-    btn.classList.add('on');
-    btn.setAttribute('aria-selected','true');
-    document.getElementById('path-'+path).classList.add('on');
-    const view=document.getElementById('view-'+path);
-    if(view) view.classList.add('on');
-  });
-});
-
 if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
-
-const phone=document.querySelector('.app-phone');
-if(phone && !reduce()){
-  const states=['accept','status','doc','offline','synced'];
-  const details=['post-accept','doc','offline','synced'];
-  let idx=0, timer=null;
-  const play=()=>{
-    const action=document.querySelector('[data-action="accept"]');
-    const detail=document.querySelector('[data-detail]');
-    if(idx===0){ 
-      if(action) action.textContent='✓ Accepted';
-      if(detail) detail.style.display='none';
-      idx++;
-    } else if(idx===1){
-      if(detail) { const d=document.querySelector('[data-detail="post-accept"]'); if(d) { d.style.display='block'; } }
-      idx++;
-    } else if(idx===2){
-      if(detail) { const d=document.querySelector('[data-detail="doc"]'); if(d) { d.style.display='block'; } }
-      idx++;
-    } else if(idx===3){
-      if(detail) { const d=document.querySelector('[data-detail="offline"]'); if(d) { d.style.display='block'; } }
-      idx++;
-    } else {
-      if(detail) { const d=document.querySelector('[data-detail="synced"]'); if(d) { d.style.display='block'; } }
-      idx=0;
-      setTimeout(()=>{ 
-        if(action) action.textContent='Accept Load';
-        document.querySelectorAll('[data-detail]').forEach(e=>e.style.display='none');
-      }, 1200);
-    }
-  };
-  const ioPhone=new IntersectionObserver(es=>{
-    for(const e of es){
-      if(e.isIntersecting){ if(!timer) timer=setInterval(play, 1200); }
-      else if(timer){ clearInterval(timer); timer=null; }
-    }
-  },{threshold:.35});
-  ioPhone.observe(phone);
-}
-
 run();
 })();
 </script>
+<script src="/shared/page-inquiry.js" defer></script>
 </body>
 </html>
