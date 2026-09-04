@@ -17,7 +17,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0E1216">
 <!-- KRIVA_ICONS_END -->
-<link rel="stylesheet" href="/shared/tokens.css">
+<link rel="stylesheet" href="/shared/tokens.css?v=bg1">
 <link rel="preload" href="/brand/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <title>Custom CRM Development &amp; Workflow Automation | Kriva</title>
 <meta name="description" content="Design, integrate and modernize CRM workflows around how your teams actually work. Kriva builds custom CRM automation, integrations and operational workflows.">
@@ -86,7 +86,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink);border-color:var(--ink)}
 .btn.sm{padding:9px 15px;font-size:11px;min-height:36px}
 .btn.on-dark{--btn-bg:var(--cta);--btn-fg:#fff;--btn-hover:#fff;border-color:var(--cta)}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--btn-hover)}
+.btn.on-dark:hover{color:var(--ink);border-color:#fff}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
 .flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
@@ -97,15 +97,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(24px,4vw,72px);flex-wrap:wrap}
 .s-head h2,.s-title{margin-top:18px}
 .s-head .lede{margin-top:18px}
-.cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
-.cta-band .wrap{padding-block:clamp(88px,11vw,160px)}
-.cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,7vw,5.4rem);line-height:.93;letter-spacing:-.032em}
-.cta-band .lede{color:#8C98A4;margin-top:18px;max-width:40ch}
-.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
-.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
-.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
-.assur i{font-style:normal;color:var(--amber);margin-right:7px}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 .chapters{position:fixed;right:calc(var(--gutter) - 8px);top:50%;transform:translateY(-50%);z-index:70;display:grid;gap:2px;opacity:0;transition:opacity var(--t-mid) var(--e);pointer-events:none}
 .chapters.show{opacity:1;pointer-events:auto}
@@ -117,455 +108,36 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
-.mob-chips{
-  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
-  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
-  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
-  -webkit-overflow-scrolling:touch
-}
-.mob-chips::-webkit-scrollbar{display:none}
-.mob-chips a{
-  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
-  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
-}
-.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
-@media(max-width:1280px){
-  body.page-crm .mob-chips{display:flex !important}
-  body.page-crm .hero,body.page-crm .sect,body.page-crm .crm-proof{scroll-margin-top:calc(88px + 48px)}
-}
 </style>
 <link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
-<style>
-/* Page-scoped CRM Design — loaded last */
-body.page-crm{overflow-x:clip}
-body.page-crm .d1{font-size:clamp(2rem,4.8vw,4.05rem);line-height:.92;letter-spacing:-.03em}
-body.page-crm .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
-body.page-crm .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
-body.page-crm .sect{padding-block:clamp(80px,10vw,140px)}
-body.page-crm .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;line-height:.93;letter-spacing:-.032em}
-body.page-crm .hero{
-  background:var(--paper);color:var(--ink);overflow:hidden;
-  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(40px,5vw,80px);
-  scroll-margin-top:88px
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service",
+"name":"Custom CRM Development & Workflow Automation",
+"serviceType":"Custom CRM development, CRM workflow automation, CRM integration, and CRM modernization",
+"provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},
+"areaServed": ["US", "GB", "AE", "CA"],
+"url":"https://krivatechnologies.com/services/crm-development",
+"description":"Kriva designs, integrates, and modernizes CRM workflows around how teams actually work — custom CRM development, automation, integrations, and operational consoles."}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Should we customize our CRM or replace it?","acceptedAnswer":{"@type":"Answer","text":"We assess first. If stages, permissions, and native bulk actions already fit, configuration is the answer — not a platform project. Replacement only comes up when the platform cannot support bulk work, role density, or audited overrides."}},
+    {"@type":"Question","name":"Can you work with our existing CRM?","acceptedAnswer":{"@type":"Answer","text":"Yes — HubSpot, Salesforce, and Pipedrive are the common cases. We build workflow layers, operational consoles, and automation beside them, with integration tests against your CRM schema versions and sanitized staging data. The stack is Next.js, React, and TypeScript."}},
+    {"@type":"Question","name":"Can CRM workflows connect with ERP or accounting systems?","acceptedAnswer":{"@type":"Answer","text":"Yes. QuickBooks and Xero sync for invoices and settlement, customer and vendor record mapping, and reconciliation states finance can act on — with visible retry queues and human approval where required, never silent automation."}},
+    {"@type":"Question","name":"Can you automate manual CRM updates?","acceptedAnswer":{"@type":"Answer","text":"That's the core of most engagements. Repetitive row-by-row updates become validated bulk actions: select, check permissions and required fields, apply once, and write the outcome to an audit trail — who, when, and what changed."}},
+    {"@type":"Question","name":"Can you migrate legacy CRM data?","acceptedAnswer":{"@type":"Answer","text":"Yes. Records, history, and operational data are mapped and validated before cutover, with staging runs against sanitized data shapes — not blind bulk imports. Cutover is phased by role or module so daily work continues."}},
+    {"@type":"Question","name":"What happens after launch?","acceptedAnswer":{"@type":"Answer","text":"You own the source, designs, and documentation — everything transfers to your accounts. Retainer support is optional, with no lock-in. Iteration continues after go-live through operator feedback loops."}}
+  ]
 }
-@media(min-width:1025px){
-  body.page-crm .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 56px}
-  body.page-crm .hero > .wrap{width:100%}
-}
-
-.crm-hero-grid{
-  display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
-  gap:clamp(28px,4.5vw,72px);align-items:center;margin-top:clamp(22px,3vw,36px)
-}
-.crm-hero-grid > *{min-width:0}
-.crm-hero-copy .d1{margin:18px 0 20px;max-width:11ch}
-.crm-hero-copy .lede{max-width:40ch}
-.crm-trust{
-  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2)
-}
-.crm-trust span{display:inline-flex;align-items:center;gap:8px}
-.crm-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
-.crm-cap-strip{
-  display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:20px;padding-top:18px;border-top:1px solid var(--rule)
-}
-.crm-cap-strip span{
-  display:inline-flex;align-items:center;min-height:36px;padding:6px 12px;
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink);border:1px solid var(--rule);background:var(--white)
-}
-.crm-fit{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px;padding-block:clamp(48px,6vw,72px)}
-.crm-fit-rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,20px)}
-.crm-fit-rail article{padding:clamp(18px,2.2vw,24px);border:1px solid var(--rule);background:var(--white);min-width:0}
-.crm-fit-rail .k{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:10px}
-.crm-fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.2;margin-bottom:8px;max-width:22ch}
-.crm-fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:36ch}
-.crm-fit-foot{margin-top:clamp(20px,2.4vw,28px);padding-top:18px;border-top:1px solid var(--rule);font-size:15px;line-height:1.62;color:var(--steel);max-width:62ch}
-.crm-prob-card .cons{display:block;margin-top:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cta)}
-.crm-teams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,18px);margin-top:clamp(28px,4vw,52px)}
-.crm-teams article{padding:clamp(18px,2.2vw,26px);border:1px solid var(--rule);background:var(--white);min-width:0}
-.crm-teams .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2);margin-bottom:10px}
-.crm-teams h3{margin-bottom:8px;max-width:20ch}
-.crm-teams p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:38ch;margin:0}
-.crm-teams-visual{margin-top:clamp(24px,3vw,36px)}
-.crm-teams-visual img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;border:1px solid var(--rule);background:var(--ink)}
-.crm-sync-flow{
-  display:grid;gap:10px;padding:clamp(16px,2vw,22px);
-  border:1px solid var(--rule);background:var(--white);min-width:0
-}
-.crm-sync-flow .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:6px}
-.crm-sync-row{
-  display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;
-  padding:10px 0;border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:11px;color:var(--steel)
-}
-.crm-sync-row:first-of-type{border-top:0;padding-top:0}
-.crm-sync-row b{color:var(--ink);font-weight:600}
-.crm-sync-row em{font-style:normal;color:var(--cta);letter-spacing:.06em;text-transform:uppercase;font-size:10px}
-.crm-sync-row.done em{color:var(--green)}
-.crm-decide-note{
-  margin-top:clamp(24px,3vw,36px);padding:clamp(16px,2vw,22px);
-  border:1px solid var(--rule);background:var(--paper-2);
-  font-size:15px;line-height:1.6;color:var(--ink);max-width:58ch
-}
-.crm-proof-stack{display:grid;gap:14px}
-.crm-proof-before{display:grid;gap:8px;padding:16px;background:#10161C;border:1px solid var(--ink-line);font-family:var(--f-mono);font-size:11.5px;color:#B9C3CC}
-.crm-proof-before b{display:block;color:#fff;font-weight:600;margin-bottom:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
-.crm-proof-before span{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:8px 0;border-top:1px solid var(--ink-line)}
-.crm-integ-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,18px);margin-top:clamp(28px,4vw,44px)}
-.crm-integ-groups article{padding:clamp(16px,2vw,22px);border:1px solid var(--rule);background:var(--white);min-width:0}
-.crm-integ-groups h3{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
-.crm-integ-groups ul{list-style:none;display:grid;gap:8px}
-.crm-integ-groups li{font-size:14.5px;line-height:1.5;color:var(--ink)}
-.crm-integ-groups .lock{display:flex;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--rule)}
-.crm-integ-groups .lock img{height:18px;width:auto;max-width:72px;object-fit:contain}
-.crm-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,18px);margin-top:clamp(28px,4vw,52px)}
-.crm-process article{padding:clamp(16px,2vw,22px);border:1px solid var(--rule);background:var(--white);min-width:0}
-.crm-process .sn{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
-.crm-process h3{margin-bottom:8px;font-size:clamp(1rem,1.4vw,1.12rem)}
-.crm-process p{font-size:14px;line-height:1.55;color:var(--steel);max-width:32ch;margin:0}
-.crm-process-visual{margin-top:clamp(24px,3vw,36px)}
-.crm-process-visual img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border:1px solid var(--rule)}
-.crm-cred{background:var(--paper);border-block:1px solid var(--rule);scroll-margin-top:88px}
-.crm-cred-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,4vw,56px);align-items:start;margin-top:clamp(28px,4vw,44px)}
-.crm-cred-points{display:grid;gap:clamp(14px,2vw,20px)}
-.crm-cred-points div{padding-bottom:clamp(14px,2vw,18px);border-bottom:1px solid var(--rule)}
-.crm-cred-points dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:6px}
-.crm-cred-points dd{font-size:15px;line-height:1.58;color:var(--steel);max-width:48ch}
-.crm-cred-points a{border-bottom:1px solid var(--rule)}
-.crm-cred-aside{padding:clamp(18px,2.2vw,26px);border:1px solid var(--rule);background:var(--paper-2)}
-.crm-cred-aside h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);margin-bottom:10px;letter-spacing:-.02em}
-.crm-cred-aside p{font-size:14.5px;line-height:1.58;color:var(--steel);max-width:36ch}
-.crm-cred-aside .btn{margin-top:18px}
-body.page-crm .fmark img{width:min(100%,390px);opacity:.22}
-body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
-.crm-hero-visual{position:relative;min-width:0}
-.cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:18px;min-height:44px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
-.p-link i{font-style:normal;transition:transform .42s var(--e)}
-.p-link:hover i{transform:translateX(6px)}
-
-/* ── Operational board ── */
-.crm-board{
-  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
-  box-shadow:var(--shadow-product);overflow:hidden;
-  display:grid;grid-template-columns:118px minmax(0,1fr);min-width:0
-}
-.crm-side{
-  background:#12181E;border-right:1px solid var(--ink-line);padding:12px 0 16px;
-  display:flex;flex-direction:column;gap:2px
-}
-.crm-side .crm-brand{padding:4px 12px 14px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff}
-.crm-side span{
-  display:block;padding:8px 12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8C98A4
-}
-.crm-side .on{color:#fff;background:rgba(79,70,229,.14);border-left:2px solid var(--cta)}
-.crm-main{min-width:0}
-.crm-chrome{
-  display:flex;align-items:center;gap:6px;padding:10px 14px;
-  background:#12181E;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4
-}
-.crm-chrome i{width:8px;height:8px;border-radius:50%;background:#2A333C;flex:none}
-.crm-chrome i:first-child{background:#5C6670}
-.crm-chrome .crm-win{margin-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.crm-live{margin-left:auto;display:inline-flex;align-items:center;gap:7px;color:var(--amber);white-space:nowrap}
-.crm-live b{width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:crm-pulse 2.4s var(--e-io) infinite}
-@keyframes crm-pulse{0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}100%{box-shadow:0 0 0 0 currentColor}}
-.crm-filters{
-  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
-  padding:8px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4
-}
-.crm-chip{padding:4px 8px;border:1px solid var(--ink-line);color:#B9C3CC}
-.crm-chip.on{border-color:var(--cta);color:#fff;background:rgba(79,70,229,.18)}
-.crm-tools{
-  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-  padding:9px 14px;border-bottom:1px solid var(--ink-line);background:#141A20;
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4
-}
-.crm-act{padding:5px 9px;border:1px solid var(--ink-line);color:#DDE2E7;min-height:28px;display:inline-flex;align-items:center}
-.crm-act.on{border-color:var(--sky);color:#fff;background:rgba(91,140,255,.16)}
-.crm-act.pri{border-color:var(--cta);background:var(--cta);color:#fff}
-.crm-audit-tag{margin-left:auto}
-.crm-head,.crm-row{
-  display:grid;grid-template-columns:18px 58px minmax(0,1.15fr) minmax(72px,.7fr) 70px 86px;
-  gap:8px;align-items:center;padding:8px 14px
-}
-.crm-head{
-  border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8C98A4
-}
-.crm-row{border-bottom:1px solid #1A2027;font-size:12px;color:#B9C3CC}
-.crm-row:last-child{border-bottom:0}
-.crm-row.on{background:rgba(79,70,229,.12)}
-.crm-row.hot{background:rgba(219,155,31,.07)}
-.crm-box{width:13px;height:13px;border:1px solid #3A444E;flex:none;display:block}
-.crm-row.on .crm-box,.crm-mcard.on .crm-box{border-color:var(--sky);background:var(--sky);box-shadow:inset 0 0 0 2px var(--ink)}
-.crm-ref{font-family:var(--f-mono);font-size:11px;color:#fff;letter-spacing:.04em;font-variant-numeric:tabular-nums}
-.crm-lane{min-width:0}
-.crm-lane b{display:block;font-weight:600;color:#fff;font-size:12.5px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.crm-lane em{display:block;font-style:normal;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:#8C98A4;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.crm-drv{font-family:var(--f-mono);font-size:11px;color:#DDE2E7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.crm-drv.none{color:var(--amber)}
-.crm-remain{justify-self:end;text-align:right;font-family:var(--f-mono);font-size:11px;font-variant-numeric:tabular-nums;color:#DDE2E7;white-space:nowrap}
-.crm-remain small{display:block;margin-top:3px;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#8C98A4}
-.crm-remain.hot{color:var(--amber)}
-.crm-remain.hot small{color:var(--amber)}
-.crm-st{display:inline-flex;align-items:center;justify-content:center;padding:3px 7px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;white-space:nowrap;justify-self:end}
-.crm-st.go{color:var(--sky)}.crm-st.ok{color:var(--lime)}.crm-st.warn{color:var(--amber)}
-.crm-cards{display:none}
-
-.crm-desk-ui{min-width:0}
-.crm-callout{
-  display:inline-block;margin-top:14px;
-  background:var(--white);border:1px solid var(--rule);padding:14px 16px 12px;
-  box-shadow:var(--shadow-lift);min-width:148px;transition:transform var(--t-fast) var(--e),border-color var(--t-fast)
-}
-.crm-callout:hover{transform:translateY(-3px);border-color:var(--ink)}
-.crm-callout b{display:block;font-family:var(--f-display);font-weight:800;font-size:2.15rem;letter-spacing:-.05em;line-height:.9;color:var(--green)}
-.crm-callout span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2);max-width:16ch}
-
-/* ── Problems ── */
-.crm-problems{background:var(--paper-2);border-top:1px solid var(--rule)}
-.crm-problems .wrap{padding-block:clamp(56px,7vw,88px)}
-.crm-prob-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(24px,3vw,40px)
-}
-.crm-prob-card{background:var(--white);padding:clamp(20px,2.4vw,28px) clamp(18px,2vw,24px)}
-.crm-prob-k{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--cta);margin-bottom:10px}
-.crm-prob-card h3{max-width:16ch;margin-bottom:8px}
-.crm-prob-card p{color:var(--steel);font-size:14.5px;line-height:1.5;max-width:32ch;margin:0}
-/* ── CRM Types ── */
-.crm-types{
-  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
-  gap:clamp(16px,2vw,24px);margin-top:clamp(28px,4vw,52px);align-items:stretch
-}
-.crm-types article{padding:clamp(22px,2.8vw,36px);min-width:0}
-.crm-types .primary{background:var(--ink);color:#DDE2E7}
-.crm-types .primary .crm-type-label{color:var(--amber)}
-.crm-types .primary h3{color:#fff}
-.crm-types .primary .body-sm{color:#8C98A4}
-.crm-types .secondary{background:var(--white);border:1px solid var(--rule)}
-.crm-types .crm-type-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2);margin-bottom:12px}
-.crm-types h3{margin-bottom:10px}
-.crm-types ul{list-style:none;display:grid;gap:9px;margin-top:18px}
-.crm-types li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.4}
-.crm-types .primary li{color:#DDE2E7}
-.crm-types li:before{content:"";width:6px;height:6px;margin-top:7px;background:var(--amber);flex:none}
-.crm-types .secondary li:before{background:var(--blue)}
-
-/* ── Bulk assign demo ── */
-.crm-rowzoom{background:var(--paper-2);border-block:1px solid var(--rule)}
-.crm-zoom-grid{
-  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
-  gap:clamp(24px,4vw,64px);align-items:start;margin-top:clamp(28px,4vw,52px)
-}
-.crm-seq{list-style:none;display:grid;gap:0;margin-top:8px}
-.crm-seq li{
-  display:grid;grid-template-columns:42px minmax(0,1fr);gap:14px;
-  padding:14px 0;border-bottom:1px solid var(--rule)
-}
-.crm-seq .sn{
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2);padding-top:3px
-}
-.crm-seq b{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
-.crm-seq p{font-size:14.5px;line-height:1.5;color:var(--steel);max-width:36ch}
-.crm-seq li.on .sn{color:var(--cta)}
-.crm-seq li.on b{color:var(--cta)}
-.crm-board.solo{display:block}
-.crm-board.solo .crm-head,.crm-board.solo .crm-row{
-  grid-template-columns:18px 58px minmax(0,1fr) 70px 86px
-}
-.crm-board.solo .crm-drv{display:none}
-.crm-result{
-  display:none;align-items:center;gap:10px;flex-wrap:wrap;
-  padding:10px 14px;background:#102018;border-top:1px solid #1B7A54;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)
-}
-.crm-demo[data-phase="result"] .crm-result{display:flex}
-.crm-demo[data-phase="before"] .crm-row.on{background:transparent}
-.crm-demo[data-phase="before"] .crm-row.on .crm-box{border-color:#3A444E;background:transparent;box-shadow:none}
-.crm-demo[data-phase="before"] .crm-act.pri{background:transparent;border-color:var(--ink-line);color:#8C98A4}
-.crm-demo[data-phase="apply"] .crm-act.pri{box-shadow:0 0 0 3px rgba(79,70,229,.35)}
-.crm-solo-tools .crm-each{display:none}
-.crm-demo[data-phase="before"] .crm-solo-tools .crm-each{display:inline-flex}
-.crm-demo[data-phase="before"] .crm-solo-tools .crm-bulk{display:none}
-
-/* ── Decision section ── */
-.crm-decide{background:var(--white)}
-.crm-decide-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,4vw,52px)
-}
-.crm-decide-card{background:var(--paper);padding:clamp(24px,2.8vw,36px) clamp(20px,2vw,28px)}
-.crm-decide-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
-.crm-decide-card h3{margin-bottom:12px}
-.crm-decide-card p{color:var(--steel);font-size:14.5px;line-height:1.55;margin:0}
-.crm-decide-card ul{list-style:none;display:grid;gap:8px;margin-top:14px}
-.crm-decide-card li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14px;color:var(--ink);line-height:1.4}
-.crm-decide-card li:before{content:"";width:4px;height:4px;margin-top:8px;background:var(--blue);flex:none}
-
-/* ── ShiftRail proof ── */
-.crm-proof{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
-.crm-proof .wrap{padding-block:clamp(80px,10vw,140px)}
-.crm-proof .eyebrow{color:var(--ink-dim)}
-.crm-proof h2{color:#fff;margin-top:18px;max-width:16ch}
-.crm-proof .lede{color:#8C98A4;margin-top:16px}
-.crm-proof-story{display:grid;margin-top:clamp(20px,2.4vw,28px);border-top:1px solid var(--ink-line)}
-.crm-proof-story div{display:grid;grid-template-columns:clamp(88px,12vw,120px) minmax(0,1fr);gap:16px;padding:clamp(14px,1.8vw,18px) 0;border-bottom:1px solid var(--ink-line)}
-.crm-proof-story dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);padding-top:3px}
-.crm-proof-story dd{color:#DDE2E7;font-size:15px;line-height:1.58;max-width:48ch}
-.crm-metrics{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1px;background:var(--ink-line);margin-top:clamp(32px,4.2vw,52px);border:1px solid var(--ink-line)
-}
-.crm-metrics div{background:var(--ink);padding:clamp(18px,2.2vw,26px) clamp(14px,1.8vw,22px)}
-.crm-metrics b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.45rem,2.6vw,2rem);letter-spacing:-.04em;color:var(--lime);line-height:.9}
-.crm-metrics span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
-.crm-proof-cta{margin-top:28px}
-.crm-proof-note{margin-top:22px;font-size:13.5px;line-height:1.6;color:#8C98A4;max-width:62ch}
-
-.crm-integrations{background:var(--paper-2);border-top:1px solid var(--rule)}
-.crm-integ-intro{margin-top:clamp(28px,4vw,52px)}
-.crm-integ-intro p{color:var(--steel);font-size:14.5px;line-height:1.55;max-width:58ch}
-.crm-integ-cats{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,4vw,52px)
-}
-.crm-integ-cat{background:var(--white);padding:clamp(22px,2.8vw,32px) clamp(20px,2vw,28px)}
-.crm-integ-cat h3{font-size:clamp(1.05rem,1.5vw,1.25rem);margin-bottom:14px}
-.crm-integ-cat ul{list-style:none;display:grid;gap:8px}
-.crm-integ-cat li{font-size:14.5px;color:var(--ink);line-height:1.4}
-.crm-integ-rel{
-  background:var(--ink);color:#DDE2E7;padding:clamp(22px,2.8vw,32px) clamp(20px,2vw,28px);
-  margin-top:1px;border:1px solid var(--ink-line);border-top:0
-}
-.crm-integ-rel h3{color:#fff;margin-bottom:14px}
-.crm-integ-rel ul{list-style:none;display:grid;gap:10px}
-.crm-integ-rel li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:#DDE2E7;line-height:1.4}
-.crm-integ-rel li:before{content:"";width:6px;height:6px;margin-top:6px;background:var(--amber);flex:none}
-
-/* ── Delivery ── */
-.crm-delivery-stages{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,4vw,52px)
-}
-.crm-delivery-stage{background:var(--white);padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,24px)}
-.crm-delivery-stage .crm-stage-n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
-.crm-delivery-stage h3{margin-bottom:8px}
-.crm-delivery-stage p{color:var(--steel);font-size:14.5px;line-height:1.55;margin:0}
-.crm-delivery-trust{
-  background:var(--ink);color:#DDE2E7;padding:clamp(22px,2.8vw,32px) clamp(20px,2vw,28px);
-  margin-top:1px;border:1px solid var(--ink-line);border-top:0
-}
-.crm-delivery-trust h3{color:#fff;margin-bottom:12px}
-.crm-delivery-trust ul{list-style:none;display:grid;gap:9px}
-.crm-delivery-trust li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14px;color:#DDE2E7;line-height:1.4}
-.crm-delivery-trust li:before{content:"";width:6px;height:6px;margin-top:6px;background:var(--amber);flex:none}
-
-/* ── FAQ ── */
-.faq-sec{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px}
-.faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
-.faq-grid > div:first-child{position:sticky;top:112px}
-.faq-grid .d2{margin-top:18px;max-width:13ch}
-.faq-grid .lede{margin-top:18px}
-.faq-list{border-top:1px solid var(--rule)}
-.faq-item{border-bottom:1px solid var(--rule)}
-.faq-q{
-  width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
-  gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
-  padding:clamp(20px,2.4vw,26px) 0;min-height:48px;transition:padding-left .45s var(--e)
-}
-.faq-q:hover,.faq-q:focus-visible{padding-left:8px}
-.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel-2);transition:color var(--t-fast) var(--e);padding-top:5px}
-.faq-item.open .qn{color:var(--cta)}
-.faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
-.faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
-.faq-q .qi:before,.faq-q .qi:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .4s var(--e)}
-.faq-q .qi:after{transform:rotate(90deg)}
-.faq-item.open .qi:after{transform:rotate(0)}
-.faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--e),visibility 0s linear .5s}
-.faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--e),visibility 0s linear 0s}
-.faq-a>div{overflow:hidden}
-.faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
-.faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
-.faq-a-in a{border-bottom:1px solid var(--rule)}
-.faq-a-in a:hover{border-color:var(--ink);color:var(--ink)}
-.faq-side .btn{margin-top:24px}
-
-@media(max-width:1100px){
-  .crm-head,.crm-row{grid-template-columns:18px 54px minmax(0,1fr) 64px 80px}
-  .crm-head span:nth-child(4),.crm-drv{display:none}
-}
-@media(max-width:1024px){
-  .crm-hero-grid,.crm-types,.crm-zoom-grid,.faq-grid,.crm-decide-grid,.crm-fit-rail,.crm-teams,.crm-cred-grid,.crm-integ-groups,.crm-process{grid-template-columns:1fr}
-  .crm-proof-split{grid-template-columns:1fr!important}
-  .crm-process{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .crm-hero-copy .d1{max-width:none}
-  .faq-grid > div:first-child{position:static}
-  .crm-prob-grid,.crm-integ-cats,.crm-metrics,.crm-delivery-stages{grid-template-columns:1fr}
-  .cta-row{align-items:flex-start}
-  .crm-board{grid-template-columns:1fr}
-  .crm-side{display:none}
-}
-@media(max-width:640px){
-  .hero-actions{flex-direction:column;align-items:stretch}
-  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .crm-desk-ui,.crm-head,.crm-row,.crm-filters{display:none}
-  .crm-cards{display:grid;gap:0}
-  .crm-mcard{
-    display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:8px 10px;align-items:start;
-    padding:12px 14px;border-bottom:1px solid #1A2027
-  }
-  .crm-mcard.on{background:rgba(79,70,229,.12)}
-  .crm-mcard.hot{background:rgba(219,155,31,.07)}
-  .crm-mcard .crm-box{margin-top:3px}
-  .crm-mcard .crm-st{justify-self:end;grid-column:3;grid-row:1}
-  .crm-mcard .crm-ref{grid-column:2;grid-row:1;padding-top:1px}
-  .crm-mcard .crm-lane{grid-column:2 / -1}
-  .crm-mact{
-    grid-column:2 / -1;justify-self:start;margin-top:4px;
-    padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
-    font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-    border:1px solid var(--cta);color:#fff;background:var(--cta)
-  }
-  .crm-mcard:not(.on) .crm-mact{display:none}
-  .crm-demo[data-phase="before"] .crm-mcard.on{background:transparent}
-  .crm-demo[data-phase="before"] .crm-mcard.on .crm-box{border-color:#3A444E;background:transparent;box-shadow:none}
-  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
-  .faq-a-in{padding-left:44px}
-  .cta-row{flex-direction:column;align-items:stretch}
-  .crm-demo[data-phase="before"] .crm-solo-tools{display:none}
-  .crm-demo:not([data-phase="before"]) .crm-mact{display:none}
-  .crm-board.solo .crm-head,.crm-board.solo .crm-row{display:none}
-  .crm-board.solo .crm-cards{display:grid}
-  .crm-audit-tag{margin-left:0;width:100%}
-}
-@media(max-width:390px){
-  body.page-crm .d1{font-size:2.28rem}
-  .crm-chrome .crm-win{display:none}
-  .hero-actions{align-items:stretch}
-  .hero-actions .btn{width:100%;justify-content:center;min-height:48px}
-}
-
-@media(hover:none){
-  .crm-callout:hover{transform:none}
-}
-@media(prefers-reduced-motion:reduce){
-  html:focus-within{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
-  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
-  .mask span i{transform:none!important}
-  .crm-live b{animation:none!important}
-  .crm-callout:hover{transform:none}
-}
-</style>
+</script>
 <link rel="stylesheet" href="/shared/page-inquiry.css">
 <link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/crm.css?v=crm7">
 </head>
 <body class="page-crm">
 <a class="skip" href="#main">Skip to content</a>
@@ -709,26 +281,20 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
   <a href="#problems"><span>Problems</span><i></i></a>
-  <a href="#types"><span>Teams</span><i></i></a>
-  <a href="#workflow"><span>Automation</span><i></i></a>
-  <a href="#decide"><span>Decision</span><i></i></a>
-  <a href="#proof"><span>ShiftRail</span><i></i></a>
+  <a href="#types"><span>Build</span><i></i></a>
+  <a href="#decide"><span>Process</span><i></i></a>
+  <a href="#proof"><span>Proof</span><i></i></a>
   <a href="#integrations"><span>Integrations</span><i></i></a>
-  <a href="#delivery"><span>Process</span><i></i></a>
-  <a href="#credibility"><span>Credibility</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
 <nav class="mob-chips" id="mobChips" aria-label="Page sections">
   <a href="#overview">Overview</a>
   <a href="#problems">Problems</a>
-  <a href="#types">Teams</a>
-  <a href="#workflow">Automation</a>
-  <a href="#decide">Decision</a>
-  <a href="#proof">ShiftRail</a>
+  <a href="#types">Build</a>
+  <a href="#decide">Process</a>
+  <a href="#proof">Proof</a>
   <a href="#integrations">Integrations</a>
-  <a href="#delivery">Process</a>
-  <a href="#credibility">Credibility</a>
   <a href="#faq">FAQ</a>
 </nav>
 
@@ -748,25 +314,19 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
           <span><i>Custom CRM workflows</i></span>
           <span><i>people can actually run.</i></span>
         </h1>
-        <p class="lede" data-r>We design, integrate, and modernize CRM around how your teams work—custom CRM development, workflow automation, integrations, and CRM modernization without forcing a generic product template.</p>
+        <p class="lede" data-r>We design, build, and modernize CRM around how your teams work — custom CRM development, workflow automation, integrations, and CRM modernization without forcing a generic product template.</p>
         <div class="hero-actions" data-r>
-          <a href="#inquire" class="btn"><span>Discuss Your CRM Workflow</span><i>→</i></a>
-          <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See a CRM Case Study</span><i>→</i></a>
-        </div>
-        <div class="crm-cap-strip" data-r aria-label="Core capabilities">
-          <span>Custom CRM Development</span>
-          <span>Workflow Automation</span>
-          <span>CRM Integration</span>
-          <span>CRM Modernization</span>
+          <a href="#inquire" class="btn"><span>Discuss your CRM workflow</span><i>→</i></a>
+          <a href="#proof" class="btn ghost"><span>See a CRM case study</span></a>
         </div>
         <p class="crm-trust" data-r>
+          <span>You own the code</span>
           <span>US-hour collaboration</span>
           <span>No subcontracting</span>
-          <span>Client-owned code</span>
         </p>
       </div>
       <div class="crm-hero-visual" data-r>
-        <div class="crm-board" role="img" aria-label="Dispatch board: three unassigned loads selected for one assign action. SLA remaining and exception status sit on every row. Supervisor overrides are audited.">
+        <div class="crm-board" role="img" aria-label="Illustrative operational CRM board: three unassigned loads selected for one assign action. SLA remaining and exception status sit on every row.">
           <nav class="crm-side" aria-hidden="true">
             <div class="crm-brand">Board 04</div>
             <span class="on">Loads</span>
@@ -798,17 +358,14 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
               <div class="crm-mcard on">
                 <i class="crm-box"></i><span class="crm-ref">#4822</span><span class="crm-st warn">SLA risk</span>
                 <span class="crm-lane"><b>ATL → CLT</b><em>Unassigned · 9m remaining</em></span>
-                <span class="crm-mact">Assign</span>
               </div>
               <div class="crm-mcard on">
                 <i class="crm-box"></i><span class="crm-ref">#4830</span><span class="crm-st go">On SLA</span>
                 <span class="crm-lane"><b>HOU → AUS</b><em>Unassigned · 22m remaining</em></span>
-                <span class="crm-mact">Assign</span>
               </div>
               <div class="crm-mcard on">
                 <i class="crm-box"></i><span class="crm-ref">#4833</span><span class="crm-st go">On SLA</span>
                 <span class="crm-lane"><b>JAX → MIA</b><em>Unassigned · 27m remaining</em></span>
-                <span class="crm-mact">Assign</span>
               </div>
               <div class="crm-mcard hot">
                 <i class="crm-box"></i><span class="crm-ref">#4824</span><span class="crm-st warn">Exception</span>
@@ -817,11 +374,11 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
             </div>
           </div>
         </div>
-        <a class="crm-callout" href="/work/shiftrail-dispatch">
+        <a class="crm-callout" href="#proof">
           <b class="num">−32%</b>
-          <span>Handle time · ShiftRail, signed-off</span>
+          <span>Handle time · signed-off</span>
         </a>
-        <p class="cap-note"><span class="flag">Conceptual UI</span> Illustrative dispatch CRM · not a live product</p>
+        <p class="crm-cap">Illustrative operational CRM — not a live client product.</p>
       </div>
     </div>
   </div>
@@ -829,211 +386,280 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
 
 <section class="crm-fit" id="about-service" aria-labelledby="fitH">
   <div class="wrap">
-    <p class="eyebrow" data-r>What Kriva builds</p>
     <h2 class="sr" id="fitH">Custom CRM development and workflow automation for operations and revenue teams</h2>
     <div class="crm-fit-rail" data-s>
-      <article>
-        <p class="k">Who it is for</p>
-        <h3>Ops, sales, service, and finance teams outgrowing the CRM</h3>
-        <p>Carriers, SaaS companies, and service orgs where the CRM records data but spreadsheets, checklists, or side tools run the actual workflow.</p>
+      <article class="crm-card">
+        <h3>Who it's for</h3>
+        <p>Ops, sales, service, and finance teams outgrowing the CRM. Carriers, SaaS companies, and service orgs where the CRM records data but spreadsheets, checklists, or side tools run the actual workflow.</p>
       </article>
-      <article>
-        <p class="k">What we deliver</p>
-        <h3>Custom CRM development and modernization</h3>
-        <p>Operational consoles, HubSpot and Salesforce workflow layers, automation, integrations, and role-based views—configured beside an existing CRM or rebuilt when the platform is the constraint.</p>
+      <article class="crm-card">
+        <h3>What we deliver</h3>
+        <p>Custom CRM development and modernization. Operational consoles, HubSpot and Salesforce workflow layers, automation, integrations, and role-based views — configured beside an existing CRM or rebuilt when the platform is the constraint.</p>
       </article>
-      <article>
-        <p class="k">Problems we solve</p>
-        <h3>Manual updates, unclear ownership, brittle integrations</h3>
-        <p>When one action requires five separate updates, or SLA and ownership live outside the CRM, we map the workflow first then build the surface, automation, or connector that closes the gap.</p>
+      <article class="crm-card">
+        <h3>Problems we solve</h3>
+        <p>Manual updates, unclear ownership, brittle integrations. When one action requires five separate updates, or SLA and ownership live outside the CRM, we map the workflow first, then build the surface, automation, or connector that closes the gap.</p>
       </article>
     </div>
-    <p class="crm-fit-foot" data-r>Kriva is a product design and engineering studio—not a CRM vendor. You own the code, designs, and documentation after launch.</p>
+    <p class="crm-fit-foot" data-r>Kriva is a product design and engineering studio — not a CRM vendor. You own the code, designs, and documentation after launch.</p>
   </div>
 </section>
 
-<section class="sect crm-problems" id="problems" aria-labelledby="probH">
+<section class="crm-problems on-ink" id="problems" aria-labelledby="probH">
   <div class="wrap">
     <p class="eyebrow" data-r>CRM problems</p>
     <h2 class="d2" id="probH" data-r>The real workflow should not live beside the CRM.</h2>
-    <p class="lede" data-r>When bulk actions and role density are missing, the desk builds workarounds—each with an operational cost.</p>
-    <div class="crm-prob-grid" data-s>
-      <article class="crm-prob-card">
-        <span class="crm-prob-k">01</span>
-        <h3 class="d3">Spreadsheet side systems</h3>
-        <p>High-volume assignment and SLA tracking live in a shared sheet beside the CRM.<span class="cons">Impact · double entry, no audit trail, stale system data</span></p>
+    <p class="lede" data-r>When bulk actions and role density are missing, the desk builds workarounds — each with an operational cost.</p>
+    <div class="crm-frac" data-r>
+      <article>
+        <span class="n num">01</span>
+        <div>
+          <h3 class="d3">Spreadsheet side systems</h3>
+          <p>High-volume assignment and SLA tracking live in a shared sheet beside the CRM.<span class="cons">COST: double entry, no audit trail, stale system data.</span></p>
+        </div>
       </article>
-      <article class="crm-prob-card">
-        <span class="crm-prob-k">02</span>
-        <h3 class="d3">Repetitive row-by-row updates</h3>
-        <p>Every record change is a manual click. Bulk workarounds slow update cycles to hours.<span class="cons">Impact · dispatch backlog, missed SLAs, supervisor rework</span></p>
+      <article>
+        <span class="n num">02</span>
+        <div>
+          <h3 class="d3">Repetitive row-by-row updates</h3>
+          <p>Every record change is a manual click. Bulk workarounds slow update cycles to hours.<span class="cons">COST: dispatch backlog, supervisor rework.</span></p>
+        </div>
       </article>
-      <article class="crm-prob-card">
-        <span class="crm-prob-k">03</span>
-        <h3 class="d3">Unclear ownership or SLA</h3>
-        <p>Stage models lack exit criteria. Risk hides in a report the team never opens.<span class="cons">Impact · exceptions surface late, customers call first</span></p>
+      <article>
+        <span class="n num">03</span>
+        <div>
+          <h3 class="d3">Unclear ownership or SLA</h3>
+          <p>Stage models lack exit criteria. Risk hides in a report the team never opens.<span class="cons">COST: exceptions surface late, customers call first.</span></p>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sect" id="types" aria-labelledby="typesH">
+<section id="types" aria-labelledby="buildH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Role-based CRM</p>
-    <h2 class="d2" id="typesH" data-r>Different teams need different CRM behavior.</h2>
-    <p class="lede" data-r>Same CRM record—different density, fields, and actions per role. We design views matched to how each team actually works the pipeline or load board.</p>
+    <p class="eyebrow" data-r>What we build</p>
+    <h2 class="d2" id="buildH" data-r>Different teams. One CRM record.</h2>
+    <p class="lede" data-r>Same CRM record — different density, fields, and actions per role. We design views matched to how each team actually works the pipeline or load board.</p>
     <div class="crm-teams" data-s>
-      <article>
-        <p class="k">Sales</p>
-        <h3 class="d3">Pipeline stages with enforced exit criteria</h3>
-        <p>Rep view for daily progression. Manager view for forecast risk. Required fields before stage change—not silent automation without rollback.</p>
+      <article class="crm-card">
+        <svg class="crm-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M12 12h.01"/></svg>
+        <span class="k">Sales</span>
+        <h3>Pipeline stages with enforced exit criteria</h3>
+        <p>Rep view for daily progression. Manager view for forecast risk. Required fields before stage change — not silent automation without rollback.</p>
       </article>
-      <article>
-        <p class="k">Operations / Dispatch</p>
-        <h3 class="d3">Bulk assignment and SLA on every row</h3>
-        <p>Multi-select actions, exception queues sorted by urgency, and supervisor overrides with audit history—built for high-volume desks.</p>
+      <article class="crm-card">
+        <svg class="crm-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span class="k">Operations / Dispatch</span>
+        <h3>Bulk assignment and SLA on every row</h3>
+        <p>Multi-select actions, exception queues sorted by urgency, and supervisor overrides with audit history — built for high-volume desks.</p>
       </article>
-      <article>
-        <p class="k">Service</p>
-        <h3 class="d3">Case ownership and escalation paths</h3>
+      <article class="crm-card">
+        <svg class="crm-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+        <span class="k">Service</span>
+        <h3>Case ownership and escalation paths</h3>
         <p>Queue by priority and SLA. Handoffs between tiers stay on the record. Status visible to ops without chasing updates in chat.</p>
       </article>
-      <article>
-        <p class="k">Finance</p>
-        <h3 class="d3">Settlement-ready data from the CRM</h3>
-        <p>Invoice triggers, reconciliation states, and sync visibility to QuickBooks or Xero—finance sees counts and exceptions, not raw API logs.</p>
+      <article class="crm-card">
+        <svg class="crm-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14v4"/></svg>
+        <span class="k">Finance</span>
+        <h3>Settlement-ready data from the CRM</h3>
+        <p>Invoice triggers, reconciliation states, and sync visibility to QuickBooks or Xero — finance sees counts and exceptions, not raw API logs.</p>
       </article>
     </div>
-    <figure class="crm-teams-visual" data-r>
-      <img src="/media/work/crmpulse/hero.svg" alt="Conceptual role-based CRM dashboard showing different pipeline views for sales and operations teams" width="2400" height="1029" loading="lazy" decoding="async">
-      <figcaption class="cap-note"><span class="flag">Conceptual</span> Role-based CRM views · illustrative reference</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="sect crm-rowzoom" id="workflow" aria-labelledby="workflowH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>The high-volume action</p>
-    <h2 class="d2" id="workflowH" data-r>One action should not require five separate updates.</h2>
+    <div class="crm-sub">
+      <h3>One action should not require five separate updates.</h3>
+    </div>
     <div class="crm-zoom-grid">
       <ol class="crm-seq" data-r>
-        <li data-step="before" class="on">
+        <li>
           <span class="sn">01</span>
           <div>
             <b>Select</b>
-            <p>Multiple records. Risk and SLA stay visible as they are selected.</p>
+            <p>Multiple records, risk and SLA visible as selected.</p>
           </div>
         </li>
-        <li data-step="select">
+        <li>
           <span class="sn">02</span>
           <div>
             <b>Validate</b>
-            <p>Check permissions, conflicts, and required fields before applying the action.</p>
+            <p>Permissions, conflicts, required fields checked before applying.</p>
           </div>
         </li>
-        <li data-step="apply">
+        <li>
           <span class="sn">03</span>
           <div>
             <b>Apply</b>
-            <p>One bulk action applied to all selected records. Confirm once.</p>
+            <p>One bulk action to all selected records, confirmed once.</p>
           </div>
         </li>
-        <li data-step="result">
+        <li>
           <span class="sn">04</span>
           <div>
             <b>Confirm and audit</b>
-            <p>Record written to the audit trail: who, when, affected records, and outcome.</p>
+            <p>Record written to the audit trail: who, when, affected records, outcome.</p>
           </div>
         </li>
       </ol>
-      <div class="crm-sync-flow" id="bulkDemo" data-r role="img" aria-label="One bulk assign action updating load record, driver queue, schedule, and audit log automatically">
+      <div class="crm-sync-flow" data-r role="img" aria-label="One bulk assign action updating load records, owner queue, schedule board, and audit log">
         <p class="k">One action · four system updates</p>
-        <div class="crm-sync-row"><b>Assign · 3 loads</b><span>→ Load records</span><em class="done">Updated</em></div>
-        <div class="crm-sync-row"><b>Assign · 3 loads</b><span>→ Driver queue</span><em class="done">Updated</em></div>
-        <div class="crm-sync-row"><b>Assign · 3 loads</b><span>→ Schedule board</span><em class="done">Updated</em></div>
-        <div class="crm-sync-row"><b>Assign · 3 loads</b><span>→ Audit log · AUD-118</span><em class="done">Written</em></div>
-        <div class="crm-sync-row"><b>SLA risk · #4822</b><span>→ Exception queue</span><em>Still visible</em></div>
+        <div class="crm-sync-row"><b>Load records</b><em>Updated</em></div>
+        <div class="crm-sync-row"><b>Owner queue</b><em>Updated</em></div>
+        <div class="crm-sync-row"><b>Schedule board</b><em>Updated</em></div>
+        <div class="crm-sync-row"><b>Audit log</b><em>Written</em></div>
       </div>
-      <p class="cap-note" data-r><span class="flag">Workflow</span> One confirm · related records stay in sync · risk remains visible</p>
     </div>
   </div>
 </section>
 
-<section class="sect crm-decide" id="decide" aria-labelledby="decideH">
+<section class="crm-band" id="decide" aria-labelledby="decH">
   <div class="wrap">
-    <p class="eyebrow" data-r>The right approach</p>
-    <h2 class="d2" id="decideH" data-r>Use the current CRM until the workflow proves it needs more.</h2>
+    <p class="eyebrow" data-r>How we work</p>
+    <h2 class="d2" id="decH" data-r>Use the current CRM until the workflow proves it needs more.</h2>
     <p class="lede" data-r>Not every workflow needs a custom build. We assess before recommending replacement.</p>
-    <div class="crm-decide-grid" data-s>
-      <article class="crm-decide-card">
-        <span class="crm-decide-label">Configure</span>
-        <h3 class="d3">Improve the existing CRM setup</h3>
-        <p>HubSpot, Salesforce, or Pipedrive when stages, permissions, and native bulk actions already fit. Tune fields, views, and reports—not a platform project.</p>
+    <div class="crm-paths" data-s>
+      <article class="crm-card">
+        <span class="k">Configure</span>
+        <h3>Improve the existing CRM setup</h3>
+        <p>HubSpot, Salesforce, or Pipedrive when stages, permissions, and native bulk actions already fit. Tune fields, views, and reports — not a platform project.</p>
       </article>
-      <article class="crm-decide-card">
-        <span class="crm-decide-label">Extend</span>
-        <h3 class="d3">Add automation, integrations, or custom workflows</h3>
+      <article class="crm-card">
+        <span class="k">Extend</span>
+        <h3>Add automation, integrations, or custom workflows</h3>
         <p>Keep the CRM as source of record. Add dispatch consoles, automation layers, API connectors, or accounting sync when one workflow or integration is the gap.</p>
       </article>
-      <article class="crm-decide-card">
-        <span class="crm-decide-label">Rebuild</span>
-        <h3 class="d3">Replace limiting legacy or custom systems</h3>
-        <p>When spreadsheets run core work, exceptions are invisible, or the platform cannot support bulk work, role density, or audited overrides—module-by-module or full replacement.</p>
+      <article class="crm-card">
+        <span class="k">Rebuild</span>
+        <h3>Replace limiting legacy or custom systems</h3>
+        <p>When spreadsheets run core work, exceptions are invisible, or the platform cannot support bulk work, role density, or audited overrides — module-by-module or full replacement.</p>
       </article>
     </div>
-    <p class="crm-decide-note" data-r><strong>Not sure which path fits?</strong> We map the workflow first, then recommend configure, extend, integrate, or rebuild—only when the current CRM cannot hold the work.</p>
-    <div class="hero-actions" data-r style="margin-top:clamp(24px,3vw,36px)">
-      <a href="#inquire" class="btn"><span>Assess your CRM workflow</span><i>→</i></a>
+    <div class="crm-sub">
+      <h3>Map the workflow before changing the system.</h3>
+      <p class="crm-sub-line">Six stages from shadowing the desk to safe rollout. One team throughout — no subcontracting.</p>
     </div>
+    <ol class="crm-process" data-s>
+      <li>
+        <span class="wk">01 · Map</span>
+        <h3>Map the workflow</h3>
+        <p>Shadow users, roles, handoffs, and workarounds. Document what the CRM should control — not the ideal process.</p>
+      </li>
+      <li>
+        <span class="wk">02 · Friction</span>
+        <h3>Identify friction</h3>
+        <p>Find where manual updates, missing bulk actions, or weak integrations force side systems.</p>
+      </li>
+      <li>
+        <span class="wk">03 · Design</span>
+        <h3>Design the workflow</h3>
+        <p>Prototype role-based views, automation rules, and exception handling with the desk before writing production code.</p>
+      </li>
+      <li>
+        <span class="wk">04 · Build</span>
+        <h3>Build and integrate</h3>
+        <p>Ship CRM surfaces, connectors, and automation beside the existing stack. Weekly demos on a live URL.</p>
+      </li>
+      <li>
+        <span class="wk">05 · Validate</span>
+        <h3>Validate with operators</h3>
+        <p>Test bulk actions, integrations, and edge cases against sanitized data shapes — not demo records alone.</p>
+      </li>
+      <li>
+        <span class="wk">06 · Roll out</span>
+        <h3>Roll out safely</h3>
+        <p>Phased cutover by role or module. Transfer code, designs, and docs to your accounts. Optional retainer after go-live.</p>
+      </li>
+    </ol>
+    <p class="crm-callout-bar" data-r><strong>Not sure which path fits?</strong> We map the workflow first, then recommend configure, extend, integrate, or rebuild — only when the current CRM cannot hold the work.</p>
   </div>
 </section>
 
-<section class="crm-proof on-ink" id="proof" aria-labelledby="proofH">
+<section id="proof" aria-labelledby="pfH">
   <div class="wrap">
-    <div class="crm-proof-split" style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,56px);align-items:start">
+    <p class="eyebrow" data-r>Case study · ShiftRail</p>
+    <h2 class="d2" id="pfH" data-r>When the spreadsheet ran the shift.</h2>
+    <div class="crm-proof-split" data-r>
       <div>
-        <p class="eyebrow" data-r>Case study</p>
-        <h2 class="d2" id="proofH" data-r>When the spreadsheet ran the shift.</h2>
-        <p class="lede" data-r>A US trucking dispatch desk running 400+ daily routes rebuilt its dispatch CRM—bulk work, row-level SLA, and audited overrides replaced the parallel spreadsheet.</p>
-        <dl class="crm-proof-story" data-s>
+        <dl class="crm-proof-story">
           <div><dt>Client context</dt><dd>US trucking &amp; logistics · dispatch CRM modernization · TMS vendor under NDA</dd></div>
           <div><dt>Problem</dt><dd>Per-row assignment and SLA in a side spreadsheet. Supervisors had no override audit trail.</dd></div>
           <div><dt>What Kriva built</dt><dd>Multi-select assign as one audited event. Owner and SLA on every row. Exception queue sorted by urgency. Phased rollout beside the existing stack.</dd></div>
           <div><dt>Result</dt><dd>Signed-off reduction in manual handle time, faster exception response, and a single console dispatch could trust through peak volume.</dd></div>
         </dl>
-        <div class="crm-metrics">
-          <div><b class="num">−32%</b><span>Manual handle time per load action</span></div>
-          <div><b class="num">11 min</b><span>Avg exception response time</span></div>
-          <div><b class="num">400+</b><span>Daily routes on the desk</span></div>
+        <p class="crm-proof-metrics">
+          <span><b class="num">−32%</b><i>Manual handle time per load action</i></span>
+          <span><b class="num">11 min</b><i>Avg exception response</i></span>
+          <span><b class="num">99.4%</b><i>Console uptime post-launch</i></span>
+        </p>
+        <div class="proof-cta">
+          <a href="/work/shiftrail-dispatch" class="btn"><span>Read the ShiftRail case study</span><i>→</i></a>
         </div>
-        <a href="/work/shiftrail-dispatch" class="btn on-dark crm-proof-cta"><span>Read the ShiftRail case study</span><i>→</i></a>
-        <p class="crm-proof-note">Metrics are signed-off project outcomes from the ShiftRail engagement. Illustrative UI only—no client data shown.</p>
+        <p class="proof-note">Metrics are signed-off project outcomes from the ShiftRail engagement. Illustrative UI only — no client data shown.</p>
       </div>
-      <div class="crm-proof-stack" data-r>
-        <div class="crm-proof-before" role="img" aria-label="Before: dispatch assignment maintained in a spreadsheet beside the CRM">
-          <b>Before · spreadsheet queue</b>
-          <span><i>Load</i><i>Lane</i><i>Owner</i><i>Status</i></span>
-          <span><i>#4822</i><i>ATL→CLT</i><i>—</i><i>Sheet</i></span>
-          <span><i>#4830</i><i>HOU→AUS</i><i>—</i><i>Sheet</i></span>
+      <div>
+        <div class="crm-board crm-board--proof" role="img" aria-label="Illustrative dispatch CRM — the board that replaced the spreadsheet">
+          <nav class="crm-side" aria-hidden="true">
+            <div class="crm-brand">Board 04</div>
+            <span class="on">Loads</span>
+            <span>Drivers</span>
+            <span>Schedule</span>
+            <span>Exceptions</span>
+            <span>Audit</span>
+          </nav>
+          <div class="crm-main">
+            <div class="crm-chrome"><i></i><i></i><i></i><span class="crm-win">dispatch · board 04</span><span class="crm-live"><b></b>SLA watch</span></div>
+            <div class="crm-filters" aria-hidden="true">
+              <span class="crm-chip on">Unassigned</span><span class="crm-chip">At risk</span><span class="crm-chip">Exceptions</span>
+            </div>
+            <div class="crm-tools" aria-hidden="true">
+              <span class="crm-act on">3 selected</span>
+              <span class="crm-act pri">Assign</span>
+              <span class="crm-act">Hold</span>
+            </div>
+            <div class="crm-desk-ui" aria-hidden="true">
+              <div class="crm-head"><span></span><span>Load</span><span>Lane</span><span>SLA</span><span>Status</span></div>
+              <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4822</span><span class="crm-lane"><b>ATL → CLT</b><em>Tendered · no owner</em></span><span class="crm-remain hot">9m<small>remaining</small></span><span class="crm-st warn">SLA risk</span></div>
+              <div class="crm-row on"><i class="crm-box"></i><span class="crm-ref">#4830</span><span class="crm-lane"><b>HOU → AUS</b><em>Ready · 16:40 appt</em></span><span class="crm-remain">22m<small>remaining</small></span><span class="crm-st go">On SLA</span></div>
+              <div class="crm-row hot"><i class="crm-box"></i><span class="crm-ref">#4824</span><span class="crm-lane"><b>CHI → DFW</b><em>Detention · gate hold</em></span><span class="crm-remain hot">6m<small>remaining</small></span><span class="crm-st warn">Exception</span></div>
+            </div>
+            <div class="crm-cards" aria-hidden="true">
+              <div class="crm-mcard on">
+                <i class="crm-box"></i><span class="crm-ref">#4822</span><span class="crm-st warn">SLA risk</span>
+                <span class="crm-lane"><b>ATL → CLT</b><em>Unassigned · 9m remaining</em></span>
+              </div>
+              <div class="crm-mcard on">
+                <i class="crm-box"></i><span class="crm-ref">#4830</span><span class="crm-st go">On SLA</span>
+                <span class="crm-lane"><b>HOU → AUS</b><em>Unassigned · 22m remaining</em></span>
+              </div>
+              <div class="crm-mcard hot">
+                <i class="crm-box"></i><span class="crm-ref">#4824</span><span class="crm-st warn">Exception</span>
+                <span class="crm-lane"><b>CHI → DFW</b><em>Detention · 6m</em></span>
+              </div>
+            </div>
+          </div>
         </div>
-        <figure>
-          <img src="/media/solutions/trucking/dispatch-console.svg" alt="After ShiftRail rebuild: dispatch CRM with bulk assignment, SLA on each row, and exception queue" width="1600" height="1000" loading="lazy" decoding="async">
-          <figcaption class="cap-note"><span class="flag">After</span> Conceptual dispatch CRM · illustrative</figcaption>
-        </figure>
+        <p class="crm-cap">Illustrative dispatch CRM — the board that replaced the spreadsheet</p>
+        <aside class="crm-pulse">
+          <h3>Sales CRM case study — <a href="/work/crm-pulse-dashboard">CRMPulse</a>.</h3>
+          <p>Custom HubSpot dashboards and pipeline UX for a B2B sales org. Workflow matched to how reps actually sell.</p>
+        </aside>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sect crm-integrations" id="integrations" aria-labelledby="integrationsH">
+<section class="crm-band" id="integrations" aria-labelledby="intH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Integrations and automation</p>
-    <h2 class="d2" id="integrationsH" data-r>The CRM must work with the systems around it.</h2>
-    <div class="crm-integ-intro" data-r>
-      <p>Kriva connects CRM workflows with the systems around them—without forcing full replacement. Connectors expose failures, retries, and reconciliation states teams can act on.</p>
+    <div class="crm-integ-head">
+      <div>
+        <p class="eyebrow" data-r>Integrations</p>
+        <h2 class="d2" id="intH" data-r>The CRM must work with the systems around it.</h2>
+        <p class="lede" data-r>Connectors expose failures, retries, and reconciliation states teams can act on — no silent automation.</p>
+      </div>
+      <a href="/services/api-integrations" class="crm-text-link">Integrations &amp; APIs →</a>
     </div>
-    <div class="crm-integ-groups" data-s>
-      <article>
+    <div class="crm-integ-grid" data-s>
+      <article class="crm-card">
         <h3>CRM</h3>
         <ul>
           <li>HubSpot, Salesforce, Pipedrive workflow layers</li>
@@ -1041,132 +667,45 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
           <li>Module-by-module replacement paths</li>
         </ul>
       </article>
-      <article>
+      <article class="crm-card">
         <h3>ERP / Accounting</h3>
         <ul>
-          <li>Invoice and settlement sync</li>
+          <li>QuickBooks &amp; Xero invoice and settlement sync</li>
           <li>Customer and vendor record mapping</li>
+          <li>Finance reconciliation states</li>
         </ul>
         <p class="lock">
-          <img src="/brand/logos/quickbooks.svg" alt="QuickBooks" width="22" height="22" loading="lazy" decoding="async">
-          <img src="/brand/logos/xero.svg" alt="Xero" width="22" height="22" loading="lazy" decoding="async">
+          <img src="/brand/logos/quickbooks.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
+          <img src="/brand/logos/xero.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
           QuickBooks &amp; Xero
         </p>
       </article>
-      <article>
-        <h3>Communication</h3>
-        <ul>
-          <li>Email and notification triggers</li>
-          <li>Status updates from field teams</li>
-        </ul>
-      </article>
-      <article>
-        <h3>Operations</h3>
+      <article class="crm-card">
+        <h3>Operations &amp; Communication</h3>
         <ul>
           <li>TMS and load tender systems</li>
           <li>ELD, telematics, and routing</li>
-          <li>Driver assignment queues</li>
+          <li>Email, notification triggers, and field-team status updates</li>
         </ul>
       </article>
-      <article>
-        <h3>APIs / Middleware</h3>
+      <article class="crm-card">
+        <h3>APIs / Reporting</h3>
         <ul>
           <li>REST endpoints and webhooks</li>
           <li>Retry queues with operator visibility</li>
-          <li>Idempotent writes and reconciliation</li>
-        </ul>
-        <a href="/services/api-integrations" class="p-link" style="margin-top:14px">Integrations &amp; APIs <i>→</i></a>
-      </article>
-      <article>
-        <h3>Reporting</h3>
-        <ul>
-          <li>Pipeline and operational dashboards</li>
-          <li>Exception and SLA visibility</li>
-          <li>Finance-ready export states</li>
+          <li>Pipeline, exception, and SLA dashboards with finance-ready export states</li>
         </ul>
       </article>
     </div>
-    <figure data-r style="margin-top:clamp(28px,4vw,44px)">
-      <img src="/media/work/crmpulse/approach-2.svg" alt="Conceptual CRM integration architecture connecting CRM, accounting, and operational systems" width="1600" height="1000" loading="lazy" decoding="async" style="width:100%;height:auto;border:1px solid var(--rule)">
-      <figcaption class="cap-note"><span class="flag">Conceptual</span> CRM connected to surrounding business systems</figcaption>
-    </figure>
   </div>
 </section>
 
-<section class="sect" id="delivery" aria-labelledby="deliveryH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Delivery process</p>
-    <h2 class="d2" id="deliveryH" data-r>Map the workflow before changing the system.</h2>
-    <p class="lede" data-r>Six stages from shadowing the desk to safe rollout. One team throughout—no subcontracting.</p>
-    <div class="crm-process" data-s>
-      <article>
-        <span class="sn">01 · Map</span>
-        <h3 class="d3">Map the workflow</h3>
-        <p>Shadow users, roles, handoffs, and workarounds. Document what the CRM should control—not the ideal process.</p>
-      </article>
-      <article>
-        <span class="sn">02 · Friction</span>
-        <h3 class="d3">Identify friction</h3>
-        <p>Find where manual updates, missing bulk actions, or weak integrations force side systems.</p>
-      </article>
-      <article>
-        <span class="sn">03 · Design</span>
-        <h3 class="d3">Design the workflow</h3>
-        <p>Prototype role-based views, automation rules, and exception handling with the desk before writing production code.</p>
-      </article>
-      <article>
-        <span class="sn">04 · Build</span>
-        <h3 class="d3">Build and integrate</h3>
-        <p>Ship CRM surfaces, connectors, and automation beside the existing stack. Weekly demos on a live URL.</p>
-      </article>
-      <article>
-        <span class="sn">05 · Validate</span>
-        <h3 class="d3">Validate with operators</h3>
-        <p>Test bulk actions, integrations, and edge cases against sanitized data shapes—not demo records alone.</p>
-      </article>
-      <article>
-        <span class="sn">06 · Roll out</span>
-        <h3 class="d3">Roll out safely</h3>
-        <p>Phased cutover by role or module. Transfer code, designs, and docs to your accounts. Optional retainer after go-live.</p>
-      </article>
-    </div>
-    <figure class="crm-process-visual" data-r>
-      <img src="/media/work/crmpulse/approach-1.svg" alt="CRM workflow mapping process: from desk shadowing through prototype, build, and validated rollout" width="1600" height="1000" loading="lazy" decoding="async">
-      <figcaption class="cap-note"><span class="flag">Conceptual</span> Workflow mapped before system changes</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="sect crm-cred" id="credibility" aria-labelledby="credH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Proof &amp; technical credibility</p>
-    <h2 class="d2" id="credH" data-r>CRM work you can verify before the first call.</h2>
-    <div class="crm-cred-grid" data-r>
-      <div>
-        <dl class="crm-cred-points">
-          <div><dt>Dispatch CRM case study</dt><dd><a href="/work/shiftrail-dispatch">ShiftRail</a> — US dispatch CRM for 400+ daily routes. −32% manual handle time, 11 min avg exception response, 99.4% console uptime post-launch.</dd></div>
-          <div><dt>Sales CRM case study</dt><dd><a href="/work/crm-pulse-dashboard">CRMPulse</a> — custom HubSpot dashboards and pipeline UX for a B2B sales org. Workflow matched to how reps actually sell.</dd></div>
-          <div><dt>Technologies</dt><dd>Next.js, React, TypeScript. HubSpot and Salesforce workflow design. Integration tests against CRM schema versions and sanitized staging data.</dd></div>
-          <div><dt>Integration experience</dt><dd>QuickBooks, Xero, TMS, ELD, internal APIs—with visible retry states and human approval where required. No silent automation.</dd></div>
-          <div><dt>Post-launch</dt><dd>Source, designs, and documentation transfer to your accounts. Retainer optional—no lock-in.</dd></div>
-        </dl>
-      </div>
-      <aside class="crm-cred-aside">
-        <h3>Buyer questions we answer directly</h3>
-        <p>Can we improve our existing CRM? Integrate multiple systems? Migrate legacy data? Replace individual modules? Roll out without stopping daily work? Yes—when the workflow supports it. We assess first.</p>
-        <a href="/process" class="btn sm"><span>How we deliver</span><i>→</i></a>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<section class="sect faq-sec" id="faq" aria-labelledby="faqH">
+<section class="faq-sec" id="faq" aria-labelledby="faqH">
   <div class="wrap faq-grid">
     <div class="faq-side">
       <p class="eyebrow" data-r>FAQ</p>
-      <h2 class="d2" id="faqH" data-r>About CRM design</h2>
-      <p class="lede" data-r>Straight answers so the first call starts further along.</p>
-      <a href="/contact#book" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
+      <h2 class="d2" id="faqH" data-r>About CRM design.</h2>
+      <p class="lede" data-r>Straight answers — so the first call starts further along.</p>
     </div>
     <div class="faq-list" data-r>
       <div class="faq-item">
@@ -1176,7 +715,7 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
-          <p>Start with what you have. If HubSpot, Salesforce, or Pipedrive configuration solves the workflow, that is the right answer. Custom build or replacement only when the platform cannot support bulk work, role density, exceptions, or integrations your business requires.</p>
+          <p>We assess first. If stages, permissions, and native bulk actions already fit, configuration is the answer — not a platform project. Replacement only comes up when the platform cannot support bulk work, role density, or audited overrides.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -1186,7 +725,7 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
-          <p>Yes. We design UX and workflow inside HubSpot, Salesforce, and Pipedrive. We also build custom operational CRM consoles beside an existing stack—dispatch, logistics, and SaaS teams included.</p>
+          <p>Yes — HubSpot, Salesforce, and Pipedrive are the common cases. We build workflow layers, operational consoles, and automation beside them, with integration tests against your CRM schema versions and sanitized staging data. The stack is Next.js, React, and TypeScript.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -1196,7 +735,7 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
-          <p>Yes. CRM design owns the desk workflow. Ledger posting pairs with <a href="/solutions/accounting-integrations">QuickBooks and Xero integrations</a>. Custom APIs and webhooks belong on <a href="/services/api-integrations">Integrations &amp; APIs</a>.</p>
+          <p>Yes. QuickBooks and Xero sync for invoices and settlement, customer and vendor record mapping, and reconciliation states finance can act on — with visible retry queues and human approval where required, never silent automation.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -1206,7 +745,7 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
-          <p>Yes—when automation includes rollback and audit. One bulk action should update related records across the CRM and connected systems, not require five separate manual clicks. Human approval stays where the workflow needs it.</p>
+          <p>That's the core of most engagements. Repetitive row-by-row updates become validated bulk actions: select, check permissions and required fields, apply once, and write the outcome to an audit trail — who, when, and what changed.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -1216,41 +755,34 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
-          <p>Yes. Historical records, customer data, and operational fields are mapped and validated on staging before cutover—not migrated blindly. Module-by-module replacement reduces risk during transition.</p>
+          <p>Yes. Records, history, and operational data are mapped and validated before cutover, with staging runs against sanitized data shapes — not blind bulk imports. Cutover is phased by role or module so daily work continues.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
           <span class="qn num">06</span>
-          <span class="qt">Do you build custom CRM modules?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
-          <p>Yes. We often start with one module or workflow—dispatch console, sales dashboard, integration layer—then expand. Full platform rebuilds happen when the architecture is the constraint, not the default.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
-          <span class="qn num">07</span>
           <span class="qt">What happens after launch?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fq7" role="region" aria-labelledby="fqb7"><div><div class="faq-a-in">
-          <p>You own source code, Figma files, and documentation. Everything transfers to your accounts. Retainer support is optional—no lock-in. Most engagements include post-launch iteration as operators work the new CRM through peak volume.</p>
+        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
+          <p>You own the source, designs, and documentation — everything transfers to your accounts. Retainer support is optional, with no lock-in. Iteration continues after go-live through operator feedback loops.</p>
         </div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="inq-sec" id="inquire" aria-labelledby="inqH">
+<section class="crm-contact" id="inquire" aria-labelledby="inqH">
   <div class="wrap inq-grid">
     <div class="inq-copy">
       <p class="eyebrow">Start a conversation</p>
-      <h2 class="d2" id="inqH">Discuss the CRM workflow.</h2>
-      <p class="lede">Tell us what your team is working around today—the manual action, the spreadsheet beside the CRM, or the integration that keeps failing. We'll review the workflow and determine whether it should be configured, extended, integrated, or rebuilt.</p>
-      <p class="inq-help">Need a longer brief, files, or a scheduled fit call? Use the <a href="/contact#brief">contact page</a>. We reply within one business day. NDA available.</p>
+      <h2 class="d2" id="inqH">Show us the workflow your CRM cannot handle.</h2>
+      <p class="lede">Tell us what your team is working around today — the manual action, the spreadsheet beside the CRM, or the integration that keeps failing. We'll review the workflow and recommend whether it should be configured, extended, integrated, or rebuilt. No RFP required.</p>
+      <p class="crm-trust">
+        <span>Reply within one business day</span>
+        <span>NDA available</span>
+        <span>No obligation</span>
+      </p>
     </div>
     <div>
       <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
@@ -1283,13 +815,13 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
         <div>
           <label for="inq-details">What is your team working around? <span class="req">Required</span></label>
           <textarea id="inq-details" name="details" required rows="4" placeholder="Example: HubSpot holds contacts, dispatch assignment is still per-row, and supervisor overrides have no audit trail." aria-describedby="inq-details-hint"></textarea>
-          <p class="inq-note" id="inq-details-hint" style="margin-top:8px;text-transform:none;letter-spacing:0;font-size:13px;line-height:1.5;color:var(--steel-2)">A few sentences on the workflow or system is enough. No RFP required.</p>
+          <p class="inq-note" id="inq-details-hint" style="margin-top:8px;text-transform:none;letter-spacing:0;font-size:13px;line-height:1.5;color:#8b8c94">A few sentences on the workflow or system is enough.</p>
           <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
         </div>
         <p class="inq-fail" role="alert"></p>
         <div class="inq-actions">
           <button type="submit" class="btn"><span class="inq-submit-label">Send workflow inquiry</span><i>→</i></button>
-          <p class="inq-note">Private · not shared. Reply within one business day.</p>
+          <p class="inq-note">Private · not shared</p>
         </div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
@@ -1297,24 +829,6 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
         <h3>Inquiry received.</h3>
         <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
       </div>
-    </div>
-  </div>
-</section>
-<section class="cta-band on-ink" id="contact" aria-labelledby="ctaH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Next step</p>
-    <h2 class="d2" id="ctaH" data-r>Show us the workflow your CRM cannot handle.</h2>
-    <p class="lede" data-r>We'll help identify whether the right answer is configuration, workflow automation, integration, or rebuild.</p>
-    <div class="cta-row">
-      <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a discovery call</span><i>→</i></a>
-        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
-      </div>
-      <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA available</span>
-        <span><i>◆</i>No obligation</span>
-      </p>
     </div>
   </div>
 </section>
@@ -1373,37 +887,6 @@ body.page-crm .fbase,body.page-crm .fbase a{color:#9AA5B0}
 </footer>
 
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Custom CRM Development & Workflow Automation",
-  "serviceType": "Custom CRM development, CRM workflow automation, CRM integration, and CRM modernization",
-  "description": "Kriva designs, integrates, and modernizes CRM workflows around how teams actually work—custom CRM development, automation, integrations, and operational consoles for US, UK, UAE, and Canada.",
-  "provider": {
-    "@type": "Organization",
-    "name": "KRIVA Technologies",
-    "url": "https://krivatechnologies.com"
-  },
-  "url": "https://krivatechnologies.com/services/crm-development",
-  "areaServed": ["United States", "United Kingdom", "United Arab Emirates", "Canada"]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Should we customize our CRM or replace it?","acceptedAnswer":{"@type":"Answer","text":"Start with what you have. If HubSpot, Salesforce, or Pipedrive configuration solves the workflow, that is the right answer. Custom build or replacement only when the platform cannot support bulk work, role density, exceptions, or integrations your business requires."}},
-    {"@type":"Question","name":"Can you work with our existing CRM?","acceptedAnswer":{"@type":"Answer","text":"Yes. We design UX and workflow inside HubSpot, Salesforce, and Pipedrive. We also build custom operational CRM consoles beside an existing stack."}},
-    {"@type":"Question","name":"Can CRM workflows connect with ERP or accounting systems?","acceptedAnswer":{"@type":"Answer","text":"Yes. CRM design owns the desk workflow. Ledger posting pairs with QuickBooks and Xero integrations. Custom APIs and webhooks belong on the Integrations and APIs service."}},
-    {"@type":"Question","name":"Can you automate manual CRM updates?","acceptedAnswer":{"@type":"Answer","text":"Yes—when automation includes rollback and audit. One bulk action should update related records across the CRM and connected systems, not require five separate manual clicks."}},
-    {"@type":"Question","name":"Can you migrate legacy CRM data?","acceptedAnswer":{"@type":"Answer","text":"Yes. Historical records are mapped and validated on staging before cutover—not migrated blindly. Module-by-module replacement reduces risk during transition."}},
-    {"@type":"Question","name":"Do you build custom CRM modules?","acceptedAnswer":{"@type":"Answer","text":"Yes. We often start with one module or workflow then expand. Full platform rebuilds happen when the architecture is the constraint."}},
-    {"@type":"Question","name":"What happens after launch?","acceptedAnswer":{"@type":"Answer","text":"You own source code, Figma files, and documentation. Retainer support is optional—no lock-in."}}
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_START -->
 <script type="application/ld+json">
 {
@@ -1493,7 +976,6 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
 });
 
 if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
-
 run();
 })();
 </script>

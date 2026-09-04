@@ -49,7 +49,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img,svg{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
+.on-ink :focus-visible,footer :focus-visible,.dash-board :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -86,9 +86,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink);border-color:var(--ink)}
 .btn.sm{padding:9px 15px;font-size:11px;min-height:36px}
 .btn.on-dark{--btn-bg:var(--cta);--btn-fg:#fff;--btn-hover:#fff;border-color:var(--cta)}
-.btn.on-dark:hover{color:var(--ink);border-color:var(--btn-hover)}
+.btn.on-dark:hover{color:var(--ink);border-color:#fff}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-.flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
@@ -97,15 +96,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(24px,4vw,72px);flex-wrap:wrap}
 .s-head h2,.s-title{margin-top:18px}
 .s-head .lede{margin-top:18px}
-.cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
-.cta-band .wrap{padding-block:clamp(88px,11vw,160px)}
-.cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,7vw,5.4rem);line-height:.93;letter-spacing:-.032em}
-.cta-band .lede{color:#8C98A4;margin-top:18px;max-width:40ch}
-.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
-.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
-.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
-.assur i{font-style:normal;color:var(--amber);margin-right:7px}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 .chapters{position:fixed;right:calc(var(--gutter) - 8px);top:50%;transform:translateY(-50%);z-index:70;display:grid;gap:2px;opacity:0;transition:opacity var(--t-mid) var(--e);pointer-events:none}
 .chapters.show{opacity:1;pointer-events:auto}
@@ -117,317 +107,15 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .chapters a[aria-current="true"]{color:var(--ink)}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
-.mob-chips{
-  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
-  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
-  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
-  -webkit-overflow-scrolling:touch
-}
-.mob-chips::-webkit-scrollbar{display:none}
-.mob-chips a{
-  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
-  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
-}
-.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
-@media(max-width:1280px){
-  body.page-dashboard .mob-chips{display:flex !important}
-  body.page-dashboard .hero,body.page-dashboard .sect,body.page-dashboard .dash-proof{scroll-margin-top:calc(88px + 48px)}
-}
 </style>
 <link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
-<style>
-/* Page-scoped Dashboard Design — loaded last */
-body.page-dashboard{overflow-x:clip}
-body.page-dashboard .d1{font-size:clamp(2rem,4.8vw,4.05rem);line-height:.92;letter-spacing:-.03em}
-body.page-dashboard .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
-body.page-dashboard .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
-body.page-dashboard .sect{padding-block:clamp(80px,10vw,140px)}
-body.page-dashboard .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;line-height:.93;letter-spacing:-.032em}
-body.page-dashboard .hero{
-  background:var(--paper);color:var(--ink);overflow:hidden;
-  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(40px,5vw,80px);
-  scroll-margin-top:88px
-}
-@media(min-width:1025px){
-  body.page-dashboard .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 56px}
-  body.page-dashboard .hero > .wrap{width:100%}
-}
 
-.dash-hero-grid{
-  display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
-  gap:clamp(28px,4.5vw,72px);align-items:center;margin-top:clamp(22px,3vw,36px)
-}
-.dash-hero-grid > *{min-width:0}
-.dash-hero-copy .d1{margin:18px 0 20px;max-width:11ch}
-.dash-hero-copy .lede{max-width:40ch}
-.dash-trust{
-  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2)
-}
-.dash-trust span{display:inline-flex;align-items:center;gap:8px}
-.dash-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
-.dash-cap-strip{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:20px;padding-top:18px;border-top:1px solid var(--rule)}
-.dash-cap-strip span{display:inline-flex;align-items:center;min-height:36px;padding:6px 12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1px solid var(--rule);background:var(--white)}
-.dash-fit{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px;padding-block:clamp(48px,6vw,72px)}
-.dash-fit-rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,20px)}
-.dash-fit-rail article{padding:clamp(18px,2.2vw,24px);border:1px solid var(--rule);background:var(--white);min-width:0}
-.dash-fit-rail .k{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:10px}
-.dash-fit-rail h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.2;margin-bottom:8px;max-width:22ch}
-.dash-fit-rail p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:36ch}
-.dash-fit-foot{margin-top:clamp(20px,2.4vw,28px);padding-top:18px;border-top:1px solid var(--rule);font-size:15px;line-height:1.62;color:var(--steel);max-width:62ch}
-.dash-prob-card .cons{display:block;margin-top:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cta)}
-.dash-flow{display:flex;align-items:stretch;margin-top:clamp(24px,3vw,36px);border:1px solid var(--rule);background:var(--white);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;list-style:none;padding:0;margin-top:clamp(24px,3vw,36px)}
-.dash-flow-visual .lab{margin-top:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2)}
-.dash-proof-split .dash-metrics{margin-top:clamp(24px,3vw,36px)}
-.dash-cred-points a{border-bottom:1px solid var(--rule)}
-.dash-flow::-webkit-scrollbar{display:none}
-.dash-flow li{position:relative;flex:1 1 0;min-width:min(100%,140px);list-style:none;padding:clamp(16px,2vw,22px);border-right:1px solid var(--rule)}
-.dash-flow li:last-child{border-right:0}
-.dash-flow li:not(:last-child):after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-family:var(--f-mono);font-size:11px;color:var(--steel-2);z-index:1;background:var(--white);padding:2px 0}
-.dash-flow .sn{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
-.dash-flow h3{font-family:var(--f-display);font-weight:700;font-size:clamp(.98rem,1.4vw,1.1rem);letter-spacing:-.02em;margin-bottom:6px}
-.dash-flow p{font-size:13.5px;line-height:1.5;color:var(--steel);max-width:28ch;margin:0}
-.dash-flow-visual{margin-top:clamp(20px,2.4vw,28px)}
-.dash-flow-visual img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border:1px solid var(--rule)}
-.dash-role-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,36px);align-items:start;margin-top:clamp(20px,2.4vw,28px)}
-.dash-role-layout img{width:100%;height:auto;border:1px solid var(--rule);background:var(--ink)}
-.dash-role-panel.on{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,36px);align-items:start}
-.dash-proof-split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,56px);align-items:start}
-.dash-proof-stack{display:grid;gap:14px}
-.dash-proof-before{display:grid;gap:8px;padding:16px;background:#10161C;border:1px solid var(--ink-line);font-family:var(--f-mono);font-size:11.5px;color:#B9C3CC}
-.dash-proof-before b{display:block;color:#fff;font-weight:600;margin-bottom:8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
-.dash-proof-before span{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:8px 0;border-top:1px solid var(--ink-line)}
-.dash-proof-story{display:grid;margin-top:clamp(20px,2.4vw,28px);border-top:1px solid var(--ink-line)}
-.dash-proof-story div{display:grid;grid-template-columns:clamp(88px,12vw,120px) minmax(0,1fr);gap:16px;padding:clamp(14px,1.8vw,18px) 0;border-bottom:1px solid var(--ink-line)}
-.dash-proof-story dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);padding-top:3px}
-.dash-proof-story dd{color:#DDE2E7;font-size:15px;line-height:1.58;max-width:48ch}
-.dash-cred{background:var(--paper);border-block:1px solid var(--rule);scroll-margin-top:88px}
-.dash-cred-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,4vw,56px);align-items:start;margin-top:clamp(28px,4vw,44px)}
-.dash-cred-points{display:grid;gap:clamp(14px,2vw,20px)}
-.dash-cred-points div{padding-bottom:clamp(14px,2vw,18px);border-bottom:1px solid var(--rule)}
-.dash-cred-points dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:6px}
-.dash-cred-points dd{font-size:15px;line-height:1.58;color:var(--steel);max-width:48ch}
-.dash-cred-points a{border-bottom:1px solid var(--rule)}
-.dash-cred-aside{padding:clamp(18px,2.2vw,26px);border:1px solid var(--rule);background:var(--paper-2)}
-.dash-cred-aside h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);margin-bottom:10px;letter-spacing:-.02em}
-.dash-cred-aside p{font-size:14.5px;line-height:1.58;color:var(--steel);max-width:36ch}
-.dash-cred-aside .btn{margin-top:18px}
-body.page-dashboard .fmark img{width:min(100%,390px);opacity:.22}
-body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
-.dash-hero-visual{position:relative;min-width:0}
-.cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
-
-/* ── Dashboard board ── */
-.dash-board{
-  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
-  box-shadow:var(--shadow-product);overflow:hidden;
-  display:grid;grid-template-columns:1fr;min-width:0
-}
-.dash-chrome{
-  display:flex;align-items:center;gap:6px;padding:10px 14px;
-  background:#12181E;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4
-}
-.dash-chrome i{width:8px;height:8px;border-radius:50%;background:#2A333C;flex:none}
-.dash-chrome i:first-child{background:#5C6670}
-.dash-chrome span{margin-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.answer{
-  display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end;
-  padding:16px 14px;border-bottom:1px solid var(--ink-line);
-  background:rgba(219,155,31,.06)
-}
-.answer .q{font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8C98A4}
-.answer b{display:block;margin-top:7px;font-family:var(--f-display);font-weight:700;font-size:clamp(1.08rem,1.8vw,1.35rem);letter-spacing:-.03em;color:#fff;line-height:1.2}
-.dash-stat{text-align:right;font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,2.2vw,1.9rem);letter-spacing:-.04em;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums}
-.dash-stat small{display:block;margin-top:6px;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4;font-weight:400}
-.dash-filters{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-bottom:1px solid var(--ink-line)}
-.dash-chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border:1px solid var(--ink-line);color:#8C98A4;background:transparent;cursor:pointer;transition:all var(--t-fast) var(--e)}
-.dash-chip.on{border-color:var(--amber);color:var(--amber);background:rgba(219,155,31,.12)}
-.dash-chip.quiet{cursor:default;color:#5C6670}
-.dash-rows{display:flex;flex-direction:column}
-.dash-row{
-  display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;
-  padding:12px 14px;border-bottom:1px solid #1A2027;min-height:44px
-}
-.dash-row:last-child{border-bottom:0}
-.dash-row.exc{background:rgba(219,155,31,.07)}
-.dash-row.exc .dash-icon{color:var(--amber)}
-.dash-icon{width:6px;height:6px;border-radius:50%;background:#5C6670;flex:none}
-.dash-item{display:flex;flex-direction:column;gap:4px;min-width:0}
-.dash-item b{display:block;font-weight:600;color:#fff;font-size:12.5px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dash-item em{display:block;font-style:normal;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:#8C98A4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dash-owner{font-family:var(--f-mono);font-size:11px;color:#DDE2E7;white-space:nowrap}
-.dash-owner.none{color:var(--amber)}
-.dash-action{padding:6px 11px;border:1px solid var(--ink-line);color:#DDE2E7;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all var(--t-fast) var(--e);background:transparent}
-.dash-action:hover{border-color:var(--cta);color:#fff;background:rgba(79,70,229,.16)}
-.dash-action.done{display:none}
-.dash-board[data-state="done"] .dash-action.done{display:block;border-color:var(--lime);color:var(--lime);background:rgba(34,197,94,.1);cursor:default}
-.dash-board[data-state="done"] .dash-action.done:hover{border-color:var(--lime);background:rgba(34,197,94,.1)}
-
-/* ── Problems ── */
-.dash-problems{background:var(--paper-2);border-top:1px solid var(--rule)}
-.dash-problems .wrap{padding-block:clamp(56px,7vw,88px)}
-.dash-prob-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(24px,3vw,40px)
-}
-.dash-prob-card{background:var(--white);padding:clamp(20px,2.4vw,28px) clamp(18px,2vw,24px)}
-.dash-prob-k{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--cta);margin-bottom:10px}
-.dash-prob-card h3{max-width:16ch;margin-bottom:8px}
-.dash-prob-card p{color:var(--steel);font-size:14.5px;line-height:1.55;max-width:32ch;margin:0}
-
-/* ── Hierarchy framework ── */
-.dash-hierarchy{background:var(--white);border-top:1px solid var(--rule)}
-.dash-hierarchy-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:clamp(32px,5vw,64px);align-items:start;margin-top:clamp(28px,4vw,52px)
-}
-.dash-hierarchy-col h3{font-size:clamp(1.05rem,1.5vw,1.25rem);margin-bottom:14px}
-.dash-hierarchy-col p{color:var(--steel);font-size:14.5px;line-height:1.55;margin:0 0 12px}
-.dash-hierarchy-col ul{list-style:none;display:grid;gap:9px}
-.dash-hierarchy-col li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.4}
-.dash-hierarchy-col li:before{content:"";width:6px;height:6px;margin-top:6px;background:var(--blue);flex:none}
-.dash-hierarchy-example{margin-top:clamp(28px,4vw,52px);min-width:0}
-.dash-hierarchy-example .lab{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2);margin-bottom:12px}
-.dash-hierarchy-example .pu{box-shadow:var(--shadow-product)}
-.dash-hierarchy-example .pu-rows li{grid-template-columns:minmax(44px,.65fr) minmax(0,1fr) auto auto}
-.dash-hierarchy-example .pu-rows .pu-act{padding:5px 8px;font-size:9px;letter-spacing:.08em;background:transparent;border:1px solid var(--ink-line);color:#DDE2E7}
-.dash-hierarchy-example .pu-rows .pu-act:hover{background:rgba(79,70,229,.16);border-color:var(--cta);color:#fff}
-
-/* ── Role-based views ── */
-.dash-roles{background:var(--paper-2);border-top:1px solid var(--rule)}
-.dash-roles .wrap{padding-block:clamp(56px,7vw,88px)}
-.dash-role-tabs{display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0;list-style:none}
-.dash-role-tabs li{flex:1}
-.dash-role-tab{
-  display:block;width:100%;padding:12px 14px;text-align:center;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--steel-2);background:var(--paper);border-bottom:2px solid var(--rule);
-  cursor:pointer;transition:all var(--t-fast) var(--e)
-}
-.dash-role-tab.on{color:var(--cta);border-color:var(--cta);background:var(--white)}
-.dash-role-panel{display:none;padding:clamp(24px,2.8vw,36px) clamp(20px,2vw,28px);background:var(--white)}
-.dash-role-panel.on{display:block}
-.dash-role-panel h3{margin-bottom:12px}
-.dash-role-panel ul{list-style:none;display:grid;gap:9px;margin-top:14px}
-.dash-role-panel li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14.5px;color:var(--ink);line-height:1.4}
-.dash-role-panel li:before{content:"";width:6px;height:6px;margin-top:6px;background:var(--blue);flex:none}
-
-/* ── ShiftRail proof ── */
-.dash-proof{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
-.dash-proof .wrap{padding-block:clamp(80px,10vw,140px)}
-.dash-proof .eyebrow{color:var(--ink-dim)}
-.dash-proof h2{color:#fff;margin-top:18px;max-width:16ch}
-.dash-proof .lede{color:#8C98A4;margin-top:16px}
-.dash-proof-cols{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:1px;background:var(--ink-line);margin-top:clamp(28px,4vw,52px);border:1px solid var(--ink-line)
-}
-.dash-proof-col{background:#12181E;padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,24px)}
-.dash-proof-col .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-.dash-proof-col h3{color:#fff;font-size:clamp(1.05rem,1.5vw,1.25rem);margin-bottom:8px}
-.dash-proof-col p{color:#8C98A4;font-size:14.5px;line-height:1.55;margin:0}
-.dash-metrics{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1px;background:var(--ink-line);margin-top:clamp(32px,4.2vw,52px);border:1px solid var(--ink-line)
-}
-.dash-metrics div{background:var(--ink);padding:clamp(18px,2.2vw,26px) clamp(14px,1.8vw,22px)}
-.dash-metrics b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(1.45rem,2.6vw,2rem);letter-spacing:-.04em;color:var(--lime);line-height:.9}
-.dash-metrics span{display:block;margin-top:8px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
-.dash-proof-cta{margin-top:28px}
-.dash-proof-note{margin-top:22px;font-size:13.5px;line-height:1.6;color:#8C98A4;max-width:62ch}
-
-/* ── Related services ── */
-.dash-related{background:var(--paper-2);border-top:1px solid var(--rule)}
-.dash-related .wrap{padding-block:clamp(56px,7vw,88px)}
-.dash-related-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:clamp(24px,3vw,36px);margin-top:clamp(24px,3vw,40px)
-}
-.dash-related-card{background:var(--white);border:1px solid var(--rule);padding:clamp(22px,2.8vw,32px)}
-.dash-related-card h3{margin-bottom:10px}
-.dash-related-card p{color:var(--steel);font-size:14.5px;line-height:1.55;margin:0 0 16px}
-.dash-related-card a{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cta);transition:all var(--t-fast) var(--e)}}
-.dash-related-card a:hover{gap:12px}
-
-/* ── FAQ ── */
-.faq-sec{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px}
-.faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
-.faq-grid > div:first-child{position:sticky;top:112px}
-.faq-grid .d2{margin-top:18px;max-width:13ch}
-.faq-grid .lede{margin-top:18px}
-.faq-list{border-top:1px solid var(--rule)}
-.faq-item{border-bottom:1px solid var(--rule)}
-.faq-q{
-  width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
-  gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
-  padding:clamp(20px,2.4vw,26px) 0;min-height:48px;transition:padding-left .45s var(--e)
-}
-.faq-q:hover,.faq-q:focus-visible{padding-left:8px}
-.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel-2);transition:color var(--t-fast) var(--e);padding-top:5px}
-.faq-item.open .qn{color:var(--cta)}
-.faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
-.faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
-.faq-q .qi:before,.faq-q .qi:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .4s var(--e)}
-.faq-q .qi:after{transform:rotate(90deg)}
-.faq-item.open .qi:after{transform:rotate(0)}
-.faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--e),visibility 0s linear .5s}
-.faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--e),visibility 0s linear 0s}
-.faq-a>div{overflow:hidden}
-.faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
-.faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
-.faq-a-in a{border-bottom:1px solid var(--rule)}
-.faq-a-in a:hover{border-color:var(--ink);color:var(--ink)}
-.faq-side .btn{margin-top:24px}
-
-@media(max-width:1024px){
-  .dash-hero-grid,.dash-hierarchy-grid,.dash-role-tabs + .dash-role-panel,.dash-proof-cols,.dash-proof-split,.dash-related-grid,.faq-grid,.dash-fit-rail,.dash-cred-grid,.dash-role-panel.on,.dash-role-layout{grid-template-columns:1fr}
-  .dash-flow{flex-direction:column}
-  .dash-flow li{border-right:0;border-bottom:1px solid var(--rule);min-width:0}
-  .dash-flow li:last-child{border-bottom:0}
-  .dash-proof-split{display:flex;flex-direction:column;gap:clamp(28px,4vw,40px)}
-  .dash-proof-split > .dash-proof-stack{order:-1}
-  .dash-hero-copy .d1{max-width:none}
-  .dash-flow li:not(:last-child):after{content:none}
-  .faq-grid > div:first-child{position:static}
-  .dash-prob-grid{grid-template-columns:1fr}
-  .cta-row{align-items:flex-start}
-}
-@media(max-width:640px){
-  .hero-actions{flex-direction:column;align-items:stretch}
-  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .dash-filters{gap:8px}
-  .dash-chip{font-size:8.5px;padding:5px 8px}
-  .dash-row{grid-template-columns:auto 1fr auto;gap:8px}
-  .dash-owner{display:none}
-  .dash-role-tabs{flex-direction:column}
-  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
-  .faq-a-in{padding-left:44px}
-  .cta-row{flex-direction:column;align-items:stretch}
-}
-@media(max-width:390px){
-  body.page-dashboard .d1{font-size:2.28rem}
-  .hero-actions{align-items:stretch}
-  .hero-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .dash-row.exc .dash-stat{display:none}
-}
-
-@media(hover:none){
-  .dash-chip{cursor:auto}
-}
-@media(prefers-reduced-motion:reduce){
-  html:focus-within{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
-  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
-  .mask span i{transform:none!important}
-  .dash-board[data-state="done"] .dash-action.done{transform:none}
-}
-</style>
 <link rel="stylesheet" href="/shared/page-inquiry.css">
 <link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/dashboard.css?v=dash4">
+
 </head>
 <body class="page-dashboard">
 <a class="skip" href="#main">Skip to content</a>
@@ -511,7 +199,7 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="#inquire" class="btn sm"><span>Discuss dashboard</span><i>→</i></a>
+        <a href="#inquire" class="btn sm"><span>Discuss your dashboard</span><i>→</i></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -570,25 +258,21 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
-  <a href="#about-service"><span>About</span><i></i></a>
   <a href="#problems"><span>Problems</span><i></i></a>
   <a href="#hierarchy"><span>Flow</span><i></i></a>
   <a href="#roles"><span>Roles</span><i></i></a>
-  <a href="#proof"><span>ShiftRail</span><i></i></a>
+  <a href="#proof"><span>Proof</span><i></i></a>
   <a href="#related"><span>Related</span><i></i></a>
-  <a href="#credibility"><span>Credibility</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
 <nav class="mob-chips" id="mobChips" aria-label="Page sections">
   <a href="#overview">Overview</a>
-  <a href="#about-service">About</a>
   <a href="#problems">Problems</a>
   <a href="#hierarchy">Flow</a>
   <a href="#roles">Roles</a>
-  <a href="#proof">ShiftRail</a>
+  <a href="#proof">Proof</a>
   <a href="#related">Related</a>
-  <a href="#credibility">Credibility</a>
   <a href="#faq">FAQ</a>
 </nav>
 
@@ -608,22 +292,15 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
           <span><i>Custom dashboards that show</i></span>
           <span><i>what needs attention.</i></span>
         </h1>
-        <p class="lede" data-r>Kriva designs and builds custom dashboards for operational reporting and data visualization—role-based views, exception queues, and actions integrated with your existing systems, not another wall of equal-weight charts.</p>
+        <p class="lede" data-r>Kriva designs and builds custom dashboards for operational reporting and data visualization — role-based views, exception queues, and actions integrated with your existing systems, not another wall of equal-weight charts.</p>
         <div class="hero-actions" data-r>
-          <a href="#inquire" class="btn"><span>Discuss Your Dashboard</span><i>→</i></a>
-          <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See a Dashboard Case Study</span><i>→</i></a>
-        </div>
-        <div class="dash-cap-strip" data-r aria-label="Dashboard capabilities">
-          <span>Dashboard design</span>
-          <span>Operational reporting</span>
-          <span>Data visualization</span>
-          <span>Role-based views</span>
-          <span>System integration</span>
+          <a href="#inquire" class="btn"><span>Discuss your dashboard</span><i>→</i></a>
+          <a href="#proof" class="btn ghost"><span>See a dashboard case study</span><i>→</i></a>
         </div>
         <p class="dash-trust" data-r>
+          <span>You own the design and code</span>
           <span>US-hour collaboration</span>
           <span>No subcontracting</span>
-          <span>Client-owned design and code</span>
         </p>
       </div>
       <div class="dash-hero-visual" data-r>
@@ -668,7 +345,7 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
             </div>
           </div>
         </div>
-        <p class="cap-note"><span class="flag">Conceptual UI</span> Exception appears · risk becomes primary · assign from row · count updates</p>
+        <p class="dash-cap">Illustrative exception view — not a live client product.</p>
       </div>
     </div>
   </div>
@@ -676,60 +353,62 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
 
 <section class="dash-fit" id="about-service" aria-labelledby="fitH">
   <div class="wrap">
-    <p class="eyebrow" data-r>What Kriva builds</p>
     <h2 class="sr" id="fitH">Custom dashboard design and development for operational and SaaS teams</h2>
     <div class="dash-fit-rail" data-s>
-      <article>
-        <p class="k">Who it is for</p>
-        <h3>Ops, management, finance, and service teams drowning in data</h3>
-        <p>Carriers, SaaS products, and service orgs where reporting exists but the morning scan still happens in a spreadsheet—or every role sees the same cluttered screen.</p>
+      <article class="dash-card">
+        <h3>Who it's for</h3>
+        <p>Ops, management, finance, and service teams drowning in data. Carriers, SaaS products, and service orgs where reporting exists but the morning scan still happens in a spreadsheet — or every role sees the same cluttered screen.</p>
       </article>
-      <article>
-        <p class="k">What we deliver</p>
-        <h3>Custom dashboard design and development</h3>
-        <p>Operational dashboards, admin panels, and reporting views with clear hierarchy, role-based filters, data visualization, and integration with CRMs, ERPs, APIs, and databases you already run.</p>
+      <article class="dash-card">
+        <h3>What we deliver</h3>
+        <p>Custom dashboard design and development. Operational dashboards, admin panels, and reporting views with clear hierarchy, role-based filters, data visualization, and integration with CRMs, ERPs, APIs, and databases you already run.</p>
       </article>
-      <article>
-        <p class="k">Problems we solve</p>
-        <h3>Scattered data, weak signals, spreadsheet workarounds</h3>
-        <p>When charts compete for attention, filters do not reach the right records, or exports replace action—we map the decision first, then design the view that moves users from information to action.</p>
+      <article class="dash-card">
+        <h3>Problems we solve</h3>
+        <p>Scattered data, weak signals, spreadsheet workarounds. When charts compete for attention, filters don't reach the right records, or exports replace action — we map the decision first, then design the view that moves users from information to action.</p>
       </article>
     </div>
-    <p class="dash-fit-foot" data-r>Kriva is a product design and engineering studio—not a dashboard product vendor. You own the designs, code, and documentation after launch.</p>
+    <p class="dash-fit-foot" data-r>Kriva is a product design and engineering studio — not a dashboard product vendor. You own the designs, code, and documentation after launch.</p>
   </div>
 </section>
 
-<section class="sect dash-problems" id="problems" aria-labelledby="probH">
+<section class="dash-problems" id="problems" aria-labelledby="probH">
   <div class="wrap">
     <p class="eyebrow" data-r>Dashboard problems</p>
     <h2 class="d2" id="probH" data-r>The data exists. The decision is still difficult.</h2>
     <p class="lede" data-r>Users see charts but cannot prioritize. Filters do not reach the right records. Actions require context switching or exporting.</p>
-    <div class="dash-prob-grid" data-s>
-      <article class="dash-prob-card">
-        <span class="dash-prob-k">01</span>
-        <h3 class="d3">Scan failure</h3>
-        <p>Everything has equal visual weight. Users cannot identify what matters first. Priority is invisible.<span class="cons">Impact · slow decisions, missed exceptions, reactive firefighting</span></p>
+    <div class="dash-frac" data-r>
+      <article>
+        <span class="n num">01</span>
+        <div>
+          <h3 class="d3">Scan failure</h3>
+          <p>Everything has equal visual weight. Users cannot identify what matters first. Priority is invisible.<span class="cons">IMPACT: slow decisions, missed exceptions, reactive firefighting.</span></p>
+        </div>
       </article>
-      <article class="dash-prob-card">
-        <span class="dash-prob-k">02</span>
-        <h3 class="d3">Widget sprawl</h3>
-        <p>Each stakeholder request adds another chart. Dashboards grow without improving the decision or action.<span class="cons">Impact · cognitive overload, declining daily use</span></p>
+      <article>
+        <span class="n num">02</span>
+        <div>
+          <h3 class="d3">Widget sprawl</h3>
+          <p>Each stakeholder request adds another chart. Dashboards grow without improving the decision or action.<span class="cons">IMPACT: cognitive overload, declining daily use.</span></p>
+        </div>
       </article>
-      <article class="dash-prob-card">
-        <span class="dash-prob-k">03</span>
-        <h3 class="d3">Spreadsheet workarounds</h3>
-        <p>Users export data because filters, tables, and actions do not match the real workflow.<span class="cons">Impact · double entry, stale system data, no audit trail</span></p>
+      <article>
+        <span class="n num">03</span>
+        <div>
+          <h3 class="d3">Spreadsheet workarounds</h3>
+          <p>Users export data because filters, tables, and actions do not match the real workflow.<span class="cons">IMPACT: double entry, stale system data, no audit trail.</span></p>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sect dash-hierarchy" id="hierarchy" aria-labelledby="hierH">
+<section id="hierarchy" aria-labelledby="hierH">
   <div class="wrap">
     <p class="eyebrow" data-r>Decision flow</p>
-    <h2 class="d2" id="hierH" data-r>Question → Signal → Relevant Records → Action</h2>
+    <h2 class="d2" id="hierH" data-r>Question → Signal → Relevant Records → Action.</h2>
     <p class="lede" data-r>Every dashboard answers one primary question. The signal shows what requires attention. Records provide evidence. Actions let users complete work without leaving the view.</p>
-    <ol class="dash-flow" data-r aria-label="Dashboard decision flow">
+    <ol class="dash-flow" data-s aria-label="Dashboard decision flow">
       <li>
         <span class="sn">01 · Question</span>
         <h3>What must you decide now?</h3>
@@ -748,29 +427,24 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
       <li>
         <span class="sn">04 · Action</span>
         <h3>What can you do here?</h3>
-        <p>Assign owner or resolve—inline, without context switching.</p>
+        <p>Assign owner or resolve — inline, without context switching.</p>
       </li>
     </ol>
     <figure class="dash-flow-visual" data-r>
       <img src="/media/solutions/trucking/fleet-dashboard.svg" alt="Fleet operations dashboard showing exception signal, filtered records, and inline assignment actions" width="1200" height="750" loading="lazy" decoding="async">
-      <figcaption class="lab">ShiftRail fleet dashboard · operational reporting view</figcaption>
+      <figcaption class="dash-cap">ShiftRail fleet dashboard — operational reporting view.</figcaption>
     </figure>
   </div>
 </section>
 
-<section class="sect dash-roles" id="roles" aria-labelledby="rolesH">
+<section id="roles" aria-labelledby="rolesH">
   <div class="wrap">
     <p class="eyebrow" data-r>Role-based views</p>
     <h2 class="d2" id="rolesH" data-r>The same data should not create the same screen for every role.</h2>
-    <p class="lede" data-r>Operations, management, finance, and sales/service teams answer different questions. Hierarchy, KPIs, filters, and actions are shaped to fit—not duplicated across roles.</p>
-    <ul class="dash-role-tabs" role="tablist" aria-label="Dashboard views by role">
-      <li role="presentation"><button class="dash-role-tab on" role="tab" data-role="ops" aria-selected="true" aria-controls="role-ops" id="tab-ops">Operations</button></li>
-      <li role="presentation"><button class="dash-role-tab" role="tab" data-role="mgmt" aria-selected="false" aria-controls="role-mgmt" id="tab-mgmt">Management</button></li>
-      <li role="presentation"><button class="dash-role-tab" role="tab" data-role="finance" aria-selected="false" aria-controls="role-finance" id="tab-finance">Finance</button></li>
-      <li role="presentation"><button class="dash-role-tab" role="tab" data-role="sales" aria-selected="false" aria-controls="role-sales" id="tab-sales">Sales / Service</button></li>
-    </ul>
-    <div class="dash-role-panel on" id="role-ops" role="tabpanel" aria-labelledby="tab-ops">
-      <div>
+    <p class="lede" data-r>Operations, management, finance, and sales/service teams answer different questions. Hierarchy, KPIs, filters, and actions are shaped to fit — not duplicated across roles.</p>
+    <div class="dash-roles-grid" data-s>
+      <article class="dash-card">
+        <svg class="dash-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
         <h3>Operations: Exceptions and SLA risk first</h3>
         <ul>
           <li>Exceptions and SLA risk above the fold—not buried in a report</li>
@@ -778,11 +452,9 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
           <li>Filters lead directly to actionable records</li>
           <li>Inline assignment, reassignment, and resolution</li>
         </ul>
-      </div>
-      <img src="/media/solutions/trucking/fleet-dashboard.svg" alt="Operations dashboard prioritizing unowned loads and SLA exceptions with inline actions" width="960" height="600" loading="lazy" decoding="async">
-    </div>
-    <div class="dash-role-panel" id="role-mgmt" role="tabpanel" aria-labelledby="tab-mgmt" hidden>
-      <div>
+      </article>
+      <article class="dash-card">
+        <svg class="dash-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
         <h3>Management: One primary signal, drill-down to evidence</h3>
         <ul>
           <li>One primary KPI or risk count at the top</li>
@@ -790,11 +462,9 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
           <li>Exception count as the actionable element</li>
           <li>Drill-down to operational records without leaving context</li>
         </ul>
-      </div>
-      <img src="/media/solutions/saas/dashboard-admin.svg" alt="Management dashboard with primary KPI signal and supporting trend metrics" width="960" height="600" loading="lazy" decoding="async">
-    </div>
-    <div class="dash-role-panel" id="role-finance" role="tabpanel" aria-labelledby="tab-finance" hidden>
-      <div>
+      </article>
+      <article class="dash-card">
+        <svg class="dash-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14v4"/></svg>
         <h3>Finance: Reconciliation status and exception queues</h3>
         <ul>
           <li>Sync status and posting exceptions surfaced first</li>
@@ -802,11 +472,9 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
           <li>Row-level detail for audit and investigation</li>
           <li>Links to source records in accounting systems</li>
         </ul>
-      </div>
-      <img src="/media/solutions/accounting/reconciliation.svg" alt="Finance reconciliation dashboard showing sync status, posting exceptions, and period filters" width="960" height="600" loading="lazy" decoding="async">
-    </div>
-    <div class="dash-role-panel" id="role-sales" role="tabpanel" aria-labelledby="tab-sales" hidden>
-      <div>
+      </article>
+      <article class="dash-card">
+        <svg class="dash-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
         <h3>Sales / Service: Pipeline health and next actions</h3>
         <ul>
           <li>Pipeline stage density and stalled deals above the fold</li>
@@ -814,103 +482,73 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
           <li>Next-action prompts—not passive record lists</li>
           <li>Activity and forecast trends as supporting context</li>
         </ul>
-      </div>
-      <img src="/media/work/crmpulse/hero.svg" alt="Sales dashboard showing pipeline stages, stalled deals, and rep-level next actions" width="960" height="600" loading="lazy" decoding="async">
+      </article>
     </div>
   </div>
 </section>
 
-<section class="dash-proof on-ink" id="proof" aria-labelledby="proofH">
+<section id="proof" aria-labelledby="proofH">
   <div class="wrap">
     <p class="eyebrow" data-r>Verified work</p>
-    <h2 class="d2" id="proofH" data-r>ShiftRail fleet morning scan</h2>
+    <h2 class="d2" id="proofH" data-r>ShiftRail fleet morning scan.</h2>
     <div class="dash-proof-split" data-r>
       <div>
-        <p class="lede">A US trucking dispatch desk running 400+ daily routes rebuilt its morning scan—exception risk moved from a weekly report into a dashboard with SLA and ownership above the fold every shift.</p>
-        <dl class="dash-proof-story">
-          <div><dt>Context</dt><dd>400+ daily routes across three hubs. Operators ran a parallel spreadsheet because the TMS dashboard could not surface unowned loads or SLA risk in one view.</dd></div>
-          <div><dt>Problem</dt><dd>Exception risk lived in a report opened once a week. Assignment and resolution required context switching between TMS, sheet, and phone.</dd></div>
-          <div><dt>What Kriva built</dt><dd>Fleet morning-scan dashboard: exceptions and at-risk loads above the fold, row-level SLA, inline assignment, and supervisor audit on overrides.</dd></div>
-          <div><dt>Result</dt><dd>Operators assign and resolve from one view. Supervisors audit without leaving the board. The spreadsheet queue was retired post-launch.</dd></div>
-        </dl>
-        <div class="dash-metrics">
-          <div><b class="num">−32%</b><span>Manual handle time per load action</span></div>
-          <div><b class="num">11 min</b><span>Avg exception response time</span></div>
-          <div><b class="num">400+</b><span>Daily routes on the desk</span></div>
+        <p class="dash-proof-copy">A US trucking dispatch desk running 400+ daily routes across three hubs rebuilt its morning scan with us. Exception risk lived in a report opened once a week, and operators ran a parallel spreadsheet because the TMS dashboard could not surface unowned loads or SLA risk in one view. We built a fleet morning-scan dashboard: exceptions and at-risk loads above the fold, row-level SLA, inline assignment, and supervisor audit on overrides. Operators now assign and resolve from one view — and the spreadsheet queue was retired post-launch.</p>
+        <div class="dash-chips">
+          <span><b>−32%</b> manual handle time per load action</span>
+          <span><b>11 min</b> avg exception response</span>
+          <span><b>99.4%</b> console uptime post-launch</span>
         </div>
-        <a href="/work/shiftrail-dispatch" class="btn on-dark dash-proof-cta"><span>Read the ShiftRail case study</span><i>→</i></a>
-        <p class="dash-proof-note">Metrics are signed-off project outcomes from the ShiftRail dispatch engagement.</p>
+        <div class="proof-cta">
+          <a href="/work/shiftrail-dispatch" class="btn"><span>Read the ShiftRail case study</span><i>→</i></a>
+        </div>
+        <p class="proof-note">Metrics are signed-off project outcomes from the ShiftRail dispatch engagement. Illustrative UI only — no client data shown.</p>
       </div>
-      <div class="dash-proof-stack">
-        <div class="dash-proof-before" role="img" aria-label="Before: dispatch exception queue maintained in a spreadsheet beside the TMS">
-          <b>Before · spreadsheet queue</b>
-          <span><i>Load</i><i>Lane</i><i>Owner</i><i>Status</i></span>
-          <span><i>#4821</i><i>DAL→PHX</i><i>—</i><i>Sheet</i></span>
-          <span><i>#4835</i><i>HOU→AUS</i><i>—</i><i>At risk</i></span>
-          <span><i>#4840</i><i>ATL→CLT</i><i>—</i><i>Unowned</i></span>
-        </div>
-        <img src="/media/solutions/trucking/fleet-dashboard.svg" alt="After: ShiftRail fleet dashboard with exception signal, filtered records, and inline assignment" width="960" height="600" loading="lazy" decoding="async">
+      <div class="dash-proof-visual">
+        <figure>
+          <img src="/media/solutions/trucking/fleet-dashboard.svg" alt="ShiftRail fleet morning-scan dashboard with exceptions and at-risk loads above the fold" width="960" height="600" loading="lazy" decoding="async">
+          <figcaption class="dash-cap">The morning-scan view that replaced the weekly report.</figcaption>
+        </figure>
+        <aside class="dash-pulse">
+          <h3>Sales dashboard case study — <a href="/work/crm-pulse-dashboard">CRMPulse</a>.</h3>
+          <p>Custom HubSpot dashboards and pipeline UX for a B2B sales org. Role-based views matched to how reps actually sell.</p>
+        </aside>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sect dash-related" id="related" aria-labelledby="relH">
+<section class="dash-band" id="related" aria-labelledby="relH">
   <div class="wrap">
     <p class="eyebrow" data-r>Connected capabilities</p>
-    <h2 class="d2 s-title" id="relH" data-r>Services that feed dashboard work</h2>
+    <h2 class="d2" id="relH" data-r>Services that feed dashboard work.</h2>
+    <p class="lede" data-r>Dashboards depend on the records, integrations, and finance data behind them.</p>
     <div class="dash-related-grid" data-s>
-      <article class="dash-related-card">
-        <h3 class="d3">CRM &amp; ops console development</h3>
+      <article class="dash-card">
+        <h3>CRM &amp; ops console development</h3>
         <p>Operational consoles and workflow surfaces that supply the records, filters, and actions your dashboards depend on.</p>
-        <a href="/services/crm-development">Explore CRM development <i>→</i></a>
+        <a class="dash-text-link" href="/services/crm-development">Explore CRM development →</a>
       </article>
-      <article class="dash-related-card">
-        <h3 class="d3">Integrations &amp; APIs</h3>
-        <p>Connect CRMs, ERPs, accounting systems, and internal APIs so dashboard data stays current—with visible sync status and error recovery.</p>
-        <a href="/services/api-integrations">Explore integrations <i>→</i></a>
+      <article class="dash-card">
+        <h3>Integrations &amp; APIs</h3>
+        <p>Connect CRMs, ERPs, accounting systems, and internal APIs so dashboard data stays current — with visible sync status and error recovery.</p>
+        <a class="dash-text-link" href="/services/api-integrations">Explore integrations →</a>
       </article>
-      <article class="dash-related-card">
-        <h3 class="d3">Accounting &amp; finance reporting</h3>
+      <article class="dash-card">
+        <h3>Accounting &amp; finance reporting</h3>
         <p>Reconciliation dashboards and finance reporting views paired with QuickBooks and Xero integration work.</p>
-        <a href="/solutions/accounting-integrations">Explore finance integrations <i>→</i></a>
+        <a class="dash-text-link" href="/solutions/accounting-integrations">Explore finance integrations →</a>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sect dash-cred" id="credibility" aria-labelledby="credH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Proof &amp; technical credibility</p>
-    <h2 class="d2" id="credH" data-r>Dashboard work you can verify before the first call.</h2>
-    <div class="dash-cred-grid" data-r>
-      <div>
-        <dl class="dash-cred-points">
-          <div><dt>Dispatch dashboard case study</dt><dd><a href="/work/shiftrail-dispatch">ShiftRail</a> — fleet morning-scan dashboard for 400+ daily routes. −32% manual handle time, 11 min avg exception response, 99.4% console uptime post-launch.</dd></div>
-          <div><dt>Sales dashboard case study</dt><dd><a href="/work/crm-pulse-dashboard">CRMPulse</a> — custom HubSpot dashboards and pipeline UX for a B2B sales org. Role-based views matched to how reps actually sell.</dd></div>
-          <div><dt>Data-source integrations</dt><dd>CRMs, ERPs, QuickBooks, Xero, TMS, ELD, and internal APIs—with scheduled and near-real-time refresh where the workflow requires it.</dd></div>
-          <div><dt>Reporting &amp; data modelling</dt><dd>KPI hierarchy, aggregation layers, and filter design mapped to the decisions each role makes—not generic chart libraries.</dd></div>
-          <div><dt>Role &amp; permission handling</dt><dd>Separate views, filters, and actions per role. Admin configuration surfaces where permissions and overrides need audit trails.</dd></div>
-          <div><dt>Dashboard modernization</dt><dd>Redesign inside existing products when architecture allows—without rebuilding the platform from scratch.</dd></div>
-          <div><dt>Post-launch</dt><dd>Designs, code, and documentation transfer to your accounts. Retainer optional—no lock-in.</dd></div>
-        </dl>
-      </div>
-      <aside class="dash-cred-aside">
-        <h3>Buyer questions we answer directly</h3>
-        <p>Can we improve an existing dashboard? Connect multiple data sources? Build role-based views? Replace spreadsheet reporting? Work with our current software or database? We assess the workflow first—then recommend hierarchy, data structure, or integration changes.</p>
-        <a href="/process" class="btn sm"><span>How we deliver</span><i>→</i></a>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<section class="sect faq-sec" id="faq" aria-labelledby="faqH">
+<section class="faq-sec" id="faq" aria-labelledby="faqH">
   <div class="wrap faq-grid">
     <div class="faq-side">
       <p class="eyebrow" data-r>FAQ</p>
-      <h2 class="d2" id="faqH" data-r>About dashboard design</h2>
-      <p class="lede" data-r>Straight answers so the first call starts further along.</p>
-      <a href="#inquire" class="btn ghost" data-r><span>Discuss your dashboard</span><i>→</i></a>
+      <h2 class="d2" id="faqH" data-r>About dashboard design.</h2>
+      <p class="lede" data-r>Straight answers — so the first call starts further along.</p>
     </div>
     <div class="faq-list" data-r>
       <div class="faq-item">
@@ -920,7 +558,7 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
-          <p>Yes. We redesign dashboards, admin panels, and operational views inside your existing product when the architecture allows restyling and restructuring—without rebuilding the platform from scratch.</p>
+          <p>Yes — we redesign inside existing products when the architecture allows, without rebuilding the platform from scratch. We assess the workflow first, then recommend hierarchy, data structure, or integration changes.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -930,70 +568,64 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
-          <p>Yes. Dashboards can pull from CRMs, ERPs, accounting systems, internal APIs, and databases—with scheduled refresh or near-real-time updates where the workflow requires it. Sync status and errors stay visible, not silent.</p>
+          <p>Yes. CRMs, ERPs, QuickBooks, Xero, TMS, ELD, and internal APIs — with scheduled or near-real-time refresh where the workflow requires it, and visible sync status and error recovery instead of silent failures.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">03</span>
-          <span class="qt">Do you build role-based dashboards?</span>
+          <span class="qt">Can dashboards replace spreadsheet reporting?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
-          <p>Yes. Operations, management, finance, and sales/service teams get different primary questions, KPIs, filters, and actions—not the same screen with every widget enabled. Permissions and audit trails are part of the design.</p>
+          <p>That's the most common engagement. Teams export data because filters, tables, and actions don't match the real workflow. We map the decision first, then design the view that moves users from information to action — ShiftRail's parallel spreadsheet queue was retired after launch.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">04</span>
-          <span class="qt">Can dashboards replace spreadsheet reporting?</span>
+          <span class="qt">Can you work with our existing software or database?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
-          <p>When filters, hierarchy, and inline actions match the real workflow—yes. ShiftRail retired a parallel spreadsheet queue once the morning-scan dashboard surfaced exceptions and assignment in one view. We assess whether the problem is the dashboard or the surrounding data structure first.</p>
+          <p>Yes. Dashboards are built on the records your systems already hold, connected through APIs or the database — with separate views, filters, and actions per role, and audit trails where permissions and overrides need them.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
           <span class="qn num">05</span>
-          <span class="qt">Can you work with our existing software or database?</span>
+          <span class="qt">How do you decide which KPIs to display?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
-          <p>Yes. We work within your design system, component library, and existing data structure. If your API or schema limits the views we recommend, we propose alternatives or advise on what changes would enable better reporting.</p>
+          <p>Every dashboard answers one primary question. KPI hierarchy, aggregation layers, and filter design are mapped to the decisions each role makes — not to a generic chart library. If a chart doesn't change a decision, it doesn't sit above the fold.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
           <span class="qn num">06</span>
-          <span class="qt">How do you decide which KPIs to display?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
-          <p>We start with the user's primary question: what must you know or decide immediately? KPIs that answer that question go above the fold. Supporting metrics and trends follow. We validate through user research, shadow sessions, and prototyping—not stakeholder wish lists.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
-          <span class="qn num">07</span>
           <span class="qt">What happens after launch?</span>
           <span class="qi" aria-hidden="true"></span>
         </button>
-        <div class="faq-a" id="fq7" role="region" aria-labelledby="fqb7"><div><div class="faq-a-in">
-          <p>You own Figma files, design specifications, code, and documentation. Everything transfers to your accounts. Retainer support is optional—no lock-in. Most engagements include post-launch iteration as operators work the new dashboard through peak volume.</p>
+        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
+          <p>Designs, code, and documentation transfer to your accounts. Retainer support is optional, with no lock-in. Iteration continues after go-live as the desk uses the board.</p>
         </div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="inq-sec" id="inquire" aria-labelledby="inqH">
+<section class="dash-contact" id="inquire" aria-labelledby="inqH">
   <div class="wrap inq-grid">
     <div class="inq-copy">
       <p class="eyebrow">Start a conversation</p>
-      <h2 class="d2" id="inqH">Discuss your dashboard.</h2>
-      <p class="lede">Tell us about the dashboard your team keeps rebuilding in a spreadsheet—the report nobody opens, or the screen where every chart has equal weight. We'll review the workflow and determine whether the problem is hierarchy, data structure, integration, or the surrounding system.</p>
-      <p class="inq-help">Need a longer brief, files, or a scheduled fit call? Use the <a href="/contact#brief">contact page</a>. We reply within one business day. NDA available.</p>
+      <h2 class="d2" id="inqH">Show us the dashboard your team keeps rebuilding in a spreadsheet.</h2>
+      <p class="lede">Tell us about the report nobody opens, or the screen where every chart has equal weight. We'll review the workflow and determine whether the problem is hierarchy, data structure, integration, or the surrounding system. No RFP required.</p>
+      <p class="dash-trust">
+        <span>Reply within one business day</span>
+        <span>NDA available</span>
+        <span>No obligation</span>
+      </p>
     </div>
     <div>
       <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
@@ -1026,13 +658,13 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
         <div>
           <label for="inq-details">What dashboard problem are you solving? <span class="req">Required</span></label>
           <textarea id="inq-details" name="details" required rows="4" placeholder="Example: Operations runs a morning scan from a spreadsheet because our TMS dashboard cannot surface unowned loads or SLA risk in one view." aria-describedby="inq-details-hint"></textarea>
-          <p class="inq-note" id="inq-details-hint" style="margin-top:8px;text-transform:none;letter-spacing:0;font-size:13px;line-height:1.5;color:var(--steel-2)">A few sentences on the reporting workflow or current dashboard is enough. No RFP required.</p>
+          <p class="inq-note" id="inq-details-hint" style="margin-top:8px;text-transform:none;letter-spacing:0;font-size:13px;line-height:1.5;color:#8b8c94">A few sentences on the reporting workflow or current dashboard is enough.</p>
           <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
         </div>
         <p class="inq-fail" role="alert"></p>
         <div class="inq-actions">
           <button type="submit" class="btn"><span class="inq-submit-label">Send dashboard inquiry</span><i>→</i></button>
-          <p class="inq-note">Private · not shared. Reply within one business day.</p>
+          <p class="inq-note">Private · not shared</p>
         </div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
@@ -1040,25 +672,6 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
         <h3>Inquiry received.</h3>
         <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-band on-ink" id="contact" aria-labelledby="ctaH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Next step</p>
-    <h2 class="d2" id="ctaH" data-r>Show us the dashboard your team keeps rebuilding in a spreadsheet.</h2>
-    <p class="lede" data-r>Bring the current dashboard, export, or operational question users still cannot answer. KRIVA will help determine whether the problem is hierarchy, data structure, interaction, or the surrounding workflow.</p>
-    <div class="cta-row">
-      <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a discovery call</span><i>→</i></a>
-        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
-      </div>
-      <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA available</span>
-        <span><i>◆</i>No obligation</span>
-      </p>
     </div>
   </div>
 </section>
@@ -1108,13 +721,15 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="151"></p>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="390" height="105"></p>
     <div class="fbase">
       <span>© 2026 Kriva Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
     </div>
   </div>
 </footer>
+
+
 
 
 <script type="application/ld+json">
@@ -1143,7 +758,7 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
       "name": "Can you improve an existing dashboard?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We redesign dashboards, admin panels, and operational views inside your existing product when the architecture allows restyling and restructuring—without rebuilding the platform from scratch."
+        "text": "Yes — we redesign inside existing products when the architecture allows, without rebuilding the platform from scratch. We assess the workflow first, then recommend hierarchy, data structure, or integration changes."
       }
     },
     {
@@ -1151,15 +766,7 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
       "name": "Can you connect multiple data sources?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Dashboards can pull from CRMs, ERPs, accounting systems, internal APIs, and databases—with scheduled refresh or near-real-time updates where the workflow requires it. Sync status and errors stay visible, not silent."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you build role-based dashboards?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Operations, management, finance, and sales/service teams get different primary questions, KPIs, filters, and actions—not the same screen with every widget enabled. Permissions and audit trails are part of the design."
+        "text": "Yes. CRMs, ERPs, QuickBooks, Xero, TMS, ELD, and internal APIs — with scheduled or near-real-time refresh where the workflow requires it, and visible sync status and error recovery instead of silent failures."
       }
     },
     {
@@ -1167,7 +774,7 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
       "name": "Can dashboards replace spreadsheet reporting?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "When filters, hierarchy, and inline actions match the real workflow—yes. ShiftRail retired a parallel spreadsheet queue once the morning-scan dashboard surfaced exceptions and assignment in one view. We assess whether the problem is the dashboard or the surrounding data structure first."
+        "text": "That's the most common engagement. Teams export data because filters, tables, and actions don't match the real workflow. We map the decision first, then design the view that moves users from information to action — ShiftRail's parallel spreadsheet queue was retired after launch."
       }
     },
     {
@@ -1175,7 +782,7 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
       "name": "Can you work with our existing software or database?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We work within your design system, component library, and existing data structure. If your API or schema limits the views we recommend, we propose alternatives or advise on what changes would enable better reporting."
+        "text": "Yes. Dashboards are built on the records your systems already hold, connected through APIs or the database — with separate views, filters, and actions per role, and audit trails where permissions and overrides need them."
       }
     },
     {
@@ -1183,7 +790,7 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
       "name": "How do you decide which KPIs to display?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We start with the user's primary question: what must you know or decide immediately? KPIs that answer that question go above the fold. Supporting metrics and trends follow. We validate through user research, shadow sessions, and prototyping—not stakeholder wish lists."
+        "text": "Every dashboard answers one primary question. KPI hierarchy, aggregation layers, and filter design are mapped to the decisions each role makes — not to a generic chart library. If a chart doesn't change a decision, it doesn't sit above the fold."
       }
     },
     {
@@ -1191,7 +798,7 @@ body.page-dashboard .fbase,body.page-dashboard .fbase a{color:#9AA5B0}
       "name": "What happens after launch?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You own Figma files, design specifications, code, and documentation. Everything transfers to your accounts. Retainer support is optional—no lock-in. Most engagements include post-launch iteration as operators work the new dashboard through peak volume."
+        "text": "Designs, code, and documentation transfer to your accounts. Retainer support is optional, with no lock-in. Iteration continues after go-live as the desk uses the board."
       }
     }
   ]
@@ -1282,18 +889,6 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     });
     btn.setAttribute('aria-expanded', String(!open));
     item.classList.toggle('open', !open);
-  });
-});
-
-document.querySelectorAll('.dash-role-tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const role=btn.getAttribute('data-role');
-    document.querySelectorAll('.dash-role-tab').forEach(t=>{ t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
-    document.querySelectorAll('.dash-role-panel').forEach(p=>{ p.classList.remove('on'); p.hidden=true; });
-    btn.classList.add('on');
-    btn.setAttribute('aria-selected','true');
-    const panel=document.getElementById('role-'+role);
-    if(panel){ panel.classList.add('on'); panel.hidden=false; }
   });
 });
 
