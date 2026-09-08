@@ -27,8 +27,10 @@
   --f-display:'Bricolage Grotesque','Bricolage Fallback',system-ui,-apple-system,sans-serif;
   --f-body:'Bricolage Grotesque','Bricolage Fallback',system-ui,-apple-system,sans-serif;
   --f-mono:'Bricolage Grotesque','Bricolage Fallback',system-ui,-apple-system,sans-serif;
-  --gutter:clamp(16px,4.6vw,80px);
-  --maxw:1360px;
+  /* Viewport edge inset on narrow screens only; not subtracted from --maxw at desktop */
+  --edge:clamp(16px,4.6vw,32px);
+  --gutter:var(--edge);
+  --maxw:1240px;
   --space-1:8px;
   --space-2:12px;
   --space-3:16px;
@@ -81,6 +83,38 @@ html{
 .d3,.d4,h3{font-weight:600}
 .d2,h2,.d1,h1{font-weight:700}
 
-@media(min-width:1600px){
-  :root{--maxw:1440px;--gutter:clamp(56px,6vw,96px)}
+/* Site-wide content container · 1240px content box */
+.wrap,
+.wrap.nav-in,
+footer .wrap,
+.nf,
+.canvas-stage,
+.ins-lead-bar,
+.sol-feat-bar{
+  width:100%;
+  max-width:var(--maxw);
+  margin-inline:auto;
+  box-sizing:border-box;
+}
+@media(max-width:1279px){
+  .wrap,
+  .wrap.nav-in,
+  footer .wrap,
+  .nf,
+  .canvas-stage,
+  .ins-lead-bar,
+  .sol-feat-bar{
+    padding-inline:var(--edge);
+  }
+}
+@media(min-width:1280px){
+  .wrap,
+  .wrap.nav-in,
+  footer .wrap,
+  .nf,
+  .canvas-stage,
+  .ins-lead-bar,
+  .sol-feat-bar{
+    padding-inline:0;
+  }
 }
