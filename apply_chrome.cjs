@@ -35,6 +35,11 @@ const PAGE_CURRENT = {
   "kriva-work-index.html": "work",
   "kriva-careers.html": null,
   "kriva-industries.html": null,
+  "kriva-markets-index.html": null,
+  "kriva-market-us.html": null,
+  "kriva-market-uk.html": null,
+  "kriva-market-uae.html": null,
+  "kriva-market-ca.html": null,
   "kriva-case-fleetflow.html": "work",
   "kriva-case-payroll-pro.html": "work",
   "kriva-case-finance-sync.html": "work",
@@ -262,6 +267,7 @@ const FOOTER_HTML = `<footer>
         <li><a href="/services/graphic-design">Graphic Design</a></li>
         <li><a href="/services/seo-digital-marketing">SEO &amp; Digital Marketing</a></li>
         <li><a href="/industries">Industries</a></li>
+        <li><a href="/markets">Markets</a></li>
         <li><a href="/work">Work</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/process">Process</a></li>

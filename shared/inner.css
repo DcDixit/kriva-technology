@@ -12,6 +12,152 @@
 .cta-band h2{font-size:clamp(2.4rem,6vw,4.6rem);max-width:14ch;letter-spacing:-.032em}
 .wrap{max-width:var(--maxw)}
 
+/* ── Inner page hero · mature editorial band ── */
+.hero.hero--inner{
+  min-height:0;
+  border-bottom:0
+}
+body.page-truck .hero.hero--inner,
+body.page-crm .hero.hero--inner,
+body.page-dashboard .hero.hero--inner,
+body.page-mobile .hero.hero--inner,
+body.page-car .hero.hero--inner{
+  padding:calc(72px + clamp(24px,3vw,40px)) 0 clamp(32px,4vw,48px)
+}
+/* Seamless hero → intro cards (no rule between) */
+body.page-truck .hero.hero--inner + .trk-fit,
+body.page-crm .hero.hero--inner + .crm-fit,
+body.page-dashboard .hero.hero--inner + .dash-fit{
+  padding-top:clamp(32px,4vw,52px) !important;
+  padding-bottom:clamp(56px,7vw,80px) !important
+}
+body.page-mobile .hero.hero--inner + .app-problems,
+body.page-car .hero.hero--inner + .car-problems{
+  padding-top:clamp(40px,5vw,64px) !important
+}
+.hero.hero--inner .crumbs{margin-bottom:0}
+.ip-hero{
+  margin-top:clamp(20px,2.8vw,28px);
+  max-width:min(720px,100%)
+}
+.ip-kicker{
+  font-family:var(--f-mono);
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--steel);
+  margin-bottom:12px
+}
+.ip-title{
+  font-family:var(--f-display);
+  font-weight:700;
+  font-size:clamp(1.55rem,2.6vw,2.15rem);
+  line-height:1.2;
+  letter-spacing:-.024em;
+  color:var(--ink);
+  margin:0 0 clamp(14px,2vw,20px);
+  max-width:28ch
+}
+.ip-title--lines{max-width:none !important}
+.ip-title--lines span{
+  display:block;
+  white-space:nowrap
+}
+@media(max-width:520px){
+  .ip-title--lines span{white-space:normal}
+}
+.ip-desc{
+  margin:0 0 clamp(22px,2.8vw,28px);
+  font-size:15px;
+  line-height:1.6;
+  color:var(--steel);
+  max-width:48ch
+}
+.ip-actions{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px 12px
+}
+.ip-actions .btn.sm{
+  padding:11px 20px;
+  min-height:42px
+}
+.ip-meta{
+  margin:clamp(18px,2.4vw,24px) 0 0;
+  font-family:var(--f-mono);
+  font-size:10px;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--steel-2)
+}
+@media(max-width:768px){
+  body.page-truck .hero.hero--inner,
+  body.page-crm .hero.hero--inner,
+  body.page-dashboard .hero.hero--inner,
+  body.page-mobile .hero.hero--inner,
+  body.page-car .hero.hero--inner{
+    padding:calc(58px + 20px) 0 28px
+  }
+  .ip-title{max-width:none;font-size:clamp(1.45rem,5.5vw,1.85rem)}
+  .ip-actions{flex-direction:column;align-items:stretch}
+  .ip-actions .btn{width:100%;justify-content:center}
+}
+
+/* ── Problem rows · subtle visual cards ── */
+body.page-truck .trk-frac article,
+body.page-crm .crm-frac article,
+body.page-dashboard .dash-frac article,
+body.page-mobile .app-frac article,
+body.page-car .car-frac article{
+  grid-template-columns:56px minmax(0,1fr) minmax(148px,196px);
+  align-items:center
+}
+.frac-viz{
+  margin:0;
+  align-self:center;
+  border:1px solid var(--ink-line);
+  border-radius:8px;
+  overflow:hidden;
+  background:#0a0d10;
+  box-shadow:0 8px 28px rgba(0,0,0,.22);
+  aspect-ratio:6/5;
+  width:100%;
+  max-width:196px
+}
+.frac-viz img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  opacity:.94
+}
+.on-ink .frac-viz,
+body.page-dashboard .dash-problems .frac-viz{
+  border-color:var(--ink-line);
+  box-shadow:0 10px 32px rgba(0,0,0,.35)
+}
+[class$="-frac"] article:hover .frac-viz img{opacity:1}
+@media(max-width:960px){
+  body.page-truck .trk-frac article,
+  body.page-crm .crm-frac article,
+  body.page-dashboard .dash-frac article,
+  body.page-mobile .app-frac article,
+  body.page-car .car-frac article{
+    grid-template-columns:40px minmax(0,1fr);
+    align-items:start
+  }
+  .frac-viz{
+    grid-column:2;
+    max-width:min(240px,100%);
+    margin-top:8px
+  }
+}
+@media(max-width:560px){
+  .frac-viz{max-width:100%}
+}
+
 /* Internal catalog chrome, not for buyers. Keep .slot when it holds a product UI. */
 .aside-card,.hero .brief,.mob-chips{display:none !important}
 .shot .slot:not(:has(.pu)){display:none !important}

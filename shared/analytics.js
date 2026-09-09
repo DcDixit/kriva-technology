@@ -102,6 +102,15 @@
           cta_location: regionOf(a),
           link_url: url.pathname + url.hash
         });
+        return;
+      }
+
+      if (url.origin === location.origin && /^\/markets(\/|$)/.test(url.pathname)) {
+        send('select_content', {
+          content_type: 'market_page',
+          item_id: url.pathname.replace(/\/$/, '') || '/markets',
+          cta_location: regionOf(a)
+        });
       }
     },
     true
@@ -139,4 +148,38 @@
       page_location: location.href
     });
   }
+
+  /* Engagement signals — mark these as Key events in GA4 Admin for conversion tracking. */
+  var scrollMarks = [25, 50, 75, 90];
+  var scrollFired = {};
+  function onScroll() {
+    var doc = document.documentElement;
+    var max = Math.max(doc.scrollHeight - window.innerHeight, 1);
+    var pct = Math.min(100, Math.round((window.scrollY / max) * 100));
+    for (var i = 0; i < scrollMarks.length; i++) {
+      var mark = scrollMarks[i];
+      if (pct >= mark && !scrollFired[mark]) {
+        scrollFired[mark] = true;
+        send('scroll', {
+          percent_scrolled: mark,
+          page_path: location.pathname
+        });
+      }
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var engaged = false;
+  function markEngaged() {
+    if (engaged) return;
+    engaged = true;
+    send('user_engagement', {
+      engagement_type: 'active',
+      page_path: location.pathname
+    });
+  }
+  document.addEventListener('pointerdown', markEngaged, { once: true, passive: true });
+  document.addEventListener('keydown', markEngaged, { once: true, passive: true });
+  setTimeout(markEngaged, 10000);
 })();

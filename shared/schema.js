@@ -25,6 +25,11 @@ const CRUMB_NAME = {
   services: "Services",
   work: "Work",
   insights: "Insights",
+  markets: "Markets",
+  us: "United States",
+  uk: "United Kingdom",
+  uae: "United Arab Emirates",
+  ca: "Canada",
   "trucking-logistics": "Trucking & logistics",
   saas: "SaaS",
   "accounting-integrations": "Accounting integrations",
@@ -94,9 +99,25 @@ function organization() {
       addressRegion: "Gujarat",
       addressCountry: "IN",
     },
-    areaServed: AREA_SERVED.slice(),
+    areaServed: AREA_SERVED.map((code) => ({
+      "@type": "Country",
+      name:
+        { US: "United States", GB: "United Kingdom", AE: "United Arab Emirates", CA: "Canada" }[
+          code
+        ] || code,
+    })),
     knowsAbout: KNOWS_ABOUT.slice(),
     sameAs: SAME_AS.slice(),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "KRIVA software development services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dispatch CRM & TMS development", url: ORIGIN + "/solutions/trucking-logistics" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "B2B SaaS product design", url: ORIGIN + "/solutions/saas" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "QuickBooks & Xero integrations", url: ORIGIN + "/solutions/accounting-integrations" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Auto transport software", url: ORIGIN + "/solutions/car-transportation" } },
+      ],
+    },
   };
 }
 
@@ -106,7 +127,14 @@ function website() {
     "@id": WEB_ID,
     name: "KRIVA Technologies",
     url: ORIGIN,
+    inLanguage: ["en", "en-US", "en-GB", "en-AE", "en-CA"],
     publisher: { "@id": ORG_ID },
+    about: { "@id": ORG_ID },
+    description: ENTITY_DESCRIPTION,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".lede", ".eyebrow"],
+    },
   };
 }
 
@@ -194,6 +222,7 @@ function breadcrumbList(routePath) {
 
 function pageKind(routePath) {
   if (routePath === "/") return "home";
+  if (routePath === "/markets" || /^\/markets\//.test(routePath)) return "market";
   if (routePath === "/faq") return "faq";
   if (/^\/services\/.+/.test(routePath)) return "service";
   if (/^\/solutions\/.+/.test(routePath)) return "solution";
@@ -212,7 +241,7 @@ function graphForPage({ path, url, h1, description, faqs, datePublished }) {
   if (kind === "faq" && faqs && faqs.length) {
     nodes.push(faqPage(faqs, url + "#faq"));
   }
-  if (kind === "service" || kind === "solution") {
+  if (kind === "service" || kind === "solution" || kind === "market") {
     nodes.push(
       serviceNode({
         name: h1,

@@ -24,6 +24,11 @@ const KNOWS_ABOUT = [
   "QuickBooks integration",
   "Xero integration",
   "Driver mobile apps",
+  "Auto transport software",
+  "Car carrier dispatch",
+  "Accounting reconciliation",
+  "SaaS onboarding UX",
+  "Custom software development",
 ];
 
 function vercelConfig() {
@@ -66,6 +71,7 @@ function lastmodFor(file) {
 function priorityFor(routePath) {
   if (routePath === "/") return "1.0";
   if (routePath === "/contact") return "0.9";
+  if (routePath === "/markets" || routePath.startsWith("/markets/")) return "0.85";
   if (
     routePath === "/solutions" ||
     routePath === "/services" ||
@@ -91,7 +97,7 @@ function priorityFor(routePath) {
 }
 
 function changefreqFor(routePath) {
-  if (routePath === "/" || routePath === "/insights") return "weekly";
+  if (routePath === "/" || routePath === "/insights" || routePath.startsWith("/markets")) return "weekly";
   if (routePath.startsWith("/insights/")) return "yearly";
   if (routePath === "/privacy" || routePath === "/terms") return "yearly";
   return "monthly";
