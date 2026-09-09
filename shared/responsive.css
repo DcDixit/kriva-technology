@@ -1,6 +1,13 @@
 /* KRIVA · last-loaded type + responsive recomposition
    Loaded after page CSS. One family (Bricolage Grotesque). Tablet is not mobile. */
 
+/* Container: 1240px content box at desktop; edge inset below 1280px (see tokens.css + chrome.css) */
+@media(min-width:1280px){
+  .wrap,.wrap.nav-in,footer .wrap,.nf,.canvas-stage,.ins-lead-bar,.sol-feat-bar{
+    padding-inline:0 !important
+  }
+}
+
 img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .wrap,.hero-stage,.hero-grid,.ph-grid,.lp-split,.cs-asym,main,article,section{min-width:0}
 h1,h2,h3,.d1,.d2,.d3,.lede{overflow-wrap:break-word}
@@ -152,10 +159,10 @@ body.case .cs-proof b{
   .hero-actions .btn,.ph-actions .btn{width:auto}
 }
 
-/* iPad landscape / small laptop: keep density, don't go full desktop nav assumptions */
+/* iPad landscape / small laptop: balanced hero inside container */
 @media(min-width:1024px) and (max-width:1279px){
-  .hero-stage{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr) !important;align-items:center}
-  body.home .hero-stage{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr) !important;gap:32px}
+  .hero-stage{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;align-items:center}
+  body.home .hero-stage{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr) !important;gap:clamp(32px,4vw,56px)}
   .lp-hero .hero-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) !important}
   .idx-row{grid-template-columns:40px minmax(0,1.1fr) minmax(0,1.4fr) auto !important}
   .idx-row p{grid-column:auto}
@@ -211,10 +218,8 @@ select,textarea{
   }
 }
 
-/* Homepage layout tokens and chrome (hero type uses the global hero scale above) */
+/* Homepage layout tokens (hero type uses the global hero scale above) */
 body.home{
-  --maxw:1240px;
-  --gutter:clamp(20px,4.2vw,64px);
   --sect-space:clamp(52px,8.5vw,112px);
   --space-8:clamp(52px,8vw,112px)
 }

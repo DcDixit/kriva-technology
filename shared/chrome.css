@@ -739,3 +739,49 @@ footer .wrap{padding-block:clamp(48px,5vw,72px) 28px}
   .mm-sol-go i{transition:none !important;transform:none !important}
 }
 
+/* ── Site container · 1240px content width (no inner gutter at desktop) ── */
+:root{
+  --maxw:1240px;
+  --edge:clamp(16px,4.6vw,32px);
+  --gutter:var(--edge);
+}
+.wrap,
+.wrap.nav-in,
+footer .wrap,
+.nf,
+.canvas-stage,
+.ins-lead-bar,
+.sol-feat-bar{
+  width:100%;
+  max-width:var(--maxw) !important;
+  margin-inline:auto;
+  box-sizing:border-box;
+}
+@media(max-width:1279px){
+  .wrap,
+  .wrap.nav-in,
+  footer .wrap,
+  .nf,
+  .canvas-stage,
+  .ins-lead-bar,
+  .sol-feat-bar{
+    padding-inline:var(--edge) !important;
+  }
+}
+@media(min-width:1280px){
+  .wrap,
+  .wrap.nav-in,
+  footer .wrap,
+  .nf,
+  .canvas-stage,
+  .ins-lead-bar,
+  .sol-feat-bar{
+    padding-inline:0 !important;
+  }
+  .chapters,
+  .mob-chips{
+    margin-inline:0 !important;
+    padding-inline:0 !important;
+  }
+}
+
