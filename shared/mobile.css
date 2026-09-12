@@ -97,7 +97,8 @@ body.page-mobile .app-problems h3{color:#fff}
 body.page-mobile .app-problems .lede{color:#8C98A4}
 body.page-mobile .app-problems .app-frac{border-top-color:var(--ink-line)}
 body.page-mobile .app-problems .app-frac article{border-bottom-color:var(--ink-line)}
-body.page-mobile .app-problems .app-frac .n{color:var(--cta)}
+body.page-mobile .app-problems .app-frac .n{color:#3A444E;transition:color .45s var(--e)}
+body.page-mobile .app-problems .app-frac article:hover .n{color:var(--cta)}
 body.page-mobile .app-problems .app-frac p{color:#8C98A4}
 body.page-mobile .app-problems .app-frac .cons{color:var(--amber)}
 
@@ -128,6 +129,22 @@ body.page-mobile .app-card li{
   font-size:15px;
   line-height:1.55;
   color:#44454c
+}
+body.page-mobile .app-fit{padding-top:0 !important}
+body.page-mobile .app-fit-rail{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px
+}
+body.page-mobile .app-fit-foot{
+  margin-top:24px;
+  font-size:15px;
+  line-height:1.62;
+  color:var(--steel);
+  max-width:62ch
+}
+@media(max-width:900px){
+  body.page-mobile .app-fit-rail{grid-template-columns:1fr}
 }
 .app-ico{
   width:24px;
@@ -261,13 +278,12 @@ body.page-mobile .app-card li{
 .app-detail p{margin:0;color:#8C98A4}
 .app-detail span{display:block;color:#DDE2E7;font-weight:500}
 
-/* ── Problems · numbered rows ── */
+/* ── Problems · numbered rows (matches dash/truck + inner.css viz column) ── */
 .app-frac{margin-top:40px;border-top:1px solid #e6e7ea}
 .app-frac article{
   display:grid;
-  grid-template-columns:56px minmax(0,1fr);
   gap:20px 28px;
-  align-items:start;
+  align-items:center;
   padding:28px 0;
   border-bottom:1px solid #e6e7ea
 }
@@ -295,32 +311,20 @@ body.page-mobile .app-card li{
 /* ── Product paths ── */
 .app-paths-head{
   display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  gap:clamp(24px,4vw,48px);
-  align-items:start
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:clamp(32px,5vw,72px);
+  align-items:center
 }
 .app-path-visual{
-  margin-top:8px;
-  max-width:240px
+  margin:0;
+  width:100%;
+  min-width:0;
+  max-width:none
 }
-.app-path-phone{
-  background:var(--ink);
-  color:#DDE2E7;
-  border:1px solid var(--ink-line);
-  box-shadow:var(--shadow-product);
-  overflow:hidden;
-  border-radius:22px
+.app-path-visual .app-phone{
+  max-width:min(100%,320px);
+  margin-inline:auto
 }
-.app-path-phone .app-status{padding:7px 12px;font-size:9px}
-.app-path-phone .app-screen{padding:16px 12px;gap:12px}
-.app-path-phone .app-header p{font-size:9px}
-.app-path-phone .app-header h2{font-size:1.1rem}
-.app-path-phone .app-action{
-  padding:12px;
-  min-height:42px;
-  font-size:13px
-}
-.app-path-phone .app-detail{gap:4px;font-size:12px}
 .app-path-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -402,45 +406,84 @@ body.page-mobile .app-card li{
   color:var(--cta)
 }
 
-/* ── Engineering flow diagram ── */
-.app-flow{
+/* ── Engineering + backend · system path stepper ── */
+.app-backend-flow{
+  list-style:none;
   display:grid;
-  gap:20px;
-  margin-top:40px
-}
-.app-flow-row{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:stretch;
-  gap:12px
-}
-.app-flow-box{
-  flex:1 1 160px;
-  min-width:0;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  padding:20px 16px;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  margin:40px 0 0;
+  padding:0;
   background:#fff;
   border:1px solid #e6e7ea;
   border-radius:12px;
-  font-size:15px;
-  line-height:1.4;
-  color:#111114;
-  font-weight:600
+  overflow:hidden
 }
-.app-flow-arrow{
-  flex:none;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-width:28px;
-  font-size:18px;
+.app-backend-flow li{
+  position:relative;
+  min-width:0;
+  padding:clamp(20px,2.4vw,24px);
+  border-right:1px solid #e6e7ea
+}
+.app-backend-flow li:last-child{border-right:0}
+.app-backend-flow li:not(:last-child):after{
+  content:"→";
+  position:absolute;
+  top:50%;
+  right:-9px;
+  transform:translateY(-50%);
+  z-index:1;
+  width:18px;
+  height:18px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#f7f8f9;
+  border:1px solid #e6e7ea;
+  font-family:var(--f-mono);
+  font-size:10px;
   color:#6f7078;
   line-height:1
 }
+.app-backend-flow .sn{
+  display:block;
+  font-family:var(--f-mono);
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--cta);
+  margin-bottom:10px
+}
+.app-backend-flow h3{
+  font-family:var(--f-display);
+  font-weight:700;
+  font-size:clamp(.92rem,1.2vw,1.05rem);
+  letter-spacing:-.02em;
+  line-height:1.25;
+  color:#111114;
+  margin:0
+}
 
 /* ── Case study · narrative + constraint lists ── */
+.app-proof-split{margin-top:clamp(32px,4vw,48px)}
+.app-proof-split .d3{margin-top:0}
+.app-proof-split .d3 + .d3{margin-top:28px}
+.app-proof-list{
+  list-style:none;
+  display:grid;
+  gap:8px;
+  margin:12px 0 0;
+  padding:0
+}
+.app-proof-list li{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+  font-size:14.5px;
+  line-height:1.5;
+  color:var(--steel)
+}
+.app-proof-list li:before{content:"·";color:var(--cta)}
+.app-proof-split .proof-cta{margin-top:28px}
 .app-proof-intro{
   margin-top:18px;
   font-size:16px;
@@ -771,8 +814,26 @@ body.page-mobile .mob-chips a[aria-current="true"]{border-color:#111114;color:#1
   .app-proof-grid,
   body.page-mobile .faq-grid,
   body.page-mobile .app-contact .inq-grid{grid-template-columns:1fr}
+  .app-path-visual{
+    order:-1;
+    justify-self:center;
+    width:min(100%,320px)
+  }
   .app-workflow,
   .app-process{grid-template-columns:1fr 1fr}
+  .app-backend-flow{grid-template-columns:1fr}
+  .app-backend-flow li{
+    border-right:0;
+    border-bottom:1px solid #e6e7ea
+  }
+  .app-backend-flow li:last-child{border-bottom:0}
+  .app-backend-flow li:not(:last-child):after{
+    top:auto;
+    bottom:-9px;
+    right:auto;
+    left:24px;
+    transform:rotate(90deg)
+  }
   body.page-mobile .faq-grid > div:first-child{position:static}
   .app-hero-copy .d1{max-width:none}
 }
@@ -787,17 +848,24 @@ body.page-mobile .mob-chips a[aria-current="true"]{border-color:#111114;color:#1
   body.page-mobile .app-contact .inq-form .inq-row{grid-template-columns:1fr}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions .btn{width:100%;justify-content:center}
-  .app-flow-row{flex-direction:column}
-  .app-flow-arrow{transform:rotate(90deg);min-height:20px}
   body.page-mobile .app-contact .inq-actions .btn{width:100%;justify-content:center}
-  .app-frac article{grid-template-columns:40px minmax(0,1fr);gap:14px}
+  .app-frac article{
+    grid-template-columns:40px minmax(0,1fr);
+    gap:14px;
+    align-items:start
+  }
+  .app-frac .frac-viz{
+    grid-column:2;
+    max-width:min(240px,100%);
+    margin-top:8px
+  }
   body.page-mobile .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
   body.page-mobile .faq-a-in{padding-left:44px}
 }
 
 @media(max-width:390px){
   body.page-mobile .d1{font-size:2.28rem}
-  .app-frac article{grid-template-columns:1fr;gap:8px}
+  .app-frac article{gap:12px}
 }
 
 @media(prefers-reduced-motion:reduce){

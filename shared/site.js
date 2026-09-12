@@ -54,18 +54,21 @@ function publicPages() {
 
 function lastmodFor(file) {
   const rel = file.replace(/\\/g, "/");
+  let gitDate = "";
   try {
     const out = execFileSync("git", ["log", "-1", "--format=%cs", "--", rel], {
       cwd: ROOT,
       encoding: "utf8",
       stdio: ["ignore", "pipe", "ignore"],
     }).trim();
-    if (/^\d{4}-\d{2}-\d{2}$/.test(out)) return out;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(out)) gitDate = out;
   } catch (_) {
     /* fall through */
   }
   const st = fs.statSync(path.join(ROOT, file));
-  return st.mtime.toISOString().slice(0, 10);
+  const mtimeDate = st.mtime.toISOString().slice(0, 10);
+  if (!gitDate) return mtimeDate;
+  return gitDate > mtimeDate ? gitDate : mtimeDate;
 }
 
 function priorityFor(routePath) {

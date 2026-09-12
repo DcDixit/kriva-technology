@@ -19,8 +19,8 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css?v=layout1240v2">
 <link rel="preload" href="/brand/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<title>SaaS onboarding patterns that improve activation · KRIVA</title>
-<meta name="description" content="Five B2B SaaS onboarding patterns that improve activation: progressive disclosure, role-based entry, checklists, SSO clarity, and time-to-value.">
+<title>SaaS Onboarding Patterns for Better Activation · KRIVA</title>
+<meta name="description" content="What SaaS onboarding is, why it drives activation, five UX patterns that work (progressive disclosure, role paths, checklists, SSO clarity, time-to-value), and mistakes B2B products should avoid.">
 <link rel="canonical" href="https://krivatechnologies.com/insights/saas-onboarding-patterns">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -39,17 +39,17 @@
 <link rel="alternate" hreflang="x-default" href="https://krivatechnologies.com/insights/saas-onboarding-patterns">
 <link rel="alternate" type="application/rss+xml" title="KRIVA Insights" href="https://krivatechnologies.com/feed.xml">
 <!-- KRIVA_SEO_END -->
-<meta property="og:title" content="SaaS onboarding patterns that improve activation">
-<meta property="og:description" content="Five B2B SaaS onboarding patterns that improve activation: progressive disclosure, role-based entry, checklists, SSO clarity, and time-to-value.">
+<meta property="og:title" content="SaaS Onboarding Patterns for Better Activation · KRIVA">
+<meta property="og:description" content="What SaaS onboarding is, why it drives activation, five UX patterns that work, and mistakes B2B products should avoid.">
 <meta property="og:url" content="https://krivatechnologies.com/insights/saas-onboarding-patterns">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
+<meta property="og:image:alt" content="SaaS onboarding patterns for product activation · KRIVA">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SaaS onboarding patterns that improve activation">
-<meta name="twitter:description" content="Five B2B SaaS onboarding patterns that improve activation: progressive disclosure, role-based entry, checklists, SSO clarity, and time-to-value.">
+<meta name="twitter:title" content="SaaS Onboarding Patterns for Better Activation · KRIVA">
+<meta name="twitter:description" content="What SaaS onboarding is, why it drives activation, five UX patterns that work, and mistakes B2B products should avoid.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <meta property="og:type" content="article">
@@ -154,7 +154,15 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .prose p{margin:0 0 1.15em;color:var(--steel)}
 .prose ul{margin:0 0 1.3em;padding-left:1.2em;color:var(--steel)}
 .prose li{margin:.45em 0;padding-left:.2em}
-.prose li:marker{color:var(--amber)}
+.prose li::marker{color:var(--amber)}
+.prose a{border-bottom:1px solid var(--rule);transition:border-color .3s,color .3s}
+.prose a:hover{border-color:var(--ink);color:var(--ink)}
+.prose figure.arch-frame{margin:2.2em 0 2.4em;background:#0a0d10;border:1px solid var(--ink-line);box-shadow:var(--shadow-product);overflow:hidden}
+.prose figure.arch-frame figcaption{padding:10px 14px 12px;background:#0a0d10;border-top:1px solid var(--ink-line);margin-top:0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
+.art-callout{margin:2em 0;padding:4px 0 4px 20px;border-left:2px solid var(--cta);font-size:15.5px;line-height:1.62;color:var(--ink)}
+.art-callout strong{display:block;margin-bottom:.55em;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em}
+.art-callout ul{margin:.4em 0 0;padding-left:1.1em;color:var(--steel)}
+.art-callout li{margin:.35em 0}
 .rel-sol{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(36px,4vw,56px) 0 0;padding-top:22px;border-top:1px solid var(--rule)}
 .rel-sol a{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color .3s,color .3s}
 .rel-sol a:hover{border-color:var(--ink);color:var(--ink)}
@@ -166,17 +174,35 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .rel-grid .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
 .rel-grid b{display:block;margin-top:10px;font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;line-height:1.2}
 @media(max-width:700px){.rel-grid{grid-template-columns:1fr}}
-@media print{.nav,.sheet,.wa,.cta-band,.progress,.back{display:none!important}.art-hero{padding-top:24px}}
+.mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
+  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
+  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch
+}
+.mob-chips::-webkit-scrollbar{display:none}
+.mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+}
+.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1280px){
+  body.page-insight-saas .mob-chips{display:flex !important}
+  body.page-insight-saas .art-hero,body.page-insight-saas .prose h2{scroll-margin-top:calc(88px + 48px)}
+}
+@media print{.nav,.sheet,.wa,.cta-band,.progress,.back,.mob-chips{display:none!important}.art-hero{padding-top:24px}}
 
 </style>
 
 
+<link rel="stylesheet" href="/shared/product-ui.css">
 <link rel="stylesheet" href="/shared/inner.css?v=pu3">
 <link rel="stylesheet" href="/shared/system.css">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
-<body>
+<body class="page-insight-saas">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="nav">
@@ -317,49 +343,153 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <main id="main">
 
 <div class="progress" id="progress" aria-hidden="true"></div>
+<nav class="mob-chips" id="mobChips" aria-label="Article sections">
+  <a href="#intro">Intro</a>
+  <a href="#progressive">Disclosure</a>
+  <a href="#roles">Roles</a>
+  <a href="#checklist">Checklist</a>
+  <a href="#sso">SSO</a>
+  <a href="#ttv">Time-to-value</a>
+  <a href="#start">Start</a>
+</nav>
 <article>
-  <header class="art-hero">
+  <header class="art-hero" id="intro">
     <div class="wrap">
       <a class="back" href="/insights">← Insights</a>
-      <p class="cat" data-r>Product</p>
+      <p class="cat" data-r>Product Design &amp; UI/UX</p>
       <h1 class="d1" id="h1" data-r style="font-size:clamp(1.85rem,4.2vw,3.15rem)">SaaS onboarding patterns that improve activation</h1>
-      <p class="lede" data-r>Five B2B SaaS onboarding patterns that improve activation: progressive disclosure, role-based entry, checklists, SSO clarity, and time-to-value.</p>
+      <p class="lede" data-r>What user onboarding is in B2B SaaS, why it drives activation and product adoption, and five UX patterns we apply when first-run flows stall — from progressive disclosure to setup health on the dashboard.</p>
       <div class="art-meta" data-r>
         <span><time datetime="2025-12-08">December 2025</time></span>
-        <span>6 min read</span>
-        <span>KRIVA Product Team</span>
+        <span>7 min read</span>
+        <span>KRIVA Product Team · Ahmedabad</span>
       </div>
       <div class="cover cover--editorial" data-r aria-hidden="true">
         <div>
-          <span class="cover-k">Product</span>
-          <p class="cover-q">Five B2B SaaS onboarding patterns that improve activation: progressive disclosure, role-based entry, checklists, SSO clarity, and time-to-value.</p>
+          <span class="cover-k">Product Design &amp; UI/UX</span>
+          <p class="cover-q">Signup is intent. Activation is the product doing its job in the first session.</p>
         </div>
-        <span class="cover-meta">6 min read · December 2025</span>
+        <span class="cover-meta">7 min read · December 2025</span>
       </div>
     </div>
   </header>
   <div class="wrap">
     <div class="prose" data-r>
-      <p>Most SaaS activation problems are onboarding problems. Users sign up with intent, hit friction in the first session, and never return. The expensive part is that the team usually finds out weeks later, in a churn report, long after the moment the user gave up. These five patterns show up repeatedly in projects where activation improved measurably.</p>
-<h2>1. Progressive disclosure beats feature tours</h2>
-<p>Long product tours feel comprehensive and perform terribly. Show users one job-to-be-done path first, import data, invite a teammate, or complete one core action, then unlock advanced features after success.</p>
-<p>The reason tours fail is that they explain the product instead of operating it. A user who has just signed up has one job in mind; every tooltip that is not about that job is a delay. Progressive disclosure inverts the tour: the interface starts with the minimum surface for the first job and grows as the user succeeds. The practical rule we apply: nothing appears in the first session unless it is needed to finish the first job or leads directly to the second one.</p>
-<h2>2. Role-based entry points</h2>
-<p>Admin, manager, and end-user flows should not share the same empty dashboard. Ask role upfront and land each persona on a relevant home screen with one clear next step.</p>
-<p>Role matters because the definition of "activated" differs by persona. An admin is activated when the workspace is configured and colleagues are invited. An end user is activated when they finish one real task inside the product. If both land on the same screen, at least one of them is looking at the wrong product. On <a href="/work/payroll-pro-saas">PayrollPro</a>, separating the admin setup path from the employee first-run path was the single largest structural change of the engagement, most "activation" complaints turned out to be employees stranded on screens built for admins.</p>
-<h2>3. Checklist with real value at each step</h2>
-<p>Checklists work when each item delivers immediate payoff, not when they exist to gamify setup. Tie every step to an outcome the user can see: a report populated, a notification sent, a workflow running.</p>
-<p>A useful test for every checklist item: if the user skipped it, would anything in the product be worse for them today? "Complete your profile" usually fails that test. "Connect your accounting system", after which their real numbers appear on the dashboard, passes it. Order items by payoff, not by your system's setup sequence, and let users finish out of order. The checklist is a value tour, not a compliance form.</p>
-<h2>4. SSO and permissions clarity</h2>
-<p>After SSO rollouts, activation often drops because users land in the wrong workspace or lack permissions. Surface workspace context, explain missing access, and route to an admin, don't dead-end with generic errors.</p>
-<p>The failure pattern is consistent: SSO ships, login friction drops, and activation falls anyway, because authentication was never the real barrier. The barrier is what happens two screens later, when a user can log in but cannot do anything. Every permission error should answer three questions in plain language: what you tried to reach, why you cannot, and who can fix it, with a one-click request to that person. "Contact your administrator" with no route to the administrator is a dead end wearing a helpful tone.</p>
-<h2>5. Time-to-value metrics on the dashboard</h2>
-<p>Show progress toward the user's goal inside the product. On <a href="/work/payroll-pro-saas">PayrollPro</a>, a UK/EU payroll SaaS, a simple 'setup health' panel with three milestones replaced a static welcome modal, so every login showed the distance to a working payroll run instead of a greeting.</p>
-<p>Pick the one metric that means the product is doing its job, first payroll run completed, first invoice sent, first report shared, and make progress toward it visible from day one. Time-to-value is also an internal instrument: instrument each onboarding step, watch where users stall, and fix the step, not the messaging around it. Teams that measure time-to-first-value weekly ship different roadmaps from teams that measure signups.</p>
-<h2>Where to start</h2>
-<p>Do not redesign onboarding in one release. Instrument the current funnel first, find the single step where the most users stall, and apply whichever pattern above addresses it. Onboarding rebuilt in phases beside a live product is the same discipline as any workflow change: one measured step at a time. That is the approach we take on <a href="/solutions/saas">SaaS engagements</a> generally, and it is why most onboarding work starts as a two-week diagnostic rather than a redesign.</p>
+      <p>Most SaaS activation problems are onboarding problems. Users sign up with intent, hit friction in the first session, and never return. Teams often discover it weeks later in a churn report, long after the moment someone gave up. These five patterns show up repeatedly in <a href="/services/product-design">product design</a> and <a href="/solutions/saas">SaaS</a> projects where activation improved measurably.</p>
+
+<h2 id="what">What is SaaS onboarding?</h2>
+<p>SaaS onboarding is the first-run experience that moves a new user from signup to first meaningful value inside the product. In B2B SaaS, that usually means completing one real job — importing data, inviting a teammate, or running a first workflow — not finishing a setup wizard or watching a feature tour.</p>
+<p>Good onboarding is product UX, not marketing copy. It shapes activation, habit formation, and whether the product becomes part of someone's weekly routine. Weak onboarding shows up as drop-off between signup and first success, even when acquisition looks healthy.</p>
+
+<h2 id="why">Why onboarding matters for activation</h2>
+<p>Activation is the moment a user experiences the product doing its job. Onboarding is the path to that moment. When the path is unclear, too long, or built for the wrong persona, activation falls and product adoption never starts.</p>
+<p>The business outcome follows the user experience: stalled onboarding means slower expansion, more support tickets, and renewal risk from accounts that never reached value. Fixing onboarding is often the highest-leverage UX work a SaaS team can do before adding features nobody has activated yet.</p>
+
+<h2 id="patterns">Five onboarding patterns that work</h2>
+<p>Each pattern below answers a specific failure mode. Use them when the data shows users stalling at that step — not as a checklist to ship all at once.</p>
+
+<h2 id="progressive">1. Progressive disclosure beats feature tours</h2>
+<p><strong>What:</strong> Show one job-to-be-done path first — import data, invite a teammate, or complete one core action — then unlock advanced features after success.</p>
+<p><strong>Why:</strong> Tours explain the product instead of operating it. A new user has one job in mind; every tooltip that is not about that job is a delay.</p>
+<p><strong>When to use:</strong> When session replays show users abandoning during a product tour, or when the first screen exposes settings and navigation meant for power users. The practical rule: nothing appears in the first session unless it is needed to finish the first job or leads directly to the second one.</p>
+
+<h2 id="roles">2. Role-based entry points</h2>
+<p><strong>What:</strong> Ask role upfront and land each persona on a relevant home screen with one clear next step. Admin, manager, and end-user flows should not share the same empty dashboard.</p>
+<p><strong>Why:</strong> "Activated" means different things by persona. An admin is activated when the workspace is configured and colleagues are invited. An end user is activated when they finish one real task inside the product.</p>
+<p><strong>When to use:</strong> Multi-seat B2B products where admins and end users share one login surface. On <a href="/work/payroll-pro-saas">PayrollPro</a>, separating the admin setup path from the employee first-run path was the single largest structural change — most "activation" complaints turned out to be employees stranded on screens built for admins.</p>
+<figure class="arch-frame">
+        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>onboarding · role paths</span></div>
+        <div class="pu" role="img" aria-label="Role-based onboarding: admin sees workspace setup, employee sees first task queue.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">First login</p>
+              <p class="pu-meta">Role-based entry</p>
+            </div>
+            <span class="pu-chip cta">Split paths</span>
+          </div>
+          <div class="pu-split">
+            <div class="pu-col">
+              <p class="pu-h">Admin</p>
+              <ol class="pu-steps">
+                <li class="now"><i></i><span>Configure workspace</span><em>Now</em></li>
+                <li class="later"><i></i><span>Invite team</span><em>Next</em></li>
+                <li class="later"><i></i><span>Connect integrations</span><em>Later</em></li>
+              </ol>
+            </div>
+            <div class="pu-col">
+              <p class="pu-h">End user</p>
+              <ol class="pu-steps">
+                <li class="now"><i></i><span>Complete first task</span><em>Now</em></li>
+                <li class="later"><i></i><span>Review results</span><em>After</em></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <figcaption>Illustrative · separate activation paths per persona</figcaption>
+      </figure>
+
+<h2 id="checklist">3. Checklist with real value at each step</h2>
+<p><strong>What:</strong> Tie every setup step to an outcome the user can see: a report populated, a notification sent, a workflow running.</p>
+<p><strong>Why:</strong> Checklists work when each item delivers immediate payoff, not when they exist to gamify setup.</p>
+<p><strong>When to use:</strong> Products with a multi-step setup where users drop off mid-flow. A useful test per item: if the user skipped it, would anything in the product be worse for them today? "Complete your profile" usually fails. "Connect your accounting system", after which real numbers appear on the <a href="/services/dashboard-design">dashboard</a>, passes. Order items by payoff, not by your system's setup sequence, and let users finish out of order.</p>
+<figure class="arch-frame">
+        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>setup health · milestones</span></div>
+        <div class="pu" role="img" aria-label="Setup health panel: two of three milestones complete, test run is the current step.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Setup health</p>
+              <p class="pu-meta">2 of 3 complete</p>
+            </div>
+            <span class="pu-chip warn">58%</span>
+          </div>
+          <ol class="pu-steps" style="padding:14px 16px 16px">
+            <li class="done"><i></i><span>Link bank</span><em>Done</em></li>
+            <li class="done"><i></i><span>Add entities</span><em>Done</em></li>
+            <li class="now"><i></i><span>Run test cycle</span><em>Now</em></li>
+          </ol>
+        </div>
+        <figcaption>Illustrative · progress tied to real setup milestones</figcaption>
+      </figure>
+
+<h2 id="sso">4. SSO and permissions clarity</h2>
+<p><strong>What:</strong> Surface workspace context on login, explain missing access in plain language, and route to an admin with a one-click request — not a generic "contact your administrator" dead end.</p>
+<p><strong>Why:</strong> After SSO rollouts, activation often drops because users land in the wrong workspace or lack permissions. Authentication was never the real barrier; what happens two screens later is.</p>
+<p><strong>When to use:</strong> Enterprise rollouts with SSO, multi-workspace tenancy, or role-based access control. Every permission error should answer three questions: what you tried to reach, why you cannot, and who can fix it.</p>
+
+<h2 id="ttv">5. Time-to-value metrics on the dashboard</h2>
+<p><strong>What:</strong> Show progress toward the user's goal inside the product — first payroll run completed, first invoice sent, first report shared.</p>
+<p><strong>Why:</strong> A static welcome modal greets; a setup health panel orients. On <a href="/work/payroll-pro-saas">PayrollPro</a>, a simple panel with three milestones replaced a welcome modal so every login showed distance to a working payroll run.</p>
+<p><strong>When to use:</strong> When users log back in without knowing what to do next, or when growth and product teams disagree on what "activated" means. Instrument each onboarding step, watch where users stall, and fix the step — not the messaging around it. Teams that measure time-to-first-value weekly ship different roadmaps from teams that measure signups alone.</p>
+
+<h2 id="mistakes">Onboarding mistakes SaaS products should avoid</h2>
+<ul>
+<li><strong>Feature tours before first success.</strong> Explaining the product before the user operates it.</li>
+<li><strong>One empty dashboard for every role.</strong> At least one persona is always looking at the wrong product.</li>
+<li><strong>Setup checklists that gamify instead of deliver value.</strong> Profile completion with no payoff is compliance theater.</li>
+<li><strong>SSO without permission routing.</strong> Login friction drops; activation falls anyway.</li>
+<li><strong>Measuring signups instead of time-to-first-value.</strong> Vanity metrics hide the step where users actually quit.</li>
+</ul>
+
+<div class="art-callout" id="takeaways">
+<strong>Key takeaways</strong>
+<ul>
+<li>SaaS onboarding is the path from signup to first meaningful value — product UX, not marketing.</li>
+<li>Activation improves when onboarding matches persona, delivers payoff at each step, and shows progress toward a defined outcome.</li>
+<li>Fix one stall point at a time: instrument the funnel, find where users quit, apply the pattern that addresses it.</li>
+</ul>
+</div>
+
+<h2 id="start">Where to start</h2>
+<p>Do not redesign onboarding in one release. Instrument the current funnel first, find the single step where the most users stall, and apply whichever pattern above addresses it. Onboarding rebuilt in phases beside a live product is the same discipline as any workflow change: one measured step at a time.</p>
+<p>That is the approach we take on <a href="/solutions/saas">SaaS engagements</a> — discovery, <a href="/services/product-design">product design</a>, <a href="/services/web-development">development</a>, and launch — and it is why most onboarding work starts as a short diagnostic rather than a full redesign. See <a href="/process">how we work</a>, browse <a href="/work">case studies</a>, review our <a href="/technologies">stack</a>, or read the <a href="/faq">FAQ</a> if you are scoping a project. When you are ready, <a href="/contact">tell us where users stall after signup</a>.</p>
     </div>
-    <nav class="rel-sol" aria-label="Related pages" data-r><a href="/solutions/saas">SaaS solutions</a><a href="/work/payroll-pro-saas">PayrollPro case study</a></nav>
+    <nav class="rel-sol" aria-label="Related pages" data-r>
+      <a href="/solutions/saas">SaaS solutions</a>
+      <a href="/services/product-design">Product design &amp; UX</a>
+      <a href="/services/dashboard-design">Dashboard design</a>
+      <a href="/services/web-development">Web development</a>
+      <a href="/work/payroll-pro-saas">PayrollPro case study</a>
+    </nav>
     <aside class="related" aria-labelledby="relH">
       <p class="eyebrow" data-r>Keep reading</p>
       <h2 class="d2" id="relH" data-r>Related insights</h2>
@@ -373,7 +503,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <section class="cta-band on-ink" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Next step</p>
-    <h2 class="d2" id="ctaH" data-r>Tell us what you're building.</h2>
+    <h2 class="d2" id="ctaH" data-r>Show us where users stall after signup.</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
@@ -468,6 +598,19 @@ const onScroll=()=>{
 };
 addEventListener('scroll', onScroll, {passive:true});
 onScroll();
+
+const mob=[...document.querySelectorAll('#mobChips a')];
+const chTargets=[...document.querySelectorAll('#intro,#progressive,#roles,#checklist,#sso,#ttv,#start')].filter(Boolean);
+if(mob.length && chTargets.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
 })();
 </script>
 <!-- KRIVA_SCHEMA_START -->
@@ -624,6 +767,7 @@ onScroll();
       "@type": "BlogPosting",
       "headline": "SaaS onboarding patterns that improve activation",
       "datePublished": "2025-12-08",
+      "articleSection": "Product Design & UI/UX",
       "author": {
         "@id": "https://krivatechnologies.com/#organization"
       },
@@ -635,7 +779,8 @@ onScroll();
         "@id": "https://krivatechnologies.com/insights/saas-onboarding-patterns"
       },
       "url": "https://krivatechnologies.com/insights/saas-onboarding-patterns",
-      "description": "Five B2B SaaS onboarding patterns that improve activation: progressive disclosure, role-based entry, checklists, SSO clarity, and time-to-value."
+      "description": "What SaaS onboarding is, why it drives activation, five UX patterns that work, and mistakes B2B products should avoid.",
+      "keywords": "SaaS onboarding, user onboarding, activation, product design, UX design, time-to-value, product adoption"
     }
   ]
 }

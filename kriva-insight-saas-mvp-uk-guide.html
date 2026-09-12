@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
+<meta property="og:image:alt" content="SaaS MVP guide for UK startups · KRIVA Technologies">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SaaS MVP guide for UK startups: from idea to launch">
 <meta name="twitter:description" content="A practical UK-focused playbook for scoping SaaS MVPs, prioritizing core workflows, and launching with analytics that investors care about.">
@@ -154,7 +154,18 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .prose p{margin:0 0 1.15em;color:var(--steel)}
 .prose ul{margin:0 0 1.3em;padding-left:1.2em;color:var(--steel)}
 .prose li{margin:.45em 0;padding-left:.2em}
-.prose li:marker{color:var(--amber)}
+.prose li::marker{color:var(--amber)}
+.prose h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;margin:1.6em 0 .55em;line-height:1.25;color:var(--ink)}
+.prose table{width:100%;border-collapse:collapse;margin:0 0 1.4em;font-size:15px;line-height:1.5}
+.prose th,.prose td{padding:10px 12px;border:1px solid var(--rule);text-align:left;vertical-align:top}
+.prose th{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);background:var(--paper-2);font-weight:500}
+.prose td{color:var(--steel)}
+.prose figure.arch-frame{margin:2.2em 0 2.4em;background:#0a0d10;border:1px solid var(--ink-line);box-shadow:var(--shadow-product);overflow:hidden}
+.prose figure.arch-frame figcaption{padding:10px 14px 12px;background:#0a0d10;border-top:1px solid var(--ink-line);margin-top:0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
+.art-callout{margin:2em 0;padding:4px 0 4px 20px;border-left:2px solid var(--cta);font-size:15.5px;line-height:1.62;color:var(--ink)}
+.art-callout strong{display:block;margin-bottom:.55em;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em}
+.art-callout ul{margin:.4em 0 0;padding-left:1.1em;color:var(--steel)}
+.art-callout li{margin:.35em 0}
 .rel-sol{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(36px,4vw,56px) 0 0;padding-top:22px;border-top:1px solid var(--rule)}
 .rel-sol a{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color .3s,color .3s}
 .rel-sol a:hover{border-color:var(--ink);color:var(--ink)}
@@ -166,7 +177,24 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .rel-grid .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
 .rel-grid b{display:block;margin-top:10px;font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;line-height:1.2}
 @media(max-width:700px){.rel-grid{grid-template-columns:1fr}}
-@media print{.nav,.sheet,.wa,.cta-band,.progress,.back{display:none!important}.art-hero{padding-top:24px}}
+.mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
+  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
+  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch
+}
+.mob-chips::-webkit-scrollbar{display:none}
+.mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+}
+.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1280px){
+  body.page-insight-saas .mob-chips{display:flex !important}
+  body.page-insight-saas .art-hero,body.page-insight-saas .prose h2{scroll-margin-top:calc(88px + 48px)}
+}
+@media print{.nav,.sheet,.wa,.cta-band,.progress,.back,.mob-chips{display:none!important}.art-hero{padding-top:24px}}
 
 </style>
 
@@ -176,7 +204,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
-<body>
+<body class="page-insight-saas">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="nav">
@@ -317,8 +345,18 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <main id="main">
 
 <div class="progress" id="progress" aria-hidden="true"></div>
+<nav class="mob-chips" id="mobChips" aria-label="Article sections">
+  <a href="#intro">Intro</a>
+  <a href="#what">What is an MVP</a>
+  <a href="#scope">Scope</a>
+  <a href="#uk">UK launch</a>
+  <a href="#design">Design</a>
+  <a href="#analytics">Analytics</a>
+  <a href="#plan">12-week plan</a>
+  <a href="#after">After launch</a>
+</nav>
 <article>
-  <header class="art-hero">
+  <header class="art-hero" id="intro">
     <div class="wrap">
       <a class="back" href="/insights">← Insights</a>
       <p class="cat" data-r>SaaS Growth</p>
@@ -326,42 +364,156 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <p class="lede" data-r>A practical UK-focused playbook for scoping SaaS MVPs, prioritizing core workflows, and launching with analytics that investors care about.</p>
       <div class="art-meta" data-r>
         <span><time datetime="2026-05-22">May 2026</time></span>
-        <span>9 min read</span>
+        <span>10 min read</span>
         <span>KRIVA Product Team</span>
       </div>
       <div class="cover cover--editorial" data-r aria-hidden="true">
         <div>
           <span class="cover-k">SaaS Growth</span>
-          <p class="cover-q">A practical UK-focused playbook for scoping SaaS MVPs, prioritizing core workflows, and launching with analytics that investors care about.</p>
+          <p class="cover-q">One core outcome. UK compliance baked in. Analytics from day one.</p>
         </div>
-        <span class="cover-meta">9 min read · May 2026</span>
+        <span class="cover-meta">10 min read · May 2026</span>
       </div>
     </div>
   </header>
   <div class="wrap">
     <div class="prose" data-r>
-      <p>Founders often treat MVP scope like a feature wishlist. In UK SaaS markets, that usually delays launch and weakens your first customer conversations. The goal is not to build a smaller product. The goal is to ship a focused product that proves value quickly and gives you clean learning signals.</p>
-<h2>Start with one core user outcome</h2>
-<p>Define a single outcome users should achieve in their first session. For B2B SaaS, this might be 'publish first report', 'invite first teammate', or 'run first payroll draft'. Scope everything else around helping users reach that moment reliably.</p>
-<h2>MVP scope framework we use</h2>
-<ul><li>Core workflow: the smallest end-to-end flow that delivers value.</li><li>Critical supporting flows: authentication, permissions, and basic settings.</li><li>Operational minimum: error handling, admin visibility, and support paths.</li><li>Not now list: features that sound useful but do not improve time-to-value.</li></ul>
-<h2>What is actually different about a UK launch</h2>
-<p>Most MVP advice is geography-neutral; a few things about the UK are not, and they are cheap to get right at MVP stage and expensive to retrofit.</p>
-<ul><li>Data protection: UK GDPR applies from user one, and most companies processing personal data owe the ICO a data protection fee and registration. Decide at design time where personal data lives and how a user exports or deletes it, this is a schema decision, not a policy page.</li><li>Billing: UK B2B buyers expect prices in GBP and, for recurring billing, Direct Debit is a first-class rail, not an afterthought, many UK finance teams prefer it to cards. Card-only checkout is a quiet conversion tax on UK enterprise deals.</li><li>Investor mechanics: UK angels commonly invest through SEIS/EIS and will ask early whether you have HMRC advance assurance. It costs little to arrange and signals you have done the homework.</li><li>Enterprise and public sector: UK procurement frequently asks for Cyber Essentials certification, and selling to government runs through frameworks like G-Cloud. An MVP does not need either, but knowing they exist shapes what "enterprise-ready" means on your roadmap.</li><li>Company mechanics: Companies House formation is fast and cheap, so incorporation is rarely the bottleneck founders fear, the operational work is the registrations that follow it.</li></ul>
-<h2>Design before development, always</h2>
-<p>Even under tight timelines, UX architecture and interactive prototypes reduce expensive rework. Teams that skip this step usually pay for it later with rushed redesigns, inconsistent onboarding, and engineering slowdowns.</p>
-<h2>Launch with analytics from day one</h2>
-<p>Track activation, time-to-value, and feature adoption from the first release. UK investors and early enterprise buyers care less about feature count and more about evidence that users reach value consistently. In practice that means three instrumented numbers you can show in a meeting: what percentage of signups reach the core outcome, how long it takes them, and whether they come back in week two. A founder who knows those three numbers runs a different fundraise from one with a feature list.</p>
-<h2>A practical 12-week MVP plan</h2>
-<ul><li>Weeks 1-2: discovery, ICP alignment, and UX flows.</li><li>Weeks 3-5: high-fidelity UI and clickable prototype validation.</li><li>Weeks 6-10: build core flows, QA, and event instrumentation.</li><li>Weeks 11-12: launch, support, and first iteration sprint.</li></ul>
-<p>Two UK-specific notes on the plan. Put the data-protection decisions, what personal data you store, where, and how it leaves, into weeks 1-2 with the UX flows, because retrofitting them after build is rework. And if SEIS/EIS investment is on your path, start advance assurance in parallel with the build; HMRC's timeline is not yours to control. The plan itself is the same discipline we apply on <a href="/solutions/saas">SaaS engagements</a>: one core outcome, instrumented from day one, shipped in phases the team can absorb.</p>
+      <p>Founders often treat MVP scope like a feature wishlist. In UK SaaS markets, that usually delays launch and weakens your first customer conversations. The goal is not to build a smaller product — it is to ship a focused product that proves value quickly and gives you clean learning signals.</p>
+
+<h2 id="what">What is a SaaS MVP?</h2>
+<p>A SaaS MVP is the smallest version of your product that lets a real user complete one valuable outcome end to end. It is not a clickable demo, a landing page with a waitlist, or a stripped-down version of every feature on your roadmap.</p>
+<p>For UK B2B SaaS, the MVP should answer one question: can a user reach a specific outcome reliably — and will they come back? That might be publishing a first report, inviting a first teammate, or running a first payroll draft. Everything in v1 should serve that proof point. If you are still weighing build approaches, our <a href="/insights/no-code-vs-custom-mvp">no-code vs custom MVP guide</a> covers when each path fits.</p>
+
+<h2 id="outcome">Start with one core user outcome</h2>
+<p>Define a single outcome users should achieve in their first session. Write it as a verb phrase a user would recognize — not a feature name. Scope everything else around helping users reach that moment reliably.</p>
+<p>Good activation events are specific and measurable. "User completes onboarding" is too vague. "User imports 12 records and locks their first payroll run" is something you can instrument, demo to investors, and improve in sprint two. The <a href="/insights/saas-onboarding-patterns">onboarding patterns</a> we see work repeatedly across B2B SaaS all start from this kind of concrete first-session goal.</p>
+
+<h2 id="scope">MVP scope framework we use</h2>
+<p>Every MVP we scope for UK teams gets sorted into four buckets. If a feature does not land in the first three, it waits.</p>
+<ul>
+  <li><strong>Core workflow</strong> — the smallest end-to-end flow that delivers value.</li>
+  <li><strong>Critical supporting flows</strong> — authentication, permissions, and basic settings.</li>
+  <li><strong>Operational minimum</strong> — error handling, admin visibility, and support paths.</li>
+  <li><strong>Not now list</strong> — features that sound useful but do not improve time-to-value.</li>
+</ul>
+<figure class="arch-frame">
+  <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>mvp scope · first sitting</span></div>
+  <div class="pu" role="img" aria-label="UK SaaS MVP first sitting: workspace and import done, first payroll lock now, roles later.">
+    <div class="pu-bar">
+      <div>
+        <p class="pu-title">First sitting</p>
+        <p class="pu-meta">UK MVP · Northwind Ltd</p>
+      </div>
+      <span class="pu-chip warn">Roles later</span>
     </div>
-    <nav class="rel-sol" aria-label="Related pages" data-r><a href="/solutions/saas">SaaS solutions</a><a href="/services/saas-platforms">SaaS product design</a></nav>
+    <div class="pu-split">
+      <div class="pu-col">
+        <p class="pu-h">In the MVP</p>
+        <ol class="pu-steps">
+          <li class="done"><i></i><span>Workspace created</span><em>Done</em></li>
+          <li class="done"><i></i><span>Import 12 records</span><em>Done</em></li>
+          <li class="now"><i></i><span>Lock first payroll</span><em>Now</em></li>
+          <li class="later"><i></i><span>Invite the rest of the team</span><em>Later</em></li>
+        </ol>
+      </div>
+      <div class="pu-col">
+        <p class="pu-h">Cut from v1</p>
+        <ul class="pu-mini">
+          <li><b>Role matrix</b> After first value</li>
+          <li><b>White-label</b> Not this sitting</li>
+          <li class="hot"><b>Marketplace</b> Out of scope</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <figcaption>Illustrative · one core outcome in, everything else on the not-now list</figcaption>
+</figure>
+
+<h2 id="uk">What is actually different about a UK launch?</h2>
+<p>Most MVP advice is geography-neutral. A few things about the UK are not — and they are cheap to get right at MVP stage, expensive to retrofit. These are the items that come up in every <a href="/markets/uk">UK SaaS</a> discovery call we run.</p>
+
+<h3>Data protection</h3>
+<p>UK GDPR applies from user one. Most companies processing personal data owe the ICO a data protection fee and registration. Decide at design time where personal data lives and how a user exports or deletes it — this is a schema decision, not a policy page.</p>
+
+<h3>Billing and finance integrations</h3>
+<p>UK B2B buyers expect prices in GBP. For recurring billing, Direct Debit is a first-class rail, not an afterthought — many UK finance teams prefer it to cards. Card-only checkout is a quiet conversion tax on UK enterprise deals. If your product touches invoicing or reconciliation, plan for <a href="/solutions/accounting-integrations">Xero or QuickBooks integration</a> early, even if v1 sync is read-only.</p>
+
+<h3>Investor mechanics</h3>
+<p>UK angels commonly invest through SEIS/EIS and will ask early whether you have HMRC advance assurance. It costs little to arrange and signals you have done the homework.</p>
+
+<h3>Enterprise and public sector</h3>
+<p>UK procurement frequently asks for Cyber Essentials certification. Selling to government runs through frameworks like G-Cloud. An MVP does not need either, but knowing they exist shapes what "enterprise-ready" means on your roadmap.</p>
+
+<h3>Company mechanics</h3>
+<p>Companies House formation is fast and cheap, so incorporation is rarely the bottleneck founders fear. The operational work is the registrations that follow it.</p>
+
+<h2 id="design">Design before development, always</h2>
+<p>Even under tight timelines, UX architecture and interactive prototypes reduce expensive rework. Teams that skip this step usually pay for it later with rushed redesigns, inconsistent onboarding, and engineering slowdowns.</p>
+<p>At minimum, map the core workflow, define role-based entry points, and test the first-session path with a handful of target users before engineering starts. We run this as <a href="/services/product-design">product design</a> and <a href="/services/wireframing-prototyping">wireframing &amp; prototyping</a> phases on most <a href="/solutions/saas">SaaS engagements</a>, before build starts. On <a href="/work/payroll-pro-saas">PayrollPro</a>, role-based onboarding paths were mapped and tested in design before engineering — the same pattern we use on MVP scoping.</p>
+
+<h2 id="analytics">Launch with analytics from day one</h2>
+<p>Track activation, time-to-value, and feature adoption from the first release. UK investors and early enterprise buyers care less about feature count and more about evidence that users reach value consistently.</p>
+<p>In practice that means three instrumented numbers you can show in a meeting: what percentage of signups reach the core outcome, how long it takes them, and whether they come back in week two. A founder who knows those three numbers runs a different fundraise from one with a feature list.</p>
+<figure class="arch-frame">
+  <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>activation · week-one dashboard</span></div>
+  <div class="pu" role="img" aria-label="Three MVP metrics to track from launch: activation rate, median time-to-value, and week-two return.">
+    <div class="pu-kpis">
+      <div class="up"><span>Activation rate</span><b>—</b></div>
+      <div><span>Median time-to-value</span><b>—</b></div>
+      <div class="risk"><span>Week-2 return</span><b>—</b></div>
+    </div>
+    <ul class="pu-rows">
+      <li class="on"><b>Signup</b><span>Reached core outcome</span><em>Track</em></li>
+      <li><b>Day 1–3</b><span>Time to first value</span><em>Track</em></li>
+      <li class="risk"><b>Day 14</b><span>Returned to product</span><em>Track</em></li>
+    </ul>
+  </div>
+  <figcaption>Illustrative · three metrics to instrument from your first release</figcaption>
+</figure>
+
+<h2 id="plan">A practical 12-week MVP plan</h2>
+<table>
+  <thead>
+    <tr><th scope="col">Phase</th><th scope="col">Weeks</th><th scope="col">Focus</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Discovery</td><td>1–2</td><td>ICP alignment, core outcome definition, UX flows, data-protection decisions</td></tr>
+    <tr><td>Design</td><td>3–5</td><td>High-fidelity UI, clickable prototype, user validation</td></tr>
+    <tr><td>Build</td><td>6–10</td><td>Core flows, QA, event instrumentation</td></tr>
+    <tr><td>Launch</td><td>11–12</td><td>Release, support, first iteration sprint</td></tr>
+  </tbody>
+</table>
+<p>Two UK-specific notes on the plan. Put data-protection decisions — what personal data you store, where, and how it leaves — into weeks 1–2 with the UX flows, because retrofitting them after build is rework. And if SEIS/EIS investment is on your path, start advance assurance in parallel with the build; HMRC's timeline is not yours to control.</p>
+<p>The plan itself is the same discipline we apply on <a href="/solutions/saas">SaaS engagements</a> and document in our <a href="/process">delivery process</a>: one core outcome, instrumented from day one, shipped in phases the team can absorb.</p>
+
+<h2 id="after">What happens after launch</h2>
+<p>Launch is the start of learning, not the finish line. The first four weeks after release should focus on three things: watching the three activation metrics above, fixing whatever blocks users from reaching the core outcome, and talking to the first ten users who succeeded — and the ten who did not.</p>
+<p>Scope expansion comes after you have evidence, not before. Role matrices, admin panels, and integrations belong on the roadmap once users are reaching value and asking for more. If you need a team that has shipped this cycle before, <a href="/services/web-development">web development</a> and <a href="/services/saas-platforms">SaaS product design</a> are where we typically pick up post-MVP work.</p>
+
+<aside class="art-callout" aria-label="Key takeaways">
+  <p><strong>Key takeaways</strong></p>
+  <ul>
+    <li>Define one core user outcome and cut everything that does not help users reach it in their first session.</li>
+    <li>Bake UK GDPR, GBP billing, and data-export decisions into weeks 1–2 — not after launch.</li>
+    <li>Design and prototype the core flow before engineering; rework costs more than a two-week design phase.</li>
+    <li>Instrument activation, time-to-value, and week-two return from day one.</li>
+    <li>Ship in 12 weeks, learn for four, then expand scope based on evidence — not a feature wishlist.</li>
+  </ul>
+</aside>
+    </div>
+    <nav class="rel-sol" aria-label="Related pages" data-r>
+      <a href="/solutions/saas">SaaS solutions</a>
+      <a href="/services/saas-platforms">SaaS product design</a>
+      <a href="/services/product-design">Product design &amp; UX</a>
+      <a href="/process">How we work</a>
+      <a href="/work/payroll-pro-saas">PayrollPro case study</a>
+    </nav>
     <aside class="related" aria-labelledby="relH">
       <p class="eyebrow" data-r>Keep reading</p>
       <h2 class="d2" id="relH" data-r>Related insights</h2>
       <div class="rel-grid" data-s>
-        <a href="/insights/trucking-dispatch-crm-guide"><span class="k">Trucking &amp; Logistics</span><b>Dispatch CRM solutions for US trucking companies: what actually works</b></a><a href="/insights/ai-in-product-design-2026"><span class="k">AI &amp; Design</span><b>How AI is changing product design workflows in 2026</b></a>
+        <a href="/insights/no-code-vs-custom-mvp"><span class="k">Strategy</span><b>No-code vs custom: choosing the right path for your MVP</b></a>
+        <a href="/insights/saas-onboarding-patterns"><span class="k">Product</span><b>SaaS onboarding patterns that improve activation</b></a>
       </div>
     </aside>
   </div>
@@ -370,7 +522,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <section class="cta-band on-ink" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Next step</p>
-    <h2 class="d2" id="ctaH" data-r>Tell us what you're building.</h2>
+    <h2 class="d2" id="ctaH" data-r>Tell us the outcome your UK MVP needs to prove first.</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
         <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
@@ -465,6 +617,19 @@ const onScroll=()=>{
 };
 addEventListener('scroll', onScroll, {passive:true});
 onScroll();
+
+const mob=[...document.querySelectorAll('#mobChips a')];
+const chTargets=[...document.querySelectorAll('#intro,#what,#scope,#uk,#design,#analytics,#plan,#after')].filter(Boolean);
+if(mob.length && chTargets.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
 })();
 </script>
 <!-- KRIVA_SCHEMA_START -->
@@ -619,8 +784,11 @@ onScroll();
     },
     {
       "@type": "BlogPosting",
+      "@id": "https://krivatechnologies.com/insights/saas-mvp-uk-guide#article",
       "headline": "SaaS MVP guide for UK startups: from idea to launch",
       "datePublished": "2026-05-22",
+      "articleSection": "SaaS Growth",
+      "inLanguage": "en-GB",
       "author": {
         "@id": "https://krivatechnologies.com/#organization"
       },
@@ -632,7 +800,12 @@ onScroll();
         "@id": "https://krivatechnologies.com/insights/saas-mvp-uk-guide"
       },
       "url": "https://krivatechnologies.com/insights/saas-mvp-uk-guide",
-      "description": "A practical UK-focused playbook for scoping SaaS MVPs, prioritizing core workflows, and launching with analytics that investors care about."
+      "description": "A practical UK-focused playbook for scoping SaaS MVPs, prioritizing core workflows, and launching with analytics that investors care about.",
+      "about": [
+        { "@type": "Thing", "name": "SaaS MVP development" },
+        { "@type": "Thing", "name": "UK startup product strategy" },
+        { "@type": "Thing", "name": "Product design" }
+      ]
     }
   ]
 }

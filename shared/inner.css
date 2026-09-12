@@ -20,16 +20,36 @@
 body.page-truck .hero.hero--inner,
 body.page-crm .hero.hero--inner,
 body.page-dashboard .hero.hero--inner,
+body.page-product-design .hero.hero--inner,
 body.page-mobile .hero.hero--inner,
-body.page-car .hero.hero--inner{
+body.page-car .hero.hero--inner,
+body.page-saas .hero.hero--inner,
+body.page-platforms .hero.hero--inner,
+body.page-api .hero.hero--inner,
+body.page-automation .hero.hero--inner,
+body.page-seo .hero.hero--inner,
+body.page-about .hero.hero--inner,
+body.page-careers .hero.hero--inner,
+body.page-work .hero.hero--inner,
+body.page-process .hero{
   padding:calc(72px + clamp(24px,3vw,40px)) 0 clamp(32px,4vw,48px)
 }
 /* Seamless hero → intro cards (no rule between) */
 body.page-truck .hero.hero--inner + .trk-fit,
 body.page-crm .hero.hero--inner + .crm-fit,
-body.page-dashboard .hero.hero--inner + .dash-fit{
-  padding-top:clamp(32px,4vw,52px) !important;
-  padding-bottom:clamp(56px,7vw,80px) !important
+body.page-dashboard .hero.hero--inner + .dash-fit,
+body.page-product-design .hero.hero--inner + .pd-fit,
+body.page-saas .hero.hero--inner + .saas-fit,
+body.page-platforms .hero.hero--inner + .plat-fit,
+body.page-api .hero.hero--inner + .api-fit,
+body.page-automation .hero.hero--inner + .auto-fit,
+body.page-seo .hero.hero--inner + .seo-fit,
+body.page-about .hero.hero--inner + .ab-fit,
+body.page-careers .hero.hero--inner + .cr-fit,
+body.page-work .hero.hero--inner + .wk-band,
+body.page-process .hero + .trk-fit{
+  padding-top:0 !important;
+  padding-bottom:0 !important
 }
 body.page-mobile .hero.hero--inner + .app-problems,
 body.page-car .hero.hero--inner + .car-problems{
@@ -95,8 +115,17 @@ body.page-car .hero.hero--inner + .car-problems{
   body.page-truck .hero.hero--inner,
   body.page-crm .hero.hero--inner,
   body.page-dashboard .hero.hero--inner,
+  body.page-product-design .hero.hero--inner,
   body.page-mobile .hero.hero--inner,
-  body.page-car .hero.hero--inner{
+  body.page-car .hero.hero--inner,
+  body.page-saas .hero.hero--inner,
+  body.page-platforms .hero.hero--inner,
+  body.page-accounting .hero.hero--inner,
+  body.page-api .hero.hero--inner,
+  body.page-automation .hero.hero--inner,
+  body.page-about .hero.hero--inner,
+  body.page-careers .hero.hero--inner,
+  body.page-work .hero.hero--inner{
     padding:calc(58px + 20px) 0 28px
   }
   .ip-title{max-width:none;font-size:clamp(1.45rem,5.5vw,1.85rem)}
@@ -108,8 +137,17 @@ body.page-car .hero.hero--inner + .car-problems{
 body.page-truck .trk-frac article,
 body.page-crm .crm-frac article,
 body.page-dashboard .dash-frac article,
+body.page-product-design .pd-frac article,
+body.page-graphic-design .gd-frac article,
 body.page-mobile .app-frac article,
-body.page-car .car-frac article{
+body.page-car .car-frac article,
+body.page-saas .saas-frac article,
+body.page-platforms .plat-frac article,
+body.page-accounting .acc-frac article,
+body.page-api .api-frac article,
+body.page-automation .auto-frac article,
+body.page-seo .seo-frac article,
+body.page-web .web-frac article{
   grid-template-columns:56px minmax(0,1fr) minmax(148px,196px);
   align-items:center
 }
@@ -125,7 +163,8 @@ body.page-car .car-frac article{
   width:100%;
   max-width:196px
 }
-.frac-viz img{
+.frac-viz img,
+.frac-viz svg{
   width:100%;
   height:100%;
   object-fit:cover;
@@ -134,17 +173,34 @@ body.page-car .car-frac article{
   opacity:.94
 }
 .on-ink .frac-viz,
-body.page-dashboard .dash-problems .frac-viz{
+body.page-mobile .app-problems .frac-viz,
+body.page-saas .saas-problems .frac-viz,
+body.page-dashboard .dash-problems .frac-viz,
+body.page-product-design .pd-problems .frac-viz,
+body.page-graphic-design .gd-problems .frac-viz,
+body.page-api .api-problems .frac-viz,
+body.page-automation .auto-problems .frac-viz,
+body.page-seo .seo-problems .frac-viz,
+body.page-car .car-problems .frac-viz{
   border-color:var(--ink-line);
   box-shadow:0 10px 32px rgba(0,0,0,.35)
 }
-[class$="-frac"] article:hover .frac-viz img{opacity:1}
+[class$="-frac"] article:hover .frac-viz img,
+[class$="-frac"] article:hover .frac-viz svg{opacity:1}
 @media(max-width:960px){
   body.page-truck .trk-frac article,
   body.page-crm .crm-frac article,
   body.page-dashboard .dash-frac article,
+  body.page-product-design .pd-frac article,
+  body.page-graphic-design .gd-frac article,
   body.page-mobile .app-frac article,
-  body.page-car .car-frac article{
+  body.page-car .car-frac article,
+  body.page-saas .saas-frac article,
+  body.page-platforms .plat-frac article,
+  body.page-accounting .acc-frac article,
+  body.page-api .api-frac article,
+  body.page-automation .auto-frac article,
+  body.page-seo .seo-frac article{
     grid-template-columns:40px minmax(0,1fr);
     align-items:start
   }
@@ -156,6 +212,239 @@ body.page-dashboard .dash-problems .frac-viz{
 }
 @media(max-width:560px){
   .frac-viz{max-width:100%}
+}
+
+/* ── Split sections · homepage build-row rhythm ── */
+[class*="-proof-split"],
+[class*="-story-split"],
+.api-split,
+.pd-handoff,
+.web-proof-secondary,
+.dash-proof-secondary,
+.trk-proof-secondary,
+.crm-proof-secondary,
+.car-proof-split,
+.seo-case-split,
+.seo-pillar,
+.trk-surface,
+.app-proof-split{
+  display:grid;
+  gap:clamp(32px,5vw,72px);
+  align-items:center
+}
+/* text left · visual right (build-row) */
+[class*="-proof-split"],
+[class*="-story-split"],
+.seo-case-split,
+.pd-handoff,
+.web-proof-secondary,
+.dash-proof-secondary,
+.trk-proof-secondary,
+.crm-proof-secondary,
+.car-proof-split,
+.app-proof-split{
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)
+}
+[class*="-proof-split"],
+[class*="-story-split"]{margin-top:clamp(32px,4vw,48px)}
+/* visual left · text right */
+.api-split,
+.seo-pillar,
+.trk-surface{
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  margin-top:clamp(32px,4vw,48px)
+}
+.trk-surface:first-child{margin-top:40px}
+.trk-surface--flip{
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)
+}
+.trk-surface--flip .trk-pillar-viz{order:1}
+.trk-surface--flip .trk-surface-copy{order:2}
+.api-split > *{min-width:0}
+/* zig-zag flip (build-row--flip) */
+.seo-case-split--flip,
+.web-proof-secondary--flip,
+.dash-proof-secondary--flip,
+.crm-proof-secondary--flip,
+.car-proof-split--flip{
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)
+}
+.seo-case-split--flip .seo-pillar-viz,
+.web-proof-secondary--flip .web-proof-shot,
+.dash-proof-secondary--flip .dash-role-viz--wide,
+.dash-proof-secondary--flip figure,
+.crm-proof-secondary--flip .crm-proof-shot,
+.car-proof-split--flip .car-proof-shot{order:1}
+.seo-case-split--flip > div:not(.seo-pillar-viz),
+.web-proof-secondary--flip > div,
+.dash-proof-secondary--flip > div,
+.crm-proof-secondary--flip > div,
+.car-proof-split--flip > div{order:2}
+.seo-pillar--flip{
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)
+}
+.seo-pillar--flip .seo-pillar-viz{order:2}
+.seo-pillar--flip > div:not(.seo-pillar-viz){order:1}
+/* stacked row rhythm */
+.seo-case-split{
+  padding-top:clamp(48px,6vw,72px);
+  margin-top:0;
+  border-top:1px solid var(--rule)
+}
+.seo-case-split:first-of-type{padding-top:0;border-top:0}
+.pd-handoff,
+.web-proof-secondary,
+.dash-proof-secondary,
+.trk-proof-secondary,
+.crm-proof-secondary{
+  margin-top:clamp(48px,6vw,72px);
+  padding-top:clamp(48px,6vw,72px);
+  border-top:1px solid var(--rule)
+}
+.trk-surface{
+  padding-top:clamp(48px,6vw,72px);
+  border-top:1px solid var(--rule)
+}
+.trk-surface:first-child{padding-top:0;border-top:0}
+/* visual columns · full width like build-shot */
+[class*="-proof-split"] > figure,
+[class*="-proof-split"] > [class*="-exc"],
+[class*="-proof-split"] > div:last-child:not(:only-child),
+.api-split > [class$="-exc"],
+[class*="-story-split"] > aside,
+.web-proof-visual,
+.dash-role-viz--wide,
+.seo-pillar-viz,
+.pd-handoff-viz,
+.web-proof-shot,
+.trk-proof-shot,
+.trk-pillar-viz,
+.crm-proof-shot,
+.app-proof-shot,
+.car-proof-shot,
+.gd-proof-visual,
+.pd-proof-visual,
+[class$="-exc"],
+[class*="-proof-split"] [class*="-frame"]{
+  width:100%;
+  max-width:none;
+  justify-self:stretch;
+  margin:0;
+  min-width:0;
+  border-radius:14px;
+  overflow:hidden
+}
+.wk-lead-frame,
+.crm-board--proof{max-width:none;justify-self:stretch}
+/* photo shots · homepage build-shot */
+.ip-shot,
+.seo-pillar-viz,
+.web-proof-shot,
+.trk-proof-shot,
+.trk-pillar-viz,
+.crm-proof-shot,
+.app-proof-shot,
+.car-proof-shot,
+.pd-handoff-viz,
+.plat-model-viz,
+.auto-loop-viz,
+.saas-journey-viz,
+.dash-role-viz--wide{
+  margin:0;
+  min-width:0;
+  overflow:hidden
+}
+.ip-shot img,
+.seo-pillar-viz img,
+.web-proof-shot img,
+.trk-proof-shot img,
+.trk-pillar-viz img,
+.crm-proof-shot img,
+.app-proof-shot img,
+.car-proof-shot img,
+.pd-handoff-viz img,
+.plat-model-viz img,
+.auto-loop-viz img,
+.saas-journey-viz img,
+.dash-role-viz--wide img,
+.gd-before-after img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1024/580;
+  object-fit:cover;
+  object-position:center top;
+  border:1px solid rgba(14,18,22,.06);
+  border-radius:14px;
+  box-shadow:0 20px 56px -28px rgba(14,18,22,.12)
+}
+.trk-pillar-viz img[src$=".svg"],
+.crm-proof-shot img[src$=".svg"],
+.app-proof-shot img[src$=".svg"],
+.car-proof-shot img[src$=".svg"],
+.seo-pillar-viz img[src$=".svg"]{
+  object-fit:contain;
+  object-position:center;
+  background:#f7f8f9
+}
+/* split copy typography · homepage build-copy */
+.seo-case-split .d3,
+.web-proof-secondary .d3,
+.dash-proof-secondary .d3,
+.trk-proof-secondary .d3,
+.crm-proof-secondary .d3,
+.car-proof-split .d3,
+.app-proof-split .d3,
+.trk-surface-copy .d3,
+.pd-handoff .d3{
+  margin:13px 0 20px;
+  max-width:18ch;
+  font-size:clamp(calc(1.28rem + 11px),calc(.3vw + 1.2rem + 11px),calc(1.55rem + 11px))
+}
+.seo-case-split .body-sm,
+.web-proof-secondary .body-sm,
+.dash-proof-secondary .body-sm,
+.trk-proof-secondary .body-sm,
+.crm-proof-secondary .body-sm,
+.car-proof-split .body-sm,
+.app-proof-split .body-sm,
+.trk-surface-copy .body-sm{
+  font-size:17px;
+  line-height:1.5;
+  max-width:48ch
+}
+.seo-pillars{display:grid;gap:clamp(48px,6vw,72px);margin-top:40px}
+@media(max-width:1024px){
+  [class*="-proof-split"],
+  [class*="-story-split"],
+  .api-split,
+  .pd-handoff,
+  .web-proof-secondary,
+  .dash-proof-secondary,
+  .trk-proof-secondary,
+  .crm-proof-secondary,
+  .car-proof-split,
+  .app-proof-split,
+  .trk-surface,
+  .trk-surface--flip,
+  .seo-case-split,
+  .seo-case-split--flip,
+  .seo-pillar,
+  .seo-pillar--flip{grid-template-columns:1fr}
+  .seo-case-split--flip .seo-pillar-viz,
+  .seo-pillar--flip .seo-pillar-viz,
+  .seo-pillar .seo-pillar-viz,
+  .trk-surface--flip .trk-pillar-viz,
+  .trk-surface .trk-pillar-viz,
+  .web-proof-secondary .web-proof-shot,
+  .trk-proof-secondary .trk-proof-shot,
+  .crm-proof-secondary .crm-proof-shot,
+  .car-proof-split .car-proof-shot,
+  .app-proof-split .app-proof-shot,
+  .api-split > [class$="-exc"]{order:-1}
+  .seo-case-split--flip > div:not(.seo-pillar-viz),
+  .seo-pillar--flip > div:not(.seo-pillar-viz),
+  .trk-surface--flip .trk-surface-copy{order:unset}
 }
 
 /* Internal catalog chrome, not for buyers. Keep .slot when it holds a product UI. */

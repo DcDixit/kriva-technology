@@ -64,7 +64,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img,svg{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.dash-board :focus-visible{outline-color:var(--amber)}
+.on-ink :focus-visible,footer :focus-visible,.dash-frame :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -123,12 +123,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
 </style>
-<link rel="stylesheet" href="/shared/inner.css?v=iphero5">
+<link rel="stylesheet" href="/shared/inner.css?v=buildrow2">
 <link rel="stylesheet" href="/shared/system.css">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
 
 <link rel="stylesheet" href="/shared/page-inquiry.css">
-<link rel="stylesheet" href="/shared/dashboard.css?v=dash4">
+<link rel="stylesheet" href="/shared/dashboard.css?v=dash6">
 
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
@@ -301,9 +301,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <li aria-current="page">Dashboard Design</li>
     </ol>
     <div class="ip-hero" data-r>
-      <p class="ip-kicker">Fleet dashboards</p>
-      <h1 class="ip-title">See what needs attention first</h1>
-      <p class="ip-desc">Exceptions, routes, and roles—not equal-weight charts.</p>
+      <p class="ip-kicker">Dashboard design</p>
+      <h1 class="ip-title ip-title--lines">
+        <span>See what needs</span>
+        <span>attention first</span>
+      </h1>
+      <p class="ip-desc">Operational dashboards and SaaS admin panels where exceptions, roles, and next actions come before equal-weight charts.</p>
       <div class="ip-actions">
         <a href="#inquire" class="btn sm"><span>Discuss dashboard</span><i>→</i></a>
         <a href="#proof" class="btn sm ghost"><span>Case study</span><i>→</i></a>
@@ -334,17 +337,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </section>
 
-<section class="dash-problems" id="problems" aria-labelledby="probH">
+<section class="dash-problems on-ink" id="problems" aria-labelledby="probH">
   <div class="wrap">
     <p class="eyebrow" data-r>Dashboard problems</p>
-    <h2 class="d2" id="probH" data-r>The data exists. The decision is still difficult.</h2>
-    <p class="lede" data-r>Users see charts but cannot prioritize. Filters do not reach the right records. Actions require context switching or exporting.</p>
+    <h2 class="d2" id="probH" data-r>The data exists.<br>The decision is still difficult.</h2>
     <div class="dash-frac" data-r>
       <article>
         <span class="n num">01</span>
         <div>
           <h3 class="d3">Scan failure</h3>
-          <p>Everything has equal visual weight. Users cannot identify what matters first. Priority is invisible.<span class="cons">IMPACT: slow decisions, missed exceptions, reactive firefighting.</span></p>
+          <p>Everything has equal visual weight. Users cannot identify what matters first. Priority is invisible.<span class="cons">COST: slow decisions, missed exceptions, reactive firefighting</span></p>
         </div>
         <figure class="frac-viz">
           <img src="/media/solutions/trucking/prob-chart-equal.svg" alt="Operations dashboard with equal-weight charts and no priority signal." width="480" height="400" decoding="async" loading="lazy">
@@ -354,7 +356,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <span class="n num">02</span>
         <div>
           <h3 class="d3">Widget sprawl</h3>
-          <p>Each stakeholder request adds another chart. Dashboards grow without improving the decision or action.<span class="cons">IMPACT: cognitive overload, declining daily use.</span></p>
+          <p>Each stakeholder request adds another chart. Dashboards grow without improving the decision or action.<span class="cons">COST: cognitive overload, declining daily use</span></p>
         </div>
         <figure class="frac-viz">
           <img src="/media/solutions/trucking/prob-widget-sprawl.svg" alt="Fleet dashboard cluttered with stakeholder widget requests." width="480" height="400" decoding="async" loading="lazy">
@@ -364,7 +366,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <span class="n num">03</span>
         <div>
           <h3 class="d3">Spreadsheet workarounds</h3>
-          <p>Users export data because filters, tables, and actions do not match the real workflow.<span class="cons">IMPACT: double entry, stale system data, no audit trail.</span></p>
+          <p>Users export data because filters, tables, and actions do not match the real workflow.<span class="cons">COST: double entry, stale system data, no audit trail</span></p>
         </div>
         <figure class="frac-viz">
           <img src="/media/solutions/trucking/prob-spreadsheet-queue.svg" alt="Exported dispatch data living in a spreadsheet beside the dashboard." width="480" height="400" decoding="async" loading="lazy">
@@ -379,32 +381,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <p class="eyebrow" data-r>Decision flow</p>
     <h2 class="d2" id="hierH" data-r>Question → Signal → Relevant Records → Action.</h2>
     <p class="lede" data-r>Every dashboard answers one primary question. The signal shows what requires attention. Records provide evidence. Actions let users complete work without leaving the view.</p>
-    <ol class="dash-flow" data-s aria-label="Dashboard decision flow">
-      <li>
-        <span class="sn">01 · Question</span>
-        <h3>What must you decide now?</h3>
-        <p>Which routes are at SLA risk today?</p>
-      </li>
-      <li>
-        <span class="sn">02 · Signal</span>
-        <h3>What needs attention first?</h3>
-        <p>3 loads unowned and at risk appear above the fold.</p>
-      </li>
-      <li>
-        <span class="sn">03 · Records</span>
-        <h3>What evidence explains it?</h3>
-        <p>Each load shows lane, owner status, and time remaining.</p>
-      </li>
-      <li>
-        <span class="sn">04 · Action</span>
-        <h3>What can you do here?</h3>
-        <p>Assign owner or resolve — inline, without context switching.</p>
-      </li>
-    </ol>
-    <figure class="dash-flow-visual" data-r>
-      <img src="/media/solutions/trucking/fleet-dashboard.svg" alt="Fleet operations dashboard showing exception signal, filtered records, and inline assignment actions" width="1200" height="750" loading="lazy" decoding="async">
-      <figcaption class="dash-cap">ShiftRail fleet dashboard — operational reporting view.</figcaption>
-    </figure>
+    <div class="dash-hier-split" data-r>
+      <figure class="dash-hier-visual">
+        <img src="/media/work/fleetflow/before.svg" alt="Before: dispatch morning scan exported to a spreadsheet beside a cluttered dashboard." width="960" height="600" loading="lazy" decoding="async">
+        <figcaption class="dash-cap">Before · scan lived outside the product</figcaption>
+      </figure>
+      <figure class="dash-hier-visual">
+        <img src="/media/work/fleetflow/after.svg" alt="After: exception queue sorted by SLA risk with inline assign and resolve actions." width="960" height="600" loading="lazy" decoding="async">
+        <figcaption class="dash-cap">After · question → signal → records → action</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -414,8 +400,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <h2 class="d2" id="rolesH" data-r>The same data should not create the same screen for every role.</h2>
     <p class="lede" data-r>Operations, management, finance, and sales/service teams answer different questions. Hierarchy, KPIs, filters, and actions are shaped to fit — not duplicated across roles.</p>
     <div class="dash-roles-grid" data-s>
-      <article class="dash-card">
-        <svg class="dash-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <article class="dash-card dash-card--viz">
+        <figure class="dash-role-viz">
+          <img src="/media/work/fleetflow/sla-burndown.svg" alt="Operations dashboard with SLA burndown and exception queue above the fold." width="480" height="400" loading="lazy" decoding="async">
+        </figure>
         <h3>Operations: Exceptions and SLA risk first</h3>
         <ul>
           <li>Exceptions and SLA risk above the fold—not buried in a report</li>
@@ -424,8 +412,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <li>Inline assignment, reassignment, and resolution</li>
         </ul>
       </article>
-      <article class="dash-card">
-        <svg class="dash-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+      <article class="dash-card dash-card--viz">
+        <figure class="dash-role-viz">
+          <img src="/media/services/dashboard/role-mgmt-signal.svg" alt="Management dashboard with one primary risk KPI, trend line, and exception count." width="480" height="400" loading="lazy" decoding="async">
+        </figure>
         <h3>Management: One primary signal, drill-down to evidence</h3>
         <ul>
           <li>One primary KPI or risk count at the top</li>
@@ -434,8 +424,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <li>Drill-down to operational records without leaving context</li>
         </ul>
       </article>
-      <article class="dash-card">
-        <svg class="dash-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14v4"/></svg>
+      <article class="dash-card dash-card--viz">
+        <figure class="dash-role-viz">
+          <img src="/media/work/financesync/discrepancy.svg" alt="Finance dashboard with reconciliation exceptions and posting status by period." width="480" height="400" loading="lazy" decoding="async">
+        </figure>
         <h3>Finance: Reconciliation status and exception queues</h3>
         <ul>
           <li>Sync status and posting exceptions surfaced first</li>
@@ -444,8 +436,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <li>Links to source records in accounting systems</li>
         </ul>
       </article>
-      <article class="dash-card">
-        <svg class="dash-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+      <article class="dash-card dash-card--viz">
+        <figure class="dash-role-viz">
+          <img src="/media/services/dashboard/role-sales-pipeline.svg" alt="Sales dashboard with pipeline stage density, stalled deals, and next-action prompts." width="480" height="400" loading="lazy" decoding="async">
+        </figure>
         <h3>Sales / Service: Pipeline health and next actions</h3>
         <ul>
           <li>Pipeline stage density and stalled deals above the fold</li>
@@ -460,55 +454,116 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <section id="proof" aria-labelledby="proofH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Verified work</p>
-    <h2 class="d2" id="proofH" data-r>ShiftRail fleet morning scan.</h2>
+    <p class="eyebrow" data-r>ShiftRail case study</p>
+    <h2 class="d2" id="proofH" data-r>When the morning scan lived in a spreadsheet.</h2>
     <div class="dash-proof-split" data-r>
       <div>
-        <p class="dash-proof-copy">A US trucking dispatch desk running 400+ daily routes across three hubs rebuilt its morning scan with us. Exception risk lived in a report opened once a week, and operators ran a parallel spreadsheet because the TMS dashboard could not surface unowned loads or SLA risk in one view. We built a fleet morning-scan dashboard: exceptions and at-risk loads above the fold, row-level SLA, inline assignment, and supervisor audit on overrides. Operators now assign and resolve from one view — and the spreadsheet queue was retired post-launch.</p>
-        <div class="dash-chips">
-          <span><b>−32%</b> manual handle time per load action</span>
-          <span><b>11 min</b> avg exception response</span>
-          <span><b>99.4%</b> console uptime post-launch</span>
+        <p class="lede">A US trucking dispatch desk running 400+ daily routes rebuilt its morning scan with us — <a href="/work/shiftrail-dispatch">ShiftRail</a> (−32% signed-off manual handle time). Exceptions and at-risk loads above the fold replaced the parallel spreadsheet.</p>
+        <div class="dash-proof-metrics">
+          <div><b class="num">−32%</b><span>Manual handle time per load</span></div>
+          <div><b class="num">11 min</b><span>Avg exception response</span></div>
+          <div><b class="num">99.4%</b><span>Console uptime post-launch</span></div>
         </div>
         <div class="proof-cta">
           <a href="/work/shiftrail-dispatch" class="btn"><span>Read the ShiftRail case study</span><i>→</i></a>
+          <a href="/work/crm-pulse-dashboard" class="btn ghost"><span>CRMPulse sales dashboards</span><i>→</i></a>
         </div>
         <p class="proof-note">Metrics are signed-off project outcomes from the ShiftRail dispatch engagement. Illustrative UI only — no client data shown.</p>
       </div>
-      <div class="dash-proof-visual">
-        <figure>
-          <img src="/media/solutions/trucking/fleet-dashboard.svg" alt="ShiftRail fleet morning-scan dashboard with exceptions and at-risk loads above the fold" width="960" height="600" loading="lazy" decoding="async">
-          <figcaption class="dash-cap">The morning-scan view that replaced the weekly report.</figcaption>
-        </figure>
-        <aside class="dash-pulse">
-          <h3>Sales dashboard case study — <a href="/work/crm-pulse-dashboard">CRMPulse</a>.</h3>
-          <p>Custom HubSpot dashboards and pipeline UX for a B2B sales org. Role-based views matched to how reps actually sell.</p>
-        </aside>
+      <figure class="dash-exc">
+        <div class="dash-frame">
+          <div class="dash-chrome" aria-hidden="true"><i></i><i></i><i></i><span>morning scan · exceptions</span><span class="dash-live"><b></b>Live</span></div>
+          <div class="dash-scan" role="img" aria-label="Illustrative morning-scan dashboard with exception queue sorted by SLA risk.">
+            <div class="dash-scan-bar"><div><p class="dash-scan-title">Exception queue</p><p class="dash-scan-meta">East region · 06:40</p></div></div>
+            <div class="dash-scan-ex">
+              <p class="dash-scan-h">Queue · by SLA risk</p>
+              <ol>
+                <li class="is-risk"><span class="dash-id">#5112</span><span class="dash-lane">CHI &rarr; DET</span><b class="dash-left">6m</b><span class="chip s1">At risk</span></li>
+                <li><span class="dash-id">#5088</span><span class="dash-lane">JAX &rarr; MIA</span><b class="dash-left">11m</b><span class="chip s1">Watch</span></li>
+                <li><span class="dash-id">#5140</span><span class="dash-lane">DEN &rarr; ABQ</span><b class="dash-left">18m</b><span class="chip s0">Late</span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <figcaption class="dash-cap">Illustrative morning-scan view — the board that replaced the weekly report.</figcaption>
+      </figure>
+    </div>
+    <div class="dash-proof-secondary" data-r>
+      <div>
+        <p class="eyebrow">SaaS admin · PayrollPro</p>
+        <h3 class="d3">Tenant home and first-run — before permissions block value.</h3>
+        <p class="body-sm">B2B SaaS admin and activation surfaces where users stalled after SSO. Role setup waits until after the first payroll cycle. Illustrative interface — no signed-off numeric outcomes. See <a href="/services/saas-platforms">SaaS product design</a> for multi-tenant scope.</p>
+        <a href="/work/payroll-pro-saas" class="p-link">Read the PayrollPro case <i>→</i></a>
       </div>
+      <figure class="dash-role-viz dash-role-viz--wide">
+        <img src="/media/solutions/saas/onboarding.svg" alt="PayrollPro first-run: SSO complete, test cycle in progress, roles deferred until after first value." width="480" height="400" loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="dash-proof-secondary" data-r>
+      <div>
+        <p class="eyebrow">CRMPulse case study</p>
+        <h3 class="d3">Sales dashboards when the pipeline lived in exports.</h3>
+        <p class="body-sm">Custom HubSpot pipeline views, stage definitions, and leadership dashboards for a B2B sales team. Illustrative interface — no signed-off numeric outcomes.</p>
+        <a href="/work/crm-pulse-dashboard" class="p-link">Read the CRMPulse case <i>→</i></a>
+        <a href="/insights/crm-dashboard-ux-patterns" class="p-link">CRM dashboard UX patterns <i>→</i></a>
+      </div>
+      <figure class="dash-role-viz dash-role-viz--wide">
+        <img src="/media/work/crmpulse/hero.svg" alt="CRMPulse sales dashboard with pipeline stage density and stalled-deal exceptions." width="960" height="600" loading="lazy" decoding="async">
+      </figure>
     </div>
   </div>
 </section>
 
 <section class="dash-band" id="related" aria-labelledby="relH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Connected capabilities</p>
-    <h2 class="d2" id="relH" data-r>Services that feed dashboard work.</h2>
-    <p class="lede" data-r>Dashboards depend on the records, integrations, and finance data behind them.</p>
-    <div class="dash-related-grid" data-s>
+    <div class="dash-integ-head">
+      <div>
+        <p class="eyebrow" data-r>Connected capabilities</p>
+        <h2 class="d2" id="relH" data-r>Services that feed dashboard work.</h2>
+        <p class="lede" data-r>Dashboards depend on CRM records, <a href="/services/api-integrations">API connectors</a>, and <a href="/solutions/accounting-integrations">ledger sync</a> behind them.</p>
+      </div>
+      <a href="/services" class="dash-text-link">All services →</a>
+    </div>
+    <div class="dash-integ-grid" data-s>
       <article class="dash-card">
-        <h3>CRM &amp; ops console development</h3>
-        <p>Operational consoles and workflow surfaces that supply the records, filters, and actions your dashboards depend on.</p>
-        <a class="dash-text-link" href="/services/crm-development">Explore CRM development →</a>
+        <h3>CRM &amp; ops consoles</h3>
+        <ul>
+          <li>Operational consoles that supply records and filters</li>
+          <li>Workflow surfaces with inline actions</li>
+          <li>Role-based views matched to each desk</li>
+        </ul>
+        <a class="dash-text-link" href="/services/crm-development">CRM development →</a>
       </article>
       <article class="dash-card">
         <h3>Integrations &amp; APIs</h3>
-        <p>Connect CRMs, ERPs, accounting systems, and internal APIs so dashboard data stays current — with visible sync status and error recovery.</p>
-        <a class="dash-text-link" href="/services/api-integrations">Explore integrations →</a>
+        <ul>
+          <li>CRMs, ERPs, TMS, and internal APIs</li>
+          <li>Scheduled or near-real-time data refresh</li>
+          <li>Visible sync status and error recovery</li>
+        </ul>
+        <a class="dash-text-link" href="/services/api-integrations">Integrations &amp; APIs →</a>
       </article>
       <article class="dash-card">
-        <h3>Accounting &amp; finance reporting</h3>
-        <p>Reconciliation dashboards and finance reporting views paired with QuickBooks and Xero integration work.</p>
-        <a class="dash-text-link" href="/solutions/accounting-integrations">Explore finance integrations →</a>
+        <h3>Accounting &amp; finance</h3>
+        <ul>
+          <li>Reconciliation dashboards and exception queues</li>
+          <li>Load-to-invoice and posting workflows</li>
+        </ul>
+        <p class="lock">
+          <img src="/brand/logos/quickbooks.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
+          <img src="/brand/logos/xero.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
+          QuickBooks &amp; Xero
+        </p>
+        <a class="dash-text-link" href="/solutions/accounting-integrations">Finance integrations →</a>
+      </article>
+      <article class="dash-card">
+        <h3>Product design &amp; UX</h3>
+        <ul>
+          <li>Research, flows, and prototypes before build</li>
+          <li>Admin panels and SaaS dashboard UX</li>
+          <li>Design systems for consistent reporting views</li>
+        </ul>
+        <a class="dash-text-link" href="/services/product-design">Product design →</a>
       </article>
     </div>
   </div>
@@ -519,7 +574,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <div class="faq-side">
       <p class="eyebrow" data-r>FAQ</p>
       <h2 class="d2" id="faqH" data-r>About dashboard design.</h2>
-      <p class="lede" data-r>Straight answers — so the first call starts further along.</p>
+      <p class="lede" data-r>Role hierarchy, data sources, and build scope — before the first call.</p>
     </div>
     <div class="faq-list" data-r>
       <div class="faq-item">
@@ -750,7 +805,7 @@ if(mob.length){
 
 document.querySelectorAll('.faq-q').forEach(btn=>{
   const item=btn.closest('.faq-item');
-  btn.addEventListener('click',()=>{
+  const toggle=()=>{
     const open=btn.getAttribute('aria-expanded')==='true';
     document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(o=>{
       if(o===btn) return;
@@ -759,39 +814,14 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     });
     btn.setAttribute('aria-expanded', String(!open));
     item.classList.toggle('open', !open);
+  };
+  btn.addEventListener('click',toggle);
+  btn.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); }
   });
 });
 
 if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
-
-const board=document.querySelector('.dash-board');
-if(board && !reduce()){
-  const actions=[...document.querySelectorAll('.dash-action[data-action]')];
-  const states=['before','done'];
-  let idx=0, timer=null;
-  const play=()=>{
-    idx=(idx+1)%states.length;
-    board.setAttribute('data-state', states[idx]);
-    if(states[idx]==='done'){
-      document.querySelector('.dash-row[data-row="done"]').style.display='grid';
-      document.querySelectorAll('.dash-row:not([data-row="done"])').forEach(r=>r.style.display='none');
-      const stat=board.querySelector('.dash-stat');
-      if(stat) stat.textContent='2';
-    } else {
-      document.querySelector('.dash-row[data-row="done"]').style.display='none';
-      document.querySelectorAll('.dash-row:not([data-row="done"])').forEach(r=>r.style.display='grid');
-      const stat=board.querySelector('.dash-stat');
-      if(stat) stat.textContent='3';
-    }
-  };
-  const ioBoard=new IntersectionObserver(es=>{
-    for(const e of es){
-      if(e.isIntersecting){ if(!timer) timer=setInterval(play, 3000); }
-      else if(timer){ clearInterval(timer); timer=null; }
-    }
-  },{threshold:.35});
-  ioBoard.observe(board);
-}
 
 run();
 })();

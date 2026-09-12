@@ -19,8 +19,8 @@
 <!-- KRIVA_ICONS_END -->
 <link rel="stylesheet" href="/shared/tokens.css?v=layout1240v2">
 <link rel="preload" href="/brand/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<title>Services · Design, Development &amp; Automation · KRIVA</title>
-<meta name="description" content="Product design, UI/UX, SaaS, dashboards, mobile, branding, SEO, and web: designed and engineered by one in-house KRIVA team from discovery through launch.">
+<title>Product Design &amp; UI/UX Services · Ahmedabad · KRIVA</title>
+<meta name="description" content="Product design, UI/UX, SaaS, dashboards, CRM, mobile, and web development for US trucking ops, SaaS teams, and finance systems. One in-house KRIVA team in Ahmedabad — discovery through launch.">
 <link rel="canonical" href="https://krivatechnologies.com/services">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -41,8 +41,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KRIVA Technologies">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Services · Design, Development &amp; Automation">
-<meta property="og:description" content="Product design, UI/UX, SaaS, dashboards, mobile, branding, SEO, and web: designed and engineered by one in-house KRIVA team from discovery through launch.">
+<meta property="og:title" content="Product Design &amp; UI/UX Services · Ahmedabad · KRIVA">
+<meta property="og:description" content="Product design, UI/UX, SaaS, dashboards, CRM, mobile, and web development for US trucking ops, SaaS teams, and finance systems. One in-house KRIVA team in Ahmedabad.">
 <meta property="og:url" content="https://krivatechnologies.com/services">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -50,8 +50,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="KRIVA · Design, development, and automation services">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Services · Design, Development &amp; Automation · KRIVA">
-<meta name="twitter:description" content="Product design, UI/UX, SaaS, dashboards, mobile, branding, SEO, and web: designed and engineered by one in-house KRIVA team from discovery through launch.">
+<meta name="twitter:title" content="Product Design &amp; UI/UX Services · Ahmedabad · KRIVA">
+<meta name="twitter:description" content="Product design, UI/UX, SaaS, dashboards, CRM, mobile, and web development for US trucking ops, SaaS teams, and finance systems. One in-house KRIVA team in Ahmedabad.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <style>
@@ -152,9 +152,45 @@ body.page-services .hero{
   scroll-margin-top:88px
 }
 @media(min-width:1025px){
-  body.page-services .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 56px}
+  body.page-services .hero{padding:80px 0 56px}
   body.page-services .hero > .wrap{width:100%}
 }
+
+.svc-fit{padding-top:0;padding-bottom:clamp(48px,6vw,72px)}
+.svc-fit-rail{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px
+}
+.svc-fit .svc-card{
+  background:var(--white);border:1px solid var(--rule);border-radius:12px;
+  padding:32px 28px;min-width:0
+}
+.svc-fit .svc-card h3{
+  font-family:var(--f-display);font-weight:700;
+  font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.2;
+  color:var(--ink);margin-bottom:10px
+}
+.svc-fit .svc-card p{font-size:14.5px;line-height:1.55;color:var(--steel)}
+.svc-fit-foot{
+  margin-top:24px;font-size:15px;line-height:1.62;color:var(--steel);max-width:62ch
+}
+.svc-fit-foot a{border-bottom:1px solid var(--rule)}
+.svc-callout-line{
+  margin-top:20px;padding:4px 0 4px 20px;border-left:2px solid var(--cta);
+  font-size:15px;line-height:1.6;color:var(--ink);max-width:62ch
+}
+body.page-services .mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;
+  padding:10px var(--gutter);overflow-x:auto;-webkit-overflow-scrolling:touch;
+  background:rgba(255,255,255,.94);border-bottom:1px solid var(--rule);backdrop-filter:blur(8px)
+}
+body.page-services .mob-chips::-webkit-scrollbar{display:none}
+body.page-services .mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;border:1px solid var(--rule);border-radius:999px;color:var(--steel);white-space:nowrap
+}
+body.page-services .mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+.idx-row.no-num{grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto}
+.idx-row.no-num .n{display:none}
 
 .svc-hero-grid{
   display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
@@ -506,6 +542,7 @@ body.page-services .hero{
 .faq-side .btn{margin-top:24px}
 
 @media(max-width:1024px){
+  .svc-fit-rail{grid-template-columns:1fr}
   .svc-hero-grid,.svc-feat,.svc-switch,.faq-grid,.svc-path,.svc-pair,.work-row,.work-feat{grid-template-columns:1fr}
   .svc-hero-copy .d1{max-width:none}
   .svc-hero-visual{padding-bottom:0}
@@ -513,7 +550,9 @@ body.page-services .hero{
   .svc-path:before{display:none}
   .faq-grid > div:first-child{position:static}
   .idx-row{grid-template-columns:40px minmax(0,1fr);gap:12px 20px}
+  .idx-row.no-num{grid-template-columns:minmax(0,1fr)}
   .idx-row p{grid-column:2}
+  .idx-row.no-num p{grid-column:1}
   .idx-row i,.work-row i{display:none}
   .cta-row{align-items:flex-start}
   .split-ui{grid-template-columns:1fr}
@@ -532,6 +571,10 @@ body.page-services .hero{
   .svc-tabs button{flex:none}
   .svc-row{grid-template-columns:1fr auto}
   .svc-row .lane{display:none}
+}
+@media(max-width:768px){
+  body.page-services .mob-chips{display:flex !important}
+  body.page-services .svc-fit .svc-card{padding:28px 22px}
 }
 @media(max-width:767px){
   body.page-services .svc-path{grid-template-columns:1fr}
@@ -730,6 +773,15 @@ body.page-services .hero{
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
+<nav class="mob-chips" id="mobChips" aria-label="Page sections">
+  <a href="#overview" aria-current="true">Overview</a>
+  <a href="#solve">Problems</a>
+  <a href="#design">Services</a>
+  <a href="#process">Process</a>
+  <a href="#work">Work</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
 <main id="main">
 
 <header class="hero" id="overview" aria-labelledby="h1">
@@ -740,12 +792,12 @@ body.page-services .hero{
     </ol>
     <div class="svc-hero-grid">
       <div class="svc-hero-copy">
-        <p class="eyebrow" data-r>Capabilities · one team</p>
+        <p class="eyebrow" data-r>Product Design &amp; UI/UX · Ahmedabad</p>
         <h1 class="d1 mask" id="h1" data-mask>
           <span><i>The product work.</i></span>
           <span><i>Without the handoff.</i></span>
         </h1>
-        <p class="lede" data-r>Product design, UI/UX, SaaS, dashboards, mobile, brand, and web: designed and engineered by the same senior team. You do not pick from a menu of seventeen. You bring the problem.</p>
+        <p class="lede" data-r>Product design, UI/UX, SaaS, dashboards, CRM, mobile, and web for US trucking ops, SaaS product teams, and finance systems — designed and engineered by one in-house team. You bring the problem; we shape the stack.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
           <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
@@ -801,6 +853,28 @@ body.page-services .hero{
   </div>
 </header>
 
+<section class="svc-fit" id="about-services" aria-labelledby="fitH">
+  <div class="wrap">
+    <h2 class="sr" id="fitH">KRIVA Technologies product design and development services</h2>
+    <div class="svc-fit-rail" data-s>
+      <article class="svc-card">
+        <h3>Who it&rsquo;s for</h3>
+        <p>Founders and product leads at B2B SaaS companies. Dispatch and ops teams in trucking and logistics. Finance teams reconciling QuickBooks or Xero. Anyone whose software should match how the desk actually works.</p>
+      </article>
+      <article class="svc-card">
+        <h3>What we deliver</h3>
+        <p>Research, UI/UX, product design, dashboards, CRM consoles, mobile apps, integrations, and web — from discovery through launch-ready specs and working software on a real URL.</p>
+      </article>
+      <article class="svc-card">
+        <h3>How we help</h3>
+        <p>One senior team owns design and engineering. Weekly demos, clear gates, and interfaces built from operator workflows — not a catalogue of disconnected vendors.</p>
+      </article>
+    </div>
+    <p class="svc-fit-foot" data-r>Kriva is a product studio in Ahmedabad, not a menu of agencies. Know your industry? Start on <a href="/solutions">Solutions</a>. Know the capability? Browse below or read <a href="/about">about the studio</a>.</p>
+    <p class="svc-callout-line" data-r><strong>Industry-first?</strong> See <a href="/solutions/trucking-logistics">trucking &amp; logistics</a>, <a href="/solutions/saas">SaaS</a>, or <a href="/solutions/accounting-integrations">accounting integrations</a> — then pick the services that fit.</p>
+  </div>
+</section>
+
 <section class="svc-strip" aria-label="Primary capabilities">
   <div class="wrap">
     <p class="k">What we design</p>
@@ -821,7 +895,7 @@ body.page-services .hero{
 <section class="fails on-ink" id="solve" aria-labelledby="solH">
   <div class="wrap">
     <p class="eyebrow" data-r>What we solve</p>
-    <h2 class="d2" id="solH" data-r>The brief is rarely “make a service page.”</h2>
+    <h2 class="d2" id="solH" data-r>The brief is rarely &ldquo;make a service page.&rdquo;</h2>
     <p class="lede" data-r>These are the problems that start an engagement, not a catalogue of capabilities.</p>
     <div class="frac">
       <article data-r>
@@ -1045,26 +1119,22 @@ body.page-services .hero{
       </a>
     </div>
     <div class="idx-list" data-s>
-      <a class="idx-row" href="/services/web-development" id="web-development">
-        <span class="n">07</span>
+      <a class="idx-row no-num" href="/services/web-development" id="web-development">
         <h3>Web Design &amp; Development</h3>
         <p>Marketing sites and web apps with modern stacks, CMS flexibility, and SEO that converts as well as it ranks.</p>
         <i>→</i>
       </a>
-      <a class="idx-row" href="/services/logo-design" id="logo-design">
-        <span class="n">08</span>
+      <a class="idx-row no-num" href="/services/logo-design" id="logo-design">
         <h3>Logo Design</h3>
         <p>Marks that work across product and marketing: usually with a brand system.</p>
         <i>→</i>
       </a>
-      <a class="idx-row" href="/services/graphic-design" id="graphic-design">
-        <span class="n">09</span>
+      <a class="idx-row no-num" href="/services/graphic-design" id="graphic-design">
         <h3>Graphic Design</h3>
         <p>Identity, print, social, packaging, and campaign kits from one system.</p>
         <i>→</i>
       </a>
-      <a class="idx-row" href="/services/seo-digital-marketing" id="seo-digital-marketing">
-        <span class="n">10</span>
+      <a class="idx-row no-num" href="/services/seo-digital-marketing" id="seo-digital-marketing">
         <h3>SEO &amp; Digital Marketing</h3>
         <p>Search, ads, and reporting you can audit, not a ranking guarantee.</p>
         <i>→</i>
@@ -1078,28 +1148,25 @@ body.page-services .hero{
     <div class="s-head">
       <div>
         <p class="eyebrow" data-r>Also in the stack</p>
-        <h2 class="d2 s-title" id="stH" data-r>When the brief needs more than the primary seven</h2>
-        <p class="lede" data-r>Research, systems, CRM, connectors, and automation. Combined with the work above, not sold as a catalogue.</p>
+        <h2 class="d2 s-title" id="stH" data-r>Supporting capabilities when the brief needs them</h2>
+        <p class="lede" data-r>Research, systems, CRM, connectors, and automation — combined with the work above, not sold as a separate catalogue.</p>
       </div>
     </div>
     <div class="svc-clusters">
       <div class="svc-cluster" data-s>
         <p class="k">Discovery</p>
         <div class="idx-list">
-          <a class="idx-row" href="/services/ux-research" id="ux-research">
-            <span class="n">01</span>
+          <a class="idx-row no-num" href="/services/ux-research" id="ux-research">
             <h3>UX Research</h3>
             <p>Interviews, tests, and journey mapping before UI is locked.</p>
             <i>→</i>
           </a>
-          <a class="idx-row" href="/services/wireframing-prototyping" id="wireframing-prototyping">
-            <span class="n">02</span>
+          <a class="idx-row no-num" href="/services/wireframing-prototyping" id="wireframing-prototyping">
             <h3>Wireframing &amp; Prototyping</h3>
             <p>Low- and high-fidelity prototypes that de-risk production code.</p>
             <i>→</i>
           </a>
-          <a class="idx-row" href="/services/design-systems" id="design-systems">
-            <span class="n">03</span>
+          <a class="idx-row no-num" href="/services/design-systems" id="design-systems">
             <h3>Design Systems</h3>
             <p>Tokens, components, and docs that keep releases coherent.</p>
             <i>→</i>
@@ -1109,14 +1176,12 @@ body.page-services .hero{
       <div class="svc-cluster" data-s>
         <p class="k">Operator surfaces</p>
         <div class="idx-list">
-          <a class="idx-row" href="/services/crm-development" id="crm-development">
-            <span class="n">04</span>
+          <a class="idx-row no-num" href="/services/crm-development" id="crm-development">
             <h3>CRM Design</h3>
             <p>Pipelines, desks, and dispatch consoles matched to real operators.</p>
             <i>→</i>
           </a>
-          <a class="idx-row" href="/services/web-application-design" id="web-application-design">
-            <span class="n">05</span>
+          <a class="idx-row no-num" href="/services/web-application-design" id="web-application-design">
             <h3>Web Application Design</h3>
             <p>Authenticated, data-heavy product UX: portals and operator tools.</p>
             <i>→</i>
@@ -1126,26 +1191,22 @@ body.page-services .hero{
       <div class="svc-cluster" data-s>
         <p class="k">Connect &amp; ship</p>
         <div class="idx-list">
-          <a class="idx-row" href="/services/api-integrations" id="api-integrations">
-            <span class="n">06</span>
+          <a class="idx-row no-num" href="/services/api-integrations" id="api-integrations">
             <h3>Integrations &amp; APIs</h3>
             <p>Connectors with clear errors, idempotency, and monitoring.</p>
             <i>→</i>
           </a>
-          <a class="idx-row" href="/services/automation-systems" id="automation-systems">
-            <span class="n">07</span>
+          <a class="idx-row no-num" href="/services/automation-systems" id="automation-systems">
             <h3>Automation Workflows</h3>
             <p>Human-gated triage and internal tooling, not silent writes.</p>
             <i>→</i>
           </a>
-          <a class="idx-row" href="/services/ai-assisted-development" id="ai-assisted-development">
-            <span class="n">08</span>
+          <a class="idx-row no-num" href="/services/ai-assisted-development" id="ai-assisted-development">
             <h3>AI-Assisted Development</h3>
             <p>Faster design and code with a person still signing what ships.</p>
             <i>→</i>
           </a>
-          <a class="idx-row" href="/services/no-code-low-code" id="no-code-low-code">
-            <span class="n">09</span>
+          <a class="idx-row no-num" href="/services/no-code-low-code" id="no-code-low-code">
             <h3>No-Code / Low-Code</h3>
             <p>Honest MVPs when a custom build is not the first move.</p>
             <i>→</i>
@@ -1428,6 +1489,18 @@ const chIO=new IntersectionObserver(es=>{
   }
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
+
+const mob=[...document.querySelectorAll('#mobChips a')];
+if(mob.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
 
 const tabs=[...document.querySelectorAll('.svc-tabs [role="tab"]')];
 const panels={

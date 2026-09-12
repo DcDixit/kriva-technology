@@ -325,12 +325,12 @@ Added to all 53 indexable pages:
 
 ✅ **Conversion Signals:**
 - Email address present but should be more visible on contact page:
-  - Suggested: Add `krivatechnologies@gmail.com` to footer + contact page
+  - Suggested: Add `krivatechnlogies@gmail.com` to footer + contact page
   - Email link in social proof section (e.g., "Questions? Email us at...")
 - Clear phone/contact expectation set
 
 **Recommendations:**
-- Add email address to footer: `krivatechnologies@gmail.com`
+- Add email address to footer: `krivatechnlogies@gmail.com`
 - Add badge/trust signal (e.g., "Trusted by 30+ SaaS founders")
 - Consider adding FAQ schema for common questions (already on FAQ page)
 

@@ -132,6 +132,7 @@
   }
   watchForm('fitForm', 'fit_call');
   watchForm('briefForm', 'project_brief');
+  watchForm('pageInquiry', 'page_inquiry');
 
   window.addEventListener('kriva:lead', function (e) {
     var d = (e && e.detail) || {};

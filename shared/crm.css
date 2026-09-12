@@ -66,7 +66,7 @@ body.page-crm #faqH{max-width:13ch}
 
 body.page-crm main > section{
   background:#fff;
-  padding:96px 0;
+  padding:clamp(88px,9vw,128px) 0;
   scroll-margin-top:88px
 }
 body.page-crm .hero{
@@ -447,7 +447,6 @@ body.page-crm .crm-card li{
 .crm-frac{margin-top:40px;border-top:1px solid #e6e7ea}
 .crm-frac article{
   display:grid;
-  grid-template-columns:56px minmax(0,1fr);
   gap:20px 28px;
   align-items:start;
   padding:28px 0;
@@ -591,11 +590,21 @@ body.page-crm .crm-card li{
 }
 
 /* ── How we work ── */
+.crm-band-k{
+  display:block;
+  margin-top:40px;
+  font-family:var(--f-mono);
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--cta)
+}
+#decide .crm-sub .crm-band-k{margin-top:0}
 .crm-paths{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:24px;
-  margin-top:40px
+  margin-top:16px
 }
 .crm-paths .k{
   display:block;
@@ -649,45 +658,45 @@ body.page-crm .crm-card li{
 }
 
 /* ── Case study · labeled rows (not trucking metrics-first) ── */
-.crm-proof-split{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);
-  gap:clamp(48px,6vw,88px);
-  align-items:start;
-  margin-top:48px
-}
+.crm-proof-split > div:first-child{min-width:0}
 .crm-proof-story{
   display:grid;
-  gap:28px;
-  margin-top:36px;
-  max-width:42ch
+  gap:0;
+  margin-top:0;
+  max-width:none
 }
 .crm-proof-story div{
   display:grid;
-  gap:8px;
-  padding:0;
-  border:0
+  grid-template-columns:minmax(108px,.34fr) minmax(0,1fr);
+  gap:12px clamp(20px,3vw,32px);
+  align-items:start;
+  padding:18px 0;
+  border-bottom:1px solid #e6e7ea
 }
+.crm-proof-story div:first-child{padding-top:0}
+.crm-proof-story div:last-child{border-bottom:0;padding-bottom:0}
 .crm-proof-story dt{
   font-family:var(--f-mono);
   font-size:10px;
   letter-spacing:.12em;
   text-transform:uppercase;
-  color:var(--cta)
+  color:var(--cta);
+  padding-top:2px
 }
 .crm-proof-story dd{
   font-size:15px;
   line-height:1.65;
-  color:var(--steel)
+  color:var(--steel);
+  margin:0
 }
 .crm-proof-metrics{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:24px 20px;
-  margin-top:40px;
-  padding:0;
-  border:0;
-  max-width:42ch
+  gap:24px clamp(16px,2.5vw,28px);
+  margin-top:36px;
+  padding-top:28px;
+  border-top:1px solid #e6e7ea;
+  max-width:none
 }
 .crm-proof-metrics span{display:grid;gap:8px;min-width:0}
 .crm-proof-metrics b{
@@ -709,9 +718,14 @@ body.page-crm .crm-card li{
   line-height:1.4
 }
 .proof-cta{margin-top:36px}
-.proof-note{margin-top:14px;font-size:13px;line-height:1.55;color:var(--steel-2);max-width:40ch}
+.proof-note{margin-top:14px;font-size:13px;line-height:1.55;color:var(--steel-2);max-width:56ch}
 
-.crm-board--proof{grid-template-columns:1fr}
+.crm-board--proof{
+  grid-template-columns:1fr;
+  width:100%;
+  max-width:none;
+  justify-self:stretch
+}
 .crm-board--proof .crm-side,
 .crm-board--proof .crm-filters,
 .crm-board--proof .crm-tools{display:none}
@@ -723,21 +737,22 @@ body.page-crm .crm-card li{
 
 .crm-pulse{
   margin-top:28px;
-  padding:20px 0 0;
+  padding:16px 0 0;
   background:transparent;
   border:0;
   border-top:1px solid #e6e7ea;
   border-radius:0
 }
-.crm-pulse h3{
-  font-family:var(--f-display);
-  font-weight:700;
-  font-size:1.02rem;
-  letter-spacing:-.02em;
-  color:var(--ink);
-  margin-bottom:8px
+.crm-pulse-k{
+  display:block;
+  margin-bottom:8px;
+  font-family:var(--f-mono);
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--steel-2)
 }
-.crm-pulse p{font-size:14.5px;line-height:1.6;color:var(--steel);margin:0;max-width:36ch}
+.crm-pulse p{font-size:14px;line-height:1.55;color:var(--steel);margin:0;max-width:36ch}
 .crm-pulse a{color:var(--ink);border-bottom:1px solid #e6e7ea}
 .crm-pulse a:hover{border-color:var(--ink)}
 
@@ -749,6 +764,7 @@ body.page-crm .crm-card li{
   gap:24px;
   flex-wrap:wrap
 }
+.crm-proof-secondary .crm-text-link{display:inline-flex;margin-top:14px;margin-right:18px}
 .crm-text-link{
   font-family:var(--f-mono);
   font-size:11.5px;
@@ -1007,7 +1023,7 @@ body.page-crm .mob-chips a[aria-current="true"]{border-color:var(--ink);color:va
   body.page-crm .faq-a-in{padding-left:44px}
   body.page-crm .crm-contact .inq-actions .btn{width:100%;justify-content:center}
   .crm-frac article{grid-template-columns:40px minmax(0,1fr);gap:14px}
-  .crm-proof-story div{grid-template-columns:1fr;gap:6px}
+  .crm-proof-story div{grid-template-columns:1fr;gap:6px;padding:14px 0}
 }
 @media(max-width:560px){
   .crm-frac article{grid-template-columns:1fr;gap:8px}

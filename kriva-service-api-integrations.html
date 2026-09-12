@@ -109,24 +109,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.sect{padding-block:clamp(80px,10vw,140px);scroll-margin-top:88px}
-.s-title{margin-top:18px}
-.cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
-.cta-band .wrap{padding-block:clamp(88px,11vw,160px)}
-.cta-band .eyebrow{color:var(--ink-dim)}
-.cta-band h2{color:#fff;margin-top:26px;max-width:12ch;font-size:clamp(2.6rem,7vw,5.4rem);line-height:.93;letter-spacing:-.032em}
-.cta-band .lede{color:#8C98A4;margin-top:18px;max-width:40ch}
-.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(36px,4vw,58px)}
-.cta-actions{display:flex;gap:12px;flex-wrap:wrap}
-.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
-.assur i{font-style:normal;color:var(--amber);margin-right:7px}
-.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:22px;min-height:44px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
-.p-link i{font-style:normal;transition:transform .42s var(--e)}
-.p-link:hover i{transform:translateX(6px)}
+.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(24px,4vw,72px);flex-wrap:wrap}
+.s-head h2,.s-title{margin-top:18px}
+.s-head .lede{margin-top:18px}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 .chapters{position:fixed;right:calc(var(--gutter) - 8px);top:50%;transform:translateY(-50%);z-index:70;display:grid;gap:2px;opacity:0;transition:opacity var(--t-mid) var(--e);pointer-events:none}
 .chapters.show{opacity:1;pointer-events:auto}
-.chapters a{display:flex;align-items:center;justify-content:end;gap:10px;padding:5px 8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel-2)}
+.chapters a{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:5px 8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel-2)}
 .chapters a span{opacity:0;transform:translateX(6px);transition:opacity var(--t-fast) var(--e),transform var(--t-fast) var(--e)}
 .chapters:hover a span,.chapters a[aria-current="true"] span{opacity:1;transform:none}
 .chapters a i{display:block;width:18px;height:1px;background:var(--rule);flex:none;transition:width var(--t-fast) var(--e),background var(--t-fast)}
@@ -141,181 +130,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
   .mask span i{transform:none!important}
 }
 </style>
-<link rel="stylesheet" href="/shared/inner.css?v=pu3">
+<link rel="stylesheet" href="/shared/inner.css?v=buildrow1">
 <link rel="stylesheet" href="/shared/system.css">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
-<style>
-body.page-api{overflow-x:clip;background:var(--paper)}
-html:has(body.page-api){overflow-x:clip}
-body.page-api .d1{font-size:clamp(2rem,4.8vw,4.05rem);line-height:.92;letter-spacing:-.03em}
-body.page-api .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
-body.page-api .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
-body.page-api .sect{padding-block:clamp(80px,10vw,140px)}
-body.page-api .cta-band h2{font-size:clamp(2.4rem,6.4vw,4.8rem);max-width:14ch;line-height:.93;letter-spacing:-.032em}
-body.page-api .hero{
-  background:var(--paper);color:var(--ink);overflow:hidden;
-  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(48px,6vw,88px);
-  scroll-margin-top:88px
-}
-@media(min-width:1025px){
-  body.page-api .hero{
-    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding:80px 0 64px
-  }
-  body.page-api .hero > .wrap{width:100%}
-}
-
-.api-hero-grid{
-  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-  gap:clamp(28px,4.5vw,72px);align-items:center;
-  margin-top:clamp(22px,3vw,36px)
-}
-.api-hero-copy .d1{margin:18px 0 20px;max-width:12ch}
-.api-hero-copy .lede{max-width:40ch}
-.api-visual{min-width:0}
-.api-frame{
-  background:var(--white);border:1px solid var(--rule);
-  box-shadow:var(--shadow-product);overflow:hidden
-}
-.api-frame img{
-  width:100%;height:auto;aspect-ratio:4/3;
-  object-fit:cover;object-position:center;display:block
-}
-.cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
-
-.api-frac{display:grid;gap:0;margin-top:clamp(36px,5vw,64px);border-top:1px solid var(--rule)}
-.api-frac article{
-  display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;
-  padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule)
-}
-.api-frac .n{font-family:var(--f-display);font-weight:800;font-size:clamp(1.4rem,2.2vw,1.8rem);letter-spacing:-.04em;color:var(--cta);line-height:1;padding-top:4px}
-.api-frac h3{margin-bottom:8px}
-.api-frac p{max-width:52ch}
-
-.api-split{
-  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-  gap:clamp(28px,4.5vw,72px);align-items:center;
-  margin-top:clamp(32px,4vw,56px)
-}
-.api-split--flip{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}
-.api-split .lede{margin-top:16px}
-.api-steps{list-style:none;display:grid;gap:0;margin-top:28px;border-top:1px solid var(--rule)}
-.api-steps li{
-  display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;
-  padding:16px 0;border-bottom:1px solid var(--rule)
-}
-.api-steps .sn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);padding-top:5px}
-.api-steps b{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
-.api-steps span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel);max-width:42ch}
-
-.api-plats{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);
-  margin-top:clamp(32px,4vw,56px)
-}
-.api-plats article{background:var(--white);padding:clamp(24px,2.8vw,36px);min-height:240px;display:flex;flex-direction:column}
-.api-plats .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:14px}
-.api-plats h3{margin-bottom:10px;max-width:16ch}
-.api-plats p{font-size:15px;line-height:1.58;color:var(--steel);max-width:42ch;flex:1}
-.api-plats .p-link{margin-top:18px}
-
-.api-points{list-style:none;display:grid;gap:0;margin-top:24px;border-top:1px solid var(--rule)}
-.api-points li{padding:18px 0;border-bottom:1px solid var(--rule)}
-.api-points strong{display:block;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;margin-bottom:4px}
-.api-points span{display:block;font-size:14.5px;line-height:1.55;color:var(--steel);max-width:46ch}
-
-.api-time{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(32px,4vw,56px);border-top:1px solid var(--rule)}
-.api-time li{padding:clamp(22px,2.6vw,32px) clamp(0px,2vw,28px) 0 0;border-right:1px solid var(--rule)}
-.api-time li:last-child{border-right:0;padding-right:0}
-.api-time .wk{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:14px}
-.api-time h3{margin-bottom:10px}
-.api-time p{max-width:34ch}
-
-.api-proof{background:var(--ink);color:#DDE2E7}
-.api-proof .eyebrow{color:var(--ink-dim)}
-.api-proof h2{color:#fff;margin-top:18px}
-.api-proof .lede{color:#8C98A4}
-.api-proof-grid{
-  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
-  gap:clamp(28px,4vw,64px);align-items:start;margin-top:clamp(32px,4vw,52px)
-}
-.api-story{border-top:1px solid var(--ink-line)}
-.api-story div{
-  display:grid;grid-template-columns:clamp(96px,12vw,128px) minmax(0,1fr);gap:16px;
-  padding:16px 0;border-bottom:1px solid var(--ink-line)
-}
-.api-story dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;padding-top:3px}
-.api-story dd{color:#DDE2E7;font-size:15px;line-height:1.58;max-width:48ch}
-.api-proof .proof-note{margin-top:22px;font-size:13px;line-height:1.6;color:var(--ink-dim);max-width:62ch}
-.api-proof-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-
-.faq-sec{background:var(--white);border-block:1px solid var(--rule);scroll-margin-top:88px}
-.faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
-.faq-grid > div:first-child{position:sticky;top:112px}
-.faq-grid .d2{margin-top:18px;max-width:13ch}
-.faq-grid .lede{margin-top:18px}
-.faq-list{border-top:1px solid var(--rule)}
-.faq-item{border-bottom:1px solid var(--rule)}
-.faq-q{
-  width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
-  gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
-  padding:clamp(20px,2.4vw,26px) 0;min-height:44px;transition:padding-left .45s var(--e)
-}
-.faq-q:hover,.faq-q:focus-visible{padding-left:8px}
-.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel);transition:color var(--t-fast) var(--e);padding-top:5px}
-.faq-item.open .qn{color:var(--cta)}
-.faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
-.faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
-.faq-q .qi:before,.faq-q .qi:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .4s var(--e)}
-.faq-q .qi:after{transform:rotate(90deg)}
-.faq-item.open .qi:after{transform:rotate(0)}
-.faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--e),visibility 0s linear .5s}
-.faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--e),visibility 0s linear 0s}
-.faq-a>div{overflow:hidden}
-.faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
-.faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
-.faq-side .btn{margin-top:24px}
-.sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
-.sib a:hover{border-color:var(--blue);color:var(--blue)}
-
-.mob-chips{
-  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
-  padding:10px 0 12px;width:100%;max-width:100%;
-  background:rgba(244,243,238,.94);border-bottom:1px solid var(--rule);scrollbar-width:none
-}
-.mob-chips::-webkit-scrollbar{display:none}
-.mob-chips a{
-  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
-  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
-}
-.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
-@media(max-width:1280px){body.page-api .mob-chips{display:flex !important}}
-
-@media(max-width:1024px){
-  .faq-grid,.api-proof-grid{grid-template-columns:1fr}
-  .faq-grid > div:first-child{position:static}
-  .api-hero-copy .d1{max-width:none}
-  .cta-row{align-items:flex-start}
-}
-@media(max-width:900px){
-  .api-hero-grid,.api-split,.api-split--flip,.api-plats,.api-time{grid-template-columns:1fr}
-  .api-time li{border-right:0;border-bottom:1px solid var(--rule);padding:22px 0}
-  .api-time li:last-child{border-bottom:0}
-  .api-frac article{grid-template-columns:48px minmax(0,1fr);gap:14px}
-}
-@media(max-width:560px){
-  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
-  .faq-a-in{padding-left:44px}
-  .faq-q:hover{padding-left:0}
-  .api-story div{grid-template-columns:1fr;gap:6px}
-}
-</style>
 <link rel="stylesheet" href="/shared/page-inquiry.css">
+<link rel="stylesheet" href="/shared/api-integrations.css?v=api3">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
-<body class="service page-api">
+<body class="page-api">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -455,161 +277,215 @@ body.page-api .hero{
 </div>
 
 <nav class="chapters" id="chapters" aria-label="Sections">
-  <a href="#overview"><span>Overview</span><i></i></a>
+  <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
+  <a href="#problems"><span>Problems</span><i></i></a>
   <a href="#structure"><span>Structure</span><i></i></a>
   <a href="#platforms"><span>Platforms</span><i></i></a>
   <a href="#exceptions"><span>Exceptions</span><i></i></a>
   <a href="#delivery"><span>Delivery</span><i></i></a>
   <a href="#proof"><span>Proof</span><i></i></a>
+  <a href="#related"><span>Related</span><i></i></a>
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
-<nav class="mob-chips" id="mobChips" aria-label="On this page">
-  <a href="#overview" aria-current="true">Overview</a>
+<nav class="mob-chips" id="mobChips" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#problems">Problems</a>
   <a href="#structure">Structure</a>
   <a href="#platforms">Platforms</a>
   <a href="#exceptions">Exceptions</a>
   <a href="#delivery">Delivery</a>
   <a href="#proof">Proof</a>
+  <a href="#related">Related</a>
   <a href="#faq">FAQ</a>
 </nav>
 
 <main id="main">
 
-<header class="hero" id="overview">
+<header class="hero hero--inner" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">Integrations &amp; APIs</li>
     </ol>
-
-    <div class="api-hero-grid">
-      <div class="api-hero-copy">
-        <p class="eyebrow" data-r>Integrations &amp; APIs</p>
-        <h1 class="d1 mask" data-mask>
-          <span><i>Connectors that hold</i></span>
-          <span><i>after the first sync.</i></span>
+    <div class="api-hero-split" data-r>
+      <div class="ip-hero">
+        <p class="ip-kicker">Integrations &amp; APIs</p>
+        <h1 class="ip-title ip-title--lines">
+          <span>Connectors that hold</span>
+          <span>after the first sync</span>
         </h1>
-        <p class="lede" data-r>Bitbucket, ledger, CRM, and payment APIs through one structure: a stable event, a documented write, and an exception someone can finish.</p>
-        <div class="hero-actions" data-r>
-          <a href="#inquire" class="btn"><span>Discuss the connector</span><i>→</i></a>
-          <a href="#structure" class="btn ghost"><span>See the structure</span><i>→</i></a>
+        <p class="ip-desc">Bitbucket, ledger, CRM, and payment APIs through one structure: stable events, documented writes, and exceptions someone can finish.</p>
+        <div class="ip-actions">
+          <a href="#inquire" class="btn sm"><span>Discuss the connector</span><i>→</i></a>
+          <a href="#structure" class="btn sm ghost"><span>See the structure</span><i>→</i></a>
         </div>
+        <p class="ip-meta">You own the code · Visible retries</p>
       </div>
-      <div class="api-visual" data-r>
-        <figure class="api-frame">
-          <img src="/media/services/api/hero-connector.svg" alt="Product events flow through an integration layer to ledger, CRM, and Bitbucket APIs, with failures routed to an exception queue." width="1200" height="900" decoding="async">
-        </figure>
-        <p class="cap-note"><span class="flag">Diagram</span> Connector path · illustrative</p>
-      </div>
+      <figure class="api-hero-viz">
+        <img src="/media/services/api/hero-connector.svg" alt="API connector architecture linking source systems to destination APIs with validation and exception handling." width="960" height="720" loading="eager" decoding="async" fetchpriority="high">
+        <figcaption class="api-cap">Connector craft · shared structure across APIs</figcaption>
+      </figure>
     </div>
   </div>
 </header>
 
-<section class="sect" id="fail" aria-labelledby="failH" style="background:var(--white);border-block:1px solid var(--rule)">
+<section class="api-fit" id="about-service" aria-labelledby="fitH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Why the demo is not the product</p>
-    <h2 class="d2 s-title" id="failH" data-r>Staging success is not a production connector</h2>
-    <p class="lede" data-r>A Bitbucket webhook or a QuickBooks invoice that “worked once” still fails on retries, mapping drift, and errors nobody owns.</p>
-    <div class="api-frac" data-s>
+    <h2 class="sr" id="fitH">API integration services: connectors, validation, and exception handling</h2>
+    <div class="api-fit-rail" data-s>
+      <article class="api-card">
+        <h3>Who it's for</h3>
+        <p>Product, ops, and finance teams where a webhook “worked in staging” but production drifts. Teams connecting Bitbucket, QuickBooks, Xero, Stripe, CRM, or fleet APIs who need agreement between systems — not another glue script.</p>
+      </article>
+      <article class="api-card">
+        <h3>What we deliver</h3>
+        <p>Custom API connectors with stable event keys, idempotent workers, documented endpoints, and operator exception queues. Bitbucket Pipelines, ledger posts, payments, and CRM writes through the same structure — finished when failure is visible, owned, and auditable.</p>
+      </article>
+      <article class="api-card">
+        <h3>Problems we solve</h3>
+        <p>Silent sync drift, duplicate posts on retry, and errors buried in logs. When nobody owns a failed record, we map the source event, destination write, and resolution path — then build the connector and the surface ops can finish.</p>
+      </article>
+    </div>
+    <p class="api-fit-foot" data-r>Kriva is a product design and engineering studio — not an iPaaS vendor. You own the connectors, code, and documentation after launch.</p>
+  </div>
+</section>
+
+<section class="api-problems on-ink" id="problems" aria-labelledby="probH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Integration problems</p>
+    <h2 class="d2" id="probH" data-r>Staging success is not<br>a production connector.</h2>
+    <div class="api-frac" data-r>
       <article>
         <span class="n num">01</span>
         <div>
           <h3 class="d3">No owner when a record fails</h3>
-          <p class="body-sm">The job reports success or a raw 500. Production needs a named person, a source record, and a next step.</p>
+          <p>The job reports success or a raw 500. Production needs a named person, a source record, and a next step.<span class="cons">COST: silent drift, finance finds variances outside the product</span></p>
         </div>
       </article>
       <article>
         <span class="n num">02</span>
         <div>
           <h3 class="d3">Retries without a stable key</h3>
-          <p class="body-sm">A timeout posts twice. Without idempotency, every retry makes the destination worse than the miss.</p>
+          <p>A timeout posts twice. Without idempotency, every retry makes the destination worse than the miss.<span class="cons">COST: duplicate invoices, conflicting CRM records</span></p>
         </div>
+        <figure class="frac-viz">
+          <img src="/media/work/financesync/sync-workers.svg" alt="Duplicate API posts caused by retry without idempotency keys." width="480" height="400" decoding="async" loading="lazy">
+        </figure>
       </article>
       <article>
         <span class="n num">03</span>
         <div>
           <h3 class="d3">Errors operators cannot act on</h3>
-          <p class="body-sm">JSON blobs and HTTP codes. Ops needs source value, destination value, and Retry, Match, or Park.</p>
+          <p>JSON blobs and HTTP codes. Ops needs source value, destination value, and Retry, Match, or Park.<span class="cons">COST: engineering tickets for every sync miss</span></p>
         </div>
+        <figure class="frac-viz">
+          <img src="/media/services/api/exception.svg" alt="Exception card with retry, match, and park actions for operators." width="480" height="400" decoding="async" loading="lazy">
+        </figure>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sect" id="structure" aria-labelledby="stH">
+<section id="structure" aria-labelledby="structH">
   <div class="wrap">
     <p class="eyebrow" data-r>Integration structure</p>
-    <h2 class="d2 s-title" id="stH" data-r>One path. Every API.</h2>
-    <div class="api-split">
-      <div>
-        <p class="lede" data-r>Bitbucket Pipelines, ledger posts, and CRM writes share the same sequence. The connector is finished when failure is visible, owned, and auditable.</p>
-        <ol class="api-steps" data-s>
-          <li><span class="sn">01</span><div><b>Source event</b><span>Queued with a stable key from the product, Bitbucket, or another system of record.</span></div></li>
-          <li><span class="sn">02</span><div><b>Connector</b><span>Workers, backoff, and documented endpoints. No CSV dumps as the default.</span></div></li>
-          <li><span class="sn">03</span><div><b>Validate</b><span>Schema, mapping, and idempotency before the destination write.</span></div></li>
-          <li><span class="sn">04</span><div><b>Destination API</b><span>Bitbucket, QuickBooks, Xero, Stripe, HubSpot, or a scoped industry API.</span></div></li>
-          <li><span class="sn">05</span><div><b>Exception or audit</b><span>Match confirms agreement, or an operator finishes the record without an engineering ticket.</span></div></li>
-        </ol>
-      </div>
-      <div class="api-visual" data-r>
-        <figure class="api-frame">
-          <img src="/media/services/api/structure.svg" alt="Five-stage integration path from source event through connector and validation to destination API, then exception or audit." width="1200" height="900" loading="lazy" decoding="async">
-        </figure>
-        <p class="cap-note"><span class="flag">Diagram</span> Shared architecture</p>
-      </div>
-    </div>
+    <h2 class="d2" id="structH" data-r>One path. Every API.</h2>
+    <p class="lede" data-r>Bitbucket Pipelines, ledger posts, and CRM writes share the same sequence. The connector is finished when failure is visible, owned, and auditable.</p>
+    <ol class="api-stepper" aria-label="Integration connector workflow">
+      <li>
+        <span class="sn">01</span>
+        <h3>Source event</h3>
+        <p>Queued with a stable key from the product, Bitbucket, or another system of record.</p>
+      </li>
+      <li>
+        <span class="sn">02</span>
+        <h3>Connector</h3>
+        <p>Workers, backoff, and documented endpoints. No CSV dumps as the default.</p>
+      </li>
+      <li>
+        <span class="sn">03</span>
+        <h3>Validate</h3>
+        <p>Schema, mapping, and idempotency before the destination write.</p>
+      </li>
+      <li>
+        <span class="sn">04</span>
+        <h3>Destination API</h3>
+        <p>Bitbucket, QuickBooks, Xero, Stripe, HubSpot, or a scoped industry API.</p>
+      </li>
+      <li>
+        <span class="sn">05</span>
+        <h3>Exception or audit</h3>
+        <p>Match confirms agreement, or an operator finishes the record without an engineering ticket.</p>
+      </li>
+    </ol>
+    <figure class="api-diagram" data-r>
+      <img src="/media/services/api/structure.svg" alt="Five-stage integration path from source event through connector and validation to destination API, then exception or audit." width="1200" height="900" loading="lazy" decoding="async">
+      <figcaption>Shared architecture · illustrative</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="sect" id="platforms" aria-labelledby="plH" style="background:var(--white);border-block:1px solid var(--rule)">
+<section class="api-band" id="platforms" aria-labelledby="platH">
   <div class="wrap">
-    <p class="eyebrow" data-r>APIs we actually ship against</p>
-    <h2 class="d2 s-title" id="plH" data-r>The same craft. Different destinations.</h2>
-    <p class="lede" data-r>Each connector uses official APIs and the structure above. Close-cycle UX for books lives on the accounting page.</p>
-    <div class="api-plats" data-s>
-      <article>
-        <span class="k">Platform API</span>
-        <h3 class="d3">Bitbucket</h3>
-        <p>Webhooks, repository events, and Pipelines status into the product: same keys, retries, and exception queue as every other connector.</p>
+    <p class="eyebrow" data-r>APIs we ship against</p>
+    <h2 class="d2" id="platH" data-r>The same craft.<br>Different destinations.</h2>
+    <p class="lede" data-r>Each connector uses official APIs and the structure above. Close-cycle UX for QuickBooks and Xero lives on <a href="/solutions/accounting-integrations">QuickBooks &amp; Xero integrations</a> — same connector structure, finance-specific operator UI.</p>
+    <div class="api-plats-grid" data-s>
+      <article class="api-card">
+        <span class="api-k">Platform API</span>
+        <h3>Bitbucket</h3>
+        <p>Webhooks, repository events, and Pipelines status into the product — same keys, retries, and exception queue as every other connector.</p>
       </article>
-      <article>
-        <span class="k">Accounting</span>
-        <h3 class="d3">QuickBooks &amp; Xero</h3>
+      <article class="api-card">
+        <span class="api-k">Accounting</span>
+        <h3>QuickBooks &amp; Xero</h3>
         <p>Invoices, payments, and matching for month-end. The finance-specific solution, not a generic glue job.</p>
-        <a href="/solutions/accounting-integrations" class="p-link">Accounting integrations <i>→</i></a>
+        <p class="lock">
+          <img src="/brand/logos/quickbooks.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
+          <img src="/brand/logos/xero.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
+          QuickBooks &amp; Xero
+        </p>
+        <a href="/solutions/accounting-integrations" class="api-text-link">Accounting integrations →</a>
       </article>
-      <article>
-        <span class="k">Payments</span>
-        <h3 class="d3">Stripe and PSP APIs</h3>
-        <p>Payout and settlement lines with source-record traceability, not a one-way export that finance cannot reconcile.</p>
+      <article class="api-card">
+        <span class="api-k">Payments</span>
+        <h3>Stripe and PSP APIs</h3>
+        <p>Payout and settlement lines with source-record traceability — not a one-way export that finance cannot reconcile.</p>
       </article>
-      <article>
-        <span class="k">CRM · ops · fleet</span>
-        <h3 class="d3">HubSpot, custom, ELD</h3>
-        <p>Reliable sync when the job is agreement between systems. Dispatch context lives under trucking solutions.</p>
-        <a href="/solutions/trucking-logistics" class="p-link">Trucking &amp; logistics <i>→</i></a>
+      <article class="api-card">
+        <span class="api-k">CRM · ops · fleet</span>
+        <h3>HubSpot, custom, ELD</h3>
+        <p>Reliable sync when the job is agreement between systems. Dispatch and fleet context lives under trucking solutions.</p>
+        <a href="/solutions/trucking-logistics" class="api-text-link">Trucking &amp; logistics →</a>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sect" id="exceptions" aria-labelledby="exH">
+<section id="exceptions" aria-labelledby="exH">
   <div class="wrap">
     <p class="eyebrow" data-r>When the write fails</p>
-    <h2 class="d2 s-title" id="exH" data-r>Operators finish what APIs cannot</h2>
-    <div class="api-split api-split--flip">
-      <div class="api-visual" data-r>
-        <figure class="api-frame">
-          <img src="/media/services/api/exception.svg" alt="Illustrative exception card showing a Bitbucket pull-request reference that does not match a product job, with retry, match, and park actions." width="1200" height="900" loading="lazy" decoding="async">
-        </figure>
-        <p class="cap-note"><span class="flag">Illustration</span> Operator pattern · no client data</p>
+    <h2 class="d2" id="exH" data-r>Operators finish what APIs cannot.</h2>
+    <div class="api-split">
+      <div class="api-exc" data-r>
+        <div class="api-frame">
+          <div class="api-chrome" aria-hidden="true"><i></i><i></i><i></i><span>exception · PR-882</span><span class="api-live"><b></b>Needs match</span></div>
+          <div class="api-scan-ex">
+            <p class="api-scan-h">Bitbucket ref · no product job</p>
+            <ol>
+              <li class="is-risk"><span class="api-ref">PR-882</span><span class="api-amt">Repo A · main</span><span class="chip s1">Match</span></li>
+            </ol>
+          </div>
+          <div class="api-scan-bar"><span class="go">Retry</span><span class="ghost">Park</span></div>
+        </div>
+        <p class="api-cap">Operator pattern · no client data</p>
       </div>
       <div>
         <p class="lede" data-r>A Bitbucket pipeline miss and a ledger mismatch use the same language: source, destination, reason, owner, action.</p>
         <ul class="api-points" data-s>
-          <li><strong>Source record</strong><span>Stable event ID and payload reference, not a log line buried in a worker.</span></li>
+          <li><strong>Source record</strong><span>Stable event ID and payload reference — not a log line buried in a worker.</span></li>
           <li><strong>Readable reason</strong><span>Mapping mismatch, rate limit, or validation fail — in language ops can act on.</span></li>
           <li><strong>Named resolution</strong><span>Retry, Match, or Park. Owner, timestamp, and an audit state when it closes.</span></li>
         </ul>
@@ -618,126 +494,205 @@ body.page-api .hero{
   </div>
 </section>
 
-<section class="sect" id="delivery" aria-labelledby="dlH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
+<section class="api-band" id="delivery" aria-labelledby="delH">
   <div class="wrap">
     <p class="eyebrow" data-r>How the work is owned</p>
-    <h2 class="d2 s-title" id="dlH" data-r>Map, then build, then operate</h2>
+    <h2 class="d2" id="delH" data-r>Map, then build, then operate.</h2>
     <p class="lede" data-r>Three phases. Each has a definition of done. Code does not start until systems, records, and retry policy are signed off.</p>
-    <ol class="api-time" data-s>
+    <ol class="api-process" data-s>
       <li>
-        <span class="wk">01 · Map</span>
+        <span class="wk">01</span>
         <h3 class="d3">Systems, records, owners</h3>
-        <p class="body-sm">What posts where, who is paged, what “done” means, and how idempotency works.</p>
+        <p>What posts where, who is paged, what “done” means, and how idempotency works.</p>
       </li>
       <li>
-        <span class="wk">02 · Build</span>
+        <span class="wk">02</span>
         <h3 class="d3">Documented APIs</h3>
-        <p class="body-sm">Bitbucket, ledger, payments, CRM, and platform APIs through native connectors.</p>
+        <p>Bitbucket, ledger, payments, CRM, and platform APIs through native connectors.</p>
       </li>
       <li>
-        <span class="wk">03 · Operate</span>
+        <span class="wk">03</span>
         <h3 class="d3">Exception tooling</h3>
-        <p class="body-sm">Retry, match, and resolution surfaces so the connector does not become a ticket pile.</p>
+        <p>Retry, match, and resolution surfaces so the connector does not become a ticket pile.</p>
       </li>
     </ol>
   </div>
 </section>
 
-<section class="sect api-proof on-ink" id="proof" aria-labelledby="pfH">
+<section id="proof" aria-labelledby="proofH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Proof</p>
-    <h2 class="d2" id="pfH" data-r>FinanceSync · this structure in production</h2>
-    <p class="lede" data-r>QuickBooks and Xero sync worked in staging. Month-end is where the exception queue earned its place.</p>
-    <div class="api-proof-grid">
-      <dl class="api-story">
-        <div><dt>Problem</dt><dd>Jobs reported success while amounts drifted. Finance found variances outside the product.</dd></div>
-        <div><dt>Connector</dt><dd>Idempotent workers, source-record keys, match engine, webhook plus poll so silent drift cannot hide.</dd></div>
-        <div><dt>Operator UX</dt><dd>Discrepancy cards with retry, confirm, park — ordered by close risk, not arrival time.</dd></div>
-        <div><dt>Outcome</dt><dd>A close workflow finance uses. Parallel run before cutover. No invented volumes or uptime claims.</dd></div>
-      </dl>
+    <p class="eyebrow" data-r>FinanceSync case study</p>
+    <h2 class="d2" id="proofH" data-r>When month-end found the drift.</h2>
+    <div class="api-proof-split" data-r>
       <div>
-        <div class="api-proof-cta" data-r>
-          <a href="/work/finance-sync-hub" class="btn on-dark"><span>Read the FinanceSync case</span><i>→</i></a>
-          <a href="/solutions/accounting-integrations" class="btn ghost on-dark"><span>QuickBooks &amp; Xero</span><i>→</i></a>
+        <p class="lede">QuickBooks and Xero sync worked in staging. Month-end is where the exception queue earned its place — idempotent workers, source-record keys, and discrepancy cards ordered by close risk.</p>
+        <dl class="api-story">
+          <div><dt>Problem</dt><dd>Jobs reported success while amounts drifted. Finance found variances outside the product.</dd></div>
+          <div><dt>Connector</dt><dd>Idempotent workers, source-record keys, match engine, webhook plus poll so silent drift cannot hide.</dd></div>
+          <div><dt>Operator UX</dt><dd>Discrepancy cards with retry, confirm, park — ordered by close risk, not arrival time.</dd></div>
+          <div><dt>Outcome</dt><dd>A close workflow finance uses. Parallel run before cutover.</dd></div>
+        </dl>
+        <div class="proof-cta">
+          <a href="/work/finance-sync-hub" class="btn"><span>Read the FinanceSync case</span><i>→</i></a>
+          <a href="/solutions/accounting-integrations" class="btn ghost"><span>QuickBooks &amp; Xero</span><i>→</i></a>
         </div>
         <p class="proof-note">Client names and identifying details may be changed for confidentiality. Metrics on case pages are measured delivery outcomes.</p>
       </div>
+      <figure class="api-exc">
+        <div class="api-frame">
+          <div class="api-chrome" aria-hidden="true"><i></i><i></i><i></i><span>discrepancies · close queue</span><span class="api-live"><b></b>Live</span></div>
+          <div class="api-scan" role="img" aria-label="Illustrative finance discrepancy queue sorted by close risk.">
+            <div class="api-scan-bar"><div><p class="api-scan-title">Discrepancy queue</p><p class="api-scan-meta">March close · 14:20</p></div></div>
+            <div class="api-scan-ex">
+              <p class="api-scan-h">Queue · by close risk</p>
+              <ol>
+                <li class="is-risk"><span class="api-ref">INV-4412</span><span class="api-amt">$2,840 vs $2,910</span><span class="chip s1">Match</span></li>
+                <li><span class="api-ref">PAY-8821</span><span class="api-amt">Stripe payout gap</span><span class="chip s1">Retry</span></li>
+                <li><span class="api-ref">XERO-119</span><span class="api-amt">Tax code mismatch</span><span class="chip s0">Park</span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <figcaption class="api-cap">Illustrative discrepancy queue — the view finance uses at close.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="sect faq-sec" id="faq" aria-labelledby="faqH">
+<section class="api-band" id="related" aria-labelledby="relH">
   <div class="wrap">
-    <div class="faq-grid">
-      <div class="faq-side">
-        <p class="eyebrow" data-r>FAQ</p>
-        <h2 class="d2" id="faqH" data-r>About this integration work</h2>
-        <p class="lede" data-r>Bitbucket, accounting, and other APIs on this page follow the same connector rules.</p>
-        <a href="#inquire" class="btn"><span>Discuss the connector</span><i>→</i></a>
-      </div>
+    <div class="api-integ-head">
       <div>
-        <div class="faq-list">
-          <div class="faq-item open">
-            <button class="faq-q" type="button" aria-expanded="true">
-              <span class="qn num">01</span><span class="qt">Do you build Bitbucket integrations?</span><span class="qi" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a"><div><div class="faq-a-in">
-              <p>Yes. Bitbucket webhooks, repository events, and Pipelines status land in the same structure as ledger and CRM connectors: stable keys, retries, and an exception queue.</p>
-            </div></div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button" aria-expanded="false">
-              <span class="qn num">02</span><span class="qt">How is this different from QuickBooks &amp; Xero?</span><span class="qi" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a"><div><div class="faq-a-in">
-              <p>That solution page is the finance market path: close, matching, and operator UX for books. This service is the connector craft used there and on Bitbucket, payments, CRM, and other APIs.</p>
-            </div></div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button" aria-expanded="false">
-              <span class="qn num">03</span><span class="qt">How is this different from automation workflows?</span><span class="qi" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a"><div><div class="faq-a-in">
-              <p>Integrations move data between systems of record. Automation orchestrates steps, often with a human on send. Many briefs need both.</p>
-            </div></div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button" aria-expanded="false">
-              <span class="qn num">04</span><span class="qt">How do you handle sync failures?</span><span class="qi" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a"><div><div class="faq-a-in">
-              <p>Exception views, retries, and the source record. Operators get Retry, Match, or Park. Failures are not silently skipped.</p>
-            </div></div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button" aria-expanded="false">
-              <span class="qn num">05</span><span class="qt">Will you finish an API we already started?</span><span class="qi" aria-hidden="true"></span>
-            </button>
-            <div class="faq-a"><div><div class="faq-a-in">
-              <p>Yes. We harden the connector and add the operational surface the first pass skipped: keys, mapping, and a resolution path.</p>
-            </div></div></div>
-          </div>
-        </div>
-        <div class="sib">
-          <a href="/solutions/accounting-integrations">QuickBooks &amp; Xero</a>
-          <a href="/solutions/trucking-logistics">Trucking &amp; logistics</a>
-          <a href="/services/automation-systems">Automation</a>
-          <a href="/work/finance-sync-hub">FinanceSync</a>
-          <a href="/services">All services</a>
-        </div>
+        <p class="eyebrow" data-r>Connected capabilities</p>
+        <h2 class="d2" id="relH" data-r>Services that depend on reliable connectors.</h2>
+        <p class="lede" data-r>Integrations sit beneath ops consoles, finance close, and automation — not as standalone glue.</p>
+      </div>
+      <a href="/services" class="api-text-link">All services →</a>
+    </div>
+    <div class="api-plats-grid" data-s>
+      <article class="api-card">
+        <h3>Accounting &amp; finance</h3>
+        <ul>
+          <li>QuickBooks and Xero close workflows</li>
+          <li>Reconciliation and matching engines</li>
+          <li>Month-end exception queues</li>
+        </ul>
+        <a class="api-text-link" href="/solutions/accounting-integrations">Finance integrations →</a>
+      </article>
+      <article class="api-card">
+        <h3>Trucking &amp; logistics</h3>
+        <ul>
+          <li>ELD, TMS, and EDI connectors</li>
+          <li>Load-to-invoice sync with retry states</li>
+          <li>Operator-visible sync failures</li>
+        </ul>
+        <a class="api-text-link" href="/solutions/trucking-logistics">Trucking solutions →</a>
+      </article>
+      <article class="api-card">
+        <h3>Automation workflows</h3>
+        <ul>
+          <li>Human-gated orchestration beside connectors</li>
+          <li>Document and triage tooling</li>
+          <li>When the brief needs both sync and steps</li>
+        </ul>
+        <a class="api-text-link" href="/services/automation-systems">Automation →</a>
+      </article>
+      <article class="api-card">
+        <h3>CRM &amp; ops consoles</h3>
+        <ul>
+          <li>Systems of record that connectors feed</li>
+          <li>Exception surfaces matched to each desk</li>
+          <li>Audit trails on overrides and matches</li>
+        </ul>
+        <a class="api-text-link" href="/services/crm-development">CRM development →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="faq-sec" id="faq" aria-labelledby="faqH">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <p class="eyebrow" data-r>FAQ</p>
+      <h2 class="d2" id="faqH" data-r>About this integration work.</h2>
+      <p class="lede" data-r>Bitbucket, accounting, and other APIs on this page follow the same connector rules.</p>
+    </div>
+    <div class="faq-list" data-r>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+          <span class="qn num">01</span>
+          <span class="qt">Do you build Bitbucket integrations?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
+          <p>Yes. Bitbucket webhooks, repository events, and Pipelines status land in the same structure as ledger and CRM connectors: stable keys, retries, and an exception queue.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+          <span class="qn num">02</span>
+          <span class="qt">How is this different from QuickBooks &amp; Xero?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
+          <p>That solution page is the finance market path: close, matching, and operator UX for books. This service is the connector craft used there and on Bitbucket, payments, CRM, and other APIs.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+          <span class="qn num">03</span>
+          <span class="qt">How is this different from automation workflows?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
+          <p>Integrations move data between systems of record. Automation orchestrates steps, often with a human on send. Many briefs need both.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+          <span class="qn num">04</span>
+          <span class="qt">How do you handle sync failures?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
+          <p>Exception views, retries, and the source record. Operators get Retry, Match, or Park. Failures are not silently skipped.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
+          <span class="qn num">05</span>
+          <span class="qt">Will you finish an API we already started?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
+          <p>Yes. We harden the connector and add the operational surface the first pass skipped: keys, mapping, and a resolution path.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
+          <span class="qn num">06</span>
+          <span class="qt">Bitbucket Pipelines only?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
+          <p>No. Bitbucket is one published example. The same event → validate → write → exception pattern applies to CRM, payments, fleet, and ledger APIs — including <a href="/services/crm-development">CRM development</a> destinations.</p>
+        </div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="inq-sec" id="inquire" aria-labelledby="inqH">
+<section class="api-contact" id="inquire" aria-labelledby="inqH">
   <div class="wrap inq-grid">
     <div class="inq-copy">
       <p class="eyebrow">Start a conversation</p>
-      <h2 class="d2" id="inqH">Discuss the connector.</h2>
-      <p class="lede">Name the source event, the destination API, and what happens when a write fails. Bitbucket, payments, CRM, fleet, or another scoped API.</p>
-      <p class="inq-help">Need a longer brief, files, or a scheduled 20-minute fit call? Use the <a href="/contact#brief">contact page</a>.</p>
+      <h2 class="d2" id="inqH">Name the connector that fails after the first sync.</h2>
+      <p class="lede">Tell us the source event, destination API, and what happens when a write fails. Bitbucket, payments, CRM, fleet, or another scoped API. We'll review the systems and recommend the connector structure — no RFP required.</p>
+      <p class="api-trust">
+        <span>Reply within one business day</span>
+        <span>NDA available</span>
+        <span>No obligation</span>
+      </p>
     </div>
     <div>
       <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
@@ -759,7 +714,7 @@ body.page-api .hero{
         </div>
         <div class="inq-row">
           <div>
-            <label for="inq-company">Company</label>
+            <label for="inq-company">Company <span class="opt">Optional</span></label>
             <input id="inq-company" name="company" autocomplete="organization">
           </div>
           <div>
@@ -768,14 +723,15 @@ body.page-api .hero{
           </div>
         </div>
         <div>
-          <label for="inq-details">What do you need help with? <span class="req">Required</span></label>
-          <textarea id="inq-details" name="details" required rows="4" placeholder="Example: Bitbucket webhooks fire, Pipelines status is ignored, and failed writes have no retry or owner."></textarea>
+          <label for="inq-details">What connector do you need? <span class="req">Required</span></label>
+          <textarea id="inq-details" name="details" required rows="4" placeholder="Example: Bitbucket webhooks fire, Pipelines status is ignored, and failed writes have no retry or owner." aria-describedby="inq-details-hint"></textarea>
+          <p class="inq-note" id="inq-details-hint" style="margin-top:8px;text-transform:none;letter-spacing:0;font-size:13px;line-height:1.5;color:#8b8c94">Source system, destination API, and what happens on failure is enough.</p>
           <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
         </div>
         <p class="inq-fail" role="alert"></p>
         <div class="inq-actions">
-          <button type="submit" class="btn"><span class="inq-submit-label">Send inquiry</span><i>→</i></button>
-          <p class="inq-note">Reply within one business day. NDA available.</p>
+          <button type="submit" class="btn"><span class="inq-submit-label">Send integration inquiry</span><i>→</i></button>
+          <p class="inq-note">Private · not shared</p>
         </div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
@@ -783,24 +739,6 @@ body.page-api .hero{
         <h3>Inquiry received.</h3>
         <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
       </div>
-    </div>
-  </div>
-</section>
-<section class="cta-band on-ink" aria-labelledby="ctaH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Start a project</p>
-    <h2 class="d2" id="ctaH" data-r>Need a connector ops can trust?</h2>
-    <p class="lede" data-r>Share the systems that must stay in agreement — Bitbucket, ledger, CRM, or payments — and where they currently drift.</p>
-    <div class="cta-row">
-      <div class="cta-actions" data-r>
-        <a href="#inquire" class="btn on-dark"><span>Start a conversation</span><i>→</i></a>
-        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
-      </div>
-      <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
-        <span><i>◆</i>No commitment required</span>
-      </p>
     </div>
   </div>
 </section>
@@ -863,6 +801,7 @@ body.page-api .hero{
 <script>
 (function(){
 'use strict';
+const reduce=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
 const readers=[]; let ticking=false;
 const onScroll=()=>{ if(!ticking){ requestAnimationFrame(run); ticking=true; } };
 function run(){ const y=scrollY; for(const r of readers) r(y); ticking=false; }
@@ -892,6 +831,7 @@ const chIO=new IntersectionObserver(es=>{
   }
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
+
 const mob=[...document.querySelectorAll('#mobChips a')];
 if(mob.length){
   const mobIO=new IntersectionObserver(es=>{
@@ -903,6 +843,7 @@ if(mob.length){
   },{rootMargin:'-35% 0px -55% 0px'});
   chTargets.forEach(t=>mobIO.observe(t));
 }
+
 document.querySelectorAll('.faq-q').forEach(btn=>{
   const item=btn.closest('.faq-item');
   btn.addEventListener('click',()=>{
@@ -916,6 +857,9 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     item.classList.toggle('open', !open);
   });
 });
+
+if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
+
 run();
 })();
 </script>
@@ -1073,7 +1017,7 @@ run();
     {
       "@type": "Service",
       "@id": "https://krivatechnologies.com/services/api-integrations#service",
-      "name": "Connectors that hold after the first sync.",
+      "name": "Connectors that hold after the first sync",
       "serviceType": "Custom software development",
       "provider": {
         "@id": "https://krivatechnologies.com/#organization"

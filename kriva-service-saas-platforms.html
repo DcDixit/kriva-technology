@@ -136,348 +136,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
 </style>
-<link rel="stylesheet" href="/shared/inner.css?v=pu3">
+<link rel="stylesheet" href="/shared/inner.css?v=buildrow1">
 <link rel="stylesheet" href="/shared/system.css">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
-<style>
-/* Page-scoped SaaS Product Design: loaded last so it wins the cascade */
-body.page-platforms{overflow-x:clip}
-body.page-platforms .d1{font-size:clamp(2rem,4.8vw,4.05rem);line-height:.92;letter-spacing:-.03em}
-body.page-platforms .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
-body.page-platforms .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
-body.page-platforms .sect{padding-block:clamp(80px,10vw,140px)}
-body.page-platforms .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;line-height:.93;letter-spacing:-.032em}
-body.page-platforms .hero{
-  background:var(--paper);color:var(--ink);overflow:hidden;
-  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(40px,5vw,80px);
-  scroll-margin-top:88px
-}
-@media(min-width:1025px){
-  body.page-platforms .hero{
-    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding:80px 0 56px
-  }
-  body.page-platforms .hero > .wrap{width:100%}
-}
-
-.plat-hero-grid{
-  display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
-  gap:clamp(28px,4.5vw,72px);align-items:center;
-  margin-top:clamp(22px,3vw,36px)
-}
-.plat-hero-copy .d1{margin:18px 0 20px;max-width:11ch}
-.plat-hero-copy .lede{max-width:40ch}
-.plat-trust{
-  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
-}
-.plat-trust span{display:inline-flex;align-items:center;gap:8px}
-.plat-trust span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
-.plat-hero-eq{
-  display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:22px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
-}
-.plat-hero-eq span{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:6px 0}
-.plat-hero-eq .eq{color:var(--steel-2);font-size:11px;letter-spacing:0;min-height:auto;padding:0}
-.plat-hero-eq .on{color:var(--ink);font-weight:600}
-.plat-hero-visual{position:relative;min-width:0}
-@media(min-width:641px){.plat-hero-visual{padding-bottom:clamp(12px,3vw,28px)}}
-.plat-eq-viz{
-  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
-  box-shadow:var(--shadow-product);overflow:hidden
-}
-.plat-eq-head{
-  padding:12px 14px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
-}
-.plat-eq-row{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--ink-line)
-}
-.plat-eq-cell{background:var(--ink);padding:14px 12px;min-width:0}
-.plat-eq-cell b{
-  display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:#717F8C;margin-bottom:8px
-}
-.plat-eq-cell strong{display:block;color:#fff;font-weight:600;font-size:13px;letter-spacing:-.015em;margin-bottom:6px}
-.plat-eq-cell em{display:block;font-style:normal;font-size:12px;line-height:1.45;color:#8C98A4}
-.plat-eq-cell.on{background:rgba(79,70,229,.08);box-shadow:inset 0 0 0 1px rgba(79,70,229,.25)}
-.plat-eq-cell.on b{color:var(--cta)}
-.plat-eq-sum{
-  padding:12px 14px;border-top:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)
-}
-.cap-note{margin-top:14px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
-
-.plat-frame{
-  background:var(--ink);color:#DDE2E7;border:1px solid var(--ink-line);
-  box-shadow:var(--shadow-product);overflow:hidden;position:relative;z-index:1
-}
-.plat-chrome{
-  display:flex;align-items:center;gap:6px;padding:10px 14px;
-  background:#12181E;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
-}
-.plat-chrome i{width:8px;height:8px;border-radius:50%;background:#2A333C;flex:none}
-.plat-chrome i:first-child{background:#5C6670}
-.plat-chrome span{margin-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-
-.plat-duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-.plat-pane{min-width:0;border-right:1px solid var(--ink-line)}
-.plat-pane:last-child{border-right:0}
-.plat-pane__h{
-  display:flex;justify-content:space-between;align-items:center;gap:8px;
-  padding:10px 12px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
-}
-.plat-pane__h b{color:#fff;font-weight:600}
-.plat-pane__h em{font-style:normal;color:var(--sky)}
-.plat-pane:last-child .plat-pane__h em{color:var(--lime)}
-.mem{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:10px 12px;border-bottom:1px solid #1A2027;font-size:12px}
-.mem:last-child{border-bottom:0}
-.mem b{display:block;color:#fff;font-weight:500}
-.mem span{display:block;margin-top:3px;font-size:11px;color:#8C98A4}
-.mem small{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C;padding-top:4px}
-.mem.on{background:rgba(91,140,255,.08);border-left:2px solid var(--sky)}
-.mem.done small{color:var(--lime)}
-.act{padding:10px 12px;border-top:1px solid var(--ink-line);font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
-.act .go,.act .ghost{display:inline-flex;padding:7px 10px;min-height:36px;align-items:center}
-.act .go{background:var(--cta);color:#fff}
-.act .ghost{border:1px solid #3A444E;color:#B9C3CC;background:transparent}
-.need{padding:10px 12px;border-bottom:1px solid #1A2027}
-.need span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
-.need b{display:block;margin-top:5px;color:#fff;font-size:13px;letter-spacing:-.015em}
-.ex{padding:9px 10px;margin:0 12px 8px;background:#141A20;border-left:2px solid var(--amber);font-size:12px;color:#B9C3CC}
-.ex.ok{border-left-color:var(--lime)}
-.ex:last-of-type{margin-bottom:12px}
-
-/* Tenant model */
-.plat-model{background:var(--paper);border-block:1px solid var(--rule);scroll-margin-top:88px}
-.plat-model .d2{max-width:18ch}
-.plat-flow{
-  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,2vw,24px);
-  margin-top:clamp(32px,4.5vw,56px);list-style:none
-}
-.plat-flow li{
-  position:relative;padding-top:clamp(18px,2vw,24px);border-top:2px solid var(--rule);min-width:0
-}
-.plat-flow li.on{border-top-color:var(--cta)}
-.plat-flow .sn{
-  display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--steel);margin-bottom:10px
-}
-.plat-flow li.on .sn{color:var(--cta)}
-.plat-flow h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1rem,1.5vw,1.15rem);letter-spacing:-.02em;line-height:1.2;margin-bottom:8px;max-width:14ch}
-.plat-flow p{font-size:14px;line-height:1.55;color:var(--steel);max-width:26ch}
-
-/* Product kit */
-.plat-kit{background:var(--white);border-block:1px solid var(--rule);scroll-margin-top:88px}
-.plat-kit .d2{max-width:16ch}
-.kit-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);
-  margin-top:clamp(32px,4vw,52px);border-top:1px solid var(--rule)
-}
-.kit-step{padding-top:clamp(22px,2.6vw,32px);border-right:1px solid var(--rule);padding-right:clamp(16px,2vw,28px);min-width:0}
-.kit-step:last-child{border-right:0;padding-right:0}
-.kit-step .sn{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
-.kit-step h3{margin-bottom:10px;max-width:16ch}
-.kit-step p{font-size:14.5px;line-height:1.58;color:var(--steel);max-width:32ch;margin-bottom:16px}
-.kit-ui{background:var(--ink);border:1px solid var(--ink-line);padding:12px 14px;font-size:12px}
-.kit-ui span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C;margin-bottom:8px}
-.kit-ui .row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;background:#141A20;margin-bottom:6px;color:#B9C3CC}
-.kit-ui .row b{color:#fff;font-weight:500;font-size:12px}
-.kit-ui .row em{font-style:normal;font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--sky)}
-.kit-ui .row:last-child{margin-bottom:0}
-.kit-ui .row.alt em{color:var(--lime)}
-
-/* Problem */
-.stalls{background:var(--ink);color:#DDE2E7;scroll-margin-top:88px}
-.stalls .wrap{padding-block:clamp(80px,10vw,140px)}
-.stalls .eyebrow{color:var(--ink-dim)}
-.stalls h2{color:#fff;margin-top:18px;max-width:16ch}
-.stalls .lede{color:#8C98A4;margin-top:18px}
-.plat-frac{margin-top:clamp(32px,4.5vw,56px);border-top:1px solid var(--ink-line)}
-.plat-frac article{
-  display:grid;grid-template-columns:56px minmax(0,.85fr) minmax(0,1.25fr);
-  gap:clamp(16px,2.4vw,32px);align-items:start;
-  padding:clamp(22px,2.6vw,32px) 0;border-bottom:1px solid var(--ink-line)
-}
-.plat-frac .n{
-  font-family:var(--f-display);font-weight:800;font-size:clamp(1.35rem,2vw,1.7rem);
-  letter-spacing:-.04em;color:#3A444E;line-height:1;padding-top:4px;transition:color .45s var(--e)
-}
-.plat-frac article:hover .n{color:var(--cta)}
-.plat-frac h3{color:#fff;max-width:16ch}
-.plat-frac p{color:#8C98A4;font-size:15px;line-height:1.62;max-width:48ch;margin:0}
-
-/* Surfaces switcher */
-.plat-stage{background:var(--paper-2);border-block:1px solid var(--rule)}
-.plat-switch{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center;margin-top:clamp(28px,4vw,52px)}
-.plat-tabs{display:flex;flex-wrap:wrap;gap:0;margin-bottom:22px;border-bottom:1px solid var(--rule)}
-.plat-tabs button{
-  padding:12px 16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--steel);position:relative;min-height:48px
-}
-.plat-tabs button:after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:1px;background:var(--cta);transform:scaleX(0);transition:transform .4s var(--e)}
-.plat-tabs button:hover{color:var(--ink)}
-.plat-tabs button[aria-selected="true"]{color:var(--ink)}
-.plat-tabs button[aria-selected="true"]:after{transform:scaleX(1)}
-.plat-copy h3{margin-bottom:10px;max-width:16ch}
-.plat-copy ul{list-style:none;display:grid;gap:9px;margin-top:18px}
-.plat-copy li{padding-left:14px;position:relative;font-size:14.5px;line-height:1.5;color:var(--ink);max-width:40ch}
-.plat-copy li:before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--steel)}
-.plat-panel[hidden],.plat-view[hidden]{display:none}
-
-.mx{width:100%;border-collapse:collapse;font-size:12px}
-.mx th,.mx td{padding:10px 12px;border-bottom:1px solid #1A2027;text-align:left}
-.mx th{font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C;font-weight:500}
-.mx td{color:#B9C3CC}
-.mx td:first-child{color:#fff}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#3A444E;vertical-align:middle}
-.dot.on{background:var(--lime)}
-.mx-note{padding:12px 14px;font-family:var(--f-mono);font-size:10.5px;color:var(--amber);border-top:1px solid var(--ink-line)}
-.role-cards{display:none;list-style:none;padding:12px 14px;gap:8px}
-.role-cards li{padding:10px 12px;background:#141A20;border-left:2px solid #3A444E;font-size:12px;color:#B9C3CC}
-.role-cards li b{display:block;color:#fff;font-weight:600;margin-bottom:4px;font-size:13px}
-.role-cards li.on{border-left-color:var(--lime)}
-
-/* Process */
-.run-bar{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(36px,5vw,56px)}
-.run-bar .wk{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px}
-.run-bar .bar{display:block;height:3px;background:var(--rule);position:relative;margin-bottom:18px}
-.run-bar .bar:after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--cta)}
-.run-bar h3{margin-bottom:8px}
-.run-bar p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:32ch}
-
-/* Proof */
-.plat-proof{background:var(--ink);color:#DDE2E7}
-.plat-proof .wrap{padding-block:clamp(80px,10vw,140px)}
-.plat-proof .eyebrow{color:var(--ink-dim)}
-.plat-proof h2{color:#fff;margin-top:18px;max-width:16ch}
-.plat-proof-grid{
-  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
-  gap:clamp(28px,4vw,64px);align-items:center;margin-top:clamp(32px,4vw,56px)
-}
-.plat-proof .lede{color:#8C98A4}
-.scope{display:grid;margin-top:24px;border-top:1px solid var(--ink-line)}
-.scope div{display:grid;grid-template-columns:clamp(72px,10vw,100px) minmax(0,1fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--ink-line);font-size:14.5px}
-.scope dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;padding-top:3px}
-.scope dd{color:#DDE2E7}
-.proof-cta{margin-top:28px}
-.plat-proof .cap-note{color:#8C98A4}
-.plat-proof .flag{border-color:#3A444E;color:#8C98A4}
-.proof-note{margin-top:28px;font-size:13.5px;line-height:1.6;color:#8C98A4;max-width:62ch}
-.proof-story{display:grid;margin-top:clamp(24px,3vw,36px);border-top:1px solid var(--ink-line)}
-.proof-story div{
-  display:grid;grid-template-columns:clamp(88px,12vw,120px) minmax(0,1fr);gap:16px;
-  padding:clamp(16px,2vw,22px) 0;border-bottom:1px solid var(--ink-line)
-}
-.proof-story dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);padding-top:3px}
-.proof-story dd{color:#DDE2E7;font-size:15px;line-height:1.58;max-width:48ch}
-
-/* Related */
-.plat-rel{background:var(--white);border-top:1px solid var(--rule)}
-.idx-list{margin-top:clamp(24px,3vw,40px)}
-.idx-row{
-  display:grid;grid-template-columns:48px minmax(0,1.1fr) minmax(0,1.4fr) auto;
-  gap:24px;align-items:baseline;padding:22px 0;min-height:48px;border-bottom:1px solid var(--rule);color:inherit;
-  transition:padding-left .4s var(--e)
-}
-.idx-row:first-child{border-top:1px solid var(--rule)}
-.idx-row:hover{padding-left:8px}
-.idx-row .n{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--cta)}
-.idx-row h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.03em;font-size:clamp(1.15rem,2vw,1.45rem)}
-.idx-row p{color:var(--steel);font-size:14.5px;max-width:46ch}
-.idx-row i{font-style:normal;color:var(--cta);transition:transform .42s var(--e)}
-.idx-row:hover i{transform:translateX(6px)}
-.svc-note{margin-top:26px}
-.inline-link{border-bottom:1px solid var(--rule)}
-
-/* FAQ */
-.plat-faq{background:var(--paper-2);border-block:1px solid var(--rule);scroll-margin-top:88px}
-.faq-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,80px);align-items:start}
-.faq-grid > div:first-child{position:sticky;top:112px}
-.faq-grid .d2{margin-top:18px;max-width:13ch}
-.faq-grid .lede{margin-top:18px}
-.faq-list{border-top:1px solid var(--rule)}
-.faq-item{border-bottom:1px solid var(--rule)}
-.faq-q{
-  width:100%;display:grid;grid-template-columns:46px minmax(0,1fr) 22px;
-  gap:clamp(12px,2vw,24px);align-items:start;text-align:left;
-  padding:clamp(20px,2.4vw,26px) 0;transition:padding-left .45s var(--e)
-}
-.faq-q:hover,.faq-q:focus-visible{padding-left:8px}
-.faq-q .qn{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--steel);transition:color var(--t-fast) var(--e);padding-top:5px}
-.faq-item.open .qn{color:var(--cta)}
-.faq-q .qt{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.65vw,1.32rem);letter-spacing:-.02em;line-height:1.28}
-.faq-q .qi{justify-self:end;position:relative;width:22px;height:22px;margin-top:2px}
-.faq-q .qi:before,.faq-q .qi:after{content:"";position:absolute;inset:50% 2px;height:1px;background:var(--ink);transition:transform .4s var(--e)}
-.faq-q .qi:after{transform:rotate(90deg)}
-.faq-item.open .qi:after{transform:rotate(0)}
-.faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .5s var(--e),visibility 0s linear .5s}
-.faq-item.open .faq-a{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .5s var(--e),visibility 0s linear 0s}
-.faq-a>div{overflow:hidden}
-.faq-a-in{padding:0 0 clamp(20px,2.4vw,28px) calc(46px + clamp(12px,2vw,24px))}
-.faq-a-in p{font-size:15px;line-height:1.65;color:var(--steel);max-width:58ch}
-.faq-side .btn{margin-top:24px}
-
-@media(max-width:1024px){
-  .plat-hero-grid,.plat-switch,.plat-proof-grid,.faq-grid,.run-bar,.kit-grid{grid-template-columns:1fr}
-  .plat-flow{grid-template-columns:1fr 1fr}
-  .plat-hero-copy .d1{max-width:none}
-  .kit-step{border-right:0;padding-right:0;border-bottom:1px solid var(--rule);padding-bottom:clamp(20px,2.4vw,28px)}
-  .kit-step:last-child{border-bottom:0}
-  .faq-grid > div:first-child{position:static}
-  .idx-row{grid-template-columns:40px minmax(0,1fr);gap:12px 20px}
-  .idx-row p{grid-column:2}
-  .idx-row i{display:none}
-  .plat-hero-visual{padding-bottom:0}
-  .plat-eq-row{grid-template-columns:1fr}
-  .cta-row{align-items:flex-start}
-}
-@media(max-width:900px){
-  .plat-duo{grid-template-columns:1fr}
-  .plat-pane{border-right:0;border-bottom:1px solid var(--ink-line)}
-  .plat-pane:last-child{border-bottom:0}
-  .plat-frac article{grid-template-columns:48px minmax(0,1fr);gap:14px}
-  .plat-frac p{grid-column:1 / -1}
-  .plat-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .plat-tabs::-webkit-scrollbar{display:none}
-  .plat-tabs button{flex:none}
-}
-@media(max-width:640px){
-  .hero-actions{flex-direction:column;align-items:stretch}
-  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .plat-hero-eq{flex-direction:column;align-items:flex-start;gap:4px}
-  .plat-hero-eq .eq{display:none}
-  .plat-flow{grid-template-columns:1fr}
-  .mx{display:none}
-  .role-cards{display:grid}
-  .faq-q{grid-template-columns:32px minmax(0,1fr) 20px;gap:12px}
-  .faq-a-in{padding-left:44px}
-  .idx-row{grid-template-columns:1fr}
-  .idx-row p{grid-column:1}
-  .cta-row{flex-direction:column;align-items:stretch}
-}
-@media(max-width:560px){
-  .plat-frac article{grid-template-columns:1fr;gap:8px}
-  .proof-story div{grid-template-columns:1fr;gap:6px}
-}
-@media(max-width:390px){
-  body.page-platforms .d1{font-size:2.28rem}
-  .plat-chrome span{display:none}
-}
-
-@media (prefers-reduced-motion:reduce){
-  html:focus-within{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
-  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
-  .mask span i{transform:none!important}
-}
-</style>
-<link rel="stylesheet" href="/shared/page-inquiry.css">
+<link rel="stylesheet" href="/shared/platforms.css?v=plat1">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
-<body class="service page-platforms">
+<body class="page-platforms">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -618,7 +283,7 @@ body.page-platforms .hero{
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
-  <a href="#stalls"><span>Stalls</span><i></i></a>
+  <a href="#problems"><span>Problems</span><i></i></a>
   <a href="#model"><span>Model</span><i></i></a>
   <a href="#surfaces"><span>Surfaces</span><i></i></a>
   <a href="#kit"><span>Kit</span><i></i></a>
@@ -627,138 +292,148 @@ body.page-platforms .hero{
   <a href="#faq"><span>FAQ</span><i></i></a>
 </nav>
 
+<nav class="mob-chips" id="mobChips" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#problems">Problems</a>
+  <a href="#model">Model</a>
+  <a href="#surfaces">Surfaces</a>
+  <a href="#kit">Kit</a>
+  <a href="#proof">Proof</a>
+  <a href="#process">Process</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
 <main id="main">
 
-<header class="hero" id="overview">
+<header class="hero hero--inner" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">SaaS Product Design</li>
     </ol>
-
-    <div class="plat-hero-grid">
-      <div class="plat-hero-copy">
-        <p class="eyebrow" data-r>Service · Multi-tenant UX</p>
-        <h1 class="d1 mask" data-mask>
-          <span><i>Two products.</i></span>
-          <span><i>One family.</i></span>
-        </h1>
-        <p class="lede" data-r>Admin and customer surfaces in one coherent system: workspace context, roles people can explain, and a shared kit engineering can ship without forking the product.</p>
-        <p class="plat-hero-eq" data-r aria-label="Admin plus customer plus permissions equals one SaaS system">
-          <span>Admin</span><span class="eq">+</span>
-          <span>Customer</span><span class="eq">+</span>
-          <span class="on">Permissions</span><span class="eq">=</span>
-          <span class="on">One system</span>
-        </p>
-        <div class="hero-actions" data-r>
-          <a href="#inquire" class="btn"><span>Discuss admin and customer UX</span><i>→</i></a>
-          <a href="/work/payroll-pro-saas" class="btn ghost"><span>See PayrollPro</span><i>→</i></a>
-        </div>
-        <p class="plat-trust" data-r>
-          <span>Admin · customer · roles</span>
-          <span>Live SaaS, phased</span>
-          <span>UK &amp; US teams</span>
-        </p>
+    <div class="ip-hero" data-r>
+      <p class="ip-kicker">SaaS product design</p>
+      <h1 class="ip-title ip-title--lines">
+        <span>Two products.</span>
+        <span>One family.</span>
+      </h1>
+      <p class="ip-desc">Admin and customer surfaces in one coherent system — workspace context, roles people can explain, and a shared kit engineering can ship without forking the product.</p>
+      <div class="ip-actions">
+        <a href="#inquire" class="btn sm"><span>Discuss admin &amp; customer UX</span><i>→</i></a>
+        <a href="#proof" class="btn sm ghost"><span>See PayrollPro</span><i>→</i></a>
       </div>
-
-      <div class="plat-hero-visual" data-r>
-        <div class="plat-eq-viz" role="img" aria-label="Admin, customer, and permissions as one SaaS system with shared components">
-          <p class="plat-eq-head">Meridian Ltd · one product family</p>
-          <div class="plat-eq-row">
-            <div class="plat-eq-cell">
-              <b>Admin</b>
-              <strong>Members &amp; billing</strong>
-              <em>Invite, seats, integrations</em>
-            </div>
-            <div class="plat-eq-cell on">
-              <b>Permissions</b>
-              <strong>Owner · Admin · Member</strong>
-              <em>What each role can do</em>
-            </div>
-            <div class="plat-eq-cell">
-              <b>Customer</b>
-              <strong>Workspace home</strong>
-              <em>Daily actions, role-aware states</em>
-            </div>
-          </div>
-          <p class="plat-eq-sum">Same kit · tenant-safe variants · no fork</p>
-        </div>
-        <p class="cap-note"><span class="flag">Demo</span> System model · no client data</p>
-      </div>
+      <p class="ip-meta">Admin + customer + permissions · Live SaaS, phased · UK &amp; US teams</p>
     </div>
   </div>
 </header>
 
-<section class="stalls on-ink" id="stalls" aria-labelledby="frH">
+<section class="plat-fit" id="about-service" aria-labelledby="fitH">
+  <div class="wrap">
+    <h2 class="sr" id="fitH">Multi-tenant SaaS product design for admin and customer surfaces</h2>
+    <div class="plat-fit-rail" data-s>
+      <article class="plat-card">
+        <h3>Who it's for</h3>
+        <p>B2B SaaS teams where admin and customer UI drifted apart. Live products with tenants, roles, and billing — where the champion cannot explain what a new member should do on day one.</p>
+      </article>
+      <article class="plat-card">
+        <h3>What we deliver</h3>
+        <p>Multi-tenant UX design: admin consoles, customer workspaces, role models, and a shared component kit with tenant-safe variants. Phased rollout into live products, not a big-bang redesign.</p>
+      </article>
+      <article class="plat-card">
+        <h3>Problems we solve</h3>
+        <p>Empty workspaces after signup, permission fog, and parallel admin/customer roadmaps. When every release risks forking the product, we map workspace → role → surface → action first.</p>
+      </article>
+    </div>
+    <p class="plat-fit-foot" data-r>Kriva is a product design and engineering studio — not a boxed SaaS vendor. You own the designs, component specs, and documentation after launch. For full build scope (MVP + engineering), start at <a href="/solutions/saas">SaaS product solutions</a>.</p>
+    <p class="plat-callout" data-r><strong>Which page should I read?</strong> This page is for multi-tenant admin and customer surfaces in live SaaS. For MVP, onboarding strategy, and engineering scope, start at <a href="/solutions/saas">SaaS product solutions</a>.</p>
+  </div>
+</section>
+
+<section class="plat-problems on-ink" id="problems" aria-labelledby="probH">
   <div class="wrap">
     <p class="eyebrow" data-r>Where it stalls</p>
-    <h2 class="d2" id="frH" data-r>The product works. The tenant does not stick.</h2>
-    <p class="lede" data-r>Live SaaS rarely fails on polish. It fails when admin, customer, and roles drift apart, and nobody can explain what a tenant should do next.</p>
-    <div class="plat-frac">
-      <article data-r>
+    <h2 class="d2" id="probH" data-r>The product works.<br>The tenant does not stick.</h2>
+    <p class="lede" data-r>Live SaaS rarely fails on polish. It fails when admin, customer, and roles drift apart — and nobody can explain what a tenant should do next.</p>
+    <div class="plat-frac" data-r>
+      <article>
         <span class="n num">01</span>
-        <h3 class="d3">Empty workspace after signup</h3>
-        <p>The happy path assumes an admin who already knows the product. New tenants hit a blank state and leave, or open a ticket that should have been a first-run path.</p>
+        <div>
+          <h3 class="d3">Empty workspace after signup</h3>
+          <p>The happy path assumes an admin who already knows the product. New tenants hit a blank state and leave, or open a ticket that should have been a first-run path.<span class="cons">COST: churn before first value, support load on day one</span></p>
+        </div>
+        <figure class="frac-viz">
+          <img src="/media/solutions/saas/onboarding.svg" alt="Empty SaaS workspace after signup with no guided first-run path." width="480" height="400" decoding="async" loading="lazy">
+        </figure>
       </article>
-      <article data-r>
+      <article>
         <span class="n num">02</span>
-        <h3 class="d3">Permission fog</h3>
-        <p>Roles were added for sales and security. Users hit “you don’t have access” with no path to the owner or admin who can grant it.</p>
+        <div>
+          <h3 class="d3">Permission fog</h3>
+          <p>Roles were added for sales and security. Users hit “you don’t have access” with no path to the owner or admin who can grant it.<span class="cons">COST: blocked actions, champion escalations, sales confusion</span></p>
+        </div>
+        <figure class="frac-viz">
+          <img src="/media/solutions/saas/permissions.svg" alt="SaaS role permissions matrix that users cannot interpret or act on." width="480" height="400" decoding="async" loading="lazy">
+        </figure>
       </article>
-      <article data-r>
+      <article>
         <span class="n num">03</span>
-        <h3 class="d3">A change hits every workspace</h3>
-        <p>Teams freeze UI work rather than ship incrementally. Without a shared kit, every release risks forking admin and customer into two roadmaps.</p>
+        <div>
+          <h3 class="d3">A change hits every workspace</h3>
+          <p>Teams freeze UI work rather than ship incrementally. Without a shared kit, every release risks forking admin and customer into two roadmaps.<span class="cons">COST: parallel design systems, slower releases, tenant regressions</span></p>
+        </div>
+        <figure class="frac-viz">
+          <img src="/media/solutions/saas/dashboard-admin.svg" alt="Admin and customer SaaS surfaces diverging into separate design roadmaps." width="480" height="400" decoding="async" loading="lazy">
+        </figure>
       </article>
     </div>
   </div>
 </section>
 
-<section class="sect plat-model" id="model" aria-labelledby="mdH">
+<section id="model" aria-labelledby="mdH">
   <div class="wrap">
     <p class="eyebrow" data-r>Tenant &amp; role model</p>
-    <h2 class="d2 s-title" id="mdH" data-r>Workspace → role → surface → action</h2>
-    <p class="lede" data-r>Every screen answers four questions before UI begins: so admin and customer stay one family, not two products bolted together.</p>
-    <ol class="plat-flow" data-s>
+    <h2 class="d2" id="mdH" data-r>Workspace → role → surface → action</h2>
+    <p class="lede" data-r>Every screen answers four questions before UI begins — so admin and customer stay one family, not two products bolted together.</p>
+    <ol class="plat-stepper" data-s>
       <li>
         <span class="sn">01</span>
-        <h3 class="d3">Workspace</h3>
+        <h3>Workspace</h3>
         <p>Which tenant is this? Nav, empty states, and billing copy follow that context.</p>
       </li>
       <li>
         <span class="sn">02</span>
-        <h3 class="d3">Role</h3>
-        <p>Owner, admin, member, guest: in language the champion can repeat on a sales call.</p>
+        <h3>Role</h3>
+        <p>Owner, admin, member, guest — in language the champion can repeat on a sales call.</p>
       </li>
       <li>
         <span class="sn">03</span>
-        <h3 class="d3">Surface</h3>
+        <h3>Surface</h3>
         <p>Admin console or customer workspace: same kit, different job.</p>
       </li>
       <li class="on">
         <span class="sn">04</span>
-        <h3 class="d3">Action</h3>
-        <p>What can this role do here? Hidden actions name the blocker and who can unlock it.</p>
+        <h3>Action</h3>
+        <p>What can this role do here? Blocked actions name who can unlock them.</p>
       </li>
       <li class="on">
         <span class="sn">05</span>
-        <h3 class="d3">Next step</h3>
+        <h3>Next step</h3>
         <p>One clear move: invite, import, ask admin, or complete the job they came for.</p>
       </li>
     </ol>
+    <figure class="plat-model-viz" data-r>
+      <img src="/media/work/payrollpro/permissions.svg" alt="Multi-tenant role and permission model with safe defaults and deferred advanced policy." width="960" height="600" loading="lazy" decoding="async">
+      <figcaption class="plat-cap">Tenant model pattern · from PayrollPro case · illustrative</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="sect plat-stage" id="surfaces" aria-labelledby="sfH">
+<section id="surfaces" aria-labelledby="sfH">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>UX / UI</p>
-        <h2 class="d2 s-title" id="sfH" data-r>The three surfaces we actually design</h2>
-        <p class="lede" data-r>Admin, customer, and permissions: three surfaces, each with a distinct job in the same product family.</p>
-      </div>
-    </div>
+    <p class="eyebrow" data-r>What we design</p>
+    <h2 class="d2" id="sfH" data-r>The three surfaces in one product family</h2>
+    <p class="lede" data-r>Admin, customer, and permissions — each with a distinct job, built from the same component kit.</p>
 
     <div class="plat-switch">
       <div>
@@ -776,17 +451,17 @@ body.page-platforms .hero{
             <li>Safe defaults before enterprise policy</li>
             <li>Members, billing, integrations, seat controls</li>
           </ul>
-          <a href="/services/dashboard-design" class="p-link">Dashboard design <i>→</i></a>
+          <a href="/services/dashboard-design" class="plat-text-link">Dashboard design <i>→</i></a>
         </div>
         <div class="plat-panel plat-copy" id="panel-customer" role="tabpanel" aria-labelledby="tab-customer" hidden>
           <h3 class="d3">A customer product that inherits the kit</h3>
-          <p class="body-sm">Workspace home, empty states, and next actions that know the tenant and the role: so “you don’t have access” is never a dead end.</p>
+          <p class="body-sm">Workspace home, empty states, and next actions that know the tenant and the role: so “you don’t have access” is never a dead end.</p>
           <ul>
             <li>Role-aware empty states, not a blank canvas</li>
             <li>Ask-admin path when an action is blocked</li>
             <li>Daily actions that know workspace context</li>
           </ul>
-          <a href="/services/product-design" class="p-link">Product design &amp; UX <i>→</i></a>
+          <a href="/services/product-design" class="plat-text-link">Product design &amp; UX <i>→</i></a>
         </div>
         <div class="plat-panel plat-copy" id="panel-roles" role="tabpanel" aria-labelledby="tab-roles" hidden>
           <h3 class="d3">A role model sales can explain</h3>
@@ -796,7 +471,7 @@ body.page-platforms .hero{
             <li>Capabilities named, not buried in policy</li>
             <li>A matrix engineering can implement once</li>
           </ul>
-          <a href="/solutions/saas" class="p-link">SaaS product solutions <i>→</i></a>
+          <a href="/solutions/saas" class="plat-text-link">SaaS product solutions <i>→</i></a>
         </div>
       </div>
 
@@ -846,37 +521,33 @@ body.page-platforms .hero{
   </div>
 </section>
 
-<section class="sect plat-kit" id="kit" aria-labelledby="ktH">
+<section class="plat-band" id="kit" aria-labelledby="ktH">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Product system</p>
-        <h2 class="d2 s-title" id="ktH" data-r>One kit, not two product forks</h2>
-        <p class="lede" data-r>Shared components with tenant-safe variants. Engineering ships one family; design does not maintain parallel admin and customer roadmaps.</p>
-      </div>
-    </div>
-    <div class="kit-grid" data-s>
-      <article class="kit-step">
+    <p class="eyebrow" data-r>Product system</p>
+    <h2 class="d2" id="ktH" data-r>One kit, not two product forks</h2>
+    <p class="lede" data-r>Shared components with tenant-safe variants. Engineering ships one family — design does not maintain parallel admin and customer roadmaps.</p>
+    <div class="plat-kit-grid" data-s>
+      <article class="plat-card">
         <span class="sn">01 · Shared component</span>
-        <h3 class="d3">One pattern, both surfaces</h3>
+        <h3>One pattern, both surfaces</h3>
         <p>Type, density, buttons, and tables stay in one system: admin and customer inherit the same foundation.</p>
         <div class="kit-ui" aria-hidden="true">
           <span>Invite button · base</span>
           <div class="row"><b>Invite member</b><em>Primary</em></div>
         </div>
       </article>
-      <article class="kit-step">
+      <article class="plat-card">
         <span class="sn">02 · Role variant</span>
-        <h3 class="d3">Tenant-safe diffs</h3>
-        <p>Variants for role, tenant state, and surface, not a separate codebase per screen.</p>
+        <h3>Tenant-safe diffs</h3>
+        <p>Variants for role, tenant state, and surface — not a separate codebase per screen.</p>
         <div class="kit-ui" aria-hidden="true">
           <span>Same button · member view</span>
           <div class="row alt"><b>Ask admin to invite</b><em>Blocked</em></div>
         </div>
       </article>
-      <article class="kit-step">
+      <article class="plat-card">
         <span class="sn">03 · Safe rollout</span>
-        <h3 class="d3">Phase into live</h3>
+        <h3>Phase into live</h3>
         <p>Flagged variants ship incrementally. A workspace stays usable while the kit evolves.</p>
         <div class="kit-ui" aria-hidden="true">
           <span>Rollout · flagged</span>
@@ -888,28 +559,29 @@ body.page-platforms .hero{
   </div>
 </section>
 
-<section class="plat-proof on-ink" id="proof" aria-labelledby="pfH">
+<section id="proof" aria-labelledby="pfH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Proof</p>
-    <h2 class="d2" id="pfH" data-r>PayrollPro · permissions after SSO</h2>
-    <div class="plat-proof-grid">
-      <div data-r>
-        <p class="lede">Progressive onboarding and permission clarity for a UK &amp; EU payroll platform, after SSO pushed admin setup ahead of the job.</p>
-        <dl class="proof-story">
+    <p class="eyebrow" data-r>Case study · PayrollPro</p>
+    <h2 class="d2" id="pfH" data-r>Permissions after SSO.</h2>
+    <div class="plat-proof-split" data-r>
+      <div>
+        <p class="lede">Progressive onboarding and permission clarity for a UK &amp; EU payroll platform — after SSO pushed admin setup ahead of the job.</p>
+        <dl class="plat-proof-story">
           <div><dt>Problem</dt><dd>SSO made permission setup block the first payroll run. Buyers authenticated but never reached the job.</dd></div>
           <div><dt>Decision</dt><dd>Default safe role on entry. Defer the policy matrix until after first value.</dd></div>
           <div><dt>Workflow</dt><dd>Admin and customer surfaces share one kit: first sitting completes a real pay run before advanced roles.</dd></div>
         </dl>
-        <dl class="scope">
+        <dl class="plat-scope">
           <div><dt>Sector</dt><dd>B2B SaaS · payroll</dd></div>
           <div><dt>Scope</dt><dd>Role model, admin vs customer kit, onboarding paths</dd></div>
         </dl>
         <div class="proof-cta">
-          <a href="/work/payroll-pro-saas" class="btn on-dark"><span>Read the PayrollPro case</span><i>→</i></a>
+          <a href="/work/payroll-pro-saas" class="btn"><span>Read the PayrollPro case</span><i>→</i></a>
         </div>
+        <p class="proof-note">PayrollPro is a published case study. Client labels may be portfolio names. Signed-off numeric outcomes appear only on ShiftRail.</p>
       </div>
-      <div data-r>
-        <div class="plat-frame" aria-hidden="true">
+      <div>
+        <div class="plat-frame" role="img" aria-label="Illustrative PayrollPro first-sitting onboarding after SSO">
           <div class="plat-chrome"><i></i><i></i><i></i><span>payrollpro / first sitting</span></div>
           <div class="plat-pane__h"><b>First sitting</b><em>After SSO</em></div>
           <div class="mem done"><div><b>SSO</b><span>Identity verified</span></div><small>Done</small></div>
@@ -917,61 +589,48 @@ body.page-platforms .hero{
           <div class="mem on"><div><b>Run test cycle</b><span>First value · not policy setup</span></div><small>Now</small></div>
           <div class="mem"><div><b>Invite roles</b><span>After the run completes</span></div><small>Later</small></div>
         </div>
-        <p class="cap-note"><span class="flag">Case</span> Pattern from the published PayrollPro study</p>
+        <p class="plat-cap">Pattern from the published PayrollPro study · illustrative UI only</p>
       </div>
     </div>
-    <p class="proof-note">PayrollPro is a published case study. Client labels may be portfolio names. Signed-off numeric outcomes appear only on ShiftRail.</p>
   </div>
 </section>
 
-<section class="sect" id="process" aria-labelledby="prH">
+<section class="plat-band" id="process" aria-labelledby="prH">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>How we engage</p>
-        <h2 class="d2 s-title" id="prH" data-r>From tenant map to phased rollout</h2>
-        <p class="lede" data-r>Every step ties to a live SaaS product, not a generic agency process deck.</p>
-      </div>
-      <a href="/process" class="btn ghost"><span>Full process</span><i>→</i></a>
-    </div>
-    <ol class="run-bar" data-s>
+    <p class="eyebrow" data-r>How we engage</p>
+    <h2 class="d2" id="prH" data-r>From tenant map to phased rollout</h2>
+    <p class="lede" data-r>Every step ties to a live SaaS product — not a generic agency process deck.</p>
+    <p data-r><a href="/process" class="plat-text-link">Full process <i>→</i></a></p>
+    <ol class="plat-process" data-s>
       <li>
-        <span class="wk">Phase 01</span>
-        <span class="bar" style="--w:25%"></span>
-        <h3 class="d3">Map tenants &amp; roles</h3>
+        <span class="wk">01</span>
+        <h3>Map tenants &amp; roles</h3>
         <p>Who is in the workspace, what they can do, and which surface they open. Named before screens.</p>
       </li>
       <li>
-        <span class="wk">Phase 02</span>
-        <span class="bar" style="--w:50%"></span>
-        <h3 class="d3">Design both surfaces</h3>
+        <span class="wk">02</span>
+        <h3>Design both surfaces</h3>
         <p>Admin and customer in one family: empty states, blocked actions, and the ask-admin path.</p>
       </li>
       <li>
-        <span class="wk">Phase 03</span>
-        <span class="bar" style="--w:75%"></span>
-        <h3 class="d3">Spec variants</h3>
+        <span class="wk">03</span>
+        <h3>Spec variants</h3>
         <p>Components and flagged variants engineering can ship without a rewrite.</p>
       </li>
       <li>
-        <span class="wk">Phase 04</span>
-        <span class="bar" style="--w:100%"></span>
-        <h3 class="d3">Phase into live</h3>
+        <span class="wk">04</span>
+        <h3>Phase into live</h3>
         <p>Sequence the rollout so tenants stay usable while the kit evolves.</p>
       </li>
     </ol>
   </div>
 </section>
 
-<section class="sect plat-rel" aria-labelledby="rsH">
+<section aria-labelledby="rsH">
   <div class="wrap">
-    <div class="s-head">
-      <div>
-        <p class="eyebrow" data-r>Adjacent</p>
-        <h2 class="d2 s-title" id="rsH" data-r>Related services</h2>
-        <p class="lede" data-r>This service owns tenant-aware UX. These are the briefs that often sit next to it.</p>
-      </div>
-    </div>
+    <p class="eyebrow" data-r>Adjacent services</p>
+    <h2 class="d2" id="rsH" data-r>Often sits next to this brief</h2>
+    <p class="lede" data-r>This service owns tenant-aware UX. These are the capabilities that usually sit beside it.</p>
     <div class="idx-list">
       <a class="idx-row" href="/services/product-design">
         <span class="n">01</span>
@@ -982,7 +641,7 @@ body.page-platforms .hero{
       <a class="idx-row" href="/services/dashboard-design">
         <span class="n">02</span>
         <h3>Dashboard Design</h3>
-        <p>The morning scan: hierarchy, filters, and exceptions, not the first-run or the role model.</p>
+        <p>The morning scan: hierarchy, filters, and exceptions — not the first-run or the role model.</p>
         <i>→</i>
       </a>
       <a class="idx-row" href="/solutions/saas">
@@ -992,17 +651,16 @@ body.page-platforms .hero{
         <i>→</i>
       </a>
     </div>
-    <p class="body-sm svc-note">Need the published payroll case? <a class="inline-link" href="/work/payroll-pro-saas">PayrollPro</a>.</p>
+    <p class="body-sm plat-related-note">Need the published payroll case? <a href="/work/payroll-pro-saas">PayrollPro</a>.</p>
   </div>
 </section>
 
-<section class="sect plat-faq" id="faq" aria-labelledby="faqH">
+<section class="faq-sec" id="faq" aria-labelledby="faqH">
   <div class="wrap faq-grid">
     <div class="faq-side">
       <p class="eyebrow" data-r>FAQ</p>
       <h2 class="d2" id="faqH" data-r>About this service</h2>
-      <p class="lede" data-r>How this differs from Product Design and Dashboard Design, and how we ship into a live tenant.</p>
-      <a href="/contact#book" class="btn ghost" data-r><span>Ask us directly</span><i>→</i></a>
+      <p class="lede" data-r>How this differs from Product Design and Dashboard Design — and how we ship into a live tenant.</p>
     </div>
 
     <div class="faq-list" data-r>
@@ -1046,18 +704,32 @@ body.page-platforms .hero{
           <p>Yes. The brief is usually the gap between them: an admin console that drifted, a customer product that never inherited the same patterns, and permissions that only make sense to the person who built the role model.</p>
         </div></div></div>
       </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa5" id="fqb5">
+          <span class="qn num">05</span>
+          <span class="qt">Do you build the backend too?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fa5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
+          <p>Design-only or design-and-build. Tenant model and API contracts are in scope when engineering is. Full MVP scope lives on <a href="/solutions/saas">SaaS product solutions</a>.</p>
+        </div></div></div>
+      </div>
     </div>
   </div>
 </section>
 
 
-<section class="inq-sec" id="inquire" aria-labelledby="inqH">
+<section class="plat-contact" id="inquire" aria-labelledby="inqH">
   <div class="wrap inq-grid">
     <div class="inq-copy">
       <p class="eyebrow">Start a conversation</p>
-      <h2 class="d2" id="inqH">Discuss admin and customer UX.</h2>
-      <p class="lede">If admin and customer surfaces do not share permissions, roles, and one system, say where they diverge.</p>
-      <p class="inq-help">Need a longer brief, files, or a scheduled 20-minute fit call? Use the <a href="/contact#brief">contact page</a>.</p>
+      <h2 class="d2" id="inqH">Show us where admin and customer diverge.</h2>
+      <p class="lede">If admin and customer surfaces do not share permissions, roles, and one system — say where they drifted. We'll review the tenant model and recommend a phased path. No RFP required.</p>
+      <p class="plat-trust">
+        <span>Reply within one business day</span>
+        <span>NDA available</span>
+        <span>No obligation</span>
+      </p>
     </div>
     <div>
       <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
@@ -1079,7 +751,7 @@ body.page-platforms .hero{
         </div>
         <div class="inq-row">
           <div>
-            <label for="inq-company">Company</label>
+            <label for="inq-company">Company <span class="opt">Optional</span></label>
             <input id="inq-company" name="company" autocomplete="organization">
           </div>
           <div>
@@ -1088,14 +760,15 @@ body.page-platforms .hero{
           </div>
         </div>
         <div>
-          <label for="inq-details">What do you need help with? <span class="req">Required</span></label>
-          <textarea id="inq-details" name="details" required rows="4" placeholder="Example: customer app and admin panel were designed separately; roles and billing do not match."></textarea>
+          <label for="inq-details">Where do admin and customer diverge? <span class="req">Required</span></label>
+          <textarea id="inq-details" name="details" required rows="4" placeholder="Example: customer app and admin panel were designed separately; roles and billing do not match." aria-describedby="inq-details-hint"></textarea>
+          <p class="inq-note" id="inq-details-hint" style="margin-top:8px;text-transform:none;letter-spacing:0;font-size:13px;line-height:1.5;color:#8b8c94">A few sentences on the tenant model, roles, or surfaces is enough.</p>
           <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
         </div>
         <p class="inq-fail" role="alert"></p>
         <div class="inq-actions">
           <button type="submit" class="btn"><span class="inq-submit-label">Send inquiry</span><i>→</i></button>
-          <p class="inq-note">Reply within one business day. NDA available.</p>
+          <p class="inq-note">Private · not shared</p>
         </div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
@@ -1103,24 +776,6 @@ body.page-platforms .hero{
         <h3>Inquiry received.</h3>
         <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
       </div>
-    </div>
-  </div>
-</section>
-<section class="cta-band on-ink" aria-labelledby="ctaH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Start a project</p>
-    <h2 class="d2" id="ctaH" data-r>Need both surfaces in one family?</h2>
-    <p class="lede" data-r>A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
-    <div class="cta-row">
-      <div class="cta-actions" data-r>
-        <a href="#inquire" class="btn on-dark"><span>Start a conversation</span><i>→</i></a>
-        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
-      </div>
-      <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
-        <span><i>◆</i>No commitment required</span>
-      </p>
     </div>
   </div>
 </section>
@@ -1213,6 +868,18 @@ const chIO=new IntersectionObserver(es=>{
   }
 },{rootMargin:'-40% 0px -55% 0px'});
 chTargets.forEach(t=>chIO.observe(t));
+
+const mob=[...document.querySelectorAll('#mobChips a')];
+if(mob.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
 
 const tabs=[...document.querySelectorAll('.plat-tabs [role="tab"]')];
 const panels={

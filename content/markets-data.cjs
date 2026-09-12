@@ -10,6 +10,15 @@ module.exports = {
       hreflang: "en-us",
       countryCode: "US",
       country: "United States",
+      card: {
+        kicker: "United States · US-hour overlap",
+        headline: "Trucking desks and B2B SaaS teams",
+        summary:
+          "Dispatch CRM, TMS overlays, fleet dashboards, and QuickBooks sync for US carriers and brokers — built for Central and Eastern call windows without stopping the shift.",
+        tags: ["Dispatch CRM", "Driver apps", "QuickBooks"],
+        outcome: "Phased rollout beside live TMS with weekly demos on a live URL.",
+        visual: "dispatch",
+      },
       ogLocale: "en_US",
       title: "Custom Trucking & SaaS Software for US Teams | KRIVA",
       meta:
@@ -62,6 +71,15 @@ module.exports = {
       hreflang: "en-gb",
       countryCode: "GB",
       country: "United Kingdom",
+      card: {
+        kicker: "United Kingdom · GMT-friendly",
+        headline: "SaaS founders and product leads",
+        summary:
+          "MVP scope, activation metrics, Xero-ready finance workflows, and multi-tenant admin for UK B2B teams pitching investors and shipping their next milestone.",
+        tags: ["SaaS MVP", "Xero", "Onboarding UX"],
+        outcome: "Investor-ready instrumentation from day one with written scope before build.",
+        visual: "saas",
+      },
       ogLocale: "en_GB",
       title: "B2B SaaS & Product Design for UK Startups | KRIVA",
       meta:
@@ -111,6 +129,15 @@ module.exports = {
       hreflang: "en-ae",
       countryCode: "AE",
       country: "United Arab Emirates",
+      card: {
+        kicker: "United Arab Emirates · Gulf-time overlap",
+        headline: "Logistics and transport operators",
+        summary:
+          "Fleet visibility, dispatch consoles, car-transport ops, and bilingual-ready B2B SaaS for UAE logistics teams that need software matched to how the desk runs.",
+        tags: ["Fleet dashboards", "Car transport", "B2B SaaS"],
+        outcome: "Gulf Standard Time working sessions with security-conscious handoff.",
+        visual: "logistics",
+      },
       ogLocale: "en_AE",
       title: "Logistics & SaaS Software for UAE Operators | KRIVA",
       meta:
@@ -160,6 +187,15 @@ module.exports = {
       hreflang: "en-ca",
       countryCode: "CA",
       country: "Canada",
+      card: {
+        kicker: "Canada · Eastern & Central overlap",
+        headline: "Carriers and SaaS product teams",
+        summary:
+          "Dispatch CRM, fleet software, driver apps, and QuickBooks or Xero integrations for Canadian operators — with PIPEDA-conscious delivery and North American hour overlap.",
+        tags: ["Dispatch CRM", "Finance sync", "SaaS delivery"],
+        outcome: "Full code and design ownership at close with phased ops rollout.",
+        visual: "finance",
+      },
       ogLocale: "en_CA",
       title: "Trucking & SaaS Software for Canadian Teams | KRIVA",
       meta:
@@ -207,5 +243,9 @@ module.exports = {
   indexFile: "kriva-markets-index.html",
   indexTitle: "Markets We Serve · US, UK, UAE & Canada | KRIVA",
   indexMeta:
-    "KRIVA builds custom trucking software, B2B SaaS, and finance integrations for teams in the United States, United Kingdom, United Arab Emirates, and Canada.",
+    "KRIVA delivers custom trucking software, B2B SaaS, and finance integrations for teams in the US, UK, UAE, and Canada — product design and engineering from Ahmedabad with regional delivery overlap.",
+  indexEyebrow: "Product Design & UI/UX · Ahmedabad",
+  indexH1: "Built for operators in four markets.",
+  indexLede:
+    "Remote-first product design and engineering for the United States, United Kingdom, United Arab Emirates, and Canada. Enter through your market for regional language, timezone overlap, and proof that matches your desk.",
 };
