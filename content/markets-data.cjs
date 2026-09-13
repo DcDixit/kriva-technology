@@ -22,7 +22,7 @@ module.exports = {
       ogLocale: "en_US",
       title: "Custom Trucking & SaaS Software for US Teams | KRIVA",
       meta:
-        "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS from an in-house Ahmedabad studio with US-hour overlap, weekly demos, and phased rollout.",
+        "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS — Ahmedabad studio with US-hour overlap, weekly demos, and phased rollout.",
       eyebrow: "United States",
       h1: "Software for US trucking desks and SaaS teams.",
       lede:
@@ -83,7 +83,7 @@ module.exports = {
       ogLocale: "en_GB",
       title: "B2B SaaS & Product Design for UK Startups | KRIVA",
       meta:
-        "UK-focused SaaS MVP design, onboarding UX, Xero integrations, and multi-tenant admin panels from KRIVA — in-house design and engineering with clear scope and weekly demos.",
+        "UK SaaS MVP design, onboarding UX, Xero integrations, and multi-tenant admin — in-house design and engineering with clear scope and weekly demos.",
       eyebrow: "United Kingdom",
       h1: "SaaS product design and integrations for UK teams.",
       lede:
@@ -141,7 +141,7 @@ module.exports = {
       ogLocale: "en_AE",
       title: "Logistics & SaaS Software for UAE Operators | KRIVA",
       meta:
-        "Custom logistics dashboards, fleet ops software, B2B SaaS, and finance integrations for UAE operators — remote-first delivery from Ahmedabad with Gulf-time overlap.",
+        "Logistics dashboards, fleet ops software, B2B SaaS, and finance integrations for UAE operators — remote-first from Ahmedabad with Gulf-time overlap.",
       eyebrow: "United Arab Emirates",
       h1: "Logistics and SaaS software for UAE operators.",
       lede:
@@ -199,7 +199,7 @@ module.exports = {
       ogLocale: "en_CA",
       title: "Trucking & SaaS Software for Canadian Teams | KRIVA",
       meta:
-        "Dispatch CRM, fleet software, and B2B SaaS for Canadian carriers and product teams — in-house design and engineering with North American hour overlap and clear IP handoff.",
+        "Dispatch CRM, fleet software, and B2B SaaS for Canadian carriers — in-house design and engineering with North American hour overlap and clear IP handoff.",
       eyebrow: "Canada",
       h1: "Trucking and SaaS software for Canadian teams.",
       lede:
@@ -243,7 +243,7 @@ module.exports = {
   indexFile: "kriva-markets-index.html",
   indexTitle: "Markets We Serve · US, UK, UAE & Canada | KRIVA",
   indexMeta:
-    "KRIVA delivers custom trucking software, B2B SaaS, and finance integrations for teams in the US, UK, UAE, and Canada — product design and engineering from Ahmedabad with regional delivery overlap.",
+    "Trucking software, B2B SaaS, and integrations for US, UK, UAE, and Canada teams — product design and engineering from Ahmedabad. Explore each market.",
   indexEyebrow: "Product Design & UI/UX · Ahmedabad",
   indexH1: "Built for operators in four markets.",
   indexLede:

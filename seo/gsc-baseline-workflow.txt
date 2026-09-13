@@ -1,0 +1,89 @@
+GSC Baseline Workflow — KRIVA SEO Phase 2
+=========================================
+
+Purpose: establish a real performance baseline before any new URLs or geo expansion.
+Do NOT paste fabricated numbers into the CSVs. Export from Search Console only.
+
+PREREQUISITES
+- Google Search Console property verified for https://krivatechnologies.com
+- Minimum 28 days of data (prefer 90 days) for stable trends
+- Date range: use the same range for every export in a baseline set
+
+STEP 1 — EXPORT QUERIES (site-wide)
+-----------------------------------
+GSC → Performance → Search results
+- Date: Last 3 months (or custom 90-day window)
+- Dimensions: Query
+- Export → Save as: seo/gsc/data/queries.csv
+
+Expected columns (GSC default):
+  Top queries, Clicks, Impressions, CTR, Position
+
+STEP 2 — EXPORT PAGES
+---------------------
+Same date range, no query filter
+- Dimensions: Page
+- Export → Save as: seo/gsc/data/pages.csv
+
+Expected columns:
+  Top pages, Clicks, Impressions, CTR, Position
+
+STEP 3 — EXPORT COUNTRIES
+-------------------------
+Same date range
+- Dimensions: Country
+- Export → Save as: seo/gsc/data/countries.csv
+
+Expected columns:
+  Country, Clicks, Impressions, CTR, Position
+
+STEP 4 — EXPORT QUERIES BY COUNTRY (optional, recommended)
+----------------------------------------------------------
+For US/UK/UAE/CA comparison, run four filtered exports OR one combined export:
+- Filter Country = United States → save rows to queries-by-country.csv
+- Repeat for United Kingdom, United Arab Emirates, Canada
+
+Combined file columns:
+  Country, Query, Clicks, Impressions, CTR, Position
+
+Use seo/gsc/queries-by-country-template.csv as the header reference.
+
+STEP 5 — KEYWORD OPPORTUNITIES (optional, for Rule B validation)
+----------------------------------------------------------------
+From Google Ads Keyword Planner or SEMrush (not GSC):
+- Keywords in positions 11–20 for krivatechnologies.com pages
+- Include CPC column
+- Save as: seo/gsc/data/keyword-opportunities.csv
+
+Columns:
+  Keyword, Position, CPC (USD), Landing page, Notes
+
+STEP 6 — RUN ANALYSIS
+---------------------
+  node seo/gsc_analyze.cjs
+
+Output: seo/gsc/reports/latest-analysis.json
+
+STEP 7 — REVIEW & PRIORITIZE
+----------------------------
+1. US trucking/logistics queries first (cluster: us-trucking-dispatch)
+2. Map each query to an EXISTING page — optimize title, meta, H1, internal links
+3. Compare marketComparison: US vs GB vs AE vs CA
+4. Flag gaps only — do NOT create state/city URLs until validation passes:
+
+   Rule A: GSC impressions exist for the exact target term, OR
+   Rule B: Related commercial keyword ranks 11–20 with CPC > $8
+
+STEP 8 — ITERATE (after on-page work)
+-------------------------------------
+Re-export after 4–6 weeks. Compare impressions, CTR, and position on priority pages.
+
+FILES
+-----
+  seo/gsc/queries-template.csv          — header only
+  seo/gsc/pages-template.csv            — header only
+  seo/gsc/countries-template.csv        — header only
+  seo/gsc/queries-by-country-template.csv
+  seo/gsc/keyword-opportunities-template.csv
+  seo/gsc/data/                       — drop real exports here (gitignored recommended)
+  content/seo-page-map.cjs            — existing page ↔ keyword cluster map

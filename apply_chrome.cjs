@@ -4,7 +4,14 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = __dirname;
-const { CONTACT_EMAIL } = require("./shared/studio");
+const {
+  CONTACT_EMAIL,
+  CTA_PRIMARY_LABEL,
+  CTA_PRIMARY_COMPACT_LABEL,
+  CTA_SECONDARY_LABEL,
+  CTA_BOOK_HREF,
+  CTA_BRIEF_HREF,
+} = require("./shared/studio");
 
 const PAGE_CURRENT = {
   "kriva-redesign.html": null,
@@ -101,7 +108,7 @@ function headerHtml(current, opts = {}) {
   <div class="nav-shell">
     <div class="wrap nav-in">
       <a href="/" class="mark" aria-label="KRIVA Technologies home">
-        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="136" height="26">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="KRIVA Technologies" width="136" height="26">
       </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
@@ -175,7 +182,7 @@ function headerHtml(current, opts = {}) {
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="/contact#book" class="btn sm"><span>Book a discovery call</span><i>→</i></a>
+        <a href="${CTA_BOOK_HREF}" class="btn sm"><span>${CTA_PRIMARY_COMPACT_LABEL}</span><i>→</i></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -220,13 +227,13 @@ function headerHtml(current, opts = {}) {
       </ul>
     </div>
     <div class="sheet-cta">
-      <a href="/contact#book" class="btn on-dark"><span>Book a discovery call</span><i>→</i></a>
-      <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
+      <a href="${CTA_BOOK_HREF}" class="btn on-dark"><span>${CTA_PRIMARY_LABEL}</span><i>→</i></a>
+      <a href="${CTA_BRIEF_HREF}" class="btn ghost on-dark"><span>${CTA_SECONDARY_LABEL}</span><i>→</i></a>
     </div>
   </div>
   <div class="sheet-foot">
-    <a href="/contact#brief">Send a project brief</a>
-    <a href="/contact#book">Request a discovery call</a>
+    <a href="${CTA_BRIEF_HREF}">${CTA_SECONDARY_LABEL}</a>
+    <a href="${CTA_BOOK_HREF}">${CTA_PRIMARY_LABEL}</a>
     <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
     <span>Ahmedabad, India · Remote-first</span>
   </div>
@@ -238,14 +245,14 @@ const FOOTER_HTML = `<footer>
     <div class="fgrid">
       <div>
         <h3>Get in touch</h3>
-        <a href="/contact#brief">Send a project brief</a><br>
-        <a href="/contact#book">Request a fit call</a><br>
+        <a href="${CTA_BRIEF_HREF}">${CTA_SECONDARY_LABEL}</a><br>
+        <a href="${CTA_BOOK_HREF}">${CTA_PRIMARY_LABEL}</a><br>
         <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
         <p class="f-blurb">Design and engineering for US trucking ops and SaaS product teams. Ahmedabad, India · Remote-first · Global clients.</p>
         <div class="fsocial">
           <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
           <a href="https://dribbble.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Dribbble</a>
-          <a href="https://www.instagram.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Instagram</a>
+          <a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a>
           <a href="https://x.com/krivatechnologies" rel="noopener noreferrer" target="_blank">X</a>
         </div>
       </div>

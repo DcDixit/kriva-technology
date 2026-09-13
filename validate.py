@@ -102,7 +102,7 @@ def check(path):
     for pat, msg in [
         (r'\b(?:19|20)\d{2}-\d{2}-\d{2}\b', 'DATE'),
         (r'\b\d{1,3}(?:\.\d)?\s?%', 'percentage — only FleetFlow may carry metrics (§1.1)'),
-        (r'discovery call', 'banned CTA wording — use "20-minute fit call"'),
+        (r'discovery call', 'banned CTA wording — use "Book a free 20-min fit call" / "20-minute fit call"'),
         (r'24 hours', 'banned response promise — use "one business day"'),
         (r'15\+ senior|Google 5\.0|8 reviews', 'unverified claim — see §5'),
     ]:

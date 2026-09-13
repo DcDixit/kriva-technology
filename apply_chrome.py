@@ -99,7 +99,7 @@ def header_html(current: str | None) -> str:
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="/contact#book" class="btn sm"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn sm"><span>Free fit call</span><i>→</i></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -146,7 +146,7 @@ def header_html(current: str | None) -> str:
     <div class="sheet-item"><a class="big" href="/work">Work</a></div>
     <div class="sheet-item"><a class="big" href="/about">About</a></div>
     <div class="sheet-cta">
-      <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+      <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
       <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
     </div>
   </div>
@@ -169,7 +169,7 @@ FOOTER_HTML = '''<footer>
         <div class="fsocial">
           <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
           <a href="https://dribbble.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Dribbble</a>
-          <a href="https://www.instagram.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Instagram</a>
+          <a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a>
           <a href="https://x.com/krivatechnologies" rel="noopener noreferrer" target="_blank">X</a>
         </div>
       </div>

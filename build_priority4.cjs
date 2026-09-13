@@ -84,7 +84,7 @@ const CTA = `
     <h2 class="d2" id="ctaH" data-r>Tell us what you're building.</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -167,7 +167,7 @@ const insightsIndexBody = `
         <h1 class="d1 mask" data-mask id="h1"><span><i>Notes for SaaS</i></span><span><i>and operations teams.</i></span></h1>
         <p class="lede" data-r>Practical writing on onboarding, dispatch CRM, MVP trade-offs, and how we deliver: aimed at founders and operators, not keyword filler.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
           <a href="/solutions" class="btn ghost"><span>Explore solutions</span><i>→</i></a>
         </div>
       </div>
@@ -441,7 +441,7 @@ const faqBody = `
     <h1 class="d1 mask" data-mask id="h1"><span><i>Straight answers</i></span><span><i>before you book a call.</i></span></h1>
     <p class="lede" data-r>Services, timelines, pricing, ownership, and how we collaborate with your team: without the usual agency vagueness.</p>
     <div class="hero-actions" data-r>
-      <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+      <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
       <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
     </div>
     <div class="faq" data-r>
@@ -463,7 +463,7 @@ const faqBody = `
     <p class="body-sm" data-r style="color:#8C98A4;margin-top:18px;max-width:54ch">Send a specific question or book a 20-minute call. We'll give you a straight answer, no pitch attached.</p>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -520,7 +520,7 @@ const techBody = `
     <h1 class="d1 mask" data-mask id="h1"><span><i>A practical stack</i></span><span><i>with senior oversight.</i></span></h1>
     <p class="lede" data-r>Figma, Next.js, React Native, APIs, and carefully reviewed AI tooling. We choose for maintainability, and people approve what ships.</p>
     <div class="hero-actions" data-r>
-      <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+      <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
       <a href="/process" class="btn ghost"><span>See our process</span><i>→</i></a>
     </div>
   </div>
@@ -549,7 +549,7 @@ const techBody = `
     <p class="body-sm" data-r style="color:#8C98A4;margin-top:18px;max-width:54ch">Tell us about your existing tools and constraints. We'll figure out the right approach for your team.</p>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -619,7 +619,7 @@ function legalPage({ crumb, h1, lede, sections, contactLine }) {
     <h2 class="d2" id="ctaH" data-r>Need to talk something through?</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>

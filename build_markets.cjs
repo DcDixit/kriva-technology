@@ -224,7 +224,7 @@ function marketBody(m) {
     <div class="mkt-proof" data-r>
       <a href="${m.proof.case.href}">Case · ${esc(m.proof.case.label)}</a>
       <a href="${m.proof.guide.href}">Guide · ${esc(m.proof.guide.label)}</a>
-      <a href="/contact#book">Book a fit call</a>
+      <a href="/contact#book">Book a free 20-min fit call</a>
     </div>
   </div>
 </header>
@@ -251,7 +251,7 @@ function marketBody(m) {
     <p class="lede" data-r>A 20-minute fit call or a written brief — reply within one business day.</p>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a discovery call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
     </div>
@@ -320,7 +320,7 @@ function indexBody() {
         <p class="lede" data-r>${esc(indexLede)}</p>
         <div class="hero-actions" data-r>
           <a href="#markets" class="btn"><span>Find your market</span><i>→</i></a>
-          <a href="/contact#book" class="btn ghost"><span>Request a fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn ghost"><span>Book a free 20-min fit call</span><i>→</i></a>
         </div>
         <p class="mkt-trust" data-r>
           <span>Four markets</span>
@@ -373,11 +373,11 @@ function indexBody() {
 <section class="cta-band on-ink" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Not sure where to start?</p>
-    <h2 class="d2" id="ctaH" data-r>Book a fit call.</h2>
-    <p class="lede" data-r>A 20-minute discovery call or written brief — we reply within one business day.</p>
+    <h2 class="d2" id="ctaH" data-r>Book a free 20-min fit call.</h2>
+    <p class="lede" data-r>A 20-minute fit call or written brief — we reply within one business day.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a discovery call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r><i>·</i> US · UK · UAE · Canada <i>·</i> NDA-first <i>·</i> You own the IP</p>

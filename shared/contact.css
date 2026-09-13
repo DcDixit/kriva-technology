@@ -178,11 +178,12 @@ body.page-contact .ct-tag{
 .ct-primary{
   background:#101014;
   color:#c8c9d0;
+  color-scheme:dark;
   padding:clamp(72px,9vw,120px) 0;
   scroll-margin-top:88px
 }
 .ct-primary .eyebrow{color:#8b8c94}
-.ct-primary .d2{color:#fff;margin-top:18px;max-width:18ch}
+body.page-contact .ct-primary .d2{color:#fff;margin-top:18px;max-width:20ch}
 .ct-primary .lede{color:#c8c9d0;max-width:42ch;margin-top:16px}
 .ct-primary .ct-trust{
   display:flex;
@@ -314,7 +315,7 @@ body.page-contact .ct-primary .f .hint{color:#8b8c94}
   width:100%;
   min-height:48px;
   padding:12px 14px;
-  background:var(--white);
+  background-color:var(--white);
   border:1px solid var(--rule);
   border-radius:8px;
   color:var(--ink);
@@ -323,22 +324,40 @@ body.page-contact .ct-primary .f .hint{color:#8b8c94}
 body.page-contact .ct-primary .f input,
 body.page-contact .ct-primary .f select,
 body.page-contact .ct-primary .f textarea{
-  background:#1a1a22;
+  background-color:#1a1a22;
   border-color:#2a2a32;
   color:#fff
 }
 .f textarea{min-height:140px;resize:vertical;line-height:1.6}
 #fitForm textarea{min-height:110px}
-.f select{
+.f select,
+.select-wrap select{
+  -webkit-appearance:none;
+  -moz-appearance:none;
   appearance:none;
-  background-image:linear-gradient(45deg,transparent 50%,var(--steel) 50%),linear-gradient(135deg,var(--steel) 50%,transparent 50%);
-  background-position:calc(100% - 19px) 21px,calc(100% - 14px) 21px;
-  background-size:5px 5px,5px 5px;
-  background-repeat:no-repeat;
-  padding-right:40px
+  padding-right:40px;
+  cursor:pointer
 }
-body.page-contact .ct-primary .f select{
-  background-image:linear-gradient(45deg,transparent 50%,#8b8c94 50%),linear-gradient(135deg,#8b8c94 50%,transparent 50%)
+.f select::-ms-expand,
+.select-wrap select::-ms-expand{display:none}
+.select-wrap{
+  position:relative;
+  display:block;
+  width:100%
+}
+.select-wrap::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  right:14px;
+  width:12px;
+  height:8px;
+  transform:translateY(-50%);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%235C6770' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  pointer-events:none
+}
+body.page-contact .ct-primary .select-wrap::after{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%238b8c94' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
 }
 .f input:hover,.f select:hover,.f textarea:hover{border-color:var(--steel-2)}
 body.page-contact .ct-primary .f input:hover,

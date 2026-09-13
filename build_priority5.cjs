@@ -266,7 +266,7 @@ ${CASE_CSS}
           ${tags}
         </div>
         <div class="ph-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
           <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
         </div>
       </div>
@@ -469,7 +469,7 @@ ${quote}
     <h2 class="d2" id="ctaH" data-r>Building something in this space?</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>

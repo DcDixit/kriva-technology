@@ -331,7 +331,7 @@ ${PAGE_CSS}
         <p class="lede" data-r>${esc(s.positioning)}</p>
         <div class="tags" data-r>${tags}</div>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
           <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
         </div>
       </div>
@@ -359,7 +359,7 @@ ${PAGE_CSS}
         <div class="brief-meta">
           <span>Service · <b>${esc(label)}</b></span>
           <span>Next · <b><a href="${esc(s.proof[0]?.href || "/work")}">${esc(s.proof[0]?.label || "Related work")}</a></b></span>
-          <span>CTA · <b><a href="/contact#book">Book a 20-minute fit call</a></b></span>
+          <span>CTA · <b><a href="/contact#book">Book a free 20-min fit call</a></b></span>
         </div>
       </div>
     </div>
@@ -433,7 +433,7 @@ ${PAGE_CSS}
     <h2 class="d2" id="ctaH" data-r>${esc(s.ctaH2 || `Need help with ${s.h1}?`)}</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>

@@ -62,7 +62,7 @@ const viewports = [
           .filter((x) => x.h > 0 && x.h < 44);
         const hasDribbble = !!document.querySelector('a[href*="dribbble.com"]');
         const hasX = !!document.querySelector('a[href*="x.com/krivatechnologies"]');
-        const book20 = (document.body.innerText || "").includes("Book a 20-minute");
+        const book20 = (document.body.innerText || "").includes("Book a free 20-min fit call");
         const tableW = [...document.querySelectorAll("table")].map((t) => Math.round(t.getBoundingClientRect().width));
         const thead = document.querySelector(".c-table thead");
         const hdr = document.querySelector(".nav-cta .btn.sm");

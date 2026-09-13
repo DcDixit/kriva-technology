@@ -89,7 +89,7 @@ Order is **newest first**. The live index renders these out of order — that is
 |---|---|
 | WhatsApp | `https://wa.me/919724454455?text=Hi%20KRIVA%2C%20I'd%20like%20to%20discuss%20a%20project.` |
 | LinkedIn | `https://www.linkedin.com/company/kriva-technologies` |
-| Instagram | `https://www.instagram.com/krivatechnologies` |
+| Instagram | `https://www.instagram.com/kriva_technology/` |
 | X | `https://x.com/krivatechnologies` |
 | Dribbble | `https://dribbble.com/krivatechnologies` |
 | Google reviews | `https://g.page/r/kriva-technologies/review` — **`[TBD]` verification, see §5** |

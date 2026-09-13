@@ -195,7 +195,7 @@ page({
         </h1>
         <p class="lede" data-r>Identity, print, social, packaging, and decks from the same system. Not a folder of one-offs that marketing cannot reuse next quarter.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
           <a href="/work/brandlift-ecommerce" class="btn ghost"><span>See BrandLift</span><i>→</i></a>
         </div>
       </div>
@@ -323,7 +323,7 @@ page({
     <h2 class="d2" id="ctaH" data-r>Need a kit marketing can actually reuse?</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -369,7 +369,7 @@ page({
         </h1>
         <p class="lede" data-r>Search, ads, and social with tracking you can audit. We will not sell you a first-page guarantee or scale spend on a broken pixel.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
           <a href="/services/web-development" class="btn ghost"><span>Web development</span><i>→</i></a>
         </div>
       </div>
@@ -487,7 +487,7 @@ page({
     <h2 class="d2" id="ctaH" data-r>Need demand you can defend in a board pack?</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Request a fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>

@@ -11,7 +11,7 @@ const ENTITY_DESCRIPTION =
 const SAME_AS = [
   "https://www.linkedin.com/company/kriva-technologies",
   "https://dribbble.com/krivatechnologies",
-  "https://www.instagram.com/krivatechnologies",
+  "https://www.instagram.com/kriva_technology/",
   "https://x.com/krivatechnologies",
 ];
 const AREA_SERVED = ["US", "GB", "AE", "CA"];

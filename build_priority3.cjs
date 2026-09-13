@@ -196,7 +196,7 @@ const solutionsBody = `
         <h1 class="d1 mask" data-mask id="h1"><span><i>Clear paths for</i></span><span><i>the work we ship.</i></span></h1>
         <p class="lede" data-r>Four solution areas with dedicated capabilities, process, and illustrative work. Same in-house team from discovery through launch.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
           <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
         </div>
       </div>
@@ -290,7 +290,7 @@ const solutionsBody = `
     <div data-r>
       <p class="body">We'll suggest a starting point: SaaS MVP, dispatch CRM, accounting integration, or car transport software, and what a sensible first engagement looks like.</p>
       <div class="hero-actions">
-        <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/services" class="btn ghost"><span>Browse services</span><i>→</i></a>
       </div>
     </div>
@@ -303,7 +303,7 @@ const solutionsBody = `
     <h2 class="d2" id="ctaH" data-r>Ready to pick a path?</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -383,7 +383,7 @@ const aboutBody = `
         <h1 class="d1 mask" data-mask id="h1"><span><i>A product studio built</i></span><span><i>around the work we</i></span><span><i>already know how to ship.</i></span></h1>
         <p class="lede" data-r>Design and engineering for US trucking ops and SaaS product teams.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
           <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
         </div>
       </div>
@@ -549,7 +549,7 @@ const aboutBody = `
     <p class="body-sm" data-r style="color:#8C98A4;margin-top:18px;max-width:54ch">Share a brief or book a fit call. We'll reply within one business day with fit, questions, and a sensible next step.</p>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -650,7 +650,7 @@ const processBody = `
         <h1 class="d1 mask" data-mask id="h1"><span><i>Five phases.</i></span><span><i>Visible progress.</i></span></h1>
         <p class="lede" data-r>Discovery, design, build, launch, and support. Each phase has milestones, weekly demos, and deliverables you sign off before we move on. Tools help us move faster: people own every decision.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
           <a href="/contact#brief" class="btn ghost"><span>Send a project brief</span><i>→</i></a>
         </div>
       </div>
@@ -714,7 +714,7 @@ const processBody = `
         <h3 class="d3">Discovery sprint</h3>
         <p class="dur">1–2 weeks</p>
         <p>Align on scope, timeline, and what you actually need before committing to a full engagement.</p>
-        <a href="/contact#book" class="p-link">Book a 20-minute fit call <i>→</i></a>
+        <a href="/contact#book" class="p-link">Book a free 20-min fit call <i>→</i></a>
       </article>
       <article>
         <span class="tag">Most common</span>
@@ -776,7 +776,7 @@ const processBody = `
     <p class="body-sm" data-r style="color:#8C98A4;margin-top:18px;max-width:54ch">Send a brief or book a fit call. We'll walk through a realistic timeline and deliverables for your scope.</p>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
