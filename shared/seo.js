@@ -1,5 +1,5 @@
 /** Shared SEO / GEO head fragments for static pages. */
-const { ORIGIN, ENTITY_DESCRIPTION, AREA_SERVED } = require("./site");
+const { ORIGIN, ENTITY_DESCRIPTION, AREA_SERVED, CONTACT_EMAIL } = require("./site");
 const { markets } = require("../content/markets-data.cjs");
 const PAGE_LABELS = require("../content/page-labels.cjs");
 
@@ -110,7 +110,7 @@ function llmsTxtBody({ pages }) {
     "",
     `> ${ENTITY_DESCRIPTION}`,
     "",
-    "KRIVA is a remote-first product studio based in Ahmedabad, India. We design and build custom trucking software (dispatch CRM, TMS, fleet dashboards, driver apps), B2B SaaS products, and QuickBooks/Xero finance integrations.",
+    "KRIVA is a remote-first product studio founded in 2025 in Ahmedabad, India. We design and build custom trucking software (dispatch CRM, TMS, fleet dashboards, driver apps), B2B SaaS products, and QuickBooks/Xero finance integrations. Design and engineering stay in-house; clients talk to the people doing the work.",
     "",
     "## Primary pages",
     `- [Home](${ORIGIN}/)`,
@@ -141,7 +141,7 @@ function llmsTxtBody({ pages }) {
     "",
     "## Contact",
     "- Website: https://krivatechnologies.com/contact",
-    "- Email: krivatechnlogies@gmail.com",
+    `- Email: ${CONTACT_EMAIL}`,
     "- LinkedIn: https://www.linkedin.com/company/kriva-technologies",
     "",
     "## Optional",

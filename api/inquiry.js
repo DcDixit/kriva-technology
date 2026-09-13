@@ -1,6 +1,14 @@
 /** POST /api/inquiry: emails the studio without putting an address in page HTML. */
 const { CONTACT_EMAIL } = require("../shared/studio");
-const TO = CONTACT_EMAIL;
+const TO = process.env.INQUIRY_TO || CONTACT_EMAIL;
+
+function ccRecipients() {
+  const raw = process.env.INQUIRY_CC || "";
+  return raw
+    .split(/[,;]/)
+    .map((s) => s.trim())
+    .filter((s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s));
+}
 
 function sendJson(res, status, body) {
   res.statusCode = status;
@@ -131,20 +139,23 @@ async function deliver(data, origin) {
   const { text, html, subject } = buildMessage(data);
 
   if (process.env.RESEND_API_KEY) {
+    const payload = {
+      from: process.env.RESEND_FROM || "KRIVA <onboarding@resend.dev>",
+      to: [TO],
+      reply_to: email,
+      subject,
+      text,
+      html,
+    };
+    const cc = ccRecipients();
+    if (cc.length) payload.cc = cc;
     const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + process.env.RESEND_API_KEY,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        from: process.env.RESEND_FROM || "KRIVA <onboarding@resend.dev>",
-        to: [TO],
-        reply_to: email,
-        subject,
-        text,
-        html,
-      }),
+      body: JSON.stringify(payload),
     });
     if (!r.ok) throw new Error("resend " + r.status + " " + (await r.text()));
     return { channel: "resend" };
@@ -159,14 +170,17 @@ async function deliver(data, origin) {
       secure: true,
       auth: { user, pass: process.env.GMAIL_APP_PASSWORD.replace(/\s/g, "") },
     });
-    await tx.sendMail({
+    const mail = {
       from: "KRIVA <" + user + ">",
       to: TO,
       replyTo: email,
       subject,
       text,
       html,
-    });
+    };
+    const cc = ccRecipients();
+    if (cc.length) mail.cc = cc.join(", ");
+    await tx.sendMail(mail);
     return { channel: "gmail" };
   }
 

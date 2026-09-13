@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <script src="/shared/chrome.js" defer></script>
@@ -48,10 +48,8 @@
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="KRIVA · QuickBooks and Xero integrations">
+<meta property="og:image:alt" content="KRIVA · Trucking & SaaS product development">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="QuickBooks &amp; Xero Integrations for Finance Teams · KRIVA">
-<meta name="twitter:description" content="QuickBooks Online and Xero API integrations with reconciliation automation, exception dashboards, and idempotent sync for US, UK, UAE, and Canada finance teams.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <style>
@@ -139,6 +137,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/page-inquiry.css">
 <link rel="stylesheet" href="/shared/product-ui.css">
 <link rel="stylesheet" href="/shared/accounting.css?v=acc1">
+<link rel="stylesheet" href="shared/slot-assets.css">
 <link rel="stylesheet" href="/shared/chrome.css">
 </head>
 <body class="solution page-accounting">
@@ -275,11 +274,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="sheet-foot">
     <a href="/contact#brief">Send a project brief</a>
     <a href="/contact#book">Request a discovery call</a>
-    <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>
+    <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
     <span>Ahmedabad, India · Remote-first</span>
   </div>
 </div>
-
 
 <nav class="chapters" id="chapters" aria-label="Sections">
   <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
@@ -904,7 +902,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="/contact#brief">Send a project brief</a><br>
         <a href="/contact#book">Request a fit call</a><br>
-        <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>
+        <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Design and engineering for US trucking ops and SaaS product teams. Ahmedabad, India · Remote-first · Global clients.</p>
         <div class="fsocial">
           <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
@@ -1093,15 +1091,36 @@ run();
       "name": "KRIVA Technologies",
       "alternateName": "KRIVA",
       "url": "https://krivatechnologies.com",
-      "logo": "https://krivatechnologies.com/brand/logos/kriva-wordmark.svg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://krivatechnologies.com/apple-touch-icon.png",
+        "width": 180,
+        "height": 180
+      },
       "image": "https://krivatechnologies.com/brand/og-default.png",
       "description": "KRIVA Technologies is an in-house product studio that builds custom trucking software, B2B SaaS, and finance integrations for operators in the US, UK, UAE, and Canada.",
-      "email": "krivatechnlogies@gmail.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Ahmedabad",
         "addressRegion": "Gujarat",
         "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "hello@krivatechnologies.com",
+        "url": "https://krivatechnologies.com/contact",
+        "areaServed": [
+          "US",
+          "GB",
+          "AE",
+          "CA"
+        ],
+        "availableLanguage": [
+          "English"
+        ]
       },
       "areaServed": [
         {
@@ -1233,9 +1252,63 @@ run();
       ]
     },
     {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/solutions/accounting-integrations#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "QuickBooks Desktop or QuickBooks Online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We primarily integrate QuickBooks Online via Intuit's API. Desktop is scoped case-by-case when the ledger cannot move to Online. Xero is always the cloud API."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you sync both Xero and QuickBooks for different regions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Multi-region billing with separate connectors and a unified operator dashboard is a common SaaS pattern: QBO for US entities, Xero for UK, one exception queue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle sync failures?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every job logs errors, retries with backoff and idempotency keys, and surfaces exceptions in an operator dashboard with a next step. Failures are visible before close, not after."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from Integrations & APIs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Integrations & APIs covers CRM, payments, ELD, and general connectors. This page is the finance-specific solution: QuickBooks, Xero, matching, close, and the operator UX around exceptions. Many products need both."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a typical integration take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A focused QBO or Xero connector with operator UX is usually 8 to 12 weeks, including mapping sign-off and a parallel run. Dual-region or multi-entity setups run longer. We give a real range on the first call, not a padded one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Stripe or payment processor sync?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Payment events are source events in the same queue. Full payment connector scope lives under Integrations & APIs ; close UX and matching stay here."
+          }
+        }
+      ]
+    },
+    {
       "@type": "Service",
       "@id": "https://krivatechnologies.com/solutions/accounting-integrations#service",
-      "name": "Your sync drifts every month-end. Ours doesn't.",
+      "name": "Your sync drifts every month-end. Ours doesn't",
       "serviceType": "Custom software development",
       "provider": {
         "@id": "https://krivatechnologies.com/#organization"

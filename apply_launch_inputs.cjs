@@ -33,7 +33,7 @@ const runAssets = args.has("--assets") || args.has("--all");
 const runAttr = args.has("--attribution") || args.has("--all");
 const stampOnly = runAll && !args.has("--assets") && !args.has("--attribution");
 
-const SLOT_CSS = '<link rel="stylesheet" href="shared/slot-assets.css">';
+const SLOT_CSS = '<link rel="stylesheet" href="/shared/slot-assets.css">';
 const htmlFiles = () =>
   fs.readdirSync(ROOT).filter((f) => /^kriva-.*\.html$/.test(f));
 

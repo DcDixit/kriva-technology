@@ -82,6 +82,21 @@ const WORK_ABOUT = {
   "/work/marketplace-mvp": "/services/no-code-low-code",
 };
 
+const COUNTRY_NAME = {
+  US: "United States",
+  GB: "United Kingdom",
+  AE: "United Arab Emirates",
+  CA: "Canada",
+};
+
+function areaServedForPath(path) {
+  if (path === "/markets/us") return ["US"];
+  if (path === "/markets/uk") return ["GB"];
+  if (path === "/markets/uae") return ["AE"];
+  if (path === "/markets/ca") return ["CA"];
+  return AREA_SERVED.slice();
+}
+
 function organization() {
   return {
     "@type": "ProfessionalService",
@@ -89,22 +104,33 @@ function organization() {
     name: "KRIVA Technologies",
     alternateName: "KRIVA",
     url: ORIGIN,
-    logo: ORIGIN + "/brand/logos/kriva-wordmark.svg",
+    logo: {
+      "@type": "ImageObject",
+      url: ORIGIN + "/apple-touch-icon.png",
+      width: 180,
+      height: 180,
+    },
     image: ORIGIN + "/brand/og-default.png",
     description: ENTITY_DESCRIPTION,
     email: CONTACT_EMAIL,
+    foundingDate: "2025",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Ahmedabad",
       addressRegion: "Gujarat",
       addressCountry: "IN",
     },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: CONTACT_EMAIL,
+      url: ORIGIN + "/contact",
+      areaServed: AREA_SERVED.slice(),
+      availableLanguage: ["English"],
+    },
     areaServed: AREA_SERVED.map((code) => ({
       "@type": "Country",
-      name:
-        { US: "United States", GB: "United Kingdom", AE: "United Arab Emirates", CA: "Canada" }[
-          code
-        ] || code,
+      name: COUNTRY_NAME[code] || code,
     })),
     knowsAbout: KNOWS_ABOUT.slice(),
     sameAs: SAME_AS.slice(),
@@ -138,14 +164,15 @@ function website() {
   };
 }
 
-function serviceNode({ name, description, url }) {
+function serviceNode({ name, description, url, areaServed }) {
+  const regions = areaServed && areaServed.length ? areaServed : AREA_SERVED;
   return {
     "@type": "Service",
     "@id": url + "#service",
-    name,
+    name: String(name || "").replace(/[.]+$/, ""),
     serviceType: "Custom software development",
     provider: { "@id": ORG_ID },
-    areaServed: AREA_SERVED.slice(),
+    areaServed: regions.slice(),
     description,
     url,
   };
@@ -171,6 +198,9 @@ function blogPosting({ headline, datePublished, url, description }) {
     "@type": "BlogPosting",
     headline,
     datePublished,
+    dateModified: datePublished,
+    image: ORIGIN + "/brand/og-default.png",
+    inLanguage: "en",
     author: { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -182,9 +212,11 @@ function blogPosting({ headline, datePublished, url, description }) {
 
 function articleNode({ headline, url, description, aboutUrl }) {
   const node = {
-    "@type": "Article",
+    "@type": "CaseStudy",
     headline,
     url,
+    image: ORIGIN + "/brand/og-default.png",
+    inLanguage: "en",
     author: { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -235,11 +267,8 @@ function graphForPage({ path, url, h1, description, faqs, datePublished }) {
   const kind = pageKind(path);
   const nodes = [organization(), website()];
   if (kind !== "home") nodes.push(breadcrumbList(path));
-  if (kind === "home" && faqs && faqs.length) {
-    nodes.push(faqPage(faqs, ORIGIN + "/#faq"));
-  }
-  if (kind === "faq" && faqs && faqs.length) {
-    nodes.push(faqPage(faqs, url + "#faq"));
+  if (faqs && faqs.length) {
+    nodes.push(faqPage(faqs, (kind === "home" ? ORIGIN + "/" : url) + "#faq"));
   }
   if (kind === "service" || kind === "solution" || kind === "market") {
     nodes.push(
@@ -247,6 +276,7 @@ function graphForPage({ path, url, h1, description, faqs, datePublished }) {
         name: h1,
         description,
         url,
+        areaServed: areaServedForPath(path),
       })
     );
   }
@@ -289,6 +319,7 @@ module.exports = {
   ORG_ID,
   WEB_ID,
   WORK_ABOUT,
+  areaServedForPath,
   organization,
   website,
   serviceNode,

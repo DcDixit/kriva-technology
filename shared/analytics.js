@@ -10,7 +10,6 @@
   var validId = /^G-[A-Z0-9]{6,}$/i.test(MEASUREMENT_ID) && !/^G-X+$/i.test(MEASUREMENT_ID);
   var debug = /(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
   var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-  var gpc = navigator.globalPrivacyControl === true;
   var optedOut = !!(validId && window['ga-disable-' + MEASUREMENT_ID]);
 
   window.dataLayer = window.dataLayer || [];
@@ -23,11 +22,14 @@
   };
 
   gtag('js', new Date());
+  /* Ads stay denied. Analytics is granted unless the visitor explicitly opted out
+     (ga-disable cookie). Do not treat Global Privacy Control as analytics opt-out:
+     it blocked measurement for a large share of US browsers and zeroed GA data. */
   gtag('consent', 'default', {
     ad_storage: 'denied',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
-    analytics_storage: gpc || optedOut ? 'denied' : 'granted'
+    analytics_storage: optedOut ? 'denied' : 'granted'
   });
 
   var shouldCollect = validId && !optedOut && (!local || debug);
@@ -139,7 +141,9 @@
     send('generate_lead', {
       lead_type: d.type || 'inquiry',
       form_id: d.form_id || '',
-      form_name: d.type || 'inquiry'
+      form_name: d.type || 'inquiry',
+      currency: 'USD',
+      value: 1
     });
   });
 

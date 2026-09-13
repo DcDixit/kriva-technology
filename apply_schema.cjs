@@ -3,7 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ROOT, publicPages } = require("./shared/site");
-const { graphForPage, jsonLdScript, pageKind } = require("./shared/schema");
+const { graphForPage, jsonLdScript } = require("./shared/schema");
 
 const START = "<!-- KRIVA_SCHEMA_START -->";
 const END = "<!-- KRIVA_SCHEMA_END -->";
@@ -70,9 +70,7 @@ function inject(html, script) {
 function applyFile(page) {
   const file = path.join(ROOT, page.file);
   let html = fs.readFileSync(file, "utf8");
-  const kind = pageKind(page.path);
-  const faqs =
-    kind === "home" || kind === "faq" ? extractFaqs(html) : [];
+  const faqs = extractFaqs(html);
   const graph = graphForPage({
     path: page.path,
     url: page.url,

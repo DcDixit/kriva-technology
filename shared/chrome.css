@@ -767,6 +767,14 @@ footer .wrap,
     padding-inline:var(--edge) !important;
   }
 }
+/* Keep H1 visible before motion JS runs — LCP, crawlers, and no-JS-fail cases. */
+html.js h1,
+html.js h1[data-r],
+html.js h1[data-mask] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 @media(min-width:1280px){
   .wrap,
   .wrap.nav-in,
