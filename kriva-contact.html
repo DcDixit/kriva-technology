@@ -741,7 +741,7 @@ function wireInquiryForm(form, opts) {
 
   let sending = false;
 
-  const showDone = (msg) => {
+  const showDone = (msg, options) => {
     sending = false;
     form.removeAttribute('aria-busy');
     btn.classList.remove('loading');
@@ -750,6 +750,7 @@ function wireInquiryForm(form, opts) {
     form.classList.add('sent');
     if (done) { done.classList.add('on'); done.focus(); }
     if (status) status.textContent = msg || opts.successMsg;
+    if (options && options.skipLead) return;
     try {
       const typeEl = form.querySelector('[name="inquiry_type"]');
       window.dispatchEvent(new CustomEvent('kriva:lead', {
@@ -866,7 +867,12 @@ function wireInquiryForm(form, opts) {
   try {
     const params = new URLSearchParams(location.search);
     if (opts.sentValue && params.get('sent') === opts.sentValue) {
-      showDone(opts.successMsg);
+      var typeEl = form.querySelector('[name="inquiry_type"]');
+      var leadType = (typeEl && typeEl.value) || opts.sentValue;
+      var returnKey = 'kriva_ga_lead_/contact|' + (form.id || '') + '|' + leadType;
+      var skipLead = false;
+      try { skipLead = !!sessionStorage.getItem(returnKey); } catch (err) {}
+      showDone(opts.successMsg, { skipLead: skipLead });
       params.delete('sent');
       const q = params.toString();
       history.replaceState({}, '', location.pathname + (q ? '?' + q : '') + location.hash);

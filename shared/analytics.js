@@ -165,8 +165,20 @@
   watchForm('briefForm', 'project_brief');
   watchForm('pageInquiry', 'page_inquiry');
 
+  /* One successful submission = one lead. Dedup by form + page for the session
+     (covers FormSubmit return URLs, refresh, and back-navigation). */
   window.addEventListener('kriva:lead', function (e) {
     var d = (e && e.detail) || {};
+    var dedupKey =
+      'kriva_ga_lead_' + location.pathname + '|' + (d.form_id || '') + '|' + (d.type || 'inquiry');
+    try {
+      if (sessionStorage.getItem(dedupKey)) return;
+      sessionStorage.setItem(dedupKey, '1');
+    } catch (err) {
+      window.__KRIVA_LEAD_KEYS__ = window.__KRIVA_LEAD_KEYS__ || {};
+      if (window.__KRIVA_LEAD_KEYS__[dedupKey]) return;
+      window.__KRIVA_LEAD_KEYS__[dedupKey] = true;
+    }
     var params = {
       lead_type: d.type || 'inquiry',
       form_id: d.form_id || '',

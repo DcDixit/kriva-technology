@@ -134,14 +134,15 @@
       form.classList.add("sent");
       done.classList.add("on");
       try {
-        const storageKey = "kriva_lead_sent_" + location.pathname;
+        const typeEl = form.querySelector('[name="inquiry_type"]');
+        const leadType = (typeEl && typeEl.value) || "page_inquiry";
+        const storageKey =
+          "kriva_ga_lead_" + location.pathname + "|" + (form.id || "") + "|" + leadType;
         if (!sessionStorage.getItem(storageKey)) {
-          sessionStorage.setItem(storageKey, "1");
-          const typeEl = form.querySelector('[name="inquiry_type"]');
           window.dispatchEvent(
             new CustomEvent("kriva:lead", {
               detail: {
-                type: (typeEl && typeEl.value) || "page_inquiry",
+                type: leadType,
                 form_id: form.id || "",
               },
             })
