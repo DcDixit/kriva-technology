@@ -2,21 +2,9 @@
 (function () {
   "use strict";
   const ENDPOINT = "/api/inquiry";
-
-  function formatInquiryError(err) {
-    if (!err) return "";
-    if (typeof err === "string") return err;
-    if (typeof err.message === "string" && err.message) return err.message;
-    return "";
-  }
-
-  function relayErrorMessage(relayBody) {
-    if (!relayBody || typeof relayBody !== "object") return "";
-    const msg = relayBody.message != null ? relayBody.message : relayBody.body && relayBody.body.message;
-    if (typeof msg === "string") return msg;
-    if (msg && typeof msg === "object" && typeof msg.message === "string") return msg.message;
-    return "";
-  }
+  const SUCCESS_MSG =
+    "Thank you! Your inquiry has been submitted successfully. We'll be in touch soon.";
+  const FAIL_MSG = "We could not send your inquiry right now. Please try again shortly.";
 
   function check(f) {
     if (!f.required) return true;
@@ -31,6 +19,30 @@
     f.setAttribute("aria-invalid", String(!ok));
     if (err) err.classList.toggle("on", !ok);
     return ok;
+  }
+
+  function showSuccess(form, done, status, label, defaultLabel, payload) {
+    form.classList.add("sent");
+    if (done) {
+      done.classList.add("on");
+      const h3 = done.querySelector("h3");
+      const p = done.querySelector("p");
+      if (h3) h3.textContent = "Thank you!";
+      if (p) {
+        p.textContent =
+          "Your inquiry has been submitted successfully. We'll be in touch soon.";
+      }
+      done.focus();
+    }
+    if (status) status.textContent = SUCCESS_MSG;
+    if (label) label.textContent = defaultLabel;
+    try {
+      window.dispatchEvent(
+        new CustomEvent("kriva:lead", {
+          detail: { type: payload.inquiry_type || "page_inquiry", form_id: form.id || "" },
+        })
+      );
+    } catch (err) {}
   }
 
   function wire(form) {
@@ -84,53 +96,22 @@
         });
         const body = await res.json().catch(() => ({}));
         if (!res.ok || body.ok === false) {
-          const apiErr = body.error;
-          const msg = typeof apiErr === "string" ? apiErr : (apiErr && apiErr.message) || "Could not send.";
-          throw new Error(msg);
-        }
-        if (body.relay && body.relay.url) {
-          const relayPayload = body.relay.payload || payload;
-          const relayRes = await fetch(body.relay.url, {
-            method: "POST",
-            headers: { Accept: "application/json", "Content-Type": "application/json" },
-            body: JSON.stringify(relayPayload),
-          });
-          const relayBody = await relayRes.json().catch(() => ({}));
-          const ok = relayBody.success === true || String(relayBody.success) === "true";
-          if (!ok) {
-            const relayMsg = relayErrorMessage(relayBody);
-            if (/activ/i.test(relayMsg)) {
-              throw new Error(
-                "Check hello@krivatechnologies.com (including spam) for a FormSubmit activation email, click Activate Form, then submit again."
-              );
-            }
-            throw new Error(relayMsg || "Could not send.");
-          }
+          throw new Error("send failed");
         }
         sending = false;
-        form.classList.add("sent");
-        if (done) {
-          done.classList.add("on");
-          done.focus();
-        }
-        if (status) status.textContent = "Inquiry received. We reply within one business day.";
-        try {
-          window.dispatchEvent(
-            new CustomEvent("kriva:lead", {
-              detail: { type: payload.inquiry_type || "page_inquiry", form_id: form.id || "" },
-            })
-          );
-        } catch (err) {}
+        btn.removeAttribute("aria-disabled");
+        form.removeAttribute("aria-busy");
+        showSuccess(form, done, status, label, defaultLabel, payload);
       } catch (err) {
         sending = false;
         btn.removeAttribute("aria-disabled");
         form.removeAttribute("aria-busy");
         if (label) label.textContent = defaultLabel;
         if (fail) {
-          fail.textContent = formatInquiryError(err) || "Could not send. Try again shortly.";
+          fail.textContent = FAIL_MSG;
           fail.classList.add("on");
         }
-        if (status) status.textContent = "Could not send.";
+        if (status) status.textContent = FAIL_MSG;
       }
     });
   }
@@ -143,6 +124,10 @@
     if (form && done) {
       form.classList.add("sent");
       done.classList.add("on");
+      const h3 = done.querySelector("h3");
+      const p = done.querySelector("p");
+      if (h3) h3.textContent = "Thank you!";
+      if (p) p.textContent = "Your inquiry has been submitted successfully. We'll be in touch soon.";
       try {
         const typeEl = form.querySelector('[name="inquiry_type"]');
         const leadType = (typeEl && typeEl.value) || "page_inquiry";

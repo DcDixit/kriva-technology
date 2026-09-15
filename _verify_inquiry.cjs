@@ -64,57 +64,51 @@ function postJson(path, payload) {
   });
 }
 
-async function relayFormSubmit(relay) {
-  const params = new URLSearchParams();
-  Object.entries(relay.payload || {}).forEach(([k, v]) => {
-    params.set(k, v == null ? "" : String(v));
-  });
-  const res = await fetch(relay.url, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded", Accept: "application/json" },
-    body: params.toString(),
-    redirect: "manual",
-  });
-  const text = await res.text();
-  return { status: res.status, text: text.slice(0, 200) };
-}
-
 async function main() {
   console.log("Inquiry verification →", BASE);
   const results = [];
+  const mailConfigured = !!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD);
 
   for (const [label, payload] of [
     ["project_brief", BRIEF],
     ["fit_call", FIT],
   ]) {
     const api = await postJson("/api/inquiry", payload);
-    results.push({ label, apiStatus: api.status, apiOk: api.json.ok, channel: api.json.relay ? api.json.relay.kind : "direct" });
+    const hasRelay = !!(api.json && api.json.relay);
+    results.push({
+      label,
+      apiStatus: api.status,
+      apiOk: api.json.ok,
+      hasRelay,
+      error: api.json.error || null,
+    });
 
-    if (api.status !== 200 || api.json.ok !== true) {
-      console.error("FAIL", label, api);
+    if (hasRelay) {
+      console.error("FAIL", label, "API still returns browser relay payload");
       process.exitCode = 1;
       continue;
     }
 
-    if (api.json.relay) {
-      const cc = api.json.relay.payload && api.json.relay.payload._cc;
-      console.log("  relay kind:", api.json.relay.kind, "url:", api.json.relay.url);
-      if (cc) console.log("  WARNING: relay exposes _cc:", cc);
-      if (api.json.relay.kind === "form") {
-        const relay = await relayFormSubmit(api.json.relay);
-        results[results.length - 1].relayStatus = relay.status;
-        console.log("  formsubmit status:", relay.status);
-        if (relay.status >= 400) {
-          console.error("  formsubmit response:", relay.text);
-          process.exitCode = 1;
-        }
+    if (mailConfigured) {
+      if (api.status !== 200 || api.json.ok !== true) {
+        console.error("FAIL", label, api);
+        process.exitCode = 1;
       }
+    } else if (api.status !== 503 || api.json.ok !== false) {
+      console.error("FAIL", label, "expected 503 when Gmail is not configured", api);
+      process.exitCode = 1;
     }
   }
 
   console.log("\nSummary:");
   console.log(JSON.stringify(results, null, 2));
-  if (!process.exitCode) console.log("\nAll inquiry paths OK.");
+  if (!process.exitCode) {
+    if (mailConfigured) {
+      console.log("\nAll inquiry paths OK (Gmail SMTP).");
+    } else {
+      console.log("\nAPI shape OK. Set GMAIL_APP_PASSWORD to verify live delivery.");
+    }
+  }
 }
 
 main().catch((err) => {
