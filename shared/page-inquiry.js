@@ -99,11 +99,9 @@
           const ok = relayBody.success === true || String(relayBody.success) === "true";
           if (!ok) {
             const relayMsg = relayErrorMessage(relayBody);
-            if (/activ/i.test(relayMsg) && body.relay.activateInbox) {
+            if (/activ/i.test(relayMsg)) {
               throw new Error(
-                "Check " +
-                  body.relay.activateInbox +
-                  " (including spam) for a FormSubmit activation email, click Activate Form, then submit again."
+                "Email delivery is being set up. Please try again shortly, or email hello@krivatechnologies.com directly."
               );
             }
             throw new Error(relayMsg || "Could not send.");

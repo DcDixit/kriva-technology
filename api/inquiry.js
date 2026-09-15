@@ -248,7 +248,6 @@ async function deliver(data, origin) {
       kind: "ajax",
       url: "https://formsubmit.co/ajax/" + encodeURIComponent(recipient),
       payload: formsubmitBody(data, origin),
-      activateInbox: recipient,
     },
   };
 }
