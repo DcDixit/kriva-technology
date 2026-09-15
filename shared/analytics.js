@@ -80,7 +80,20 @@
       var a = e.target.closest && e.target.closest('a[href]');
       if (!a) return;
       var href = a.getAttribute('href');
-      if (!href || href.charAt(0) === '#') return;
+      if (!href) return;
+
+      if (href === '#inquire') {
+        send('cta_click', {
+          cta_name: textOf(a) || 'Send inquiry',
+          cta_type: 'page_inquiry',
+          cta_location: regionOf(a),
+          link_url: location.pathname + href
+        });
+        return;
+      }
+
+      if (href.charAt(0) === '#') return;
+
       var url;
       try {
         url = new URL(href, location.href);
@@ -89,10 +102,26 @@
       }
 
       if (url.protocol === 'mailto:' || url.protocol === 'tel:') {
+        var method = url.protocol === 'tel:' ? 'phone' : 'email';
         send('contact_click', {
-          method: url.protocol === 'tel:' ? 'phone' : 'email',
+          method: method,
           link_url: href,
           cta_location: regionOf(a)
+        });
+        if (method === 'email') {
+          send('email_click', { link_url: href, cta_location: regionOf(a) });
+        } else {
+          send('phone_click', { link_url: href, cta_location: regionOf(a) });
+        }
+        return;
+      }
+
+      if (url.origin === location.origin && url.hash === '#inquire') {
+        send('cta_click', {
+          cta_name: textOf(a) || 'Send inquiry',
+          cta_type: 'page_inquiry',
+          cta_location: regionOf(a),
+          link_url: url.pathname + url.hash
         });
         return;
       }
@@ -138,13 +167,15 @@
 
   window.addEventListener('kriva:lead', function (e) {
     var d = (e && e.detail) || {};
-    send('generate_lead', {
+    var params = {
       lead_type: d.type || 'inquiry',
       form_id: d.form_id || '',
       form_name: d.type || 'inquiry',
       currency: 'USD',
       value: 1
-    });
+    };
+    send('generate_lead', params);
+    send('contact_form_submit', params);
   });
 
   if (/page not found/i.test(document.title)) {

@@ -212,7 +212,8 @@ function blogPosting({ headline, datePublished, url, description }) {
 
 function articleNode({ headline, url, description, aboutUrl }) {
   const node = {
-    "@type": "CaseStudy",
+    "@type": "CreativeWork",
+    genre: "Case study",
     headline,
     url,
     image: ORIGIN + "/brand/og-default.png",

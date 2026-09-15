@@ -49,10 +49,10 @@ function hreflangMarketCluster() {
 }
 
 function hreflangForPath(pathname) {
-  if (pathname === "/markets" || MARKET_ROUTES[pathname]) {
+  if (pathname === "/" || pathname === "/markets" || MARKET_ROUTES[pathname]) {
     return hreflangMarketCluster();
   }
-  return hreflangDefault(ORIGIN + (pathname === "/" ? "/" : pathname));
+  return hreflangDefault(ORIGIN + pathname);
 }
 
 function geoMeta() {
@@ -78,14 +78,20 @@ function feedMeta() {
   return `<link rel="alternate" type="application/rss+xml" title="KRIVA Insights" href="${ORIGIN}${RSS_PATH}">`;
 }
 
+function gscVerificationMeta(pathname) {
+  if (pathname !== "/") return "";
+  return '<meta name="google-site-verification" content="2_UmRILBA4hFrbUCflqQaOR8xGJP1YbhcWP8k6gd2M">';
+}
+
 function seoHeadBlock({ canonicalUrl, index = true, pathname = "/" }) {
   const parts = [
     SEO_START,
     robotsMeta({ index }),
     identityMeta(),
+    gscVerificationMeta(pathname),
     geoMeta(),
     hreflangForPath(pathname),
-  ];
+  ].filter(Boolean);
   if (pathname === "/" || pathname.startsWith("/insights")) {
     parts.push(feedMeta());
   }

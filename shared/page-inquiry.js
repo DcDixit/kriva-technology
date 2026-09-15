@@ -133,6 +133,21 @@
     if (form && done) {
       form.classList.add("sent");
       done.classList.add("on");
+      try {
+        const storageKey = "kriva_lead_sent_" + location.pathname;
+        if (!sessionStorage.getItem(storageKey)) {
+          sessionStorage.setItem(storageKey, "1");
+          const typeEl = form.querySelector('[name="inquiry_type"]');
+          window.dispatchEvent(
+            new CustomEvent("kriva:lead", {
+              detail: {
+                type: (typeEl && typeEl.value) || "page_inquiry",
+                form_id: form.id || "",
+              },
+            })
+          );
+        }
+      } catch (err) {}
     }
   }
 })();
