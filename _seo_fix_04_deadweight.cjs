@@ -12,6 +12,11 @@ const MARK_END = '# <<< auto';
 
 const text = [];
 for (const f of fs.readdirSync('.').filter((x) => /\.html$/.test(x))) text.push(fs.readFileSync(f, 'utf8'));
+if (fs.existsSync('api')) {
+  for (const f of fs.readdirSync('api').filter((x) => /\.js$/i.test(x))) {
+    text.push(fs.readFileSync(path.join('api', f), 'utf8'));
+  }
+}
 for (const d of ['shared', 'brand', 'media']) {
   const walk = (dir) => {
     for (const e of fs.readdirSync(dir, { withFileTypes: true })) {

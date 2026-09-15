@@ -690,6 +690,21 @@ if(bar) readers.push(y=>{
 /* ── forms: validation, states, success ── */
 const INQUIRY_ENDPOINT = '/api/inquiry';
 
+function formatInquiryError(err) {
+  if (!err) return '';
+  if (typeof err === 'string') return err;
+  if (typeof err.message === 'string' && err.message) return err.message;
+  return '';
+}
+
+function relayErrorMessage(relayBody) {
+  if (!relayBody || typeof relayBody !== 'object') return '';
+  const msg = relayBody.message != null ? relayBody.message : (relayBody.body && relayBody.body.message);
+  if (typeof msg === 'string') return msg;
+  if (msg && typeof msg === 'object' && typeof msg.message === 'string') return msg.message;
+  return '';
+}
+
 /* ── Cal.com: optional embed if #calEmbed exists with data-cal-link ── */
 const calEmbed = document.getElementById('calEmbed');
 const calLink = (calEmbed && (calEmbed.getAttribute('data-cal-link') || '').trim()) || '';
@@ -820,7 +835,11 @@ function wireInquiryForm(form, opts) {
         body: JSON.stringify(payload)
       });
       const body = await res.json().catch(() => ({}));
-      if (!res.ok || body.ok === false) throw new Error(body.error || ('HTTP ' + res.status));
+      if (!res.ok || body.ok === false) {
+        const apiErr = body.error;
+        const msg = typeof apiErr === 'string' ? apiErr : (apiErr && apiErr.message) || ('HTTP ' + res.status);
+        throw new Error(msg);
+      }
       if (body.relay && body.relay.url) {
         const relayPayload = body.relay.payload || payload;
         if (body.relay.kind === 'form') {
@@ -847,11 +866,11 @@ function wireInquiryForm(form, opts) {
         });
         const relayBody = await relayRes.json().catch(() => ({}));
         const ok = relayBody.success === true || String(relayBody.success) === 'true';
-        if (!ok) throw new Error(String(relayBody.message || '') || 'Could not send. Try again shortly.');
+        if (!ok) throw new Error(relayErrorMessage(relayBody) || 'Could not send. Try again shortly.');
       }
       showDone(opts.successMsg);
     } catch (err) {
-      showFail(err && err.message ? err.message : opts.failMsg);
+      showFail(formatInquiryError(err) || opts.failMsg);
     }
   });
 

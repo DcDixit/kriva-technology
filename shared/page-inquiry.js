@@ -3,6 +3,21 @@
   "use strict";
   const ENDPOINT = "/api/inquiry";
 
+  function formatInquiryError(err) {
+    if (!err) return "";
+    if (typeof err === "string") return err;
+    if (typeof err.message === "string" && err.message) return err.message;
+    return "";
+  }
+
+  function relayErrorMessage(relayBody) {
+    if (!relayBody || typeof relayBody !== "object") return "";
+    const msg = relayBody.message != null ? relayBody.message : relayBody.body && relayBody.body.message;
+    if (typeof msg === "string") return msg;
+    if (msg && typeof msg === "object" && typeof msg.message === "string") return msg.message;
+    return "";
+  }
+
   function check(f) {
     if (!f.required) return true;
     if (!String(f.value || "").trim()) return false;
@@ -68,7 +83,11 @@
           body: JSON.stringify(payload),
         });
         const body = await res.json().catch(() => ({}));
-        if (!res.ok || body.ok === false) throw new Error(body.error || "Could not send.");
+        if (!res.ok || body.ok === false) {
+          const apiErr = body.error;
+          const msg = typeof apiErr === "string" ? apiErr : (apiErr && apiErr.message) || "Could not send.";
+          throw new Error(msg);
+        }
         if (body.relay && body.relay.url) {
           const relayPayload = body.relay.payload || payload;
           if (body.relay.kind === "form") {
@@ -95,7 +114,7 @@
           });
           const relayBody = await relayRes.json().catch(() => ({}));
           const ok = relayBody.success === true || String(relayBody.success) === "true";
-          if (!ok) throw new Error(String(relayBody.message || "") || "Could not send.");
+          if (!ok) throw new Error(relayErrorMessage(relayBody) || "Could not send.");
         }
         sending = false;
         form.classList.add("sent");
@@ -117,7 +136,7 @@
         form.removeAttribute("aria-busy");
         if (label) label.textContent = defaultLabel;
         if (fail) {
-          fail.textContent = err && err.message ? err.message : "Could not send. Try again shortly.";
+          fail.textContent = formatInquiryError(err) || "Could not send. Try again shortly.";
           fail.classList.add("on");
         }
         if (status) status.textContent = "Could not send.";

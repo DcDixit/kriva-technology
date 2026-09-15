@@ -1,5 +1,5 @@
 /** POST /api/inquiry: emails the studio without putting an address in page HTML. */
-const { CONTACT_EMAIL } = require("../shared/studio");
+const CONTACT_EMAIL = "hello@krivatechnologies.com";
 const TO = process.env.INQUIRY_TO || CONTACT_EMAIL;
 
 function ccRecipients() {
@@ -15,6 +15,31 @@ function sendJson(res, status, body) {
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.setHeader("Cache-Control", "no-store");
   res.end(JSON.stringify(body));
+}
+
+async function readBody(req) {
+  if (req.body != null && typeof req.body === "object" && !Buffer.isBuffer(req.body)) {
+    return req.body;
+  }
+  if (typeof req.body === "string" && req.body.trim()) {
+    const ct = String(req.headers["content-type"] || "");
+    if (ct.includes("application/json")) return JSON.parse(req.body);
+    return Object.fromEntries(new URLSearchParams(req.body));
+  }
+  const chunks = [];
+  if (req[Symbol.asyncIterator]) {
+    for await (const c of req) chunks.push(c);
+  } else if (typeof req.on === "function") {
+    await new Promise((resolve, reject) => {
+      req.on("data", (c) => chunks.push(c));
+      req.on("end", resolve);
+      req.on("error", reject);
+    });
+  }
+  const raw = Buffer.concat(chunks).toString("utf8");
+  const ct = String(req.headers["content-type"] || "");
+  if (ct.includes("application/json")) return JSON.parse(raw || "{}");
+  return Object.fromEntries(new URLSearchParams(raw || ""));
 }
 
 function field(data, key) {
@@ -123,7 +148,8 @@ function formsubmitNext(data, origin) {
 function formsubmitBody(data, origin) {
   const { subject } = buildMessage(data);
   const next = formsubmitNext(data, origin);
-  return {
+  const cc = ccRecipients();
+  const body = {
     ...sharedFields(data),
     _subject: subject,
     _template: "table",
@@ -132,6 +158,8 @@ function formsubmitBody(data, origin) {
     _url: origin + "/contact",
     _next: next,
   };
+  if (cc.length) body._cc = cc.join(",");
+  return body;
 }
 
 async function deliver(data, origin) {
@@ -221,12 +249,7 @@ module.exports = async function handler(req, res) {
 
   let data = {};
   try {
-    const chunks = [];
-    for await (const c of req) chunks.push(c);
-    const raw = Buffer.concat(chunks).toString("utf8");
-    const ct = String(req.headers["content-type"] || "");
-    if (ct.includes("application/json")) data = JSON.parse(raw || "{}");
-    else data = Object.fromEntries(new URLSearchParams(raw));
+    data = await readBody(req);
   } catch {
     sendJson(res, 400, { ok: false, error: "Invalid body" });
     return;
