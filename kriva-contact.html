@@ -842,23 +842,6 @@ function wireInquiryForm(form, opts) {
       }
       if (body.relay && body.relay.url) {
         const relayPayload = body.relay.payload || payload;
-        if (body.relay.kind === 'form') {
-          const hop = document.createElement('form');
-          hop.method = 'POST';
-          hop.action = body.relay.url;
-          hop.acceptCharset = 'UTF-8';
-          hop.style.display = 'none';
-          Object.keys(relayPayload).forEach((k) => {
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = k;
-            input.value = relayPayload[k] == null ? '' : String(relayPayload[k]);
-            hop.appendChild(input);
-          });
-          document.body.appendChild(hop);
-          hop.submit();
-          return;
-        }
         const relayRes = await fetch(body.relay.url, {
           method: 'POST',
           headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
@@ -866,7 +849,13 @@ function wireInquiryForm(form, opts) {
         });
         const relayBody = await relayRes.json().catch(() => ({}));
         const ok = relayBody.success === true || String(relayBody.success) === 'true';
-        if (!ok) throw new Error(relayErrorMessage(relayBody) || 'Could not send. Try again shortly.');
+        if (!ok) {
+          const relayMsg = relayErrorMessage(relayBody);
+          if (/activ/i.test(relayMsg) && body.relay.activateInbox) {
+            throw new Error('Check ' + body.relay.activateInbox + ' (including spam) for a FormSubmit activation email, click Activate Form, then submit again.');
+          }
+          throw new Error(relayMsg || 'Could not send. Try again shortly.');
+        }
       }
       showDone(opts.successMsg);
     } catch (err) {

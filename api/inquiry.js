@@ -10,6 +10,23 @@ function ccRecipients() {
     .filter((s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s));
 }
 
+/** FormSubmit requires a one-time inbox activation; use CC inbox when TO may not receive external mail. */
+function formsubmitRecipient() {
+  if (process.env.FORMSUBMIT_TO) return process.env.FORMSUBMIT_TO.trim();
+  const cc = ccRecipients();
+  if (cc.length) return cc[0];
+  return TO;
+}
+
+function formsubmitCcList(recipient) {
+  const list = [];
+  if (TO && TO !== recipient) list.push(TO);
+  ccRecipients().forEach((addr) => {
+    if (addr !== recipient && !list.includes(addr)) list.push(addr);
+  });
+  return list;
+}
+
 function sendJson(res, status, body) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
@@ -146,11 +163,12 @@ function formsubmitNext(data, origin) {
 }
 
 function formsubmitBody(data, origin) {
-  const { subject } = buildMessage(data);
+  const { subject, text } = buildMessage(data);
   const next = formsubmitNext(data, origin);
-  const cc = ccRecipients();
+  const cc = formsubmitCcList(formsubmitRecipient());
   const body = {
     ...sharedFields(data),
+    message: text,
     _subject: subject,
     _template: "table",
     _captcha: "false",
@@ -213,24 +231,24 @@ async function deliver(data, origin) {
   }
 
   if (process.env.WEB3FORMS_ACCESS_KEY) {
-    return {
-      channel: "browser",
-      relay: {
-        kind: "json",
-        url: "https://api.web3forms.com/submit",
-        payload: web3formsBody(data),
-      },
-    };
+    const r = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(web3formsBody(data)),
+    });
+    const body = await r.json().catch(() => ({}));
+    if (!body.success) throw new Error(body.message || "web3forms " + r.status);
+    return { channel: "web3forms" };
   }
 
-  // FormSubmit /ajax/ confirmation emails produce "Confirmation token not found".
-  // A real HTML form POST to the unencoded address is the endpoint they support.
+  const recipient = formsubmitRecipient();
   return {
     channel: "browser",
     relay: {
-      kind: "form",
-      url: "https://formsubmit.co/" + TO,
+      kind: "ajax",
+      url: "https://formsubmit.co/ajax/" + encodeURIComponent(recipient),
       payload: formsubmitBody(data, origin),
+      activateInbox: recipient,
     },
   };
 }

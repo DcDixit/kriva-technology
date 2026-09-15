@@ -96,15 +96,18 @@ async function main() {
       continue;
     }
 
-    if (api.json.relay && api.json.relay.kind === "form") {
+    if (api.json.relay) {
       const cc = api.json.relay.payload && api.json.relay.payload._cc;
+      console.log("  relay kind:", api.json.relay.kind, "to:", api.json.relay.activateInbox || api.json.relay.url);
       console.log("  relay _cc:", cc || "(none)");
-      const relay = await relayFormSubmit(api.json.relay);
-      results[results.length - 1].relayStatus = relay.status;
-      console.log("  formsubmit status:", relay.status);
-      if (relay.status >= 400) {
-        console.error("  formsubmit response:", relay.text);
-        process.exitCode = 1;
+      if (api.json.relay.kind === "form") {
+        const relay = await relayFormSubmit(api.json.relay);
+        results[results.length - 1].relayStatus = relay.status;
+        console.log("  formsubmit status:", relay.status);
+        if (relay.status >= 400) {
+          console.error("  formsubmit response:", relay.text);
+          process.exitCode = 1;
+        }
       }
     }
   }
