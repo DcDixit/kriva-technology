@@ -10,23 +10,6 @@ function ccRecipients() {
     .filter((s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s));
 }
 
-/** FormSubmit requires a one-time inbox activation; use CC inbox when TO may not receive external mail. */
-function formsubmitRecipient() {
-  if (process.env.FORMSUBMIT_TO) return process.env.FORMSUBMIT_TO.trim();
-  const cc = ccRecipients();
-  if (cc.length) return cc[0];
-  return TO;
-}
-
-function formsubmitCcList(recipient) {
-  const list = [];
-  if (TO && TO !== recipient) list.push(TO);
-  ccRecipients().forEach((addr) => {
-    if (addr !== recipient && !list.includes(addr)) list.push(addr);
-  });
-  return list;
-}
-
 function sendJson(res, status, body) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
@@ -165,8 +148,7 @@ function formsubmitNext(data, origin) {
 function formsubmitBody(data, origin) {
   const { subject, text } = buildMessage(data);
   const next = formsubmitNext(data, origin);
-  const cc = formsubmitCcList(formsubmitRecipient());
-  const body = {
+  return {
     ...sharedFields(data),
     message: text,
     _subject: subject,
@@ -176,8 +158,6 @@ function formsubmitBody(data, origin) {
     _url: origin + "/contact",
     _next: next,
   };
-  if (cc.length) body._cc = cc.join(",");
-  return body;
 }
 
 async function deliver(data, origin) {
@@ -241,12 +221,11 @@ async function deliver(data, origin) {
     return { channel: "web3forms" };
   }
 
-  const recipient = formsubmitRecipient();
   return {
     channel: "browser",
     relay: {
       kind: "ajax",
-      url: "https://formsubmit.co/ajax/" + encodeURIComponent(recipient),
+      url: "https://formsubmit.co/ajax/" + encodeURIComponent(TO),
       payload: formsubmitBody(data, origin),
     },
   };

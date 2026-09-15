@@ -101,7 +101,7 @@
             const relayMsg = relayErrorMessage(relayBody);
             if (/activ/i.test(relayMsg)) {
               throw new Error(
-                "Email delivery is being set up. Please try again shortly, or email hello@krivatechnologies.com directly."
+                "Check hello@krivatechnologies.com (including spam) for a FormSubmit activation email, click Activate Form, then submit again."
               );
             }
             throw new Error(relayMsg || "Could not send.");

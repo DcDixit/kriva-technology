@@ -8,7 +8,7 @@ const BASE = `http://127.0.0.1:${PORT}`;
 const BRIEF = {
   inquiry_type: "project_brief",
   name: "KRIVA QA Test",
-  email: "dixit27592@gmail.com",
+  email: "qa.test@example.com",
   company: "Krishuweb",
   site: "https://krivatechnologies.com",
   ptype: "Trucking & logistics (US)",
@@ -22,7 +22,7 @@ const BRIEF = {
 const FIT = {
   inquiry_type: "fit_call",
   name: "KRIVA QA Test",
-  email: "dixit27592@gmail.com",
+  email: "qa.test@example.com",
   company: "Krishuweb",
   ptype: "SaaS product (UK / US)",
   details: "Automated fit-call test — please ignore.",
@@ -98,8 +98,8 @@ async function main() {
 
     if (api.json.relay) {
       const cc = api.json.relay.payload && api.json.relay.payload._cc;
-      console.log("  relay kind:", api.json.relay.kind, "to:", api.json.relay.activateInbox || api.json.relay.url);
-      console.log("  relay _cc:", cc || "(none)");
+      console.log("  relay kind:", api.json.relay.kind, "url:", api.json.relay.url);
+      if (cc) console.log("  WARNING: relay exposes _cc:", cc);
       if (api.json.relay.kind === "form") {
         const relay = await relayFormSubmit(api.json.relay);
         results[results.length - 1].relayStatus = relay.status;
