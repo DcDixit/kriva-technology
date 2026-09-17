@@ -6,6 +6,21 @@
     "Thank you! Your inquiry has been submitted successfully. We'll be in touch soon.";
   const FAIL_MSG = "We could not send your inquiry right now. Please try again shortly.";
 
+  function formatInquiryError(err) {
+    if (!err) return "";
+    if (typeof err === "string") return err;
+    if (typeof err.message === "string" && err.message) return err.message;
+    return "";
+  }
+
+  function relayErrorMessage(relayBody) {
+    if (!relayBody || typeof relayBody !== "object") return "";
+    const msg = relayBody.message != null ? relayBody.message : relayBody.body && relayBody.body.message;
+    if (typeof msg === "string") return msg;
+    if (msg && typeof msg === "object" && typeof msg.message === "string") return msg.message;
+    return "";
+  }
+
   function check(f) {
     if (!f.required) return true;
     if (!String(f.value || "").trim()) return false;
@@ -96,7 +111,30 @@
         });
         const body = await res.json().catch(() => ({}));
         if (!res.ok || body.ok === false) {
-          throw new Error("send failed");
+          const apiErr = body.error;
+          const msg = typeof apiErr === "string" ? apiErr : (apiErr && apiErr.message) || FAIL_MSG;
+          throw new Error(msg);
+        }
+        if (body.relay && body.relay.url) {
+          const relayPayload = body.relay.payload || payload;
+          const relayRes = await fetch(body.relay.url, {
+            method: "POST",
+            headers: { Accept: "application/json", "Content-Type": "application/json" },
+            body: JSON.stringify(relayPayload),
+          });
+          const relayBody = await relayRes.json().catch(() => ({}));
+          const ok = relayBody.success === true || String(relayBody.success) === "true";
+          if (!ok) {
+            const relayMsg = relayErrorMessage(relayBody);
+            if (/activ/i.test(relayMsg) && body.relay.activateInbox) {
+              throw new Error(
+                "Check " +
+                  body.relay.activateInbox +
+                  " (including spam) for a FormSubmit activation email, click Activate Form, then submit again."
+              );
+            }
+            throw new Error(relayMsg || FAIL_MSG);
+          }
         }
         sending = false;
         btn.removeAttribute("aria-disabled");
@@ -107,11 +145,12 @@
         btn.removeAttribute("aria-disabled");
         form.removeAttribute("aria-busy");
         if (label) label.textContent = defaultLabel;
+        const errMsg = formatInquiryError(err) || FAIL_MSG;
         if (fail) {
-          fail.textContent = FAIL_MSG;
+          fail.textContent = errMsg;
           fail.classList.add("on");
         }
-        if (status) status.textContent = FAIL_MSG;
+        if (status) status.textContent = errMsg;
       }
     });
   }

@@ -1,7 +1,6 @@
-/** POST /api/inquiry: sends inquiries to the studio via Gmail SMTP. */
+/** POST /api/inquiry: sends inquiries to the studio (Gmail, Resend, Web3Forms, or FormSubmit relay). */
 const CONTACT_EMAIL = "hello@krivatechnologies.com";
 const TO = process.env.INQUIRY_TO || CONTACT_EMAIL;
-const GMAIL_USER = process.env.GMAIL_USER;
 const USER_FACING_ERROR =
   "We could not send your inquiry right now. Please try again shortly.";
 
@@ -11,6 +10,23 @@ function ccRecipients() {
     .split(/[,;]/)
     .map((s) => s.trim())
     .filter((s) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s));
+}
+
+/** FormSubmit requires a one-time inbox activation; use CC inbox when TO may not receive external mail. */
+function formsubmitRecipient() {
+  if (process.env.FORMSUBMIT_TO) return process.env.FORMSUBMIT_TO.trim();
+  const cc = ccRecipients();
+  if (cc.length) return cc[0];
+  return TO;
+}
+
+function formsubmitCcList(recipient) {
+  const list = [];
+  if (TO && TO !== recipient) list.push(TO);
+  ccRecipients().forEach((addr) => {
+    if (addr !== recipient && !list.includes(addr)) list.push(addr);
+  });
+  return list;
 }
 
 function sendJson(res, status, body) {
@@ -57,6 +73,15 @@ function safePagePath(data) {
   return raw.split("#")[0].split("?")[0].slice(0, 200);
 }
 
+function requestOrigin(req) {
+  const live = "https://krivatechnologies.com";
+  const xfHost = String(req.headers["x-forwarded-host"] || req.headers.host || "");
+  const host = xfHost.split(",")[0].trim();
+  if (!host || /^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(host)) return live;
+  const proto = String(req.headers["x-forwarded-proto"] || "https").split(",")[0].trim();
+  return proto + "://" + host;
+}
+
 function buildMessage(data) {
   const inquiryType = field(data, "inquiry_type");
   const rows = [
@@ -96,11 +121,69 @@ function buildMessage(data) {
         : "Project brief";
   const subject =
     "KRIVA " + typeLabel + ": " + (field(data, "company") || field(data, "name") || "Website");
-  return { text, html, subject };
+  return { text, html, subject, inquiryType };
+}
+
+function sharedFields(data) {
+  return {
+    name: field(data, "name"),
+    email: field(data, "email"),
+    inquiry_type: field(data, "inquiry_type"),
+    company: field(data, "company"),
+    phone: field(data, "phone"),
+    page: safePagePath(data),
+    website: field(data, "site"),
+    project_type: field(data, "ptype"),
+    market: field(data, "market"),
+    service: field(data, "service"),
+    budget: field(data, "budget"),
+    timeline: field(data, "timeline"),
+    details: field(data, "details"),
+  };
+}
+
+function web3formsBody(data) {
+  const { subject, text } = buildMessage(data);
+  return {
+    access_key: process.env.WEB3FORMS_ACCESS_KEY,
+    subject,
+    from_name: "KRIVA website",
+    botcheck: "",
+    message: text,
+    ...sharedFields(data),
+  };
+}
+
+function formsubmitNext(data, origin) {
+  const inquiryType = field(data, "inquiry_type");
+  if (inquiryType === "fit_call") return origin + "/contact?sent=fit#book";
+  if (inquiryType === "page_inquiry") {
+    const p = safePagePath(data) || "/contact";
+    return origin + p + "?sent=1#inquire";
+  }
+  return origin + "/contact?sent=brief#brief";
+}
+
+function formsubmitBody(data, origin) {
+  const { subject, text } = buildMessage(data);
+  const next = formsubmitNext(data, origin);
+  const cc = formsubmitCcList(formsubmitRecipient());
+  const body = {
+    ...sharedFields(data),
+    message: text,
+    _subject: subject,
+    _template: "table",
+    _captcha: "false",
+    _honey: "",
+    _url: origin + "/contact",
+    _next: next,
+  };
+  if (cc.length) body._cc = cc.join(",");
+  return body;
 }
 
 function gmailCredentials() {
-  const user = String(GMAIL_USER || "").trim();
+  const user = String(process.env.GMAIL_USER || "").trim();
   const pass = String(process.env.GMAIL_APP_PASSWORD || "")
     .trim()
     .replace(/^["']|["']$/g, "")
@@ -110,26 +193,15 @@ function gmailCredentials() {
 
 async function sendViaGmail(data) {
   const { user, pass } = gmailCredentials();
-  if (!user || !pass) {
-    const err = new Error("inquiry mail not configured");
-    err.code = "NOT_CONFIGURED";
-    throw err;
-  }
-  if (!/^[a-z0-9]{16}$/i.test(pass)) {
-    console.error(
-      "inquiry send failed: GMAIL_APP_PASSWORD format invalid (length",
-      pass.length + ", expected 16 lowercase letters from Google App Passwords)"
-    );
-    const err = new Error("inquiry mail app password invalid");
-    err.code = "NOT_CONFIGURED";
-    throw err;
-  }
+  if (!user || !pass) return null;
 
   const submitterEmail = field(data, "email");
   const { text, html, subject } = buildMessage(data);
   const nodemailer = require("nodemailer");
   const tx = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: { user, pass },
   });
 
@@ -148,7 +220,64 @@ async function sendViaGmail(data) {
   if (!info || !info.messageId) {
     throw new Error("smtp accept missing messageId");
   }
-  return { messageId: info.messageId };
+  return { channel: "gmail", messageId: info.messageId };
+}
+
+async function deliver(data, origin) {
+  const email = field(data, "email");
+  const { text, html, subject } = buildMessage(data);
+
+  if (process.env.RESEND_API_KEY) {
+    const payload = {
+      from: process.env.RESEND_FROM || "KRIVA <onboarding@resend.dev>",
+      to: [TO],
+      reply_to: email,
+      subject,
+      text,
+      html,
+    };
+    const cc = ccRecipients();
+    if (cc.length) payload.cc = cc;
+    const r = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + process.env.RESEND_API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    if (!r.ok) throw new Error("resend " + r.status + " " + (await r.text()));
+    return { channel: "resend" };
+  }
+
+  try {
+    const gmailResult = await sendViaGmail(data);
+    if (gmailResult) return gmailResult;
+  } catch (err) {
+    console.error("inquiry send failed (gmail), trying fallback:", err && err.message);
+  }
+
+  if (process.env.WEB3FORMS_ACCESS_KEY) {
+    const r = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(web3formsBody(data)),
+    });
+    const body = await r.json().catch(() => ({}));
+    if (!body.success) throw new Error(body.message || "web3forms " + r.status);
+    return { channel: "web3forms" };
+  }
+
+  const recipient = formsubmitRecipient();
+  return {
+    channel: "browser",
+    relay: {
+      kind: "ajax",
+      url: "https://formsubmit.co/ajax/" + encodeURIComponent(recipient),
+      payload: formsubmitBody(data, origin),
+      activateInbox: recipient,
+    },
+  };
 }
 
 module.exports = async function handler(req, res) {
@@ -184,17 +313,14 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    await sendViaGmail(data);
+    const result = await deliver(data, requestOrigin(req));
+    if (result.channel === "browser") {
+      sendJson(res, 200, { ok: true, relay: result.relay });
+      return;
+    }
     sendJson(res, 200, { ok: true });
   } catch (err) {
-    if (err && err.code === "NOT_CONFIGURED") {
-      if (err.message !== "inquiry mail app password invalid") {
-        console.error("inquiry send failed: mail not configured");
-      }
-    } else {
-      console.error("inquiry send failed:", err && err.message);
-    }
-    const status = err && err.code === "NOT_CONFIGURED" ? 503 : 502;
-    sendJson(res, status, { ok: false, error: USER_FACING_ERROR });
+    console.error("inquiry send failed:", err && err.message);
+    sendJson(res, 502, { ok: false, error: USER_FACING_ERROR });
   }
 };
