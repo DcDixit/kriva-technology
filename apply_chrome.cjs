@@ -82,6 +82,15 @@ const JS_TAG = [
   '<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>',
   '<script src="/shared/analytics.js" defer></script>',
   '<!-- KRIVA_GA_END -->',
+  '<!-- KRIVA_CLARITY_START -->',
+  '<script type="text/javascript">',
+  '    (function(c,l,a,r,i,t,y){',
+  '        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};',
+  '        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;',
+  '        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);',
+  '    })(window, document, "clarity", "script", "yj j9g3gojt");',
+  '</script>',
+  '<!-- KRIVA_CLARITY_END -->',
 ].join('\n');
 
 function cur(key, name) {
@@ -316,6 +325,7 @@ function ensureAssets(html) {
   html = html.replace(/\s*<link rel="stylesheet" href="\/?shared\/chrome\.css(?:\?[^"]*)?">\s*/g, "\n");
   html = html.replace("</head>", `${CSS_LINK}\n</head>`);
   html = html.replace(/\s*<!-- KRIVA_GA_START -->[\s\S]*?<!-- KRIVA_GA_END -->\s*/g, "\n");
+  html = html.replace(/\s*<!-- KRIVA_CLARITY_START -->[\s\S]*?<!-- KRIVA_CLARITY_END -->\s*/g, "\n");
   html = html.replace(/\s*<script src="\/?shared\/chrome\.js" defer><\/script>\s*/g, "\n");
   const m = html.match(/<script(?![^>]*shared\/chrome\.js)/);
   if (m) {

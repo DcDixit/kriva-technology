@@ -99,10 +99,28 @@ function buildMessage(data) {
   return { text, html, subject };
 }
 
+function gmailCredentials() {
+  const user = String(GMAIL_USER || "").trim();
+  const pass = String(process.env.GMAIL_APP_PASSWORD || "")
+    .trim()
+    .replace(/^["']|["']$/g, "")
+    .replace(/\s/g, "");
+  return { user, pass };
+}
+
 async function sendViaGmail(data) {
-  const pass = process.env.GMAIL_APP_PASSWORD;
-  if (!GMAIL_USER || !pass) {
+  const { user, pass } = gmailCredentials();
+  if (!user || !pass) {
     const err = new Error("inquiry mail not configured");
+    err.code = "NOT_CONFIGURED";
+    throw err;
+  }
+  if (!/^[a-z0-9]{16}$/i.test(pass)) {
+    console.error(
+      "inquiry send failed: GMAIL_APP_PASSWORD format invalid (length",
+      pass.length + ", expected 16 lowercase letters from Google App Passwords)"
+    );
+    const err = new Error("inquiry mail app password invalid");
     err.code = "NOT_CONFIGURED";
     throw err;
   }
@@ -111,14 +129,12 @@ async function sendViaGmail(data) {
   const { text, html, subject } = buildMessage(data);
   const nodemailer = require("nodemailer");
   const tx = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: { user: GMAIL_USER, pass: pass.replace(/\s/g, "") },
+    service: "gmail",
+    auth: { user, pass },
   });
 
   const mail = {
-    from: "KRIVA website <" + GMAIL_USER + ">",
+    from: "KRIVA website <" + user + ">",
     to: TO,
     replyTo: submitterEmail,
     subject,
@@ -172,7 +188,9 @@ module.exports = async function handler(req, res) {
     sendJson(res, 200, { ok: true });
   } catch (err) {
     if (err && err.code === "NOT_CONFIGURED") {
-      console.error("inquiry send failed: mail not configured");
+      if (err.message !== "inquiry mail app password invalid") {
+        console.error("inquiry send failed: mail not configured");
+      }
     } else {
       console.error("inquiry send failed:", err && err.message);
     }
