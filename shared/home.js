@@ -179,4 +179,38 @@
     check();
     addEventListener('resize', check, { passive: true });
   });
+
+  /* ── mobile sticky inquiry (homepage only) ── */
+  const heroEl = document.querySelector('.hero');
+  const inquireEl = document.getElementById('inquire');
+  if (heroEl && inquireEl && !document.getElementById('hpInqBar')) {
+    const bar = document.createElement('div');
+    bar.id = 'hpInqBar';
+    bar.className = 'hp-inq-bar';
+    bar.hidden = true;
+    bar.innerHTML =
+      '<a href="#inquire" class="btn on-dark"><span>Send a quick inquiry</span><i>→</i></a>';
+    document.body.appendChild(bar);
+
+    const mobile = () => matchMedia('(max-width:1099px)').matches;
+    const setVisible = (on) => {
+      bar.hidden = !on;
+      bar.classList.toggle('on', on);
+      document.body.classList.toggle('hp-inq-open', on);
+    };
+
+    const syncBar = () => {
+      if (!mobile() || reduce()) {
+        setVisible(false);
+        return;
+      }
+      const heroOut = heroEl.getBoundingClientRect().bottom < 72;
+      const formNear = inquireEl.getBoundingClientRect().top < window.innerHeight * 0.72;
+      setVisible(heroOut && !formNear);
+    };
+
+    addEventListener('scroll', syncBar, { passive: true });
+    addEventListener('resize', syncBar, { passive: true });
+    syncBar();
+  }
 })();

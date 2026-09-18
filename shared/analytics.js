@@ -92,6 +92,26 @@
         return;
       }
 
+      if (href === '#book') {
+        send('cta_click', {
+          cta_name: textOf(a) || 'Book fit call',
+          cta_type: 'fit_call',
+          cta_location: regionOf(a),
+          link_url: location.pathname + href
+        });
+        return;
+      }
+
+      if (href === '#brief') {
+        send('cta_click', {
+          cta_name: textOf(a) || 'Send project brief',
+          cta_type: 'project_brief',
+          cta_location: regionOf(a),
+          link_url: location.pathname + href
+        });
+        return;
+      }
+
       if (href.charAt(0) === '#') return;
 
       var url;

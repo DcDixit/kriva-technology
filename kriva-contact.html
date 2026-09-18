@@ -281,7 +281,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <span><i>Start a conversation.</i></span>
       </h1>
       <p class="ct-tag" data-r>Trucking software · B2B SaaS · Integrations</p>
-      <p class="lede" data-r>Send a quick inquiry below, request a 20-minute fit call, or share a full project brief. Tell us what you are building — trucking ops software, B2B SaaS, or finance integrations — and we reply within one business day.</p>
+      <p class="lede" data-r>Request a 20-minute fit call or send a full project brief below. Tell us what you are building — trucking ops software, B2B SaaS, or finance integrations — and we reply within one business day.</p>
       <div class="hero-actions" data-r>
         <a href="#book" class="btn"><span>Book a free 20-min fit call</span><i>↓</i></a>
         <a href="#brief" class="btn ghost"><span>Send a project brief</span><i>↓</i></a>
@@ -317,6 +317,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
       <form id="fitForm" novalidate method="post" action="/api/inquiry">
           <input type="hidden" name="inquiry_type" value="fit_call">
+          <input type="hidden" name="page" value="/contact">
           <input type="hidden" name="_subject" value="Fit call request from krivatechnologies.com">
           <div class="hp" aria-hidden="true">
             <label for="fit-hp">Website</label>
@@ -353,7 +354,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <option value="">Select project type</option>
                     <option>Trucking &amp; logistics (US)</option>
                     <option>SaaS product (UK / US)</option>
+                    <option>CRM &amp; workflow automation</option>
                     <option>QuickBooks / Xero integration</option>
+                    <option>Custom web / mobile application</option>
                     <option>Car transportation platform</option>
                     <option>Not sure yet</option>
                   </select>
@@ -446,6 +449,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
         <form id="briefForm" novalidate method="post" action="/api/inquiry">
           <input type="hidden" name="inquiry_type" value="project_brief">
+          <input type="hidden" name="page" value="/contact">
           <input type="hidden" name="_subject" value="New project brief from krivatechnologies.com">
           <!-- honeypot, mirrors the hidden field on the live form -->
           <div class="hp" aria-hidden="true">
@@ -490,6 +494,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <option>QuickBooks / Xero integration</option>
                     <option>Car transportation platform</option>
                     <option>CRM &amp; workflow automation</option>
+                    <option>Custom web / mobile application</option>
                     <option>AI product development</option>
                     <option>Not sure yet</option>
                   </select>
@@ -776,10 +781,6 @@ function wireInquiryForm(form, opts) {
     form.classList.add('sent');
     if (done) {
       done.classList.add('on');
-      const h3 = done.querySelector('h3');
-      const p = done.querySelector('.body-sm') || done.querySelector('p');
-      if (h3) h3.textContent = 'Thank you!';
-      if (p) p.textContent = 'Your inquiry has been submitted successfully. We\u2019ll be in touch soon.';
       done.focus();
     }
     if (status) status.textContent = msg || opts.successMsg;
