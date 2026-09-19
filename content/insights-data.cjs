@@ -57,7 +57,7 @@ module.exports = {
         { href: "/work/shiftrail-dispatch", label: "ShiftRail case study" },
       ],
       blocks: [
-        { type: "paragraph", text: "A trucking dispatch CRM is the console the desk uses to assign loads, watch SLA, and take driver updates — usually beside the TMS, not instead of it." },
+        { type: "paragraph", text: "A trucking dispatch CRM is the console the desk uses to assign loads, watch SLA, and take driver updates - usually beside the TMS, not instead of it." },
         { type: "heading", text: "What is a trucking dispatch CRM?" },
         { type: "paragraph", text: "Operational software for the dispatch desk: load assignment, exception handling, driver communication, and an audit trail. The TMS holds billing, compliance, and the customer record. The CRM holds the shift." },
         { type: "heading", text: "How it works beside the TMS" },
@@ -112,7 +112,7 @@ module.exports = {
       published: "December 2025",
       publishedISO: "2025-12-08",
       excerpt:
-        "What user onboarding is in B2B SaaS, why it drives activation, and five UX patterns that work — progressive disclosure, role paths, checklists, SSO clarity, and time-to-value.",
+        "What user onboarding is in B2B SaaS, why it drives activation, and five UX patterns that work - progressive disclosure, role paths, checklists, SSO clarity, and time-to-value.",
       byline: "KRIVA Product Team · Ahmedabad",
       relatedSolutions: [
         { href: "/solutions/saas", label: "SaaS solutions" },

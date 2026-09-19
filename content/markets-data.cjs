@@ -1,4 +1,4 @@
-/** Regional landing pages — unique copy per market for SEO + GEO. */
+/** Regional landing pages - unique copy per market for SEO + GEO. */
 const { ORIGIN } = require("../shared/site");
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
         kicker: "United States · US-hour overlap",
         headline: "Trucking desks and B2B SaaS teams",
         summary:
-          "Dispatch CRM, TMS overlays, fleet dashboards, and QuickBooks sync for US carriers and brokers — built for Central and Eastern call windows without stopping the shift.",
+          "Dispatch CRM, TMS overlays, fleet dashboards, and QuickBooks sync for US carriers and brokers - built for Central and Eastern call windows without stopping the shift.",
         tags: ["Dispatch CRM", "Driver apps", "QuickBooks"],
         outcome: "Phased rollout beside live TMS with weekly demos on a live URL.",
         visual: "dispatch",
@@ -22,16 +22,16 @@ module.exports = {
       ogLocale: "en_US",
       title: "Custom Trucking & SaaS Software for US Teams | KRIVA",
       meta:
-        "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS — Ahmedabad studio with US-hour overlap, weekly demos, and phased rollout.",
+        "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS - Ahmedabad studio with US-hour overlap, weekly demos, and phased rollout.",
       eyebrow: "United States",
       h1: "Software for US trucking desks and SaaS teams.",
       lede:
-        "We build dispatch CRM, TMS overlays, fleet dashboards, and B2B SaaS for US carriers, brokers, and operators — with overlap for Central and Eastern call hours and rollout that does not stop the shift.",
+        "We build dispatch CRM, TMS overlays, fleet dashboards, and B2B SaaS for US carriers, brokers, and operators - with overlap for Central and Eastern call hours and rollout that does not stop the shift.",
       focus: [
         {
           title: "Dispatch CRM & TMS overlays",
           body:
-            "Bulk assignment, SLA on the row, supervisor overrides, and exception queues built for 200–500 route desks — without forcing a full TMS rip-and-replace.",
+            "Bulk assignment, SLA on the row, supervisor overrides, and exception queues built for 200–500 route desks - without forcing a full TMS rip-and-replace.",
           href: "/solutions/trucking-logistics",
           label: "Trucking solutions",
         },
@@ -83,23 +83,23 @@ module.exports = {
       ogLocale: "en_GB",
       title: "B2B SaaS & Product Design for UK Startups | KRIVA",
       meta:
-        "UK SaaS MVP design, onboarding UX, Xero integrations, and multi-tenant admin — in-house design and engineering with clear scope and weekly demos.",
+        "UK SaaS MVP design, onboarding UX, Xero integrations, and multi-tenant admin - in-house design and engineering with clear scope and weekly demos.",
       eyebrow: "United Kingdom",
       h1: "SaaS product design and integrations for UK teams.",
       lede:
-        "From MVP scope to activation metrics investors ask about — we design and build B2B SaaS, admin panels, and Xero-ready finance workflows for UK founders and product leads.",
+        "From MVP scope to activation metrics investors ask about - we design and build B2B SaaS, admin panels, and Xero-ready finance workflows for UK founders and product leads.",
       focus: [
         {
           title: "SaaS MVP & onboarding",
           body:
-            "Role-based entry, progressive disclosure, and time-to-value flows scoped for a 12-week launch — not a feature wishlist that delays your first paid pilot.",
+            "Role-based entry, progressive disclosure, and time-to-value flows scoped for a 12-week launch - not a feature wishlist that delays your first paid pilot.",
           href: "/solutions/saas",
           label: "SaaS solutions",
         },
         {
           title: "Xero & finance integrations",
           body:
-            "Sync, mapping, and reconciliation UX finance teams can audit — built for UK accounting norms and multi-entity setups.",
+            "Sync, mapping, and reconciliation UX finance teams can audit - built for UK accounting norms and multi-entity setups.",
           href: "/solutions/accounting-integrations",
           label: "Xero integrations",
         },
@@ -141,7 +141,7 @@ module.exports = {
       ogLocale: "en_AE",
       title: "Logistics & SaaS Software for UAE Operators | KRIVA",
       meta:
-        "Logistics dashboards, fleet ops software, B2B SaaS, and finance integrations for UAE operators — remote-first from Ahmedabad with Gulf-time overlap.",
+        "Logistics dashboards, fleet ops software, B2B SaaS, and finance integrations for UAE operators - remote-first from Ahmedabad with Gulf-time overlap.",
       eyebrow: "United Arab Emirates",
       h1: "Logistics and SaaS software for UAE operators.",
       lede:
@@ -150,7 +150,7 @@ module.exports = {
         {
           title: "Fleet & logistics dashboards",
           body:
-            "Exception handling, SLA visibility, and supervisor queues for high-volume transport ops — not generic admin templates.",
+            "Exception handling, SLA visibility, and supervisor queues for high-volume transport ops - not generic admin templates.",
           href: "/services/dashboard-design",
           label: "Fleet dashboards",
         },
@@ -191,7 +191,7 @@ module.exports = {
         kicker: "Canada · Eastern & Central overlap",
         headline: "Carriers and SaaS product teams",
         summary:
-          "Dispatch CRM, fleet software, driver apps, and QuickBooks or Xero integrations for Canadian operators — with PIPEDA-conscious delivery and North American hour overlap.",
+          "Dispatch CRM, fleet software, driver apps, and QuickBooks or Xero integrations for Canadian operators - with PIPEDA-conscious delivery and North American hour overlap.",
         tags: ["Dispatch CRM", "Finance sync", "SaaS delivery"],
         outcome: "Full code and design ownership at close with phased ops rollout.",
         visual: "finance",
@@ -199,11 +199,11 @@ module.exports = {
       ogLocale: "en_CA",
       title: "Trucking & SaaS Software for Canadian Teams | KRIVA",
       meta:
-        "Dispatch CRM, fleet software, and B2B SaaS for Canadian carriers — in-house design and engineering with North American hour overlap and clear IP handoff.",
+        "Dispatch CRM, fleet software, and B2B SaaS for Canadian carriers - in-house design and engineering with North American hour overlap and clear IP handoff.",
       eyebrow: "Canada",
       h1: "Trucking and SaaS software for Canadian teams.",
       lede:
-        "Custom dispatch CRM, fleet dashboards, driver apps, and B2B SaaS for Canadian operators — built with North American timezone overlap and finance integrations your back office trusts.",
+        "Custom dispatch CRM, fleet dashboards, driver apps, and B2B SaaS for Canadian operators - built with North American timezone overlap and finance integrations your back office trusts.",
       focus: [
         {
           title: "Dispatch & fleet operations",
@@ -215,7 +215,7 @@ module.exports = {
         {
           title: "Accounting sync",
           body:
-            "QuickBooks and Xero connectors with reconciliation views — fewer month-end surprises for finance.",
+            "QuickBooks and Xero connectors with reconciliation views - fewer month-end surprises for finance.",
           href: "/solutions/accounting-integrations",
           label: "Finance integrations",
         },
@@ -243,7 +243,7 @@ module.exports = {
   indexFile: "kriva-markets-index.html",
   indexTitle: "Markets We Serve · US, UK, UAE & Canada | KRIVA",
   indexMeta:
-    "Trucking software, B2B SaaS, and integrations for US, UK, UAE, and Canada teams — product design and engineering from Ahmedabad. Explore each market.",
+    "Trucking software, B2B SaaS, and integrations for US, UK, UAE, and Canada teams - product design and engineering from Ahmedabad. Explore each market.",
   indexEyebrow: "Product Design & UI/UX · Ahmedabad",
   indexH1: "Built for operators in four markets.",
   indexLede:
