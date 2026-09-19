@@ -94,7 +94,7 @@
 
       if (href === '#book') {
         send('cta_click', {
-          cta_name: textOf(a) || 'Book fit call',
+          cta_name: textOf(a) || 'Book a 20-min call',
           cta_type: 'fit_call',
           cta_location: regionOf(a),
           link_url: location.pathname + href

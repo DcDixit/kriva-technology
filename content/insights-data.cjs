@@ -222,7 +222,7 @@ module.exports = {
       relatedSolutions: [
         { href: "/about", label: "About KRIVA" },
         { href: "/process", label: "How we work" },
-        { href: "/contact#book", label: "Book a free 20-min fit call" },
+        { href: "/contact#book", label: "Book a free 20-min call" },
       ],
       blocks: [
         { type: "paragraph", text: "Choosing an agency is less about portfolio gloss and more about whether they can deliver in your context: timeline, budget, internal team, and risk tolerance." },
