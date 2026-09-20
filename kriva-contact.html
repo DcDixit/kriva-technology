@@ -704,22 +704,10 @@ if(bar) readers.push(y=>{
 /* ── forms: validation, states, success ── */
 const INQUIRY_ENDPOINT = '/api/inquiry';
 const INQUIRY_SUCCESS_MSG = 'Thank you! Your inquiry has been submitted successfully. We\u2019ll be in touch soon.';
-const INQUIRY_FAIL_MSG = 'We could not send your inquiry right now. Please try again shortly.';
-
-function formatInquiryError(err) {
-  if (!err) return '';
-  if (typeof err === 'string') return err;
-  if (typeof err.message === 'string' && err.message) return err.message;
-  return '';
-}
-
-function relayErrorMessage(relayBody) {
-  if (!relayBody || typeof relayBody !== 'object') return '';
-  const msg = relayBody.message != null ? relayBody.message : (relayBody.body && relayBody.body.message);
-  if (typeof msg === 'string') return msg;
-  if (msg && typeof msg === 'object' && typeof msg.message === 'string') return msg.message;
-  return '';
-}
+const INQUIRY_FAIL_MSG = 'We could not send your inquiry right now. Please try again shortly, or email <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>.';
+const INQUIRY_FAIL_STATUS = 'We could not send your inquiry right now. Please try again shortly, or email hello@krivatechnologies.com.';
+const INQUIRY_FIELDS_HEADING = 'Check these fields before sending';
+const INQUIRY_SEND_HEADING = 'We could not send your inquiry';
 
 /* ── Cal.com: optional embed if #calEmbed exists with data-cal-link ── */
 const calEmbed = document.getElementById('calEmbed');
@@ -750,6 +738,7 @@ if (calEmbed && calLink) {
 function wireInquiryForm(form, opts) {
   const summary = document.getElementById(opts.summaryId);
   const summaryList = document.getElementById(opts.summaryListId);
+  const summaryHeading = summary && summary.querySelector('b');
   const btn = document.getElementById(opts.submitBtnId);
   const label = document.getElementById(opts.submitLabelId);
   const status = document.getElementById(opts.statusId);
@@ -796,16 +785,16 @@ function wireInquiryForm(form, opts) {
     } catch (err) {}
   };
 
-  const showFail = (msg) => {
+  const showFail = (html, statusText) => {
     sending = false;
     form.removeAttribute('aria-busy');
     btn.classList.remove('loading');
     btn.removeAttribute('aria-disabled');
     label.textContent = opts.submitDefault;
-    const errMsg = msg || opts.failMsg;
-    if (summaryList) summaryList.innerHTML = '<li>' + errMsg + '</li>';
+    if (summaryHeading) summaryHeading.textContent = INQUIRY_SEND_HEADING;
+    if (summaryList) summaryList.innerHTML = '<li>' + (html || opts.failMsg) + '</li>';
     if (summary) { summary.classList.add('on'); summary.focus(); }
-    if (status) status.textContent = errMsg;
+    if (status) status.textContent = statusText || INQUIRY_FAIL_STATUS;
   };
 
   form.querySelectorAll('[required]').forEach(f=>{
@@ -825,6 +814,7 @@ function wireInquiryForm(form, opts) {
 
     const bad = [...form.querySelectorAll('[required]')].filter(f=>!mark(f));
     if(bad.length){
+      if (summaryHeading) summaryHeading.textContent = INQUIRY_FIELDS_HEADING;
       if (summaryList) {
         summaryList.innerHTML = bad.map(f=>{
           const lblEl = form.querySelector('label[for="' + f.id + '"]');
@@ -855,31 +845,20 @@ function wireInquiryForm(form, opts) {
         body: JSON.stringify(payload)
       });
       const body = await res.json().catch(() => ({}));
-      if (!res.ok || body.ok === false) {
-        const apiErr = body.error;
-        const msg = typeof apiErr === 'string' ? apiErr : (apiErr && apiErr.message) || opts.failMsg;
-        throw new Error(msg);
-      }
+      if (!res.ok || body.ok === false) throw new Error('send-failed');
       if (body.relay && body.relay.url) {
-        const relayPayload = body.relay.payload || payload;
         const relayRes = await fetch(body.relay.url, {
           method: 'POST',
           headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(relayPayload)
+          body: JSON.stringify(body.relay.payload || payload)
         });
         const relayBody = await relayRes.json().catch(() => ({}));
         const ok = relayBody.success === true || String(relayBody.success) === 'true';
-        if (!ok) {
-          const relayMsg = relayErrorMessage(relayBody);
-          if (/activ/i.test(relayMsg) && body.relay.activateInbox) {
-            throw new Error('Check ' + body.relay.activateInbox + ' (including spam) for a FormSubmit activation email, click Activate Form, then submit again.');
-          }
-          throw new Error(relayMsg || opts.failMsg);
-        }
+        if (!ok) throw new Error('send-failed');
       }
       showDone(opts.successMsg);
     } catch (err) {
-      showFail(formatInquiryError(err) || opts.failMsg);
+      showFail(opts.failMsg, INQUIRY_FAIL_STATUS);
     }
   });
 

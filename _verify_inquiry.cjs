@@ -83,18 +83,14 @@ async function main() {
       error: api.json.error || null,
     });
 
-    if (mailConfigured) {
-      if (hasRelay) {
-        console.error("FAIL", label, "API returned browser relay when Gmail is configured", api);
-        process.exitCode = 1;
-        continue;
-      }
-      if (api.status !== 200 || api.json.ok !== true) {
-        console.error("FAIL", label, api);
-        process.exitCode = 1;
-      }
-    } else if (api.status !== 200 || api.json.ok !== true || !hasRelay) {
-      console.error("FAIL", label, "expected 200 with FormSubmit relay when mail is not configured", api);
+    if (mailConfigured && hasRelay) {
+      console.error("FAIL", label, "API returned browser relay when Gmail is configured", api);
+      process.exitCode = 1;
+      continue;
+    }
+
+    if (api.status !== 200 || api.json.ok !== true) {
+      console.error("FAIL", label, api);
       process.exitCode = 1;
     }
   }
@@ -105,7 +101,7 @@ async function main() {
     if (mailConfigured) {
       console.log("\nAll inquiry paths OK (Gmail SMTP).");
     } else {
-      console.log("\nAPI shape OK (FormSubmit relay fallback). Set GMAIL_APP_PASSWORD to verify live SMTP delivery.");
+      console.log("\nAPI shape OK (FormSubmit fallback). Set GMAIL_APP_PASSWORD to verify live SMTP.");
     }
   }
 }
