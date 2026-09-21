@@ -91,6 +91,11 @@ const JS_TAG = [
   '    })(window, document, "clarity", "script", "yjj9g3gojt");',
   '</script>',
   '<!-- KRIVA_CLARITY_END -->',
+  '<!-- KRIVA_TAWK_START -->',
+  '<link rel="preconnect" href="https://embed.tawk.to">',
+  '<link rel="dns-prefetch" href="https://embed.tawk.to">',
+  '<script src="/shared/tawk.js" defer></script>',
+  '<!-- KRIVA_TAWK_END -->',
 ].join('\n');
 
 function cur(key, name) {
@@ -326,6 +331,7 @@ function ensureAssets(html) {
   html = html.replace("</head>", `${CSS_LINK}\n</head>`);
   html = html.replace(/\s*<!-- KRIVA_GA_START -->[\s\S]*?<!-- KRIVA_GA_END -->\s*/g, "\n");
   html = html.replace(/\s*<!-- KRIVA_CLARITY_START -->[\s\S]*?<!-- KRIVA_CLARITY_END -->\s*/g, "\n");
+  html = html.replace(/\s*<!-- KRIVA_TAWK_START -->[\s\S]*?<!-- KRIVA_TAWK_END -->\s*/g, "\n");
   html = html.replace(/\s*<script src="\/?shared\/chrome\.js" defer><\/script>\s*/g, "\n");
   const m = html.match(/<script(?![^>]*shared\/chrome\.js)/);
   if (m) {
