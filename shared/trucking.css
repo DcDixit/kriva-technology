@@ -94,6 +94,13 @@ body.page-truck .trk-problems .trk-frac .n{color:#3A444E;transition:color .45s v
 body.page-truck .trk-problems .trk-frac article:hover .n{color:var(--cta)}
 body.page-truck .trk-problems .trk-frac p{color:#8C98A4}
 body.page-truck .trk-problems .trk-frac .cons{color:var(--amber)}
+body.page-truck .trk-problems .trk-prob-intro{
+  color:#8C98A4;
+  font-size:15px;
+  line-height:1.62;
+  max-width:52ch;
+  margin-top:18px
+}
 
 body.page-truck main .btn{
   border-radius:8px
@@ -293,7 +300,13 @@ body.page-truck .trk-ico{
 .trk-hero-exc-h{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C;margin-bottom:10px}
 
 /* ── Who / what / problems cards ── */
-.trk-fit{padding-top:0 !important}
+.trk-fit{
+  padding-top:0 !important;
+  padding-bottom:clamp(56px,7vw,88px) !important
+}
+body.page-truck .trk-fit + .trk-problems{
+  padding-top:clamp(88px,11vw,128px)
+}
 .trk-fit-rail{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -376,6 +389,34 @@ body.page-truck .trk-ico{
 .trk-stepper p{font-size:13.5px;line-height:1.5;color:var(--steel)}
 
 .trk-surfaces{margin-top:48px}
+body.page-truck .trk-surfaces .trk-surface{
+  align-items:center;
+  gap:clamp(32px,5vw,64px)
+}
+body.page-truck .trk-surfaces .trk-pillar-viz{
+  aspect-ratio:16/10;
+  width:100%;
+  min-height:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f4f5f6;
+  border:1px solid rgba(14,18,22,.06);
+  border-radius:14px;
+  box-shadow:0 20px 56px -28px rgba(14,18,22,.12)
+}
+body.page-truck .trk-surfaces .trk-pillar-viz img{
+  width:100%;
+  height:100%;
+  max-height:100%;
+  aspect-ratio:16/10;
+  object-fit:contain;
+  object-position:center;
+  border:0;
+  border-radius:14px;
+  box-shadow:none;
+  background:transparent
+}
 .trk-surface-copy{min-width:0}
 .trk-surface-copy .k{
   display:block;
@@ -440,8 +481,16 @@ body.page-truck .trk-ico{
 }
 .trk-handoff-copy .eyebrow.on-dark{color:#8C98A4}
 .trk-handoff-copy .eyebrow.on-dark:before{background:#8C98A4;opacity:.75}
-.trk-handoff-copy h3{margin-top:14px;color:#fff;max-width:16ch}
-.trk-handoff-copy .body-sm{margin-top:12px;color:#C4CDD4;max-width:34ch}
+body.page-truck .trk-handoff-copy h3.d3{
+  margin-top:14px;
+  color:#fff;
+  max-width:16ch
+}
+body.page-truck .trk-handoff-copy .body-sm{
+  margin-top:12px;
+  color:#C4CDD4;
+  max-width:34ch
+}
 .trk-proof-secondary .trk-text-link{display:inline-flex;margin-top:14px;margin-right:18px}
 @media(max-width:900px){
   .trk-handoff-media img{aspect-ratio:16/10;object-position:center;min-height:220px}
@@ -726,6 +775,12 @@ body.page-truck .trk-contact .eyebrow{color:#8b8c94}
 body.page-truck .trk-contact h2{color:#fff;margin-top:18px;max-width:16ch}
 body.page-truck .trk-contact .lede{color:#c8c9d0;max-width:42ch}
 body.page-truck .trk-contact .trk-trust{color:#8b8c94}
+body.page-truck .trk-contact .inq-cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:24px
+}
 body.page-truck .trk-contact .inq-grid{
   display:grid;
   grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
@@ -812,7 +867,8 @@ body.page-truck .chapters a[aria-current="true"]{color:var(--ink)}
   body.page-truck main > section,
   body.page-truck .trk-contact{padding:64px 0}
   body.page-truck .hero{padding:calc(58px + 32px) 0 32px}
-  .trk-fit{padding-top:0 !important;padding-bottom:64px !important}
+  .trk-fit{padding-top:0 !important;padding-bottom:56px !important}
+  body.page-truck .trk-fit + .trk-problems{padding-top:72px}
   .trk-integ-grid,
   .trk-proof-metrics,
   .trk-process,
