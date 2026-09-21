@@ -1,7 +1,7 @@
 # Measurement Phase Checkpoint
 
-**Created:** 2026-09-16  
-**Phase:** Measurement-only (SEO/content changes intentionally paused)  
+**Created:** 2026-09-16 
+**Phase:** Measurement-only (SEO/content changes intentionally paused) 
 **Business funnel:** Google impressions → relevant clicks → qualified visitors → engagement → genuine leads
 
 ---
@@ -31,7 +31,7 @@ Find exact hash: `git rev-parse measurement-phase-checkpoint`
 git checkout measurement-phase-checkpoint -- shared/analytics.js shared/page-inquiry.js kriva-contact.html MEASUREMENT_BASELINE.md MEASUREMENT_CHECKPOINT.md
 ```
 
-Or reset branch to checkpoint (destructive — use only if intentional):
+Or reset branch to checkpoint (destructive, use only if intentional):
 
 ```bash
 git reset --hard measurement-phase-checkpoint
@@ -47,7 +47,7 @@ git reset --hard measurement-phase-checkpoint
 | `shared/page-inquiry.js` | On-page inquiry forms; FormSubmit return (`?sent=1#inquire`) lead handling |
 | `kriva-contact.html` | Fit call + project brief forms; FormSubmit return dedup (`?sent=fit` / `?sent=brief`) |
 | `MEASUREMENT_BASELINE.md` | CEO-friendly baseline checklist and GSC/GA4 export instructions |
-| `MEASUREMENT_CHECKPOINT.md` | This file — frozen state reference |
+| `MEASUREMENT_CHECKPOINT.md` | This file, frozen state reference |
 
 **Not changed in measurement phase:** `vercel.json`, `robots.txt`, sitemap URL list, page titles, meta descriptions, H1/H2, body content, schema in HTML, canonical URLs, hreflang (already set in parent commit).
 
@@ -60,14 +60,14 @@ git reset --hard measurement-phase-checkpoint
 | **Measurement ID** | `G-FHG12KTF8C` |
 | **GA4 Property ID** | `552202890` (comment in `shared/analytics.js` only) |
 | **Loader** | `gtag/js?id=G-FHG12KTF8C` + `/shared/analytics.js` on every page |
-| **Key event (manual — GA4 Admin)** | `generate_lead` — must be marked by site owner |
+| **Key event (manual, GA4 Admin)** | `generate_lead`, must be marked by site owner |
 
 ### Events fired by website code
 
 | Event | Fires on | Counts as lead? |
 |-------|----------|-----------------|
 | `generate_lead` | Successful form submission only | **Yes** (mark as Key event in Admin) |
-| `contact_form_submit` | Same moment as `generate_lead` | No — diagnostic; do **not** mark as Key event |
+| `contact_form_submit` | Same moment as `generate_lead` | No, diagnostic; do **not** mark as Key event |
 | `form_start` | First focus in a form field | No |
 | `cta_click` | Contact / fit call / brief / `#inquire` link click | No |
 | `email_click` | `mailto:` click | No |
@@ -111,18 +111,18 @@ On `kriva:lead` custom event:
 
 ---
 
-## Technical SEO state (frozen — no further changes until GSC analysis)
+## Technical SEO state (frozen, no further changes until GSC analysis)
 
 | Item | State |
 |------|-------|
 | **Public indexable URLs** | 57 |
-| **sitemap.xml** | `https://krivatechnologies.com/sitemap.xml` — 57 URLs, apex domain, lastmod 2026-09-15 |
+| **sitemap.xml** | `https://krivatechnologies.com/sitemap.xml`, 57 URLs, apex domain, lastmod 2026-09-15 |
 | **robots.txt** | `Allow: /`; `Disallow: /api/`; sitemaps declared; AI crawlers allowed except `/api/` |
 | **Canonical URLs** | Self-referential on all 57 public pages |
 | **noindex** | Only `404.html` |
 | **JSON-LD** | 57 blocks, 0 invalid (verified by `_verify_critical.cjs`) |
 | **hreflang** | Market cluster (6 pages) + standalone `en` + `x-default` on other pages (parent commit) |
-| **Redirects** | Unchanged in `vercel.json` — legacy `.html` → clean URLs, www → apex |
+| **Redirects** | Unchanged in `vercel.json`, legacy `.html` → clean URLs, www → apex |
 
 ---
 
@@ -148,16 +148,16 @@ When exports are ready, request:
 
 Analysis will cover (evidence-based only):
 
-1. Pages losing impressions  
-2. Pages gaining impressions  
-3. High-impression / low-CTR queries  
-4. Queries in positions ~8–20  
-5. Commercial-intent queries for existing services  
-6. Irrelevant query/page matches  
-7. Organic landing pages with poor engagement  
-8. Organic landing pages with traffic but no leads  
-9. Internal-linking opportunities  
-10. Content gaps supported by actual search demand  
+1. Pages losing impressions 
+2. Pages gaining impressions 
+3. High-impression / low-CTR queries 
+4. Queries in positions ~8–20 
+5. Commercial-intent queries for existing services 
+6. Irrelevant query/page matches 
+7. Organic landing pages with poor engagement 
+8. Organic landing pages with traffic but no leads 
+9. Internal-linking opportunities 
+10. Content gaps supported by actual search demand 
 
 Recommendations will be tagged: 🟢 Safe fix | 🟡 Show me first | 🔴 Insufficient evidence
 
@@ -165,6 +165,6 @@ Recommendations will be tagged: 🟢 Safe fix | 🟡 Show me first | 🔴 Insuff
 
 ## Related docs
 
-- `MEASUREMENT_BASELINE.md` — ongoing metrics checklist  
-- `seo/gsc-baseline-workflow.txt` — GSC export workflow  
-- `GA4_QUICK_REFERENCE.md` — GA4 setup reference  
+- `MEASUREMENT_BASELINE.md`, ongoing metrics checklist 
+- `seo/gsc-baseline-workflow.txt`, GSC export workflow 
+- `GA4_QUICK_REFERENCE.md`, GA4 setup reference 

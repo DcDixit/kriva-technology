@@ -69,29 +69,29 @@
 
 ### Weekly (2 min)
 - **Google Search Console** → Coverage tab
-  - Watch for any new errors
-  - Confirm pages are "Indexed"
+ - Watch for any new errors
+ - Confirm pages are "Indexed"
 
 ### Weekly (2 min)
 - **Google Analytics** → Acquisition → Organic
-  - Track organic sessions
-  - Monitor top landing pages
-  - Watch bounce rate trends
+ - Track organic sessions
+ - Monitor top landing pages
+ - Watch bounce rate trends
 
 ### Monthly (5 min)
 - **Track Key Keywords** (use free tools: Google Search Console, Ubersuggest, or Moz)
-  - "SaaS product design" 
-  - "Trucking dispatch CRM"
-  - "API integrations QuickBooks"
-  - "Digital agency UK"
-  - "Software development Australia"
+ - "SaaS product design" 
+ - "Trucking dispatch CRM"
+ - "API integrations QuickBooks"
+ - "Digital agency UK"
+ - "Software development Australia"
 
 ### Monthly (10 min)
 - **GSC → Performance**
-  - Top landing pages
-  - Average ranking position
-  - Click-through rate
-  - Impressions vs clicks
+ - Top landing pages
+ - Average ranking position
+ - Click-through rate
+ - Impressions vs clicks
 
 ---
 
@@ -125,19 +125,19 @@
 
 ### New Insights to Write:
 1. **"SaaS MVP guide for Australian startups"** (mirror of UK guide)
-   - Keywords: "SaaS MVP Australia", "startup development AU"
-   - Target: 800-1000 words
-   - CTA: Link to `/solutions/saas`
+ - Keywords: "SaaS MVP Australia", "startup development AU"
+ - Target: 800-1000 words
+ - CTA: Link to `/solutions/saas`
 
 2. **"Trucking fleet management in Australia"** (target AU logistics operators)
-   - Keywords: "Trucking software Australia", "fleet management AU"
-   - Target: 800-1000 words
-   - CTA: Link to `/solutions/trucking-logistics`
+ - Keywords: "Trucking software Australia", "fleet management AU"
+ - Target: 800-1000 words
+ - CTA: Link to `/solutions/trucking-logistics`
 
 3. **"Xero integrations for Australian accountants"** (AU financial focus)
-   - Keywords: "Xero integrations Australia", "accounting automation AU"
-   - Target: 800-1000 words
-   - CTA: Link to `/solutions/accounting-integrations`
+ - Keywords: "Xero integrations Australia", "accounting automation AU"
+ - Target: 800-1000 words
+ - CTA: Link to `/solutions/accounting-integrations`
 
 **Template to Follow:** `kriva-insight-saas-mvp-uk-guide.html` (copy structure, swap UK → AU references)
 
@@ -193,10 +193,10 @@ You don't need to hire help to execute this roadmap, but these areas could accel
 
 ---
 
-**Report Date:** August 31, 2026  
-**Last Updated:** [auto-sync with main report]  
+**Report Date:** August 31, 2026 
+**Last Updated:** [auto-sync with main report] 
 **Maintainer:** You (or your marketing team)
 
 ---
 
-*Quick Reference* — For detailed analysis, see `SEO_IMPLEMENTATION_REPORT_2026.md`
+*Quick Reference*, For detailed analysis, see `SEO_IMPLEMENTATION_REPORT_2026.md`

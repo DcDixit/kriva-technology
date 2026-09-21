@@ -1,4 +1,4 @@
-# Media drop folder — approved proof only
+# Media drop folder, approved proof only
 
 Mirror public paths. **Do not drop AI-generated or fabricated client screenshots.**
 

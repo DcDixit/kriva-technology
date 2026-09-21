@@ -10,7 +10,7 @@
 
 ---
 
-## STATUS: CODE QA PASSED — MANUAL VISUAL QA REQUIRED
+## STATUS: CODE QA PASSED, MANUAL VISUAL QA REQUIRED
 
 All CSS code has been verified and passes strict code-based QA. No syntax errors, proper accessibility, GPU-accelerated animations, responsive breakpoints covered, and zero negative side effects.
 
@@ -92,12 +92,12 @@ See **CODE_QA_REPORT.md** for the full detailed checklist covering:
 ## KNOWN CODE-LEVEL ISSUES (Minor)
 
 1. **Hardcoded Color** (#0a0d12 in board gradient)
-   - Impact: None (semantic darkening)
-   - Action: Optional refactor to use token
+ - Impact: None (semantic darkening)
+ - Action: Optional refactor to use token
 
 2. **Excess Documentation** (8 files created)
-   - Impact: None (documentation only)
-   - Action: Can archive non-critical files
+ - Impact: None (documentation only)
+ - Action: Can archive non-critical files
 
 ---
 
@@ -186,8 +186,8 @@ Details: The gradient from dark to blue makes the headline difficult to parse.
 1. Open `kriva-redesign.html` in your browser
 2. Test on desktop, tablet, and mobile
 3. Check animations by:
-   - Watching on page load
-   - Checking system motion preferences (if available)
+ - Watching on page load
+ - Checking system motion preferences (if available)
 4. Test buttons by clicking them
 5. Verify all text is readable
 6. Report any issues back with details

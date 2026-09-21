@@ -1,4 +1,4 @@
-# KRIVA — Production deployment
+# KRIVA, Production deployment
 
 This folder is the **static production source** for krivatechnologies.com.
 
@@ -34,8 +34,8 @@ Real client screenshots: drop into `media/` mirroring public paths, then re-run 
 ## QA before cutover
 
 ```bash
-npm run qa:links   # internal link crawl
-npm run qa:http    # 50-route HTTP smoke (start preview first)
+npm run qa:links # internal link crawl
+npm run qa:http # 50-route HTTP smoke (start preview first)
 ```
 
 ## What ships

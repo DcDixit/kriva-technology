@@ -1,7 +1,7 @@
-# Phase 9 — Input Checklist
+# Phase 9, Input Checklist
 
-**Purpose:** Prepare the redesign so your final launch inputs apply cleanly.  
-**Stopping rule:** After this checklist — wait for your inputs. No calendar, new pages, redirects, metrics, or redesign.
+**Purpose:** Prepare the redesign so your final launch inputs apply cleanly. 
+**Stopping rule:** After this checklist, wait for your inputs. No calendar, new pages, redirects, metrics, or redesign.
 
 ---
 
@@ -13,7 +13,7 @@
 | Screenshots | `media/…` mirroring public path (see manifest) | `node apply_launch_inputs.cjs --assets` |
 | Attributions | Fill `confirmed` + `status: "confirmed"` in `content/attribution-registry.cjs` | `node apply_launch_inputs.cjs --attribution` |
 | Privacy policy | Tell me decision A / B / C from checklist | Next implementation pass (copy only) |
-| Deferred hosting | Tell me option A / B / C | Hosting config only — no page builds |
+| Deferred hosting | Tell me option A / B / C | Hosting config only, no page builds |
 
 Registries (internal):
 
@@ -27,7 +27,7 @@ Registries (internal):
 
 ## My inputs required
 
-### 1. FleetRoute / FleetFlow attribution — **P0**
+### 1. FleetRoute / FleetFlow attribution, **P0**
 
 | | |
 |--|--|
@@ -35,7 +35,7 @@ Registries (internal):
 | **Applied to** | Homepage proof (`data-attr-id="fleetroute-fleetflow"`); FleetFlow case quote block |
 | **Registry** | `content/attribution-registry.cjs` → `fleetroute-fleetflow` |
 
-### 2. FlowLedger / PayrollPro attribution — **P0**
+### 2. FlowLedger / PayrollPro attribution, **P0**
 
 | | |
 |--|--|
@@ -43,7 +43,7 @@ Registries (internal):
 | **Applied to** | Homepage proof; PayrollPro case quote; `content/cases-data.cjs` testimonial |
 | **Registry** | `flowledger-payrollpro` |
 
-### 3. Meridian / BrandLift attribution — **P0**
+### 3. Meridian / BrandLift attribution, **P0**
 
 | | |
 |--|--|
@@ -51,7 +51,7 @@ Registries (internal):
 | **Applied to** | BrandLift case note (`data-attr-id="meridian-brandlift"`); cases-data |
 | **Registry** | `meridian-brandlift` |
 
-### 4. CarePath quote attribution — **P0**
+### 4. CarePath quote attribution, **P0**
 
 | | |
 |--|--|
@@ -63,7 +63,7 @@ Registries (internal):
 
 ---
 
-### 5. P0 screenshots — **P0**
+### 5. P0 screenshots, **P0**
 
 | | |
 |--|--|
@@ -77,7 +77,7 @@ Full table: `content/asset-manifest.cjs` (`priority: "P0"`).
 
 ---
 
-### 6. `/brand/og-default.png` — **P0**
+### 6. `/brand/og-default.png`, **P0**
 
 | | |
 |--|--|
@@ -89,7 +89,7 @@ No fake fallback image is generated. Missing file → tags withheld.
 
 ---
 
-### 7. Analytics / privacy decision — **P0**
+### 7. Analytics / privacy decision, **P0**
 
 Detected today (do not invent trackers):
 
@@ -102,18 +102,18 @@ Detected today (do not invent trackers):
 
 **Choose one** (`content/privacy-analytics-checklist.cjs`):
 
-- **A** — No analytics active → soften/remove Privacy analytics claims  
-- **B** — GA4 only → name GA4 + cookies in Privacy/Terms  
-- **C** — GTM → name GTM (+ nested tags) in Privacy/Terms  
+- **A**, No analytics active → soften/remove Privacy analytics claims 
+- **B**, GA4 only → name GA4 + cookies in Privacy/Terms 
+- **C**, GTM → name GTM (+ nested tags) in Privacy/Terms 
 
 | | |
 |--|--|
 | **Provide** | A, B, or C (+ Measurement/GTM IDs if B/C) |
-| **Applied to** | `kriva-privacy.html`, `kriva-terms.html` TBD sections only — **no scripts added in this phase** |
+| **Applied to** | `kriva-privacy.html`, `kriva-terms.html` TBD sections only, **no scripts added in this phase** |
 
 ---
 
-### 8. Hosting decision for 5 deferred service URLs — **P0** (cutover)
+### 8. Hosting decision for 5 deferred service URLs, **P0** (cutover)
 
 URLs unchanged (no pages, no redirects):
 
@@ -121,9 +121,9 @@ URLs unchanged (no pages, no redirects):
 
 **Choose one** (`content/deferred-urls.cjs`):
 
-- **A** — Proxy/rewrite to live Next  
-- **B** — Static host 404 until built later  
-- **C** — Holding response later (not built now)
+- **A**, Proxy/rewrite to live Next 
+- **B**, Static host 404 until built later 
+- **C**, Holding response later (not built now)
 
 | | |
 |--|--|
@@ -134,11 +134,11 @@ URLs unchanged (no pages, no redirects):
 
 ## Prepared (no further architecture needed)
 
-- [x] Central attribution registry + `data-attr-id` markers  
-- [x] Asset manifest with filenames + `data-asset` hosts on P0 slots  
-- [x] Slot CSS auto-hide when real `<img>` present  
-- [x] OG auto-enable when `brand/og-default.png` exists  
-- [x] Privacy analytics decision matrix  
-- [x] Deferred URL hosting options documented  
+- [x] Central attribution registry + `data-attr-id` markers 
+- [x] Asset manifest with filenames + `data-asset` hosts on P0 slots 
+- [x] Slot CSS auto-hide when real `<img>` present 
+- [x] OG auto-enable when `brand/og-default.png` exists 
+- [x] Privacy analytics decision matrix 
+- [x] Deferred URL hosting options documented 
 
-**Status:** **NEEDS YOUR INPUT** on items 1–8. Then a focused apply pass — not another redesign.
+**Status:** **NEEDS YOUR INPUT** on items 1–8. Then a focused apply pass, not another redesign.

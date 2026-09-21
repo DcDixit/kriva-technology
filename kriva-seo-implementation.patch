@@ -11,10 +11,10 @@ Subject: [PATCH 1/6] Add www->apex 301 redirect; stop deploying internal
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01J3b4KBb1a74oP2qUZYrU53
 ---
- -w            |  5 -----
- .env.local    |  2 --
+ -w | 5 -----
+ .env.local | 2 --
  .vercelignore | 26 ++++++++++++++++++++++++++
- vercel.json   | 11 +++++++++++
+ vercel.json | 11 +++++++++++
  4 files changed, 37 insertions(+), 7 deletions(-)
  delete mode 100644 -w
  delete mode 100644 .env.local
@@ -45,9 +45,8 @@ index 0000000..d4bad20
 --- /dev/null
 +++ b/.vercelignore
 @@ -0,0 +1,26 @@
-+# Internal working files — never deploy. Runtime needs only:
-+# *.html, 404.html, robots.txt, sitemap.xml, site.webmanifest, favicon/icons,
-+# brand/, media/, shared/, api/, vercel.json, package.json, package-lock.json.
++# Internal working files, never deploy. Runtime needs only:
++# *.html, 404.html, robots.txt, sitemap.xml, site.webmanifest, favicon/icons, +# brand/, media/, shared/, api/, vercel.json, package.json, package-lock.json.
 +
 +# Internal reports & docs (all Markdown is internal)
 +*.md
@@ -76,24 +75,15 @@ index 0697cab..d07a490 100644
 --- a/vercel.json
 +++ b/vercel.json
 @@ -6,6 +6,17 @@
-   "cleanUrls": false,
-   "trailingSlash": false,
-   "redirects": [
-+    {
-+      "source": "/:path*",
-+      "has": [
-+        {
-+          "type": "host",
-+          "value": "www.krivatechnologies.com"
-+        }
-+      ],
-+      "destination": "https://krivatechnologies.com/:path*",
-+      "permanent": true
-+    },
-     {
-       "source": "/kriva-redesign.html",
-       "destination": "/",
--- 
+ "cleanUrls": false, "trailingSlash": false, "redirects": [
++ {
++ "source": "/:path*", + "has": [
++ {
++ "type": "host", + "value": "www.krivatechnologies.com"
++ }
++ ], + "destination": "https://krivatechnologies.com/:path*", + "permanent": true
++ }, {
+ "source": "/kriva-redesign.html", "destination": "/", -- 
 2.43.0
 
 
@@ -114,11 +104,11 @@ Content-Transfer-Encoding: 8bit
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01J3b4KBb1a74oP2qUZYrU53
 ---
- kriva-service-branding.html         |  8 ++++----
- kriva-service-crm-development.html  | 16 ++++++++--------
+ kriva-service-branding.html | 8 ++++----
+ kriva-service-crm-development.html | 16 ++++++++--------
  kriva-service-dashboard-design.html | 18 +++++++++---------
- kriva-solution-trucking.html        | 16 ++++++++--------
- kriva-work-index.html               |  4 ++--
+ kriva-solution-trucking.html | 16 ++++++++--------
+ kriva-work-index.html | 4 ++--
  5 files changed, 31 insertions(+), 31 deletions(-)
 
 diff --git a/kriva-service-branding.html b/kriva-service-branding.html
@@ -152,14 +142,8 @@ index d23cb12..44fdca6 100644
  <!-- KRIVA_OG_IMAGE_END -->
 @@ -601,7 +601,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
  {
-   "@context": "https://schema.org",
-   "@type": "Service",
--  "name": "Branding & Graphic Design",
-+  "name": "Brand Identity Systems",
-   "description": "Brand identity, visual systems, and marketing assets that match how the product should feel, without chasing trends.",
-   "provider": {
-     "@type": "Organization",
-diff --git a/kriva-service-crm-development.html b/kriva-service-crm-development.html
+ "@context": "https://schema.org", "@type": "Service", - "name": "Branding & Graphic Design", + "name": "Brand Identity Systems", "description": "Brand identity, visual systems, and marketing assets that match how the product should feel, without chasing trends.", "provider": {
+ "@type": "Organization", diff --git a/kriva-service-crm-development.html b/kriva-service-crm-development.html
 index cc9c605..3bb0abf 100644
 --- a/kriva-service-crm-development.html
 +++ b/kriva-service-crm-development.html
@@ -196,11 +180,8 @@ index cc9c605..3bb0abf 100644
  <!-- KRIVA_OG_IMAGE_END -->
  <style>
 @@ -119,7 +119,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
- "provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},
- "areaServed": ["US", "GB", "AE", "CA"],
- "url":"https://krivatechnologies.com/services/crm-development",
--"description":"Kriva designs, integrates, and modernizes CRM workflows around how teams actually work — custom CRM development, automation, integrations, and operational consoles."}
-+"description":"KRIVA designs, integrates, and modernizes CRM workflows around how teams actually work — custom CRM development, automation, integrations, and operational consoles."}
+ "provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"}, "areaServed": ["US", "GB", "AE", "CA"], "url":"https://krivatechnologies.com/services/crm-development", -"description":"Kriva designs, integrates, and modernizes CRM workflows around how teams actually work, custom CRM development, automation, integrations, and operational consoles."}
++"description":"KRIVA designs, integrates, and modernizes CRM workflows around how teams actually work, custom CRM development, automation, integrations, and operational consoles."}
  </script>
  <script type="application/ld+json">
  {
@@ -241,24 +222,17 @@ index be6ee05..9d62e2c 100644
  <!-- KRIVA_OG_IMAGE_END -->
  <style>
 @@ -292,7 +292,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
-           <span><i>Custom dashboards that show</i></span>
-           <span><i>what needs attention.</i></span>
-         </h1>
--        <p class="lede" data-r>Kriva designs and builds custom dashboards for operational reporting and data visualization — role-based views, exception queues, and actions integrated with your existing systems, not another wall of equal-weight charts.</p>
-+        <p class="lede" data-r>KRIVA designs and builds custom dashboards for operational reporting and data visualization — role-based views, exception queues, and actions integrated with your existing systems, not another wall of equal-weight charts.</p>
-         <div class="hero-actions" data-r>
-           <a href="#inquire" class="btn"><span>Discuss your dashboard</span><i>→</i></a>
-           <a href="#proof" class="btn ghost"><span>See a dashboard case study</span><i>→</i></a>
+ <span><i>Custom dashboards that show</i></span>
+ <span><i>what needs attention.</i></span>
+ </h1>
+- <p class="lede" data-r>Kriva designs and builds custom dashboards for operational reporting and data visualization, role-based views, exception queues, and actions integrated with your existing systems, not another wall of equal-weight charts.</p>
++ <p class="lede" data-r>KRIVA designs and builds custom dashboards for operational reporting and data visualization, role-based views, exception queues, and actions integrated with your existing systems, not another wall of equal-weight charts.</p>
+ <div class="hero-actions" data-r>
+ <a href="#inquire" class="btn"><span>Discuss your dashboard</span><i>→</i></a>
+ <a href="#proof" class="btn ghost"><span>See a dashboard case study</span><i>→</i></a>
 @@ -738,7 +738,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
-   "@type": "Service",
-   "name": "Custom Dashboard Design &amp; Development",
-   "serviceType": "Custom dashboard design, dashboard development, and operational reporting",
--  "description": "Kriva designs custom dashboards that turn business data into clear signals, role-based views and actionable operational insights.",
-+  "description": "KRIVA designs custom dashboards that turn business data into clear signals, role-based views and actionable operational insights.",
-   "provider": {
-     "@type": "Organization",
-     "name": "KRIVA Technologies",
-diff --git a/kriva-solution-trucking.html b/kriva-solution-trucking.html
+ "@type": "Service", "name": "Custom Dashboard Design &amp; Development", "serviceType": "Custom dashboard design, dashboard development, and operational reporting", - "description": "Kriva designs custom dashboards that turn business data into clear signals, role-based views and actionable operational insights.", + "description": "KRIVA designs custom dashboards that turn business data into clear signals, role-based views and actionable operational insights.", "provider": {
+ "@type": "Organization", "name": "KRIVA Technologies", diff --git a/kriva-solution-trucking.html b/kriva-solution-trucking.html
 index 233f975..3131e67 100644
 --- a/kriva-solution-trucking.html
 +++ b/kriva-solution-trucking.html
@@ -295,10 +269,7 @@ index 233f975..3131e67 100644
  <!-- KRIVA_OG_IMAGE_END -->
  <style>
 @@ -128,7 +128,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
- "provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},
- "areaServed": ["US", "GB", "AE", "CA"],
- "url":"https://krivatechnologies.com/solutions/trucking-logistics",
--"description":"Kriva designs, integrates, and modernizes TMS and dispatch software around real trucking workflows, without forcing teams into a generic system."}
+ "provider":{"@type":"Organization","name":"KRIVA Technologies","url":"https://krivatechnologies.com"}, "areaServed": ["US", "GB", "AE", "CA"], "url":"https://krivatechnologies.com/solutions/trucking-logistics", -"description":"Kriva designs, integrates, and modernizes TMS and dispatch software around real trucking workflows, without forcing teams into a generic system."}
 +"description":"KRIVA designs, integrates, and modernizes TMS and dispatch software around real trucking workflows, without forcing teams into a generic system."}
  </script>
  <script type="application/ld+json">
@@ -344,12 +315,12 @@ Contact aside gains one assurance item citing the published ShiftRail result (-3
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01J3b4KBb1a74oP2qUZYrU53
 ---
- kriva-contact.html                         | 1 +
- kriva-faq.html                             | 2 +-
+ kriva-contact.html | 1 +
+ kriva-faq.html | 2 +-
  kriva-service-ai-assisted-development.html | 2 +-
- kriva-service-product-design.html          | 4 ++--
- kriva-service-ui-ux-design.html            | 2 +-
- kriva-solution-saas.html                   | 2 +-
+ kriva-service-product-design.html | 4 ++--
+ kriva-service-ui-ux-design.html | 2 +-
+ kriva-solution-saas.html | 2 +-
  6 files changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/kriva-contact.html b/kriva-contact.html
@@ -357,83 +328,83 @@ index 357afe9..eba7ef4 100644
 --- a/kriva-contact.html
 +++ b/kriva-contact.html
 @@ -590,6 +590,7 @@ form.sent{display:none}
-           <li><i>◆</i>Your details stay confidential</li>
-           <li><i>◆</i>NDA on request</li>
-           <li><i>◆</i>No commitment required</li>
-+          <li><i>◆</i>Recent result: <a href="/work/shiftrail-dispatch">&minus;32% dispatch handle time on 400+ daily routes</a> &middot; <a href="/work">all case studies</a></li>
-         </ul>
-         <p class="body-sm" style="margin-top:22px">Prefer to talk first? <a href="#book">Request a fit call</a>. Or email <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>.</p>
-       </aside>
+ <li><i>◆</i>Your details stay confidential</li>
+ <li><i>◆</i>NDA on request</li>
+ <li><i>◆</i>No commitment required</li>
++ <li><i>◆</i>Recent result: <a href="/work/shiftrail-dispatch">&minus;32% dispatch handle time on 400+ daily routes</a> &middot; <a href="/work">all case studies</a></li>
+ </ul>
+ <p class="body-sm" style="margin-top:22px">Prefer to talk first? <a href="#book">Request a fit call</a>. Or email <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>.</p>
+ </aside>
 diff --git a/kriva-faq.html b/kriva-faq.html
 index c25c1e1..2048e75 100644
 --- a/kriva-faq.html
 +++ b/kriva-faq.html
 @@ -355,7 +355,7 @@ body.page-faq .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;lin
-       <span><i>Straight answers</i></span>
-       <span><i>before you book a call.</i></span>
-     </h1>
--    <p class="lede" data-r>Services, timelines, pricing, ownership, and how we collaborate with your team, without the usual agency vagueness.</p>
-+    <p class="lede" data-r>Services, timelines, pricing, ownership, and how we collaborate with your team, without the usual agency vagueness. Comparing studios? Start with <a href="/insights/choosing-a-digital-agency">how to choose a digital agency</a>.</p>
-     <div class="hero-actions" data-r>
-       <a href="#together" class="btn"><span>Browse answers</span><i>→</i></a>
-       <a href="/contact#book" class="btn ghost"><span>Request a fit call</span><i>→</i></a>
+ <span><i>Straight answers</i></span>
+ <span><i>before you book a call.</i></span>
+ </h1>
+- <p class="lede" data-r>Services, timelines, pricing, ownership, and how we collaborate with your team, without the usual agency vagueness.</p>
++ <p class="lede" data-r>Services, timelines, pricing, ownership, and how we collaborate with your team, without the usual agency vagueness. Comparing studios? Start with <a href="/insights/choosing-a-digital-agency">how to choose a digital agency</a>.</p>
+ <div class="hero-actions" data-r>
+ <a href="#together" class="btn"><span>Browse answers</span><i>→</i></a>
+ <a href="/contact#book" class="btn ghost"><span>Request a fit call</span><i>→</i></a>
 diff --git a/kriva-service-ai-assisted-development.html b/kriva-service-ai-assisted-development.html
 index 97c7c74..242bc9f 100644
 --- a/kriva-service-ai-assisted-development.html
 +++ b/kriva-service-ai-assisted-development.html
 @@ -392,7 +392,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
-           <span><i>AI in the workflow.</i></span>
-           <span><i>A human on the ship.</i></span>
-         </h1>
--        <p class="lede" data-r>Claude, ChatGPT, Copilot, Figma AI, Cursor, selected for the task, always with human oversight. Faster delivery. Clear ownership. Not an unattended model on your product.</p>
-+        <p class="lede" data-r>Claude, ChatGPT, Copilot, Figma AI, Cursor, selected for the task, always with human oversight. Faster delivery. Clear ownership. Not an unattended model on your product. How this works in practice: <a href="/insights/ai-in-product-design-2026">how AI is changing product design workflows</a>.</p>
-         <div class="hero-actions" data-r>
-           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
-           <a href="/work/ai-support-automation" class="btn ghost"><span>See SupportAI</span><i>→</i></a>
+ <span><i>AI in the workflow.</i></span>
+ <span><i>A human on the ship.</i></span>
+ </h1>
+- <p class="lede" data-r>Claude, ChatGPT, Copilot, Figma AI, Cursor, selected for the task, always with human oversight. Faster delivery. Clear ownership. Not an unattended model on your product.</p>
++ <p class="lede" data-r>Claude, ChatGPT, Copilot, Figma AI, Cursor, selected for the task, always with human oversight. Faster delivery. Clear ownership. Not an unattended model on your product. How this works in practice: <a href="/insights/ai-in-product-design-2026">how AI is changing product design workflows</a>.</p>
+ <div class="hero-actions" data-r>
+ <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
+ <a href="/work/ai-support-automation" class="btn ghost"><span>See SupportAI</span><i>→</i></a>
 diff --git a/kriva-service-product-design.html b/kriva-service-product-design.html
 index 90fd6df..99efb75 100644
 --- a/kriva-service-product-design.html
 +++ b/kriva-service-product-design.html
 @@ -495,11 +495,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
-   <div class="wrap">
-     <p class="eyebrow" data-r>How we run it</p>
-     <h2 class="d2" id="apH" data-r style="margin-top:16px">Map → Walk → Ship</h2>
--    <p class="lede" data-r style="margin-top:16px">Three phases, not a six-step agency deck. UI/UX, research, and prototyping nest inside when the brief is narrower.</p>
-+    <p class="lede" data-r style="margin-top:16px">Three phases, not a six-step agency deck. UI/UX, <a href="/services/ux-research">UX research</a>, and <a href="/services/wireframing-prototyping">wireframing &amp; prototyping</a> nest inside when the brief is narrower.</p>
-     <ol class="process-steps" data-s>
-       <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">01 · Map</span><h3 class="d3">Product UX map</h3><p class="body-sm" style="margin-top:8px">Core journeys and the operational surfaces easy to skip in a pitch deck.</p></li>
-       <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">02 · Walk</span><h3 class="d3">Shared prototype</h3><p class="body-sm" style="margin-top:8px">One clickable path, including failures, empty states, and permission edges the team argues over once.</p></li>
--      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">03 · Ship</span><h3 class="d3">Launch-ready UI</h3><p class="body-sm" style="margin-top:8px">Design system foundations and screens engineering can build against: handoff included.</p></li>
-+      <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">03 · Ship</span><h3 class="d3">Launch-ready UI</h3><p class="body-sm" style="margin-top:8px"><a href="/services/design-systems">Design system</a> foundations and screens engineering can build against: handoff included.</p></li>
-     </ol>
-   </div>
+ <div class="wrap">
+ <p class="eyebrow" data-r>How we run it</p>
+ <h2 class="d2" id="apH" data-r style="margin-top:16px">Map → Walk → Ship</h2>
+- <p class="lede" data-r style="margin-top:16px">Three phases, not a six-step agency deck. UI/UX, research, and prototyping nest inside when the brief is narrower.</p>
++ <p class="lede" data-r style="margin-top:16px">Three phases, not a six-step agency deck. UI/UX, <a href="/services/ux-research">UX research</a>, and <a href="/services/wireframing-prototyping">wireframing &amp; prototyping</a> nest inside when the brief is narrower.</p>
+ <ol class="process-steps" data-s>
+ <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">01 · Map</span><h3 class="d3">Product UX map</h3><p class="body-sm" style="margin-top:8px">Core journeys and the operational surfaces easy to skip in a pitch deck.</p></li>
+ <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">02 · Walk</span><h3 class="d3">Shared prototype</h3><p class="body-sm" style="margin-top:8px">One clickable path, including failures, empty states, and permission edges the team argues over once.</p></li>
+- <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">03 · Ship</span><h3 class="d3">Launch-ready UI</h3><p class="body-sm" style="margin-top:8px">Design system foundations and screens engineering can build against: handoff included.</p></li>
++ <li><span class="wk" style="display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta);margin-bottom:12px">03 · Ship</span><h3 class="d3">Launch-ready UI</h3><p class="body-sm" style="margin-top:8px"><a href="/services/design-systems">Design system</a> foundations and screens engineering can build against: handoff included.</p></li>
+ </ol>
+ </div>
  </section>
 diff --git a/kriva-service-ui-ux-design.html b/kriva-service-ui-ux-design.html
 index a742aa0..5237dc1 100644
 --- a/kriva-service-ui-ux-design.html
 +++ b/kriva-service-ui-ux-design.html
 @@ -480,7 +480,7 @@ body.design-ux .lp-pair figure{min-width:0}
-           <span><i>Flows that survive</i></span>
-           <span><i>the next release.</i></span>
-         </h1>
--        <p class="lede" data-r>Research-led flows, prototypes, and interface systems that stay intuitive as products grow, with handoffs engineering can ship against.</p>
-+        <p class="lede" data-r><a href="/services/ux-research">Research</a>-led flows, <a href="/services/wireframing-prototyping">prototypes</a>, and interface systems that stay intuitive as products grow, with handoffs engineering can ship against.</p>
-         <div class="hero-actions" data-r>
-           <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
-           <a href="/work/payroll-pro-saas" class="btn ghost"><span>See PayrollPro</span><i>→</i></a>
+ <span><i>Flows that survive</i></span>
+ <span><i>the next release.</i></span>
+ </h1>
+- <p class="lede" data-r>Research-led flows, prototypes, and interface systems that stay intuitive as products grow, with handoffs engineering can ship against.</p>
++ <p class="lede" data-r><a href="/services/ux-research">Research</a>-led flows, <a href="/services/wireframing-prototyping">prototypes</a>, and interface systems that stay intuitive as products grow, with handoffs engineering can ship against.</p>
+ <div class="hero-actions" data-r>
+ <a href="/contact#book" class="btn"><span>Request a fit call</span><i>→</i></a>
+ <a href="/work/payroll-pro-saas" class="btn ghost"><span>See PayrollPro</span><i>→</i></a>
 diff --git a/kriva-solution-saas.html b/kriva-solution-saas.html
 index cd8578e..abfe30f 100644
 --- a/kriva-solution-saas.html
 +++ b/kriva-solution-saas.html
 @@ -1019,7 +1019,7 @@ body.page-saas .hero{
-       <article>
-         <span class="k">01 · Launch</span>
-         <h3>Launch an MVP</h3>
--        <p>For teams validating a focused workflow, technical feasibility, or demo-ready product.</p>
-+        <p>For teams validating a focused workflow, technical feasibility, or demo-ready product. Some validation MVPs start on <a href="/services/no-code-low-code">no-code / low-code</a> before a custom build.</p>
-       </article>
-       <article>
-         <span class="k">02 · Improve</span>
+ <article>
+ <span class="k">01 · Launch</span>
+ <h3>Launch an MVP</h3>
+- <p>For teams validating a focused workflow, technical feasibility, or demo-ready product.</p>
++ <p>For teams validating a focused workflow, technical feasibility, or demo-ready product. Some validation MVPs start on <a href="/services/no-code-low-code">no-code / low-code</a> before a custom build.</p>
+ </article>
+ <article>
+ <span class="k">02 · Improve</span>
 -- 
 2.43.0
 
@@ -454,14 +425,14 @@ Service pages with 1-question FAQs (logo-design, ux-research, no-code-low-code):
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01J3b4KBb1a74oP2qUZYrU53
 ---
- kriva-insight-ai-in-product-design-2026.html |  8 ++++--
+ kriva-insight-ai-in-product-design-2026.html | 8 ++++--
  kriva-insight-crm-dashboard-ux-patterns.html | 12 ++++++---
- kriva-insight-no-code-vs-custom-mvp.html     | 12 ++++++---
- kriva-insight-saas-mvp-uk-guide.html         |  8 ++++--
- kriva-insight-saas-onboarding-patterns.html  | 13 ++++++---
- kriva-service-logo-design.html               | 28 ++++++++++++++++++++
- kriva-service-no-code-low-code.html          | 28 ++++++++++++++++++++
- kriva-service-ux-research.html               | 28 ++++++++++++++++++++
+ kriva-insight-no-code-vs-custom-mvp.html | 12 ++++++---
+ kriva-insight-saas-mvp-uk-guide.html | 8 ++++--
+ kriva-insight-saas-onboarding-patterns.html | 13 ++++++---
+ kriva-service-logo-design.html | 28 ++++++++++++++++++++
+ kriva-service-no-code-low-code.html | 28 ++++++++++++++++++++
+ kriva-service-ux-research.html | 28 ++++++++++++++++++++
  8 files changed, 123 insertions(+), 14 deletions(-)
 
 diff --git a/kriva-insight-ai-in-product-design-2026.html b/kriva-insight-ai-in-product-design-2026.html
@@ -478,7 +449,7 @@ index 7c403bf..f9828d9 100644
  <style>
  /* Shared KRIVA tokens + primitives */
 @@ -329,12 +329,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
-       <p>AI tools are no longer experimental side projects in design teams. In 2026, the agencies shipping fastest treat Claude, ChatGPT, Figma AI, and Cursor as part of the delivery stack, with clear guardrails so people still own the final call.</p>
+ <p>AI tools are no longer experimental side projects in design teams. In 2026, the agencies shipping fastest treat Claude, ChatGPT, Figma AI, and Cursor as part of the delivery stack, with clear guardrails so people still own the final call.</p>
  <h2>Where AI saves the most time</h2>
  <ul><li>Research synthesis, turning interview notes, support tickets, and analytics into structured problem statements.</li><li>First-draft flows, generating wireframe variants to react to, not to ship blindly.</li><li>Copy exploration, headline and microcopy options grounded in brand voice guidelines.</li><li>Design QA · spotting spacing inconsistencies, contrast issues, and component drift across screens.</li><li>Handoff prep, annotating flows and edge cases before dev kickoff.</li></ul>
 +<p>Notice what is not on that list: strategy, prioritization, and anything a client signs off on. The pattern behind every item is the same, AI is generating volume for a human to react to, or checking consistency against rules a human already set. The moment a task requires deciding what the product should do rather than producing variants of a decision already made, it moves off this list.</p>
@@ -492,9 +463,9 @@ index 7c403bf..f9828d9 100644
 +<p>Track cycle time from brief to approved prototype, revision rounds per milestone, and defect rate post-handoff. In our own delivery tracking, the compression shows up between brief and first reviewable prototype, the volume-heavy stage, while review and alignment time stays roughly flat, because AI handles volume, and humans handle taste. If cycle time drops but revision rounds climb, the AI is producing drafts faster than it is producing good drafts, and the process needs a tighter gate, not more generation.</p>
 +<h2>What clients should ask any AI-assisted studio</h2>
 +<p>Three questions separate a working AI process from a marketing line. Which stages use AI and which never do, a real answer names specific stages and specific tools. Who reviews AI output before it reaches me, the answer should be a person with a name and seniority, not "our process." And does AI-assisted mean cheaper, faster, or better, an honest studio picks at most two and can show where the third was traded. How we run this on live projects is documented in <a href="/services/ai-assisted-development">AI-assisted development</a>, including the human gates on every send.</p>
-     </div>
-     <nav class="rel-sol" aria-label="Related pages" data-r><a href="/services/ai-assisted-development">AI-assisted development</a><a href="/services/product-design">Product design</a></nav>
-     <aside class="related" aria-labelledby="relH">
+ </div>
+ <nav class="rel-sol" aria-label="Related pages" data-r><a href="/services/ai-assisted-development">AI-assisted development</a><a href="/services/product-design">Product design</a></nav>
+ <aside class="related" aria-labelledby="relH">
 diff --git a/kriva-insight-crm-dashboard-ux-patterns.html b/kriva-insight-crm-dashboard-ux-patterns.html
 index d93e0e5..1aa0514 100644
 --- a/kriva-insight-crm-dashboard-ux-patterns.html
@@ -509,11 +480,11 @@ index d93e0e5..1aa0514 100644
  <style>
  /* Shared KRIVA tokens + primitives */
 @@ -326,15 +326,21 @@ html.js [data-s].in>*{opacity:1;transform:none}
-   </header>
-   <div class="wrap">
-     <div class="prose" data-r>
--      <p>Sales teams abandon CRM dashboards that look impressive in demos but fail on Monday morning. The best-performing CRM UIs we ship share a few repeatable patterns.</p>
-+      <p>Sales teams abandon CRM dashboards that look impressive in demos but fail on Monday morning. The gap is almost never data. It is that the dashboard was designed for a quarterly review, and the rep lives in a Tuesday at 9:40 with six calls to make. The best-performing CRM UIs we ship share a few repeatable patterns.</p>
+ </header>
+ <div class="wrap">
+ <div class="prose" data-r>
+- <p>Sales teams abandon CRM dashboards that look impressive in demos but fail on Monday morning. The best-performing CRM UIs we ship share a few repeatable patterns.</p>
++ <p>Sales teams abandon CRM dashboards that look impressive in demos but fail on Monday morning. The gap is almost never data. It is that the dashboard was designed for a quarterly review, and the rep lives in a Tuesday at 9:40 with six calls to make. The best-performing CRM UIs we ship share a few repeatable patterns.</p>
  <h2>Lead with today's work, not global analytics</h2>
  <p>Reps need calls to make, deals at risk, and tasks overdue, not company-wide pipeline charts on login. Reserve executive roll-ups for manager roles.</p>
 +<p>The test is simple: can a rep act on the first screen without clicking anything? If the landing view is a bar chart, the answer is no. On <a href="/work/crm-pulse-dashboard">CRMPulse</a>, an 80-rep sales org, we replaced the analytics landing page with a work queue: today's follow-ups on top, deals with no next step flagged below, and pipeline totals pushed to a separate manager view. A chart tells a rep how the quarter is going. A queue tells them what to do next. Only one of those gets opened every morning.</p>
@@ -529,9 +500,9 @@ index d93e0e5..1aa0514 100644
 +<p>Configuration works when it is bounded: a rep can reorder and pin, a manager can publish a team view, and only an admin can add new widgets to the library. Unbounded configuration produces eighty private dashboards and no shared definition of pipeline. Seed three role layouts on day one, rep, manager, and ops, and let usage data tell you what to change. If a widget goes unopened for a month, remove it; every unused panel taxes the ones that matter.</p>
 +<h2>What to measure after launch</h2>
 +<p>Dashboard success is behavioral, not aesthetic. Track three things: how many reps open the view before their first call of the day, how often deals leave the "no next step" state within 24 hours of being flagged, and whether managers stop asking for exported spreadsheets. When the spreadsheet exports stop, the dashboard has become the source of truth. Until then it is decoration beside the real workflow, the same failure mode we see in <a href="/services/crm-development">CRM workflows</a> generally.</p>
-     </div>
-     <nav class="rel-sol" aria-label="Related pages" data-r><a href="/services/crm-development">CRM design</a><a href="/services/dashboard-design">Dashboard design</a></nav>
-     <aside class="related" aria-labelledby="relH">
+ </div>
+ <nav class="rel-sol" aria-label="Related pages" data-r><a href="/services/crm-development">CRM design</a><a href="/services/dashboard-design">Dashboard design</a></nav>
+ <aside class="related" aria-labelledby="relH">
 diff --git a/kriva-insight-no-code-vs-custom-mvp.html b/kriva-insight-no-code-vs-custom-mvp.html
 index 8f02bb0..a624da0 100644
 --- a/kriva-insight-no-code-vs-custom-mvp.html
@@ -546,11 +517,11 @@ index 8f02bb0..a624da0 100644
  <style>
  /* Shared KRIVA tokens + primitives */
 @@ -326,15 +326,19 @@ html.js [data-s].in>*{opacity:1;transform:none}
-   </header>
-   <div class="wrap">
-     <div class="prose" data-r>
--      <p>Founders often ask whether to launch on Bubble, Webflow, or Framer, or invest in custom Next.js from day one. The honest answer depends on validation stage, team capacity, and what you need to learn in the next 90 days.</p>
-+      <p>Founders often ask whether to launch on Bubble, Webflow, or Framer, or invest in custom Next.js from day one. The honest answer depends on validation stage, team capacity, and what you need to learn in the next 90 days. The wrong answer is choosing by ideology, "real products need real code" and "code is dead" both cost founders quarters they did not have.</p>
+ </header>
+ <div class="wrap">
+ <div class="prose" data-r>
+- <p>Founders often ask whether to launch on Bubble, Webflow, or Framer, or invest in custom Next.js from day one. The honest answer depends on validation stage, team capacity, and what you need to learn in the next 90 days.</p>
++ <p>Founders often ask whether to launch on Bubble, Webflow, or Framer, or invest in custom Next.js from day one. The honest answer depends on validation stage, team capacity, and what you need to learn in the next 90 days. The wrong answer is choosing by ideology, "real products need real code" and "code is dead" both cost founders quarters they did not have.</p>
  <h2>When no-code is the right call</h2>
 -<ul><li>You need to test demand with real payments or bookings in weeks, not months.</li><li>The core workflow is standard (marketplace, directory, landing + CRM handoff).</li><li>You expect significant pivots before committing to a engineering team.</li><li>Integrations are limited to well-supported Zapier/Make connectors.</li></ul>
 +<ul><li>You need to test demand with real payments or bookings in weeks, not months.</li><li>The core workflow is standard (marketplace, directory, landing + CRM handoff).</li><li>You expect significant pivots before committing to an engineering team.</li><li>Integrations are limited to well-supported Zapier/Make connectors.</li></ul>
@@ -565,9 +536,9 @@ index 8f02bb0..a624da0 100644
  <h2>Decision framework</h2>
  <p>Ask: What must be true in 90 days? If the answer is 'learn whether anyone pays,' bias no-code. If the answer is 'prove we can operate at scale,' bias custom. Either way, design the UX properly first, switching platforms is expensive, but switching bad UX is worse.</p>
 +<p>Three more questions worth answering honestly before choosing. Who maintains this in month four, if the answer is "nobody technical," a no-code tool your ops team can edit beats a codebase that waits for a hire. What is the riskiest assumption, build only the slice that tests it. And what does a dead end cost, if a rebuild later would sink you, spend more now; if it is two months of work, validation speed wins. We build <a href="/services/no-code-low-code">both paths</a>, which is exactly why we have no platform to sell you.</p>
-     </div>
-     <nav class="rel-sol" aria-label="Related pages" data-r><a href="/services/no-code-low-code">No-code / low-code</a><a href="/services/web-development">Web development</a><a href="/solutions/saas">SaaS solutions</a></nav>
-     <aside class="related" aria-labelledby="relH">
+ </div>
+ <nav class="rel-sol" aria-label="Related pages" data-r><a href="/services/no-code-low-code">No-code / low-code</a><a href="/services/web-development">Web development</a><a href="/solutions/saas">SaaS solutions</a></nav>
+ <aside class="related" aria-labelledby="relH">
 diff --git a/kriva-insight-saas-mvp-uk-guide.html b/kriva-insight-saas-mvp-uk-guide.html
 index 5ae229a..bcac8f1 100644
 --- a/kriva-insight-saas-mvp-uk-guide.html
@@ -596,9 +567,9 @@ index 5ae229a..bcac8f1 100644
  <h2>A practical 12-week MVP plan</h2>
  <ul><li>Weeks 1-2: discovery, ICP alignment, and UX flows.</li><li>Weeks 3-5: high-fidelity UI and clickable prototype validation.</li><li>Weeks 6-10: build core flows, QA, and event instrumentation.</li><li>Weeks 11-12: launch, support, and first iteration sprint.</li></ul>
 +<p>Two UK-specific notes on the plan. Put the data-protection decisions, what personal data you store, where, and how it leaves, into weeks 1-2 with the UX flows, because retrofitting them after build is rework. And if SEIS/EIS investment is on your path, start advance assurance in parallel with the build; HMRC's timeline is not yours to control. The plan itself is the same discipline we apply on <a href="/solutions/saas">SaaS engagements</a>: one core outcome, instrumented from day one, shipped in phases the team can absorb.</p>
-     </div>
-     <nav class="rel-sol" aria-label="Related pages" data-r><a href="/solutions/saas">SaaS solutions</a><a href="/services/saas-platforms">SaaS product design</a></nav>
-     <aside class="related" aria-labelledby="relH">
+ </div>
+ <nav class="rel-sol" aria-label="Related pages" data-r><a href="/solutions/saas">SaaS solutions</a><a href="/services/saas-platforms">SaaS product design</a></nav>
+ <aside class="related" aria-labelledby="relH">
 diff --git a/kriva-insight-saas-onboarding-patterns.html b/kriva-insight-saas-onboarding-patterns.html
 index cfcf169..33ffe9c 100644
 --- a/kriva-insight-saas-onboarding-patterns.html
@@ -613,11 +584,11 @@ index cfcf169..33ffe9c 100644
  <style>
  /* Shared KRIVA tokens + primitives */
 @@ -326,17 +326,24 @@ html.js [data-s].in>*{opacity:1;transform:none}
-   </header>
-   <div class="wrap">
-     <div class="prose" data-r>
--      <p>Most SaaS activation problems are onboarding problems. Users sign up with intent, hit friction in the first session, and never return. These five patterns show up repeatedly in projects where activation improved measurably.</p>
-+      <p>Most SaaS activation problems are onboarding problems. Users sign up with intent, hit friction in the first session, and never return. The expensive part is that the team usually finds out weeks later, in a churn report, long after the moment the user gave up. These five patterns show up repeatedly in projects where activation improved measurably.</p>
+ </header>
+ <div class="wrap">
+ <div class="prose" data-r>
+- <p>Most SaaS activation problems are onboarding problems. Users sign up with intent, hit friction in the first session, and never return. These five patterns show up repeatedly in projects where activation improved measurably.</p>
++ <p>Most SaaS activation problems are onboarding problems. Users sign up with intent, hit friction in the first session, and never return. The expensive part is that the team usually finds out weeks later, in a churn report, long after the moment the user gave up. These five patterns show up repeatedly in projects where activation improved measurably.</p>
  <h2>1. Progressive disclosure beats feature tours</h2>
  <p>Long product tours feel comprehensive and perform terribly. Show users one job-to-be-done path first, import data, invite a teammate, or complete one core action, then unlock advanced features after success.</p>
 +<p>The reason tours fail is that they explain the product instead of operating it. A user who has just signed up has one job in mind; every tooltip that is not about that job is a delay. Progressive disclosure inverts the tour: the interface starts with the minimum surface for the first job and grows as the user succeeds. The practical rule we apply: nothing appears in the first session unless it is needed to finish the first job or leads directly to the second one.</p>
@@ -636,146 +607,107 @@ index cfcf169..33ffe9c 100644
 +<p>Pick the one metric that means the product is doing its job, first payroll run completed, first invoice sent, first report shared, and make progress toward it visible from day one. Time-to-value is also an internal instrument: instrument each onboarding step, watch where users stall, and fix the step, not the messaging around it. Teams that measure time-to-first-value weekly ship different roadmaps from teams that measure signups.</p>
 +<h2>Where to start</h2>
 +<p>Do not redesign onboarding in one release. Instrument the current funnel first, find the single step where the most users stall, and apply whichever pattern above addresses it. Onboarding rebuilt in phases beside a live product is the same discipline as any workflow change: one measured step at a time. That is the approach we take on <a href="/solutions/saas">SaaS engagements</a> generally, and it is why most onboarding work starts as a two-week diagnostic rather than a redesign.</p>
-     </div>
-     <nav class="rel-sol" aria-label="Related pages" data-r><a href="/solutions/saas">SaaS solutions</a><a href="/work/payroll-pro-saas">PayrollPro case study</a></nav>
-     <aside class="related" aria-labelledby="relH">
+ </div>
+ <nav class="rel-sol" aria-label="Related pages" data-r><a href="/solutions/saas">SaaS solutions</a><a href="/work/payroll-pro-saas">PayrollPro case study</a></nav>
+ <aside class="related" aria-labelledby="relH">
 diff --git a/kriva-service-logo-design.html b/kriva-service-logo-design.html
 index dee588d..cfc2872 100644
 --- a/kriva-service-logo-design.html
 +++ b/kriva-service-logo-design.html
 @@ -453,6 +453,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
-     <h2 class="d2" id="faqH" data-r style="margin-top:16px">About Logo Design</h2>
-     <div class="faq" data-r>
-       <details><summary>Is logo design part of a full rebrand?</summary><p>It can stand alone or open a Branding &amp; Graphic Design engagement. Logo owns the mark system; branding owns the wider visual language.</p></details>
-+    
-+      <details><summary>What do we receive at the end of a logo project?</summary><p>The mark in every working format (SVG, PNG, favicon and app-icon sizes), color and mono variants, clear-space and minimum-size rules, and a short usage sheet your team and vendors can follow without asking us.</p></details>
-+      <details><summary>Can you rework an existing logo instead of starting over?</summary><p>Yes. Many engagements are refinements: fixing legibility at small sizes, building the missing mono or inverse variants, or tightening a mark that was only ever designed for one surface.</p></details>
-+      <details><summary>How do you test a logo before delivery?</summary><p>Against real surfaces, not a presentation slide: favicon size, app icon, invoice header, vehicle panel, and dark UI. A mark that only works at 560px wide is not finished.</p></details>
-     </div>
-     <div class="sib" data-r style="margin-top:32px">
-       <a href="/services/branding">Branding</a>
+ <h2 class="d2" id="faqH" data-r style="margin-top:16px">About Logo Design</h2>
+ <div class="faq" data-r>
+ <details><summary>Is logo design part of a full rebrand?</summary><p>It can stand alone or open a Branding &amp; Graphic Design engagement. Logo owns the mark system; branding owns the wider visual language.</p></details>
++ 
++ <details><summary>What do we receive at the end of a logo project?</summary><p>The mark in every working format (SVG, PNG, favicon and app-icon sizes), color and mono variants, clear-space and minimum-size rules, and a short usage sheet your team and vendors can follow without asking us.</p></details>
++ <details><summary>Can you rework an existing logo instead of starting over?</summary><p>Yes. Many engagements are refinements: fixing legibility at small sizes, building the missing mono or inverse variants, or tightening a mark that was only ever designed for one surface.</p></details>
++ <details><summary>How do you test a logo before delivery?</summary><p>Against real surfaces, not a presentation slide: favicon size, app icon, invoice header, vehicle panel, and dark UI. A mark that only works at 560px wide is not finished.</p></details>
+ </div>
+ <div class="sib" data-r style="margin-top:32px">
+ <a href="/services/branding">Branding</a>
 @@ -561,6 +565,30 @@ html.js [data-s].in>*{opacity:1;transform:none}
-         "@type": "Answer",
-         "text": "It can be standalone or the first phase of a broader branding engagement, depending on your needs."
-       }
-+    },
-+    {
-+      "@type": "Question",
-+      "name": "What do we receive at the end of a logo project?",
-+      "acceptedAnswer": {
-+        "@type": "Answer",
-+        "text": "The mark in every working format (SVG, PNG, favicon and app-icon sizes), color and mono variants, clear-space and minimum-size rules, and a short usage sheet your team and vendors can follow without asking us."
-+      }
-+    },
-+    {
-+      "@type": "Question",
-+      "name": "Can you rework an existing logo instead of starting over?",
-+      "acceptedAnswer": {
-+        "@type": "Answer",
-+        "text": "Yes. Many engagements are refinements: fixing legibility at small sizes, building the missing mono or inverse variants, or tightening a mark that was only ever designed for one surface."
-+      }
-+    },
-+    {
-+      "@type": "Question",
-+      "name": "How do you test a logo before delivery?",
-+      "acceptedAnswer": {
-+        "@type": "Answer",
-+        "text": "Against real surfaces, not a presentation slide: favicon size, app icon, invoice header, vehicle panel, and dark UI. A mark that only works at 560px wide is not finished."
-+      }
-     }
-   ]
+ "@type": "Answer", "text": "It can be standalone or the first phase of a broader branding engagement, depending on your needs."
+ }
++ }, + {
++ "@type": "Question", + "name": "What do we receive at the end of a logo project?", + "acceptedAnswer": {
++ "@type": "Answer", + "text": "The mark in every working format (SVG, PNG, favicon and app-icon sizes), color and mono variants, clear-space and minimum-size rules, and a short usage sheet your team and vendors can follow without asking us."
++ }
++ }, + {
++ "@type": "Question", + "name": "Can you rework an existing logo instead of starting over?", + "acceptedAnswer": {
++ "@type": "Answer", + "text": "Yes. Many engagements are refinements: fixing legibility at small sizes, building the missing mono or inverse variants, or tightening a mark that was only ever designed for one surface."
++ }
++ }, + {
++ "@type": "Question", + "name": "How do you test a logo before delivery?", + "acceptedAnswer": {
++ "@type": "Answer", + "text": "Against real surfaces, not a presentation slide: favicon size, app icon, invoice header, vehicle panel, and dark UI. A mark that only works at 560px wide is not finished."
++ }
+ }
+ ]
  }
 diff --git a/kriva-service-no-code-low-code.html b/kriva-service-no-code-low-code.html
 index 0ac770b..6be29f7 100644
 --- a/kriva-service-no-code-low-code.html
 +++ b/kriva-service-no-code-low-code.html
 @@ -435,6 +435,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
-     <h2 class="d2" id="faqH" data-r style="margin-top:16px">About No-Code / Low-Code</h2>
-     <div class="faq" data-r>
-       <details><summary>When is no-code the wrong choice?</summary><p>Highly custom logic, strict compliance, or massive scale usually need custom code. We will tell you honestly in discovery.</p></details>
-+    
-+      <details><summary>Which platforms do you actually build on?</summary><p>Webflow and Framer for marketing sites and content, Bubble for logged-in application workflows, and Make for the automation between them. We pick per job — a content site on Bubble or an app on Webflow is a casting error we refuse early.</p></details>
-+      <details><summary>When should we move from no-code to custom code?</summary><p>When you are paying for workarounds more than features: a core workflow hits a hard platform limit, support tickets trace to platform behavior you cannot change, or a deal is blocked on compliance the platform cannot offer. Then we migrate the slice that hit the wall, not the whole product.</p></details>
-+      <details><summary>Who maintains a no-code build after launch?</summary><p>Your team can, and that is much of the point. We hand over editor access, a short operating guide, and named owners for each workflow; ongoing support is available but not required.</p></details>
-     </div>
-     <div class="sib" data-r style="margin-top:32px">
-       <a href="/services/web-development">Web Design &amp; Development</a>
+ <h2 class="d2" id="faqH" data-r style="margin-top:16px">About No-Code / Low-Code</h2>
+ <div class="faq" data-r>
+ <details><summary>When is no-code the wrong choice?</summary><p>Highly custom logic, strict compliance, or massive scale usually need custom code. We will tell you honestly in discovery.</p></details>
++ 
++ <details><summary>Which platforms do you actually build on?</summary><p>Webflow and Framer for marketing sites and content, Bubble for logged-in application workflows, and Make for the automation between them. We pick per job, a content site on Bubble or an app on Webflow is a casting error we refuse early.</p></details>
++ <details><summary>When should we move from no-code to custom code?</summary><p>When you are paying for workarounds more than features: a core workflow hits a hard platform limit, support tickets trace to platform behavior you cannot change, or a deal is blocked on compliance the platform cannot offer. Then we migrate the slice that hit the wall, not the whole product.</p></details>
++ <details><summary>Who maintains a no-code build after launch?</summary><p>Your team can, and that is much of the point. We hand over editor access, a short operating guide, and named owners for each workflow; ongoing support is available but not required.</p></details>
+ </div>
+ <div class="sib" data-r style="margin-top:32px">
+ <a href="/services/web-development">Web Design &amp; Development</a>
 @@ -542,6 +546,30 @@ html.js [data-s].in>*{opacity:1;transform:none}
-         "@type": "Answer",
-         "text": "Highly custom logic, strict compliance, or massive scale usually need custom code. We'll tell you honestly in discovery."
-       }
-+    },
-+    {
-+      "@type": "Question",
-+      "name": "Which platforms do you actually build on?",
-+      "acceptedAnswer": {
-+        "@type": "Answer",
-+        "text": "Webflow and Framer for marketing sites and content, Bubble for logged-in application workflows, and Make for the automation between them. We pick per job — a content site on Bubble or an app on Webflow is a casting error we refuse early."
-+      }
-+    },
-+    {
-+      "@type": "Question",
-+      "name": "When should we move from no-code to custom code?",
-+      "acceptedAnswer": {
-+        "@type": "Answer",
-+        "text": "When you are paying for workarounds more than features: a core workflow hits a hard platform limit, support tickets trace to platform behavior you cannot change, or a deal is blocked on compliance the platform cannot offer. Then we migrate the slice that hit the wall, not the whole product."
-+      }
-+    },
-+    {
-+      "@type": "Question",
-+      "name": "Who maintains a no-code build after launch?",
-+      "acceptedAnswer": {
-+        "@type": "Answer",
-+        "text": "Your team can, and that is much of the point. We hand over editor access, a short operating guide, and named owners for each workflow; ongoing support is available but not required."
-+      }
-     }
-   ]
+ "@type": "Answer", "text": "Highly custom logic, strict compliance, or massive scale usually need custom code. We'll tell you honestly in discovery."
+ }
++ }, + {
++ "@type": "Question", + "name": "Which platforms do you actually build on?", + "acceptedAnswer": {
++ "@type": "Answer", + "text": "Webflow and Framer for marketing sites and content, Bubble for logged-in application workflows, and Make for the automation between them. We pick per job, a content site on Bubble or an app on Webflow is a casting error we refuse early."
++ }
++ }, + {
++ "@type": "Question", + "name": "When should we move from no-code to custom code?", + "acceptedAnswer": {
++ "@type": "Answer", + "text": "When you are paying for workarounds more than features: a core workflow hits a hard platform limit, support tickets trace to platform behavior you cannot change, or a deal is blocked on compliance the platform cannot offer. Then we migrate the slice that hit the wall, not the whole product."
++ }
++ }, + {
++ "@type": "Question", + "name": "Who maintains a no-code build after launch?", + "acceptedAnswer": {
++ "@type": "Answer", + "text": "Your team can, and that is much of the point. We hand over editor access, a short operating guide, and named owners for each workflow; ongoing support is available but not required."
++ }
+ }
+ ]
  }
 diff --git a/kriva-service-ux-research.html b/kriva-service-ux-research.html
 index 7d0e6b3..3e2bf0b 100644
 --- a/kriva-service-ux-research.html
 +++ b/kriva-service-ux-research.html
 @@ -443,6 +443,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
-     <h2 class="d2" id="faqH" data-r style="margin-top:16px">About UX Research</h2>
-     <div class="faq" data-r>
-       <details><summary>How long does a research sprint take?</summary><p>Most focused studies run 2–4 weeks from kickoff to readout, depending on recruitment and scope.</p></details>
-+    
-+      <details><summary>How many users do we need for useful research?</summary><p>Fewer than teams expect. Five to eight interviews per role usually surface the recurring workflow problems; usability testing finds most blocking issues with a similar count. The goal is decision-grade evidence, not statistical proof.</p></details>
-+      <details><summary>What do we get at the end of a research sprint?</summary><p>A written findings document tied to decisions: what we observed, what it means for the product, and what we recommend building, changing, or dropping — with recordings and notes you own. Not a slide deck of quotes.</p></details>
-+      <details><summary>Can research run alongside design and build?</summary><p>Yes, and it usually should. Discovery interviews front-load the big decisions; usability tests then run against prototypes each cycle, so evidence arrives before code, not after launch.</p></details>
-     </div>
-     <div class="sib" data-r style="margin-top:32px">
-       <a href="/services/product-design">Product Design</a>
+ <h2 class="d2" id="faqH" data-r style="margin-top:16px">About UX Research</h2>
+ <div class="faq" data-r>
+ <details><summary>How long does a research sprint take?</summary><p>Most focused studies run 2–4 weeks from kickoff to readout, depending on recruitment and scope.</p></details>
++ 
++ <details><summary>How many users do we need for useful research?</summary><p>Fewer than teams expect. Five to eight interviews per role usually surface the recurring workflow problems; usability testing finds most blocking issues with a similar count. The goal is decision-grade evidence, not statistical proof.</p></details>
++ <details><summary>What do we get at the end of a research sprint?</summary><p>A written findings document tied to decisions: what we observed, what it means for the product, and what we recommend building, changing, or dropping, with recordings and notes you own. Not a slide deck of quotes.</p></details>
++ <details><summary>Can research run alongside design and build?</summary><p>Yes, and it usually should. Discovery interviews front-load the big decisions; usability tests then run against prototypes each cycle, so evidence arrives before code, not after launch.</p></details>
+ </div>
+ <div class="sib" data-r style="margin-top:32px">
+ <a href="/services/product-design">Product Design</a>
 @@ -550,6 +554,30 @@ html.js [data-s].in>*{opacity:1;transform:none}
-         "@type": "Answer",
-         "text": "Most focused studies run 2-4 weeks from kickoff to readout, depending on recruitment and scope."
-       }
-+    },
-+    {
-+      "@type": "Question",
-+      "name": "How many users do we need for useful research?",
-+      "acceptedAnswer": {
-+        "@type": "Answer",
-+        "text": "Fewer than teams expect. Five to eight interviews per role usually surface the recurring workflow problems; usability testing finds most blocking issues with a similar count. The goal is decision-grade evidence, not statistical proof."
-+      }
-+    },
-+    {
-+      "@type": "Question",
-+      "name": "What do we get at the end of a research sprint?",
-+      "acceptedAnswer": {
-+        "@type": "Answer",
-+        "text": "A written findings document tied to decisions: what we observed, what it means for the product, and what we recommend building, changing, or dropping — with recordings and notes you own. Not a slide deck of quotes."
-+      }
-+    },
-+    {
-+      "@type": "Question",
-+      "name": "Can research run alongside design and build?",
-+      "acceptedAnswer": {
-+        "@type": "Answer",
-+        "text": "Yes, and it usually should. Discovery interviews front-load the big decisions; usability tests then run against prototypes each cycle, so evidence arrives before code, not after launch."
-+      }
-     }
-   ]
+ "@type": "Answer", "text": "Most focused studies run 2-4 weeks from kickoff to readout, depending on recruitment and scope."
+ }
++ }, + {
++ "@type": "Question", + "name": "How many users do we need for useful research?", + "acceptedAnswer": {
++ "@type": "Answer", + "text": "Fewer than teams expect. Five to eight interviews per role usually surface the recurring workflow problems; usability testing finds most blocking issues with a similar count. The goal is decision-grade evidence, not statistical proof."
++ }
++ }, + {
++ "@type": "Question", + "name": "What do we get at the end of a research sprint?", + "acceptedAnswer": {
++ "@type": "Answer", + "text": "A written findings document tied to decisions: what we observed, what it means for the product, and what we recommend building, changing, or dropping, with recordings and notes you own. Not a slide deck of quotes."
++ }
++ }, + {
++ "@type": "Question", + "name": "Can research run alongside design and build?", + "acceptedAnswer": {
++ "@type": "Answer", + "text": "Yes, and it usually should. Discovery interviews front-load the big decisions; usability tests then run against prototypes each cycle, so evidence arrives before code, not after launch."
++ }
+ }
+ ]
  }
 -- 
 2.43.0
@@ -799,183 +731,183 @@ index d3ffc71..3ce7778 100644
 +++ b/sitemap.xml
 @@ -17,7 +17,7 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/contact</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.9</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/contact</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.9</priority>
+ </url>
 @@ -31,7 +31,7 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/faq</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.6</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/faq</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.6</priority>
+ </url>
 @@ -73,7 +73,7 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/work</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.9</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/work</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.9</priority>
+ </url>
 @@ -101,14 +101,14 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/solutions/trucking-logistics</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.9</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/solutions/trucking-logistics</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.9</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/solutions/saas</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.9</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/solutions/saas</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.9</priority>
+ </url>
 @@ -122,7 +122,7 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/solutions/car-transportation</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.9</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/solutions/car-transportation</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.9</priority>
+ </url>
 @@ -185,28 +185,28 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/insights/ai-in-product-design-2026</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>yearly</changefreq>
-     <priority>0.6</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/insights/ai-in-product-design-2026</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>yearly</changefreq>
+ <priority>0.6</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/insights/saas-onboarding-patterns</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>yearly</changefreq>
-     <priority>0.6</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/insights/saas-onboarding-patterns</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>yearly</changefreq>
+ <priority>0.6</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/insights/saas-mvp-uk-guide</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>yearly</changefreq>
-     <priority>0.6</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/insights/saas-mvp-uk-guide</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>yearly</changefreq>
+ <priority>0.6</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/insights/no-code-vs-custom-mvp</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>yearly</changefreq>
-     <priority>0.6</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/insights/no-code-vs-custom-mvp</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>yearly</changefreq>
+ <priority>0.6</priority>
+ </url>
 @@ -220,7 +220,7 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/insights/crm-dashboard-ux-patterns</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>yearly</changefreq>
-     <priority>0.6</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/insights/crm-dashboard-ux-patterns</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>yearly</changefreq>
+ <priority>0.6</priority>
+ </url>
 @@ -234,7 +234,7 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/services/ai-assisted-development</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/ai-assisted-development</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
 @@ -255,21 +255,21 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/services/branding</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/branding</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/services/crm-development</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/crm-development</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/services/dashboard-design</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/dashboard-design</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
 @@ -290,28 +290,28 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/services/logo-design</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/logo-design</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/services/mobile-applications</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/mobile-applications</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/services/no-code-low-code</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/no-code-low-code</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/services/product-design</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/product-design</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
 @@ -332,14 +332,14 @@
  
-   <url>
-     <loc>https://krivatechnologies.com/services/ui-ux-design</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/ui-ux-design</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
  
-   <url>
-     <loc>https://krivatechnologies.com/services/ux-research</loc>
--    <lastmod>2026-09-03</lastmod>
-+    <lastmod>2026-09-04</lastmod>
-     <changefreq>monthly</changefreq>
-     <priority>0.7</priority>
-   </url>
+ <url>
+ <loc>https://krivatechnologies.com/services/ux-research</loc>
+- <lastmod>2026-09-03</lastmod>
++ <lastmod>2026-09-04</lastmod>
+ <changefreq>monthly</changefreq>
+ <priority>0.7</priority>
+ </url>
 -- 
 2.43.0
 
@@ -997,14 +929,14 @@ index eba7ef4..3d50053 100644
 --- a/kriva-contact.html
 +++ b/kriva-contact.html
 @@ -590,7 +590,7 @@ form.sent{display:none}
-           <li><i>◆</i>Your details stay confidential</li>
-           <li><i>◆</i>NDA on request</li>
-           <li><i>◆</i>No commitment required</li>
--          <li><i>◆</i>Recent result: <a href="/work/shiftrail-dispatch">&minus;32% dispatch handle time on 400+ daily routes</a> &middot; <a href="/work">all case studies</a></li>
-+          <li><i>◆</i><span>Recent result: <a href="/work/shiftrail-dispatch">&minus;32% dispatch handle time on 400+ daily routes</a> &middot; <a href="/work">all case studies</a></span></li>
-         </ul>
-         <p class="body-sm" style="margin-top:22px">Prefer to talk first? <a href="#book">Request a fit call</a>. Or email <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>.</p>
-       </aside>
+ <li><i>◆</i>Your details stay confidential</li>
+ <li><i>◆</i>NDA on request</li>
+ <li><i>◆</i>No commitment required</li>
+- <li><i>◆</i>Recent result: <a href="/work/shiftrail-dispatch">&minus;32% dispatch handle time on 400+ daily routes</a> &middot; <a href="/work">all case studies</a></li>
++ <li><i>◆</i><span>Recent result: <a href="/work/shiftrail-dispatch">&minus;32% dispatch handle time on 400+ daily routes</a> &middot; <a href="/work">all case studies</a></span></li>
+ </ul>
+ <p class="body-sm" style="margin-top:22px">Prefer to talk first? <a href="#book">Request a fit call</a>. Or email <a href="mailto:krivatechnlogies@gmail.com">krivatechnlogies@gmail.com</a>.</p>
+ </aside>
 -- 
 2.43.0
 

@@ -1,6 +1,6 @@
 # KRIVA · Photography brief and insertion guide
 
-Nothing on the site currently uses a photograph of a person. That is deliberate — stock
+Nothing on the site currently uses a photograph of a person. That is deliberate, stock
 or AI-generated people would undo the credibility the rest of the site is working for.
 This document specifies exactly what to shoot and how it drops in.
 
@@ -14,12 +14,12 @@ Design tokens now live in `shared/tokens.css` and load first on every page.
 
 ## 1. What to supply
 
-Three images, in priority order. One good photograph beats three mediocre ones — if only
+Three images, in priority order. One good photograph beats three mediocre ones, if only
 the first is possible, ship only the first.
 
 | # | Slot | Subject | Ratio | Min width | Where it goes |
 |---|------|---------|-------|-----------|---------------|
-| 1 | Founder portrait | Dixit Panchal, working — not a posed headshot | 4:5 | 1600px | `/about`, beside the founder paragraph |
+| 1 | Founder portrait | Dixit Panchal, working, not a posed headshot | 4:5 | 1600px | `/about`, beside the founder paragraph |
 | 2 | Working moment | Two or three people at a screen mid-discussion; real work visible | 21:9 | 2400px | Homepage, between the working-model band and the prospects section |
 | 3 | Craft detail | Hands, a whiteboard, a sketch, a screen with real UI | 4:5 | 1600px | `/process`, beside the weekly-cadence section |
 
@@ -29,7 +29,7 @@ The site is editorial, ink-on-paper, restrained. Photography must match, not fig
 
 - Available light. No flash, no studio seamless, no coloured gels.
 - Neutral or desaturated colour. Anything close to the paper tone (`#EAEAE4`) or ink
-  (`#0E1216`) will sit naturally.
+ (`#0E1216`) will sit naturally.
 - Candid over posed. Someone mid-sentence beats someone smiling at the lens.
 - Real screens with real work. Do not stage a fake dashboard.
 - Leave breathing room around the subject so the crop has options.
@@ -59,21 +59,21 @@ hides any placeholder frame automatically when a real image is present.
 
 ```html
 <figure class="figure figure--wide">
-  <img src="/media/photography/working-moment.avif"
-       alt="Two KRIVA engineers reviewing an exception queue on a dispatch console"
-       width="2400" height="1029"
-       loading="lazy" decoding="async">
-  <figcaption>Weekly review, dispatch console</figcaption>
+ <img src="/media/photography/working-moment.avif"
+ alt="Two KRIVA engineers reviewing an exception queue on a dispatch console"
+ width="2400" height="1029"
+ loading="lazy" decoding="async">
+ <figcaption>Weekly review, dispatch console</figcaption>
 </figure>
 ```
 
 Rules that are already enforced by the QA scripts and must stay true:
 
-- `width` and `height` must be the real pixel dimensions — this is what keeps CLS at zero.
+- `width` and `height` must be the real pixel dimensions, this is what keeps CLS at zero.
 - `loading="lazy"` and `decoding="async"` on everything except a hero image.
 - `alt` describes what is happening and who is in frame. It is not a keyword slot.
-  Write "Dixit Panchal reviewing dispatch wireframes", not "web design agency India".
-- If an image is purely decorative, use `alt=""` — never omit the attribute.
+ Write "Dixit Panchal reviewing dispatch wireframes", not "web design agency India".
+- If an image is purely decorative, use `alt=""`, never omit the attribute.
 
 Aspect ratios are locked in CSS (`--wide` 21:9, `--portrait` 4:5) and drop to 16:10 on
 narrow screens, so the crop is predictable. Supply generous margins around the subject.

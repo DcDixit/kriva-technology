@@ -1,8 +1,8 @@
-# Phase 10 — Final Production QA + Deployment Readiness
+# Phase 10, Final Production QA + Deployment Readiness
 
-**Date:** 2026-08-10  
-**Scope:** Read-only QA + fix **verified bugs only**. No new pages. No redesign. No invented assets, attributions, metrics, calendar, or speculative SEO.  
-**Stopping rule:** After this report — **STOP**. Await your launch inputs before any further implementation.
+**Date:** 2026-08-10 
+**Scope:** Read-only QA + fix **verified bugs only**. No new pages. No redesign. No invented assets, attributions, metrics, calendar, or speculative SEO. 
+**Stopping rule:** After this report, **STOP**. Await your launch inputs before any further implementation.
 
 ---
 
@@ -21,7 +21,7 @@ Launch is still **blocked** by P0 content/credibility inputs you must supply (sc
 | Nested asset loading (post-fix) | **READY** |
 | Responsive (post-fix) | **READY** on tested matrix |
 | Credibility / published claims | **READY** (unsupported bylines withheld) |
-| Visual proof (screenshots / OG) | **NOT READY — NEEDS MY INPUT** |
+| Visual proof (screenshots / OG) | **NOT READY, NEEDS MY INPUT** |
 | Privacy/Terms analytics wording | **NEEDS MY INPUT** |
 | **Overall launch** | **NOT READY** |
 
@@ -64,7 +64,7 @@ Launch is still **blocked** by P0 content/credibility inputs you must supply (sc
 | All 17 `/services/*` URLs | **200** + standalone pages |
 | Careers / Industries / FAQ / Technologies | **200** |
 
-Static crawl helper: `node _crawl_links.js` → `missing 0`  
+Static crawl helper: `node _crawl_links.js` → `missing 0` 
 HTTP smoke: `node _http_smoke.js` → `50/50` + unknown still 404
 
 ---
@@ -98,7 +98,7 @@ Automated crawl of all **50** HTTP-200 bodies:
 | Demo/placeholder wording in metadata | **None** |
 | JSON-LD parse errors | **None** |
 
-### Previously deferred services — standalone SEO (now present)
+### Previously deferred services, standalone SEO (now present)
 
 | URL | Title | Canonical | H1 | JSON-LD |
 |-----|-------|-----------|---:|--------:|
@@ -119,8 +119,8 @@ Automated crawl of all **50** HTTP-200 bodies:
 
 ## 5. Responsive results
 
-**Method:** Playwright Chromium against rewrite preview.  
-**Widths:** 320 · 375 · 430 · 768 · 1024 · 1440 (plus focused 900 / 1100 probes).  
+**Method:** Playwright Chromium against rewrite preview. 
+**Widths:** 320 · 375 · 430 · 768 · 1024 · 1440 (plus focused 900 / 1100 probes). 
 **Representative pages:** Home, Trucking, SaaS, Services hub, Design Systems, Work, FleetFlow, Insights, Contact, About, Careers, Industries, FAQ.
 
 ### Verified bugs found & fixed (this phase)
@@ -145,13 +145,13 @@ Automated crawl of all **50** HTTP-200 bodies:
 
 ### Observed OK (no further change)
 
-- Header / mobile sheet after absolute `/shared/` load  
-- Sticky chapter rails desktop-only (hidden ≤1280 by design)  
-- Filter chips intentional horizontal scroll  
-- Contact form stacks on small widths  
-- Footer column collapse  
+- Header / mobile sheet after absolute `/shared/` load 
+- Sticky chapter rails desktop-only (hidden ≤1280 by design) 
+- Filter chips intentional horizontal scroll 
+- Contact form stacks on small widths 
+- Footer column collapse 
 
-**Manual device QA** on a physical phone still recommended before cutover (mega-menu + long H1 wrap) — not a code blocker by itself.
+**Manual device QA** on a physical phone still recommended before cutover (mega-menu + long H1 wrap), not a code blocker by itself.
 
 ---
 
@@ -162,12 +162,12 @@ Automated crawl of all **50** HTTP-200 bodies:
 | Duplicate IDs (static scan) | **0** files |
 | Missing header / footer / chrome.css / chrome.js | **0** |
 | Duplicate `<footer>` | **0** |
-| Multiple WhatsApp links on Contact | **4** occurrences — different placements (not duplicate chrome blocks); **OK** |
+| Multiple WhatsApp links on Contact | **4** occurrences, different placements (not duplicate chrome blocks); **OK** |
 | Broken local `shared/` file refs | **0** (after absolute-path fix) |
 | `vercel.json` duplicate rewrite sources | **0** |
 | Rewrite destinations missing on disk | **0** |
 | FILE_MAP ↔ vercel rewrite parity | **Match** |
-| `<img missing alt>` static hit | **False positive** — commented production `<img>` in FleetFlow HTML only |
+| `<img missing alt>` static hit | **False positive**, commented production `<img>` in FleetFlow HTML only |
 | Runtime nested asset 404s | **Fixed** |
 | Insights runtime SyntaxError | **Fixed** |
 
@@ -197,16 +197,16 @@ Unverified person/company bylines remain **withheld** as `Client attribution TBD
 | Meridian ↔ BrandLift (Anita Desai) | Quote omitted; TBD note | BrandLift case | Approve speaker/company or keep omitted |
 | CarePath (Tom Ashworth) | Withheld | Homepage proof | Publish / withhold / remove |
 
-### Published metrics (keep — previously signed off)
+### Published metrics (keep, previously signed off)
 
-FleetFlow only: **−32%** manual handle time · **11 min** avg exception response · **99.4%** console uptime  
+FleetFlow only: **−32%** manual handle time · **11 min** avg exception response · **99.4%** console uptime 
 Locations: Homepage selected work · Work index featured · Trucking solution proof
 
 ### Soft / qualitative language (not numeric fabrication)
 
-- “Ship faster with AI-augmented…” / “move faster” — qualitative, appears on About, FAQ AI answer, AI service, Services hub, SaaS solution related blurb  
-- FAQ delivery windows (**6 to 10 weeks** / **12 to 20 weeks** / discovery **1 to 2 weeks**) — verified FAQ copy from prior capture  
-- UX Research FAQ **2–4 weeks** — from live service detail source  
+- “Ship faster with AI-augmented…” / “move faster”, qualitative, appears on About, FAQ AI answer, AI service, Services hub, SaaS solution related blurb 
+- FAQ delivery windows (**6 to 10 weeks** / **12 to 20 weeks** / discovery **1 to 2 weeks**), verified FAQ copy from prior capture 
+- UX Research FAQ **2–4 weeks**, from live service detail source 
 
 ### No unsupported numeric AI speed claim found
 
@@ -219,7 +219,7 @@ No live `30–50% faster` claim in public redesign HTML (previously withheld).
 | `.slot` placeholders | **~104** |
 | `flag tbd` / attribution TBD markers | **~109** |
 
-Most TBD flags are screenshot slots + withheld attribution + Privacy/Terms analytics prompts — expected until you supply inputs.
+Most TBD flags are screenshot slots + withheld attribution + Privacy/Terms analytics prompts, expected until you supply inputs.
 
 ---
 
@@ -247,7 +247,7 @@ Most TBD flags are screenshot slots + withheld attribution + Privacy/Terms analy
 | Invented metrics / fake screenshots | **BLOCKED** (do not do) |
 | Per-case OG images / non-featured insight covers | **OPTIONAL** |
 
-### P0 screenshot manifest (unchanged need — still empty)
+### P0 screenshot manifest (unchanged need, still empty)
 
 | Page | Section | Asset | Priority |
 |------|---------|-------|----------|
@@ -270,43 +270,43 @@ Next-project thumbs · per-page OG · non-featured insight covers
 
 ## 9. Routing / deployment findings
 
-1. **Clean URLs require the rewrite layer** — opening raw files or a naive static server without `vercel.json` / `serve-preview.js` will 404 production paths.  
-2. **Asset paths must be root-absolute** — relative `shared/` breaks under `/solutions/*`, `/work/*`, `/services/*`, `/insights/*`. **Fixed sitewide.**  
-3. **Trailing slash:** `trailingSlash: false` → local preview now **308**-redirects; matches intended Vercel behavior.  
-4. **No duplicate/conflicting rewrites** in `vercel.json`.  
-5. **Previously deferred 5 service URLs** now have redesign pages — Phase 8 “hosting choice for deferred URLs” is **obsolete** for those five.  
+1. **Clean URLs require the rewrite layer**, opening raw files or a naive static server without `vercel.json` / `serve-preview.js` will 404 production paths. 
+2. **Asset paths must be root-absolute**, relative `shared/` breaks under `/solutions/*`, `/work/*`, `/services/*`, `/insights/*`. **Fixed sitewide.** 
+3. **Trailing slash:** `trailingSlash: false` → local preview now **308**-redirects; matches intended Vercel behavior. 
+4. **No duplicate/conflicting rewrites** in `vercel.json`. 
+5. **Previously deferred 5 service URLs** now have redesign pages, Phase 8 “hosting choice for deferred URLs” is **obsolete** for those five. 
 6. Deploy this folder as a **static Vercel project** with the committed `vercel.json`, or keep Next (`web/`) as the production app and treat this redesign as the HTML source of truth for a later port.
 
 ---
 
 ## 10. Remaining P0 / P1 blockers
 
-### P0 — must resolve before calling launch “credible”
+### P0, must resolve before calling launch “credible”
 
-1. **Screenshot / visual asset pack** (homepage trio + FleetFlow + Work featured minimum)  
-2. **Attribution decisions** (FleetRoute / FlowLedger / Meridian / CarePath)  
-3. **`brand/og-default.png`** (1200×630)  
-4. **Privacy/Terms analytics language** (none active on redesign today — say so, or name GA4/GTM if enabling on live Next)
+1. **Screenshot / visual asset pack** (homepage trio + FleetFlow + Work featured minimum) 
+2. **Attribution decisions** (FleetRoute / FlowLedger / Meridian / CarePath) 
+3. **`brand/og-default.png`** (1200×630) 
+4. **Privacy/Terms analytics language** (none active on redesign today, say so, or name GA4/GTM if enabling on live Next)
 
-### P1 — strongly recommended before cutover
+### P1, strongly recommended before cutover
 
-5. Remaining case / solution / service slot media  
-6. Physical-device pass on mega-menu + long heroes  
+5. Remaining case / solution / service slot media 
+6. Physical-device pass on mega-menu + long heroes 
 7. Confirm production host = this static redesign **or** Next `web/` (and sync strategy)
 
 ### Not blockers (accepted for now)
 
-- Slot placeholders with TBD flags while awaiting assets  
-- Qualitative “faster with AI” language without percentages  
-- Honest contact booking section without calendar embed  
+- Slot placeholders with TBD flags while awaiting assets 
+- Qualitative “faster with AI” language without percentages 
+- Honest contact booking section without calendar embed 
 
 ---
 
 ## 11. Changes made during Phase 10 (verified bugs only)
 
-1. Absolute `/shared/*` asset paths across **50** HTML files + builders/`apply_chrome.cjs`  
-2. `serve-preview.js` trailing-slash **308** redirect  
-3. Insights index filter script syntax fix  
+1. Absolute `/shared/*` asset paths across **50** HTML files + builders/`apply_chrome.cjs` 
+2. `serve-preview.js` trailing-slash **308** redirect 
+3. Insights index filter script syntax fix 
 4. Work index `.inds` breakpoint overflow fix (`max-width:1200px` → 2 columns)
 
 No pages added. No UX redesign. No attribution guesses. No fake assets.
@@ -315,10 +315,10 @@ No pages added. No UX redesign. No attribution guesses. No fake assets.
 
 ## What I still need from you
 
-1. Attribution confirmations (4 items in §7)  
-2. P0 screenshot set  
-3. OG image file  
-4. Analytics policy for Privacy/Terms  
+1. Attribution confirmations (4 items in §7) 
+2. P0 screenshot set 
+3. OG image file 
+4. Analytics policy for Privacy/Terms 
 5. Explicit go-ahead for which host ships (static redesign vs Next)
 
 ---

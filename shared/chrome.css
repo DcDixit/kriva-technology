@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════
-   KRIVA · canonical header / mega menu / sheet / footer
-   Source of truth for chrome across all redesign pages.
-   ═══════════════════════════════════════════ */
+ KRIVA · canonical header / mega menu / sheet / footer
+ Source of truth for chrome across all redesign pages.
+ ═══════════════════════════════════════════ */
 
 /* ── NAV SHELL ── */
 body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
@@ -13,10 +13,10 @@ body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px;transition:height var(--t-mid) var(--e)}
 .nav.scrolled .nav-in{height:58px}
 .nav .mark{
-  display:inline-flex;align-items:center;flex:none;line-height:0
+ display:inline-flex;align-items:center;flex:none;line-height:0
 }
 .nav .mark-logo{
-  display:block;height:26px;width:auto
+ display:block;height:26px;width:auto
 }
 .nav.scrolled .mark-logo{height:22px}
 
@@ -25,382 +25,352 @@ body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
 .nav-links > li{position:relative}
 
 .nav-link,.nav-trigger{
-  position:relative;display:inline-flex;align-items:center;gap:6px;
-  padding:9px 11px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--steel);transition:color var(--t-fast) var(--e);white-space:nowrap;background:none;border:0;cursor:pointer
+ position:relative;display:inline-flex;align-items:center;gap:6px;
+ padding:9px 11px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+ color:var(--steel);transition:color var(--t-fast) var(--e);white-space:nowrap;background:none;border:0;cursor:pointer
 }
 .nav-link:before,.nav-trigger:before{
-  content:"";position:absolute;left:11px;right:11px;bottom:4px;height:1px;background:currentColor;
-  transform:scaleX(0);transform-origin:100% 50%;transition:transform .45s var(--e)
+ content:"";position:absolute;left:11px;right:11px;bottom:4px;height:1px;background:currentColor;
+ transform:scaleX(0);transform-origin:100% 50%;transition:transform .45s var(--e)
 }
 .nav-link:hover,.nav-trigger:hover,.nav-item.open > .nav-trigger{color:var(--ink)}
 .nav-link:hover:before,.nav-trigger:hover:before,.nav-item.open > .nav-trigger:before{transform:scaleX(1);transform-origin:0 50%}
 .nav-link[aria-current="page"],.nav-item.is-active > .nav-trigger{
-  color:var(--ink)
+ color:var(--ink)
 }
 .nav-link[aria-current="page"]:before,.nav-item.is-active > .nav-trigger:before{
-  transform:scaleX(1);background:var(--blue)
+ transform:scaleX(1);background:var(--blue)
 }
 .nav-chev{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);opacity:.55;transition:transform .35s var(--e),opacity .35s}
 .nav-item.open .nav-chev{transform:rotate(225deg) translateY(-1px);opacity:1}
 
 /* ── MEGA PANEL ── */
 .mm{
-  position:absolute;top:calc(100% + 10px);left:0;z-index:95;
-  width:min(420px,calc(100vw - 2 * var(--gutter)));
-  background:var(--white);border:1px solid var(--rule);
-  box-shadow:0 28px 60px -36px rgba(14,18,22,.45);
-  opacity:0;visibility:hidden;pointer-events:none;
-  transform:translate3d(0,8px,0);
-  transition:opacity .32s var(--e),transform .32s var(--e),visibility .32s
+ position:absolute;top:calc(100% + 10px);left:0;z-index:95;
+ width:min(420px,calc(100vw - 2 * var(--gutter)));
+ background:var(--white);border:1px solid var(--rule);
+ box-shadow:0 28px 60px -36px rgba(14,18,22,.45);
+ opacity:0;visibility:hidden;pointer-events:none;
+ transform:translate3d(0,8px,0);
+ transition:opacity .32s var(--e),transform .32s var(--e),visibility .32s
 }
 .mm[hidden]{display:none}
 .nav-item.open > .mm{display:block;opacity:1;visibility:visible;pointer-events:auto;transform:none}
 .mm-head{
-  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-  padding:16px 18px 12px;border-bottom:1px solid var(--rule-soft)
+ display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+ padding:16px 18px 12px;border-bottom:1px solid var(--rule-soft)
 }
 .mm-head b{font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;color:var(--ink)}
 .mm-head span{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
 .mm-list{list-style:none;padding:8px;display:grid;gap:2px}
 .mm-list a{
-  display:grid;gap:4px;padding:11px 12px;border:1px solid transparent;
-  transition:background var(--t-fast),border-color var(--t-fast),transform .35s var(--e)
+ display:grid;gap:4px;padding:11px 12px;border:1px solid transparent;
+ transition:background var(--t-fast),border-color var(--t-fast),transform .35s var(--e)
 }
 .mm-list a:hover,.mm-list a:focus-visible{background:var(--paper-2);border-color:var(--rule);transform:translateX(2px)}
 .mm-list a strong{display:block;font-family:var(--f-body);font-weight:600;font-size:14px;letter-spacing:-.01em;color:var(--ink);text-transform:none}
 .mm-list a em{display:block;font-style:normal;font-size:12.5px;line-height:1.45;color:var(--steel);text-transform:none;letter-spacing:0;max-width:36ch}
 .mm-foot{padding:10px 16px 14px;border-top:1px solid var(--rule-soft)}
 .mm-foot a{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
-  padding-bottom:2px;border-bottom:1px solid currentColor
+ display:inline-flex;align-items:center;gap:8px;
+ font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+ padding-bottom:2px;border-bottom:1px solid currentColor
 }
 .mm-foot a i{font-style:normal;transition:transform .4s var(--e)}
 .mm-foot a:hover i{transform:translateX(5px)}
 
 /* Solutions mega · bento, product tiles, same chrome language as Integration */
 #mm-solutions{
-  width:min(760px,calc(100vw - 2 * var(--gutter)));
-  left:0
+ width:min(760px,calc(100vw - 2 * var(--gutter)));
+ left:0
 }
 #mm-solutions .mm-list{
-  display:grid;
-  grid-template-columns:1.18fr 1fr;
-  grid-template-areas:
-    "feat saas"
-    "feat car"
-    "account account";
-  gap:6px;padding:10px
+ display:grid;
+ grid-template-columns:1.18fr 1fr;
+ grid-template-areas:
+ "feat saas"
+ "feat car"
+ "account account";
+ gap:6px;padding:10px
 }
 #mm-solutions .mm-list > li{min-width:0;min-height:0}
 #mm-solutions .mm-sol-feat{grid-area:feat;display:flex}
 #mm-solutions .mm-sol-feat a{flex:1}
 #mm-solutions .mm-list > li:nth-child(2){grid-area:saas}
 #mm-solutions .mm-list > li:nth-child(3){grid-area:car}
-#mm-solutions .mm-sol-wide,
-#mm-solutions .mm-list > li:nth-child(4){grid-area:account}
+#mm-solutions .mm-sol-wide, #mm-solutions .mm-list > li:nth-child(4){grid-area:account}
 #mm-solutions .mm-list a{
-  display:grid;
-  grid-template-columns:44px minmax(0,1fr);
-  column-gap:12px;row-gap:4px;align-items:start;
-  padding:13px 12px;min-height:86px;
-  border:1px solid var(--rule-soft);background:var(--white)
+ display:grid;
+ grid-template-columns:44px minmax(0,1fr);
+ column-gap:12px;row-gap:4px;align-items:start;
+ padding:13px 12px;min-height:86px;
+ border:1px solid var(--rule-soft);background:var(--white)
 }
-#mm-solutions .mm-list a:hover,
-#mm-solutions .mm-list a:focus-visible{
-  background:var(--paper);border-color:var(--ink);transform:none
+#mm-solutions .mm-list a:hover, #mm-solutions .mm-list a:focus-visible{
+ background:var(--paper);border-color:var(--ink);transform:none
 }
 #mm-solutions .mm-list a[aria-current="page"]{
-  border-color:var(--ink);background:var(--paper)
+ border-color:var(--ink);background:var(--paper)
 }
 #mm-solutions .mm-list a:before{
-  content:"";grid-column:1;grid-row:1 / span 3;
-  width:44px;height:44px;align-self:center;flex:none;
-  border:1px solid var(--rule);background-color:var(--paper);
-  background-repeat:no-repeat;background-position:center;
-  transition:border-color var(--t-fast) var(--e),transform var(--t-fast) var(--e)
+ content:"";grid-column:1;grid-row:1 / span 3;
+ width:44px;height:44px;align-self:center;flex:none;
+ border:1px solid var(--rule);background-color:var(--paper);
+ background-repeat:no-repeat;background-position:center;
+ transition:border-color var(--t-fast) var(--e),transform var(--t-fast) var(--e)
 }
-#mm-solutions .mm-list a:hover:before,
-#mm-solutions .mm-list a:focus-visible:before{
-  border-color:var(--ink);transform:translateY(-1px)
+#mm-solutions .mm-list a:hover:before, #mm-solutions .mm-list a:focus-visible:before{
+ border-color:var(--ink);transform:translateY(-1px)
 }
 #mm-solutions .mm-list a strong{
-  grid-column:2;
-  font-family:var(--f-display);font-weight:700;font-size:14.5px;
-  letter-spacing:-.02em;line-height:1.2
+ grid-column:2;
+ font-family:var(--f-display);font-weight:700;font-size:14.5px;
+ letter-spacing:-.02em;line-height:1.2
 }
 #mm-solutions .mm-list a em{
-  grid-column:2;font-size:12.5px;line-height:1.45;max-width:32ch
+ grid-column:2;font-size:12.5px;line-height:1.45;max-width:32ch
 }
 #mm-solutions .mm-sol-kicker{
-  grid-column:2;
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--steel);font-weight:500
+ grid-column:2;
+ font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;
+ text-transform:uppercase;color:var(--steel);font-weight:500
 }
 #mm-solutions .mm-sol-feat a{
-  display:flex;flex-direction:column;align-items:flex-start;gap:0;
-  height:100%;min-height:0;padding:16px 14px;
-  background:var(--paper)
+ display:flex;flex-direction:column;align-items:flex-start;gap:0;
+ height:100%;min-height:0;padding:16px 14px;
+ background:var(--paper)
 }
 #mm-solutions .mm-sol-feat a:before{
-  grid-column:auto;grid-row:auto;
-  width:52px;height:52px;align-self:flex-start;margin:0 0 12px;
-  background-size:52px 52px
+ grid-column:auto;grid-row:auto;
+ width:52px;height:52px;align-self:flex-start;margin:0 0 12px;
+ background-size:52px 52px
 }
 #mm-solutions .mm-sol-feat .mm-sol-kicker{margin:0 0 6px}
 #mm-solutions .mm-sol-feat strong{font-size:17px;letter-spacing:-.025em;margin:0}
 #mm-solutions .mm-sol-feat em{max-width:28ch;font-size:13px;line-height:1.5;margin-top:6px}
 #mm-solutions .mm-sol-go{
-  display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:16px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink);border-bottom:1px solid currentColor;padding-bottom:2px
+ display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:16px;
+ font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+ color:var(--ink);border-bottom:1px solid currentColor;padding-bottom:2px
 }
 #mm-solutions .mm-sol-go i{font-style:normal;transition:transform .4s var(--e)}
-#mm-solutions .mm-sol-feat a:hover .mm-sol-go i,
-#mm-solutions .mm-sol-feat a:focus-visible .mm-sol-go i{transform:translateX(5px)}
+#mm-solutions .mm-sol-feat a:hover .mm-sol-go i, #mm-solutions .mm-sol-feat a:focus-visible .mm-sol-go i{transform:translateX(5px)}
 #mm-solutions .mm-sol-wide a{
-  min-height:72px;align-items:center
+ min-height:72px;align-items:center
 }
 #mm-solutions .mm-sol-wide a:before{
-  grid-row:1 / span 2
+ grid-row:1 / span 2
 }
 
 /* Trucking · cab + trailer */
 #mm-solutions .mm-list a[href="/solutions/trucking-logistics"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='7' y='20' width='21' height='12' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='28' y='24' width='16' height='8' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34.5' r='3.1' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Ccircle cx='38' cy='34.5' r='3.1' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='10' y='23' width='6' height='4' fill='%235FD3A0'/%3E%3C/svg%3E");
-  background-size:52px 52px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='7' y='20' width='21' height='12' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='28' y='24' width='16' height='8' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34.5' r='3.1' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Ccircle cx='38' cy='34.5' r='3.1' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='10' y='23' width='6' height='4' fill='%235FD3A0'/%3E%3C/svg%3E");
+ background-size:52px 52px
 }
 /* SaaS · stacked product windows */
 #mm-solutions .mm-list a[href="/solutions/saas"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='11' y='13' width='22' height='16' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='18' y='21' width='22' height='16' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='25' y='29' width='16' height='10' fill='%234F46E5'/%3E%3C/svg%3E");
-  background-size:44px 44px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='11' y='13' width='22' height='16' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='18' y='21' width='22' height='16' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='25' y='29' width='16' height='10' fill='%234F46E5'/%3E%3C/svg%3E");
+ background-size:44px 44px
 }
-/* Dispatch CRM · pipeline stages — legacy selector kept for sheet tiles */
+/* Dispatch CRM · pipeline stages, legacy selector kept for sheet tiles */
 #mm-solutions .mm-list a[href="/services/crm-development"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='15.2' r='2.8' fill='%235FD3A0'/%3E%3Cpath d='M12.5 18v3.2' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='7' y='22' width='12' height='10' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Crect x='20' y='22' width='12' height='10' fill='%234F46E5'/%3E%3Crect x='33' y='22' width='12' height='10' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Cpath d='M19 27h1M31 27h2' stroke='%230E1216' stroke-width='1.4'/%3E%3Cpath d='M9.5 25.2h5.5M9.5 28.2h3.8' stroke='%230E1216' stroke-width='1' opacity='.5'/%3E%3Cpath d='M22.5 26.2h7' stroke='%23fff' stroke-width='1.2'/%3E%3Cpath d='M35.5 25.2h5.5M35.5 28.2h3.2' stroke='%230E1216' stroke-width='1' opacity='.5'/%3E%3C/svg%3E");
-  background-size:44px 44px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='15.2' r='2.8' fill='%235FD3A0'/%3E%3Cpath d='M12.5 18v3.2' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='7' y='22' width='12' height='10' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Crect x='20' y='22' width='12' height='10' fill='%234F46E5'/%3E%3Crect x='33' y='22' width='12' height='10' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Cpath d='M19 27h1M31 27h2' stroke='%230E1216' stroke-width='1.4'/%3E%3Cpath d='M9.5 25.2h5.5M9.5 28.2h3.8' stroke='%230E1216' stroke-width='1' opacity='.5'/%3E%3Cpath d='M22.5 26.2h7' stroke='%23fff' stroke-width='1.2'/%3E%3Cpath d='M35.5 25.2h5.5M35.5 28.2h3.2' stroke='%230E1216' stroke-width='1' opacity='.5'/%3E%3C/svg%3E");
+ background-size:44px 44px
 }
 /* Fleet dashboards · bars */
 #mm-solutions .mm-list a[href="/services/dashboard-design"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Cpath d='M10 16h32' stroke='%230E1216' stroke-width='1.15'/%3E%3Crect x='12' y='28' width='6' height='8' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='23' y='20' width='6' height='16' fill='%234F46E5'/%3E%3Crect x='34' y='24' width='6' height='12' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3C/svg%3E");
-  background-size:44px 44px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Cpath d='M10 16h32' stroke='%230E1216' stroke-width='1.15'/%3E%3Crect x='12' y='28' width='6' height='8' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='23' y='20' width='6' height='16' fill='%234F46E5'/%3E%3Crect x='34' y='24' width='6' height='12' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3C/svg%3E");
+ background-size:44px 44px
 }
 /* Driver apps · handset */
 #mm-solutions .mm-list a[href="/services/mobile-applications"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='18' y='10' width='16' height='32' rx='2' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='21' y='16' width='10' height='14' fill='%234F46E5'/%3E%3Ccircle cx='26' cy='36' r='1.6' fill='%235FD3A0'/%3E%3C/svg%3E");
-  background-size:44px 44px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='18' y='10' width='16' height='32' rx='2' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='21' y='16' width='10' height='14' fill='%234F46E5'/%3E%3Ccircle cx='26' cy='36' r='1.6' fill='%235FD3A0'/%3E%3C/svg%3E");
+ background-size:44px 44px
 }
 /* Car transportation · vehicle on trailer */
 #mm-solutions .mm-list a[href="/solutions/car-transportation"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='8' y='24' width='28' height='8' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='36' y='26' width='10' height='6' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34' r='3' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Ccircle cx='32' cy='34' r='3' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='12' y='20' width='10' height='6' fill='%235FD3A0'/%3E%3C/svg%3E");
-  background-size:44px 44px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='8' y='24' width='28' height='8' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='36' y='26' width='10' height='6' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34' r='3' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Ccircle cx='32' cy='34' r='3' fill='none' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='12' y='20' width='10' height='6' fill='%235FD3A0'/%3E%3C/svg%3E");
+ background-size:44px 44px
 }
 /* Accounting · QuickBooks + Xero product pair */
 #mm-solutions .mm-list a[href="/solutions/accounting-integrations"]:before{
-  background-image:url("/brand/logos/nav-qb-xero.svg");
-  background-size:40px 40px;
-  background-repeat:no-repeat
+ background-image:url("/brand/logos/nav-qb-xero.svg");
+ background-size:40px 40px;
+ background-repeat:no-repeat
 }
 #mm-company{width:min(420px,calc(100vw - 2 * var(--gutter)))}
 
 @media(max-width:1280px){
-  #mm-solutions{width:min(560px,calc(100vw - 2 * var(--gutter)))}
-  #mm-solutions .mm-list{
-    grid-template-columns:1fr 1fr;
-    grid-template-areas:
-      "feat feat"
-      "saas car"
-      "account account"
-  }
-  #mm-solutions .mm-sol-feat a{min-height:148px}
+ #mm-solutions{width:min(560px,calc(100vw - 2 * var(--gutter)))}
+ #mm-solutions .mm-list{
+ grid-template-columns:1fr 1fr;
+ grid-template-areas:
+ "feat feat"
+ "saas car"
+ "account account"
+ }
+ #mm-solutions .mm-sol-feat a{min-height:148px}
 }
 
 @media(hover:none){
-  #mm-solutions .mm-list a:hover:before{transform:none}
+ #mm-solutions .mm-list a:hover:before{transform:none}
 }
 
 /* Mobile sheet · matching solution tiles */
 #sheet-solutions a:not(.sheet-sol-all){
-  display:grid;grid-template-columns:44px minmax(0,1fr);
-  column-gap:14px;row-gap:3px;align-items:center;
-  padding:12px 0;min-height:64px
+ display:grid;grid-template-columns:44px minmax(0,1fr);
+ column-gap:14px;row-gap:3px;align-items:center;
+ padding:12px 0;min-height:64px
 }
 #sheet-solutions a:not(.sheet-sol-all):before{
-  content:"";grid-column:1;grid-row:1 / span 2;
-  width:44px;height:44px;border:1px solid #3A444E;background-color:#12181E;
-  background-repeat:no-repeat;background-position:center;transition:border-color var(--t-fast)
+ content:"";grid-column:1;grid-row:1 / span 2;
+ width:44px;height:44px;border:1px solid #3A444E;background-color:#12181E;
+ background-repeat:no-repeat;background-position:center;transition:border-color var(--t-fast)
 }
-#sheet-solutions a:not(.sheet-sol-all):hover:before,
-#sheet-solutions a:not(.sheet-sol-all):focus-visible:before{border-color:#8C98A4}
-#sheet-solutions a:not(.sheet-sol-all) strong,
-#sheet-solutions a:not(.sheet-sol-all) span{grid-column:2}
+#sheet-solutions a:not(.sheet-sol-all):hover:before, #sheet-solutions a:not(.sheet-sol-all):focus-visible:before{border-color:#8C98A4}
+#sheet-solutions a:not(.sheet-sol-all) strong, #sheet-solutions a:not(.sheet-sol-all) span{grid-column:2}
 #sheet-solutions a[href="/solutions/trucking-logistics"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='7' y='20' width='21' height='12' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='28' y='24' width='16' height='8' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34.5' r='3.1' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Ccircle cx='38' cy='34.5' r='3.1' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='10' y='23' width='6' height='4' fill='%235FD3A0'/%3E%3C/svg%3E");
-  background-size:44px 44px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='7' y='20' width='21' height='12' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='28' y='24' width='16' height='8' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34.5' r='3.1' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Ccircle cx='38' cy='34.5' r='3.1' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='10' y='23' width='6' height='4' fill='%235FD3A0'/%3E%3C/svg%3E");
+ background-size:44px 44px
 }
 #sheet-solutions a[href="/solutions/saas"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='11' y='13' width='22' height='16' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='18' y='21' width='22' height='16' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='25' y='29' width='16' height='10' fill='%234F46E5'/%3E%3C/svg%3E");
-  background-size:44px 44px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='11' y='13' width='22' height='16' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='18' y='21' width='22' height='16' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='25' y='29' width='16' height='10' fill='%234F46E5'/%3E%3C/svg%3E");
+ background-size:44px 44px
 }
 #sheet-solutions a[href="/solutions/car-transportation"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='8' y='24' width='28' height='8' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='36' y='26' width='10' height='6' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34' r='3' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Ccircle cx='32' cy='34' r='3' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='12' y='20' width='10' height='6' fill='%235FD3A0'/%3E%3C/svg%3E");
-  background-size:44px 44px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Crect x='8' y='24' width='28' height='8' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='36' y='26' width='10' height='6' fill='%234F46E5'/%3E%3Ccircle cx='16' cy='34' r='3' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Ccircle cx='32' cy='34' r='3' fill='none' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='12' y='20' width='10' height='6' fill='%235FD3A0'/%3E%3C/svg%3E");
+ background-size:44px 44px
 }
 #sheet-solutions a[href="/solutions/accounting-integrations"]:before{
-  background-image:url("/brand/logos/nav-qb-xero.svg");
-  background-size:40px 40px;
-  background-repeat:no-repeat
+ background-image:url("/brand/logos/nav-qb-xero.svg");
+ background-size:40px 40px;
+ background-repeat:no-repeat
 }
 #sheet-solutions a.sheet-sol-all{
-  display:inline-flex;align-items:center;gap:8px;flex-wrap:nowrap;white-space:nowrap;
-  width:max-content;min-height:44px;padding:14px 0 8px;border-bottom:1px solid #EDEFF1;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:#EDEFF1
+ display:inline-flex;align-items:center;gap:8px;flex-wrap:nowrap;white-space:nowrap;
+ width:max-content;min-height:44px;padding:14px 0 8px;border-bottom:1px solid #EDEFF1;
+ font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+ color:#EDEFF1
 }
 #sheet-solutions a.sheet-sol-all i{font-style:normal;transition:transform .4s var(--e)}
-#sheet-solutions a.sheet-sol-all:hover,
-#sheet-solutions a.sheet-sol-all:focus-visible{color:#fff;padding-left:0}
+#sheet-solutions a.sheet-sol-all:hover, #sheet-solutions a.sheet-sol-all:focus-visible{color:#fff;padding-left:0}
 #sheet-solutions a.sheet-sol-all:hover i{transform:translateX(5px)}
 
 /* Services mega · compact capability list */
 #mm-services{width:min(420px,calc(100vw - 2 * var(--gutter)))}
 .mm-label{
-  padding:10px 12px 4px;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--steel);list-style:none
+ padding:10px 12px 4px;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;
+ text-transform:uppercase;color:var(--steel);list-style:none
 }
 .mm-label:not(:first-child){
-  margin-top:4px;padding-top:14px;border-top:1px solid var(--rule-soft)
+ margin-top:4px;padding-top:14px;border-top:1px solid var(--rule-soft)
 }
 
 /* Align rightmost megas so they don't clip */
 .nav-item:nth-last-child(-n+2) .mm{left:auto;right:0}
 
 /* ── Integration + Operations mega tiles · product, not plain text ── */
-#mm-integration,
-#mm-operations{
-  width:min(456px,calc(100vw - 2 * var(--gutter)))
+#mm-integration, #mm-operations{
+ width:min(456px,calc(100vw - 2 * var(--gutter)))
 }
-#mm-integration .mm-list,
-#mm-operations .mm-list{
-  gap:6px;padding:10px
+#mm-integration .mm-list, #mm-operations .mm-list{
+ gap:6px;padding:10px
 }
-#mm-integration .mm-list a,
-#mm-operations .mm-list a[href="/services/crm-development"],
-#mm-operations .mm-list a[href="/services/automation-systems"]{
-  display:grid;
-  grid-template-columns:52px minmax(0,1fr);
-  column-gap:14px;row-gap:5px;align-items:start;
-  padding:14px 12px;min-height:76px;
-  border:1px solid var(--rule-soft);background:var(--white)
+#mm-integration .mm-list a, #mm-operations .mm-list a[href="/services/crm-development"], #mm-operations .mm-list a[href="/services/automation-systems"]{
+ display:grid;
+ grid-template-columns:52px minmax(0,1fr);
+ column-gap:14px;row-gap:5px;align-items:start;
+ padding:14px 12px;min-height:76px;
+ border:1px solid var(--rule-soft);background:var(--white)
 }
-#mm-integration .mm-list a:hover,
-#mm-integration .mm-list a:focus-visible,
-#mm-operations .mm-list a[href="/services/crm-development"]:hover,
-#mm-operations .mm-list a[href="/services/crm-development"]:focus-visible,
-#mm-operations .mm-list a[href="/services/automation-systems"]:hover,
-#mm-operations .mm-list a[href="/services/automation-systems"]:focus-visible{
-  background:var(--paper);border-color:var(--ink);transform:none
+#mm-integration .mm-list a:hover, #mm-integration .mm-list a:focus-visible, #mm-operations .mm-list a[href="/services/crm-development"]:hover, #mm-operations .mm-list a[href="/services/crm-development"]:focus-visible, #mm-operations .mm-list a[href="/services/automation-systems"]:hover, #mm-operations .mm-list a[href="/services/automation-systems"]:focus-visible{
+ background:var(--paper);border-color:var(--ink);transform:none
 }
-#mm-integration .mm-list a[aria-current="page"],
-#mm-operations .mm-list a[href="/services/crm-development"][aria-current="page"],
-#mm-operations .mm-list a[href="/services/automation-systems"][aria-current="page"]{
-  border-color:var(--ink);background:var(--paper)
+#mm-integration .mm-list a[aria-current="page"], #mm-operations .mm-list a[href="/services/crm-development"][aria-current="page"], #mm-operations .mm-list a[href="/services/automation-systems"][aria-current="page"]{
+ border-color:var(--ink);background:var(--paper)
 }
-#mm-integration .mm-list a strong,
-#mm-operations .mm-list a[href="/services/crm-development"] strong,
-#mm-operations .mm-list a[href="/services/automation-systems"] strong{
-  grid-column:2;
-  font-family:var(--f-display);font-weight:700;font-size:15px;
-  letter-spacing:-.022em;line-height:1.2
+#mm-integration .mm-list a strong, #mm-operations .mm-list a[href="/services/crm-development"] strong, #mm-operations .mm-list a[href="/services/automation-systems"] strong{
+ grid-column:2;
+ font-family:var(--f-display);font-weight:700;font-size:15px;
+ letter-spacing:-.022em;line-height:1.2
 }
-#mm-integration .mm-list a em,
-#mm-operations .mm-list a[href="/services/crm-development"] em,
-#mm-operations .mm-list a[href="/services/automation-systems"] em{
-  grid-column:2;font-size:13px;line-height:1.5;max-width:34ch
+#mm-integration .mm-list a em, #mm-operations .mm-list a[href="/services/crm-development"] em, #mm-operations .mm-list a[href="/services/automation-systems"] em{
+ grid-column:2;font-size:13px;line-height:1.5;max-width:34ch
 }
-#mm-integration .mm-list a:before,
-#mm-operations .mm-list a[href="/services/crm-development"]:before,
-#mm-operations .mm-list a[href="/services/automation-systems"]:before{
-  content:"";grid-column:1;grid-row:1 / span 2;
-  width:52px;height:52px;align-self:center;flex:none;
-  border:1px solid var(--rule);background-color:var(--paper);
-  background-repeat:no-repeat;background-position:center;
-  transition:border-color var(--t-fast) var(--e),transform var(--t-fast) var(--e)
+#mm-integration .mm-list a:before, #mm-operations .mm-list a[href="/services/crm-development"]:before, #mm-operations .mm-list a[href="/services/automation-systems"]:before{
+ content:"";grid-column:1;grid-row:1 / span 2;
+ width:52px;height:52px;align-self:center;flex:none;
+ border:1px solid var(--rule);background-color:var(--paper);
+ background-repeat:no-repeat;background-position:center;
+ transition:border-color var(--t-fast) var(--e),transform var(--t-fast) var(--e)
 }
-#mm-integration .mm-list a:hover:before,
-#mm-integration .mm-list a:focus-visible:before,
-#mm-operations .mm-list a[href="/services/crm-development"]:hover:before,
-#mm-operations .mm-list a[href="/services/crm-development"]:focus-visible:before,
-#mm-operations .mm-list a[href="/services/automation-systems"]:hover:before,
-#mm-operations .mm-list a[href="/services/automation-systems"]:focus-visible:before{
-  border-color:var(--ink);transform:translateY(-1px)
+#mm-integration .mm-list a:hover:before, #mm-integration .mm-list a:focus-visible:before, #mm-operations .mm-list a[href="/services/crm-development"]:hover:before, #mm-operations .mm-list a[href="/services/crm-development"]:focus-visible:before, #mm-operations .mm-list a[href="/services/automation-systems"]:hover:before, #mm-operations .mm-list a[href="/services/automation-systems"]:focus-visible:before{
+ border-color:var(--ink);transform:translateY(-1px)
 }
 
 /* QuickBooks ↔ Xero · overlapping product badges */
 #mm-integration .mm-list a[href="/solutions/accounting-integrations"]:before{
-  background-image:url("/brand/logos/nav-qb-xero.svg");
-  background-size:46px 46px;
-  background-repeat:no-repeat
+ background-image:url("/brand/logos/nav-qb-xero.svg");
+ background-size:46px 46px;
+ background-repeat:no-repeat
 }
 
 /* Integrations & APIs · source → hub → destination */
 #mm-integration .mm-list a[href="/services/api-integrations"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='26' r='7.2' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Ccircle cx='12.5' cy='26' r='2.45' fill='%235FD3A0'/%3E%3Cpath d='M19.9 26h4.4' stroke='%230E1216' stroke-width='1.4' stroke-linecap='square'/%3E%3Ccircle cx='26' cy='26' r='7.6' fill='%234F46E5'/%3E%3Ccircle cx='26' cy='26' r='2.2' fill='%23fff'/%3E%3Cpath d='M33.7 26h4.4' stroke='%230E1216' stroke-width='1.4' stroke-linecap='square'/%3E%3Ccircle cx='39.5' cy='26' r='7.2' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Ccircle cx='39.5' cy='26' r='2.45' fill='none' stroke='%230E1216' stroke-width='1.35'/%3E%3C/svg%3E");
-  background-size:46px 46px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='26' r='7.2' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Ccircle cx='12.5' cy='26' r='2.45' fill='%235FD3A0'/%3E%3Cpath d='M19.9 26h4.4' stroke='%230E1216' stroke-width='1.4' stroke-linecap='square'/%3E%3Ccircle cx='26' cy='26' r='7.6' fill='%234F46E5'/%3E%3Ccircle cx='26' cy='26' r='2.2' fill='%23fff'/%3E%3Cpath d='M33.7 26h4.4' stroke='%230E1216' stroke-width='1.4' stroke-linecap='square'/%3E%3Ccircle cx='39.5' cy='26' r='7.2' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Ccircle cx='39.5' cy='26' r='2.45' fill='none' stroke='%230E1216' stroke-width='1.35'/%3E%3C/svg%3E");
+ background-size:46px 46px
 }
 
 /* CRM & ops consoles · pipeline stages with lead trigger */
 #mm-operations .mm-list a[href="/services/crm-development"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='15.2' r='2.8' fill='%235FD3A0'/%3E%3Cpath d='M12.5 18v3.2' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='7' y='22' width='12' height='10' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Crect x='20' y='22' width='12' height='10' fill='%234F46E5'/%3E%3Crect x='33' y='22' width='12' height='10' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Cpath d='M19 27h1M31 27h2' stroke='%230E1216' stroke-width='1.4'/%3E%3Cpath d='M9.5 25.2h5.5M9.5 28.2h3.8' stroke='%230E1216' stroke-width='1' opacity='.5'/%3E%3Cpath d='M22.5 26.2h7' stroke='%23fff' stroke-width='1.2'/%3E%3Cpath d='M35.5 25.2h5.5M35.5 28.2h3.2' stroke='%230E1216' stroke-width='1' opacity='.5'/%3E%3C/svg%3E");
-  background-size:46px 46px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='15.2' r='2.8' fill='%235FD3A0'/%3E%3Cpath d='M12.5 18v3.2' stroke='%230E1216' stroke-width='1.25'/%3E%3Crect x='7' y='22' width='12' height='10' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Crect x='20' y='22' width='12' height='10' fill='%234F46E5'/%3E%3Crect x='33' y='22' width='12' height='10' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Cpath d='M19 27h1M31 27h2' stroke='%230E1216' stroke-width='1.4'/%3E%3Cpath d='M9.5 25.2h5.5M9.5 28.2h3.8' stroke='%230E1216' stroke-width='1' opacity='.5'/%3E%3Cpath d='M22.5 26.2h7' stroke='%23fff' stroke-width='1.2'/%3E%3Cpath d='M35.5 25.2h5.5M35.5 28.2h3.2' stroke='%230E1216' stroke-width='1' opacity='.5'/%3E%3C/svg%3E");
+ background-size:46px 46px
 }
 
 /* Automation workflows · trigger → human gate → action */
 #mm-operations .mm-list a[href="/services/automation-systems"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='11.5' cy='26' r='6.8' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Ccircle cx='11.5' cy='26' r='2.3' fill='%235FD3A0'/%3E%3Cpath d='M18.4 26h4.8' stroke='%230E1216' stroke-width='1.4'/%3E%3Crect x='23.6' y='19.2' width='2.1' height='13.6' fill='%23DB9B1F'/%3E%3Crect x='27.3' y='19.2' width='2.1' height='13.6' fill='%23DB9B1F'/%3E%3Cpath d='M30.1 26h4.8' stroke='%230E1216' stroke-width='1.4'/%3E%3Ccircle cx='40.5' cy='26' r='7.2' fill='%234F46E5'/%3E%3Ccircle cx='40.5' cy='26' r='2.2' fill='%23fff'/%3E%3C/svg%3E");
-  background-size:46px 46px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='11.5' cy='26' r='6.8' fill='none' stroke='%230E1216' stroke-width='1.45'/%3E%3Ccircle cx='11.5' cy='26' r='2.3' fill='%235FD3A0'/%3E%3Cpath d='M18.4 26h4.8' stroke='%230E1216' stroke-width='1.4'/%3E%3Crect x='23.6' y='19.2' width='2.1' height='13.6' fill='%23DB9B1F'/%3E%3Crect x='27.3' y='19.2' width='2.1' height='13.6' fill='%23DB9B1F'/%3E%3Cpath d='M30.1 26h4.8' stroke='%230E1216' stroke-width='1.4'/%3E%3Ccircle cx='40.5' cy='26' r='7.2' fill='%234F46E5'/%3E%3Ccircle cx='40.5' cy='26' r='2.2' fill='%23fff'/%3E%3C/svg%3E");
+ background-size:46px 46px
 }
 
 /* How we work · process strip, not a text row */
 #mm-operations{
-  width:min(540px,calc(100vw - 2 * var(--gutter)))
+ width:min(540px,calc(100vw - 2 * var(--gutter)))
 }
 #mm-operations .mm-list a[href="/process"]{
-  display:grid;grid-template-columns:1fr;gap:4px;
-  padding:14px 14px 12px;min-height:0;
-  border:1px solid var(--rule-soft);background:var(--white)
+ display:grid;grid-template-columns:1fr;gap:4px;
+ padding:14px 14px 12px;min-height:0;
+ border:1px solid var(--rule-soft);background:var(--white)
 }
-#mm-operations .mm-list a[href="/process"]:hover,
-#mm-operations .mm-list a[href="/process"]:focus-visible{
-  background:var(--paper);border-color:var(--ink);transform:none
+#mm-operations .mm-list a[href="/process"]:hover, #mm-operations .mm-list a[href="/process"]:focus-visible{
+ background:var(--paper);border-color:var(--ink);transform:none
 }
 #mm-operations .mm-list a[href="/process"][aria-current="page"]{
-  border-color:var(--ink);background:var(--paper)
+ border-color:var(--ink);background:var(--paper)
 }
 #mm-operations .mm-list a[href="/process"] strong{
-  font-family:var(--f-display);font-weight:700;font-size:15px;
-  letter-spacing:-.022em;line-height:1.2
+ font-family:var(--f-display);font-weight:700;font-size:15px;
+ letter-spacing:-.022em;line-height:1.2
 }
 #mm-operations .mm-list a[href="/process"] em{
-  font-size:13px;line-height:1.5;max-width:44ch;color:var(--steel)
+ font-size:13px;line-height:1.5;max-width:44ch;color:var(--steel)
 }
 .mm-steps{
-  list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:0;margin-top:10px;padding-top:12px;border-top:1px solid var(--rule-soft)
+ list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+ gap:0;margin-top:10px;padding-top:12px;border-top:1px solid var(--rule-soft)
 }
 .mm-steps li{
-  position:relative;min-width:0;padding:0 10px 0 0;
-  transition:transform var(--t-fast) var(--e)
+ position:relative;min-width:0;padding:0 10px 0 0;
+ transition:transform var(--t-fast) var(--e)
 }
 .mm-steps .n{
-  display:flex;align-items:center;gap:6px;margin-bottom:7px;
-  font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta)
+ display:flex;align-items:center;gap:6px;margin-bottom:7px;
+ font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cta)
 }
 .mm-steps .n i{
-  width:14px;height:14px;flex:none;border:0;background-color:transparent;
-  background-repeat:no-repeat;background-position:center;background-size:14px 14px;
-  transition:background-color var(--t-fast) var(--e),background-image var(--t-fast) var(--e),transform var(--t-fast) var(--e)
+ width:14px;height:14px;flex:none;border:0;background-color:transparent;
+ background-repeat:no-repeat;background-position:center;background-size:14px 14px;
+ transition:background-color var(--t-fast) var(--e),background-image var(--t-fast) var(--e),transform var(--t-fast) var(--e)
 }
 #mm-operations .mm-steps li:nth-child(1) .n i{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='6.5' cy='6.5' r='4.2' fill='none' stroke='%234F46E5' stroke-width='1.35'/%3E%3Cpath d='M9.6 9.6L13 13' stroke='%234F46E5' stroke-width='1.35' stroke-linecap='square'/%3E%3C/svg%3E")}
 #mm-operations .mm-steps li:nth-child(2) .n i{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='5.5' fill='none' stroke='%234F46E5' stroke-width='1.2'/%3E%3Ccircle cx='8' cy='8' r='2' fill='%234F46E5'/%3E%3Cpath d='M8 2.2v1.6M8 12.2v1.6M2.2 8h1.6M12.2 8h1.6' stroke='%234F46E5' stroke-width='1'/%3E%3C/svg%3E")}
@@ -414,104 +384,82 @@ body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
 #mm-operations .mm-steps li:nth-child(4):hover .n i{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.2 4.2L2.5 8l2.7 3.8M10.8 4.2l2.7 3.8-2.7 3.8' fill='none' stroke='%23fff' stroke-width='1.3' stroke-linecap='square'/%3E%3Cpath d='M8.8 3.8l-1.6 8.4' stroke='%23fff' stroke-width='1.15'/%3E%3C/svg%3E")}
 #mm-operations .mm-steps li:nth-child(5):hover .n i{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 13.2V4.8M8 4.8L5.2 7.6M8 4.8l2.8 2.8' fill='none' stroke='%23fff' stroke-width='1.35' stroke-linecap='square'/%3E%3Cpath d='M4.2 13.2h7.6' stroke='%23fff' stroke-width='1.2'/%3E%3C/svg%3E")}
 .mm-steps li:not(:last-child):after{
-  content:"";position:absolute;top:7px;left:20px;right:4px;height:1px;background:var(--rule);pointer-events:none
+ content:"";position:absolute;top:7px;left:20px;right:4px;height:1px;background:var(--rule);pointer-events:none
 }
 .mm-steps b{
-  display:block;font-family:var(--f-display);font-weight:700;font-size:12.5px;
-  letter-spacing:-.02em;line-height:1.2;color:var(--ink)
+ display:block;font-family:var(--f-display);font-weight:700;font-size:12.5px;
+ letter-spacing:-.02em;line-height:1.2;color:var(--ink)
 }
 .mm-steps small{
-  display:block;margin-top:4px;font-size:11px;line-height:1.35;color:var(--steel)
+ display:block;margin-top:4px;font-size:11px;line-height:1.35;color:var(--steel)
 }
 .mm-steps li:hover{transform:translateY(-1px)}
 .mm-steps li:hover .n i{transform:scale(1.08)}
 
 @media(max-width:1280px){
-  .mm-steps small{display:none}
+ .mm-steps small{display:none}
 }
 
 /* Mobile sheet · matching tiles, dark */
-#sheet-integration a[href="/solutions/accounting-integrations"],
-#sheet-integration a[href="/services/api-integrations"],
-#sheet-operations a[href="/services/crm-development"],
-#sheet-operations a[href="/services/automation-systems"]{
-  display:grid;grid-template-columns:44px minmax(0,1fr);
-  column-gap:14px;row-gap:3px;align-items:center;
-  padding:12px 0;min-height:64px
+#sheet-integration a[href="/solutions/accounting-integrations"], #sheet-integration a[href="/services/api-integrations"], #sheet-operations a[href="/services/crm-development"], #sheet-operations a[href="/services/automation-systems"]{
+ display:grid;grid-template-columns:44px minmax(0,1fr);
+ column-gap:14px;row-gap:3px;align-items:center;
+ padding:12px 0;min-height:64px
 }
-#sheet-integration a[href="/solutions/accounting-integrations"]:before,
-#sheet-integration a[href="/services/api-integrations"]:before,
-#sheet-operations a[href="/services/crm-development"]:before,
-#sheet-operations a[href="/services/automation-systems"]:before{
-  content:"";grid-column:1;grid-row:1 / span 2;
-  width:44px;height:44px;border:1px solid #3A444E;background-color:#12181E;
-  background-repeat:no-repeat;background-position:center;transition:border-color var(--t-fast)
+#sheet-integration a[href="/solutions/accounting-integrations"]:before, #sheet-integration a[href="/services/api-integrations"]:before, #sheet-operations a[href="/services/crm-development"]:before, #sheet-operations a[href="/services/automation-systems"]:before{
+ content:"";grid-column:1;grid-row:1 / span 2;
+ width:44px;height:44px;border:1px solid #3A444E;background-color:#12181E;
+ background-repeat:no-repeat;background-position:center;transition:border-color var(--t-fast)
 }
-#sheet-integration a[href="/solutions/accounting-integrations"]:hover:before,
-#sheet-integration a[href="/services/api-integrations"]:hover:before,
-#sheet-operations a[href="/services/crm-development"]:hover:before,
-#sheet-operations a[href="/services/automation-systems"]:hover:before,
-#sheet-integration a[href="/solutions/accounting-integrations"]:focus-visible:before,
-#sheet-integration a[href="/services/api-integrations"]:focus-visible:before,
-#sheet-operations a[href="/services/crm-development"]:focus-visible:before,
-#sheet-operations a[href="/services/automation-systems"]:focus-visible:before{
-  border-color:#8C98A4
+#sheet-integration a[href="/solutions/accounting-integrations"]:hover:before, #sheet-integration a[href="/services/api-integrations"]:hover:before, #sheet-operations a[href="/services/crm-development"]:hover:before, #sheet-operations a[href="/services/automation-systems"]:hover:before, #sheet-integration a[href="/solutions/accounting-integrations"]:focus-visible:before, #sheet-integration a[href="/services/api-integrations"]:focus-visible:before, #sheet-operations a[href="/services/crm-development"]:focus-visible:before, #sheet-operations a[href="/services/automation-systems"]:focus-visible:before{
+ border-color:#8C98A4
 }
-#sheet-integration a[href="/solutions/accounting-integrations"] strong,
-#sheet-integration a[href="/services/api-integrations"] strong,
-#sheet-operations a[href="/services/crm-development"] strong,
-#sheet-operations a[href="/services/automation-systems"] strong,
-#sheet-integration a[href="/solutions/accounting-integrations"] span,
-#sheet-integration a[href="/services/api-integrations"] span,
-#sheet-operations a[href="/services/crm-development"] span,
-#sheet-operations a[href="/services/automation-systems"] span{
-  grid-column:2
+#sheet-integration a[href="/solutions/accounting-integrations"] strong, #sheet-integration a[href="/services/api-integrations"] strong, #sheet-operations a[href="/services/crm-development"] strong, #sheet-operations a[href="/services/automation-systems"] strong, #sheet-integration a[href="/solutions/accounting-integrations"] span, #sheet-integration a[href="/services/api-integrations"] span, #sheet-operations a[href="/services/crm-development"] span, #sheet-operations a[href="/services/automation-systems"] span{
+ grid-column:2
 }
 #sheet-integration a[href="/solutions/accounting-integrations"]:before{
-  background-image:url("/brand/logos/nav-qb-xero.svg");
-  background-size:40px 40px;
-  background-repeat:no-repeat
+ background-image:url("/brand/logos/nav-qb-xero.svg");
+ background-size:40px 40px;
+ background-repeat:no-repeat
 }
 #sheet-integration a[href="/services/api-integrations"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='26' r='7.2' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Ccircle cx='12.5' cy='26' r='2.45' fill='%235FD3A0'/%3E%3Cpath d='M19.9 26h4.4' stroke='%23EDEFF1' stroke-width='1.4' stroke-linecap='square'/%3E%3Ccircle cx='26' cy='26' r='7.6' fill='%234F46E5'/%3E%3Ccircle cx='26' cy='26' r='2.2' fill='%23fff'/%3E%3Cpath d='M33.7 26h4.4' stroke='%23EDEFF1' stroke-width='1.4' stroke-linecap='square'/%3E%3Ccircle cx='39.5' cy='26' r='7.2' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Ccircle cx='39.5' cy='26' r='2.45' fill='none' stroke='%23EDEFF1' stroke-width='1.35'/%3E%3C/svg%3E");
-  background-size:40px 40px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='26' r='7.2' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Ccircle cx='12.5' cy='26' r='2.45' fill='%235FD3A0'/%3E%3Cpath d='M19.9 26h4.4' stroke='%23EDEFF1' stroke-width='1.4' stroke-linecap='square'/%3E%3Ccircle cx='26' cy='26' r='7.6' fill='%234F46E5'/%3E%3Ccircle cx='26' cy='26' r='2.2' fill='%23fff'/%3E%3Cpath d='M33.7 26h4.4' stroke='%23EDEFF1' stroke-width='1.4' stroke-linecap='square'/%3E%3Ccircle cx='39.5' cy='26' r='7.2' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Ccircle cx='39.5' cy='26' r='2.45' fill='none' stroke='%23EDEFF1' stroke-width='1.35'/%3E%3C/svg%3E");
+ background-size:40px 40px
 }
 #sheet-operations a[href="/services/crm-development"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='15.2' r='2.8' fill='%235FD3A0'/%3E%3Cpath d='M12.5 18v3.2' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='7' y='22' width='12' height='10' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Crect x='20' y='22' width='12' height='10' fill='%234F46E5'/%3E%3Crect x='33' y='22' width='12' height='10' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Cpath d='M19 27h1M31 27h2' stroke='%23EDEFF1' stroke-width='1.4'/%3E%3Cpath d='M9.5 25.2h5.5M9.5 28.2h3.8' stroke='%23EDEFF1' stroke-width='1' opacity='.45'/%3E%3Cpath d='M22.5 26.2h7' stroke='%23fff' stroke-width='1.2'/%3E%3Cpath d='M35.5 25.2h5.5M35.5 28.2h3.2' stroke='%23EDEFF1' stroke-width='1' opacity='.45'/%3E%3C/svg%3E");
-  background-size:40px 40px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='12.5' cy='15.2' r='2.8' fill='%235FD3A0'/%3E%3Cpath d='M12.5 18v3.2' stroke='%23EDEFF1' stroke-width='1.25'/%3E%3Crect x='7' y='22' width='12' height='10' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Crect x='20' y='22' width='12' height='10' fill='%234F46E5'/%3E%3Crect x='33' y='22' width='12' height='10' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Cpath d='M19 27h1M31 27h2' stroke='%23EDEFF1' stroke-width='1.4'/%3E%3Cpath d='M9.5 25.2h5.5M9.5 28.2h3.8' stroke='%23EDEFF1' stroke-width='1' opacity='.45'/%3E%3Cpath d='M22.5 26.2h7' stroke='%23fff' stroke-width='1.2'/%3E%3Cpath d='M35.5 25.2h5.5M35.5 28.2h3.2' stroke='%23EDEFF1' stroke-width='1' opacity='.45'/%3E%3C/svg%3E");
+ background-size:40px 40px
 }
 #sheet-operations a[href="/services/automation-systems"]:before{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='11.5' cy='26' r='6.8' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Ccircle cx='11.5' cy='26' r='2.3' fill='%235FD3A0'/%3E%3Cpath d='M18.4 26h4.8' stroke='%23EDEFF1' stroke-width='1.4'/%3E%3Crect x='23.6' y='19.2' width='2.1' height='13.6' fill='%23DB9B1F'/%3E%3Crect x='27.3' y='19.2' width='2.1' height='13.6' fill='%23DB9B1F'/%3E%3Cpath d='M30.1 26h4.8' stroke='%23EDEFF1' stroke-width='1.4'/%3E%3Ccircle cx='40.5' cy='26' r='7.2' fill='%234F46E5'/%3E%3Ccircle cx='40.5' cy='26' r='2.2' fill='%23fff'/%3E%3C/svg%3E");
-  background-size:40px 40px
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Ccircle cx='11.5' cy='26' r='6.8' fill='none' stroke='%23EDEFF1' stroke-width='1.45'/%3E%3Ccircle cx='11.5' cy='26' r='2.3' fill='%235FD3A0'/%3E%3Cpath d='M18.4 26h4.8' stroke='%23EDEFF1' stroke-width='1.4'/%3E%3Crect x='23.6' y='19.2' width='2.1' height='13.6' fill='%23DB9B1F'/%3E%3Crect x='27.3' y='19.2' width='2.1' height='13.6' fill='%23DB9B1F'/%3E%3Cpath d='M30.1 26h4.8' stroke='%23EDEFF1' stroke-width='1.4'/%3E%3Ccircle cx='40.5' cy='26' r='7.2' fill='%234F46E5'/%3E%3Ccircle cx='40.5' cy='26' r='2.2' fill='%23fff'/%3E%3C/svg%3E");
+ background-size:40px 40px
 }
 
 #sheet-operations a[href="/process"]{
-  display:block;padding:12px 0;min-height:0
+ display:block;padding:12px 0;min-height:0
 }
-#sheet-operations a[href="/process"]:hover,
-#sheet-operations a[href="/process"]:focus-visible{
-  padding-left:0
+#sheet-operations a[href="/process"]:hover, #sheet-operations a[href="/process"]:focus-visible{
+ padding-left:0
 }
 #sheet-operations a[href="/process"] strong{
-  display:block;font-weight:600;color:#EDEFF1;font-size:14.5px
+ display:block;font-weight:600;color:#EDEFF1;font-size:14.5px
 }
-#sheet-operations a[href="/process"] em,
-#sheet-operations a[href="/process"] > span{
-  display:block;margin-top:3px;font-size:12px;line-height:1.4;color:#8C98A4;font-style:normal
+#sheet-operations a[href="/process"] em, #sheet-operations a[href="/process"] > span{
+ display:block;margin-top:3px;font-size:12px;line-height:1.4;color:#8C98A4;font-style:normal
 }
 #sheet-operations a[href="/process"] .mm-steps{
-  grid-template-columns:1fr;gap:0;margin-top:12px;padding:2px 0 4px 16px;
-  border-top:0;border-left:1px solid #3A444E
+ grid-template-columns:1fr;gap:0;margin-top:12px;padding:2px 0 4px 16px;
+ border-top:0;border-left:1px solid #3A444E
 }
 #sheet-operations a[href="/process"] .mm-steps li{
-  padding:8px 0 8px 0
+ padding:8px 0 8px 0
 }
 #sheet-operations a[href="/process"] .mm-steps li:not(:last-child):after{display:none}
 #sheet-operations a[href="/process"] .mm-steps .n{color:var(--amber);margin-bottom:5px}
 #sheet-operations a[href="/process"] .mm-steps .n i{
-  position:absolute;left:-22px;top:10px;width:14px;height:14px;
-  border:0;background-color:transparent;background-repeat:no-repeat;
-  background-position:center;background-size:14px 14px
+ position:absolute;left:-22px;top:10px;width:14px;height:14px;
+ border:0;background-color:transparent;background-repeat:no-repeat;
+ background-position:center;background-size:14px 14px
 }
 #sheet-operations a[href="/process"] .mm-steps li:nth-child(1) .n i{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='6.5' cy='6.5' r='4.2' fill='none' stroke='%23DB9B1F' stroke-width='1.35'/%3E%3Cpath d='M9.6 9.6L13 13' stroke='%23DB9B1F' stroke-width='1.35' stroke-linecap='square'/%3E%3C/svg%3E")}
 #sheet-operations a[href="/process"] .mm-steps li:nth-child(2) .n i{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='5.5' fill='none' stroke='%23DB9B1F' stroke-width='1.2'/%3E%3Ccircle cx='8' cy='8' r='2' fill='%23DB9B1F'/%3E%3Cpath d='M8 2.2v1.6M8 12.2v1.6M2.2 8h1.6M12.2 8h1.6' stroke='%23DB9B1F' stroke-width='1'/%3E%3C/svg%3E")}
@@ -524,46 +472,41 @@ body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
 #sheet-operations a[href="/process"] .mm-steps li:hover .n i{transform:none}
 
 @media(hover:none){
-  #mm-integration .mm-list a:hover,
-  #mm-operations .mm-list a[href="/services/crm-development"]:hover,
-  #mm-operations .mm-list a[href="/services/automation-systems"]:hover,
-  #mm-integration .mm-list a:hover:before,
-  #mm-operations .mm-list a[href="/services/crm-development"]:hover:before,
-  #mm-operations .mm-list a[href="/services/automation-systems"]:hover:before{
-    transform:none
-  }
+ #mm-integration .mm-list a:hover, #mm-operations .mm-list a[href="/services/crm-development"]:hover, #mm-operations .mm-list a[href="/services/automation-systems"]:hover, #mm-integration .mm-list a:hover:before, #mm-operations .mm-list a[href="/services/crm-development"]:hover:before, #mm-operations .mm-list a[href="/services/automation-systems"]:hover:before{
+ transform:none
+ }
 }
 
 .nav-cta{display:flex;align-items:center;gap:12px;flex:none}
 /* Header CTA · locked to compact dark mono chip (keep this look) */
 .nav-cta .btn.sm{
-  display:inline-flex;align-items:center;gap:8px;
-  height:36px;padding:0 14px;box-sizing:border-box;
-  max-width:none;border-radius:0;border:1px solid var(--cta);
-  background:var(--cta);color:#fff;
-  font-family:var(--f-mono);font-size:10.5px;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
-  line-height:1;overflow:hidden
+ display:inline-flex;align-items:center;gap:8px;
+ height:36px;padding:0 14px;box-sizing:border-box;
+ max-width:none;border-radius:0;border:1px solid var(--cta);
+ background:var(--cta);color:#fff;
+ font-family:var(--f-mono);font-size:10.5px;font-weight:600;
+ letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
+ line-height:1;overflow:hidden
 }
 .nav-cta .btn.sm span{overflow:visible;text-overflow:clip;white-space:nowrap}
 .nav-cta .btn.sm i{font-style:normal;line-height:1}
 .nav.scrolled .nav-cta .btn.sm{height:36px;padding:0 14px;font-size:10.5px}
 
 .burger{
-  display:none;position:relative;z-index:2;
-  width:44px;height:44px;flex:none;
-  flex-direction:column;align-items:center;justify-content:center;gap:6px;
-  margin:0;padding:0;border:0;border-radius:0;
-  background:transparent;color:var(--ink);
-  appearance:none;-webkit-appearance:none;
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;cursor:pointer
+ display:none;position:relative;z-index:2;
+ width:44px;height:44px;flex:none;
+ flex-direction:column;align-items:center;justify-content:center;gap:6px;
+ margin:0;padding:0;border:0;border-radius:0;
+ background:transparent;color:var(--ink);
+ appearance:none;-webkit-appearance:none;
+ -webkit-tap-highlight-color:transparent;
+ touch-action:manipulation;cursor:pointer
 }
 .burger span{
-  display:block;flex:none;width:18px;height:2px;
-  background:currentColor;border-radius:1px;
-  pointer-events:none;transform-origin:center;
-  transition:transform var(--t-fast) var(--e),opacity var(--t-fast),background var(--t-fast)
+ display:block;flex:none;width:18px;height:2px;
+ background:currentColor;border-radius:1px;
+ pointer-events:none;transform-origin:center;
+ transition:transform var(--t-fast) var(--e),opacity var(--t-fast),background var(--t-fast)
 }
 .nav.open .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
 .nav.open .burger span:nth-child(2){opacity:0;transform:scaleX(.4)}
@@ -571,59 +514,55 @@ body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
 
 /* ── MOBILE SHEET ── */
 .sheet{
-  position:fixed;inset:0;background:var(--ink);z-index:89;
-  padding:calc(88px + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right,0px)) max(28px,env(safe-area-inset-bottom,0px)) max(var(--gutter),env(safe-area-inset-left,0px));
-  display:flex;flex-direction:column;justify-content:flex-start;gap:24px;
-  clip-path:inset(0 0 100% 0);transition:clip-path .62s var(--e),visibility .62s;
-  visibility:hidden;overflow:hidden;-webkit-overflow-scrolling:touch
+ position:fixed;inset:0;background:var(--ink);z-index:89;
+ padding:calc(88px + env(safe-area-inset-top,0px)) max(var(--gutter),env(safe-area-inset-right,0px)) max(28px,env(safe-area-inset-bottom,0px)) max(var(--gutter),env(safe-area-inset-left,0px));
+ display:flex;flex-direction:column;justify-content:flex-start;gap:24px;
+ clip-path:inset(0 0 100% 0);transition:clip-path .62s var(--e),visibility .62s;
+ visibility:hidden;overflow:hidden;-webkit-overflow-scrolling:touch
 }
 .sheet[hidden]{display:none !important}
 .nav.open + .sheet{
-  clip-path:inset(0 0 0 0);visibility:visible;overflow:auto;display:flex !important
+ clip-path:inset(0 0 0 0);visibility:visible;overflow:auto;display:flex !important
 }
 .sheet-nav{display:grid;gap:0}
 .sheet-item{border-bottom:1px solid var(--ink-line)}
 .sheet a.big,.sheet-toggle{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
-  font-family:var(--f-display);font-weight:700;font-size:clamp(1.55rem,7vw,2.35rem);
-  letter-spacing:-.03em;color:#EDEFF1;padding:14px 0;text-align:left;
-  background:none;border:0;border-radius:0;cursor:pointer;
-  appearance:none;-webkit-appearance:none;-webkit-tap-highlight-color:transparent
+ display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+ font-family:var(--f-display);font-weight:700;font-size:clamp(1.55rem,7vw,2.35rem);
+ letter-spacing:-.03em;color:#EDEFF1;padding:14px 0;text-align:left;
+ background:none;border:0;border-radius:0;cursor:pointer;
+ appearance:none;-webkit-appearance:none;-webkit-tap-highlight-color:transparent
 }
 .sheet a.big{opacity:0;transform:translateY(14px);transition:opacity .5s var(--e),transform .5s var(--e)}
 .nav.open + .sheet a.big,.nav.open + .sheet .sheet-item{opacity:1;transform:none}
-.nav.open + .sheet .sheet-item:nth-child(1) .sheet-toggle,
-.nav.open + .sheet .sheet-item:nth-child(1) > a.big{transition-delay:.05s}
-.nav.open + .sheet .sheet-item:nth-child(2) .sheet-toggle,
-.nav.open + .sheet .sheet-item:nth-child(2) > a.big{transition-delay:.09s}
-.nav.open + .sheet .sheet-item:nth-child(3) .sheet-toggle,
-.nav.open + .sheet .sheet-item:nth-child(3) > a.big{transition-delay:.13s}
-.nav.open + .sheet .sheet-item:nth-child(4) .sheet-toggle,
-.nav.open + .sheet .sheet-item:nth-child(4) > a.big{transition-delay:.17s}
+.nav.open + .sheet .sheet-item:nth-child(1) .sheet-toggle, .nav.open + .sheet .sheet-item:nth-child(1) > a.big{transition-delay:.05s}
+.nav.open + .sheet .sheet-item:nth-child(2) .sheet-toggle, .nav.open + .sheet .sheet-item:nth-child(2) > a.big{transition-delay:.09s}
+.nav.open + .sheet .sheet-item:nth-child(3) .sheet-toggle, .nav.open + .sheet .sheet-item:nth-child(3) > a.big{transition-delay:.13s}
+.nav.open + .sheet .sheet-item:nth-child(4) .sheet-toggle, .nav.open + .sheet .sheet-item:nth-child(4) > a.big{transition-delay:.17s}
 .nav.open + .sheet .sheet-item:nth-child(5) > a.big{transition-delay:.21s}
 .nav.open + .sheet .sheet-item:nth-child(6) > a.big{transition-delay:.25s}
 .nav.open + .sheet .sheet-item:nth-child(7) > a.big{transition-delay:.29s}
 
 .sheet-toggle .plus{
-  width:28px;height:28px;border:1px solid #3A444E;position:relative;flex:none;
-  transition:border-color .35s,transform .45s var(--e)
+ width:28px;height:28px;border:1px solid #3A444E;position:relative;flex:none;
+ transition:border-color .35s,transform .45s var(--e)
 }
 .sheet-toggle .plus:before,.sheet-toggle .plus:after{
-  content:"";position:absolute;inset:50% 7px;height:1px;background:#EDEFF1;transition:transform .4s var(--e)
+ content:"";position:absolute;inset:50% 7px;height:1px;background:#EDEFF1;transition:transform .4s var(--e)
 }
 .sheet-toggle .plus:after{transform:rotate(90deg)}
 .sheet-item.open .sheet-toggle .plus{border-color:var(--amber);transform:rotate(90deg)}
 .sheet-item.open .sheet-toggle .plus:after{transform:rotate(0)}
 
 .sheet-sub{
-  list-style:none;overflow:hidden;max-height:0;opacity:0;
-  transition:max-height .5s var(--e),opacity .4s var(--e),padding .4s
+ list-style:none;overflow:hidden;max-height:0;opacity:0;
+ transition:max-height .5s var(--e),opacity .4s var(--e),padding .4s
 }
 .sheet-item.open .sheet-sub{max-height:1080px;opacity:1;padding:0 0 14px}
 .sheet-sub a{
-  display:flex;flex-direction:column;justify-content:center;
-  min-height:44px;padding:10px 0;font-size:14.5px;color:#A8B2BC;
-  border-bottom:1px solid #1A2027;transition:color var(--t-fast),padding-left .35s var(--e)
+ display:flex;flex-direction:column;justify-content:center;
+ min-height:44px;padding:10px 0;font-size:14.5px;color:#A8B2BC;
+ border-bottom:1px solid #1A2027;transition:color var(--t-fast),padding-left .35s var(--e)
 }
 .sheet-sub a:hover,.sheet-sub a:focus-visible{color:#fff;padding-left:8px}
 .sheet-sub a strong{display:block;font-weight:600;color:#EDEFF1;font-size:14.5px}
@@ -635,47 +574,43 @@ body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
 .sheet-foot a:hover{color:#fff}
 
 @media(max-width:1099px){
-  .nav-primary{display:none}
-  .burger{display:flex}
-  /* Keep a compact fit-call CTA visible beside the menu (was fully hidden). */
-  .nav-cta .btn,
-  .nav-cta .btn.sm,
-  .nav.scrolled .nav-cta .btn.sm{
-    display:inline-flex !important;
-    height:36px;padding:0 10px;font-size:10px;letter-spacing:.08em
-  }
-  .nav-in{gap:12px;min-width:0}
-  .mark{flex:0 1 auto;min-width:0;max-width:calc(100% - 56px)}
-  .mark-logo{max-width:100%;height:auto;max-height:26px;width:auto}
-  .nav-cta{margin-left:auto;flex:none;gap:0}
-  .nav-shell{
-    background:rgba(244,243,238,.97);
-    border-bottom-color:var(--rule)
-  }
-  .nav.open .nav-shell{
-    background:var(--ink);
-    border-bottom-color:transparent
-  }
-  .nav.open .nav-in,
-  .nav.open.scrolled .nav-in{height:72px}
-  .nav.open .mark-logo,
-  .nav.open.scrolled .mark-logo{height:26px;filter:brightness(0) invert(1)}
-  .nav.open .burger{color:#EDEFF1}
-  .nav.open ~ .wa{opacity:0;visibility:hidden;pointer-events:none}
-  .sheet a.big,.sheet-toggle{
-    font-size:clamp(1.35rem,6vw,1.85rem);
-    padding:12px 0;
-    min-height:48px
-  }
+ .nav-primary{display:none}
+ .burger{display:flex}
+ /* Keep a compact fit-call CTA visible beside the menu (was fully hidden). */
+ .nav-cta .btn, .nav-cta .btn.sm, .nav.scrolled .nav-cta .btn.sm{
+ display:inline-flex !important;
+ height:36px;padding:0 10px;font-size:10px;letter-spacing:.08em
+ }
+ .nav-in{gap:12px;min-width:0}
+ .mark{flex:0 1 auto;min-width:0;max-width:calc(100% - 56px)}
+ .mark-logo{max-width:100%;height:auto;max-height:26px;width:auto}
+ .nav-cta{margin-left:auto;flex:none;gap:0}
+ .nav-shell{
+ background:rgba(244,243,238,.97);
+ border-bottom-color:var(--rule)
+ }
+ .nav.open .nav-shell{
+ background:var(--ink);
+ border-bottom-color:transparent
+ }
+ .nav.open .nav-in, .nav.open.scrolled .nav-in{height:72px}
+ .nav.open .mark-logo, .nav.open.scrolled .mark-logo{height:26px;filter:brightness(0) invert(1)}
+ .nav.open .burger{color:#EDEFF1}
+ .nav.open ~ .wa{opacity:0;visibility:hidden;pointer-events:none}
+ .sheet a.big,.sheet-toggle{
+ font-size:clamp(1.35rem,6vw,1.85rem);
+ padding:12px 0;
+ min-height:48px
+ }
 }
 @media(min-width:1100px){
-  .sheet,.nav.open + .sheet{display:none !important}
+ .sheet,.nav.open + .sheet{display:none !important}
 }
 
 /* Compact desktop between 1100–1280 · keep CTA chip size stable */
 @media(min-width:1100px) and (max-width:1280px){
-  .nav-link,.nav-trigger{padding:8px 7px;font-size:10px;letter-spacing:.06em}
-  .nav-cta .btn.sm{height:36px;padding:0 10px;font-size:10px}
+ .nav-link,.nav-trigger{padding:8px 7px;font-size:10px;letter-spacing:.06em}
+ .nav-cta .btn.sm{height:36px;padding:0 10px;font-size:10px}
 }
 
 /* ── BREADCRUMBS ── */
@@ -687,22 +622,22 @@ footer{background:var(--ink);color:var(--ink-dim);border-top:1px solid var(--ink
 footer .wrap{padding-block:clamp(48px,5vw,72px) 28px}
 .fgrid{display:grid;grid-template-columns:1.55fr repeat(3,1fr);gap:clamp(24px,3vw,40px)}
 /* #8C98A4 on --ink is 6.40:1. The previous #5C6670 measured 3.21:1 here, which reads
-   fine on paper but fails AA on the dark footer. */
+ fine on paper but fails AA on the dark footer. */
 .fgrid h3{font-family:var(--f-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8C98A4;font-weight:500;margin-bottom:16px}
 .fgrid a{display:inline-block;padding:5px 0;font-size:14.5px;color:#C4CCD4;transition:color var(--t-fast),transform .4s var(--e)}
 .fgrid a:hover{color:#fff;transform:translateX(4px)}
 .fgrid ul{list-style:none}
 .fgrid .f-blurb{margin-top:14px;max-width:32ch;font-size:13.5px;color:#8C98A4;line-height:1.55}
 .fmark{
-  margin-top:clamp(40px,5vw,72px);line-height:0;user-select:none
+ margin-top:clamp(40px,5vw,72px);line-height:0;user-select:none
 }
 .fmark img{
-  display:block;width:min(100%,560px);height:auto;opacity:.16
+ display:block;width:min(100%,560px);height:auto;opacity:.16
 }
 .fbase{
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
-  padding-top:22px;margin-top:22px;border-top:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase
+ display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+ padding-top:22px;margin-top:22px;border-top:1px solid var(--ink-line);
+ font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase
 }
 /* padding lifts these to a 24px minimum target (WCAG 2.2 · 2.5.8) without moving text */
 .fbase a{color:inherit;display:inline-block;padding:6px 0;margin:-6px 0}
@@ -716,86 +651,62 @@ footer .wrap{padding-block:clamp(48px,5vw,72px) 28px}
 /* ── WhatsApp float · brand ink, not product-green ── */
 .wa{display:none !important}
 .wa-removed{
-  position:fixed;right:max(16px,var(--gutter));bottom:20px;z-index:80;
-  display:inline-flex;align-items:center;gap:10px;
-  padding:11px 14px;background:var(--ink);color:#EDEFF1;border:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-  box-shadow:0 18px 40px -22px rgba(14,18,22,.65);
-  transition:transform .4s var(--e),background .3s,border-color .3s
+ position:fixed;right:max(16px,var(--gutter));bottom:20px;z-index:80;
+ display:inline-flex;align-items:center;gap:10px;
+ padding:11px 14px;background:var(--ink);color:#EDEFF1;border:1px solid var(--ink-line);
+ font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+ box-shadow:0 18px 40px -22px rgba(14,18,22,.65);
+ transition:transform .4s var(--e),background .3s,border-color .3s
 }
 .wa:hover{background:var(--ink-2);border-color:#3A444E;transform:translateY(-2px)}
 .wa svg{width:15px;height:15px;flex:none;color:#5FD3A0}
 @media(max-width:1099px){
-  body.hp-inq-open iframe[title="chat widget"]{bottom:88px !important}
+ body.hp-inq-open iframe[title="chat widget"]{bottom:88px !important}
 }
 @media(max-width:560px){
-  .wa span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .wa{padding:14px;border-radius:0}
+ .wa span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ .wa{padding:14px;border-radius:0}
 }
 
 @media (prefers-reduced-motion:reduce){
-  .mm,.sheet,.sheet-sub,.nav-chev,.wa{transition:none !important}
-  .nav.open + .sheet a.big,.nav.open + .sheet .sheet-item{opacity:1;transform:none}
-  #mm-integration .mm-list a:before,
-  #mm-solutions .mm-list a:before,
-  #mm-operations .mm-list a[href="/services/crm-development"]:before,
-  #mm-operations .mm-list a[href="/services/automation-systems"]:before{
-    transition:none !important;transform:none !important
-  }
-  .mm-sol-go i{transition:none !important;transform:none !important}
+ .mm,.sheet,.sheet-sub,.nav-chev,.wa{transition:none !important}
+ .nav.open + .sheet a.big,.nav.open + .sheet .sheet-item{opacity:1;transform:none}
+ #mm-integration .mm-list a:before, #mm-solutions .mm-list a:before, #mm-operations .mm-list a[href="/services/crm-development"]:before, #mm-operations .mm-list a[href="/services/automation-systems"]:before{
+ transition:none !important;transform:none !important
+ }
+ .mm-sol-go i{transition:none !important;transform:none !important}
 }
 
 /* ── Site container · 1240px content width (no inner gutter at desktop) ── */
 :root{
-  --maxw:1240px;
-  --edge:clamp(16px,4.6vw,32px);
-  --gutter:var(--edge);
+ --maxw:1240px;
+ --edge:clamp(16px,4.6vw,32px);
+ --gutter:var(--edge);
 }
-.wrap,
-.wrap.nav-in,
-footer .wrap,
-.nf,
-.canvas-stage,
-.ins-lead-bar,
-.sol-feat-bar{
-  width:100%;
-  max-width:var(--maxw) !important;
-  margin-inline:auto;
-  box-sizing:border-box;
+.wrap, .wrap.nav-in, footer .wrap, .nf, .canvas-stage, .ins-lead-bar, .sol-feat-bar{
+ width:100%;
+ max-width:var(--maxw) !important;
+ margin-inline:auto;
+ box-sizing:border-box;
 }
 @media(max-width:1279px){
-  .wrap,
-  .wrap.nav-in,
-  footer .wrap,
-  .nf,
-  .canvas-stage,
-  .ins-lead-bar,
-  .sol-feat-bar{
-    padding-inline:var(--edge) !important;
-  }
+ .wrap, .wrap.nav-in, footer .wrap, .nf, .canvas-stage, .ins-lead-bar, .sol-feat-bar{
+ padding-inline:var(--edge) !important;
+ }
 }
-/* Keep H1 visible before motion JS runs — LCP, crawlers, and no-JS-fail cases. */
-html.js h1,
-html.js h1[data-r],
-html.js h1[data-mask] {
-  opacity: 1 !important;
-  transform: none !important;
+/* Keep H1 visible before motion JS runs, LCP, crawlers, and no-JS-fail cases. */
+html.js h1, html.js h1[data-r], html.js h1[data-mask] {
+ opacity: 1 !important;
+ transform: none !important;
 }
 
 @media(min-width:1280px){
-  .wrap,
-  .wrap.nav-in,
-  footer .wrap,
-  .nf,
-  .canvas-stage,
-  .ins-lead-bar,
-  .sol-feat-bar{
-    padding-inline:0 !important;
-  }
-  .chapters,
-  .mob-chips{
-    margin-inline:0 !important;
-    padding-inline:0 !important;
-  }
+ .wrap, .wrap.nav-in, footer .wrap, .nf, .canvas-stage, .ins-lead-bar, .sol-feat-bar{
+ padding-inline:0 !important;
+ }
+ .chapters, .mob-chips{
+ margin-inline:0 !important;
+ padding-inline:0 !important;
+ }
 }
 

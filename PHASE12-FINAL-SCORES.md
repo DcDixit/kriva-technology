@@ -1,6 +1,6 @@
-# Phase 12 — Final 9.5+ Quality Pass
+# Phase 12, Final 9.5+ Quality Pass
 
-**Date:** 2026-08-10  
+**Date:** 2026-08-10 
 **Verdict:** **READY TO DEPLOY**
 
 ## Overall score: **9.6 / 10**
@@ -33,7 +33,7 @@
 
 ---
 
-## All 50 pages — final scores
+## All 50 pages, final scores
 
 | # | Page | Route | Score |
 |---|------|-------|------:|
@@ -94,12 +94,12 @@
 
 ## What changed in this pass
 
-1. **75 seeded SVG visuals** — unique layouts, accents, and data per asset; no generic watermarks
-2. **Slot CSS** — consistent image sizing (16:10, 21:9), placeholder auto-hide, mobile aspect tweaks
-3. **HTML cleanup** — removed stale “drop screenshot” copy, fixed homepage markup, updated captions
-4. **Contact form** — mailto pre-fill includes all form fields
-5. **Missing asset** — `/work/financesync/reconciliation.svg` added
-6. **Full QA** — 50 routes, 75 assets, SEO, OG, alt text, 0 broken links
+1. **75 seeded SVG visuals**, unique layouts, accents, and data per asset; no generic watermarks
+2. **Slot CSS**, consistent image sizing (16:10, 21:9), placeholder auto-hide, mobile aspect tweaks
+3. **HTML cleanup**, removed stale “drop screenshot” copy, fixed homepage markup, updated captions
+4. **Contact form**, mailto pre-fill includes all form fields
+5. **Missing asset**, `/work/financesync/reconciliation.svg` added
+6. **Full QA**, 50 routes, 75 assets, SEO, OG, alt text, 0 broken links
 
 ---
 
@@ -107,12 +107,12 @@
 
 These are **post-launch upgrades**, not quality failures:
 
-1. **Real client screenshots** — replace seeded SVGs when captures are available (buyers may recognize patterns as illustrative)
-2. **Server-side contact form** — mailto works; API/Resend endpoint is cleaner for US/UK buyers
-3. **Cal.com embed** — slot ready; optional conversion lift
-4. **Approved founder photo** — editorial portrait in place
-5. **Verified testimonials** — omitted until written approval
-6. **Physical device pass** — recommended once on staging URL before DNS cutover
+1. **Real client screenshots**, replace seeded SVGs when captures are available (buyers may recognize patterns as illustrative)
+2. **Server-side contact form**, mailto works; API/Resend endpoint is cleaner for US/UK buyers
+3. **Cal.com embed**, slot ready; optional conversion lift
+4. **Approved founder photo**, editorial portrait in place
+5. **Verified testimonials**, omitted until written approval
+6. **Physical device pass**, recommended once on staging URL before DNS cutover
 
 **None of these block 9.5+ or deployment.**
 

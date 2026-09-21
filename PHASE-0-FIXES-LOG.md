@@ -1,4 +1,4 @@
-# Phase 0 SEO Fixes — Implementation Log
+# Phase 0 SEO Fixes, Implementation Log
 
 ## Changes Made
 
@@ -11,7 +11,7 @@
 
 ### 2. Markets Hub Page
 - **File:** `kriva-markets-index.html`
-- **Before:** "KRIVA delivers custom trucking software, B2B SaaS, and finance integrations for teams in the US, UK, UAE, and Canada — product design and engineering from Ahmedabad with regional delivery overlap." (196 chars - EXCEEDS 160)
+- **Before:** "KRIVA delivers custom trucking software, B2B SaaS, and finance integrations for teams in the US, UK, UAE, and Canada, product design and engineering from Ahmedabad with regional delivery overlap." (196 chars - EXCEEDS 160)
 - **After:** "Custom trucking software, B2B SaaS, and integrations for teams in the US, UK, UAE, and Canada. Product design and engineering from Ahmedabad. Book a call." (151 chars)
 - **Change:** Trimmed to <160 chars + added CTA "Book a call"
 - **Impact:** Full SERP display + improved CTR
@@ -50,16 +50,16 @@
 
 ### Image Alt Text - Recommended Improvements:
 - Partner logos (QuickBooks, Xero): Currently `alt=""`, recommend adding descriptive alt
-  - Change: `alt=""` → `alt="QuickBooks integration"`
-  - Files affected: 7 pages with partner logo references
-  - Impact: Better image search visibility + accessibility
+ - Change: `alt=""` → `alt="QuickBooks integration"`
+ - Files affected: 7 pages with partner logo references
+ - Impact: Better image search visibility + accessibility
 
 ---
 
 ## Technical Implementation Notes
 
 ### BreadcrumbList Schema Status:
-✅ **ALREADY IMPLEMENTED** — All 56 non-homepage pages have BreadcrumbList schema
+✅ **ALREADY IMPLEMENTED**, All 56 non-homepage pages have BreadcrumbList schema
 - Generation: `shared/schema.js` lines 229-253
 - Injection: `apply_schema.cjs` (idempotent)
 - No action needed

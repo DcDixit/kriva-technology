@@ -1,261 +1,221 @@
-/* KRIVA GA4 — single tracker for every page.
-   Property: 552202890 (https://analytics.google.com/analytics/web/#/a406452772p552202890/)
-   Web stream Measurement ID: G-FHG12KTF8C */
+/* KRIVA GA4, single tracker for every page.
+ Property: 552202890 (https://analytics.google.com/analytics/web/#/a406452772p552202890/)
+ Web stream Measurement ID: G-FHG12KTF8C */
 (function () {
-  'use strict';
-  if (window.__KRIVA_ANALYTICS__) return;
-  window.__KRIVA_ANALYTICS__ = true;
+ 'use strict';
+ if (window.__KRIVA_ANALYTICS__) return;
+ window.__KRIVA_ANALYTICS__ = true;
 
-  var MEASUREMENT_ID = 'G-FHG12KTF8C';
-  var validId = /^G-[A-Z0-9]{6,}$/i.test(MEASUREMENT_ID) && !/^G-X+$/i.test(MEASUREMENT_ID);
-  var debug = /(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-  var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-  var optedOut = !!(validId && window['ga-disable-' + MEASUREMENT_ID]);
+ var MEASUREMENT_ID = 'G-FHG12KTF8C';
+ var validId = /^G-[A-Z0-9]{6,}$/i.test(MEASUREMENT_ID) && !/^G-X+$/i.test(MEASUREMENT_ID);
+ var debug = /(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+ var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+ var optedOut = !!(validId && window['ga-disable-' + MEASUREMENT_ID]);
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    window.dataLayer.push(arguments);
-  }
-  window.gtag = gtag;
-  window.krivaTrack = function (name, params) {
-    send(name, params);
-  };
+ window.dataLayer = window.dataLayer || [];
+ function gtag() {
+ window.dataLayer.push(arguments);
+ }
+ window.gtag = gtag;
+ window.krivaTrack = function (name, params) {
+ send(name, params);
+ };
 
-  gtag('js', new Date());
-  /* Ads stay denied. Analytics is granted unless the visitor explicitly opted out
-     (ga-disable cookie). Do not treat Global Privacy Control as analytics opt-out:
-     it blocked measurement for a large share of US browsers and zeroed GA data. */
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: optedOut ? 'denied' : 'granted'
-  });
+ gtag('js', new Date());
+ /* Ads stay denied. Analytics is granted unless the visitor explicitly opted out
+ (ga-disable cookie). Do not treat Global Privacy Control as analytics opt-out:
+ it blocked measurement for a large share of US browsers and zeroed GA data. */
+ gtag('consent', 'default', {
+ ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: optedOut ? 'denied' : 'granted'
+ });
 
-  var shouldCollect = validId && !optedOut && (!local || debug);
-  if (shouldCollect) {
-    var config = {
-      anonymize_ip: true,
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false,
-      send_page_view: true,
-      cookie_flags: 'SameSite=Lax;Secure'
-    };
-    if (debug) config.debug_mode = true;
-    gtag('config', MEASUREMENT_ID, config);
-  }
+ var shouldCollect = validId && !optedOut && (!local || debug);
+ if (shouldCollect) {
+ var config = {
+ anonymize_ip: true, allow_google_signals: false, allow_ad_personalization_signals: false, send_page_view: true, cookie_flags: 'SameSite=Lax;Secure'
+ };
+ if (debug) config.debug_mode = true;
+ gtag('config', MEASUREMENT_ID, config);
+ }
 
-  function send(name, params) {
-    if (!name) return;
-    var payload = params ? Object.assign({}, params) : {};
-    gtag('event', name, payload);
-  }
+ function send(name, params) {
+ if (!name) return;
+ var payload = params ? Object.assign({}, params) : {};
+ gtag('event', name, payload);
+ }
 
-  function textOf(el) {
-    return (el.getAttribute('aria-label') || el.textContent || '')
-      .replace(/[→←]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .slice(0, 80);
-  }
+ function textOf(el) {
+ return (el.getAttribute('aria-label') || el.textContent || '')
+ .replace(/[→←]/g, '')
+ .replace(/\s+/g, ' ')
+ .trim()
+ .slice(0, 80);
+ }
 
-  function regionOf(el) {
-    if (el.closest('#nav, .nav')) return 'nav';
-    if (el.closest('#sheet, .sheet')) return 'mobile_menu';
-    if (el.closest('footer')) return 'footer';
-    if (el.closest('.cta-band')) return 'cta_band';
-    if (el.closest('.hero, header.hero')) return 'hero';
-    return 'page';
-  }
+ function regionOf(el) {
+ if (el.closest('#nav, .nav')) return 'nav';
+ if (el.closest('#sheet, .sheet')) return 'mobile_menu';
+ if (el.closest('footer')) return 'footer';
+ if (el.closest('.cta-band')) return 'cta_band';
+ if (el.closest('.hero, header.hero')) return 'hero';
+ return 'page';
+ }
 
-  function contactType(url) {
-    if (/#book/i.test(url.hash)) return 'fit_call';
-    if (/#brief/i.test(url.hash)) return 'project_brief';
-    return 'contact';
-  }
+ function contactType(url) {
+ if (/#book/i.test(url.hash)) return 'fit_call';
+ if (/#brief/i.test(url.hash)) return 'project_brief';
+ return 'contact';
+ }
 
-  document.addEventListener(
-    'click',
-    function (e) {
-      var a = e.target.closest && e.target.closest('a[href]');
-      if (!a) return;
-      var href = a.getAttribute('href');
-      if (!href) return;
+ document.addEventListener(
+ 'click', function (e) {
+ var a = e.target.closest && e.target.closest('a[href]');
+ if (!a) return;
+ var href = a.getAttribute('href');
+ if (!href) return;
 
-      if (href === '#inquire') {
-        send('cta_click', {
-          cta_name: textOf(a) || 'Send inquiry',
-          cta_type: 'page_inquiry',
-          cta_location: regionOf(a),
-          link_url: location.pathname + href
-        });
-        return;
-      }
+ if (href === '#inquire') {
+ send('cta_click', {
+ cta_name: textOf(a) || 'Send inquiry', cta_type: 'page_inquiry', cta_location: regionOf(a), link_url: location.pathname + href
+ });
+ return;
+ }
 
-      if (href === '#book') {
-        send('cta_click', {
-          cta_name: textOf(a) || 'Book a 20-min call',
-          cta_type: 'fit_call',
-          cta_location: regionOf(a),
-          link_url: location.pathname + href
-        });
-        return;
-      }
+ if (href === '#book') {
+ send('cta_click', {
+ cta_name: textOf(a) || 'Book a 20-min call', cta_type: 'fit_call', cta_location: regionOf(a), link_url: location.pathname + href
+ });
+ return;
+ }
 
-      if (href === '#brief') {
-        send('cta_click', {
-          cta_name: textOf(a) || 'Send project brief',
-          cta_type: 'project_brief',
-          cta_location: regionOf(a),
-          link_url: location.pathname + href
-        });
-        return;
-      }
+ if (href === '#brief') {
+ send('cta_click', {
+ cta_name: textOf(a) || 'Send project brief', cta_type: 'project_brief', cta_location: regionOf(a), link_url: location.pathname + href
+ });
+ return;
+ }
 
-      if (href.charAt(0) === '#') return;
+ if (href.charAt(0) === '#') return;
 
-      var url;
-      try {
-        url = new URL(href, location.href);
-      } catch (err) {
-        return;
-      }
+ var url;
+ try {
+ url = new URL(href, location.href);
+ } catch (err) {
+ return;
+ }
 
-      if (url.protocol === 'mailto:' || url.protocol === 'tel:') {
-        var method = url.protocol === 'tel:' ? 'phone' : 'email';
-        send('contact_click', {
-          method: method,
-          link_url: href,
-          cta_location: regionOf(a)
-        });
-        if (method === 'email') {
-          send('email_click', { link_url: href, cta_location: regionOf(a) });
-        } else {
-          send('phone_click', { link_url: href, cta_location: regionOf(a) });
-        }
-        return;
-      }
+ if (url.protocol === 'mailto:' || url.protocol === 'tel:') {
+ var method = url.protocol === 'tel:' ? 'phone' : 'email';
+ send('contact_click', {
+ method: method, link_url: href, cta_location: regionOf(a)
+ });
+ if (method === 'email') {
+ send('email_click', { link_url: href, cta_location: regionOf(a) });
+ } else {
+ send('phone_click', { link_url: href, cta_location: regionOf(a) });
+ }
+ return;
+ }
 
-      if (url.origin === location.origin && url.hash === '#inquire') {
-        send('cta_click', {
-          cta_name: textOf(a) || 'Send inquiry',
-          cta_type: 'page_inquiry',
-          cta_location: regionOf(a),
-          link_url: url.pathname + url.hash
-        });
-        return;
-      }
+ if (url.origin === location.origin && url.hash === '#inquire') {
+ send('cta_click', {
+ cta_name: textOf(a) || 'Send inquiry', cta_type: 'page_inquiry', cta_location: regionOf(a), link_url: url.pathname + url.hash
+ });
+ return;
+ }
 
-      if (url.origin === location.origin && /^\/contact\/?$/.test(url.pathname)) {
-        send('cta_click', {
-          cta_name: textOf(a) || contactType(url),
-          cta_type: contactType(url),
-          cta_location: regionOf(a),
-          link_url: url.pathname + url.hash
-        });
-        return;
-      }
+ if (url.origin === location.origin && /^\/contact\/?$/.test(url.pathname)) {
+ send('cta_click', {
+ cta_name: textOf(a) || contactType(url), cta_type: contactType(url), cta_location: regionOf(a), link_url: url.pathname + url.hash
+ });
+ return;
+ }
 
-      if (url.origin === location.origin && /^\/markets(\/|$)/.test(url.pathname)) {
-        send('select_content', {
-          content_type: 'market_page',
-          item_id: url.pathname.replace(/\/$/, '') || '/markets',
-          cta_location: regionOf(a)
-        });
-      }
-    },
-    true
-  );
+ if (url.origin === location.origin && /^\/markets(\/|$)/.test(url.pathname)) {
+ send('select_content', {
+ content_type: 'market_page', item_id: url.pathname.replace(/\/$/, '') || '/markets', cta_location: regionOf(a)
+ });
+ }
+ }, true
+ );
 
-  function watchForm(id, name) {
-    var form = document.getElementById(id);
-    if (!form) return;
-    var started = false;
-    form.addEventListener(
-      'focusin',
-      function () {
-        if (started) return;
-        started = true;
-        send('form_start', { form_id: id, form_name: name });
-      },
-      true
-    );
-  }
-  watchForm('fitForm', 'fit_call');
-  watchForm('briefForm', 'project_brief');
-  watchForm('pageInquiry', 'page_inquiry');
+ function watchForm(id, name) {
+ var form = document.getElementById(id);
+ if (!form) return;
+ var started = false;
+ form.addEventListener(
+ 'focusin', function () {
+ if (started) return;
+ started = true;
+ send('form_start', { form_id: id, form_name: name });
+ }, true
+ );
+ }
+ watchForm('fitForm', 'fit_call');
+ watchForm('briefForm', 'project_brief');
+ watchForm('pageInquiry', 'page_inquiry');
 
-  /* One successful submission = one lead. Dedup by form + page for the session.
-     generate_lead is the conversion. Also send GA4 recommended form_submit on
-     success only — do not mark form_start, cta_click, or enhanced-measurement
-     form_submit (fires on click, even if email failed) as Key events. */
-  window.addEventListener('kriva:lead', function (e) {
-    var d = (e && e.detail) || {};
-    var dedupKey =
-      'kriva_ga_lead_' + location.pathname + '|' + (d.form_id || '') + '|' + (d.type || 'inquiry');
-    try {
-      if (sessionStorage.getItem(dedupKey)) return;
-      sessionStorage.setItem(dedupKey, '1');
-    } catch (err) {
-      window.__KRIVA_LEAD_KEYS__ = window.__KRIVA_LEAD_KEYS__ || {};
-      if (window.__KRIVA_LEAD_KEYS__[dedupKey]) return;
-      window.__KRIVA_LEAD_KEYS__[dedupKey] = true;
-    }
-    var params = {
-      lead_type: d.type || 'inquiry',
-      form_id: d.form_id || '',
-      form_name: d.type || 'inquiry',
-      currency: 'USD',
-      value: 1
-    };
-    send('generate_lead', params);
-    send('form_submit', {
-      form_id: params.form_id,
-      form_name: params.form_name,
-      form_destination: location.pathname,
-      lead_type: params.lead_type
-    });
-    send('contact_form_submit', params);
-  });
+ /* One successful submission = one lead. Dedup by form + page for the session.
+ generate_lead is the conversion. Also send GA4 recommended form_submit on
+ success only, do not mark form_start, cta_click, or enhanced-measurement
+ form_submit (fires on click, even if email failed) as Key events. */
+ window.addEventListener('kriva:lead', function (e) {
+ var d = (e && e.detail) || {};
+ var dedupKey =
+ 'kriva_ga_lead_' + location.pathname + '|' + (d.form_id || '') + '|' + (d.type || 'inquiry');
+ try {
+ if (sessionStorage.getItem(dedupKey)) return;
+ sessionStorage.setItem(dedupKey, '1');
+ } catch (err) {
+ window.__KRIVA_LEAD_KEYS__ = window.__KRIVA_LEAD_KEYS__ || {};
+ if (window.__KRIVA_LEAD_KEYS__[dedupKey]) return;
+ window.__KRIVA_LEAD_KEYS__[dedupKey] = true;
+ }
+ var params = {
+ lead_type: d.type || 'inquiry', form_id: d.form_id || '', form_name: d.type || 'inquiry', currency: 'USD', value: 1
+ };
+ send('generate_lead', params);
+ send('form_submit', {
+ form_id: params.form_id, form_name: params.form_name, form_destination: location.pathname, lead_type: params.lead_type
+ });
+ send('contact_form_submit', params);
+ });
 
-  if (/page not found/i.test(document.title)) {
-    send('page_not_found', {
-      page_path: location.pathname,
-      page_location: location.href
-    });
-  }
+ if (/page not found/i.test(document.title)) {
+ send('page_not_found', {
+ page_path: location.pathname, page_location: location.href
+ });
+ }
 
-  /* Engagement signals — mark these as Key events in GA4 Admin for conversion tracking. */
-  var scrollMarks = [25, 50, 75, 90];
-  var scrollFired = {};
-  function onScroll() {
-    var doc = document.documentElement;
-    var max = Math.max(doc.scrollHeight - window.innerHeight, 1);
-    var pct = Math.min(100, Math.round((window.scrollY / max) * 100));
-    for (var i = 0; i < scrollMarks.length; i++) {
-      var mark = scrollMarks[i];
-      if (pct >= mark && !scrollFired[mark]) {
-        scrollFired[mark] = true;
-        send('scroll', {
-          percent_scrolled: mark,
-          page_path: location.pathname
-        });
-      }
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+ /* Engagement diagnostics, do not mark scroll or user_engagement as Key events. */
+ var scrollMarks = [25, 50, 75, 90];
+ var scrollFired = {};
+ function onScroll() {
+ var doc = document.documentElement;
+ var max = Math.max(doc.scrollHeight - window.innerHeight, 1);
+ var pct = Math.min(100, Math.round((window.scrollY / max) * 100));
+ for (var i = 0; i < scrollMarks.length; i++) {
+ var mark = scrollMarks[i];
+ if (pct >= mark && !scrollFired[mark]) {
+ scrollFired[mark] = true;
+ send('scroll', {
+ percent_scrolled: mark, page_path: location.pathname
+ });
+ }
+ }
+ }
+ window.addEventListener('scroll', onScroll, { passive: true });
+ onScroll();
 
-  var engaged = false;
-  function markEngaged() {
-    if (engaged) return;
-    engaged = true;
-    send('user_engagement', {
-      engagement_type: 'active',
-      page_path: location.pathname
-    });
-  }
-  document.addEventListener('pointerdown', markEngaged, { once: true, passive: true });
-  document.addEventListener('keydown', markEngaged, { once: true, passive: true });
-  setTimeout(markEngaged, 10000);
+ var engaged = false;
+ function markEngaged() {
+ if (engaged) return;
+ engaged = true;
+ send('user_engagement', {
+ engagement_type: 'active', page_path: location.pathname
+ });
+ }
+ document.addEventListener('pointerdown', markEngaged, { once: true, passive: true });
+ document.addEventListener('keydown', markEngaged, { once: true, passive: true });
+ setTimeout(markEngaged, 10000);
 })();

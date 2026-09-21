@@ -1,6 +1,6 @@
 # KRIVA Measurement Baseline
 
-**Purpose:** Track your business funnel with real data — not guesses.
+**Purpose:** Track your business funnel with real data, not guesses.
 
 **Funnel you care about:**
 
@@ -10,7 +10,7 @@ Google impressions → clicks → visitors → engaged visitors → inquiries/le
 
 ---
 
-## Step 1 — Fix measurement first (do once after deploy)
+## Step 1, Fix measurement first (do once after deploy)
 
 ### A. Confirm leads are tracking (5 minutes)
 
@@ -20,20 +20,20 @@ Google impressions → clicks → visitors → engaged visitors → inquiries/le
 4. Within ~30 seconds you should see **`generate_lead`** in Realtime events.
 5. You should **NOT** see `generate_lead` when you only **open** a form or click a CTA without submitting.
 
-### B. Mark the conversion in GA4 Admin (required — cannot be done in website code)
+### B. Mark the conversion in GA4 Admin (required, cannot be done in website code)
 
 1. GA4 → **Admin** (gear icon, bottom left).
 2. **Events** → find **`generate_lead`**.
 3. Toggle **Mark as key event** → ON.
 4. **Important:** Mark **only `generate_lead`** as a Key event for lead counting.
-   - Do **not** also mark `contact_form_submit`, `form_start`, `cta_click`, or `scroll` as Key events — that would inflate conversions.
+ - Do **not** also mark `contact_form_submit`, `form_start`, `cta_click`, or `scroll` as Key events, that would inflate conversions.
 
 ### C. What each event means
 
 | Event | Counts as a lead? | When it fires |
 |-------|-------------------|---------------|
 | `generate_lead` | **Yes** (your main conversion) | After a form is successfully submitted |
-| `contact_form_submit` | No (diagnostic duplicate name) | Same moment as `generate_lead` — ignore for Key events |
+| `contact_form_submit` | No (diagnostic duplicate name) | Same moment as `generate_lead`, ignore for Key events |
 | `form_start` | No | User focuses first field in a form |
 | `cta_click` | No | User clicks Contact, fit call, brief, or #inquire link |
 | `email_click` | No | User clicks a mailto link |
@@ -42,7 +42,7 @@ Google impressions → clicks → visitors → engaged visitors → inquiries/le
 
 ---
 
-## Step 2 — Record your baseline (same day each week)
+## Step 2, Record your baseline (same day each week)
 
 **Date:** _______________
 
@@ -110,7 +110,7 @@ Organic lead rate = generate_lead ÷ Organic Search sessions × 100
 
 ---
 
-## Step 3 — Export data for deeper analysis
+## Step 3, Export data for deeper analysis
 
 Save exports to `seo/gsc/data/` (or paste into chat for review).
 
@@ -147,7 +147,7 @@ node seo/gsc_analyze.cjs
 
 ---
 
-## Step 4 — Weekly CEO check (5 minutes)
+## Step 4, Weekly CEO check (5 minutes)
 
 Answer these four questions:
 
@@ -171,7 +171,7 @@ If impressions are flat → wait for 4+ weeks of GSC data before major SEO chang
 
 ---
 
-## Quick reference — site is technically ready when
+## Quick reference, site is technically ready when
 
 - [ ] `https://krivatechnologies.com/sitemap.xml` loads (~57 URLs)
 - [ ] `https://krivatechnologies.com/robots.txt` allows crawling
