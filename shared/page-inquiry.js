@@ -4,8 +4,25 @@
   const ENDPOINT = "/api/inquiry";
   const SUCCESS_MSG =
     "Thank you! Your inquiry has been submitted successfully. We'll be in touch soon.";
-  const FAIL_MSG =
+  const FAIL_STATUS =
     "We could not send your inquiry right now. Please try again shortly, or email hello@krivatechnologies.com.";
+
+  function inquiryMailto(payload) {
+    payload = payload || {};
+    const lines = [
+      "Name: " + (payload.name || ""),
+      "Email: " + (payload.email || ""),
+      payload.company ? "Company: " + payload.company : "",
+      payload.ptype ? "Project type: " + payload.ptype : "",
+      payload.details ? "Details:\n" + payload.details : "",
+    ].filter(Boolean);
+    return (
+      "mailto:hello@krivatechnologies.com?subject=" +
+      encodeURIComponent("Website inquiry from " + (payload.name || "KRIVA site")) +
+      "&body=" +
+      encodeURIComponent(lines.join("\n").slice(0, 1800))
+    );
+  }
 
   function check(f) {
     if (!f.required) return true;
@@ -44,6 +61,10 @@
         })
       );
     } catch (err) {}
+  }
+
+  function apiSucceeded(res, body) {
+    return !!(res && res.ok && body && body.ok === true && body.channel);
   }
 
   function wire(form) {
@@ -96,17 +117,7 @@
           body: JSON.stringify(payload),
         });
         const body = await res.json().catch(() => ({}));
-        if (!res.ok || body.ok === false) throw new Error("send-failed");
-        if (body.relay && body.relay.url) {
-          const relayRes = await fetch(body.relay.url, {
-            method: "POST",
-            headers: { Accept: "application/json", "Content-Type": "application/json" },
-            body: JSON.stringify(body.relay.payload || payload),
-          });
-          const relayBody = await relayRes.json().catch(() => ({}));
-          const ok = relayBody.success === true || String(relayBody.success) === "true";
-          if (!ok) throw new Error("send-failed");
-        }
+        if (!apiSucceeded(res, body)) throw new Error("send-failed");
         sending = false;
         btn.removeAttribute("aria-disabled");
         form.removeAttribute("aria-busy");
@@ -117,42 +128,16 @@
         form.removeAttribute("aria-busy");
         if (label) label.textContent = defaultLabel;
         if (fail) {
-          fail.textContent = FAIL_MSG;
+          fail.innerHTML =
+            'We could not send your inquiry right now. Please try again shortly, or <a href="' +
+            inquiryMailto(payload) +
+            '">email this inquiry to hello@krivatechnologies.com</a>.';
           fail.classList.add("on");
         }
-        if (status) status.textContent = FAIL_MSG;
+        if (status) status.textContent = FAIL_STATUS;
       }
     });
   }
 
   document.querySelectorAll("form.inq-form").forEach(wire);
-
-  if (/[?&]sent=1(?:&|$)/.test(location.search) && location.hash === "#inquire") {
-    const form = document.getElementById("pageInquiry");
-    const done = form && form.parentElement.querySelector(".inq-done");
-    if (form && done) {
-      form.classList.add("sent");
-      done.classList.add("on");
-      const h3 = done.querySelector("h3");
-      const p = done.querySelector("p");
-      if (h3) h3.textContent = "Thank you!";
-      if (p) p.textContent = "Your inquiry has been submitted successfully. We'll be in touch soon.";
-      try {
-        const typeEl = form.querySelector('[name="inquiry_type"]');
-        const leadType = (typeEl && typeEl.value) || "page_inquiry";
-        const storageKey =
-          "kriva_ga_lead_" + location.pathname + "|" + (form.id || "") + "|" + leadType;
-        if (!sessionStorage.getItem(storageKey)) {
-          window.dispatchEvent(
-            new CustomEvent("kriva:lead", {
-              detail: {
-                type: leadType,
-                form_id: form.id || "",
-              },
-            })
-          );
-        }
-      } catch (err) {}
-    }
-  }
 })();

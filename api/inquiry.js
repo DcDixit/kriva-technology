@@ -1,4 +1,4 @@
-/** POST /api/inquiry: sends inquiries to the studio (Gmail, Resend, Web3Forms, or FormSubmit). */
+/** POST /api/inquiry: Gmail SMTP is the production send path for every site form. */
 const CONTACT_EMAIL = "hello@krivatechnologies.com";
 const TO = process.env.INQUIRY_TO || CONTACT_EMAIL;
 const USER_FACING_ERROR =
@@ -16,29 +16,6 @@ function ccRecipients() {
 
 function isEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(value || "").trim());
-}
-
-function gmailUser() {
-  return String(process.env.GMAIL_USER || "").trim();
-}
-
-/** FormSubmit requires a one-time inbox activation. Default to the public studio inbox. */
-function formsubmitRecipient() {
-  if (process.env.FORMSUBMIT_TO) return process.env.FORMSUBMIT_TO.trim();
-  const cc = ccRecipients();
-  if (cc.length) return cc[0];
-  return TO;
-}
-
-function formsubmitCcList(recipient) {
-  const list = [];
-  if (TO && TO !== recipient) list.push(TO);
-  ccRecipients().forEach((addr) => {
-    if (addr !== recipient && !list.includes(addr)) list.push(addr);
-  });
-  const gmail = gmailUser();
-  if (isEmail(gmail) && gmail !== recipient && !list.includes(gmail)) list.push(gmail);
-  return list;
 }
 
 function sendJson(res, status, body) {
@@ -83,15 +60,6 @@ function safePagePath(data) {
   const raw = field(data, "page");
   if (!raw.startsWith("/") || raw.startsWith("//") || raw.includes("://")) return "";
   return raw.split("#")[0].split("?")[0].slice(0, 200);
-}
-
-function requestOrigin(req) {
-  const live = "https://krivatechnologies.com";
-  const xfHost = String(req.headers["x-forwarded-host"] || req.headers.host || "");
-  const host = xfHost.split(",")[0].trim();
-  if (!host || /^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(host)) return live;
-  const proto = String(req.headers["x-forwarded-proto"] || "https").split(",")[0].trim();
-  return proto + "://" + host;
 }
 
 function buildMessage(data) {
@@ -166,47 +134,8 @@ function web3formsBody(data) {
   };
 }
 
-function formsubmitNext(data, origin) {
-  const inquiryType = field(data, "inquiry_type");
-  if (inquiryType === "fit_call") return origin + "/contact?sent=fit#book";
-  if (inquiryType === "page_inquiry") {
-    const p = safePagePath(data) || "/contact";
-    return origin + p + "?sent=1#inquire";
-  }
-  return origin + "/contact?sent=brief#brief";
-}
-
-function formsubmitBody(data, origin) {
-  const { subject, text } = buildMessage(data);
-  const cc = formsubmitCcList(formsubmitRecipient());
-  const body = {
-    ...sharedFields(data),
-    message: text,
-    _subject: subject,
-    _template: "table",
-    _captcha: "false",
-    _honey: "",
-    _url: origin + "/contact",
-    _next: formsubmitNext(data, origin),
-  };
-  if (cc.length) body._cc = cc.join(",");
-  return body;
-}
-
-function browserRelay(data, origin) {
-  const recipient = formsubmitRecipient();
-  return {
-    channel: "browser",
-    relay: {
-      kind: "ajax",
-      url: "https://formsubmit.co/ajax/" + encodeURIComponent(recipient),
-      payload: formsubmitBody(data, origin),
-    },
-  };
-}
-
 function gmailCredentials() {
-  const user = gmailUser();
+  const user = String(process.env.GMAIL_USER || "").trim();
   const pass = String(process.env.GMAIL_APP_PASSWORD || "")
     .trim()
     .replace(/^["']|["']$/g, "")
@@ -218,24 +147,58 @@ function looksLikeGmailAppPassword(pass) {
   return /^[a-z0-9]{16}$/i.test(pass);
 }
 
+function isConnError(err) {
+  const msg = String((err && (err.code || err.message)) || "");
+  return /timeout|etimedout|econn|enetunreach|socket|connect/i.test(msg);
+}
+
+function smtpErrorMeta(err) {
+  if (!err) return "unknown";
+  const parts = [err.code, err.responseCode, err.command, err.message].filter(Boolean);
+  return parts.join(" ").slice(0, 240);
+}
+
 async function sendWithTransport(transportOpts, mail) {
   const nodemailer = require("nodemailer");
   const tx = nodemailer.createTransport(transportOpts);
-  const info = await tx.sendMail(mail);
-  if (!info || !info.messageId) {
-    throw new Error("smtp accept missing messageId");
+  try {
+    const info = await tx.sendMail(mail);
+    if (!info || !info.messageId) {
+      throw new Error("smtp accept missing messageId");
+    }
+    return { channel: "gmail", messageId: info.messageId };
+  } finally {
+    try {
+      tx.close();
+    } catch (err) {}
   }
-  return { channel: "gmail", messageId: info.messageId };
+}
+
+function smtpTransportOpts(port, secure, user, pass) {
+  return {
+    host: "smtp.gmail.com",
+    port,
+    secure,
+    requireTLS: !secure,
+    auth: { user, pass },
+    connectionTimeout: 3500,
+    greetingTimeout: 3500,
+    socketTimeout: 6000,
+    tls: { servername: "smtp.gmail.com" },
+  };
 }
 
 async function sendViaGmail(data) {
   const { user, pass } = gmailCredentials();
-  if (!user || !pass) return null;
+  if (!user || !pass) {
+    console.error("inquiry gmail: GMAIL_USER or GMAIL_APP_PASSWORD is not set");
+    return null;
+  }
   if (!looksLikeGmailAppPassword(pass)) {
     console.error(
-      "inquiry send skipped (gmail): GMAIL_APP_PASSWORD format invalid (length " +
+      "inquiry gmail: GMAIL_APP_PASSWORD is not a 16-character Google App Password (length " +
         pass.length +
-        ", expected 16)"
+        "). Skipping SMTP so the request fails fast. Create one at Google Account → Security → App passwords."
     );
     return null;
   }
@@ -254,143 +217,84 @@ async function sendViaGmail(data) {
   if (cc.length) mail.cc = cc.join(", ");
 
   const attempts = [
-    { host: "smtp.gmail.com", port: 465, secure: true, auth: { user, pass } },
-    {
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      requireTLS: true,
-      auth: { user, pass },
-    },
+    smtpTransportOpts(587, false, user, pass),
+    smtpTransportOpts(465, true, user, pass),
   ];
 
   let lastErr;
-  for (const opts of attempts) {
+  for (let i = 0; i < attempts.length; i++) {
     try {
-      return await sendWithTransport(opts, mail);
+      return await sendWithTransport(attempts[i], mail);
     } catch (err) {
       lastErr = err;
+      console.error("inquiry send failed (gmail smtp " + attempts[i].port + "):", smtpErrorMeta(err));
+      if (!isConnError(err) && i === 0) break;
     }
   }
   throw lastErr || new Error("gmail send failed");
 }
 
-function formsubmitMessage(body) {
-  if (!body || typeof body !== "object") return "";
-  const msg = body.message != null ? body.message : body.body && body.body.message;
-  if (typeof msg === "string") return msg;
-  if (msg && typeof msg === "object" && typeof msg.message === "string") return msg.message;
-  return "";
-}
-
-function formsubmitSuccessFlag(body) {
-  if (!body || typeof body !== "object") return null;
-  if (body.success === true || String(body.success) === "true") return true;
-  if (body.success === false || String(body.success) === "false") return false;
-  return null;
-}
-
-function formsubmitSetupBlocked(msg) {
-  return /confirm your email|open this page through a web server|needs activation|activate form/i.test(
-    msg || ""
-  );
-}
-
-function formsubmitSucceeded(body, status) {
-  const msg = formsubmitMessage(body);
-  const flag = formsubmitSuccessFlag(body);
-  if (formsubmitSetupBlocked(msg) && flag !== true) return false;
-  if (flag === true) return true;
-  if (flag === false) return false;
-  if (status >= 200 && status < 400 && /sent|thank you|successfully/i.test(msg)) {
-    return true;
-  }
-  return false;
-}
-
-async function sendViaFormsubmit(data, origin) {
-  const recipient = formsubmitRecipient();
-  const payload = formsubmitBody(data, origin);
-  const url = "https://formsubmit.co/ajax/" + encodeURIComponent(recipient);
-  const r = await fetch(url, {
+async function sendViaResend(data) {
+  if (!process.env.RESEND_API_KEY) return null;
+  const email = field(data, "email");
+  const { text, html, subject } = buildMessage(data);
+  const payload = {
+    from: process.env.RESEND_FROM || "KRIVA <onboarding@resend.dev>",
+    to: [TO],
+    reply_to: email,
+    subject,
+    text,
+    html,
+  };
+  const cc = ccRecipients();
+  if (cc.length) payload.cc = cc;
+  const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
+      Authorization: "Bearer " + process.env.RESEND_API_KEY,
       "Content-Type": "application/json",
-      Accept: "application/json",
-      Origin: origin,
-      Referer: origin + "/contact",
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
     },
     body: JSON.stringify(payload),
   });
-  const body = await r.json().catch(() => ({}));
-  if (formsubmitSucceeded(body, r.status)) {
-    return { channel: "formsubmit" };
-  }
-
-  const msg = formsubmitMessage(body);
-  const flag = formsubmitSuccessFlag(body);
-  if (formsubmitSetupBlocked(msg) && flag !== true) {
-    return browserRelay(data, origin);
-  }
-  console.error(
-    "inquiry send failed (formsubmit):",
-    r.status,
-    "success=" + String(flag),
-    msg || "unknown"
-  );
-  const err = new Error("formsubmit failed");
-  err.code = "FORMSUBMIT";
-  throw err;
+  if (!r.ok) throw new Error("resend " + r.status);
+  return { channel: "resend" };
 }
 
-async function deliver(data, origin) {
-  const email = field(data, "email");
-  const { text, html, subject } = buildMessage(data);
+async function sendViaWeb3forms(data) {
+  if (!process.env.WEB3FORMS_ACCESS_KEY) return null;
+  const r = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(web3formsBody(data)),
+  });
+  const body = await r.json().catch(() => ({}));
+  if (!body.success) throw new Error(body.message || "web3forms " + r.status);
+  return { channel: "web3forms" };
+}
 
-  if (process.env.RESEND_API_KEY) {
-    const payload = {
-      from: process.env.RESEND_FROM || "KRIVA <onboarding@resend.dev>",
-      to: [TO],
-      reply_to: email,
-      subject,
-      text,
-      html,
-    };
-    const cc = ccRecipients();
-    if (cc.length) payload.cc = cc;
-    const r = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + process.env.RESEND_API_KEY,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-    if (!r.ok) throw new Error("resend " + r.status + " " + (await r.text()));
-    return { channel: "resend" };
-  }
-
+async function deliver(data) {
   try {
     const gmailResult = await sendViaGmail(data);
     if (gmailResult) return gmailResult;
   } catch (err) {
-    console.error("inquiry send failed (gmail), trying fallback:", err && err.message);
+    console.error("inquiry send failed (gmail), trying optional backup:", smtpErrorMeta(err));
   }
 
-  if (process.env.WEB3FORMS_ACCESS_KEY) {
-    const r = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(web3formsBody(data)),
-    });
-    const body = await r.json().catch(() => ({}));
-    if (!body.success) throw new Error(body.message || "web3forms " + r.status);
-    return { channel: "web3forms" };
+  try {
+    const resendResult = await sendViaResend(data);
+    if (resendResult) return resendResult;
+  } catch (err) {
+    console.error("inquiry send failed (resend):", err && err.message);
   }
 
-  return sendViaFormsubmit(data, origin);
+  try {
+    const web3Result = await sendViaWeb3forms(data);
+    if (web3Result) return web3Result;
+  } catch (err) {
+    console.error("inquiry send failed (web3forms):", err && err.message);
+  }
+
+  throw new Error("inquiry delivery failed");
 }
 
 module.exports = async function handler(req, res) {
@@ -426,12 +330,8 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const result = await deliver(data, requestOrigin(req));
-    if (result && result.channel === "browser") {
-      sendJson(res, 200, { ok: true, relay: result.relay });
-      return;
-    }
-    sendJson(res, 200, { ok: true });
+    const result = await deliver(data);
+    sendJson(res, 200, { ok: true, channel: result && result.channel });
   } catch (err) {
     console.error("inquiry send failed:", err && err.message);
     sendJson(res, 502, { ok: false, error: USER_FACING_ERROR });

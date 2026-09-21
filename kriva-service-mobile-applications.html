@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
-<script src="/shared/analytics.js" defer></script>
+<script src="/shared/analytics.js?v=20260921c" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
 <script type="text/javascript">
@@ -722,7 +722,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         </div>
         <p class="inq-fail" role="alert"></p>
         <div class="inq-actions">
-          <button type="submit" class="btn" data-kriva-cta="submit_inquiry"><span class="inq-submit-label">Send app inquiry</span><i>→</i></button>
+          <button type="submit" class="btn"><span class="inq-submit-label">Send app inquiry</span><i>→</i></button>
           <p class="inq-note">Private · not shared</p>
         </div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
@@ -844,9 +844,16 @@ function trackCta(name,type,location,url){
 }
 document.querySelectorAll('[data-kriva-cta]').forEach(a=>{
   a.addEventListener('click',()=>{
+    if (a.matches('button, [type="submit"]')) return;
+    const href = a.getAttribute('href') || '';
+    if (href === '#inquire' || href === '#book' || href === '#brief') return;
+    try {
+      const u = new URL(href, location.href);
+      if (u.origin === location.origin && (/^\/contact\/?$/.test(u.pathname) || u.hash === '#inquire')) return;
+    } catch (err) {}
     const id=a.getAttribute('data-kriva-cta');
     const loc=a.closest('.app-contact')?'inquire':a.closest('.app-proof-split')?'case_study':a.closest('.ip-hero')?'hero':'page';
-    trackCta(id,id,loc,a.getAttribute('href')||'');
+    trackCta(id,'cta',loc,href);
   });
 });
 document.querySelectorAll('.faq-q').forEach(btn=>{
@@ -870,7 +877,7 @@ if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(
 run();
 })();
 </script>
-<script src="/shared/page-inquiry.js" defer></script>
+<script src="/shared/page-inquiry.js?v=20260921c" defer></script>
 <!-- KRIVA_SCHEMA_START -->
 <script type="application/ld+json">
 {

@@ -185,8 +185,10 @@
   watchForm('briefForm', 'project_brief');
   watchForm('pageInquiry', 'page_inquiry');
 
-  /* One successful submission = one lead. Dedup by form + page for the session
-     (covers FormSubmit return URLs, refresh, and back-navigation). */
+  /* One successful submission = one lead. Dedup by form + page for the session.
+     generate_lead is the conversion. Also send GA4 recommended form_submit on
+     success only — do not mark form_start, cta_click, or enhanced-measurement
+     form_submit (fires on click, even if email failed) as Key events. */
   window.addEventListener('kriva:lead', function (e) {
     var d = (e && e.detail) || {};
     var dedupKey =
@@ -207,6 +209,12 @@
       value: 1
     };
     send('generate_lead', params);
+    send('form_submit', {
+      form_id: params.form_id,
+      form_name: params.form_name,
+      form_destination: location.pathname,
+      lead_type: params.lead_type
+    });
     send('contact_form_submit', params);
   });
 

@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
-<script src="/shared/analytics.js" defer></script>
+<script src="/shared/analytics.js?v=20260921c" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
 <script type="text/javascript">
@@ -856,7 +856,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         </div>
         <p class="inq-fail" role="alert"></p>
         <div class="inq-actions">
-          <button type="submit" class="btn" data-kriva-cta="submit_inquiry"><span class="inq-submit-label">Send inquiry</span><i>→</i></button>
+          <button type="submit" class="btn"><span class="inq-submit-label">Send inquiry</span><i>→</i></button>
           <p class="inq-note">Private · not shared</p>
         </div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
@@ -980,6 +980,13 @@ function trackCta(name,type,location,url){
 }
 document.querySelectorAll('[data-kriva-cta]').forEach(el=>{
   el.addEventListener('click',()=>{
+    if (el.matches('button, [type="submit"]')) return;
+    const href = el.getAttribute('href') || '';
+    if (href === '#inquire' || href === '#book' || href === '#brief') return;
+    try {
+      const u = new URL(href, location.href);
+      if (u.origin === location.origin && (/^\/contact\/?$/.test(u.pathname) || u.hash === '#inquire')) return;
+    } catch (err) {}
     const id=el.getAttribute('data-kriva-cta');
     const loc=el.closest('.car-contact')?'inquire'
       :el.closest('.car-proof-split')?'case_study'
@@ -987,8 +994,7 @@ document.querySelectorAll('[data-kriva-cta]').forEach(el=>{
       :el.closest('.ip-hero')?'hero'
       :el.closest('#capabilities')?'capabilities'
       :'page';
-    const type=el.matches('button[type="submit"]')?'form_submit':'cta';
-    trackCta(id,type,loc,el.getAttribute('href')||'');
+    trackCta(id,'cta',loc,href);
   });
 });
 
@@ -1016,7 +1022,7 @@ if(reduce()){
 run();
 })();
 </script>
-<script src="/shared/page-inquiry.js" defer></script>
+<script src="/shared/page-inquiry.js?v=20260921c" defer></script>
 <!-- KRIVA_SCHEMA_START -->
 <script type="application/ld+json">
 {

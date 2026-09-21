@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
-<script src="/shared/analytics.js" defer></script>
+<script src="/shared/analytics.js?v=20260921c" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
 <script type="text/javascript">
@@ -704,10 +704,30 @@ if(bar) readers.push(y=>{
 /* ── forms: validation, states, success ── */
 const INQUIRY_ENDPOINT = '/api/inquiry';
 const INQUIRY_SUCCESS_MSG = 'Thank you! Your inquiry has been submitted successfully. We\u2019ll be in touch soon.';
-const INQUIRY_FAIL_MSG = 'We could not send your inquiry right now. Please try again shortly, or email <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>.';
 const INQUIRY_FAIL_STATUS = 'We could not send your inquiry right now. Please try again shortly, or email hello@krivatechnologies.com.';
 const INQUIRY_FIELDS_HEADING = 'Check these fields before sending';
 const INQUIRY_SEND_HEADING = 'We could not send your inquiry';
+
+function inquiryMailto(payload) {
+  payload = payload || {};
+  const lines = [
+    'Name: ' + (payload.name || ''),
+    'Email: ' + (payload.email || ''),
+    payload.company ? 'Company: ' + payload.company : '',
+    payload.ptype ? 'Project type: ' + payload.ptype : '',
+    payload.timeline ? 'Timeline: ' + payload.timeline : '',
+    payload.details ? 'Details:\n' + payload.details : ''
+  ].filter(Boolean);
+  return 'mailto:hello@krivatechnologies.com?subject=' +
+    encodeURIComponent('Website inquiry from ' + (payload.name || 'KRIVA site')) +
+    '&body=' + encodeURIComponent(lines.join('\n').slice(0, 1800));
+}
+
+function inquiryFailHtml(payload) {
+  return 'We could not send your inquiry right now. Please try again shortly, or <a href="' +
+    inquiryMailto(payload) +
+    '">email this inquiry to hello@krivatechnologies.com</a>.';
+}
 
 /* ── Cal.com: optional embed if #calEmbed exists with data-cal-link ── */
 const calEmbed = document.getElementById('calEmbed');
@@ -761,7 +781,7 @@ function wireInquiryForm(form, opts) {
 
   let sending = false;
 
-  const showDone = (msg, options) => {
+  const showDone = (msg) => {
     sending = false;
     form.removeAttribute('aria-busy');
     btn.classList.remove('loading');
@@ -773,7 +793,6 @@ function wireInquiryForm(form, opts) {
       done.focus();
     }
     if (status) status.textContent = msg || opts.successMsg;
-    if (options && options.skipLead) return;
     try {
       const typeEl = form.querySelector('[name="inquiry_type"]');
       window.dispatchEvent(new CustomEvent('kriva:lead', {
@@ -792,7 +811,7 @@ function wireInquiryForm(form, opts) {
     btn.removeAttribute('aria-disabled');
     label.textContent = opts.submitDefault;
     if (summaryHeading) summaryHeading.textContent = INQUIRY_SEND_HEADING;
-    if (summaryList) summaryList.innerHTML = '<li>' + (html || opts.failMsg) + '</li>';
+    if (summaryList) summaryList.innerHTML = '<li>' + (html || inquiryFailHtml()) + '</li>';
     if (summary) { summary.classList.add('on'); summary.focus(); }
     if (status) status.textContent = statusText || INQUIRY_FAIL_STATUS;
   };
@@ -834,57 +853,34 @@ function wireInquiryForm(form, opts) {
     form.setAttribute('aria-busy','true');
 
     const fd = new FormData(form);
+    const payload = {};
+    fd.forEach((v, k) => { payload[k] = v; });
     label.textContent = 'Sending';
     if (status) status.textContent = 'Sending securely.';
     try {
-      const payload = {};
-      fd.forEach((v, k) => { payload[k] = v; });
       const res = await fetch(INQUIRY_ENDPOINT, {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
       const body = await res.json().catch(() => ({}));
-      if (!res.ok || body.ok === false) throw new Error('send-failed');
-      if (body.relay && body.relay.url) {
-        const relayRes = await fetch(body.relay.url, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(body.relay.payload || payload)
-        });
-        const relayBody = await relayRes.json().catch(() => ({}));
-        const ok = relayBody.success === true || String(relayBody.success) === 'true';
-        if (!ok) throw new Error('send-failed');
-      }
+      if (!res.ok || body.ok !== true || !body.channel) throw new Error('send-failed');
       showDone(opts.successMsg);
     } catch (err) {
-      showFail(opts.failMsg, INQUIRY_FAIL_STATUS);
+      showFail(inquiryFailHtml(payload), INQUIRY_FAIL_STATUS);
     }
   });
 
   if (summaryList) {
     summaryList.addEventListener('click', e=>{
       const a = e.target.closest('a'); if(!a) return;
+      const href = a.getAttribute('href') || '';
+      if (href.charAt(0) !== '#') return;
       e.preventDefault();
-      const f = document.querySelector(a.getAttribute('href'));
+      const f = document.querySelector(href);
       if(f) f.focus();
     });
   }
-
-  try {
-    const params = new URLSearchParams(location.search);
-    if (opts.sentValue && params.get('sent') === opts.sentValue) {
-      var typeEl = form.querySelector('[name="inquiry_type"]');
-      var leadType = (typeEl && typeEl.value) || opts.sentValue;
-      var returnKey = 'kriva_ga_lead_/contact|' + (form.id || '') + '|' + leadType;
-      var skipLead = false;
-      try { skipLead = !!sessionStorage.getItem(returnKey); } catch (err) {}
-      showDone(opts.successMsg, { skipLead: skipLead });
-      params.delete('sent');
-      const q = params.toString();
-      history.replaceState({}, '', location.pathname + (q ? '?' + q : '') + location.hash);
-    }
-  } catch (err) {}
 }
 
 wireInquiryForm(document.getElementById('fitForm'), {
@@ -894,10 +890,8 @@ wireInquiryForm(document.getElementById('fitForm'), {
   submitLabelId: 'fitSubmitLabel',
   statusId: 'fitFormStatus',
   doneId: 'fitDone',
-  sentValue: 'fit',
   submitDefault: 'Book a free 20-min call',
-  successMsg: INQUIRY_SUCCESS_MSG,
-  failMsg: INQUIRY_FAIL_MSG
+  successMsg: INQUIRY_SUCCESS_MSG
 });
 
 /* ── project brief form ── */
@@ -916,10 +910,8 @@ if (form) wireInquiryForm(form, {
   submitLabelId: 'submitLabel',
   statusId: 'formStatus',
   doneId: 'done',
-  sentValue: 'brief',
   submitDefault: 'Send a project brief',
-  successMsg: INQUIRY_SUCCESS_MSG,
-  failMsg: INQUIRY_FAIL_MSG
+  successMsg: INQUIRY_SUCCESS_MSG
 });
 
 /* legacy refs kept for any external hooks */
