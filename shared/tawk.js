@@ -15,6 +15,23 @@
  var ready = false;
  var leadSent = false;
 
+ /* Tawk flashes document.title to "1 new message" while a greeting is unread.
+    That string is what GA4 stores as the page title. Ignore only that notice. */
+ var titleDesc = Object.getOwnPropertyDescriptor(Document.prototype, 'title');
+ function isChatTabNotice(value) {
+ return /^\d+\s+new messages?$/i.test(String(value || '').trim());
+ }
+ if (titleDesc && titleDesc.get && titleDesc.set) {
+ Object.defineProperty(document, 'title', {
+ configurable: true, enumerable: titleDesc.enumerable, get: function () {
+ return titleDesc.get.call(document);
+ }, set: function (value) {
+ if (isChatTabNotice(value)) return;
+ titleDesc.set.call(document, value);
+ }
+ });
+ }
+
  window.Tawk_API = window.Tawk_API || {};
  window.Tawk_LoadStart = new Date();
  window.Tawk_API.customStyle = {
