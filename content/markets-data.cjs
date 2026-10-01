@@ -22,7 +22,7 @@ module.exports = {
       ogLocale: "en_US",
       title: "Custom Trucking & SaaS Software for US Teams | KRIVA",
       meta:
-        "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS - Ahmedabad studio with US-hour overlap, weekly demos, and phased rollout.",
+        "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS. In-house product and engineering team with US-hour overlap, weekly demos, and phased rollout.",
       eyebrow: "United States",
       h1: "Software for US trucking desks and SaaS teams.",
       lede:
@@ -141,7 +141,7 @@ module.exports = {
       ogLocale: "en_AE",
       title: "Logistics & SaaS Software for UAE Operators | KRIVA",
       meta:
-        "Logistics dashboards, fleet ops software, B2B SaaS, and finance integrations for UAE operators - remote-first from Ahmedabad with Gulf-time overlap.",
+        "Logistics dashboards, fleet ops software, B2B SaaS, and finance integrations for UAE operators, with Gulf-time overlap and remote-first delivery.",
       eyebrow: "United Arab Emirates",
       h1: "Logistics and SaaS software for UAE operators.",
       lede:
@@ -243,8 +243,8 @@ module.exports = {
   indexFile: "kriva-markets-index.html",
   indexTitle: "Markets We Serve · US, UK, UAE & Canada | KRIVA",
   indexMeta:
-    "Trucking software, B2B SaaS, and integrations for US, UK, UAE, and Canada teams - product design and engineering from Ahmedabad. Explore each market.",
-  indexEyebrow: "Product Design & UI/UX · Ahmedabad",
+    "Trucking software, B2B SaaS, and integrations for teams in the US, UK, UAE, and Canada. Product design and engineering, remote-first. Explore each market.",
+  indexEyebrow: "Product Design & UI/UX",
   indexH1: "Built for operators in four markets.",
   indexLede:
     "Remote-first product design and engineering for the United States, United Kingdom, United Arab Emirates, and Canada. Enter through your market for regional language, timezone overlap, and proof that matches your desk.",

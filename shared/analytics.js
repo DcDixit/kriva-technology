@@ -22,12 +22,13 @@
  };
 
  gtag('js', new Date());
- /* Ads stay denied. Analytics is granted unless the visitor explicitly opted out
- (ga-disable cookie). Do not treat Global Privacy Control as analytics opt-out:
- it blocked measurement for a large share of US browsers and zeroed GA data. */
- gtag('consent', 'default', {
- ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: optedOut ? 'denied' : 'granted'
- });
+ /* Consent default is set in a synchronous head snippet before gtag.js loads.
+ A late "default" here is ignored, which left UK/EEA hits in a denied state.
+ Opt-out uses consent update only. Do not treat Global Privacy Control as an
+ analytics opt-out: that zeroed measurement for a large share of US browsers. */
+ if (optedOut) {
+ gtag('consent', 'update', { analytics_storage: 'denied' });
+ }
 
  var shouldCollect = validId && !optedOut && (!local || debug);
  if (shouldCollect) {

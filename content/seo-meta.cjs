@@ -5,7 +5,7 @@
  */
 module.exports = {
   "kriva-about.html":
-    "KRIVA is an Ahmedabad product studio designing trucking software, B2B SaaS, dashboards, and finance integrations for US, UK, UAE, and Canada teams.",
+    "In-house product, UI/UX, and engineering team designing trucking software, B2B SaaS, dashboards, and finance integrations for UK, US, and Australia teams.",
   "kriva-industries.html":
     "Custom software for US trucking ops, B2B SaaS, QuickBooks/Xero sync, auto transport, and CRM desks - with paths into solutions, services, and case studies.",
   "kriva-insight-saas-onboarding-patterns.html":
@@ -17,13 +17,13 @@ module.exports = {
   "kriva-market-ca.html":
     "Dispatch CRM, fleet software, and B2B SaaS for Canadian carriers - in-house design and engineering with North American hour overlap and clear IP handoff.",
   "kriva-market-uae.html":
-    "Logistics dashboards, fleet ops software, B2B SaaS, and finance integrations for UAE operators - remote-first from Ahmedabad with Gulf-time overlap.",
+    "Logistics dashboards, fleet ops software, B2B SaaS, and finance integrations for UAE operators, with Gulf-time overlap and remote-first delivery.",
   "kriva-market-uk.html":
     "UK SaaS MVP design, onboarding UX, Xero integrations, and multi-tenant admin - in-house design and engineering with clear scope and weekly demos.",
   "kriva-market-us.html":
-    "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS - Ahmedabad studio with US-hour overlap, weekly demos, and phased rollout.",
+    "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS. In-house product and engineering team with US-hour overlap, weekly demos, and phased rollout.",
   "kriva-markets-index.html":
-    "Trucking software, B2B SaaS, and integrations for US, UK, UAE, and Canada teams - product design and engineering from Ahmedabad. Explore each market.",
+    "Trucking software, B2B SaaS, and integrations for teams in the US, UK, UAE, and Canada. Product design and engineering, remote-first. Explore each market.",
   "kriva-service-api-integrations.html":
     "API integrations from source event to destination: connectors, validation, and exception queues for payments, CRM, fleet, and Bitbucket workflows.",
   "kriva-service-crm-development.html":

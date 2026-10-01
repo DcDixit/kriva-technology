@@ -13,12 +13,8 @@ const REGION_LABELS = {
   GB: "United Kingdom",
   AE: "United Arab Emirates",
   CA: "Canada",
+  AU: "Australia",
 };
-
-const MARKET_ROUTES = markets.reduce((acc, m) => {
-  acc[m.path] = m;
-  return acc;
-}, {});
 
 function robotsMeta({ index = true } = {}) {
   if (!index) {
@@ -38,27 +34,14 @@ function hreflangDefault(canonicalUrl) {
   ].join("\n");
 }
 
-function hreflangMarketCluster() {
-  const lines = markets.map(
-    (m) =>
-      `<link rel="alternate" hreflang="${m.hreflang}" href="${ORIGIN}${m.path}">`
-  );
-  lines.push(`<link rel="alternate" hreflang="en" href="${ORIGIN}/markets">`);
-  lines.push(`<link rel="alternate" hreflang="x-default" href="${ORIGIN}/">`);
-  return lines.join("\n");
-}
-
 function hreflangForPath(pathname) {
-  if (pathname === "/" || pathname === "/markets" || MARKET_ROUTES[pathname]) {
-    return hreflangMarketCluster();
-  }
+  /* Market pages are different English pages, not translations of each other.
+     Pointing the homepage at /markets/uk as en-gb made Google treat them as alternates. */
   return hreflangDefault(ORIGIN + pathname);
 }
 
 function geoMeta() {
   return [
-    '<meta name="geo.region" content="IN-GJ">',
-    '<meta name="geo.placename" content="Ahmedabad, Gujarat, India">',
     `<meta name="target" content="${AREA_SERVED.join(", ")}">`,
     `<meta name="coverage" content="${Object.values(REGION_LABELS).join(", ")}">`,
   ].join("\n");
@@ -116,7 +99,7 @@ function llmsTxtBody({ pages }) {
     "",
     `> ${ENTITY_DESCRIPTION}`,
     "",
-    "KRIVA is a remote-first product studio founded in 2025 in Ahmedabad, India. We design and build custom trucking software (dispatch CRM, TMS, fleet dashboards, driver apps), B2B SaaS products, and QuickBooks/Xero finance integrations. Design and engineering stay in-house; clients talk to the people doing the work.",
+    "KRIVA is a remote-first product, UI/UX, and engineering studio. We design and build custom trucking software (dispatch CRM, TMS, fleet dashboards, driver apps), B2B SaaS products, and QuickBooks/Xero finance integrations for teams in the UK, US, Australia, and similar markets. Design and engineering stay in-house. The studio is in Ahmedabad, India; we do not claim local offices in client markets.",
     "",
     "## Primary pages",
     `- [Home](${ORIGIN}/)`,
@@ -208,7 +191,6 @@ module.exports = {
   RSS_PATH,
   LLMS_FULL_PATH,
   REGION_LABELS,
-  MARKET_ROUTES,
   robotsMeta,
   hreflangForPath,
   geoMeta,

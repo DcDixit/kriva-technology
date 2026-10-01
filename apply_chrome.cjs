@@ -249,7 +249,7 @@ function headerHtml(current, opts = {}) {
     <a href="${CTA_BRIEF_HREF}">${CTA_SECONDARY_LABEL}</a>
     <a href="${CTA_BOOK_HREF}">${CTA_PRIMARY_LABEL}</a>
     <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
-    <span>Ahmedabad, India · Remote-first</span>
+    <span>Remote-first product studio</span>
   </div>
 </div>`;
 }
@@ -262,7 +262,7 @@ const FOOTER_HTML = `<footer>
         <a href="${CTA_BRIEF_HREF}">${CTA_SECONDARY_LABEL}</a><br>
         <a href="${CTA_BOOK_HREF}">${CTA_PRIMARY_LABEL}</a><br>
         <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
-        <p class="f-blurb">Design and engineering for US trucking ops and SaaS product teams. Ahmedabad, India · Remote-first · Global clients.</p>
+        <p class="f-blurb">Product design, UI/UX, and engineering for operators and SaaS teams. Remote-first.</p>
         <div class="fsocial">
           <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
           <a href="https://dribbble.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Dribbble</a>

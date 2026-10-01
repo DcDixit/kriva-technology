@@ -9,8 +9,13 @@ const BLOCK = [
   START,
   '<link rel="preconnect" href="https://www.googletagmanager.com">',
   '<link rel="dns-prefetch" href="https://www.google-analytics.com">',
+  '<script>',
+  'window.dataLayer=window.dataLayer||[];',
+  'function gtag(){dataLayer.push(arguments);}window.gtag=gtag;',
+  "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted',functionality_storage:'granted',security_storage:'granted'});",
+  '</script>',
   `<script async src="https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}"></script>`,
-  '<script src="/shared/analytics.js" defer></script>',
+  '<script src="/shared/analytics.js?v=20261001a" defer></script>',
   END,
 ].join('\n');
 

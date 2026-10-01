@@ -87,6 +87,7 @@ const COUNTRY_NAME = {
   GB: "United Kingdom",
   AE: "United Arab Emirates",
   CA: "Canada",
+  AU: "Australia",
 };
 
 function areaServedForPath(path) {

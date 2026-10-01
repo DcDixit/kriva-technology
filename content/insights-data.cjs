@@ -113,7 +113,7 @@ module.exports = {
       publishedISO: "2025-12-08",
       excerpt:
         "What user onboarding is in B2B SaaS, why it drives activation, and five UX patterns that work - progressive disclosure, role paths, checklists, SSO clarity, and time-to-value.",
-      byline: "KRIVA Product Team · Ahmedabad",
+      byline: "KRIVA Product Team",
       relatedSolutions: [
         { href: "/solutions/saas", label: "SaaS solutions" },
         { href: "/services/product-design", label: "Product design & UX" },
