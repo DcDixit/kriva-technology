@@ -147,6 +147,16 @@ function looksLikeGmailAppPassword(pass) {
   return /^[a-z0-9]{16}$/i.test(pass);
 }
 
+function gmailCredentialIssue() {
+  const { user, pass } = gmailCredentials();
+  if (!user) return "GMAIL_USER missing";
+  if (!pass) return "GMAIL_APP_PASSWORD missing";
+  if (!looksLikeGmailAppPassword(pass)) {
+    return "GMAIL_APP_PASSWORD wrong_length (length " + pass.length + ")";
+  }
+  return "";
+}
+
 function isConnError(err) {
   const msg = String((err && (err.code || err.message)) || "");
   return /timeout|etimedout|econn|enetunreach|socket|connect/i.test(msg);
@@ -154,8 +164,10 @@ function isConnError(err) {
 
 function smtpErrorMeta(err) {
   if (!err) return "unknown";
-  const parts = [err.code, err.responseCode, err.command, err.message].filter(Boolean);
-  return parts.join(" ").slice(0, 240);
+  const pass = gmailCredentials().pass;
+  let text = [err.code, err.responseCode, err.command, err.message].filter(Boolean).join(" ").slice(0, 240);
+  if (pass) text = text.split(pass).join("[redacted]");
+  return text;
 }
 
 async function sendWithTransport(transportOpts, mail) {
@@ -189,19 +201,12 @@ function smtpTransportOpts(port, secure, user, pass) {
 }
 
 async function sendViaGmail(data) {
+  const issue = gmailCredentialIssue();
+  if (issue) {
+    console.error("inquiry gmail: " + issue + ". Skipping SMTP.");
+    return null;
+  }
   const { user, pass } = gmailCredentials();
-  if (!user || !pass) {
-    console.error("inquiry gmail: GMAIL_USER or GMAIL_APP_PASSWORD is not set");
-    return null;
-  }
-  if (!looksLikeGmailAppPassword(pass)) {
-    console.error(
-      "inquiry gmail: GMAIL_APP_PASSWORD is not a 16-character Google App Password (length " +
-        pass.length +
-        "). Skipping SMTP so the request fails fast. Create one at Google Account → Security → App passwords."
-    );
-    return null;
-  }
 
   const submitterEmail = field(data, "email");
   const { text, html, subject } = buildMessage(data);
@@ -234,8 +239,12 @@ async function sendViaGmail(data) {
   throw lastErr || new Error("gmail send failed");
 }
 
+function envConfigured(name) {
+  return Boolean(String(process.env[name] || "").trim());
+}
+
 async function sendViaResend(data) {
-  if (!process.env.RESEND_API_KEY) return null;
+  if (!envConfigured("RESEND_API_KEY")) return null;
   const email = field(data, "email");
   const { text, html, subject } = buildMessage(data);
   const payload = {
@@ -261,39 +270,54 @@ async function sendViaResend(data) {
 }
 
 async function sendViaWeb3forms(data) {
-  if (!process.env.WEB3FORMS_ACCESS_KEY) return null;
+  if (!envConfigured("WEB3FORMS_ACCESS_KEY")) return null;
   const r = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify(web3formsBody(data)),
   });
   const body = await r.json().catch(() => ({}));
-  if (!body.success) throw new Error(body.message || "web3forms " + r.status);
+  if (!body.success) throw new Error("web3forms " + r.status);
   return { channel: "web3forms" };
 }
 
 async function deliver(data) {
+  let gmailIssue = "";
   try {
     const gmailResult = await sendViaGmail(data);
     if (gmailResult) return gmailResult;
+    gmailIssue = gmailCredentialIssue() || "gmail_unavailable";
   } catch (err) {
+    gmailIssue = "smtp_rejected";
     console.error("inquiry send failed (gmail), trying optional backup:", smtpErrorMeta(err));
   }
 
-  try {
-    const resendResult = await sendViaResend(data);
-    if (resendResult) return resendResult;
-  } catch (err) {
-    console.error("inquiry send failed (resend):", err && err.message);
+  const resendConfigured = envConfigured("RESEND_API_KEY");
+  const web3Configured = envConfigured("WEB3FORMS_ACCESS_KEY");
+  if (!resendConfigured) {
+    console.error("inquiry resend: RESEND_API_KEY is not set; skipping Resend");
+  } else {
+    try {
+      const resendResult = await sendViaResend(data);
+      if (resendResult) return resendResult;
+    } catch (err) {
+      console.error("inquiry send failed (resend):", err && err.message);
+    }
   }
 
-  try {
-    const web3Result = await sendViaWeb3forms(data);
-    if (web3Result) return web3Result;
-  } catch (err) {
-    console.error("inquiry send failed (web3forms):", err && err.message);
+  if (!web3Configured) {
+    console.error("inquiry web3forms: WEB3FORMS_ACCESS_KEY is not set; skipping Web3Forms");
+  } else {
+    try {
+      const web3Result = await sendViaWeb3forms(data);
+      if (web3Result) return web3Result;
+    } catch (err) {
+      console.error("inquiry send failed (web3forms):", err && err.message);
+    }
   }
 
+  const fallback = resendConfigured || web3Configured ? "configured but rejected" : "not configured";
+  console.error("inquiry delivery failed: " + gmailIssue + "; fallback " + fallback);
   throw new Error("inquiry delivery failed");
 }
 
