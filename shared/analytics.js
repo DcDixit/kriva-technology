@@ -13,36 +13,60 @@
  var optedOut = !!(validId && window['ga-disable-' + MEASUREMENT_ID]);
 
  window.dataLayer = window.dataLayer || [];
- function gtag() {
- window.dataLayer.push(arguments);
+ if (typeof window.gtag !== 'function') {
+ window.gtag = function () { window.dataLayer.push(arguments); };
  }
- window.gtag = gtag;
+ var gtag = window.gtag;
+ /* Filter URLs must not go through history.replaceState after gtag.js wraps it.
+ The live tag has history page views on, so that wrapper sends a second page_view. */
+ window.krivaReplaceUrl = function (url) {
+ var fn = window.__krivaNativeReplaceState || History.prototype.replaceState;
+ try { fn.call(history, null, '', url); } catch (err) {}
+ };
  window.krivaTrack = function (name, params) {
+ if (name === 'generate_lead') { sendLead(params || {}); return; }
  send(name, params);
  };
 
- gtag('js', new Date());
- /* Consent default is set in a synchronous head snippet before gtag.js loads.
- A late "default" here is ignored, which left UK/EEA hits in a denied state.
- Opt-out uses consent update only. Do not treat Global Privacy Control as an
- analytics opt-out: that zeroed measurement for a large share of US browsers. */
+ /* Page view is queued in the synchronous head snippet, before gtag.js.
+ Do not config again here. On a cached click to the next page, gtag.js
+ runs before this deferred file, and a late config was ignored, so only
+ the landing page recorded a view. */
  if (optedOut) {
  gtag('consent', 'update', { analytics_storage: 'denied' });
  }
 
- var shouldCollect = validId && !optedOut && (!local || debug);
- if (shouldCollect) {
- var config = {
- anonymize_ip: true, allow_google_signals: false, allow_ad_personalization_signals: false, send_page_view: true, cookie_flags: 'SameSite=Lax;Secure'
- };
- if (debug) config.debug_mode = true;
- gtag('config', MEASUREMENT_ID, config);
- }
-
+ var RESERVED = { page_view: 1, user_engagement: 1, scroll: 1, session_start: 1, first_visit: 1 };
  function send(name, params) {
- if (!name) return;
+ if (!name || RESERVED[name]) return;
+ if (!validId || optedOut || (local && !debug)) return;
  var payload = params ? Object.assign({}, params) : {};
  gtag('event', name, payload);
+ }
+
+ function sendLead(d) {
+ d = d || {};
+ var type = d.type || d.lead_type || 'inquiry';
+ var formId = d.form_id || '';
+ var dedupKey = 'kriva_ga_lead_' + location.pathname + '|' + formId + '|' + type;
+ try {
+ if (sessionStorage.getItem(dedupKey)) return;
+ sessionStorage.setItem(dedupKey, '1');
+ } catch (err) {
+ window.__KRIVA_LEAD_KEYS__ = window.__KRIVA_LEAD_KEYS__ || {};
+ if (window.__KRIVA_LEAD_KEYS__[dedupKey]) return;
+ window.__KRIVA_LEAD_KEYS__[dedupKey] = true;
+ }
+ var params = {
+ lead_type: type, form_id: formId, form_name: d.form_name || type, currency: 'USD', value: 1
+ };
+ if (d.chat_source) params.chat_source = d.chat_source;
+ send('generate_lead', params);
+ if (type === 'live_chat') return;
+ send('form_submit', {
+ form_id: params.form_id, form_name: params.form_name, form_destination: location.pathname, lead_type: params.lead_type
+ });
+ send('contact_form_submit', params);
  }
 
  function textOf(el) {
@@ -156,67 +180,16 @@
  watchForm('briefForm', 'project_brief');
  watchForm('pageInquiry', 'page_inquiry');
 
- /* One successful submission = one lead. Dedup by form + page for the session.
- generate_lead is the conversion. Also send GA4 recommended form_submit on
- success only, do not mark form_start, cta_click, or enhanced-measurement
- form_submit (fires on click, even if email failed) as Key events. */
+ /* One successful submission = one lead. generate_lead is the conversion.
+ form_submit fires on success only. Chat leads use the same dedup and do not
+ also emit form_submit. Mark generate_lead as the only key event in GA4 Admin. */
  window.addEventListener('kriva:lead', function (e) {
- var d = (e && e.detail) || {};
- var dedupKey =
- 'kriva_ga_lead_' + location.pathname + '|' + (d.form_id || '') + '|' + (d.type || 'inquiry');
- try {
- if (sessionStorage.getItem(dedupKey)) return;
- sessionStorage.setItem(dedupKey, '1');
- } catch (err) {
- window.__KRIVA_LEAD_KEYS__ = window.__KRIVA_LEAD_KEYS__ || {};
- if (window.__KRIVA_LEAD_KEYS__[dedupKey]) return;
- window.__KRIVA_LEAD_KEYS__[dedupKey] = true;
- }
- var params = {
- lead_type: d.type || 'inquiry', form_id: d.form_id || '', form_name: d.type || 'inquiry', currency: 'USD', value: 1
- };
- send('generate_lead', params);
- send('form_submit', {
- form_id: params.form_id, form_name: params.form_name, form_destination: location.pathname, lead_type: params.lead_type
- });
- send('contact_form_submit', params);
+ sendLead((e && e.detail) || {});
  });
 
  if (/page not found/i.test(document.title)) {
  send('page_not_found', {
- page_path: location.pathname, page_location: location.href
+ page_path: location.pathname, page_location: location.origin + location.pathname + location.search
  });
  }
-
- /* Engagement diagnostics, do not mark scroll or user_engagement as Key events. */
- var scrollMarks = [25, 50, 75, 90];
- var scrollFired = {};
- function onScroll() {
- var doc = document.documentElement;
- var max = Math.max(doc.scrollHeight - window.innerHeight, 1);
- var pct = Math.min(100, Math.round((window.scrollY / max) * 100));
- for (var i = 0; i < scrollMarks.length; i++) {
- var mark = scrollMarks[i];
- if (pct >= mark && !scrollFired[mark]) {
- scrollFired[mark] = true;
- send('scroll', {
- percent_scrolled: mark, page_path: location.pathname
- });
- }
- }
- }
- window.addEventListener('scroll', onScroll, { passive: true });
- onScroll();
-
- var engaged = false;
- function markEngaged() {
- if (engaged) return;
- engaged = true;
- send('user_engagement', {
- engagement_type: 'active', page_path: location.pathname
- });
- }
- document.addEventListener('pointerdown', markEngaged, { once: true, passive: true });
- document.addEventListener('keydown', markEngaged, { once: true, passive: true });
- setTimeout(markEngaged, 10000);
 })();

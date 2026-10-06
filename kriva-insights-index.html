@@ -8,10 +8,23 @@
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
+window.__krivaNativeReplaceState=History.prototype.replaceState;
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted',functionality_storage:'granted',security_storage:'granted'});
+(function(){
+var id='G-FHG12KTF8C';
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var local=location.hostname==='localhost'||location.hostname==='127.0.0.1';
+var optedOut=!!window['ga-disable-'+id];
+gtag('js',new Date());
+if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
+if(optedOut||(local&&!debug))return;
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+if(debug)cfg.debug_mode=true;
+gtag('config',id,cfg);
+})();
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
-<script src="/shared/analytics.js?v=20261001a" defer></script>
+<script src="/shared/analytics.js?v=20261006a" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
 <script type="text/javascript">
@@ -821,7 +834,8 @@ function apply(cat, push){
   });
   if(push!=='init'){
     const url=cat==='all'?location.pathname:location.pathname+'?filter='+encodeURIComponent(cat);
-    history.replaceState(null,'',url);
+    if (window.krivaReplaceUrl) window.krivaReplaceUrl(url);
+    else (window.__krivaNativeReplaceState || History.prototype.replaceState).call(history, null, '', url);
   }
 }
 chips.forEach(c=>c.addEventListener('click',()=>apply(c.getAttribute('data-cat'))));
