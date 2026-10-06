@@ -6,9 +6,7 @@ const END = '<!-- KRIVA_TAWK_END -->';
 const CLARITY_END = '<!-- KRIVA_CLARITY_END -->';
 const BLOCK = [
   START,
-  '<link rel="preconnect" href="https://embed.tawk.to">',
-  '<link rel="dns-prefetch" href="https://embed.tawk.to">',
-  '<script src="/shared/tawk.js" defer></script>',
+  '<script src="/shared/tawk.js?v=20261006c" defer></script>',
   END,
 ].join('\n');
 

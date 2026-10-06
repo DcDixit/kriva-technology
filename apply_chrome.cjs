@@ -92,9 +92,7 @@ const JS_TAG = [
   '</script>',
   '<!-- KRIVA_CLARITY_END -->',
   '<!-- KRIVA_TAWK_START -->',
-  '<link rel="preconnect" href="https://embed.tawk.to">',
-  '<link rel="dns-prefetch" href="https://embed.tawk.to">',
-  '<script src="/shared/tawk.js" defer></script>',
+  '<script src="/shared/tawk.js?v=20261006c" defer></script>',
   '<!-- KRIVA_TAWK_END -->',
 ].join('\n');
 
