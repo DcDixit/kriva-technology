@@ -236,6 +236,12 @@
       '#kriva-tawk-facade .tawk-facade-bubble svg{width:28px;height:28px;display:block}' +
       '#kriva-tawk-facade .tawk-facade-badge{position:absolute;top:-2px;right:-2px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:#e53935;color:#fff;font:700 11px/18px system-ui,sans-serif;text-align:center}' +
       '@media(max-width:1099px){#kriva-tawk-facade{right:12px;bottom:calc(88px + env(safe-area-inset-bottom,0px))}}' +
+      '@media(max-width:720px){#kriva-tawk-facade{width:56px;height:56px;transition:opacity .2s,transform .2s,visibility .2s}' +
+      '#kriva-tawk-facade .tawk-facade-grabber,#kriva-tawk-facade .tawk-facade-close{display:none}' +
+      '#kriva-tawk-facade .tawk-facade-bubble{width:56px;height:56px}' +
+      '#kriva-tawk-facade.is-parked{opacity:0;visibility:hidden;transform:translateY(12px)}' +
+      '#kriva-tawk-facade.is-parked button{pointer-events:none}}' +
+      '@media(max-width:720px) and (prefers-reduced-motion:reduce){#kriva-tawk-facade{transition:none}}' +
       '@media print{#kriva-tawk-facade{display:none!important}}';
     document.head.appendChild(css);
   }
@@ -272,6 +278,19 @@
     facade.querySelector('.tawk-facade-bubble').addEventListener('pointerenter', prefetchOrigins, { once: true });
     document.body.appendChild(facade);
     bindChrome();
+    parkOnMobile();
+  }
+
+  /* On phones the bubble covers the hero CTAs; show it once the visitor scrolls past the first screen. */
+  function parkOnMobile() {
+    var mq = window.matchMedia('(max-width:720px)');
+    function sync() {
+      if (!facade) return;
+      facade.classList.toggle('is-parked', mq.matches && window.scrollY < window.innerHeight * 0.6);
+    }
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync, { passive: true });
+    sync();
   }
 
   function start() {

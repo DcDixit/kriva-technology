@@ -70,7 +70,8 @@
  }
 
  function textOf(el) {
- return (el.getAttribute('aria-label') || el.textContent || '')
+ var title = el.querySelector && el.querySelector('.t');
+ return (el.getAttribute('aria-label') || (title || el).textContent || '')
  .replace(/[→←]/g, '')
  .replace(/\s+/g, ' ')
  .trim()
@@ -82,7 +83,10 @@
  if (el.closest('#sheet, .sheet')) return 'mobile_menu';
  if (el.closest('footer')) return 'footer';
  if (el.closest('.cta-band')) return 'cta_band';
- if (el.closest('.hero, header.hero')) return 'hero';
+ if (el.closest('.hero, header.hero, .hp-hero')) return 'hero';
+ if (el.closest('.hp-mcta')) return 'sticky_bar';
+ if (el.closest('.hp-inq')) return 'inquiry_section';
+ if (el.closest('.hp-faq, .faq')) return 'faq';
  return 'page';
  }
 
@@ -113,7 +117,7 @@
  return;
  }
 
- if (href === '#brief') {
+ if (href === '#brief' || href === '#brief-form') {
  send('cta_click', {
  cta_name: textOf(a) || 'Send project brief', cta_type: 'project_brief', cta_location: regionOf(a), link_url: location.pathname + href
  });
