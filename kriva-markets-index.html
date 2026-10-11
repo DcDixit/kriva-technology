@@ -9,12 +9,14 @@
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted',functionality_storage:'granted',security_storage:'granted'});
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
 (function(){
 var id='G-FHG12KTF8C';
 var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var local=location.hostname==='localhost'||location.hostname==='127.0.0.1';
-var optedOut=!!window['ga-disable-'+id];
+var gpc=navigator.globalPrivacyControl===true;
+var host=location.hostname;
+var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
+var optedOut=!!window['ga-disable-'+id]||gpc;
 gtag('js',new Date());
 if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
 if(optedOut||(local&&!debug))return;
@@ -28,16 +30,13 @@ gtag('config',id,cfg);
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
+    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yjj9g3gojt");
 </script>
 <!-- KRIVA_CLARITY_END -->
-<!-- KRIVA_TAWK_START -->
-<script src="/shared/tawk.js?v=20261008a" defer></script>
-<!-- KRIVA_TAWK_END -->
 <script>document.documentElement.classList.add('js')</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,7 +47,7 @@ gtag('config',id,cfg);
 <link rel="stylesheet" href="/shared/tokens.css?v=layout1240v2">
 <link rel="preload" href="/brand/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <title>Markets We Serve · US, UK, UAE &amp; Canada | KRIVA</title>
-<meta name="description" content="Trucking software, B2B SaaS, and integrations for teams in the US, UK, UAE, and Canada. Product design and engineering, remote-first. Explore each market.">
+<meta name="description" content="Trucking software, B2B SaaS, and integrations for the US, UK, UAE, Canada, and Australia. One English site. Explore a market or book a fit call.">
 <link rel="canonical" href="https://krivatechnologies.com/markets">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -68,7 +67,7 @@ gtag('config',id,cfg);
 <meta property="og:site_name" content="KRIVA Technologies">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Markets We Serve · US, UK, UAE &amp; Canada | KRIVA">
-<meta property="og:description" content="Trucking software, B2B SaaS, and integrations for teams in the US, UK, UAE, and Canada. Product design and engineering, remote-first. Explore each market.">
+<meta property="og:description" content="Trucking software, B2B SaaS, and integrations for the US, UK, UAE, Canada, and Australia. One English site. Explore a market or book a fit call.">
 <meta property="og:url" content="https://krivatechnologies.com/markets">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -167,7 +166,7 @@ gtag('config',id,cfg);
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="/contact#book" class="btn sm"><span><span class="nav-cta-long">Book a 20-min call</span><span class="nav-cta-short" aria-hidden="true">Book a call</span></span><i>→</i></a>
+        <a href="/contact#book" class="btn sm"><span><span class="nav-cta-long">Book a free 20-min fit call</span><span class="nav-cta-short" aria-hidden="true">Book a call</span></span><i>→</i></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -212,13 +211,13 @@ gtag('config',id,cfg);
       </ul>
     </div>
     <div class="sheet-cta">
-      <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min call</span><i>→</i></a>
+      <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
       <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
     </div>
   </div>
   <div class="sheet-foot">
     <a href="/contact#brief">Send a project brief</a>
-    <a href="/contact#book">Book a free 20-min call</a>
+    <a href="/contact#book">Book a free 20-min fit call</a>
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
     <span>Remote-first product studio</span>
   </div>
@@ -239,10 +238,10 @@ gtag('config',id,cfg);
           <span><i>Built for operators</i></span>
           <span><i>in four markets.</i></span>
         </h1>
-        <p class="lede" data-r>Remote-first product design and engineering for the United States, United Kingdom, United Arab Emirates, and Canada. Enter through your market for regional language, timezone overlap, and proof that matches your desk.</p>
+        <p class="lede" data-r>Remote-first product design and engineering for the United States, United Kingdom, United Arab Emirates, and Canada. Australia is served on this same English site, with the same services and a fit call in overlapping hours. Enter a market below for timezone overlap and proof that matches your desk.</p>
         <div class="hero-actions" data-r>
           <a href="#markets" class="btn"><span>Find your market</span><i>→</i></a>
-          <a href="/contact#book" class="btn ghost"><span>Book a free 20-min call</span><i>→</i></a>
+          <a href="/contact#book" class="btn ghost"><span>Book a free 20-min fit call</span><i>→</i></a>
         </div>
         <p class="mkt-trust" data-r>
           <span>Four markets</span>
@@ -448,11 +447,11 @@ gtag('config',id,cfg);
 <section class="cta-band on-ink" aria-labelledby="ctaH">
   <div class="wrap">
     <p class="eyebrow" data-r>Not sure where to start?</p>
-    <h2 class="d2" id="ctaH" data-r>Book a free 20-min call.</h2>
+    <h2 class="d2" id="ctaH" data-r>Book a free 20-min fit call.</h2>
     <p class="lede" data-r>A 20-minute fit call or written brief - we reply within one business day.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r><i>·</i> US · UK · UAE · Canada <i>·</i> NDA-first <i>·</i> You own the IP</p>
@@ -467,7 +466,7 @@ gtag('config',id,cfg);
       <div>
         <h3>Get in touch</h3>
         <a href="/contact#brief">Send a project brief</a><br>
-        <a href="/contact#book">Book a free 20-min call</a><br>
+        <a href="/contact#book">Book a free 20-min fit call</a><br>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Product design, UI/UX, and engineering for operators and SaaS teams. Remote-first.</p>
         <div class="fsocial">
@@ -566,7 +565,8 @@ document.querySelectorAll('[data-mask]').forEach(el=>{
           "US",
           "GB",
           "AE",
-          "CA"
+          "CA",
+          "AU"
         ],
         "availableLanguage": [
           "English"
@@ -588,6 +588,10 @@ document.querySelectorAll('[data-mask]').forEach(el=>{
         {
           "@type": "Country",
           "name": "Canada"
+        },
+        {
+          "@type": "Country",
+          "name": "Australia"
         }
       ],
       "knowsAbout": [
@@ -660,7 +664,8 @@ document.querySelectorAll('[data-mask]').forEach(el=>{
         "en-US",
         "en-GB",
         "en-AE",
-        "en-CA"
+        "en-CA",
+        "en-AU"
       ],
       "publisher": {
         "@id": "https://krivatechnologies.com/#organization"
@@ -709,7 +714,7 @@ document.querySelectorAll('[data-mask]').forEach(el=>{
         "AE",
         "CA"
       ],
-      "description": "Trucking software, B2B SaaS, and integrations for teams in the US, UK, UAE, and Canada. Product design and engineering, remote-first. Explore each market.",
+      "description": "Trucking software, B2B SaaS, and integrations for the US, UK, UAE, Canada, and Australia. One English site. Explore a market or book a fit call.",
       "url": "https://krivatechnologies.com/markets"
     }
   ]

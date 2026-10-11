@@ -154,7 +154,7 @@ function website() {
     "@id": WEB_ID,
     name: "KRIVA Technologies",
     url: ORIGIN,
-    inLanguage: ["en", "en-US", "en-GB", "en-AE", "en-CA"],
+    inLanguage: ["en", "en-US", "en-GB", "en-AE", "en-CA", "en-AU"],
     publisher: { "@id": ORG_ID },
     about: { "@id": ORG_ID },
     description: ENTITY_DESCRIPTION,

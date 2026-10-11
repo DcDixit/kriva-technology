@@ -243,9 +243,9 @@ module.exports = {
   indexFile: "kriva-markets-index.html",
   indexTitle: "Markets We Serve · US, UK, UAE & Canada | KRIVA",
   indexMeta:
-    "Trucking software, B2B SaaS, and integrations for teams in the US, UK, UAE, and Canada. Product design and engineering, remote-first. Explore each market.",
+    "Trucking software, B2B SaaS, and integrations for the US, UK, UAE, Canada, and Australia. One English site. Explore a market or book a fit call.",
   indexEyebrow: "Product Design & UI/UX",
   indexH1: "Built for operators in four markets.",
   indexLede:
-    "Remote-first product design and engineering for the United States, United Kingdom, United Arab Emirates, and Canada. Enter through your market for regional language, timezone overlap, and proof that matches your desk.",
+    "Remote-first product design and engineering for the United States, United Kingdom, United Arab Emirates, and Canada. Australia is served on this same English site, with the same services and a fit call in overlapping hours. Enter a market below for timezone overlap and proof that matches your desk.",
 };

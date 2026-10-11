@@ -9,8 +9,11 @@
  var MEASUREMENT_ID = 'G-FHG12KTF8C';
  var validId = /^G-[A-Z0-9]{6,}$/i.test(MEASUREMENT_ID) && !/^G-X+$/i.test(MEASUREMENT_ID);
  var debug = /(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
- var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
- var optedOut = !!(validId && window['ga-disable-' + MEASUREMENT_ID]);
+ var host = location.hostname;
+ var gpc = navigator.globalPrivacyControl === true;
+ /* Localhost and Vercel preview hosts are internal. Production is the custom domain. */
+ var local = host === 'localhost' || host === '127.0.0.1' || /\.vercel\.app$/.test(host);
+ var optedOut = !!(validId && window['ga-disable-' + MEASUREMENT_ID]) || gpc;
 
  window.dataLayer = window.dataLayer || [];
  if (typeof window.gtag !== 'function') {

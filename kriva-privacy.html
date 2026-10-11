@@ -9,12 +9,14 @@
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted',functionality_storage:'granted',security_storage:'granted'});
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
 (function(){
 var id='G-FHG12KTF8C';
 var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var local=location.hostname==='localhost'||location.hostname==='127.0.0.1';
-var optedOut=!!window['ga-disable-'+id];
+var gpc=navigator.globalPrivacyControl===true;
+var host=location.hostname;
+var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
+var optedOut=!!window['ga-disable-'+id]||gpc;
 gtag('js',new Date());
 if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
 if(optedOut||(local&&!debug))return;
@@ -28,16 +30,13 @@ gtag('config',id,cfg);
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
+    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yjj9g3gojt");
 </script>
 <!-- KRIVA_CLARITY_END -->
-<!-- KRIVA_TAWK_START -->
-<script src="/shared/tawk.js?v=20261008a" defer></script>
-<!-- KRIVA_TAWK_END -->
 <script>document.documentElement.classList.add('js')</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -269,7 +268,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="/contact#book" class="btn sm"><span><span class="nav-cta-long">Book a 20-min call</span><span class="nav-cta-short" aria-hidden="true">Book a call</span></span><i>→</i></a>
+        <a href="/contact#book" class="btn sm"><span><span class="nav-cta-long">Book a free 20-min fit call</span><span class="nav-cta-short" aria-hidden="true">Book a call</span></span><i>→</i></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -314,13 +313,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
       </ul>
     </div>
     <div class="sheet-cta">
-      <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min call</span><i>→</i></a>
+      <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
       <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
     </div>
   </div>
   <div class="sheet-foot">
     <a href="/contact#brief">Send a project brief</a>
-    <a href="/contact#book">Book a free 20-min call</a>
+    <a href="/contact#book">Book a free 20-min fit call</a>
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
     <span>Remote-first product studio</span>
   </div>
@@ -336,7 +335,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </ol>
     <p class="eyebrow" data-r style="margin-top:clamp(22px,3vw,40px)">Privacy</p>
     <h1 class="d1" id="h1" data-r style="font-size:clamp(2rem,4.6vw,3.55rem)">Privacy Policy</h1>
-    <p class="lede" data-r>Last updated: August 2026. This policy explains how KRIVA Technologies handles information when you visit our website or contact us about a project.</p>
+    <p class="lede" data-r>Last updated: October 2026. This policy explains how KRIVA Technologies handles information when you visit our website or contact us about a project.</p>
     <div class="legal">
       <nav class="toc" aria-label="Contents" data-r>
         <h2>Contents</h2>
@@ -350,13 +349,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <p>We collect only the information needed to respond to inquiries, deliver services, and improve our website. We do not sell personal data.</p>
         </section><section class="cl" id="s2">
           <h2>Information we collect<a href="#s2" aria-label="Permalink">#</a></h2>
-          <p>When you submit our contact form, we collect your name, email address, company name, project details, budget range, timeline, and any message you provide. If you use live chat, tawk.to collects the name, email, and messages you send in the widget. We also use Google Analytics 4 to collect page URLs, referrers, device and browser type, and interaction events such as button clicks and form submissions. Analytics cookies may include _ga and _ga_*. We do not collect advertising identifiers or use ads personalization.</p>
+          <p>When you submit our contact form, we collect your name, email address, company name, project details, budget range, timeline, and any message you provide. We use Google Analytics 4 to collect page URLs, referrers, device and browser type, and interaction events such as button clicks and form submissions. Analytics cookies may include _ga and _ga_*. Microsoft Clarity may record how a session moves through a page. We do not collect advertising identifiers or use ads personalization.</p>
         </section><section class="cl" id="s3">
           <h2>How we use information<a href="#s3" aria-label="Permalink">#</a></h2>
           <p>We use contact submissions to evaluate fit, prepare proposals, schedule calls, and communicate about active engagements. We use analytics to understand which pages, sources, and calls-to-action help people find the right service, and to measure inquiries. We do not sell this data.</p>
         </section><section class="cl" id="s4">
           <h2>Third-party services<a href="#s4" aria-label="Permalink">#</a></h2>
-          <p>Our site uses hosting and email delivery (such as Resend) to process contact form submissions. We use Google Analytics 4 (Google LLC) to measure site usage. Live chat is provided by tawk.to (tawk.to ltd); chat cookies may include TawkConnectionTime and twk_*. Scheduling embeds (such as Cal.com or Calendly) may load when you choose to book a call. Links to third-party sites are governed by those sites' policies. If your browser sends Global Privacy Control, we disable analytics storage.</p>
+          <p>Our site uses hosting and email delivery (such as Resend) to process contact form submissions. We use Google Analytics 4 (Google LLC) to measure site usage and Microsoft Clarity (Microsoft) for session recordings. Links to third-party sites are governed by those sites' policies. If your browser sends Global Privacy Control, we disable analytics storage and do not load session recording.</p>
         </section><section class="cl" id="s5">
           <h2>Data retention<a href="#s5" aria-label="Permalink">#</a></h2>
           <p>We retain inquiry records for as long as needed to respond, maintain business records, and comply with legal obligations. You may request deletion of marketing-related data where applicable law allows.</p>
@@ -371,7 +370,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <p>For privacy questions or requests, use the <a href="/contact#brief">contact form</a> or email <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>.</p>
         </section>
         <p class="body-sm" style="margin-top:28px">Location: Ahmedabad, Gujarat, India</p>
-        <p class="body-sm" style="margin-top:12px">This site uses <strong>Google Analytics 4</strong> first-party cookies for usage measurement. Advertising cookies and ads personalization are off. Live chat uses <strong>tawk.to</strong> cookies on their domain when you open the widget. If you book via an embedded scheduler, that provider's cookies may apply on their domain. Contact form data is emailed to us directly.</p>
+        <p class="body-sm" style="margin-top:12px">This site uses <strong>Google Analytics 4</strong> first-party cookies for usage measurement. Advertising cookies and ads personalization are off. <strong>Microsoft Clarity</strong> may record sessions to see how pages are used. If your browser sends Global Privacy Control, analytics storage and session recording stay off. Contact form data is emailed to us directly.</p>
       </div>
     </div>
   </div>
@@ -382,7 +381,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <h2 class="d2" id="ctaH" data-r>Need to talk something through?</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -400,7 +399,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <div>
         <h3>Get in touch</h3>
         <a href="/contact#brief">Send a project brief</a><br>
-        <a href="/contact#book">Book a free 20-min call</a><br>
+        <a href="/contact#book">Book a free 20-min fit call</a><br>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Product design, UI/UX, and engineering for operators and SaaS teams. Remote-first.</p>
         <div class="fsocial">
@@ -511,7 +510,8 @@ sections.forEach(s=>io.observe(s));
           "US",
           "GB",
           "AE",
-          "CA"
+          "CA",
+          "AU"
         ],
         "availableLanguage": [
           "English"
@@ -533,6 +533,10 @@ sections.forEach(s=>io.observe(s));
         {
           "@type": "Country",
           "name": "Canada"
+        },
+        {
+          "@type": "Country",
+          "name": "Australia"
         }
       ],
       "knowsAbout": [
@@ -605,7 +609,8 @@ sections.forEach(s=>io.observe(s));
         "en-US",
         "en-GB",
         "en-AE",
-        "en-CA"
+        "en-CA",
+        "en-AU"
       ],
       "publisher": {
         "@id": "https://krivatechnologies.com/#organization"

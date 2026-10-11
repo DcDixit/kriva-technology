@@ -91,9 +91,6 @@ const JS_TAG = [
   '    })(window, document, "clarity", "script", "yjj9g3gojt");',
   '</script>',
   '<!-- KRIVA_CLARITY_END -->',
-  '<!-- KRIVA_TAWK_START -->',
-  '<script src="/shared/tawk.js?v=20261006c" defer></script>',
-  '<!-- KRIVA_TAWK_END -->',
 ].join('\n');
 
 function cur(key, name) {

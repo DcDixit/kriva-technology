@@ -442,7 +442,7 @@ Keep the current footer.
 - Title: Custom Trucking Software, B2B SaaS & Integrations | KRIVA
 - Description: Hire KRIVA’s in-house team to design and build custom dispatch CRM, fleet dashboards, driver apps, B2B SaaS, and QuickBooks/Xero integrations for operators in the US, UK, UAE, Canada, and Australia.
 - Canonical: `https://krivatechnologies.com/`
-- Keep GA, Clarity, and Tawk blocks (`KRIVA_GA_*`, `KRIVA_CLARITY_*`, `KRIVA_TAWK_*`) and the JSON-LD graph.
+- Keep GA and Clarity blocks (`KRIVA_GA_*`, `KRIVA_CLARITY_*`) and the JSON-LD graph. Do not add Tawk.to or any live-chat widget.
 
 ## Done when
 
