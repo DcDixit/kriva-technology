@@ -138,7 +138,7 @@
   const path = document.getElementById('wfPath');
   if (path) {
     const tabs = [...path.querySelectorAll('[role="tab"]')];
-    const panels = [...document.querySelectorAll('#wfStage .hp-wf-panel')];
+    const panels = [...document.querySelectorAll('#wfStage .wf-panel')];
     const sub = document.getElementById('wfSub');
     const live = document.getElementById('wfLive');
     const count = document.getElementById('wfCount');

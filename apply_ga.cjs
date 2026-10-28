@@ -1,6 +1,10 @@
-/* Injects the GA4 loader into every page. Idempotent. */
+/* Injects the GA4 loader into every page. Idempotent.
+ *
+ * ⚠️  CANONICAL SOURCE: apply_chrome.cjs → JS_TAG (KRIVA_GA_START … KRIVA_GA_END).
+ *     This script REPLACES the GA block on every run. Keep BLOCK in sync with apply_chrome.cjs
+ *     or prefer: node apply_chrome.cjs (full chrome + GA + Clarity).
+ */
 const fs = require('fs');
-const path = require('path');
 
 const START = '<!-- KRIVA_GA_START -->';
 const END = '<!-- KRIVA_GA_END -->';
@@ -13,12 +17,14 @@ const BLOCK = [
   'window.dataLayer=window.dataLayer||[];',
   'function gtag(){dataLayer.push(arguments);}window.gtag=gtag;',
   'window.__krivaNativeReplaceState=History.prototype.replaceState;',
-  "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted',functionality_storage:'granted',security_storage:'granted'});",
+  "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});",
   '(function(){',
   `var id='${MEASUREMENT_ID}';`,
   "var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);",
-  "var local=location.hostname==='localhost'||location.hostname==='127.0.0.1';",
-  "var optedOut=!!window['ga-disable-'+id];",
+  'var gpc=navigator.globalPrivacyControl===true;',
+  'var host=location.hostname;',
+  "var local=host==='localhost'||host==='127.0.0.1'||/\\.vercel\\.app$/.test(host);",
+  "var optedOut=!!window['ga-disable-'+id]||gpc;",
   "gtag('js',new Date());",
   "if(optedOut)gtag('consent','update',{analytics_storage:'denied'});",
   'if(optedOut||(local&&!debug))return;',
@@ -28,7 +34,7 @@ const BLOCK = [
   '})();',
   '</script>',
   `<script async src="https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}"></script>`,
-  '<script src="/shared/analytics.js?v=20261006a" defer></script>',
+  '<script src="/shared/analytics.js" defer></script>',
   END,
 ].join('\n');
 
