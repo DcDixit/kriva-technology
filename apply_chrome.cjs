@@ -79,12 +79,32 @@ const JS_TAG = [
   '<!-- KRIVA_GA_START -->',
   '<link rel="preconnect" href="https://www.googletagmanager.com">',
   '<link rel="dns-prefetch" href="https://www.google-analytics.com">',
+  '<script>',
+  'window.dataLayer=window.dataLayer||[];',
+  'function gtag(){dataLayer.push(arguments);}window.gtag=gtag;',
+  'window.__krivaNativeReplaceState=History.prototype.replaceState;',
+  "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});",
+  '(function(){',
+  "var id='G-FHG12KTF8C';",
+  "var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);",
+  'var gpc=navigator.globalPrivacyControl===true;',
+  'var host=location.hostname;',
+  "var local=host==='localhost'||host==='127.0.0.1'||/\\.vercel\\.app$/.test(host);",
+  "var optedOut=!!window['ga-disable-'+id]||gpc;",
+  "gtag('js',new Date());",
+  "if(optedOut)gtag('consent','update',{analytics_storage:'denied'});",
+  'if(optedOut||(local&&!debug))return;',
+  "var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};",
+  'if(debug)cfg.debug_mode=true;',
+  "gtag('config',id,cfg);",
+  '})();',
+  '</script>',
   '<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>',
   '<script src="/shared/analytics.js" defer></script>',
   '<!-- KRIVA_GA_END -->',
   '<!-- KRIVA_CLARITY_START -->',
   '<script type="text/javascript">',
-  '    (function(c,l,a,r,i,t,y){',
+  '    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true)return;var h=location.hostname;if(h===\'localhost\'||h===\'127.0.0.1\'||/\\.vercel\\.app$/.test(h))return;',
   '        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};',
   '        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;',
   '        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);',
@@ -175,14 +195,18 @@ function headerHtml(current, opts = {}) {
             <li class="nav-item${nav.servicesCurrent ? " is-active" : ""}" data-mm>
               <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-services" aria-haspopup="true">Services<span class="nav-chev" aria-hidden="true"></span></button>
               <div class="mm" id="mm-services" role="menu">
-                <div class="mm-head"><b>Services</b><span>Capabilities</span></div>
+                <div class="mm-head"><b>Services</b><span>Product &amp; ops</span></div>
                 <ul class="mm-list">
-                  <li><a role="menuitem" href="/services/graphic-design"><strong>Graphic Design</strong><em>Identity, print, social, packaging, and marketing kits.</em></a></li>
-                  <li><a role="menuitem" href="/services/seo-digital-marketing"><strong>SEO &amp; Digital Marketing</strong><em>Search, ads, social, and reporting you can audit.</em></a></li>
+                  <li><a role="menuitem" href="/services/crm-development"><strong>CRM &amp; dispatch development</strong><em>Consoles, pipelines, and desks matched to real shifts.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboard design</strong><em>Exception queues, KPIs, and ops views above the fold.</em></a></li>
                   <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
-                  <li><a role="menuitem" href="/services/web-development"><strong>Web Design &amp; Development</strong><em>Sites and apps that convert as well as they rank.</em></a></li>
+                  <li><a role="menuitem" href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><em>Connectors with retry, validation, and operator visibility.</em></a></li>
+                  <li><a role="menuitem" href="/services/web-development"><strong>Web development</strong><em>Marketing sites and authenticated product surfaces.</em></a></li>
                 </ul>
-                <div class="mm-foot"><a href="/services">All services <i>→</i></a></div>
+                <div class="mm-foot">
+                  <p class="mm-aside">Marketing &amp; brand (secondary): <a href="/services/graphic-design">Graphic design</a> · <a href="/services/logo-design">Logo design</a> · <a href="/services/seo-digital-marketing">SEO &amp; marketing</a></p>
+                  <a href="/services">All services <i>→</i></a>
+                </div>
               </div>
             </li>
             <li><a class="nav-link" href="/work"${nav.work ? ' aria-current="page"' : ""}>Work</a></li>
@@ -280,8 +304,9 @@ const FOOTER_HTML = `<footer>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/solutions">Solutions</a></li>
         <li><a href="/services">Services</a></li>
-        <li><a href="/services/graphic-design">Graphic Design</a></li>
-        <li><a href="/services/seo-digital-marketing">SEO &amp; Digital Marketing</a></li>
+        <li><a href="/services/graphic-design">Graphic design</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
+        <li><a href="/services/seo-digital-marketing">SEO &amp; digital marketing</a></li>
         <li><a href="/industries">Industries</a></li>
         <li><a href="/markets">Markets</a></li>
         <li><a href="/work">Work</a></li>

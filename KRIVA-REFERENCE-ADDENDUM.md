@@ -14,7 +14,7 @@
 
 | # | Name | Slug | Status | Published metrics | Notes |
 |---|---|---|---|---|---|
-| 1 | FleetFlow, US trucking dispatch CRM | `/work/fleetflow-dispatch` | `[Certain]` | **−32% manual handle time · 11 min avg exception response · 99.4% console uptime** | The **only** case study with published metrics. Proof link for the Trucking market. |
+| 1 | ShiftRail, US trucking dispatch CRM | `/work/shiftrail-dispatch` | `[Certain]` | **−32% manual handle time · 11 min avg exception response · 99.4% console uptime** | The **only** case study with published metrics. Proof link for the Trucking market. Legacy slug `/work/fleetflow-dispatch` redirects here. |
 | 2 | PayrollPro, B2B SaaS onboarding | `/work/payroll-pro-saas` | `[Certain]` | **None** | Proof link for the SaaS market. An article cites "+18% activation" for a payroll client, unsourced, see §5. |
 | 3 | FinanceSync, QuickBooks & Xero reconciliation hub | `/work/finance-sync-hub` | `[Certain]` | **None** | Proof link for the Accounting market. |
 | 4 | BrandLift, e-commerce rebrand & launch | `/work/brandlift-ecommerce` | `[Certain]` | **None** | Verified via homepage testimonial link. |
@@ -23,9 +23,9 @@
 | 7 | SupportAI, ticket automation | `[TBD, do not invent]` | `[TBD]` | **None** | Slug never observed live. |
 | 8 | LocalServe, marketplace MVP | `[TBD, do not invent]` | `[TBD]` | **None** | Slug never observed live. Matches the no-code article's unnamed "local services marketplace". |
 
-> **METRICS RULE, absolute.** Only FleetFlow has published metrics. **Never attach a metric to any other case study**, and never carry FleetFlow's numbers to another page as if generic. Until a slug is confirmed, link to `/work`.
+> **METRICS RULE, absolute.** Only ShiftRail has published metrics. **Never attach a metric to any other case study**, and never carry ShiftRail's numbers to another page as if generic. Until a slug is confirmed, link to `/work`.
 
-### 1.2 Services, 17 total, all slugs `[Certain]`
+### 1.2 Services, 19 total, all slugs `[Certain]`
 
 | Service (canonical label) | Slug | Family (recorded, not yet applied) |
 |---|---|---|
@@ -46,6 +46,8 @@
 | Automation Workflows | `/services/automation-systems` | AI & Automation |
 | Branding & Graphic Design | `/services/branding` | Brand |
 | Logo Design | `/services/logo-design` | Brand |
+| Graphic Design | `/services/graphic-design` | Brand |
+| SEO & Digital Marketing | `/services/seo-digital-marketing` | Brand |
 
 **Naming collision, `crm-development` has three live labels:** "CRM & Dashboard Design" (`/services`), "CRM Design" (dropdown), "CRM & Dashboards" (footer). Canonical is **"CRM Design"**, the first collides with the separate `dashboard-design` service. Link labels can change now; **the service page's own H1 and `<title>` wait for Search Console.**
 
@@ -56,7 +58,7 @@ Not orphans: `no-code-low-code` and `web-development` are both linked from insig
 
 | Solution | Slug | Framing label | Proof link |
 |---|---|---|---|
-| Trucking & Logistics Solutions | `/solutions/trucking-logistics` | Trucking & logistics | FleetFlow |
+| Trucking & Logistics Solutions | `/solutions/trucking-logistics` | Trucking & logistics | ShiftRail |
 | SaaS Product Solutions | `/solutions/saas` | UK & US SaaS | PayrollPro |
 | QuickBooks & Xero Integrations | `/solutions/accounting-integrations` | Finance & operations | FinanceSync |
 | Car Transportation | `/solutions/car-transportation` | Auto transport | **None, `[TBD]`, highest-priority content gap** |
@@ -155,7 +157,7 @@ All `[Certain]`. **Do not reformat, abbreviate, or replace** unless a later veri
 |---|---|---|---|
 | B1 | Raw lowercase slug in H2 copy: `What we deliver for saas product solutions`, `Ready to discuss your quickbooks & xero integrations project?` | Solution pages | `[Certain]` |
 | B2 | Duplicate CTA blocks stacked at page bottom | Live `/solutions/trucking-logistics` | `[Certain]` |
-| B3 | Testimonial attributed to **FleetRoute Logistics**; the case study is published as **FleetFlow** | Homepage | `[Certain]` |
+| B3 | Testimonial attributed to **FleetRoute Logistics**; the case study is published as **ShiftRail** | Homepage | `[Certain]` |
 | B4 | `/insights` renders articles out of date order (Jan 26 → Dec 25 → May 26 → Nov 25 → May 26 → Oct 25 → Sep 25) | `/insights` | `[Certain]` |
 | B5 | Run-together sentence: `…do not use the site.KRIVA Technologies…` | `/terms` §1 | `[Certain]`, already fixed, whitespace only |
 | B6 | `Framer` listed twice on the same page, under Design *and* No-Code | `/process` | `[Certain]` |
@@ -188,13 +190,13 @@ An early project note wrongly described them as invented. That was corrected mid
 | Name | Role · Company | Linked case |
 |---|---|---|
 | Ravi Mehta | Head of Product · FlowLedger (UK B2B SaaS) | `/work/payroll-pro-saas` |
-| Marcus Cole | VP Operations · FleetRoute Logistics (US) | `/work/fleetflow-dispatch` |
+| Marcus Cole | VP Operations · FleetRoute Logistics (US) | `/work/shiftrail-dispatch` |
 | Anita Desai | Founder · Meridian D2C | `/work/brandlift-ecommerce` |
 | Tom Ashworth | CTO · CarePath Health | *(no link)* |
 
 Footnote, also live: *"Some feedback was originally shared under our previous name, Northline Digital."*
 
-FleetFlow's three metrics are live-published. **`99.4% uptime` was once wrongly flagged as invented, that flag was withdrawn. It is real.**
+ShiftRail's three metrics are live-published. **`99.4% uptime` was once wrongly flagged as invented, that flag was withdrawn. It is real.**
 
 ### Separate verification items, track independently, do not bundle
 
@@ -253,7 +255,7 @@ from html.parser import HTMLParser
 
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','source','track','wbr'}
 KNOWN_PATHS = {
- '/','/solutions','/services','/work','/about','/process','/insights','/contact', '/faq','/privacy','/terms','/technologies','/contact#book','/contact#brief', '/work/fleetflow-dispatch','/work/payroll-pro-saas','/work/finance-sync-hub','/work/brandlift-ecommerce', '/solutions/trucking-logistics','/solutions/saas','/solutions/accounting-integrations','/solutions/car-transportation', '/insights/saas-mvp-uk-guide','/insights/trucking-dispatch-crm-guide','/insights/ai-in-product-design-2026', '/insights/saas-onboarding-patterns','/insights/no-code-vs-custom-mvp','/insights/crm-dashboard-ux-patterns', '/insights/choosing-a-digital-agency', }
+ '/','/solutions','/services','/work','/about','/process','/insights','/contact', '/faq','/privacy','/terms','/technologies','/contact#book','/contact#brief', '/work/shiftrail-dispatch','/work/payroll-pro-saas','/work/finance-sync-hub','/work/brandlift-ecommerce', '/solutions/trucking-logistics','/solutions/saas','/solutions/accounting-integrations','/solutions/car-transportation', '/insights/saas-mvp-uk-guide','/insights/trucking-dispatch-crm-guide','/insights/ai-in-product-design-2026', '/insights/saas-onboarding-patterns','/insights/no-code-vs-custom-mvp','/insights/crm-dashboard-ux-patterns', '/insights/choosing-a-digital-agency', }
 # Verified publication dates, inventory §1.4
 KNOWN_DATES = {'2026-05-22','2026-05-20','2026-01-15','2025-12-08','2025-11-20','2025-10-12','2025-09-05'}
 
@@ -333,7 +335,7 @@ def check(path):
  prose = re.sub(r'<[^>]*\bdata-review\b.*?</div>', ' ', clean, flags=re.S)
  prose = re.sub(r'\sstyle="[^"]*"', ' ', prose) # inline CSS is not prose
  for pat, msg in [
- (r'\b(?:19|20)\d{2}-\d{2}-\d{2}\b', 'DATE'), (r'\b\d{1,3}(?:\.\d)?\s?%', 'percentage, only FleetFlow may carry metrics (§1.1)'), (r'discovery call', 'banned CTA wording, use "20-minute fit call"'), (r'24 hours', 'banned response promise, use "one business day"'), (r'15\+ senior|Google 5\.0|8 reviews', 'unverified claim, see §5'), ]:
+ (r'\b(?:19|20)\d{2}-\d{2}-\d{2}\b', 'DATE'), (r'\b\d{1,3}(?:\.\d)?\s?%', 'percentage, only ShiftRail may carry metrics (§1.1)'), (r'discovery call', 'banned CTA wording, use "20-minute fit call"'), (r'24 hours', 'banned response promise, use "one business day"'), (r'15\+ senior|Google 5\.0|8 reviews', 'unverified claim, see §5'), ]:
  for m in set(re.findall(pat, prose, re.I)):
  if msg == 'DATE':
  if m not in KNOWN_DATES:

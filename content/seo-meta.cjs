@@ -21,7 +21,7 @@ module.exports = {
   "kriva-market-uk.html":
     "UK SaaS MVP design, onboarding UX, Xero integrations, and multi-tenant admin - in-house design and engineering with clear scope and weekly demos.",
   "kriva-market-us.html":
-    "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS. In-house product and engineering team with US-hour overlap, weekly demos, and phased rollout.",
+    "US trucking dispatch CRM, fleet dashboards, driver apps, and B2B SaaS. In-house team with US-hour overlap, weekly demos, and phased rollout.",
   "kriva-markets-index.html":
     "Trucking software, B2B SaaS, and integrations for teams in the US, UK, UAE, and Canada. Product design and engineering, remote-first. Explore each market.",
   "kriva-service-api-integrations.html":
@@ -33,7 +33,7 @@ module.exports = {
   "kriva-service-web-development.html":
     "Marketing sites in Next.js, React, and TypeScript - CMS when marketing must publish without engineering. Authenticated product UX is a separate service.",
   "kriva-services-index.html":
-    "Product design, trucking software, SaaS, dashboards, and web development by KRIVA - full in-house team from discovery to launch. Browse all services.",
+    "Dispatch CRM, fleet dashboards, SaaS product design, integrations, and web development—KRIVA's in-house trucking-first capability list.",
   "kriva-solution-saas.html":
     "B2B SaaS products, MVPs, onboarding, multi-tenant roles, admin workflows, dashboards, and integrations for US, UK, UAE, and Canada teams.",
   "kriva-solution-trucking.html":

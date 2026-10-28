@@ -43,7 +43,7 @@ module.exports = {
       slug: "trucking-dispatch-crm-guide",
       title: "Dispatch CRM for US trucking: what it is and what actually works",
       category: "Trucking & Logistics",
-      read: "9 min read",
+      read: "10 min read",
       published: "May 2026",
       publishedISO: "2026-05-20",
       excerpt:

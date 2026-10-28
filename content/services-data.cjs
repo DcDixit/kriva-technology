@@ -76,13 +76,13 @@ module.exports = {
       "processNote": "Usually follows discovery on stage definitions, then UI, then automation rules: reviewed before engineering commits.",
       "heroSlot": "Slot · 1600×1000 · CRM pipeline / dispatch console",
       "ctaH2": "Need a CRM the floor will trust?",
-      "heroAsset": "/work/fleetflow/console-full.jpg",
-      "heroAssetAlt": "FleetFlow dispatch console: related CRM work",
+      "heroAsset": "/media/work/fleetflow/console-full.svg",
+      "heroAssetAlt": "ShiftRail dispatch console: related CRM work",
       "proof": [
         {
-          "href": "/work/fleetflow-dispatch",
+          "href": "/work/shiftrail-dispatch",
           "k": "Work",
-          "label": "FleetFlow: dispatch CRM"
+          "label": "ShiftRail: dispatch CRM"
         },
         {
           "href": "/work/crm-pulse-dashboard",
@@ -190,9 +190,9 @@ module.exports = {
       "heroAssetAlt": "CRMPulse sales dashboard: related dashboard work",
       "proof": [
         {
-          "href": "/work/fleetflow-dispatch",
+          "href": "/work/shiftrail-dispatch",
           "k": "Work",
-          "label": "FleetFlow: SLA views"
+          "label": "ShiftRail: SLA views"
         },
         {
           "href": "/work/finance-sync-hub",
@@ -1078,9 +1078,9 @@ module.exports = {
           "label": "PayrollPro"
         },
         {
-          "href": "/work/fleetflow-dispatch",
+          "href": "/work/shiftrail-dispatch",
           "k": "Work",
-          "label": "FleetFlow"
+          "label": "ShiftRail"
         },
         {
           "href": "/solutions/saas",
@@ -1407,9 +1407,9 @@ module.exports = {
       "heroAssetAlt": "Onboarding research path: related research work",
       "proof": [
         {
-          "href": "/work/fleetflow-dispatch",
+          "href": "/work/shiftrail-dispatch",
           "k": "Work",
-          "label": "FleetFlow: ops research"
+          "label": "ShiftRail: ops research"
         },
         {
           "href": "/work/payroll-pro-saas",
@@ -1513,7 +1513,7 @@ module.exports = {
       "processNote": "Often paired with a short research pass, then hands into UI/UX or product design for production fidelity.",
       "heroSlot": "Slot · 1600×1000 · wireframe / prototype board",
       "ctaH2": "Need wireframes and prototypes that decide?",
-      "heroAsset": "/work/fleetflow/load-board.jpg",
+      "heroAsset": "/media/work/fleetflow/load-board.svg",
       "heroAssetAlt": "Load board prototype frame: related wireframe work",
       "proof": [
         {
@@ -1733,8 +1733,8 @@ module.exports = {
       "processNote": "Pairs with SaaS Product Design for multi-tenant products, or Web Development when you need the build too.",
       "heroSlot": "Slot · 1600×1000 · authenticated web app UI",
       "ctaH2": "Need authenticated web app UX?",
-      "heroAsset": "/work/fleetflow/console-full.jpg",
-      "heroAssetAlt": "Ops console UI: related web application work",
+      "heroAsset": "/media/work/fleetflow/console-full.svg",
+      "heroAssetAlt": "ShiftRail ops console UI: related web application work",
       "proof": [
         {
           "href": "/solutions/car-transportation",

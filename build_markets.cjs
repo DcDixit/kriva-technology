@@ -202,7 +202,8 @@ function marketBody(m) {
  </ol>
  <p class="eyebrow" data-r style="margin-top:22px">${esc(m.eyebrow)}</p>
  <h1 class="d1" data-r style="margin-top:18px">${esc(m.h1)}</h1>
- <p class="lede" data-r style="margin-top:22px">${esc(m.lede)}</p>
+    <p class="lede" data-r style="margin-top:22px">${esc(m.lede)}</p>
+    <p class="body-sm" data-r style="margin-top:14px;max-width:52ch"><strong>Markets vs industries:</strong> this page covers ${esc(m.country)} timezone overlap and regional delivery. To browse by desk (trucking, SaaS, finance), see <a href="/industries">Industries</a>.</p>
  <div class="mkt-proof" data-r>
  <a href="${m.proof.case.href}">Case · ${esc(m.proof.case.label)}</a>
  <a href="${m.proof.guide.href}">Guide · ${esc(m.proof.guide.label)}</a>

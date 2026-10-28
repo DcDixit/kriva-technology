@@ -28,19 +28,44 @@ function robotsMeta({ index = true } = {}) {
 }
 
 function hreflangDefault(canonicalUrl) {
-  return [
-    `<link rel="alternate" hreflang="en" href="${canonicalUrl}">`,
-    `<link rel="alternate" hreflang="x-default" href="${canonicalUrl}">`,
-  ].join("\n");
+  /* Self-referencing en only. x-default on non-market pages contradicted the market cluster. */
+  return `<link rel="alternate" hreflang="en" href="${canonicalUrl}">`;
+}
+
+const MARKET_PATHS = new Set([
+  "/markets",
+  ...markets.map((m) => m.path),
+]);
+
+function hreflangMarketCluster() {
+  const lines = markets.map(
+    (m) => `<link rel="alternate" hreflang="${m.hreflang}" href="${ORIGIN}${m.path}">`
+  );
+  lines.push(`<link rel="alternate" hreflang="x-default" href="${ORIGIN}/markets">`);
+  return lines.join("\n");
 }
 
 function hreflangForPath(pathname) {
-  /* Market pages are different English pages, not translations of each other.
-     Pointing the homepage at /markets/uk as en-gb made Google treat them as alternates. */
+  if (MARKET_PATHS.has(pathname)) {
+    return hreflangMarketCluster();
+  }
   return hreflangDefault(ORIGIN + pathname);
 }
 
-function geoMeta() {
+function marketForPath(pathname) {
+  return markets.find((m) => m.path === pathname) || null;
+}
+
+function geoMeta(pathname = "/") {
+  const market = marketForPath(pathname);
+  if (market) {
+    return [
+      `<meta name="geo.region" content="${market.countryCode}">`,
+      `<meta name="geo.placename" content="${market.country}">`,
+      `<meta name="target" content="${market.countryCode}">`,
+      `<meta name="coverage" content="${market.country}">`,
+    ].join("\n");
+  }
   return [
     `<meta name="target" content="${AREA_SERVED.join(", ")}">`,
     `<meta name="coverage" content="${Object.values(REGION_LABELS).join(", ")}">`,
@@ -72,7 +97,7 @@ function seoHeadBlock({ canonicalUrl, index = true, pathname = "/" }) {
     robotsMeta({ index }),
     identityMeta(),
     gscVerificationMeta(pathname),
-    geoMeta(),
+    geoMeta(pathname),
     hreflangForPath(pathname),
   ].filter(Boolean);
   if (pathname === "/" || pathname.startsWith("/insights")) {
@@ -193,6 +218,7 @@ module.exports = {
   REGION_LABELS,
   robotsMeta,
   hreflangForPath,
+  hreflangMarketCluster,
   geoMeta,
   identityMeta,
   feedMeta,
