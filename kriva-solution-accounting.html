@@ -46,8 +46,8 @@ gtag('config',id,cfg);
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0E1216">
 <!-- KRIVA_ICONS_END -->
-<link rel="stylesheet" href="/shared/tokens.css?v=layout1240v2">
-<link rel="preload" href="/brand/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/shared/tokens.css?v=isans1">
+<link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <title>QuickBooks &amp; Xero Integrations for Finance Teams · KRIVA</title>
 <meta name="description" content="QuickBooks and Xero reconciliation hubs: idempotent sync, match engines, exception queues, and operator UX finance teams can audit.">
 <link rel="canonical" href="https://krivatechnologies.com/solutions/accounting-integrations">
@@ -159,14 +159,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
 @media(max-width:1280px){.chapters{display:none}}
 </style>
-<link rel="stylesheet" href="/shared/inner.css?v=buildrow1">
-<link rel="stylesheet" href="/shared/system.css">
+<link rel="stylesheet" href="/shared/inner.css?v=buildrow2">
+<link rel="stylesheet" href="/shared/system.css?v=white1">
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
 <link rel="stylesheet" href="/shared/page-inquiry.css">
-<link rel="stylesheet" href="/shared/product-ui.css">
+<link rel="stylesheet" href="/shared/product-ui.css?v=pu3">
 <link rel="stylesheet" href="/shared/accounting.css?v=acc1">
 <link rel="stylesheet" href="/shared/slot-assets.css">
-<link rel="stylesheet" href="/shared/chrome.css">
+<link rel="stylesheet" href="/shared/chrome.css?v=white1">
 </head>
 <body class="solution page-accounting">
 <a class="skip" href="#main">Skip to content</a>
@@ -348,12 +348,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <span>Your sync drifts every</span>
         <span>month-end. Ours doesn't.</span>
       </h1>
-      <p class="ip-desc">Finance teams stuck between a product that "synced in staging" and month-end spreadsheets. We build idempotent QuickBooks Online and Xero connectors plus operator UX finance can audit—exception queues, not silent log files.</p>
+      <p class="ip-desc">Finance teams stuck between a product that "synced in staging" and month-end spreadsheets. We build idempotent QuickBooks Online and Xero connectors plus operator UX finance can audit, exception queues, not silent log files.</p>
       <div class="ip-actions">
         <a href="/contact#book" class="btn sm"><span>Book a free 20-min fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn sm ghost"><span>Send a project brief</span><i>→</i></a>
       </div>
-      <p class="ip-meta">Official Intuit &amp; Xero APIs · Idempotent sync</p>
+      <p class="ip-meta">Public Intuit &amp; Xero APIs · Idempotent sync</p>
     </div>
   </div>
 </header>
@@ -383,19 +383,19 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="wrap">
     <p class="eyebrow" data-r>Platforms</p>
     <h2 class="d2" id="plH" data-r>The two ledgers we actually ship against</h2>
-    <p class="lede" data-r>Official APIs, not Desktop workarounds as the default. <a href="/markets/uk">UK and US entities</a>, with a unified operator view when you run both.</p>
+    <p class="lede" data-r>Built on the public Intuit and Xero APIs, with QuickBooks Online as the default. <a href="/markets/uk">UK and US entities</a>, with a unified operator view when you run both.</p>
     <div class="acc-plat" data-s>
       <article class="acc-card">
         <div class="acc-lockup">
           <img src="/brand/logos/quickbooks.svg" alt="QuickBooks" width="32" height="32" decoding="async" fetchpriority="high">
           <div><b>QuickBooks Online</b><span>Intuit API</span></div>
         </div>
-        <p>QBO is the default for US books. We map invoices, payments, customers, items, and tax codes through Intuit's API, with token refresh, rate-limit backoff, and idempotent writes.</p>
+        <p>QuickBooks Online is the usual target for US books. We map invoices, payments, customers, items, and tax codes through Intuit's public API, with OAuth 2.0 token refresh, backoff when Intuit throttles requests (HTTP 429), and writes keyed to your source records so a retry cannot post twice.</p>
         <ul>
-          <li>Invoices, payments, credit notes, and bills</li>
+          <li>Invoices, payments, credit memos, and bills</li>
           <li>Customers, vendors, and chart of accounts mapping</li>
-          <li>Multi-entity US books with per-company tokens</li>
-          <li>Desktop scoped only when the ledger cannot move to Online</li>
+          <li>Multi-entity books with separate tokens per QuickBooks company</li>
+          <li>Change data capture polling to catch what webhooks miss</li>
         </ul>
       </article>
       <article class="acc-card">
@@ -403,12 +403,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <img src="/brand/logos/xero.svg" alt="Xero" width="32" height="32" loading="lazy" decoding="async">
           <div><b>Xero</b><span>Xero API</span></div>
         </div>
-        <p>Xero is the default for UK orgs and many dual-region SaaS setups. Same operator dashboard as QBO, separate connector, shared exception language so finance is not learning two products.</p>
+        <p>Xero is common for UK and dual-region teams. We build against Xero's public API with the same operator dashboard as QuickBooks, a separate connector, and shared exception language so finance is not learning two products. Xero caps calls per organization (60 per minute, 5,000 per day), so we queue and pace work instead of firing it in bursts.</p>
         <ul>
           <li>Invoices, bank transactions, contacts, and tracking categories</li>
-          <li>Multi-org UK/US books with unified triage</li>
+          <li>Multiple Xero organizations under one set of authorizations, with unified triage</li>
           <li>VAT and multi-currency lines with readable deltas</li>
-          <li>Webhook + poll hybrid so silent drift cannot hide</li>
+          <li>Webhooks plus If-Modified-Since polling so silent drift cannot hide</li>
         </ul>
       </article>
     </div>
@@ -445,7 +445,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <span class="n num">03</span>
         <div>
           <h3 class="d3">Retry that duplicates</h3>
-          <p>A timeout posts the invoice twice. Without idempotency keys and a match engine, the books get worse every retry.<span class="cons">COST: duplicate postings on every retry</span></p>
+          <p>A timeout posts the invoice twice. Without source-record keys and a match engine, the books get worse every retry.<span class="cons">COST: duplicate postings on every retry</span></p>
         </div>
         <figure class="frac-viz">
           <img src="/media/solutions/accounting/audit.svg" alt="Duplicate invoice posting after a timeout retry without idempotency." width="480" height="400" decoding="async" loading="lazy">
@@ -555,7 +555,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <p>Match invoices, payments, and credit notes with counts finance can trust. See <a href="/work/finance-sync-hub">FinanceSync</a>.</p>
         <ul>
           <li>Idempotent Intuit and Xero workers</li>
-          <li>Per-entity tokens and rate-limit backoff</li>
+          <li>Per-company tokens and rate-limit backoff</li>
           <li>Parallel run before cutover</li>
         </ul>
         <a href="/services/api-integrations" class="acc-text-link">Integrations &amp; APIs <i>→</i></a>
@@ -668,7 +668,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <div class="acc-node">
         <span class="nn">03</span>
         <b>QBO / Xero API</b>
-        <p>Official connectors, token refresh, and rate-limit handling per org.</p>
+        <p>Direct calls to the public APIs, token refresh, and rate-limit handling per company or organization.</p>
       </div>
       <div class="acc-node">
         <span class="nn">04</span>
@@ -773,7 +773,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <li>
         <span class="wk">02</span>
         <h3 class="d3">Connector build</h3>
-        <p>Sync jobs, webhooks, and retries against a sandbox company. Staging must survive a forced timeout without duplicating a post.</p>
+        <p>Sync jobs, webhooks, and retries against a QuickBooks sandbox company or a Xero demo organization. Staging must survive a forced timeout without duplicating a post.</p>
         <span class="acc-gate">Staging validated</span>
       </li>
       <li>
@@ -807,7 +807,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa1" role="region" aria-labelledby="faqb1"><div><div class="faq-a-in">
-          <p>We primarily integrate QuickBooks Online via Intuit's API. Desktop is scoped case-by-case when the ledger cannot move to Online. Xero is always the cloud API.</p>
+          <p>We build against QuickBooks Online through Intuit's public API. QuickBooks Desktop uses a different integration route and is not what this page covers; if you are on Desktop, tell us on the fit call and we will say plainly whether we can help. Xero is a cloud API only.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -827,7 +827,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa3" role="region" aria-labelledby="faqb3"><div><div class="faq-a-in">
-          <p>Every job logs errors, retries with backoff and idempotency keys, and surfaces exceptions in an operator dashboard with a next step. Failures are visible before close, not after.</p>
+          <p>Every job logs errors, retries with backoff and source-record keys so a retry cannot double-post, and surfaces exceptions in an operator dashboard with a next step. Expired or revoked authorizations show up as a reconnect task, not a silent stall. Failures are visible before close, not after.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -847,7 +847,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <span class="qi" aria-hidden="true"></span>
         </button>
         <div class="faq-a" id="fa5" role="region" aria-labelledby="faqb5"><div><div class="faq-a-in">
-          <p>A focused QBO or Xero connector with operator UX is usually 8 to 12 weeks, including mapping sign-off and a parallel run. Dual-region or multi-entity setups run longer. We give a real range on the first call, not a padded one.</p>
+          <p>A focused QBO or Xero connector with operator UX usually takes weeks, not days: mapping sign-off, a build against a sandbox, and a parallel run on live books. Production access also depends on Intuit's app assessment for QuickBooks and Xero's connection limits for new apps. Dual-region or multi-entity setups run longer. We give a real range on the first call, not a padded one.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
@@ -1313,7 +1313,7 @@ run();
           "name": "QuickBooks Desktop or QuickBooks Online?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We primarily integrate QuickBooks Online via Intuit's API. Desktop is scoped case-by-case when the ledger cannot move to Online. Xero is always the cloud API."
+            "text": "We build against QuickBooks Online through Intuit's public API. QuickBooks Desktop uses a different integration route and is not what this page covers; if you are on Desktop, tell us on the fit call and we will say plainly whether we can help. Xero is a cloud API only."
           }
         },
         {
@@ -1329,7 +1329,7 @@ run();
           "name": "How do you handle sync failures?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Every job logs errors, retries with backoff and idempotency keys, and surfaces exceptions in an operator dashboard with a next step. Failures are visible before close, not after."
+            "text": "Every job logs errors, retries with backoff and source-record keys so a retry cannot double-post, and surfaces exceptions in an operator dashboard with a next step. Expired or revoked authorizations show up as a reconnect task, not a silent stall. Failures are visible before close, not after."
           }
         },
         {
@@ -1345,7 +1345,7 @@ run();
           "name": "How long does a typical integration take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A focused QBO or Xero connector with operator UX is usually 8 to 12 weeks, including mapping sign-off and a parallel run. Dual-region or multi-entity setups run longer. We give a real range on the first call, not a padded one."
+            "text": "A focused QBO or Xero connector with operator UX usually takes weeks, not days: mapping sign-off, a build against a sandbox, and a parallel run on live books. Production access also depends on Intuit's app assessment for QuickBooks and Xero's connection limits for new apps. Dual-region or multi-entity setups run longer. We give a real range on the first call, not a padded one."
           }
         },
         {

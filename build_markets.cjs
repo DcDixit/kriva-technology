@@ -123,7 +123,7 @@ function headBlock({ title, meta, canonical, ogLocale, hub = false }) {
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0E1216">
 <link rel="stylesheet" href="/shared/tokens.css?v=layout1240v2">
-<link rel="preload" href="/brand/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(meta)}">
 <link rel="canonical" href="${esc(canonical)}">

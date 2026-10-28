@@ -33,7 +33,7 @@ module.exports = {
   "kriva-service-web-development.html":
     "Marketing sites in Next.js, React, and TypeScript - CMS when marketing must publish without engineering. Authenticated product UX is a separate service.",
   "kriva-services-index.html":
-    "Dispatch CRM, fleet dashboards, SaaS product design, integrations, and web development—KRIVA's in-house trucking-first capability list.",
+    "Dispatch CRM, fleet dashboards, SaaS product design, integrations, and web development, KRIVA's in-house trucking-first capability list.",
   "kriva-solution-saas.html":
     "B2B SaaS products, MVPs, onboarding, multi-tenant roles, admin workflows, dashboards, and integrations for US, UK, UAE, and Canada teams.",
   "kriva-solution-trucking.html":
@@ -49,9 +49,9 @@ module.exports = {
   "kriva-solution-accounting.html":
     "QuickBooks and Xero reconciliation hubs: idempotent sync, match engines, exception queues, and operator UX finance teams can audit.",
   "kriva-service-seo-digital-marketing.html":
-    "Technical SEO and paid search for product-led teams—not a full-service agency. Crawl fixes, GA4 events, and landing pages that match the product.",
+    "Technical SEO and paid search for product-led teams, not a full-service agency. Crawl fixes, GA4 events, and landing pages that match the product.",
   "kriva-process.html":
-    "KRIVA's five-phase product process: discover, design, build, launch, and support—with weekly demos, sign-off gates, and in-house design plus engineering.",
+    "KRIVA's five-phase product process: discover, design, build, launch, and support, with weekly demos, sign-off gates, and in-house design plus engineering.",
   "kriva-faq.html":
     "Straight answers on services, timelines, pricing, code ownership, and remote delivery for trucking software, B2B SaaS, and finance integrations.",
   "kriva-work-index.html":
@@ -59,13 +59,13 @@ module.exports = {
   "kriva-service-mobile-applications.html":
     "Driver, field, and SaaS companion apps with offline POD queues, push tied to one backend action, and UX for cab, dock, and outdoor use.",
   "kriva-service-web-application-design.html":
-    "UX/UI for authenticated web apps—dashboards, settings, and daily workflows—not marketing homepages. Pairs with web development when you need both.",
+    "UX/UI for authenticated web apps, dashboards, settings, and daily workflows, not marketing homepages. Pairs with web development when you need both.",
   "kriva-service-dashboard-design.html":
-    "Fleet, finance, and ops dashboards built for scanability, filters, and drill-downs teams open every morning—not spreadsheet exports.",
+    "Fleet, finance, and ops dashboards built for scanability, filters, and drill-downs teams open every morning, not spreadsheet exports.",
   "kriva-service-automation-systems.html":
     "Workflow automation with visible failures and rollback: ops triggers, CRM updates, and finance handoffs you can audit after go-live.",
   "kriva-service-product-design.html":
-    "End-to-end product design and UX for B2B software—from discovery and flows through UI ready for engineering handoff.",
+    "End-to-end product design and UX for B2B software, from discovery and flows through UI ready for engineering handoff.",
   "kriva-service-wireframing-prototyping.html":
-    "Wireframes and clickable prototypes that test edge cases before production—web and mobile paths stakeholders can walk once.",
+    "Wireframes and clickable prototypes that test edge cases before production: web and mobile paths stakeholders can walk once.",
 };

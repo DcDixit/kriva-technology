@@ -2,8 +2,8 @@
    Single source of truth. Loaded first on every page.
    Contrast-safe: --steel-2 is #626A73 (4.54:1 on --paper). */
 :root{
-  --paper:#F4F3EE;
-  --paper-2:#EBEAE4;
+  --paper:#FFFFFF;
+  --paper-2:#F5F6F8;
   --white:#FFFFFF;
   --ink:#0E1216;
   --ink-2:#161C22;
@@ -11,8 +11,8 @@
   --ink-dim:#8C98A4;
   --steel:#5C6670;
   --steel-2:#626A73;
-  --rule:#D6D5CD;
-  --rule-soft:#E2E1DA;
+  --rule:#DFE2E6;
+  --rule-soft:#E9ECEF;
   --blue:#4F46E5;
   --blue-deep:#3730A3;
   --amber:#DB9B1F;
@@ -24,9 +24,9 @@
   --red:#A62A1F;
   --cta:#4F46E5;
   --cta-hover:#0E1216;
-  --f-display:'Bricolage Grotesque','Bricolage Fallback',system-ui,-apple-system,sans-serif;
-  --f-body:'Bricolage Grotesque','Bricolage Fallback',system-ui,-apple-system,sans-serif;
-  --f-mono:'Bricolage Grotesque','Bricolage Fallback',system-ui,-apple-system,sans-serif;
+  --f-display:'Figtree','Figtree Fallback',system-ui,-apple-system,sans-serif;
+  --f-body:'Figtree','Figtree Fallback',system-ui,-apple-system,sans-serif;
+  --f-mono:'Figtree','Figtree Fallback',system-ui,-apple-system,sans-serif;
   /* Viewport edge inset on narrow screens only; not subtracted from --maxw at desktop */
   --edge:clamp(16px,4.6vw,32px);
   --gutter:var(--edge);
@@ -50,22 +50,32 @@
   --focus:2px solid var(--blue);
 }
 
-/* Self-hosted Bricolage Grotesque · latin variable 400–800 · swap */
+/* Self-hosted Figtree · variable 300–900 · swap */
 @font-face{
-  font-family:'Bricolage Grotesque';
+  font-family:'Figtree';
   font-style:normal;
-  font-weight:400 800;
+  font-weight:300 900;
+  font-stretch:100%;
   font-display:swap;
-  src:url('/brand/fonts/bricolage-grotesque-latin-var.woff2') format('woff2');
+  src:url('/brand/fonts/figtree-latin-var.woff2') format('woff2');
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Figtree';
+  font-style:normal;
+  font-weight:300 900;
+  font-stretch:100%;
+  font-display:swap;
+  src:url('/brand/fonts/figtree-latin-ext-var.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;
 }
 
 /* Metric-matched fallback so swap does not shove the layout. */
 @font-face{
-  font-family:'Bricolage Fallback';
-  src:local('Segoe UI'),local('Helvetica Neue'),local('Arial');
-  size-adjust:102%;
-  ascent-override:96%;
+  font-family:'Figtree Fallback';
+  src:local('Arial'),local('Helvetica Neue'),local('Segoe UI');
+  size-adjust:98%;
+  ascent-override:94%;
   descent-override:24%;
   line-gap-override:0%;
 }
@@ -77,7 +87,7 @@ html{
   font-synthesis:none;
 }
 
-/* Bricolage: condensed grotesque. Weight + optical size carry hierarchy. */
+/* Figtree: weight carries hierarchy. */
 .eyebrow,.mono,.crumbs,.tag,.cs-cap,.fgrid h3{font-weight:500}
 .btn,.nav-cta .btn.sm{font-weight:600}
 .d3,.d4,h3{font-weight:600}

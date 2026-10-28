@@ -75,7 +75,7 @@ module.exports = {
         kicker: "United Kingdom · GMT-friendly",
         headline: "SaaS founders and product leads",
         summary:
-          "MVP scope, activation metrics, Xero-ready finance workflows, and multi-tenant admin for UK B2B teams pitching investors and shipping their next milestone.",
+          "MVP scope, activation metrics, finance workflows that connect to Xero, and multi-tenant admin for UK B2B teams pitching investors and shipping their next milestone.",
         tags: ["SaaS MVP", "Xero", "Onboarding UX"],
         outcome: "Investor-ready instrumentation from day one with written scope before build.",
         visual: "saas",
@@ -87,7 +87,7 @@ module.exports = {
       eyebrow: "United Kingdom",
       h1: "SaaS product design and integrations for UK teams.",
       lede:
-        "From MVP scope to activation metrics investors ask about - we design and build B2B SaaS, admin panels, and Xero-ready finance workflows for UK founders and product leads.",
+        "From MVP scope to activation metrics investors ask about - we design and build B2B SaaS, admin panels, and finance workflows that connect to Xero for UK founders and product leads.",
       focus: [
         {
           title: "SaaS MVP & onboarding",

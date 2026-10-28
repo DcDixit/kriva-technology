@@ -270,7 +270,7 @@
       none: {
         k: 'Your read',
         h: 'Tick what’s true for your team.',
-        p: 'Eight honest signals — the same check we run on a fit call.',
+        p: 'Eight honest signals - the same check we run on a fit call.',
         tone: '',
       },
       build: {
