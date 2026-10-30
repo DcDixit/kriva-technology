@@ -113,11 +113,11 @@ body.page-markets .hero{
 .mkt-list li{padding-left:16px;position:relative;font-size:15px;line-height:1.55;color:var(--steel)}
 .mkt-list li:before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;background:var(--amber)}
 .mkt-proof{margin-top:clamp(36px,4vw,56px);display:flex;flex-wrap:wrap;gap:12px}
-.mkt-proof a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;border:1px solid var(--rule);background:var(--paper-2)}
+.mkt-proof a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;border:1px solid var(--rule);background:var(--paper-2)}
 .mkt-proof a:hover{border-color:var(--ink);color:var(--blue)}
 .mkt-switch{margin-top:clamp(40px,5vw,72px);padding-top:clamp(28px,3vw,44px);border-top:1px solid var(--rule)}
 .mkt-switch-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
-.mkt-switch a{display:block;padding:14px 16px;border:1px solid var(--rule);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+.mkt-switch a{display:flex;align-items:center;padding:14px 16px;min-height:44px;box-sizing:border-box;border:1px solid var(--rule);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
 .mkt-switch a[aria-current="page"]{border-color:var(--ink);background:var(--paper-2)}
 
 @media(max-width:1024px){
@@ -127,9 +127,15 @@ body.page-markets .hero{
  .cta-row{align-items:flex-start}
 }
 @media(max-width:767px){.mkt-split{grid-template-columns:1fr}}
+/* Market pages do not load the shared button skin. Give the dark-band actions a 44px target
+   without adding a new fill color. */
+.cta-band .btn{
+ display:inline-flex;align-items:center;gap:8px;box-sizing:border-box;
+ min-height:44px;padding:10px 16px
+}
 @media(max-width:640px){
  .hero-actions{flex-direction:column;align-items:stretch}
- .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
+ .hero-actions .btn,.cta-actions .btn,.cta-band .btn{width:100%;justify-content:center;min-height:48px}
  .cta-row{flex-direction:column;align-items:stretch}
  .mkt-next a:hover{padding-left:0}
 }

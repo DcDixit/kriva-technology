@@ -579,7 +579,7 @@ body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
 
 .sheet-cta{display:grid;gap:12px;margin-top:8px}
 .sheet-foot{color:var(--ink-dim);font-family:var(--f-mono);font-size:12px;display:grid;gap:12px;padding-top:8px}
-.sheet-foot a{color:#C4CCD4}
+.sheet-foot a{color:#C4CCD4;display:flex;align-items:center;min-height:44px;box-sizing:border-box}
 .sheet-foot a:hover{color:#fff}
 
 @media(max-width:1099px){
@@ -588,8 +588,10 @@ body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
  /* Keep a compact fit-call CTA visible beside the menu (was fully hidden). */
  .nav-cta .btn, .nav-cta .btn.sm, .nav.scrolled .nav-cta .btn.sm{
  display:inline-flex !important;
- height:36px;padding:0 10px;font-size:10px;letter-spacing:.08em
+ height:44px;min-height:44px;padding:0 12px;font-size:10px;letter-spacing:.08em
  }
+ /* Logo art stays the same size. The bar is already 58–72px, so the hit area can be 44px. */
+ .nav .mark{min-width:44px;min-height:44px}
  .nav-in{gap:12px;min-width:0}
  .mark{flex:0 1 auto;min-width:0;max-width:calc(100% - 56px)}
  .mark-logo{max-width:100%;height:auto;max-height:26px;width:auto}
@@ -623,8 +625,18 @@ body.nav-scroll-lock{overflow:hidden !important;touch-action:none}
 }
 
 /* ── BREADCRUMBS ── */
-/* padding only; the text baseline does not move, but the target clears 24px */
+.crumbs{
+ display:flex;flex-wrap:wrap;align-items:center;gap:9px;list-style:none;
+ font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
+}
+.crumbs li[aria-current]{color:var(--ink)}
 .crumbs a{display:inline-block;padding:6px 0;margin:-6px 0}
+@media(max-width:1099px){
+ .crumbs a{position:relative;display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding:0 4px;margin:0;box-sizing:border-box}
+ .crumbs a:after{
+  content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)
+ }
+}
 
 /* ── FOOTER ── */
 footer{background:var(--ink);color:var(--ink-dim);border-top:1px solid var(--ink-line)}
@@ -716,6 +728,32 @@ html.js h1, html.js h1[data-r], html.js h1[data-mask] {
  .chapters, .mob-chips{
  margin-inline:0 !important;
  padding-inline:0 !important;
+ }
+}
+
+/* Phone tap areas. The underline and type stay put; an invisible layer brings the finger target to 44px.
+   Only controls that already have room around them. Dense footer lists are left at their 24px padding
+   so neighboring links do not steal the tap. */
+@media(max-width:1099px){
+ .mkt-row .go,.mkt-row .proof,.mkt-card .go,
+ .trk-text-link,.web-text-link,.sol-text-link,.seo-text-link,.acc-text-link,
+ .ab-text-link,.crm-text-link,.car-text-link,.plat-text-link,.app-text-link,
+ .dash-text-link,.gd-text-link,.pd-text-link,.api-text-link,.auto-text-link,
+ .prc-go,.ins-topic-go,.web-stack a,.fsocial a,.mob-chips a,.back,.app-fit-link,.rel-sol a{
+  position:relative
+ }
+ .mkt-row .go:after,.mkt-row .proof:after,.mkt-card .go:after,
+ .trk-text-link:after,.web-text-link:after,.sol-text-link:after,.seo-text-link:after,.acc-text-link:after,
+ .ab-text-link:after,.crm-text-link:after,.car-text-link:after,.plat-text-link:after,.app-text-link:after,
+ .dash-text-link:after,.gd-text-link:after,.pd-text-link:after,.api-text-link:after,.auto-text-link:after,
+ .prc-go:after,.ins-topic-go:after,.web-stack a:after,.fsocial a:after,.mob-chips a:after,.back:after,.app-fit-link:after,.rel-sol a:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:max(100%,44px);
+  height:44px;
+  transform:translate(-50%,-50%)
  }
 }
 

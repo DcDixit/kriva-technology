@@ -27,7 +27,23 @@ const VPS = [['desktop', 1440, 900], ['tablet', 820, 1100], ['mobile', 390, 844]
       const m = await p.evaluate(() => {
         const de = document.documentElement;
         const over = de.scrollWidth - de.clientWidth;
-        const small = [...document.querySelectorAll('a,button')].filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.height < 24 || r.width < 24) && getComputedStyle(e).visibility !== 'hidden' && getComputedStyle(e).display !== 'inline' && !e.closest('[aria-hidden="true"]'); }).length;
+        const hit = (e) => {
+          const r = e.getBoundingClientRect();
+          let w = r.width, h = r.height;
+          for (const pseudo of ['::before', '::after']) {
+            const cs = getComputedStyle(e, pseudo);
+            if (!cs || cs.content === 'none' || (cs.position !== 'absolute' && cs.position !== 'fixed')) continue;
+            const pw = parseFloat(cs.width), ph = parseFloat(cs.height);
+            if (pw) w = Math.max(w, pw);
+            if (ph) h = Math.max(h, ph);
+          }
+          return { w, h };
+        };
+        const small = [...document.querySelectorAll('a,button')].filter((e) => {
+          const r = e.getBoundingClientRect();
+          const box = hit(e);
+          return r.width > 0 && r.height > 0 && (box.h < 24 || box.w < 24) && getComputedStyle(e).visibility !== 'hidden' && getComputedStyle(e).display !== 'inline' && !e.closest('[aria-hidden="true"]');
+        }).length;
         return { over, small, font: document.fonts.check("16px 'Figtree'"), fam: getComputedStyle(document.body).fontFamily.slice(0, 20), noalt: [...document.images].filter((i) => !i.hasAttribute('alt')).length, h1: document.querySelectorAll('h1').length };
       });
       if (m.over > 1) errs.push(`h-overflow ${m.over}px`);
