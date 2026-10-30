@@ -25,6 +25,7 @@ const FILE_MAP = {
   "/markets/uk": "kriva-market-uk.html",
   "/markets/uae": "kriva-market-uae.html",
   "/markets/ca": "kriva-market-ca.html",
+  "/markets/au": "kriva-market-au.html",
   "/solutions/trucking-logistics": "kriva-solution-trucking.html",
   "/solutions/saas": "kriva-solution-saas.html",
   "/solutions/accounting-integrations": "kriva-solution-accounting.html",
