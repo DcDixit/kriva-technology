@@ -97,8 +97,12 @@ My expectation, to be **confirmed in GSC rather than assumed**: a share of the 5
 | 7 | Medium | Market-page card grid renders single-column at desktop (1238px-wide text lines) | Pre-existing design, also on live UAE. Left as is per the "no design changes" rule. Optional: 2 columns ≥1024px |
 | 8 | Low | `http://www.` → `https://www.` → apex is 2 redirect hops | Vercel domain setting, not code (Pending) |
 | 9 | Low | TBT about 730–770ms on `/work` and `/solutions/car-transportation` under 4× CPU throttle | Acceptable; revisit only if GSC CWV flags INP |
-| 10 | Strategic | No off-site presence | Pending: requires you (roadmap) |
-| 11 | Strategic | No cost or build-vs-buy content | Pending: roadmap |
+| 10 | Strategic | No off-site presence | Profile kit prepared (`docs/BUSINESS-PROFILES-KIT.md`); listing them requires you |
+| 11 | Strategic | No cost or build-vs-buy content | ✅ Phase 2: three guides published to the branch |
+| 12 | **Critical** | Market pages render unstyled in production (visible skip link, blue underlined links, browser-default buttons) | ✅ Phase 2: fixed |
+| 13 | High | Footer and Organization `sameAs` linked to LinkedIn, Dribbble, and X profiles that return 404 | ✅ Phase 2: removed |
+| 14 | High | No inquiry form on market pages or buyer guides | ✅ Phase 2: added |
+| 15 | Low | Insights counter read "Showing 7 of 6"; markets hub said "four markets" | ✅ Phase 2: fixed |
 
 Checked and **no issue found**: canonicals, robots, indexability directives, redirects, 404 handling, broken links, H1 count, schema validity, alt text, OG tags, font loading (1 preloaded Figtree woff2, CLS 0), mobile overflow, tap targets, image filenames.
 
@@ -195,3 +199,95 @@ Queries tab (CSV), Pages tab (CSV), Pages → Indexing report (all "Why pages ar
 Reports → Acquisition → Traffic acquisition (session default channel group, by week); Engagement → Landing page (sessions, engagement rate, avg engagement time, key events); Admin → Events list (and which are key events); Admin → Data streams → Enhanced measurement toggles.
 
 With these, the remaining analysis (CTR opportunities, positions 5–20, declining pages, engagement problems, conversion paths) can be done against real numbers.
+
+
+---
+
+# Phase 2: Implementation pass (2026-11-05)
+
+Same branch, `seo/traffic-audit-2026-11`. Not merged, not deployed. GA4 and Search Console were **still not accessible**: no browser connection was available to the session, so no analytics numbers appear here either.
+
+## New findings in this pass
+
+1. **Critical: market pages are visibly broken in production.** `/markets`, `/markets/us`, `/uk`, `/uae`, `/ca`, and `/au` never loaded the shared base styles every other hub page inlines, nor `system.css` and `responsive.css`. Live, they show a "Skip to content" link in the corner, default blue underlined links, unstyled section labels, and browser-default buttons. These are the international landing pages, so this directly costs trust and enquiries. The styles were dropped in commit `829d96a` (2026-09-12).
+2. **High: dead social profiles.** LinkedIn (`/company/kriva-technologies`), Dribbble, and X returned 404; LinkedIn was checked against a known-good control. All three were linked from the footer of every page and declared in the Organization `sameAs`. Only Instagram exists.
+3. **Name collision.** Another company called "Kriva" (Hostkro Technologies LLP, performance marketing) appears in search results. Always use the full name "KRIVA Technologies" with the domain.
+4. **Pre-existing bugs:** the insights counter showed "Showing 7 of 6", and the markets hub said "four markets" after Australia was added.
+
+## Implemented (commits on the branch)
+
+| Commit | What | Files |
+|---|---|---|
+| `6157f72` | Removed dead LinkedIn, Dribbble, and X links from every footer and the schema `sameAs`; generators updated so a rebuild won't restore them | 58 pages, `404.html`, `apply_chrome.cjs`, `shared/site.js`, `llms.txt`, `llms-full.txt` |
+| `70c98bd` | **Three new buyer guides** (below); registered in routing, sitemap, feed, llms files, and the insights index; OG images generated; contextual links added from the matching money pages; insights counter fixed | 3 new pages, 3 OG images, `vercel.json`, `sitemap.xml`, `feed.xml`, `_crawl_links.js`, `kriva-insights-index.html`, CRM, trucking, accounting, and API pages, dispatch CRM guide |
+| `d5dc65e` | **On-page inquiry form** on the 3 new guides, the dispatch CRM guide, and all 5 market pages. Reuses the existing `.inq-sec` component and `/api/inquiry`; the hidden `service` field records the page or market for attribution | 9 pages |
+| `abfc1b2` | **Market page styling restored** with the same primitives and shared CSS as `/industries` and `/solutions`; "four markets" changed to "five" | 6 market pages |
+| (final commit) | Business profile kit; this report | `docs/BUSINESS-PROFILES-KIT.md`, this file |
+
+### New content (published to the branch)
+
+| URL | Target intent | Words | Notes |
+|---|---|---|---|
+| `/insights/dispatch-software-cost` | "custom dispatch software cost" (commercial investigation) | 1,450 | Seven cost drivers, exclusions checklist, phasing, vendor brief. **No KRIVA prices**: uses only the FAQ's verified timelines (discovery 1–2 weeks, MVP 6–10, platform 12–20) and pricing models |
+| `/insights/build-vs-buy-tms` | "build vs buy TMS" | 1,128 | Honest buy / build / build-beside framework, 3-year cost table, 8-question scorecard |
+| `/insights/quickbooks-xero-integration-guide` | "QuickBooks / Xero integration" | 1,266 | OAuth token lifetimes, rate limits, idempotency (QBO `requestid`, Xero `Idempotency-Key`), tax by country, reconciliation UX, rollout. API figures are labelled "at the time of writing" |
+
+All three use Article (BlogPosting) and BreadcrumbList schema, a self-referencing canonical, an OG image, a table of contents, related links, and an inquiry form. **Before merging, have someone with domain knowledge read them**, especially the API and tax details.
+
+### Lead-generation changes
+- 9 high-intent pages that had no form now have one inline. Previously readers had to navigate to /contact.
+- Form copy is specific to each page; market forms state the call-hour overlap the site already claims for that country.
+- Verified with a mocked endpoint (no real email sent, no real GA4 conversion): empty-submit validation, payload contents, success state, and the `kriva:lead` event that `analytics.js` turns into `generate_lead`.
+
+## QA results (local preview, this branch)
+
+| Check | Result |
+|---|---|
+| `_qa_all_routes.cjs`: 61 routes × 3 viewports (status, console errors, failed requests, Figtree loaded, overflow, tap targets, alt text) | **0 pages with issues** |
+| `_crawl_links.js`: internal links | 61 HTML files, 97 hrefs, **0 missing** |
+| JSON-LD parses on every changed page | ✅ |
+| feed.xml and sitemap.xml are well-formed XML | ✅ (61 sitemap URLs, 10 feed items) |
+| Visual check: new guides (desktop and mobile), inquiry form, API card links, market pages before and after | ✅ |
+| PageSpeed Insights API | Not run: daily quota exhausted. New pages reuse the existing guide template (SVG hero, no new scripts beyond `page-inquiry.js`, which is already used site-wide) |
+
+## Still blocked or needing you
+
+| Item | Why it's blocked |
+|---|---|
+| All GA4 and Search Console analysis | No browser access in this session. If you want me to do it, connect the Claude in Chrome extension to the session, or export the reports listed in §6 |
+| Deploy | Needs your approval. After deploy: resubmit the sitemap in GSC and request indexing for the 3 guides and 5 market pages |
+| Business profiles | Must be created by you; copy is in `docs/BUSINESS-PROFILES-KIT.md`. Fill in the [CONFIRM] fields (address, phone, team size, rates) |
+| Re-adding LinkedIn to the site | Only after the page exists at `/company/kriva-technologies` |
+| Content review | Market-page regulatory text and the three guides |
+| Generator drift | `build_markets.cjs` and `content/*.cjs` are still out of sync with the HTML; do not run them |
+
+## Content calendar (next 90 days)
+
+Topics are ordered by business fit and intent. **Search volumes are not measured**; check them in GSC (after 4–6 weeks of data) or a keyword tool before writing.
+
+| When | Piece | Type | Target intent | Links to |
+|---|---|---|---|---|
+| Weeks 1–2 | Deploy branch; create profiles; request reviews | Ops | Brand and entity | n/a |
+| Week 3 | "Auto transport broker CRM: what to build vs what to buy" | Guide | Commercial | /solutions/car-transportation |
+| Week 5 | "Driver app requirements for small fleets: offline, POD, and ELD data" | Guide | Commercial / informational | /services/mobile-applications |
+| Week 7 | Rewrite `/insights/choosing-a-digital-agency` as "How to choose a software partner for a logistics product" (keep the URL) | Refresh | Commercial | /services/crm-development, cost guide |
+| Week 9 | "IFTA mileage records: what dispatch software should capture" | Guide | Informational (US) | /markets/us |
+| Week 10 | Review GSC: rewrite titles and meta for pages with impressions and CTR under 1% | Optimisation | n/a | n/a |
+| Week 11 | "Making Tax Digital and your SaaS: what a Xero sync must do" | Guide | Informational (UK) | /markets/uk, QBO/Xero guide |
+| Week 13 | First real case-study metrics update (with client sign-off) | Case study | Proof | /work |
+
+Rule for every new piece: only facts you can stand behind, a real example from your own work where possible, an inline inquiry form, and links to one money page.
+
+## KPIs to set at deploy (baseline first, no promised numbers)
+
+- GSC: indexed URLs out of 61; non-branded impressions; queries in positions 5–20; branded query `kriva technologies` appearing.
+- GA4: `generate_lead` count by `page_location`; share of leads from market pages and guides; engagement rate on the 3 guides.
+- Off-site: profiles live (5); verified reviews (target 3 on Clutch within 90 days).
+
+## How to generate qualified international leads (recommendations)
+
+1. **Fix trust signals first.** Deploy the market-page styling fix. Visitors from the US, UK, and Australia currently land on pages that look broken.
+2. **Win the buyer-stage searches, not the generic ones.** Cost, build-vs-buy, and integration guides attract people already budgeting. Generic "software company" terms are out of reach for a new domain.
+3. **Proof beats claims.** The single biggest conversion lever available is real, client-approved outcomes on the case studies (most are currently "narrative, no signed-off metrics").
+4. **Reviews on Clutch and GoodFirms.** International buyers shortlist from these directories, and they also give Google the off-site confirmation the brand currently lacks.
+5. **Measure by page.** Every inquiry form now records its page. After 60 days, put effort into the pages that produce leads, not just traffic.
