@@ -9,11 +9,8 @@ const ORIGIN = "https://krivatechnologies.com";
 const ENTITY_DESCRIPTION =
   "KRIVA Technologies is a product, UI/UX, and engineering studio that designs and builds trucking software, B2B SaaS, and finance integrations for teams in the UK, US, Australia, UAE, and Canada.";
 const SAME_AS = [
-  "https://www.linkedin.com/company/kriva-technologies",
-  "https://dribbble.com/krivatechnologies",
   "https://www.instagram.com/kriva_technology/",
-  "https://x.com/krivatechnologies",
-];
+  ];
 const AREA_SERVED = ["US", "GB", "AE", "CA", "AU"];
 const KNOWS_ABOUT = [
   "Trucking software",

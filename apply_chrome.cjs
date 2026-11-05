@@ -283,10 +283,7 @@ const FOOTER_HTML = `<footer>
         <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
         <p class="f-blurb">Product design, UI/UX, and engineering for operators and SaaS teams. Remote-first.</p>
         <div class="fsocial">
-          <a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a>
-          <a href="https://dribbble.com/krivatechnologies" rel="noopener noreferrer" target="_blank">Dribbble</a>
           <a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a>
-          <a href="https://x.com/krivatechnologies" rel="noopener noreferrer" target="_blank">X</a>
         </div>
       </div>
       <nav aria-label="Trucking and logistics"><h3>Trucking &amp; logistics</h3><ul>
