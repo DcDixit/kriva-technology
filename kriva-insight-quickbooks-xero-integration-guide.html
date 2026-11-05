@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/shared/chrome.js" defer></script>
+<!-- KRIVA_GA_START -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
+window.__krivaNativeReplaceState=History.prototype.replaceState;
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+(function(){
+var id='G-FHG12KTF8C';
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var gpc=navigator.globalPrivacyControl===true;
+var host=location.hostname;
+var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
+var optedOut=!!window['ga-disable-'+id]||gpc;
+gtag('js',new Date());
+if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
+if(optedOut||(local&&!debug))return;
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+if(debug)cfg.debug_mode=true;
+gtag('config',id,cfg);
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
+<script src="/shared/analytics.js" defer></script>
+<!-- KRIVA_GA_END -->
+<!-- KRIVA_CLARITY_START -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yjj9g3gojt");
+</script>
+<!-- KRIVA_CLARITY_END -->
+<script>document.documentElement.classList.add('js')</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- KRIVA_ICONS_START -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E1216">
+<!-- KRIVA_ICONS_END -->
+<link rel="stylesheet" href="/shared/tokens.css?v=isans1">
+<link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<title>QuickBooks &amp; Xero Integration Guide for SaaS · KRIVA</title>
+<meta name="description" content="What a QuickBooks Online or Xero integration must handle in production: OAuth tokens, rate limits, idempotency, mapping, tax, reconciliation, and rollout.">
+<link rel="canonical" href="https://krivatechnologies.com/insights/quickbooks-xero-integration-guide">
+<!-- KRIVA_SEO_START -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="bingbot" content="index, follow, max-image-preview:large">
+<meta name="author" content="KRIVA Technologies">
+<meta name="publisher" content="KRIVA Technologies">
+<meta name="application-name" content="KRIVA Technologies">
+<link rel="llms" href="https://krivatechnologies.com/llms.txt" type="text/plain" title="KRIVA site summary for AI">
+<link rel="alternate" href="https://krivatechnologies.com/llms-full.txt" type="text/plain" title="KRIVA extended site summary">
+<meta name="target" content="US, GB, AE, CA, AU">
+<meta name="coverage" content="United States, United Kingdom, United Arab Emirates, Canada, Australia">
+<link rel="alternate" hreflang="en" href="https://krivatechnologies.com/insights/quickbooks-xero-integration-guide">
+<link rel="alternate" type="application/rss+xml" title="KRIVA Insights" href="https://krivatechnologies.com/feed.xml">
+<!-- KRIVA_SEO_END -->
+<meta property="og:title" content="QuickBooks and Xero integration: what a production-ready sync needs">
+<meta property="og:description" content="What a QuickBooks Online or Xero integration must handle in production: OAuth tokens, rate limits, idempotency, mapping, tax, reconciliation, and rollout.">
+<meta property="og:url" content="https://krivatechnologies.com/insights/quickbooks-xero-integration-guide">
+<!-- KRIVA_OG_IMAGE_START -->
+<meta property="og:image" content="https://krivatechnologies.com/brand/og/insights-quickbooks-xero-integration-guide.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Guide · QuickBooks and Xero integration: what a production-ready sync needs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QuickBooks and Xero integration: what a production-ready sync needs">
+<meta name="twitter:description" content="What a QuickBooks Online or Xero integration must handle in production: OAuth tokens, rate limits, idempotency, mapping, tax, reconciliation, and rollout.">
+<meta name="twitter:image" content="https://krivatechnologies.com/brand/og/insights-quickbooks-xero-integration-guide.png">
+<!-- KRIVA_OG_IMAGE_END -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-05">
+<meta property="article:modified_time" content="2026-11-05">
+<meta property="article:section" content="Finance &amp; Integrations">
+<meta property="article:tag" content="QuickBooks integration">
+<meta property="article:tag" content="Xero integration">
+<meta property="article:tag" content="Accounting API integration">
+<link rel="stylesheet" href="/shared/slot-assets.css">
+<style>
+/* Shared KRIVA tokens + primitives */
+*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html:focus-within{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{max-width:100%;display:block}
+:selection{background:var(--blue);color:#fff}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
+.skip:focus{left:12px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-family:var(--f-mono);font-size:clamp(10px,1.1vw,11.5px);letter-spacing:.16em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:11px;line-height:1}
+.eyebrow:before{content:"";width:20px;height:1px;background:currentColor;flex:none;opacity:.6}
+.d1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.35rem,5.4vw,4.7rem);line-height:.94;letter-spacing:-.032em;}
+.d2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.85rem,3.8vw,3.15rem);line-height:1.04;letter-spacing:-.032em;}
+.d3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,1.95vw,1.62rem);line-height:1.18;letter-spacing:-.022em}
+.lede{font-size:clamp(1.02rem,1.28vw,1.24rem);line-height:1.62;color:var(--steel);max-width:58ch}
+.body{font-size:16.5px;line-height:1.66;color:var(--steel);max-width:62ch}
+.body-sm{font-size:14.8px;line-height:1.62;color:var(--steel);max-width:58ch}
+.mono{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase}
+.num{font-variant-numeric:tabular-nums}
+html.js [data-r]{opacity:0;transform:translate3d(0,24px,0);transition:opacity var(--t-slow) var(--e),transform var(--t-slow) var(--e)}
+html.js [data-r].in{opacity:1;transform:none}
+html.js [data-s]>*{opacity:0;transform:translate3d(0,20px,0);transition:opacity var(--t-mid) var(--e),transform var(--t-mid) var(--e)}
+html.js [data-s].in>*{opacity:1;transform:none}
+[data-s].in>*:nth-child(1){transition-delay:0ms}[data-s].in>*:nth-child(2){transition-delay:60ms}
+[data-s].in>*:nth-child(3){transition-delay:120ms}[data-s].in>*:nth-child(4){transition-delay:180ms}
+[data-s].in>*:nth-child(5){transition-delay:240ms}[data-s].in>*:nth-child(6){transition-delay:300ms}
+.mask span{display:block;overflow:hidden;padding-bottom:.02em}
+.mask span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
+.mask.in span i{transform:none}
+.mask.in span:nth-child(2) i{transition-delay:80ms}
+.btn{--btn-fg:var(--paper);--btn-bg:var(--ink);--btn-hover:var(--blue);
+  position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
+  padding:13px 20px;border:1px solid var(--ink);background:var(--btn-bg);color:var(--btn-fg);
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
+.btn>*{position:relative;z-index:1}
+.btn:before{content:"";position:absolute;inset:0;background:var(--btn-hover);transform:translate3d(0,101%,0);transition:transform .5s var(--e)}
+.btn:hover:before,.btn:focus-visible:before{transform:none}
+.btn:hover{color:#fff;border-color:var(--btn-hover)}
+.btn i{font-style:normal;transition:transform .42s var(--e)}
+.btn:hover i{transform:translateX(5px)}
+.btn.ghost{--btn-bg:transparent;--btn-fg:var(--ink)}
+.btn.sm{padding:9px 15px;font-size:11px}
+.btn.on-dark{--btn-bg:#EDEFF1;--btn-fg:var(--ink);--btn-hover:var(--amber);border-color:#EDEFF1}
+.btn.on-dark:hover{color:var(--ink);border-color:var(--amber)}
+.btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
+.p-link{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding-top:4px;padding-bottom:4px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid currentColor}
+.p-link i{font-style:normal;transition:transform .42s var(--e)}
+.p-link:hover i{transform:translateX(6px)}
+.flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
+.flag.tbd{border-color:var(--amber);color:#8A6200}
+.crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
+.crumbs a:hover{color:var(--ink)}
+.crumbs li[aria-current]{color:var(--ink)}
+.hero{padding:calc(72px + clamp(26px,4vw,58px)) 0 clamp(36px,4.5vw,64px)}
+.hero h1{margin:20px 0 22px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+.sect{padding-block:clamp(64px,8vw,128px)}
+.sect--tight{padding-block:clamp(48px,6vw,88px)}
+.cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
+.cta-band .wrap{padding-block:clamp(72px,9vw,140px)}
+.cta-band .eyebrow{color:var(--ink-dim)}
+.cta-band h2{color:#fff;margin-top:22px;max-width:14ch}
+.cta-row{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
+.assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
+.assur i{font-style:normal;color:var(--amber);margin-right:7px}
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
+  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
+  .mask span i{transform:none!important}
+}
+
+.progress{position:fixed;left:0;top:0;height:2px;width:0;background:var(--blue);z-index:95;transform-origin:0 50%}
+.art-hero{padding:calc(72px + clamp(22px,3.5vw,48px)) 0 clamp(20px,3vw,36px)}
+.back{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:28px}
+.back:hover{color:var(--ink)}
+.art-hero .cat{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+.art-hero h1{margin:16px 0 18px;max-width:22ch}
+.art-hero .lede{max-width:62ch}
+.art-meta{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:22px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);padding-top:18px;border-top:1px solid var(--rule)}
+.art-cover{margin:clamp(28px,4vw,48px) 0 0;max-width:72ch}
+.art-cover img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;background:#0a0d10}
+.prose{max-width:72ch;font-size:17px;line-height:1.72;color:var(--ink);padding-bottom:clamp(8px,1.5vw,16px)}
+.prose h2{font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,2vw,1.55rem);letter-spacing:-.025em;margin:2.2em 0 .7em;line-height:1.2;color:var(--ink)}
+.prose h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.45vw,1.22rem);letter-spacing:-.02em;margin:1.7em 0 .5em;line-height:1.25;color:var(--ink)}
+.prose p{margin:0 0 1.15em;color:var(--steel)}
+.prose ul,.prose ol{margin:0 0 1.3em;padding-left:1.2em;color:var(--steel)}
+.prose li{margin:.45em 0;padding-left:.2em}
+.prose li::marker{color:var(--amber)}
+.prose a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--cta);text-underline-offset:3px;text-decoration-thickness:1px}
+.prose a:hover{color:var(--cta)}
+.prose strong{color:var(--ink);font-weight:600}
+.art-toc{margin:0 0 2.2em;padding:20px 0 4px;border-top:1px solid var(--rule)}
+.art-toc p{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin:0 0 12px}
+.art-toc ol{margin:0;padding:0;list-style:none;display:grid;gap:2px}
+.art-toc a{display:flex;align-items:baseline;gap:12px;padding:8px 0;color:var(--steel);text-decoration:none;text-underline-offset:unset;border-bottom:1px solid var(--rule);font-size:15.5px;line-height:1.4}
+.art-toc a:hover{color:var(--ink)}
+.art-toc .n{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;color:var(--cta);flex:none;min-width:1.6em}
+.art-note{margin:1.5em 0 1.8em;padding:2px 0 2px 18px;border-left:2px solid var(--cta);color:var(--ink);font-size:16px;line-height:1.6;max-width:62ch}
+.art-note p{margin:0;color:var(--ink)}
+.art-note a{color:inherit}
+.prose .art-table-wrap{margin:1.5em 0 2em;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose table{width:100%;min-width:520px;border-collapse:collapse;font-size:15px;line-height:1.5}
+.prose caption{caption-side:bottom;text-align:left;padding:10px 0 0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
+.prose th,.prose td{text-align:left;vertical-align:top;padding:12px 14px 12px 0;border-bottom:1px solid var(--rule);color:var(--steel)}
+.prose th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:500}
+.prose td:first-child{color:var(--ink);font-weight:600;white-space:nowrap;padding-right:18px}
+.takeaways{margin:2.4em 0 0;padding:22px 0 0;border-top:1px solid var(--rule)}
+.takeaways h2{margin-top:0}
+.prose figure.arch-frame{margin:2.2em 0 2.4em;background:#0a0d10;border:1px solid var(--ink-line);box-shadow:var(--shadow-product);overflow:hidden}
+.prose figure.arch-frame figcaption,.art-cover figcaption{padding:10px 14px 12px;background:#0a0d10;border-top:1px solid var(--ink-line);margin-top:0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4}
+.art-end{margin:2em 0 0;padding-top:8px}
+.rel-sol{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(36px,4vw,56px) 0 0;padding-top:22px;border-top:1px solid var(--rule)}
+.rel-sol a{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color .3s,color .3s}
+.rel-sol a:hover{border-color:var(--ink);color:var(--ink)}
+.related{margin-top:clamp(48px,6vw,88px);padding-top:clamp(28px,3.5vw,48px);border-top:1px solid var(--rule)}
+.related h2{margin-top:14px}
+.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,22px);margin-top:28px}
+.rel-grid a{display:block;padding:clamp(18px,2.2vw,26px);border:1px solid var(--rule);background:var(--white);transition:transform .4s var(--e),box-shadow .4s}
+.rel-grid a:hover{transform:translateY(-2px);box-shadow:0 20px 40px -32px rgba(14,18,22,.4)}
+.rel-grid .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+.rel-grid b{display:block;margin-top:10px;font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;line-height:1.2}
+@media(max-width:700px){
+  .rel-grid{grid-template-columns:1fr}
+  .prose td:first-child{white-space:normal}
+}
+.mob-chips{
+  display:none;position:sticky;top:58px;z-index:60;gap:8px;overflow-x:auto;
+  padding:10px var(--gutter) 12px;width:100%;max-width:100%;
+  background:rgba(234,234,228,.94);border-bottom:1px solid var(--rule);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch
+}
+.mob-chips::-webkit-scrollbar{display:none}
+.mob-chips a{
+  flex:none;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;
+  border:1px solid var(--rule);color:var(--steel);background:var(--white);white-space:nowrap
+}
+.mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
+@media(max-width:1280px){
+  body.page-insight-truck .mob-chips{display:flex !important}
+  body.page-insight-truck .art-hero,body.page-insight-truck .prose h2{scroll-margin-top:calc(88px + 48px)}
+}
+@media print{.nav,.sheet,.wa,.cta-band,.progress,.back,.mob-chips,.art-toc{display:none!important}.art-hero{padding-top:24px}}
+
+</style>
+
+
+<link rel="stylesheet" href="/shared/inner.css?v=tap44">
+<link rel="stylesheet" href="/shared/system.css?v=white1">
+<link rel="stylesheet" href="/shared/responsive.css?v=hero6">
+<style>
+/* Win cascade over inner.css without turning this into a marketing page */
+body.page-insight-truck .art-hero h1.d1{
+  font-size:clamp(1.85rem,4.2vw,3.15rem);
+  line-height:1.04;
+  letter-spacing:-.032em;
+  max-width:22ch;
+  font-weight:800
+}
+body.page-insight-truck .art-hero .lede{
+  max-width:62ch;
+  font-size:clamp(1.05rem,1.28vw,1.22rem);
+  line-height:1.6
+}
+body.page-insight-truck .related .d2{
+  max-width:16ch;
+  font-size:clamp(1.85rem,3.4vw,2.8rem)
+}
+body.page-insight-truck .cta-band h2{
+  font-size:clamp(1.9rem,4vw,3.2rem);
+  max-width:20ch;
+  line-height:1.06;
+  letter-spacing:-.03em
+}
+body.page-insight-truck .cta-band .lede{
+  color:#8C98A4;
+  margin-top:16px;
+  max-width:48ch;
+  font-size:clamp(1.02rem,1.2vw,1.15rem)
+}
+body.page-insight-truck .cta-band .btn.on-dark{
+  --btn-bg:var(--cta);--btn-fg:#fff;--btn-hover:#fff;border-color:var(--cta)
+}
+body.page-insight-truck .cta-band .btn.on-dark:hover{color:var(--ink);border-color:#fff}
+body.page-insight-truck .cta-band .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
+body.page-insight-truck .prose h2{scroll-margin-top:96px}
+@media(max-width:1280px){body.page-insight-truck .prose h2{scroll-margin-top:calc(88px + 48px)}}
+</style>
+<link rel="stylesheet" href="/shared/chrome.css?v=tap44">
+</head>
+<body class="page-insight-truck">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav-shell">
+    <div class="wrap nav-in">
+      <a href="/" class="mark" aria-label="KRIVA Technologies home">
+        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="KRIVA Technologies" width="136" height="26">
+      </a>
+      <div class="nav-primary">
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li class="nav-item" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-trucking" aria-haspopup="true">Trucking<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-trucking" role="menu">
+                <div class="mm-head"><b>Trucking &amp; logistics</b><span>Ops software</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics solutions</strong><em>Dispatch, fleet, drivers, and logistics platforms.</em></a></li>
+                  <li><a role="menuitem" href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><em>Consoles, bulk actions, supervisor oversight.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Fleet dashboards</strong><em>Route performance and exception handling.</em></a></li>
+                  <li><a role="menuitem" href="/services/mobile-applications"><strong>Driver mobile apps</strong><em>Load acceptance, status updates, documents.</em></a></li>
+                  <li><a role="menuitem" href="/solutions/car-transportation"><strong>Car transportation</strong><em>Quotes, tracking, and auto-transport ops.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/solutions/trucking-logistics">All trucking solutions <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-saas" aria-haspopup="true">SaaS<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-saas" role="menu">
+                <div class="mm-head"><b>SaaS products</b><span>UK &amp; US</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/solutions/saas"><strong>SaaS product solutions</strong><em>Onboarding, dashboards, and MVPs that stick.</em></a></li>
+                  <li><a role="menuitem" href="/services/saas-platforms"><strong>SaaS product design</strong><em>Multi-tenant UX, admin panels, permissions.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboards &amp; admin panels</strong><em>Analytics and operational views for daily use.</em></a></li>
+                  <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/solutions/saas">All SaaS solutions <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-integration" aria-haspopup="true">Integration<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-integration" role="menu">
+                <div class="mm-head"><b>Integrations</b><span>Finance &amp; APIs</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/solutions/accounting-integrations"><strong>QuickBooks &amp; Xero</strong><em>Sync and reconciliation finance teams trust.</em></a></li>
+                  <li><a role="menuitem" href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><em>Reliable connectors with clear error handling.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/solutions/accounting-integrations">Explore integrations <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-operations" aria-haspopup="true">Operations<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-operations" role="menu">
+                <div class="mm-head"><b>Operations</b><span>Tooling &amp; delivery</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/services/crm-development"><strong>CRM &amp; ops consoles</strong><em>Pipelines and internal tools matched to real desks.</em></a></li>
+                  <li><a role="menuitem" href="/services/automation-systems"><strong>Automation workflows</strong><em>Human-gated triage, docs, and internal tooling.</em></a></li>
+                  <li><a role="menuitem" href="/process"><strong>How we work</strong><em>Discovery through launch: clear gates, weekly demos.</em></a></li>
+                </ul>
+                <div class="mm-foot"><a href="/process">See the process <i>→</i></a></div>
+              </div>
+            </li>
+            <li class="nav-item" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-services" aria-haspopup="true">Services<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm" id="mm-services" role="menu">
+                <div class="mm-head"><b>Services</b><span>Product &amp; ops</span></div>
+                <ul class="mm-list">
+                  <li><a role="menuitem" href="/services/crm-development"><strong>CRM &amp; dispatch development</strong><em>Consoles, pipelines, and desks matched to real shifts.</em></a></li>
+                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboard design</strong><em>Exception queues, KPIs, and ops views above the fold.</em></a></li>
+                  <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
+                  <li><a role="menuitem" href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><em>Connectors with retry, validation, and operator visibility.</em></a></li>
+                  <li><a role="menuitem" href="/services/web-development"><strong>Web development</strong><em>Marketing sites and authenticated product surfaces.</em></a></li>
+                </ul>
+                <div class="mm-foot">
+                  <p class="mm-aside">Marketing &amp; brand (secondary): <a href="/services/graphic-design">Graphic design</a> · <a href="/services/logo-design">Logo design</a> · <a href="/services/seo-digital-marketing">SEO &amp; marketing</a></p>
+                  <a href="/services">All services <i>→</i></a>
+                </div>
+              </div>
+            </li>
+            <li><a class="nav-link" href="/work">Work</a></li>
+            <li><a class="nav-link" href="/about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="nav-cta">
+        <a href="/contact#book" class="btn sm"><span>Book a 20-min call</span><i>→</i></a>
+        <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-nav">
+    <div class="sheet-item">
+      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-solutions">Solutions<span class="plus" aria-hidden="true"></span></button>
+      <ul class="sheet-sub" id="sheet-solutions">
+        <li><a href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics</strong><span>Dispatch, fleet, drivers</span></a></li>
+        <li><a href="/solutions/saas"><strong>SaaS products</strong><span>Onboarding &amp; MVPs</span></a></li>
+        <li><a href="/solutions/car-transportation"><strong>Car transportation</strong><span>Quotes &amp; tracking</span></a></li>
+        <li><a href="/solutions/accounting-integrations"><strong>Accounting &amp; finance</strong><span>QuickBooks &amp; Xero</span></a></li>
+        <li><a href="/solutions" class="sheet-sol-all">All solutions <i>→</i></a></li>
+      </ul>
+    </div>
+    <div class="sheet-item">
+      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-services">Services<span class="plus" aria-hidden="true"></span></button>
+      <ul class="sheet-sub" id="sheet-services">
+        <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong><span>Product interfaces</span></a></li>
+        <li><a href="/services/web-development"><strong>Web development</strong><span>Sites &amp; apps</span></a></li>
+        <li><a href="/services/crm-development"><strong>CRM development</strong><span>Ops consoles</span></a></li>
+        <li><a href="/services/saas-platforms"><strong>SaaS platforms</strong><span>Multi-tenant products</span></a></li>
+        <li><a href="/services/automation-systems"><strong>Automation systems</strong><span>Workflows &amp; tooling</span></a></li>
+        <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
+      </ul>
+    </div>
+    <div class="sheet-item"><a class="big" href="/work">Work</a></div>
+    <div class="sheet-item">
+      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-company">Company<span class="plus" aria-hidden="true"></span></button>
+      <ul class="sheet-sub" id="sheet-company">
+        <li><a href="/about"><strong>About</strong><span>Who we are</span></a></li>
+        <li><a href="/process"><strong>Process</strong><span>How we deliver</span></a></li>
+        <li><a href="/technologies"><strong>Technologies</strong><span>Stack &amp; tools</span></a></li>
+        <li><a href="/industries"><strong>Industries</strong><span>Sectors we serve</span></a></li>
+        <li><a href="/insights"><strong>Insights</strong><span>Guides &amp; articles</span></a></li>
+        <li><a href="/careers"><strong>Careers</strong><span>Join the team</span></a></li>
+        <li><a href="/faq"><strong>FAQ</strong><span>Common questions</span></a></li>
+        <li><a href="/contact"><strong>Contact</strong><span>Book or brief</span></a></li>
+      </ul>
+    </div>
+    <div class="sheet-cta">
+      <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min call</span><i>→</i></a>
+      <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
+    </div>
+  </div>
+  <div class="sheet-foot">
+    <a href="/contact#brief">Send a project brief</a>
+    <a href="/contact#book">Book a free 20-min call</a>
+    <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
+    <span>Remote-first product studio</span>
+  </div>
+</div>
+
+<main id="main">
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+<nav class="mob-chips" id="mobChips" aria-label="Article sections">
+  <a href="#intro">Intro</a>
+  <a href="#scope">Scope</a>
+  <a href="#auth">Tokens</a>
+  <a href="#dupes">Duplicates</a>
+  <a href="#mapping">Mapping</a>
+  <a href="#ops">Operations</a>
+  <a href="#takeaways">Takeaways</a>
+</nav>
+<article>
+  <header class="art-hero" id="intro">
+    <div class="wrap">
+      <a class="back" href="/insights">← Insights</a>
+      <p class="cat" data-r>Finance &amp; Integrations</p>
+      <h1 class="d1" id="h1" data-r>QuickBooks and Xero integration: what a production-ready sync needs</h1>
+      <p class="lede" data-r>Connecting to the QuickBooks Online or Xero API takes a day. Building a sync that finance trusts at month end takes much longer. This guide covers the parts that separate the two: tokens, limits, duplicates, mapping, tax, and the screen finance uses when something fails.</p>
+      <div class="art-meta" data-r>
+        <span><time datetime="2026-11-05">November 2026</time></span>
+        <span>6 min read</span>
+        <span>Dixit Panchal · Founder &amp; Design Lead</span>
+        <span>Finance &amp; Integrations</span>
+      </div>
+      <figure class="arch-frame art-cover" data-r>
+        <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>integration · connector</span></div>
+        <img src="/media/services/api/hero-connector.svg" alt="Integration diagram: your product connects through a KRIVA connector to QuickBooks or Xero and other systems, with owned retry and matching." width="1200" height="900" decoding="async" fetchpriority="high">
+        <figcaption>Illustrative · product → connector → ledger, with retry and matching owned in the middle</figcaption>
+      </figure>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="prose" data-r>
+      <p>Most products that touch money eventually need to talk to the customer's accounting system. For small and mid-size businesses in the US, UK, Canada, and Australia, that usually means QuickBooks Online or Xero. Both have well-documented APIs, official SDKs, and sandbox accounts, so a developer can create a test invoice on the first afternoon.</p>
+      <p>The hard part comes later: the token that silently expired over a holiday weekend, the retry that posted an invoice twice, the tax code that exists in one customer's file and not another's, and the finance manager who cannot tell which records synced. This guide covers what a production sync needs. API details below are correct at the time of writing; check the current Intuit and Xero developer documentation before you build, because limits and token rules do change.</p>
+
+      <nav class="art-toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#scope"><span class="n">01</span>Decide what the integration owns</a></li>
+          <li><a href="#auth"><span class="n">02</span>Tokens and connection health</a></li>
+          <li><a href="#dupes"><span class="n">03</span>Rate limits, retries, and duplicates</a></li>
+          <li><a href="#mapping"><span class="n">04</span>Mapping accounts, items, and tax</a></li>
+          <li><a href="#ops"><span class="n">05</span>The screen finance actually uses</a></li>
+          <li><a href="#rollout"><span class="n">06</span>Rolling out against live books</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="scope">Decide what the integration owns</h2>
+      <p>Before writing code, agree on direction and ownership for every type of record. The usual candidates are customers or contacts, items, invoices, bills, payments, credit notes, and journal entries. For each one, decide:</p>
+      <ul>
+        <li><strong>Direction</strong>: does it flow from your product to the ledger, from the ledger to your product, or both?</li>
+        <li><strong>Source of truth</strong>: if the same customer is edited in both places, which edit wins?</li>
+        <li><strong>Timing</strong>: does it sync immediately, on a schedule, or when a user presses a button?</li>
+      </ul>
+      <p>One-way push from your product to the ledger is far simpler than two-way sync, and covers most needs. Two-way sync multiplies the edge cases, because you now have to detect and resolve conflicting edits. Only build it when a real workflow requires it.</p>
+
+      <h2 id="auth">Tokens and connection health</h2>
+      <p>Both platforms use OAuth 2.0. Your product never sees the customer's password; it holds an access token for API calls and a refresh token to obtain new access tokens.</p>
+      <ul>
+        <li><strong>Access tokens are short-lived.</strong> At the time of writing, QuickBooks Online access tokens last about an hour and Xero's about thirty minutes. Refresh them automatically, before they expire.</li>
+        <li><strong>Refresh tokens expire too.</strong> If a customer's connection is not used for long enough, the refresh token lapses and the customer has to reconnect. Both platforms can also issue a new refresh token when you use the old one, so store the latest one every time.</li>
+        <li><strong>Connections break for ordinary reasons.</strong> The user who connected leaves the company, a permission changes, or the customer disconnects the app from the accounting side.</li>
+      </ul>
+      <p>So the product needs a visible connection status, an alert when a connection fails, and a one-click reconnect flow. A sync that fails silently is worse than no sync, because finance believes the data is there.</p>
+
+      <h2 id="dupes">Rate limits, retries, and duplicates</h2>
+      <p>Both APIs limit how many calls you can make. At the time of writing, QuickBooks Online allows a few hundred requests per minute per company, and Xero applies per-minute, daily, and concurrent-call limits per connected organisation. A first sync of a year's history, or a month-end burst, will reach these limits. Queue work, respect the limit headers, and back off when told to.</p>
+      <p>Retries create the most damaging bug in accounting integrations: the duplicate. A request times out, your code retries, and the first request had in fact succeeded. Now the customer has two invoices. Prevent it in two layers:</p>
+      <ol>
+        <li><strong>Use the platform's idempotency support.</strong> QuickBooks Online accepts a request ID on write calls, and Xero accepts an idempotency key header. A retry with the same key does not create a second record.</li>
+        <li><strong>Keep your own record of what synced.</strong> Store the accounting system's ID against your record once a write succeeds, and check it before any retry.</li>
+      </ol>
+      <div class="art-note"><p>Duplicates are worse than failures. A failed sync shows up in a log; a duplicate invoice shows up in a customer's inbox. Design the retry path before the happy path.</p></div>
+
+      <h2 id="mapping">Mapping accounts, items, and tax</h2>
+      <p>Every company's chart of accounts is different, so the integration cannot assume that "Sales" or "Freight income" exists. Let an administrator map your product's categories to their accounts and items during setup, and store that mapping per connected company.</p>
+      <p>Tax needs the same care, and it differs by country:</p>
+      <ul>
+        <li>In the <strong>US</strong>, sales tax varies by state and locality, and QuickBooks Online can calculate it automatically for many companies. Decide whether your product sends tax amounts or lets the ledger calculate them, and do not do both.</li>
+        <li>In the <strong>UK</strong>, VAT rates are applied through tax codes, and Making Tax Digital expects digital links between systems rather than retyped figures. A direct sync helps meet that expectation.</li>
+        <li>In <strong>Canada</strong>, GST, HST, PST, and QST combinations depend on the province.</li>
+        <li>In <strong>Australia</strong>, GST coding feeds the Business Activity Statement, so a wrong code becomes a wrong BAS.</li>
+      </ul>
+      <p>Agree tax mapping with the customer's finance team or accountant during setup and record it. Do not guess. Multi-currency adds a further layer: decide which system owns the exchange rate, and show any difference rather than hiding it.</p>
+
+      <h2 id="ops">The screen finance actually uses</h2>
+      <p>The part of an integration that decides whether finance trusts it is not the API code but the operator screen. At minimum, it should show:</p>
+      <ul>
+        <li>Every record that synced, failed, or is waiting, with the reason for each failure in plain language</li>
+        <li>A retry button for failed records that is safe to press twice</li>
+        <li>A link from each synced record to the matching transaction in QuickBooks or Xero</li>
+        <li>A reconciliation view that compares totals between your product and the ledger for a period, and highlights the difference</li>
+      </ul>
+      <p>With that screen, finance can fix most problems without filing a ticket. Without it, every sync error becomes an engineering task, and month-end close waits for a developer. Our <a href="/solutions/accounting-integrations">accounting integrations</a> page shows how we structure this view.</p>
+
+      <h2 id="rollout">Rolling out against live books</h2>
+      <p>Test against sandbox companies first. Both platforms provide them. Then roll out carefully:</p>
+      <ol>
+        <li>Agree account and tax mapping with finance, in writing.</li>
+        <li>Run the sync in a review mode, where records are prepared but a person approves them before they post.</li>
+        <li>Run in parallel with the old process for one close cycle, and compare totals.</li>
+        <li>Switch to automatic posting once the totals match, and keep the reconciliation view.</li>
+      </ol>
+      <p>If you plan to list your app publicly in the QuickBooks App Store or the Xero App Store, each platform has its own review and certification process. Allow time for it in the plan.</p>
+
+      <div class="takeaways" id="takeaways">
+        <h2>Key takeaways</h2>
+        <ul>
+          <li>Decide direction and source of truth for every record type before you build. One-way push covers most needs.</li>
+          <li>Treat token refresh and reconnection as product features, with visible connection status.</li>
+          <li>Use idempotency keys and store accounting IDs, so retries can never create duplicates.</li>
+          <li>Let administrators map accounts and tax codes per company, and agree tax mapping with finance.</li>
+          <li>Give finance a sync log, safe retries, and a reconciliation view, then run one close cycle in parallel.</li>
+        </ul>
+      </div>
+      <p class="art-end">Building or fixing a QuickBooks or Xero integration? Tell us which records need to move, in which direction, and what goes wrong today, and we will reply within one business day with how we would approach it. <a href="/contact#brief">Send a project brief</a> or <a href="/contact#book">book a free 20-min fit call</a>.</p>
+    </div>
+    <nav class="rel-sol" aria-label="Related pages" data-r>
+      <a href="/solutions/accounting-integrations">Accounting integrations</a>
+      <a href="/services/api-integrations">API integrations</a>
+      <a href="/services/saas-platforms">SaaS platforms</a>
+      <a href="/work/finance-sync-hub">FinanceSync case study</a>
+      <a href="/markets/uk">UK market</a>
+      <a href="/markets/au">Australia market</a>
+    </nav>
+    <aside class="related" aria-labelledby="relH">
+      <p class="eyebrow" data-r>Keep reading</p>
+      <h2 class="d2" id="relH" data-r>Related insights</h2>
+      <div class="rel-grid" data-s>
+        <a href="/insights/saas-onboarding-patterns"><span class="k">Product Design &amp; UI/UX</span><b>SaaS onboarding patterns that improve activation</b></a>
+        <a href="/work/finance-sync-hub"><span class="k">Case study</span><b>FinanceSync: QuickBooks &amp; Xero reconciliation hub</b></a>
+      </div>
+    </aside>
+  </div>
+</article>
+
+<section class="cta-band on-ink" aria-labelledby="ctaH">
+  <div class="wrap">
+    <p class="eyebrow" data-r>Next step</p>
+    <h2 class="d2" id="ctaH" data-r>Show us the workflow your desk runs outside the TMS.</h2>
+    <p class="lede" data-r>Board, spreadsheet, or handoff - we’ll say whether it should be configured, extended, or rebuilt.</p>
+    <div class="cta-row">
+      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
+        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
+      </div>
+      <p class="assur" data-r>
+        <span><i>◆</i>Reply within one business day</span>
+        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>No commitment required</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h3>Get in touch</h3>
+        <a href="/contact#brief">Send a project brief</a><br>
+        <a href="/contact#book">Book a free 20-min call</a><br>
+        <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
+        <p class="f-blurb">Product design, UI/UX, and engineering for operators and SaaS teams. Remote-first.</p>
+        <div class="fsocial">
+          <a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a>
+        </div>
+      </div>
+      <nav aria-label="Trucking and logistics"><h3>Trucking &amp; logistics</h3><ul>
+        <li><a href="/solutions/trucking-logistics">Trucking &amp; logistics solutions</a></li>
+        <li><a href="/services/crm-development">Dispatch CRM &amp; TMS</a></li>
+        <li><a href="/services/dashboard-design">Fleet dashboards</a></li>
+        <li><a href="/services/mobile-applications">Driver mobile apps</a></li>
+        <li><a href="/solutions/car-transportation">Car transportation</a></li></ul></nav>
+      <nav aria-label="SaaS and integrations"><h3>SaaS &amp; integrations</h3><ul>
+        <li><a href="/solutions/saas">SaaS product solutions</a></li>
+        <li><a href="/solutions/accounting-integrations">QuickBooks &amp; Xero</a></li>
+        <li><a href="/services/saas-platforms">SaaS product design</a></li>
+        <li><a href="/services/api-integrations">Integrations &amp; APIs</a></li>
+        <li><a href="/services/automation-systems">Automation workflows</a></li></ul></nav>
+      <nav aria-label="Company"><h3>Company</h3><ul>
+        <li><a href="/solutions">Solutions</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/services/graphic-design">Graphic design</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
+        <li><a href="/services/seo-digital-marketing">SEO &amp; digital marketing</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li><a href="/markets">Markets</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/process">Process</a></li>
+        <li><a href="/technologies">Tools &amp; stack</a></li>
+        <li><a href="/insights">Insights</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="/contact">Contact</a></li></ul></nav>
+    </div>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="151"></p>
+    <div class="fbase">
+      <span>© 2026 Kriva Technologies</span>
+      <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+'use strict';
+const io = new IntersectionObserver(es=>{
+  for(const e of es){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }
+},{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>{
+  if(el.hasAttribute('data-mask')) el.classList.add('mask');
+  io.observe(el);
+});
+})();
+</script>
+<script>
+(function(){
+const bar=document.getElementById('progress');
+const art=document.querySelector('article');
+if(!bar||!art) return;
+const onScroll=()=>{
+  const rect=art.getBoundingClientRect();
+  const total=art.offsetHeight - innerHeight;
+  const done=Math.min(1, Math.max(0, (-rect.top) / Math.max(total,1)));
+  bar.style.width=(done*100)+'%';
+};
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+const mob=[...document.querySelectorAll('#mobChips a')];
+const chTargets=[...document.querySelectorAll('#intro,#scope,#auth,#dupes,#mapping,#ops,#takeaways')].filter(Boolean);
+if(mob.length && chTargets.length){
+  const mobIO=new IntersectionObserver(es=>{
+    for(const e of es){
+      if(!e.isIntersecting) continue;
+      const id=e.target.id;
+      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
+    }
+  },{rootMargin:'-35% 0px -55% 0px'});
+  chTargets.forEach(t=>mobIO.observe(t));
+}
+})();
+</script>
+<!-- KRIVA_SCHEMA_START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "alternateName": "KRIVA",
+      "url": "https://krivatechnologies.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://krivatechnologies.com/apple-touch-icon.png",
+        "width": 180,
+        "height": 180
+      },
+      "image": "https://krivatechnologies.com/brand/og-default.png",
+      "description": "KRIVA Technologies is a product, UI/UX, and engineering studio that designs and builds trucking software, B2B SaaS, and finance integrations for teams in the UK, US, Australia, UAE, and Canada.",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025-01-01",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "hello@krivatechnologies.com",
+        "url": "https://krivatechnologies.com/contact",
+        "areaServed": [
+          "US",
+          "GB",
+          "AE",
+          "CA",
+          "AU"
+        ],
+        "availableLanguage": [
+          "English"
+        ]
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "United States"
+        },
+        {
+          "@type": "Country",
+          "name": "United Kingdom"
+        },
+        {
+          "@type": "Country",
+          "name": "United Arab Emirates"
+        },
+        {
+          "@type": "Country",
+          "name": "Canada"
+        },
+        {
+          "@type": "Country",
+          "name": "Australia"
+        }
+      ],
+      "knowsAbout": [
+        "Trucking software",
+        "Dispatch CRM",
+        "Transportation Management Systems",
+        "Fleet management software",
+        "B2B SaaS development",
+        "QuickBooks integration",
+        "Xero integration",
+        "Driver mobile apps",
+        "Auto transport software",
+        "Car carrier dispatch",
+        "Accounting reconciliation",
+        "SaaS onboarding UX",
+        "Custom software development"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "KRIVA software development services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Dispatch CRM & TMS development",
+              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "B2B SaaS product design",
+              "url": "https://krivatechnologies.com/solutions/saas"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "QuickBooks & Xero integrations",
+              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Auto transport software",
+              "url": "https://krivatechnologies.com/solutions/car-transportation"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://krivatechnologies.com/#website",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "inLanguage": [
+        "en",
+        "en-US",
+        "en-GB",
+        "en-AE",
+        "en-CA",
+        "en-AU"
+      ],
+      "publisher": {
+        "@id": "https://krivatechnologies.com/#organization"
+      },
+      "about": {
+        "@id": "https://krivatechnologies.com/#organization"
+      },
+      "description": "KRIVA Technologies is a product, UI/UX, and engineering studio that designs and builds trucking software, B2B SaaS, and finance integrations for teams in the UK, US, Australia, UAE, and Canada.",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1",
+          ".lede",
+          ".eyebrow"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Insights",
+          "item": "https://krivatechnologies.com/insights"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "QuickBooks & Xero integration",
+          "item": "https://krivatechnologies.com/insights/quickbooks-xero-integration-guide"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "wordCount": 1266,
+      "articleSection": "Finance & Integrations",
+      "keywords": "QuickBooks integration, Xero integration, Accounting API integration, Decide what the integration owns, Tokens and connection health, Rate limits, retries, and duplicates, Mapping accounts, items, and tax, The screen finance actually uses, Rolling out against live books, Key takeaways",
+      "headline": "QuickBooks and Xero integration: what a production-ready sync needs",
+      "datePublished": "2026-11-05",
+      "dateModified": "2026-11-05",
+      "image": "https://krivatechnologies.com/brand/og/insights-quickbooks-xero-integration-guide.png",
+      "inLanguage": "en",
+      "author": {
+        "@id": "https://krivatechnologies.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://krivatechnologies.com/#organization"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://krivatechnologies.com/insights/quickbooks-xero-integration-guide"
+      },
+      "url": "https://krivatechnologies.com/insights/quickbooks-xero-integration-guide",
+      "description": "What a QuickBooks Online or Xero integration must handle in production: OAuth tokens, rate limits, idempotency, mapping, tax, reconciliation, and rollout."
+    }
+  ]
+}
+</script>
+<!-- KRIVA_SCHEMA_END -->
+</body>
+</html>
