@@ -108,7 +108,7 @@ async function fill(p, sel) {
     await p.setRequestInterception(true);
     p.on("request", (r) => {
       const u = r.url();
-      if (/google-analytics\.com|analytics\.google\.com|\/g\/collect/.test(u)) { const body = r.postData() || ""; [u, ...body.split("\n")].forEach((s) => { const m = s.match(/(?:^|[?&])en=([^&]+)/); if (m) hits.push(m[1]); }); return r.respond({ status: 204, body: "" }); }
+      if (/google-analytics\.com|analytics\.google\.com|\/g\/collect/.test(u)) { const body = r.postData() || ""; [u, ...body.split("\n")].forEach((s) => { const m = s.match(/(?:^|[?&])en=([^&]+)/); if (m) hits.push(m[1]); }); return r.respond({ status: 200, contentType: "image/gif", headers: { "Access-Control-Allow-Origin": "*" }, body: "" }); }
       if (/clarity\.ms/.test(u)) return r.respond({ status: 204, body: "" });
       if (u.endsWith("/api/inquiry") && r.method() === "POST") return r.respond({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, channel: "gmail" }) });
       r.continue();
@@ -120,6 +120,7 @@ async function fill(p, sel) {
     await sleep(1500);
     await p.evaluate(() => { document.dispatchEvent(new Event("visibilitychange")); });
     await p.goto(BASE + "/about?ga_debug=1", { waitUntil: "networkidle2" });
+    await sleep(2500);
     await sleep(800);
     const count = (n) => hits.filter((h) => h === n).length;
     results.gaHits = hits.join(",");

@@ -251,7 +251,7 @@ function build(p) {
 ${main}
 <!--KRIVA_FOOTER-->
 <script src="/shared/chrome.js" defer></script>
-<script src="/shared/page-inquiry.js?v=kds1" defer></script>
+<script src="/shared/page-inquiry.js?v=kds4" defer></script>
 <script type="application/ld+json">${JSON.stringify(schema)}</script>
 </body>
 </html>
