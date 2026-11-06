@@ -29,7 +29,7 @@ def header_html(current: str | None) -> str:
  <div class="nav-shell">
  <div class="wrap nav-in">
  <a href="/" class="mark" aria-label="KRIVA Technologies home">
- <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="" width="144" height="26">
+ <img class="mark-logo" src="/brand/logos/kriva-lockup.svg" alt="KRIVA Technologies" width="162" height="42">
  </a>
  <div class="nav-primary">
  <nav aria-label="Primary">
@@ -185,7 +185,7 @@ FOOTER_HTML = '''<footer>
  <li><a href="/insights">Insights</a></li>
  <li><a href="/contact">Contact</a></li></ul></nav>
  </div>
- <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="143"></p>
+ <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
  <div class="fbase">
  <span>© 2026 Kriva Technologies</span>
  <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>

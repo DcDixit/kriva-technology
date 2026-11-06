@@ -80,7 +80,7 @@ const PAGE_CURRENT = {
   "kriva-terms.html": null,
 };
 
-const CSS_LINK = '<link rel="stylesheet" href="/shared/chrome.css?v=kds1">\n<link rel="stylesheet" href="/shared/kds.css?v=kds1">';
+const CSS_LINK = '<link rel="stylesheet" href="/shared/chrome.css?v=logo2">\n<link rel="stylesheet" href="/shared/kds.css?v=logo2">';
 const JS_TAG = [
   '<script src="/shared/chrome.js" defer></script>',
   '<!-- KRIVA_GA_START -->',
@@ -146,7 +146,7 @@ function headerHtml(current, opts = {}) {
   <div class="nav-shell">
     <div class="wrap nav-in">
       <a href="/" class="mark" aria-label="KRIVA Technologies home">
-        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="KRIVA Technologies" width="136" height="26">
+        <img class="mark-logo" src="/brand/logos/kriva-lockup.svg" alt="KRIVA Technologies" width="162" height="42">
       </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
@@ -271,9 +271,9 @@ const FOOTER_HTML = `<footer>
     </div>
     <div class="fgrid">
       <div class="fbrand">
-        <img src="/brand/logos/kriva-wordmark-inverse.svg" alt="KRIVA Technologies" width="136" height="26" loading="lazy">
-        <p class="f-blurb">Custom software for trucking, freight, and SaaS companies. Designed and built by one in-house team in Ahmedabad, India.</p>
+        <h3>Get in touch</h3>
         <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
+        <p class="f-blurb">Custom software for trucking, freight, and SaaS companies. Designed and built by one in-house team in Ahmedabad, India.</p>
         <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
@@ -308,6 +308,7 @@ const FOOTER_HTML = `<footer>
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>

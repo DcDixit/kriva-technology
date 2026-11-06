@@ -286,8 +286,8 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
 @media(max-width:1280px){body.page-insight-truck .prose h2{scroll-margin-top:calc(88px + 48px)}}
 </style>
 
-<link rel="stylesheet" href="/shared/chrome.css?v=kds1">
-<link rel="stylesheet" href="/shared/kds.css?v=kds1">
+<link rel="stylesheet" href="/shared/chrome.css?v=logo2">
+<link rel="stylesheet" href="/shared/kds.css?v=logo2">
 </head>
 <body class="page-insight-truck">
 <a class="skip" href="#main">Skip to content</a>
@@ -296,7 +296,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
   <div class="nav-shell">
     <div class="wrap nav-in">
       <a href="/" class="mark" aria-label="KRIVA Technologies home">
-        <img class="mark-logo" src="/brand/logos/kriva-wordmark.svg" alt="KRIVA Technologies" width="136" height="26">
+        <img class="mark-logo" src="/brand/logos/kriva-lockup.svg" alt="KRIVA Technologies" width="162" height="42">
       </a>
       <div class="nav-primary">
         <nav aria-label="Primary">
@@ -477,7 +477,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
       <p>Both APIs limit how many calls you can make. At the time of writing, QuickBooks Online allows a few hundred requests per minute per company, and Xero applies per-minute, daily, and concurrent-call limits per connected organisation. A first sync of a year's history, or a month-end burst, will reach these limits. Queue work, respect the limit headers, and back off when told to.</p>
       <p>Retries create the most damaging bug in accounting integrations: the duplicate. A request times out, your code retries, and the first request had in fact succeeded. Now the customer has two invoices. Prevent it in two layers:</p>
       <ol>
-        <li><strong>Use the platform's idempotency support.</strong> QuickBooks Online accepts a request ID on write calls, and Xero accepts an idempotency key header. A retry with the same key does not create a second record.</li>
+        <li><strong>Use the platform's idempotency support.</strong> QuickBooks Online accepts a request ID on write calls, and Xero accepts an idempotency key header. A retry with the same key does not create a second record. Xero keeps those keys for only six minutes, so also store your own record of what you posted, and check it before retrying later.</li>
         <li><strong>Keep your own record of what synced.</strong> Store the accounting system's ID against your record once a write succeeds, and check it before any retry.</li>
       </ol>
       <div class="art-note"><p>Duplicates are worse than failures. A failed sync shows up in a log; a duplicate invoice shows up in a customer's inbox. Design the retry path before the happy path.</p></div>
@@ -635,9 +635,9 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
     </div>
     <div class="fgrid">
       <div class="fbrand">
-        <img src="/brand/logos/kriva-wordmark-inverse.svg" alt="KRIVA Technologies" width="136" height="26" loading="lazy">
-        <p class="f-blurb">Custom software for trucking, freight, and SaaS companies. Designed and built by one in-house team in Ahmedabad, India.</p>
+        <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
+        <p class="f-blurb">Custom software for trucking, freight, and SaaS companies. Designed and built by one in-house team in Ahmedabad, India.</p>
         <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
@@ -672,6 +672,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
+    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -922,6 +923,6 @@ if(mob.length && chTargets.length){
 }
 </script>
 <!-- KRIVA_SCHEMA_END -->
-<script src="/shared/page-inquiry.js?v=20260921c" defer></script>
+<script src="/shared/page-inquiry.js?v=kds3" defer></script>
 </body>
 </html>

@@ -20,18 +20,9 @@ const AMBER = '#DB9B1F';
 const DIM = '#8C98A4';
 const FONT = 'Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif';
 
-// wordmark geometry lifted verbatim from _build_og.cjs so the mark stays identical
-const WORDMARK = `<g transform="translate(80,86) scale(0.34)">
- <rect x="7" y="10" width="48" height="174" fill="#FFFFFF"/>
- <polygon points="159,10 224,10 129,95 63,95" fill="#1551F9"/>
- <polygon points="64,95 128,95 224,184 160,184" fill="#FFFFFF"/>
- <rect x="252" y="10" width="47" height="174" fill="#FFFFFF"/>
- <path fill="#FFFFFF" fill-rule="evenodd" d="M299 10 H400 C448 10 466 30 466 62 C466 90 446 104 392 104 H299 Z M299 40 H384 C416 40 430 50 430 66 C430 84 416 92 382 92 H299 Z"/>
- <polygon points="338,104 416,184 473,184 390,104" fill="#FFFFFF"/>
- <rect x="495" y="10" width="46" height="174" fill="#FFFFFF"/>
- <path fill="#FFFFFF" d="M560 10 H614 L689 168 L769 10 H826 L698 184 H680 Z"/>
- <path fill="#FFFFFF" d="M887 10 H891 L1002 184 H948 L889 76 L808 184 H754 Z"/>
- </g>`;
+// full logo read from the master file; 0.45 scale puts its top-left at (80,70)
+const LOGO_ART = fs.readFileSync(path.join(__dirname, 'brand/logos/kriva-lockup-inverse.svg'), 'utf8').match(/<g[\s\S]*<\/svg>/)[0].replace('</svg>', '');
+const WORDMARK = `<g transform="translate(${80 - 10.5 * 0.45},${70 - 6.3 * 0.45}) scale(0.45)">${LOGO_ART}</g>`;
 
 const esc = (s) =>
  String(s)
