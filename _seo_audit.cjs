@@ -236,7 +236,8 @@ for (const p of indexable) {
  // the first two in-content images are above the fold; they must NOT be lazy
  if (contentImg > 2 && !/mark-logo/.test(t) && !/\bloading=/i.test(t))
  add('LOW', 'cwv', id, `below-fold img #${i + 1} not lazy: ${t.slice(0, 90)}`);
- if (contentImg === 1 && /loading=["']lazy/i.test(t))
+ // Only an image above the first section heading can be the hero. Pages with a text hero have no LCP image.
+ if (contentImg === 1 && /loading=["']lazy/i.test(t) && !/<h2\b/i.test(p.html.slice(0, Math.max(0, p.html.indexOf(t)))))
  add('HIGH', 'cwv', id, `LCP image is lazy-loaded: ${t.slice(0, 110)}`);
  });
  // oversized raster payload
@@ -419,7 +420,7 @@ for (const r of vercel.redirects) {
 }
 // .html reachable without redirect?
 for (const f of htmlFiles) {
- if (f === '404.html') continue;
+ if (f === '404.html' || /^google[0-9a-f]+\.html$/.test(f)) continue; // verification file must stay reachable
  if (!redirectSources.has('/' + f)) add('HIGH', 'duplicate', '/' + f, 'Raw .html URL has no 301 to the clean URL (duplicate content path)');
 }
 

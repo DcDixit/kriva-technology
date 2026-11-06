@@ -1,8 +1,10 @@
 # Go-live checklist
 
-Run these in order. Merging anything into `main` deploys production. Paste credentials only at the terminal prompts, never into a file, a chat, or GitHub.
+Run these in order. Merging into `main` deploys production. Paste credentials only at the terminal prompts, never into a file, a chat, or GitHub.
 
-## 1. Add the credentials
+## 1. Fix form delivery (blocks everything else)
+
+Production forms return 502. Vercel logs show `GMAIL_APP_PASSWORD wrong_length (length 13)`, and neither backup channel is set.
 
 **Gmail App Password**
 1. Sign in to `krivatechnlogies@gmail.com` at https://myaccount.google.com/apppasswords. Turn on 2-Step Verification first if Google asks.
@@ -14,43 +16,30 @@ Run these in order. Merging anything into `main` deploys production. Paste crede
    ```
    Paste the password when prompted.
 
-**Web3Forms key**
+**Web3Forms backup**
 1. At https://web3forms.com, enter `hello@krivatechnologies.com`. The key arrives by email.
-2. Run these and paste the key at each prompt:
-   ```
-   vercel env add WEB3FORMS_ACCESS_KEY production
-   vercel env add WEB3FORMS_ACCESS_KEY preview transform/2026-11-website
-   ```
+2. Run `vercel env add WEB3FORMS_ACCESS_KEY production` and paste the key at the prompt.
 
-## 2. Merge the security fix (PR #2)
+## 2. Ship the pending branch
 
-Merging redeploys the current site with internal files blocked and picks up the new Gmail password, so live forms should start working here, before the redesign ships.
+Merge the open pull request into `main`. This also redeploys, so the new credentials take effect.
 
-Then run `node _verify_inquiry_prod.cjs`. Expect `channel: gmail`, and confirm the test email reaches hello@krivatechnologies.com. **Stop here if it fails.**
+## 3. Test on production
 
-## 3. Test the Web3Forms backup
+1. Run `node _verify_inquiry_prod.cjs`. Expect `channel: gmail`. **Stop here if it fails.**
+2. Confirm the test email reaches hello@krivatechnologies.com.
+3. Submit the fit-call form and the project brief form on /contact, plus one form on a solution page, with GA4 Realtime open. Expect one `generate_lead` each.
+4. Check the headline on /work/finance-sync-hub, the homepage, and one market page.
 
-Preview deployments have no Gmail password, so server delivery fails there and the backup takes over.
-1. Redeploy the preview so it picks up the key: `vercel redeploy <latest preview URL>`.
-2. Open that preview URL in a browser signed in to Vercel, and submit a form.
-3. Confirm you see the thank-you message and the email reaches hello@krivatechnologies.com.
+If production breaks, roll back with `vercel rollback` or from the Vercel dashboard.
 
 ## 4. Clear the business and legal items
 
 Work through `docs/CLAIMS-TO-CONFIRM.md`.
 
-## 5. Ship the redesign (PR #3)
-
-Mark the draft ready and merge it. Then:
-1. Run `node _verify_inquiry_prod.cjs` again.
-2. Submit one real form with GA4 Realtime open, and expect one `generate_lead`.
-3. Click through the homepage, one solution page, and the contact page.
-
-If production breaks, roll back with `vercel rollback` or from the Vercel dashboard.
-
-## 6. After launch
+## 5. After launch
 
 - **GA4:** mark only `generate_lead` as a key event, and turn off form interactions in Enhanced Measurement.
-- **Search Console:** resubmit the sitemap, and request indexing for the homepage and the two new solution pages.
+- **Search Console:** resubmit the sitemap, check indexing and canonical reports, and request indexing for the homepage and the two new solution pages.
 - **DNS:** add SPF and DMARC records with your domain provider.
 - **Repository:** consider making it private, since internal documents are visible in it.
