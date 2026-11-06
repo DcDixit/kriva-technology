@@ -10,8 +10,8 @@ The repository holds no evidence for these, so they were removed or qualified in
 | Quoted testimonials | `content/attribution-registry.cjs` marks all "omit" | Owner: written client approval |
 
 ## Still published, please check
-- **ShiftRail narrative:** the problem, research, and rollout story remain, without numbers. Same source as the removed figures.
-- **Named client websites on /work:** real company names and site screenshots.
+- **ShiftRail:** labelled representative work, as the owner decided on 2026-11-06, unless it is verified as a client project.
+- **Named client websites on /work:** real company names and site screenshots. The site makes no claim that clients gave permission; the owner has not yet confirmed permission.
 - **Other case studies:** described as representative work.
 - **Capability wording:** broker and fleet features are worded as what can be scoped, with no case-study claim. Confirm the team will actually take on this work.
 - **Delivery statements:** no subcontractors, nine years of experience, US and UK call overlap, weekly demos, regression checks. These come from earlier site copy.

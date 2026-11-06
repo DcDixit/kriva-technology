@@ -37,7 +37,7 @@ const PAGES = [
     buyH: "Should a brokerage build or buy?",
     buy: "Buy a TMS if your freight and process are fairly standard. A good off-the-shelf product is cheaper and quicker. Build when your edge is how you quote, cover, or serve a niche, and the software keeps forcing workarounds. Many brokerages land in the middle: keep the TMS as the record, and build the desk tools around it.",
     buyLink: ["/insights/build-vs-buy-tms", "Read our build vs buy guide"],
-    proof: "We have not published a freight broker case study, so ask us on the fit call what we have built that is closest to your operation. Our nearest published case is ShiftRail, a dispatch console for a US trucking desk, which deals with similar problems: bulk work, exceptions, and a side spreadsheet.",
+    proof: "We have not published a freight broker case study, so ask us on the fit call what we have built that is closest to your operation. Our nearest published example is ShiftRail, a representative project: a dispatch console for a US trucking desk, which deals with similar problems: bulk work, exceptions, and a side spreadsheet.",
     faq: [
       ["Can this work with our existing TMS?", "Usually, yes, if the TMS offers an API or data export. We build beside it and only replace parts of it when that clearly pays off. We check what your TMS allows during discovery."],
       ["Can you connect to load boards and tracking providers?", "Where the provider offers an API and your plan includes access. Access rules vary by provider, so we confirm this before scoping rather than assuming it."],
@@ -81,7 +81,7 @@ const PAGES = [
     buyH: "Should a fleet build or buy?",
     buy: "Most fleets should start with an established telematics and ELD platform, and we won't try to replace that hardware. Custom software makes sense on top of it, when your workflows cross several systems, or the reports you need don't exist in any of them. We are not legal or tax advisers, so your compliance owner signs off on the rules.",
     buyLink: ["/insights/build-vs-buy-tms", "Read our build vs buy guide"],
-    proof: "We have not published a fleet management case study, so ask us on the fit call what we have built that is closest to your operation. Our nearest published case is ShiftRail, a dispatch console rolled out beside the existing TMS. The same approach applies here: observe the work, ship weekly, and roll out in phases.",
+    proof: "We have not published a fleet management case study, so ask us on the fit call what we have built that is closest to your operation. Our nearest published example is ShiftRail, a representative project: a dispatch console rolled out beside the existing TMS. The same approach applies here: observe the work, ship weekly, and roll out in phases.",
     faq: [
       ["Will this replace our ELD provider?", "No. We read data from your provider where its API allows it. ELD devices and their certification stay with your provider."],
       ["Can drivers use the app with poor signal?", "That is a core design requirement for driver apps: updates queue offline and sync when the connection returns. We confirm the devices and conditions to test against during discovery."],
