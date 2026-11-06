@@ -6,10 +6,11 @@ The repository holds no evidence for these, so they were removed or qualified in
 |---|---|---|
 | Client logo strip on the homepage | A note saying "approved". No written permissions | Owner: permission from each client |
 | ShiftRail figures: 32% handle time, 11-minute response, 99.4% uptime | Earlier site copy says "signed off". No sign-off record | Owner: client sign-off |
+| ShiftRail "400+ routes", "three hubs", "volume doubled"; "12k MAU", "80 reps", "60% of capacity", and "Pre-seed" on other cases | No source in the repo | Owner: project records |
 | Quoted testimonials | `content/attribution-registry.cjs` marks all "omit" | Owner: written client approval |
 
 ## Still published, please check
-- **ShiftRail scale ("400+ routes"), research, and rollout story:** on the case page only. Same source as the figures.
+- **ShiftRail narrative:** the problem, research, and rollout story remain, without numbers. Same source as the removed figures.
 - **Named client websites on /work:** real company names and site screenshots.
 - **Other case studies:** described as representative work.
 - **Capability wording:** broker and fleet features are worded as what can be scoped, with no case-study claim. Confirm the team will actually take on this work.
