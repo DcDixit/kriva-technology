@@ -14,6 +14,7 @@ const {
 } = require("./shared/studio");
 
 const PAGE_CURRENT = {
+  "404.html": null,
   "kriva-market-au.html": null,
   "kriva-insight-build-vs-buy-tms.html": null,
   "kriva-insight-dispatch-software-cost.html": null,

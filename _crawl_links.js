@@ -27,6 +27,8 @@ const FILE_MAP = {
   "/markets/ca": "kriva-market-ca.html",
   "/markets/au": "kriva-market-au.html",
   "/solutions/trucking-logistics": "kriva-solution-trucking.html",
+  "/solutions/freight-broker-software": "kriva-solution-freight-broker.html",
+  "/solutions/fleet-management-software": "kriva-solution-fleet-management.html",
   "/solutions/saas": "kriva-solution-saas.html",
   "/solutions/accounting-integrations": "kriva-solution-accounting.html",
   "/solutions/car-transportation": "kriva-solution-car-transport.html",

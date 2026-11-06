@@ -110,3 +110,57 @@ header.nav .nav-cta a.btn:hover{background:var(--ink);border-color:var(--ink)}
 .inq-form .inq-note,.inq-note{font-family:var(--f-body);font-size:14px;letter-spacing:0;text-transform:none;color:var(--steel)}
 .inq-sec h2,.inq-sec .d2,.inq-done h3{color:var(--ink)}
 .inq-form .req,.inq-form .opt{font-family:var(--f-body)}
+
+/* Header stays solid on every template, including dark case-study heroes */
+header.nav,header.nav .nav-shell{background:#fff!important;border-bottom:1px solid var(--rule-soft)}
+header.nav .mark-logo{filter:none!important}
+header.nav .nav-trigger,header.nav .nav-link{color:var(--ink)!important}
+header.nav .is-current>.nav-trigger,header.nav .nav-link.is-current{color:var(--blue)!important}
+.crumbs a,nav[aria-label="Breadcrumb"] a{text-decoration:none!important;color:var(--steel)!important}
+.crumbs a:hover,nav[aria-label="Breadcrumb"] a:hover{color:var(--blue)!important}
+
+/* Readable body text on older templates. Product mockups keep their own small type. */
+main p:not([class]):not([aria-hidden] *):not(figure *):not(.browser *):not(.console *):not(.ledger *):not(.app *):not(.order *),
+main li:not([class]):not([aria-hidden] *):not(figure *):not(.browser *):not(.console *):not(.ledger *):not(.app *):not(.order *),
+main dd:not([aria-hidden] *):not(figure *):not(.browser *),
+.body-sm,.inq-help,.proof-note{font-size:16px!important;line-height:1.6}
+main .hero p:not([class]),main .lede{color:var(--steel)}
+
+/* Micro labels: legible, still secondary */
+.k,.cons,.ip-meta,.ip-kicker,.wk-kicker,.wk-tag,.pu-meta,.cat,.stat-k,.cap-note,.car-cap,.cs-cap,.sol-kicker,.ev-meta,.cr-meta,.pu-k,.why,.role{font-family:var(--f-body)!important;font-size:12.5px!important;letter-spacing:.04em!important}
+
+/* Text links read as links, not as console labels */
+[class$="-text-link"],.p-link,.go,.prc-go,.sol-go,.wk-go{font-family:var(--f-body)!important;font-size:15px!important;font-weight:700!important;letter-spacing:0!important;text-transform:none!important}
+
+/* One clear closing action per page */
+.cta-band:has(+ .inq-sec),.cta-band:has(+ .k-credit + .inq-sec){display:none}
+main:has(.inq-sec)~footer .fcta{display:none}
+main:has(.inq-sec)~footer .fgrid{margin-top:8px}
+.k-credit{font-size:13px;color:var(--steel);padding-block:12px}
+.k-credit a{color:inherit;text-decoration:underline}
+
+/* Clear failure state with a working way to reach us */
+.inq-fail.on{display:block;padding:12px 14px;border-radius:8px;background:#FBEDEA;border:1px solid #E7B9B2}
+
+/* Inner-page heading scale and spacing */
+main h1,.d1{font-size:clamp(34px,4.1vw,54px);max-width:22ch}
+.crumbs,nav[aria-label="Breadcrumb"]{margin-bottom:14px}
+main .eyebrow+h1,main p+h1{margin-top:10px}
+.eyebrow{margin-bottom:8px}
+
+/* Dark heroes: everything readable */
+.ph,.ph p{color:#DCE3EB}
+.ph h1{color:#fff}
+.ph .crumbs a,.ph nav[aria-label="Breadcrumb"] a,.ph .crumbs li{color:#C4CFDB!important}
+.ph .eyebrow{color:var(--lime)}
+.ph p[class],.ph dt,.ph dd,.ph .scope-k{color:#DCE3EB!important}
+
+main:has(form)~footer .fcta{display:none}
+.k-newlinks{padding-block:clamp(40px,5vw,64px)}
+.k-newlinks h2{font-size:clamp(22px,2.4vw,28px);margin:0 0 16px}
+.k-newlinks ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0;margin:0}
+.k-newlinks a{display:block;height:100%;padding:20px;border:1px solid var(--rule);border-radius:12px;color:inherit;text-decoration:none!important}
+.k-newlinks a:hover{border-color:var(--blue)}
+.k-newlinks strong{display:block;font-family:var(--f-display);font-size:18px}
+.k-newlinks span{display:block;margin-top:4px;color:var(--steel);font-size:16px;line-height:1.5}
+@media (max-width:620px){.k-newlinks ul{grid-template-columns:1fr}}

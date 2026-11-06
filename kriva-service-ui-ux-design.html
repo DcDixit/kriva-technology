@@ -358,6 +358,8 @@ body.design-ux .lp-pair figure{min-width:0}
 <link rel="stylesheet" href="/shared/responsive.css?v=hero6">
 <link rel="stylesheet" href="/shared/archetypes.css?v=hero4">
 
+<link rel="stylesheet" href="/shared/page-inquiry.css">
+
 <link rel="stylesheet" href="/shared/chrome.css?v=kds1">
 <link rel="stylesheet" href="/shared/kds.css?v=kds1">
 </head>
@@ -501,13 +503,10 @@ body.design-ux .lp-pair figure{min-width:0}
     <div class="lp-stack" style="margin-top:clamp(22px,3vw,40px)">
       <div>
         <p class="eyebrow" data-r>Service · Feature-level UI/UX</p>
-        <h1 class="d1 mask" data-mask>
-          <span><i>Redesign the screen</i></span>
-          <span><i>dispatchers use all day.</i></span>
-        </h1>
+        <h1 class="d1 mask">UI/UX design for dispatch tools and SaaS products</h1>
         <p class="lede" data-r>UI/UX for one workflow or module at a time in a product that already exists: load assignment, exception queues, driver status, quote and booking steps, and SaaS settings. Flows, prototypes, and specs your engineers can build from.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a 20-minute fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-minute fit call</span><i>→</i></a>
           <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See ShiftRail</span><i>→</i></a>
         </div>
       </div>
@@ -628,7 +627,7 @@ body.design-ux .lp-pair figure{min-width:0}
     <h2 class="d2" id="ctaH" data-r>Which workflow hurts most?</h2>
     <div class="cta-row">
       <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a 20-minute fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -640,6 +639,34 @@ body.design-ux .lp-pair figure{min-width:0}
   </div>
 </section>
 
+<section class="inq-sec" id="inquire" aria-labelledby="inqH">
+  <div class="wrap inq-grid">
+    <div class="inq-copy">
+      <p class="eyebrow">Start a conversation</p>
+      <h2 class="d2" id="inqH">Tell us what you need built.</h2>
+      <p class="lede">We will tell you whether to fix it, integrate it, rebuild it, or leave it alone. We reply within one business day.</p>
+      <p class="inq-help">Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>. Have a longer brief or files? <a href="/contact#brief">Send a project brief</a>.</p>
+    </div>
+    <div>
+      <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
+        <input type="hidden" name="inquiry_type" value="page_inquiry">
+        <input type="hidden" name="page" value="/services/ui-ux-design">
+        <input type="hidden" name="service" value="Service: ui-ux-design">
+        <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
+        <div class="inq-row">
+          <div><label for="inq-name">Name <span class="req">Required</span></label><input id="inq-name" name="name" required autocomplete="name"><p class="inq-err" id="inq-name-err">Enter your name.</p></div>
+          <div><label for="inq-email">Work email <span class="req">Required</span></label><input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email"><p class="inq-err" id="inq-email-err">Enter a valid work email.</p></div>
+        </div>
+        <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
+        <div><label for="inq-details">What do you need help with? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
+        <p class="inq-fail" role="alert"></p>
+        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. NDA on request.</p></div>
+        <p class="inq-status" data-inq-status aria-live="polite"></p>
+      </form>
+      <div class="inq-done" tabindex="-1"><h3>Thank you!</h3><p>Your inquiry has been submitted successfully. We'll be in touch soon.</p></div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -981,5 +1008,6 @@ run();
 }
 </script>
 <!-- KRIVA_SCHEMA_END -->
+<script src="/shared/page-inquiry.js?v=kds1" defer></script>
 </body>
 </html>

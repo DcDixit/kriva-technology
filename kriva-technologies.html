@@ -166,6 +166,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/stack.css?v=stk2">
 <link rel="stylesheet" href="/shared/slot-assets.css">
 
+<link rel="stylesheet" href="/shared/page-inquiry.css">
+
 <link rel="stylesheet" href="/shared/chrome.css?v=kds1">
 <link rel="stylesheet" href="/shared/kds.css?v=kds1">
 </head>
@@ -313,14 +315,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </ol>
     <div class="stk-hero">
       <div class="stk-hero-copy">
-        <p class="eyebrow" data-r>Technologies · Product Design &amp; UI/UX</p>
-        <h1 class="d1 mask" id="h1" data-mask>
-          <span><i>A practical stack</i></span>
-          <span><i>with senior oversight.</i></span>
-        </h1>
+        <p class="eyebrow" data-r>Technologies</p>
+        <h1 class="d1 mask" id="h1">The technology we use to build your software</h1>
         <p class="lede" data-r>The design and engineering tools we use to build dispatch CRMs, B2B SaaS, dashboards, and finance integrations - chosen for maintainability, with people approving what ships.</p>
         <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a free 20-min fit call</span><i>→</i></a>
+          <a href="/contact#book" class="btn"><span>Book a free 20-minute fit call</span><i>→</i></a>
           <a href="#stack" class="btn ghost"><span>Explore the stack</span><i>→</i></a>
         </div>
         <p class="stk-trust" data-r>
@@ -638,7 +637,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <p class="lede" data-r>Tell us about your existing tools and constraints. We'll recommend the right mix of design, development, and integration for your team.</p>
     <div class="cta-row">
       <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
+        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-minute fit call</span><i>→</i></a>
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
@@ -650,6 +649,34 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </section>
 
+<section class="inq-sec" id="inquire" aria-labelledby="inqH">
+  <div class="wrap inq-grid">
+    <div class="inq-copy">
+      <p class="eyebrow">Start a conversation</p>
+      <h2 class="d2" id="inqH">Tell us what your team works around.</h2>
+      <p class="lede">We will tell you whether to fix it, integrate it, rebuild it, or leave it alone. We reply within one business day.</p>
+      <p class="inq-help">Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>. Have a longer brief or files? <a href="/contact#brief">Send a project brief</a>.</p>
+    </div>
+    <div>
+      <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
+        <input type="hidden" name="inquiry_type" value="page_inquiry">
+        <input type="hidden" name="page" value="/technologies">
+        <input type="hidden" name="service" value="Page: technologies">
+        <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
+        <div class="inq-row">
+          <div><label for="inq-name">Name <span class="req">Required</span></label><input id="inq-name" name="name" required autocomplete="name"><p class="inq-err" id="inq-name-err">Enter your name.</p></div>
+          <div><label for="inq-email">Work email <span class="req">Required</span></label><input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email"><p class="inq-err" id="inq-email-err">Enter a valid work email.</p></div>
+        </div>
+        <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
+        <div><label for="inq-details">What is your team working around today? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
+        <p class="inq-fail" role="alert"></p>
+        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. NDA on request.</p></div>
+        <p class="inq-status" data-inq-status aria-live="polite"></p>
+      </form>
+      <div class="inq-done" tabindex="-1"><h3>Thank you!</h3><p>Your inquiry has been submitted successfully. We'll be in touch soon.</p></div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -932,5 +959,6 @@ run();
 }
 </script>
 <!-- KRIVA_SCHEMA_END -->
+<script src="/shared/page-inquiry.js?v=kds1" defer></script>
 </body>
 </html>
