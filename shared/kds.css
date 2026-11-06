@@ -1,0 +1,112 @@
+/* KRIVA design system, global layer. Loaded last on every page.
+   Road-signage display type (Overpass), interstate-sign green for action, warm paper, navy ink.
+   Page-specific CSS stays in its own file; this layer makes every template read as one site. */
+
+html{scroll-padding-top:88px}
+body{font-size:17px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* ── Type ── */
+h1,h2,h3,.d1,.d2,.d3,.hp-h2,.hp-h3{font-family:var(--f-display);color:inherit;font-stretch:normal}
+main h1,.d1{font-weight:800;letter-spacing:-.02em;line-height:1.06;font-size:clamp(38px,5vw,62px);text-wrap:balance;max-width:20ch}
+main h2,.d2{font-weight:800;letter-spacing:-.015em;line-height:1.12;font-size:clamp(28px,3.4vw,42px);text-wrap:balance}
+main h3,.d3{font-weight:700;letter-spacing:-.005em;line-height:1.25}
+.lede{font-size:clamp(18px,1.5vw,20px);line-height:1.55;color:var(--steel)}
+.eyebrow,.hp-k,.k-kicker{font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.eyebrow::before{display:none}
+.on-dark.eyebrow,.eyebrow.on-dark,.k-sec--ink .k-kicker,.k-head--dark .k-kicker,footer .k-kicker{color:var(--lime)}
+main p a:not(.btn),main li a:not(.btn):not([class]){color:var(--blue);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.crumbs,.crumbs a,.crumbs li{font-size:14px;letter-spacing:0;text-transform:none}
+
+/* ── Buttons ── */
+body .btn,body a.btn,body button.btn{border-radius:8px;font-family:var(--f-body);font-size:16px;font-weight:700;letter-spacing:0;text-transform:none;min-height:48px;padding:12px 22px;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:background-color .18s,color .18s,border-color .18s;box-shadow:none;text-align:center}
+body .btn i{font-style:normal}
+body .btn.sm{min-height:42px;padding:9px 16px;font-size:15px}
+body .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+body .btn.ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+body .btn.on-dark{background:var(--lime);border:1.5px solid var(--lime);color:#0F1C2E}
+body .btn.on-dark:hover{background:#fff;border-color:#fff;color:#0F1C2E}
+body .btn.ghost.on-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+body .btn.ghost.on-dark:hover{background:#fff;color:#0F1C2E;border-color:#fff}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* ── Header ── */
+.nav .nav-in{min-height:72px;gap:24px}
+.nav .mark-logo{height:24px;width:auto}
+.nav .nav-links{gap:2px}
+.nav .nav-trigger,.nav .nav-link{font-family:var(--f-body);font-size:15.5px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink);padding:10px 12px;border-radius:8px;background:none}
+.nav .nav-trigger:hover,.nav .nav-link:hover,.nav .nav-item.open .nav-trigger{background:var(--paper-2);color:var(--ink)}
+.nav .is-current>.nav-trigger,.nav .nav-link.is-current{color:var(--blue);box-shadow:none}
+.nav .nav-link::after,.nav .nav-trigger::after{display:none}
+.nav .nav-cta .btn{white-space:nowrap}
+.nav-cta-short{display:none}
+.mm.mm--wide{display:grid;grid-template-columns:1fr 1fr;gap:28px;width:min(660px,92vw);padding:24px;border-radius:12px;border:1px solid var(--rule);box-shadow:0 24px 48px -24px rgba(15,28,46,.35);background:#fff}
+.mm.mm--wide[hidden]{display:none}
+.mm .mm-label{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--steel-2);margin:0 0 10px}
+.mm .mm-list{display:grid;gap:2px;padding:0;margin:0;list-style:none;border:0}
+.mm .mm-list a{display:block;padding:9px 10px;border-radius:8px;border:0}
+.mm .mm-list a:hover{background:var(--paper-2)}
+.mm .mm-list strong{display:block;font-family:var(--f-body);font-size:15px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--ink)}
+.mm .mm-list em{display:block;font-style:normal;font-size:13.5px;line-height:1.4;color:var(--steel);margin-top:2px;letter-spacing:0;text-transform:none}
+.mm .mm-all{display:inline-block;margin:12px 10px 0;font-size:14.5px;font-weight:700;color:var(--blue)}
+.mm .mm-all i{font-style:normal}
+@media (max-width:1280px){.nav-cta-long{display:none}.nav-cta-short{display:inline}}
+@media (max-width:1099px){.nav .nav-in{min-height:64px}}
+@media (max-width:480px){.nav .nav-cta .btn{padding:8px 12px;font-size:14px;min-height:44px}}
+
+/* Mobile sheet */
+.sheet .sheet-toggle,.sheet a.big{font-family:var(--f-display);font-weight:700;letter-spacing:0;text-transform:none}
+.sheet .sheet-sub strong{font-family:var(--f-body);text-transform:none;letter-spacing:0}
+.sheet .sheet-cta .btn{width:100%}
+
+/* ── Footer ── */
+footer{background:var(--ink);color:#DCE3EB;padding-block:clamp(48px,6vw,80px) 28px}
+footer .fcta{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between;padding-bottom:clamp(36px,5vw,56px);margin-bottom:clamp(36px,5vw,56px);border-bottom:1px solid var(--ink-line)}
+footer .fcta-h{font-family:var(--f-display);font-weight:800;font-size:clamp(24px,2.6vw,32px);line-height:1.15;color:#fff;max-width:24ch;margin:0;letter-spacing:-.01em}
+footer .fcta-p{margin:10px 0 0;color:#C4CFDB;font-size:16px}
+footer .fcta-a{display:flex;flex-wrap:wrap;gap:12px}
+footer .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:32px}
+footer .fgrid h3{font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+footer .fgrid ul{list-style:none;padding:0;margin:0;display:grid;gap:2px}
+footer .fgrid a{display:inline-block;padding:5px 0;color:#DCE3EB;font-size:15px;letter-spacing:0;text-transform:none;border:0}
+footer .fgrid a:hover{color:var(--lime)}
+footer .fbrand img{height:22px;width:auto;margin-bottom:14px}
+footer .f-blurb{font-size:15px;line-height:1.55;color:#C4CFDB;max-width:32ch;margin:0 0 10px}
+footer .fbase{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;margin-top:40px;padding-top:20px;border-top:1px solid var(--ink-line);font-size:14px;color:#C4CFDB}
+footer .fbase a{color:#DCE3EB;padding:6px 2px;display:inline-block}
+footer .fmark{display:none}
+@media (max-width:980px){footer .fgrid{grid-template-columns:1fr 1fr}footer .fbrand{grid-column:1/-1}}
+@media (max-width:560px){footer .fcta-a .btn{width:100%}}
+
+/* ── Forms ── */
+.inq-sec{background:var(--paper-2);border:0}
+.inq-form label,form label{font-family:var(--f-body);font-size:14.5px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink)}
+.inq-form .req,.inq-form .opt{font-size:12.5px;font-weight:500;color:var(--steel-2);letter-spacing:0;text-transform:none}
+.inq-form input:not([type=hidden]),.inq-form select,.inq-form textarea{width:100%;font-family:var(--f-body);font-size:16px;min-height:48px;padding:11px 13px;border:1.5px solid #B6BFC9;border-radius:8px;background:#fff;color:var(--ink)}
+.inq-form input:focus,.inq-form select:focus,.inq-form textarea:focus{border-color:var(--blue);outline:3px solid rgba(11,110,79,.22);outline-offset:0}
+.inq-form{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:clamp(20px,3vw,32px)}
+.inq-done{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:clamp(20px,3vw,32px)}
+.inq-copy .d2,.inq-copy h2{max-width:18ch}
+.inq-form .inq-note{font-size:14px;color:var(--steel)}
+.inq-fail{color:#A62A1F;font-weight:600;font-size:15px}
+.inq-fail a{color:inherit;text-decoration:underline}
+@media (max-width:760px){.inq-grid{grid-template-columns:1fr}.inq-form .inq-row{grid-template-columns:1fr}.inq-actions .btn{width:100%}}
+
+/* ── Inner page harmony ── */
+.cta-band{background:var(--ink)}
+.cta-band h2,.cta-band .d2{color:#fff}
+.faq-q,.faq .q{font-family:var(--f-display);font-weight:700}
+table{font-variant-numeric:tabular-nums}
+img{max-width:100%;height:auto}
+
+/* Quiet the "ops console" micro-labels from the old system so they stay legible */
+.num,.meta,.tag,.chip{letter-spacing:.01em}
+
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* Specificity fixes over chrome.css and legacy page CSS */
+header.nav .nav-cta a.btn,header.nav .nav-cta a.btn span{font-family:var(--f-body);text-transform:none;letter-spacing:0;font-weight:700;font-size:15px}
+header.nav .nav-cta a.btn{border-radius:8px;background:var(--cta);border-color:var(--cta);color:#fff}
+header.nav .nav-cta a.btn:hover{background:var(--ink);border-color:var(--ink)}
+.inq-form .inq-note,.inq-note{font-family:var(--f-body);font-size:14px;letter-spacing:0;text-transform:none;color:var(--steel)}
+.inq-sec h2,.inq-sec .d2,.inq-done h3{color:var(--ink)}
+.inq-form .req,.inq-form .opt{font-family:var(--f-body)}

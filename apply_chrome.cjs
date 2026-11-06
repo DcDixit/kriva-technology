@@ -14,6 +14,12 @@ const {
 } = require("./shared/studio");
 
 const PAGE_CURRENT = {
+  "kriva-market-au.html": null,
+  "kriva-insight-build-vs-buy-tms.html": null,
+  "kriva-insight-dispatch-software-cost.html": null,
+  "kriva-insight-quickbooks-xero-integration-guide.html": null,
+  "kriva-solution-freight-broker.html": "trucking",
+  "kriva-solution-fleet-management.html": "trucking",
   "kriva-redesign.html": null,
   "kriva-solution-trucking.html": "trucking",
   "kriva-solution-saas.html": "saas",
@@ -58,8 +64,8 @@ const PAGE_CURRENT = {
   "kriva-contact.html": null,
   "kriva-solutions-index.html": "solutions",
   "kriva-about.html": "about",
-  "kriva-process.html": "operations",
-  "kriva-insights-index.html": null,
+  "kriva-process.html": "process",
+  "kriva-insights-index.html": "insights",
   "kriva-insight-saas-mvp-uk-guide.html": null,
   "kriva-insight-trucking-dispatch-crm-guide.html": null,
   "kriva-insight-ai-in-product-design-2026.html": null,
@@ -73,7 +79,7 @@ const PAGE_CURRENT = {
   "kriva-terms.html": null,
 };
 
-const CSS_LINK = '<link rel="stylesheet" href="/shared/chrome.css">';
+const CSS_LINK = '<link rel="stylesheet" href="/shared/chrome.css?v=kds1">\n<link rel="stylesheet" href="/shared/kds.css?v=kds1">';
 const JS_TAG = [
   '<script src="/shared/chrome.js" defer></script>',
   '<!-- KRIVA_GA_START -->',
@@ -132,7 +138,9 @@ function resolveNav(current, opts = {}) {
 
 function headerHtml(current, opts = {}) {
   const persist = opts.persist ? " data-nav-persist" : "";
-  const nav = resolveNav(current, opts);
+  const group = { trucking: "solutions", saas: "solutions", integration: "solutions", operations: "services", services: "services" }[current] || current;
+  const on = (k) => (group === k || (k === "services" && opts.servicesCurrent) ? " is-current" : "");
+  const cu = (k) => (group === k ? ' aria-current="page"' : "");
   return `<header class="nav" id="nav"${persist}>
   <div class="nav-shell">
     <div class="wrap nav-in">
@@ -142,80 +150,63 @@ function headerHtml(current, opts = {}) {
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
-            <li class="nav-item${active(nav.mega, "trucking")}" data-mm>
-              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-trucking" aria-haspopup="true">Trucking<span class="nav-chev" aria-hidden="true"></span></button>
-              <div class="mm" id="mm-trucking" role="menu">
-                <div class="mm-head"><b>Trucking &amp; logistics</b><span>Ops software</span></div>
-                <ul class="mm-list">
-                  <li><a role="menuitem" href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics solutions</strong><em>Dispatch, fleet, drivers, and logistics platforms.</em></a></li>
-                  <li><a role="menuitem" href="/services/crm-development"><strong>Dispatch CRM &amp; TMS</strong><em>Consoles, bulk actions, supervisor oversight.</em></a></li>
-                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Fleet dashboards</strong><em>Route performance and exception handling.</em></a></li>
-                  <li><a role="menuitem" href="/services/mobile-applications"><strong>Driver mobile apps</strong><em>Load acceptance, status updates, documents.</em></a></li>
-                  <li><a role="menuitem" href="/solutions/car-transportation"><strong>Car transportation</strong><em>Quotes, tracking, and auto-transport ops.</em></a></li>
-                </ul>
-                <div class="mm-foot"><a href="/solutions/trucking-logistics">All trucking solutions <i>→</i></a></div>
-              </div>
-            </li>
-            <li class="nav-item${active(nav.mega, "saas")}" data-mm>
-              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-saas" aria-haspopup="true">SaaS<span class="nav-chev" aria-hidden="true"></span></button>
-              <div class="mm" id="mm-saas" role="menu">
-                <div class="mm-head"><b>SaaS products</b><span>UK &amp; US</span></div>
-                <ul class="mm-list">
-                  <li><a role="menuitem" href="/solutions/saas"><strong>SaaS product solutions</strong><em>Onboarding, dashboards, and MVPs that stick.</em></a></li>
-                  <li><a role="menuitem" href="/services/saas-platforms"><strong>SaaS product design</strong><em>Multi-tenant UX, admin panels, permissions.</em></a></li>
-                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboards &amp; admin panels</strong><em>Analytics and operational views for daily use.</em></a></li>
-                  <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
-                </ul>
-                <div class="mm-foot"><a href="/solutions/saas">All SaaS solutions <i>→</i></a></div>
-              </div>
-            </li>
-            <li class="nav-item${active(nav.mega, "integration")}" data-mm>
-              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-integration" aria-haspopup="true">Integration<span class="nav-chev" aria-hidden="true"></span></button>
-              <div class="mm" id="mm-integration" role="menu">
-                <div class="mm-head"><b>Integrations</b><span>Finance &amp; APIs</span></div>
-                <ul class="mm-list">
-                  <li><a role="menuitem" href="/solutions/accounting-integrations"><strong>QuickBooks &amp; Xero</strong><em>Sync and reconciliation finance teams trust.</em></a></li>
-                  <li><a role="menuitem" href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><em>Reliable connectors with clear error handling.</em></a></li>
-                </ul>
-                <div class="mm-foot"><a href="/solutions/accounting-integrations">Explore integrations <i>→</i></a></div>
-              </div>
-            </li>
-            <li class="nav-item${active(nav.mega, "operations")}" data-mm>
-              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-operations" aria-haspopup="true">Operations<span class="nav-chev" aria-hidden="true"></span></button>
-              <div class="mm" id="mm-operations" role="menu">
-                <div class="mm-head"><b>Operations</b><span>Tooling &amp; delivery</span></div>
-                <ul class="mm-list">
-                  <li><a role="menuitem" href="/services/crm-development"><strong>CRM &amp; ops consoles</strong><em>Pipelines and internal tools matched to real desks.</em></a></li>
-                  <li><a role="menuitem" href="/services/automation-systems"><strong>Automation workflows</strong><em>Human-gated triage, docs, and internal tooling.</em></a></li>
-                  <li><a role="menuitem" href="/process"><strong>How we work</strong><em>Discovery through launch: clear gates, weekly demos.</em></a></li>
-                </ul>
-                <div class="mm-foot"><a href="/process">See the process <i>→</i></a></div>
-              </div>
-            </li>
-            <li class="nav-item${nav.servicesCurrent ? " is-active" : ""}" data-mm>
-              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-services" aria-haspopup="true">Services<span class="nav-chev" aria-hidden="true"></span></button>
-              <div class="mm" id="mm-services" role="menu">
-                <div class="mm-head"><b>Services</b><span>Product &amp; ops</span></div>
-                <ul class="mm-list">
-                  <li><a role="menuitem" href="/services/crm-development"><strong>CRM &amp; dispatch development</strong><em>Consoles, pipelines, and desks matched to real shifts.</em></a></li>
-                  <li><a role="menuitem" href="/services/dashboard-design"><strong>Dashboard design</strong><em>Exception queues, KPIs, and ops views above the fold.</em></a></li>
-                  <li><a role="menuitem" href="/services/product-design"><strong>Product design &amp; UX</strong><em>Research, flows, prototypes, launch-ready UI.</em></a></li>
-                  <li><a role="menuitem" href="/services/api-integrations"><strong>Integrations &amp; APIs</strong><em>Connectors with retry, validation, and operator visibility.</em></a></li>
-                  <li><a role="menuitem" href="/services/web-development"><strong>Web development</strong><em>Marketing sites and authenticated product surfaces.</em></a></li>
-                </ul>
-                <div class="mm-foot">
-                  <p class="mm-aside">Marketing &amp; brand (secondary): <a href="/services/graphic-design">Graphic design</a> · <a href="/services/logo-design">Logo design</a> · <a href="/services/seo-digital-marketing">SEO &amp; marketing</a></p>
-                  <a href="/services">All services <i>→</i></a>
+            <li class="nav-item${on("solutions")}" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-solutions" aria-haspopup="true">Solutions<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm mm--wide" id="mm-solutions">
+                <div class="mm-col">
+                  <p class="mm-label">Trucking and transportation</p>
+                  <ul class="mm-list">
+                    <li><a href="/solutions/trucking-logistics"><strong>Trucking software</strong><em>Dispatch CRM and TMS for carriers.</em></a></li>
+                    <li><a href="/solutions/freight-broker-software"><strong>Freight broker software</strong><em>Quotes, carrier sales, and load tracking.</em></a></li>
+                    <li><a href="/solutions/fleet-management-software"><strong>Fleet management software</strong><em>Dashboards, driver apps, and records.</em></a></li>
+                    <li><a href="/solutions/car-transportation"><strong>Auto transport software</strong><em>Quote-to-delivery for brokers and carriers.</em></a></li>
+                  </ul>
+                </div>
+                <div class="mm-col">
+                  <p class="mm-label">SaaS and finance</p>
+                  <ul class="mm-list">
+                    <li><a href="/solutions/saas"><strong>SaaS product development</strong><em>MVPs, onboarding, and admin panels.</em></a></li>
+                    <li><a href="/solutions/accounting-integrations"><strong>QuickBooks and Xero integrations</strong><em>Sync and reconciliation finance can trust.</em></a></li>
+                  </ul>
+                  <a class="mm-all" href="/solutions">All solutions <i>→</i></a>
                 </div>
               </div>
             </li>
-            <li><a class="nav-link" href="/work"${nav.work ? ' aria-current="page"' : ""}>Work</a></li>
-            <li><a class="nav-link" href="/about"${nav.about ? ' aria-current="page"' : ""}>About</a></li>
+            <li class="nav-item${on("services")}" data-mm>
+              <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-services" aria-haspopup="true">Services<span class="nav-chev" aria-hidden="true"></span></button>
+              <div class="mm mm--wide" id="mm-services">
+                <div class="mm-col">
+                  <p class="mm-label">Build</p>
+                  <ul class="mm-list">
+                    <li><a href="/services/crm-development"><strong>Custom CRM development</strong></a></li>
+                    <li><a href="/services/saas-platforms"><strong>SaaS platforms</strong></a></li>
+                    <li><a href="/services/mobile-applications"><strong>Mobile app development</strong></a></li>
+                    <li><a href="/services/web-development"><strong>Web development</strong></a></li>
+                    <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
+                    <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                  </ul>
+                </div>
+                <div class="mm-col">
+                  <p class="mm-label">Design</p>
+                  <ul class="mm-list">
+                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
+                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
+                    <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                  </ul>
+                  <a class="mm-all" href="/services">All services <i>→</i></a>
+                </div>
+              </div>
+            </li>
+            <li><a class="nav-link${on("work")}" href="/work"${cu("work")}>Work</a></li>
+            <li><a class="nav-link${on("process")}" href="/process"${cu("process")}>Process</a></li>
+            <li><a class="nav-link${on("about")}" href="/about"${cu("about")}>About</a></li>
+            <li><a class="nav-link${on("insights")}" href="/insights"${cu("insights")}>Insights</a></li>
           </ul>
         </nav>
       </div>
       <div class="nav-cta">
-        <a href="${CTA_BOOK_HREF}" class="btn sm"><span>${CTA_PRIMARY_COMPACT_LABEL}</span><i>→</i></a>
+        <a href="${CTA_BOOK_HREF}" class="btn sm"><span class="nav-cta-long">${CTA_PRIMARY_LABEL}</span><span class="nav-cta-short">Book a call</span></a>
         <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -227,97 +218,97 @@ function headerHtml(current, opts = {}) {
     <div class="sheet-item">
       <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-solutions">Solutions<span class="plus" aria-hidden="true"></span></button>
       <ul class="sheet-sub" id="sheet-solutions">
-        <li><a href="/solutions/trucking-logistics"><strong>Trucking &amp; logistics</strong><span>Dispatch, fleet, drivers</span></a></li>
-        <li><a href="/solutions/saas"><strong>SaaS products</strong><span>Onboarding &amp; MVPs</span></a></li>
-        <li><a href="/solutions/car-transportation"><strong>Car transportation</strong><span>Quotes &amp; tracking</span></a></li>
-        <li><a href="/solutions/accounting-integrations"><strong>Accounting &amp; finance</strong><span>QuickBooks &amp; Xero</span></a></li>
-        <li><a href="/solutions" class="sheet-sol-all">All solutions <i>→</i></a></li>
+        <li><a href="/solutions/trucking-logistics"><strong>Trucking software</strong><span>Dispatch CRM and TMS</span></a></li>
+        <li><a href="/solutions/freight-broker-software"><strong>Freight broker software</strong><span>Quotes and carrier sales</span></a></li>
+        <li><a href="/solutions/fleet-management-software"><strong>Fleet management software</strong><span>Dashboards and driver apps</span></a></li>
+        <li><a href="/solutions/car-transportation"><strong>Auto transport software</strong><span>Quote to delivery</span></a></li>
+        <li><a href="/solutions/saas"><strong>SaaS product development</strong><span>MVPs and onboarding</span></a></li>
+        <li><a href="/solutions/accounting-integrations"><strong>QuickBooks and Xero</strong><span>Sync and reconciliation</span></a></li>
       </ul>
     </div>
     <div class="sheet-item">
       <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-services">Services<span class="plus" aria-hidden="true"></span></button>
       <ul class="sheet-sub" id="sheet-services">
-        <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong><span>Product interfaces</span></a></li>
-        <li><a href="/services/web-development"><strong>Web development</strong><span>Sites &amp; apps</span></a></li>
-        <li><a href="/services/crm-development"><strong>CRM development</strong><span>Ops consoles</span></a></li>
+        <li><a href="/services/crm-development"><strong>Custom CRM development</strong><span>Consoles and pipelines</span></a></li>
         <li><a href="/services/saas-platforms"><strong>SaaS platforms</strong><span>Multi-tenant products</span></a></li>
-        <li><a href="/services/automation-systems"><strong>Automation systems</strong><span>Workflows &amp; tooling</span></a></li>
+        <li><a href="/services/mobile-applications"><strong>Mobile app development</strong><span>Driver and field apps</span></a></li>
+        <li><a href="/services/api-integrations"><strong>API integrations</strong><span>Connectors and retries</span></a></li>
+        <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
+        <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
+        <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
     <div class="sheet-item"><a class="big" href="/work">Work</a></div>
-    <div class="sheet-item">
-      <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-company">Company<span class="plus" aria-hidden="true"></span></button>
-      <ul class="sheet-sub" id="sheet-company">
-        <li><a href="/about"><strong>About</strong><span>Who we are</span></a></li>
-        <li><a href="/process"><strong>Process</strong><span>How we deliver</span></a></li>
-        <li><a href="/technologies"><strong>Technologies</strong><span>Stack &amp; tools</span></a></li>
-        <li><a href="/industries"><strong>Industries</strong><span>Sectors we serve</span></a></li>
-        <li><a href="/insights"><strong>Insights</strong><span>Guides &amp; articles</span></a></li>
-        <li><a href="/careers"><strong>Careers</strong><span>Join the team</span></a></li>
-        <li><a href="/faq"><strong>FAQ</strong><span>Common questions</span></a></li>
-        <li><a href="/contact"><strong>Contact</strong><span>Book or brief</span></a></li>
-      </ul>
-    </div>
+    <div class="sheet-item"><a class="big" href="/process">Process</a></div>
+    <div class="sheet-item"><a class="big" href="/about">About</a></div>
+    <div class="sheet-item"><a class="big" href="/insights">Insights</a></div>
+    <div class="sheet-item"><a class="big" href="/faq">FAQ</a></div>
     <div class="sheet-cta">
       <a href="${CTA_BOOK_HREF}" class="btn on-dark"><span>${CTA_PRIMARY_LABEL}</span><i>→</i></a>
       <a href="${CTA_BRIEF_HREF}" class="btn ghost on-dark"><span>${CTA_SECONDARY_LABEL}</span><i>→</i></a>
     </div>
   </div>
   <div class="sheet-foot">
-    <a href="${CTA_BRIEF_HREF}">${CTA_SECONDARY_LABEL}</a>
-    <a href="${CTA_BOOK_HREF}">${CTA_PRIMARY_LABEL}</a>
     <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
-    <span>Remote-first product studio</span>
+    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
   </div>
 </div>`;
 }
 
 const FOOTER_HTML = `<footer>
   <div class="wrap">
-    <div class="fgrid">
+    <div class="fcta">
       <div>
-        <h3>Get in touch</h3>
-        <a href="${CTA_BRIEF_HREF}">${CTA_SECONDARY_LABEL}</a><br>
-        <a href="${CTA_BOOK_HREF}">${CTA_PRIMARY_LABEL}</a><br>
-        <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
-        <p class="f-blurb">Product design, UI/UX, and engineering for operators and SaaS teams. Remote-first.</p>
-        <div class="fsocial">
-          <a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a>
-        </div>
+        <p class="fcta-h">Not sure where to start? Show us the spreadsheet your team works around.</p>
+        <p class="fcta-p">Free, 20 minutes, no pitch deck. We reply within one business day.</p>
       </div>
-      <nav aria-label="Trucking and logistics"><h3>Trucking &amp; logistics</h3><ul>
-        <li><a href="/solutions/trucking-logistics">Trucking &amp; logistics solutions</a></li>
-        <li><a href="/services/crm-development">Dispatch CRM &amp; TMS</a></li>
-        <li><a href="/services/dashboard-design">Fleet dashboards</a></li>
-        <li><a href="/services/mobile-applications">Driver mobile apps</a></li>
-        <li><a href="/solutions/car-transportation">Car transportation</a></li></ul></nav>
-      <nav aria-label="SaaS and integrations"><h3>SaaS &amp; integrations</h3><ul>
-        <li><a href="/solutions/saas">SaaS product solutions</a></li>
-        <li><a href="/solutions/accounting-integrations">QuickBooks &amp; Xero</a></li>
-        <li><a href="/services/saas-platforms">SaaS product design</a></li>
-        <li><a href="/services/api-integrations">Integrations &amp; APIs</a></li>
-        <li><a href="/services/automation-systems">Automation workflows</a></li></ul></nav>
+      <div class="fcta-a">
+        <a class="btn on-dark" href="${CTA_BOOK_HREF}"><span>${CTA_PRIMARY_LABEL}</span><i>→</i></a>
+        <a class="btn ghost on-dark" href="${CTA_BRIEF_HREF}"><span>${CTA_SECONDARY_LABEL}</span><i>→</i></a>
+      </div>
+    </div>
+    <div class="fgrid">
+      <div class="fbrand">
+        <img src="/brand/logos/kriva-wordmark-inverse.svg" alt="KRIVA Technologies" width="136" height="26" loading="lazy">
+        <p class="f-blurb">Custom software for trucking, freight, and SaaS companies. Designed and built by one in-house team in Ahmedabad, India.</p>
+        <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+      </div>
+      <nav aria-label="Solutions"><h3>Solutions</h3><ul>
+        <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
+        <li><a href="/solutions/freight-broker-software">Freight broker software</a></li>
+        <li><a href="/solutions/fleet-management-software">Fleet management software</a></li>
+        <li><a href="/solutions/car-transportation">Auto transport software</a></li>
+        <li><a href="/solutions/saas">SaaS product development</a></li>
+        <li><a href="/solutions/accounting-integrations">QuickBooks and Xero integrations</a></li></ul></nav>
+      <nav aria-label="Services"><h3>Services</h3><ul>
+        <li><a href="/services/crm-development">Custom CRM development</a></li>
+        <li><a href="/services/mobile-applications">Mobile app development</a></li>
+        <li><a href="/services/api-integrations">API integrations</a></li>
+        <li><a href="/services/automation-systems">Workflow automation</a></li>
+        <li><a href="/services/dashboard-design">Business dashboards</a></li>
+        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
-        <li><a href="/solutions">Solutions</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/services/graphic-design">Graphic design</a></li>
-        <li><a href="/services/logo-design">Logo design</a></li>
-        <li><a href="/services/seo-digital-marketing">SEO &amp; digital marketing</a></li>
-        <li><a href="/industries">Industries</a></li>
-        <li><a href="/markets">Markets</a></li>
         <li><a href="/work">Work</a></li>
-        <li><a href="/about">About</a></li>
         <li><a href="/process">Process</a></li>
-        <li><a href="/technologies">Tools &amp; stack</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/technologies">Technologies</a></li>
         <li><a href="/insights">Insights</a></li>
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
+      <nav aria-label="Markets"><h3>Markets</h3><ul>
+        <li><a href="/markets/us">United States</a></li>
+        <li><a href="/markets/uk">United Kingdom</a></li>
+        <li><a href="/markets/au">Australia</a></li>
+        <li><a href="/markets/uae">United Arab Emirates</a></li>
+        <li><a href="/markets/ca">Canada</a></li>
+        <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="151"></p>
     <div class="fbase">
-      <span>© 2026 Kriva Technologies</span>
+      <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
     </div>
   </div>
@@ -344,7 +335,7 @@ function stripOldNavCss(html) {
 
 function ensureAssets(html) {
   // Collapse all chrome.css links (versioned or not) to a single tag before </head>
-  html = html.replace(/\s*<link rel="stylesheet" href="\/?shared\/chrome\.css(?:\?[^"]*)?">\s*/g, "\n");
+  html = html.replace(/\s*<link rel="stylesheet" href="\/?shared\/(?:chrome|kds)\.css(?:\?[^"]*)?">\s*/g, "\n");
   html = html.replace("</head>", `${CSS_LINK}\n</head>`);
   html = html.replace(/\s*<!-- KRIVA_GA_START -->[\s\S]*?<!-- KRIVA_GA_END -->\s*/g, "\n");
   html = html.replace(/\s*<!-- KRIVA_CLARITY_START -->[\s\S]*?<!-- KRIVA_CLARITY_END -->\s*/g, "\n");
