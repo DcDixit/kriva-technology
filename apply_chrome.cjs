@@ -80,7 +80,7 @@ const PAGE_CURRENT = {
   "kriva-terms.html": null,
 };
 
-const CSS_LINK = '<link rel="stylesheet" href="/shared/chrome.css?v=logo2">\n<link rel="stylesheet" href="/shared/kds.css?v=logo2">';
+const CSS_LINK = '<link rel="stylesheet" href="/shared/chrome.css?v=brand1">\n<link rel="stylesheet" href="/shared/kds.css?v=brand1">';
 const JS_TAG = [
   '<script src="/shared/chrome.js" defer></script>',
   '<!-- KRIVA_GA_START -->',

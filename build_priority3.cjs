@@ -6,8 +6,8 @@ const TOKENS = `/* Shared KRIVA tokens + primitives */
   --paper:#EAEAE4; --paper-2:#F1F1EC; --white:#FFFFFF;
   --ink:#0E1216; --ink-2:#161C22; --ink-line:#232B33; --ink-dim:#8C98A4;
   --steel:#5C6670; --steel-2:#7A838D; --rule:#D2D2C9; --rule-soft:#DFDFD8;
-  --blue:#1B44C8; --amber:#DB9B1F; --green:#1B7A54; --violet:#5B44C8;
-  --lime:#5FD3A0; --lilac:#B7A9FF;
+  --blue:#1B44C8; --amber:#DB9B1F; --green:#4F46E5; --violet:#5B44C8;
+  --lime:#A5B4FC; --lilac:#B7A9FF;
   --f-display:'Archivo',system-ui,sans-serif;
   --f-body:'Inter',system-ui,sans-serif;
   --f-mono:'IBM Plex Mono',ui-monospace,monospace;

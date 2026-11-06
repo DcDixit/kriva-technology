@@ -1,5 +1,5 @@
 /* KRIVA design system, global layer. Loaded last on every page.
-   Road-signage display type (Overpass), interstate-sign green for action, warm paper, navy ink.
+   Figtree for all type, KRIVA logo indigo for action, warm paper, navy ink.
    Page-specific CSS stays in its own file; this layer makes every template read as one site. */
 
 html{scroll-padding-top:88px}
@@ -7,6 +7,11 @@ body{font-size:17px;line-height:1.6;color:var(--ink);-webkit-font-smoothing:anti
 
 /* ── Type ── */
 h1,h2,h3,.d1,.d2,.d3,.hp-h2,.hp-h3{font-family:var(--f-display);color:inherit;font-stretch:normal}
+button,input,select,textarea,optgroup{font-family:var(--f-body)}
+/* One heading weight per level on every template. */
+main h1{font-weight:700!important}
+main h2{font-weight:700!important}
+main h3,main h4{font-weight:600!important}
 main h1,.d1{font-weight:800;letter-spacing:-.02em;line-height:1.06;font-size:clamp(38px,5vw,62px);text-wrap:balance;max-width:20ch}
 main h2,.d2{font-weight:800;letter-spacing:-.015em;line-height:1.12;font-size:clamp(28px,3.4vw,42px);text-wrap:balance}
 main h3,.d3{font-weight:700;letter-spacing:-.005em;line-height:1.25}
@@ -69,7 +74,7 @@ footer .fcta-a{display:flex;flex-wrap:wrap;gap:12px}
 .inq-form label,form label{font-family:var(--f-body);font-size:14.5px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink)}
 .inq-form .req,.inq-form .opt{font-size:12.5px;font-weight:500;color:var(--steel-2);letter-spacing:0;text-transform:none}
 .inq-form input:not([type=hidden]),.inq-form select,.inq-form textarea{width:100%;font-family:var(--f-body);font-size:16px;min-height:48px;padding:11px 13px;border:1.5px solid #B6BFC9;border-radius:8px;background:#fff;color:var(--ink)}
-.inq-form input:focus,.inq-form select:focus,.inq-form textarea:focus{border-color:var(--blue);outline:3px solid rgba(11,110,79,.22);outline-offset:0}
+.inq-form input:focus,.inq-form select:focus,.inq-form textarea:focus{border-color:var(--blue);outline:3px solid rgba(79,70,229,.22);outline-offset:0}
 .inq-form{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:clamp(20px,3vw,32px)}
 .inq-done{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:clamp(20px,3vw,32px)}
 .inq-copy .d2,.inq-copy h2{max-width:18ch}
@@ -167,3 +172,16 @@ main:has(form)~footer .fcta{display:none}
 .mkt-proof a{font-family:var(--f-body)!important;font-size:15px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important;min-height:44px;display:inline-flex;align-items:center;padding:8px 14px!important;border:1px solid var(--rule)!important;border-radius:999px!important;background:#fff!important;color:var(--ink)!important;text-decoration:none!important}
 .mkt-proof a:hover{border-color:var(--blue)!important;color:var(--blue)!important}
 .mkt-card{border-radius:12px}
+
+/* Logo indigo is too dark for text on navy: dark surfaces use the pale indigo accent. */
+main .on-ink a:not(.btn):not([class]),main .lp-case a:not(.btn):not([class]),main .ind-tile.ink a:not(.btn):not([class]),
+main .ab-week em,main .wk-mkt-book time,main .cap .k,main .crm-problems .n,main .plat-problems .n,main .app-action{color:var(--lime)!important}
+/* Pale accent is too light on white panels: those use logo indigo. */
+.inq-form label .req,main .wk-ff-count,main .qstate.q-live,main .paper .cap .k{color:var(--blue)!important}
+/* Menu close icon sits on the white header bar. */
+header.nav.open .burger{color:var(--ink)}
+
+/* Forms on dark contact bands sit on a white card, so labels keep their contrast */
+section#inquire .inq-form,section#inquire .inq-done{background:#fff!important;color:var(--ink)!important;border-radius:14px}
+section#inquire .inq-form label,section#inquire .inq-form .req,section#inquire .inq-form .opt,section#inquire .inq-note{color:var(--ink)!important}
+section#inquire .inq-form .req,section#inquire .inq-form .opt{color:var(--steel-2)!important}
