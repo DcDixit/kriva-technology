@@ -4,7 +4,7 @@
    Usage: node _qa_journey.cjs   (needs `npm run preview` on 5177) */
 const puppeteer = require("puppeteer");
 const fs = require("fs");
-const BASE = "http://localhost:5177";
+const BASE = process.env.QA_BASE || "http://localhost:5177";
 const CHROME = "C:/Program Files/Google/Chrome/Application/chrome.exe";
 const { FILE_MAP } = require("./_crawl_links.js");
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -120,7 +120,7 @@ async function fill(p, sel) {
     await sleep(1500);
     await p.evaluate(() => { document.dispatchEvent(new Event("visibilitychange")); });
     await p.goto(BASE + "/about?ga_debug=1", { waitUntil: "networkidle2" });
-    await sleep(2500);
+    await sleep(6000);
     await sleep(800);
     const count = (n) => hits.filter((h) => h === n).length;
     results.gaHits = hits.join(",");
