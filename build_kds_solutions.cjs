@@ -23,7 +23,7 @@ const PAGES = [
       ["Paperwork holds up cash", "Rate confirmations, proof of delivery, and invoices sit in different places, so billing waits on someone finding a PDF."],
       ["Margin shows up at month-end", "You find out which customers and lanes made money long after you could have acted on it."],
     ],
-    delH: "What we build for brokerages",
+    delH: "What a brokerage build can include",
     del: [
       ["Quoting and customer management", "Quote history by lane and customer, won and lost tracking, and follow-ups that don't depend on someone's inbox."],
       ["Carrier sales and capacity", "A carrier database your whole team shares, lane preferences, offer tracking, and load board connections where your plan and their API allow it."],
@@ -32,12 +32,12 @@ const PAGES = [
       ["Documents and billing", "Rate confirmations, proof of delivery, and invoices attached to the load, and synced to QuickBooks or Xero."],
       ["Margin and team reporting", "Margin by load, lane, customer, and broker, available while you can still act on it."],
     ],
-    improveH: "What changes for your team",
+    improveH: "What this is designed to change",
     improve: ["Every broker works from the same load record and carrier history", "New staff can cover a desk without inheriting a personal spreadsheet", "Billing starts when delivery is confirmed, not when someone finds the paperwork", "Owners see margin during the month, not after it"],
     buyH: "Should a brokerage build or buy?",
     buy: "Buy a TMS if your freight and process are fairly standard. A good off-the-shelf product is cheaper and quicker. Build when your edge is how you quote, cover, or serve a niche, and the software keeps forcing workarounds. Many brokerages land in the middle: keep the TMS as the record, and build the desk tools around it.",
     buyLink: ["/insights/build-vs-buy-tms", "Read our build vs buy guide"],
-    proof: "We have not yet published a freight broker case study. Our closest published work is ShiftRail, a dispatch console for a US trucking desk handling 400+ routes a day, with 32% less manual handle time. It solves many of the same problems: bulk work, exceptions, and a side spreadsheet.",
+    proof: "We have not published a freight broker case study, so ask us on the fit call what we have built that is closest to your operation. Our nearest published case is ShiftRail, a dispatch console for a US trucking desk, which deals with similar problems: bulk work, exceptions, and a side spreadsheet.",
     faq: [
       ["Can this work with our existing TMS?", "Usually, yes, if the TMS offers an API or data export. We build beside it and only replace parts of it when that clearly pays off. We check what your TMS allows during discovery."],
       ["Can you connect to load boards and tracking providers?", "Where the provider offers an API and your plan includes access. Access rules vary by provider, so we confirm this before scoping rather than assuming it."],
@@ -56,7 +56,7 @@ const PAGES = [
     crumb: "Fleet management software",
     kicker: "For fleet owners and operators",
     h1: "Custom fleet management software built around your operation",
-    lede: "We design and build fleet dashboards, driver apps, and maintenance and compliance records that bring your ELD, fuel, and accounting data into one place, so your team stops rebuilding it by hand.",
+    lede: "We design and build fleet dashboards and driver apps. Depending on your scope, they can bring your ELD, fuel, maintenance, and accounting data into one place, so your team stops rebuilding it by hand.",
     ui: { head: "Fleet today", sub: "Needs attention", rows: [["Truck 214", "Service overdue", "r"], ["Truck 187", "Permit in 9 days", "a"], ["Driver J. Ruiz", "Medical card due", "a"], ["Truck 203", "On route", "g"]] },
     probH: "Why fleets outgrow their tools",
     prob: [
@@ -67,7 +67,7 @@ const PAGES = [
       ["Drivers fight the app", "Tools built for the office fail one-handed in a yard with a weak signal."],
       ["Nobody trusts cost per mile", "Without one source of data, the number changes depending on who pulled it."],
     ],
-    delH: "What we build for fleets",
+    delH: "What a fleet system can include",
     del: [
       ["Fleet operations dashboard", "Vehicles, drivers, and exceptions on one screen, sorted by what needs action today rather than by chart."],
       ["Driver mobile apps", "Status updates, documents, and proof of delivery that keep working offline and sync when the signal returns."],
@@ -76,15 +76,15 @@ const PAGES = [
       ["ELD, fuel, and telematics data", "We read data from your existing provider's API. We don't sell ELD hardware, and you keep the provider you already use."],
       ["Cost and accounting sync", "Fuel, maintenance, and settlement data connected to QuickBooks or Xero, so cost per mile has one source."],
     ],
-    improveH: "What changes for your team",
+    improveH: "What this is designed to change",
     improve: ["One place to see which trucks and drivers need attention today", "Planned maintenance instead of roadside surprises", "IFTA miles and fuel receipts kept by jurisdiction as trips happen, ready for your accountant or filing tool", "Cost per mile that everyone pulls from the same data"],
     buyH: "Should a fleet build or buy?",
     buy: "Most fleets should start with an established telematics and ELD platform, and we won't try to replace that hardware. Custom software makes sense on top of it, when your workflows cross several systems, or the reports you need don't exist in any of them. We are not legal or tax advisers, so your compliance owner signs off on the rules.",
     buyLink: ["/insights/build-vs-buy-tms", "Read our build vs buy guide"],
-    proof: "Our published trucking work includes ShiftRail, a dispatch console for a US desk handling 400+ routes a day, with 32% less manual handle time, rolled out beside the existing TMS. The same approach applies here: observe the work, ship weekly, and roll out in phases.",
+    proof: "We have not published a fleet management case study, so ask us on the fit call what we have built that is closest to your operation. Our nearest published case is ShiftRail, a dispatch console rolled out beside the existing TMS. The same approach applies here: observe the work, ship weekly, and roll out in phases.",
     faq: [
       ["Will this replace our ELD provider?", "No. We read data from your provider where its API allows it. ELD devices and their certification stay with your provider."],
-      ["Can drivers use the app with poor signal?", "Yes. We design driver flows to queue updates offline and sync when the connection returns, and we test them on real devices."],
+      ["Can drivers use the app with poor signal?", "That is a core design requirement for driver apps: updates queue offline and sync when the connection returns. We confirm the devices and conditions to test against during discovery."],
       ["How long does a first version take?", "A focused first version is usually 6 to 10 weeks after a 1 to 2 week discovery. A full platform with integrations usually runs 12 to 20 weeks."],
       ["Who owns the software?", "You do. Code, designs, and documentation transfer to you at project close or earlier."],
     ],
@@ -162,8 +162,9 @@ function build(p) {
 
 <section class="k-sec" aria-labelledby="delH">
   <div class="wrap">
-    <div class="k-head"><p class="k-kicker">What we deliver</p><h2 id="delH">${p.delH}</h2></div>
+    <div class="k-head"><p class="k-kicker">What we can scope with you</p><h2 id="delH">${p.delH}</h2></div>
     <div class="k-grid3">${p.del.map((x) => `<article class="k-card k-card--line"><h3>${x[0]}</h3><p>${x[1]}</p></article>`).join("")}</div>
+    <p class="k-note k-scope-note">We scope each of these with you during discovery, based on what your providers allow and what your operation needs. Compliance rules stay with your compliance owner, and we do not give legal or tax advice.</p>
     <div class="k-int-logos k-sol-logos">
       <img src="/brand/logos/intuit-quickbooks.svg" alt="Intuit QuickBooks" width="165" height="42" loading="lazy">
       <img src="/brand/logos/xero.svg" alt="Xero" width="52" height="52" loading="lazy">
