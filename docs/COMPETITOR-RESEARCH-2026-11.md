@@ -57,7 +57,7 @@ Nothing on the KRIVA site copies these companies' words, layouts, images, or cod
 | Everything for everyone: AI, SAP, AR/VR, gaming, real estate | Narrow focus: trucking, SaaS, and accounting integrations |
 | Sales-led first contact | The people building the product take the first call, and "don't build it" is a possible answer |
 | Build-first bias | States honestly when a boxed TMS is the better buy |
-| Same red or orange CTA, same heavy sans | A distinct look: road-signage type and interstate-sign green |
+| Same red or orange CTA, same heavy sans | A distinct look: logo indigo and one typeface (Figtree), with working product screens instead of stock art |
 
 ## What was deliberately not adopted
 
@@ -65,3 +65,29 @@ Nothing on the KRIVA site copies these companies' words, layouts, images, or cod
 - **"Hire developers in India" keywords.** This attracts staff-augmentation shoppers, not the owner-operators KRIVA wants.
 - **City and state location pages.** With no local office or local proof, they would be thin doorway pages. See the market note in the report.
 - **4,000-word guides on every page.** Service pages stay readable, and depth lives in the guides.
+
+## US and UK agency benchmark, 6 November 2026
+
+Public home pages and one case study each, read as text, so fonts and exact colours were not assessed. Their claims are their own and unverified.
+
+| Company | Headline | Main CTA | Proof they show | First contact |
+|---|---|---|---|---|
+| thoughtbot (US/UK) | "When the stakes are high, experience matters" | Let's talk | About 24 client logos, role-attributed quotes | One link; US and UK phone numbers |
+| Atomic Object (US) | "Custom Software Development + Design" | Tell Us About Your Project | Client logos, Clutch ranking, years in business, metric row on cases | Consultation with a managing partner |
+| MojoTech (US) | "It's time to get real about AI." | Let's build what's next | Named testimonials, outcome metrics, partner logos | Fixed 4-hour workshop with a named deliverable |
+| Clearleft (UK) | "Your strategic design partner" | Email us about your design challenge | Named clients, conference, podcast, qualitative outcomes | Email a named cofounder |
+| ustwo (UK) | "Digital products people stick with" | Contact us | Client names, dated client survey score, B Corp, ISO 27001, Cyber Essentials | Contact page |
+| Fueled (US) | "Digital Done Right" | Explore Our Work | About 20 client logos, partner status, awards | Contact page; email and phone |
+
+### What they do better, and what KRIVA did about it
+
+| Their advantage | KRIVA response | Status |
+|---|---|---|
+| A clear first step with a known outcome (MojoTech, Atomic Object) | Hero panel on commercial pages: fit call, discovery, build, plus what to bring | Done |
+| A named person (Clearleft, Atomic Object) | Founder named in the About hero | Done. Naming who replies to inquiries is an owner decision |
+| Case studies built on sector, scope, and deliverables (Atomic Object, Clearleft) | Kept that structure and removed internal notes; each case now explains what "representative" means | Done |
+| Named clients and quotes | Not adopted. KRIVA has no written approval | Owner: see CLAIMS-TO-CONFIRM |
+| Third-party proof: Clutch, certifications, dated client surveys | Not adopted. KRIVA holds none of these yet | Owner: off-site work |
+| Contact form or email reachable at once | Contact form now starts on the first screen | Done |
+
+Nothing was copied from these sites.

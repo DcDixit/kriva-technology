@@ -140,11 +140,11 @@ main .eyebrow+h1,main p+h1{margin-top:10px}
 .eyebrow{margin-bottom:8px}
 
 /* Dark heroes: everything readable */
-.ph,.ph p{color:#DCE3EB}
-.ph h1{color:#fff}
-.ph .crumbs a,.ph nav[aria-label="Breadcrumb"] a,.ph .crumbs li{color:#C4CFDB!important}
-.ph .eyebrow{color:var(--lime)}
-.ph p[class],.ph dt,.ph dd,.ph .scope-k{color:#DCE3EB!important}
+body.case-fleet .ph,body.case-fleet .ph p{color:#DCE3EB}
+body.case-fleet .ph h1{color:#fff}
+body.case-fleet .ph .crumbs a,body.case-fleet .ph nav[aria-label="Breadcrumb"] a,body.case-fleet .ph .crumbs li{color:#C4CFDB!important}
+body.case-fleet .ph .eyebrow{color:var(--lime)}
+body.case-fleet .ph p[class],body.case-fleet .ph dt,body.case-fleet .ph dd,body.case-fleet .ph .scope-k{color:#DCE3EB!important}
 
 main:has(form)~footer .fcta{display:none}
 .k-newlinks{padding-block:clamp(40px,5vw,64px)}
@@ -185,3 +185,65 @@ header.nav.open .burger{color:var(--ink)}
 section#inquire .inq-form,section#inquire .inq-done{background:#fff!important;color:var(--ink)!important;border-radius:14px}
 section#inquire .inq-form label,section#inquire .inq-form .req,section#inquire .inq-form .opt,section#inquire .inq-note{color:var(--ink)!important}
 section#inquire .inq-form .req,section#inquire .inq-form .opt{color:var(--steel-2)!important}
+
+
+/* Case-study note: plain, readable explanation of representative work */
+.mrail-note{font-size:15px;line-height:1.55;color:var(--steel);max-width:78ch}
+.mrail-note a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+
+/* Inner-page hero: copy on the left, a useful next-step panel on the right */
+.ip-hero.k-hero-split{max-width:none}
+.k-hero-split{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.85fr);column-gap:clamp(32px,5vw,72px);align-items:start}
+.k-hero-split>*{grid-column:1;min-width:0}
+.k-hero-split>.k-aside{grid-column:2;grid-row:1/span 8}
+.k-hero-split>.crumbs{grid-column:1/-1}
+.mkt-hero .k-hero-split>.k-aside{grid-row:2/span 8}
+.k-hero-split .ip-title,.k-hero-split .d1{font-size:clamp(34px,3.7vw,52px);max-width:none}
+.k-hero-split .ip-title--lines span{white-space:normal}
+.k-hero-split .ip-desc,.k-hero-split .lede{font-size:17px;max-width:58ch}
+.mkt-actions{margin-top:24px}
+.mkt-proof{margin-top:18px}
+.k-aside{background:var(--paper-2);border:1px solid var(--rule);border-radius:14px;padding:clamp(20px,2.2vw,28px)}
+.k-aside-k{font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin:0 0 14px}
+.k-aside-steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;gap:14px}
+main .k-aside-steps li{counter-increment:s;position:relative;padding-left:36px;font-size:15px!important;line-height:1.45}
+.k-aside-steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center}
+main .k-aside-steps--plain li{padding-left:0}
+.k-aside-steps--plain li::before{display:none}
+.k-aside-steps strong{display:block;font-family:var(--f-body);font-size:15.5px;font-weight:700;color:var(--ink)}
+.k-aside-steps span{display:block;color:var(--steel);margin-top:2px}
+main .k-aside-bring{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--rule);font-size:15px!important;line-height:1.5;color:var(--ink)}
+.k-aside-bring b{font-weight:700}
+.k-aside-link{display:inline-block;margin-top:14px;font-size:15px;font-weight:700;color:var(--blue);text-decoration:none}
+.k-aside-link:hover{text-decoration:underline}
+.k-aside-link i{font-style:normal}
+#how-to-read{scroll-margin-top:96px}
+@media (max-width:960px){
+  .k-hero-split{display:block}
+  .k-hero-split>.k-aside{margin-top:28px}
+}
+
+/* Contact: the form is the first thing on the page */
+.ct-lead{padding-block:calc(72px + clamp(24px,3vw,40px)) clamp(36px,5vw,64px)}
+#fit-details{min-height:96px}
+.ct-lead .crumbs{display:flex;gap:8px;list-style:none;padding:0;margin:0 0 18px}
+.ct-lead .crumbs a,.ct-lead .crumbs li{color:#C4CFDB!important}
+.ct-lead .eyebrow{color:var(--lime)}
+#book.ct-lead h1{color:#fff;font-size:clamp(34px,3.7vw,50px);line-height:1.08;margin:6px 0 18px;max-width:15ch}
+#book.ct-lead .lede{color:#DCE3EB;max-width:44ch}
+.ct-lead-facts{margin:26px 0 22px;padding:0;display:grid;gap:12px;max-width:44ch}
+.ct-lead-facts div{display:grid;grid-template-columns:128px 1fr;gap:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.16)}
+#book .ct-lead-facts dt{font-size:14px;font-weight:700;color:var(--lime)}
+#book .ct-lead-facts dd{margin:0;font-size:15px!important;color:#fff}
+.ct-lead a:not(.btn){color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* Masked headlines: keep descenders such as y and g from being clipped */
+.d1.mask>span,.d1[data-mask]>span{padding-bottom:.16em;margin-bottom:-.16em}
+
+/* Decorative captions must not sit on top of the mockups */
+.mkt-desk .pu{padding-bottom:0}
+.mkt-desk .cap{background:var(--ink);color:#fff}
+.mkt-desk.paper .cap{background:#fff;color:var(--ink)}
+.mkt-desk .pu-rows li:nth-child(n+2){visibility:hidden}
+.svc-callout+.cap-note{padding-left:clamp(0px,12vw,170px)}
+@media (max-width:900px){.svc-callout+.cap-note{padding-left:0}}
