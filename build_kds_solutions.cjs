@@ -263,7 +263,8 @@ PAGES.forEach(build);
 // ---- Register routes (idempotent)
 const v = JSON.parse(fs.readFileSync("vercel.json", "utf8"));
 for (const p of PAGES) {
-  if (!v.rewrites.some((r) => r.source === p.path)) v.rewrites.push({ source: p.path, destination: "/" + p.file });
+  /* Must sit before the /solutions/:slug/:file* media wildcard, which would otherwise claim the route. */
+  if (!v.rewrites.some((r) => r.source === p.path)) v.rewrites.splice(v.rewrites.findIndex((r) => r.source === "/solutions/saas"), 0, { source: p.path, destination: "/" + p.file });
   if (!v.redirects.some((r) => r.source === "/" + p.file)) v.redirects.push({ source: "/" + p.file, destination: p.path, permanent: true });
 }
 fs.writeFileSync("vercel.json", JSON.stringify(v, null, 2) + "\n");
