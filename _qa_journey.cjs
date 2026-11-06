@@ -100,6 +100,70 @@ async function fill(p, sel) {
     await q.close();
   }
 
+  // 2b. Real gtag.js, with hits captured instead of reaching Google
+  {
+    const p = await b.newPage();
+    await p.setViewport({ width: 1280, height: 900 });
+    const hits = [];
+    await p.setRequestInterception(true);
+    p.on("request", (r) => {
+      const u = r.url();
+      if (/google-analytics\.com|analytics\.google\.com|\/g\/collect/.test(u)) { const body = r.postData() || ""; [u, ...body.split("\n")].forEach((s) => { const m = s.match(/(?:^|[?&])en=([^&]+)/); if (m) hits.push(m[1]); }); return r.respond({ status: 204, body: "" }); }
+      if (/clarity\.ms/.test(u)) return r.respond({ status: 204, body: "" });
+      if (u.endsWith("/api/inquiry") && r.method() === "POST") return r.respond({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, channel: "gmail" }) });
+      r.continue();
+    });
+    await p.goto(BASE + "/?ga_debug=1", { waitUntil: "networkidle2" });
+    await p.evaluate(() => sessionStorage.clear());
+    await fill(p, "#homeInquiry");
+    await p.click("#homeInquiry button[type=submit]");
+    await sleep(1500);
+    await p.evaluate(() => { document.dispatchEvent(new Event("visibilitychange")); });
+    await p.goto(BASE + "/about?ga_debug=1", { waitUntil: "networkidle2" });
+    await sleep(800);
+    const count = (n) => hits.filter((h) => h === n).length;
+    results.gaHits = hits.join(",");
+    ok("ga: page_view on both pages, no duplicates", count("page_view") === 2, results.gaHits);
+    ok("ga: generate_lead sent once", count("generate_lead") === 1, results.gaHits);
+    await p.close();
+  }
+
+  // 2c. Backup channel: server fails, browser finishes the send through Web3Forms
+  {
+    for (const mode of ["accepted", "rejected"]) {
+      const p = await b.newPage();
+      await p.setViewport({ width: 1280, height: 900 });
+      let sent = null;
+      await p.setRequestInterception(true);
+      p.on("request", (r) => {
+        const u = r.url();
+        const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*" };
+        if (/googletagmanager|google-analytics|clarity\.ms/.test(u)) return r.respond({ status: 204, body: "" });
+        if (u.endsWith("/api/inquiry") && r.method() === "POST") return r.respond({ status: 502, contentType: "application/json", body: JSON.stringify({ ok: false, error: "x", backup: { provider: "web3forms", key: "qa-key" } }) });
+        if (u.includes("api.web3forms.com")) {
+          if (r.method() === "OPTIONS") return r.respond({ status: 204, headers: cors, body: "" });
+          sent = JSON.parse(r.postData() || "{}");
+          return r.respond({ status: mode === "accepted" ? 200 : 403, headers: cors, contentType: "application/json", body: JSON.stringify({ success: mode === "accepted" }) });
+        }
+        r.continue();
+      });
+      await p.goto(BASE + "/?ga_debug=1", { waitUntil: "networkidle2" });
+      await p.evaluate(() => sessionStorage.clear());
+      await fill(p, "#homeInquiry");
+      await p.click("#homeInquiry button[type=submit]");
+      await sleep(900);
+      ok("backup " + mode + ": browser called Web3Forms with the message", sent && sent.access_key === "qa-key" && !!sent.details && !!sent.email, JSON.stringify(sent || {}).slice(0, 120));
+      if (mode === "accepted") {
+        ok("backup accepted: confirmation shown", await p.$eval(".inq-done", (e) => e.classList.contains("on")));
+        ok("backup accepted: one lead", (await leads(p)) === 1, String(await leads(p)));
+      } else {
+        ok("backup rejected: error with email fallback", await p.$eval("#homeInquiry .inq-fail", (e) => e.classList.contains("on") && !!e.querySelector('a[href^="mailto:"]')));
+        ok("backup rejected: no lead", (await leads(p)) === 0, String(await leads(p)));
+      }
+      await p.close();
+    }
+  }
+
   // 3. Contact page forms
   for (const [hash, form, btn, done] of [["#book", "#fitForm", "#fitSubmitBtn", "#fitDone"], ["#brief", "#briefForm", "#submitBtn", null]]) {
     const p = await page(b);
@@ -136,6 +200,7 @@ async function fill(p, sel) {
   }
   await b.close();
   console.log(`forms exercised: ${forms}; routes with no on-page form: ${noForm.join(", ") || "none"}`);
+  console.log("GA hits seen: " + (results.gaHits || ""));
   console.log(`PASS ${results.pass}  FAIL ${results.fail.length}`);
   results.fail.forEach((x) => console.log(" - " + x));
   process.exit(results.fail.length ? 1 : 0);
