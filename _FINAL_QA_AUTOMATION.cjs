@@ -65,7 +65,7 @@ function checkPage(url, html) {
   const checks_failed = [];
 
   // Check 1: Logo SVG
-  if (html.includes('kriva-wordmark.svg') || html.includes('fill="#0F4DFD"')) {
+  if (html.includes('kriva-lockup.svg') || html.includes('fill="#0F4DFD"')) {
     checks_passed.push('Logo with blue accent');
   } else {
     checks_failed.push('Logo missing or incomplete');

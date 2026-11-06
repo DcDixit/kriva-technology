@@ -5,7 +5,7 @@
 const fs = require('fs');
 const crypto = require('crypto');
 const PAGE = 'kriva-redesign.html';
-const ORDER = ['tokens', 'home', 'home-art', 'home-next', 'product-ui', 'page-inquiry', 'slot-assets', 'system', 'responsive', 'chrome'];
+const ORDER = ['tokens', 'home', 'home-art', 'home-next', 'product-ui', 'page-inquiry', 'slot-assets', 'system', 'responsive', 'chrome', 'kds', 'home-v2'];
 
 function minify(css) {
   return css

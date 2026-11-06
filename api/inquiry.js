@@ -122,18 +122,6 @@ function sharedFields(data) {
   };
 }
 
-function web3formsBody(data) {
-  const { subject, text } = buildMessage(data);
-  return {
-    access_key: process.env.WEB3FORMS_ACCESS_KEY,
-    subject,
-    from_name: "KRIVA website",
-    botcheck: "",
-    message: text,
-    ...sharedFields(data),
-  };
-}
-
 function gmailCredentials() {
   const user = String(process.env.GMAIL_USER || "").trim();
   const pass = String(process.env.GMAIL_APP_PASSWORD || "")
@@ -269,18 +257,6 @@ async function sendViaResend(data) {
   return { channel: "resend" };
 }
 
-async function sendViaWeb3forms(data) {
-  if (!envConfigured("WEB3FORMS_ACCESS_KEY")) return null;
-  const r = await fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify(web3formsBody(data)),
-  });
-  const body = await r.json().catch(() => ({}));
-  if (!body.success) throw new Error("web3forms " + r.status);
-  return { channel: "web3forms" };
-}
-
 async function deliver(data) {
   let gmailIssue = "";
   try {
@@ -293,7 +269,6 @@ async function deliver(data) {
   }
 
   const resendConfigured = envConfigured("RESEND_API_KEY");
-  const web3Configured = envConfigured("WEB3FORMS_ACCESS_KEY");
   if (!resendConfigured) {
     console.error("inquiry resend: RESEND_API_KEY is not set; skipping Resend");
   } else {
@@ -305,18 +280,8 @@ async function deliver(data) {
     }
   }
 
-  if (!web3Configured) {
-    console.error("inquiry web3forms: WEB3FORMS_ACCESS_KEY is not set; skipping Web3Forms");
-  } else {
-    try {
-      const web3Result = await sendViaWeb3forms(data);
-      if (web3Result) return web3Result;
-    } catch (err) {
-      console.error("inquiry send failed (web3forms):", err && err.message);
-    }
-  }
 
-  const fallback = resendConfigured || web3Configured ? "configured but rejected" : "not configured";
+  const fallback = resendConfigured ? "configured but rejected" : "not configured";
   console.error("inquiry delivery failed: " + gmailIssue + "; fallback " + fallback);
   throw new Error("inquiry delivery failed");
 }
@@ -358,6 +323,14 @@ module.exports = async function handler(req, res) {
     sendJson(res, 200, { ok: true, channel: result && result.channel });
   } catch (err) {
     console.error("inquiry send failed:", err && err.message);
-    sendJson(res, 502, { ok: false, error: USER_FACING_ERROR });
+    /* Web3Forms' free plan only accepts browser submissions, so the browser finishes the send.
+       Its access key is public by design and maps to an inbox; it still lives in Vercel env, not in Git. */
+    const backupKey = String(process.env.WEB3FORMS_ACCESS_KEY || "").trim();
+    console.error("inquiry browser backup: " + (backupKey ? "offered" : "WEB3FORMS_ACCESS_KEY is not set"));
+    sendJson(res, 502, {
+      ok: false,
+      error: USER_FACING_ERROR,
+      ...(backupKey ? { backup: { provider: "web3forms", key: backupKey } } : {}),
+    });
   }
 };

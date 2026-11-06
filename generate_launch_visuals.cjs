@@ -10,7 +10,7 @@ const crypto = require("crypto");
 const ROOT = __dirname;
 const C = {
   ink: "#0E1216", ink2: "#161C22", line: "#232B33", dim: "#6B7885", text: "#B9C3CC",
-  white: "#EDEFF1", amber: "#DB9B1F", blue: "#1B44C8", green: "#1B7A54", lime: "#5FD3A0",
+  white: "#EDEFF1", amber: "#DB9B1F", blue: "#1B44C8", green: "#4F46E5", lime: "#A5B4FC",
   violet: "#5B44C8", paper: "#EAEAE4", rule: "#D2D2C9", red: "#C44B4B",
 };
 const ACCENTS = [C.amber, C.blue, C.green, C.violet, C.lime];
@@ -45,7 +45,7 @@ function chromeBar(w, title, accent, id) {
   return `<rect width="${w}" height="46" fill="${C.ink}"/>
 <line x1="0" y1="46" x2="${w}" y2="46" stroke="${C.line}"/>
 <rect x="20" y="17" width="9" height="9" fill="${accent}"/>
-<text x="38" y="28" fill="${C.white}" font-family="ui-monospace,monospace" font-size="10.5" letter-spacing="0.13em">${esc(title.toUpperCase())}</text>`;
+<text x="38" y="28" fill="${C.white}" font-family="Figtree,system-ui,sans-serif" font-size="10.5" letter-spacing="0.13em">${esc(title.toUpperCase())}</text>`;
 }
 
 function kpis(w, seed, accent, id) {
@@ -61,8 +61,8 @@ function kpis(w, seed, accent, id) {
   return labels.map((k, i) => {
     const x = 18 + i * bw;
     return `<rect x="${x}" y="58" width="${bw - 10}" height="68" fill="${C.ink2}" stroke="${C.line}"/>
-<text x="${x + 10}" y="78" fill="${C.dim}" font-family="ui-monospace,monospace" font-size="9" letter-spacing="0.1em">${k[0]}</text>
-<text x="${x + 10}" y="108" fill="${i === 1 ? accent : C.white}" font-family="ui-sans-serif,sans-serif" font-size="21" font-weight="700">${k[1]}</text>`;
+<text x="${x + 10}" y="78" fill="${C.dim}" font-family="Figtree,system-ui,sans-serif" font-size="9" letter-spacing="0.1em">${k[0]}</text>
+<text x="${x + 10}" y="108" fill="${i === 1 ? accent : C.white}" font-family="Figtree,system-ui,sans-serif" font-size="21" font-weight="700">${k[1]}</text>`;
   }).join("");
 }
 
@@ -74,16 +74,16 @@ function tableBlock(w, y, seed, accent, cols) {
     [["TK-8812", "Billing", "2m", "REVIEW"], ["TK-8813", "API", "8m", "AUTO"], ["TK-8814", "Setup", "14m", "OPEN"]],
   ], 1);
   let out = `<rect x="18" y="${y}" width="${w - 36}" height="${rows.length * 40 + 34}" fill="${C.ink2}" stroke="${C.line}"/>
-<text x="32" y="${y + 18}" fill="${C.dim}" font-family="ui-monospace,monospace" font-size="9" letter-spacing="0.11em">${esc(cols)}</text>`;
+<text x="32" y="${y + 18}" fill="${C.dim}" font-family="Figtree,system-ui,sans-serif" font-size="9" letter-spacing="0.11em">${esc(cols)}</text>`;
   rows.forEach((r, i) => {
     const ry = y + 32 + i * 40;
     const hi = i === 0;
     out += `<rect x="18" y="${ry}" width="4" height="34" fill="${hi ? accent : "transparent"}"/>
 <text x="34" y="${ry + 22}" fill="${hi ? C.white : C.text}" font-size="13">${esc(r[0])}</text>
-<text x="${w * 0.36}" y="${ry + 22}" fill="${C.text}" font-family="ui-monospace,monospace" font-size="11">${esc(r[1])}</text>
-<text x="${w * 0.58}" y="${ry + 22}" fill="${C.text}" font-family="ui-monospace,monospace" font-size="11">${esc(r[2])}</text>
+<text x="${w * 0.36}" y="${ry + 22}" fill="${C.text}" font-family="Figtree,system-ui,sans-serif" font-size="11">${esc(r[1])}</text>
+<text x="${w * 0.58}" y="${ry + 22}" fill="${C.text}" font-family="Figtree,system-ui,sans-serif" font-size="11">${esc(r[2])}</text>
 <rect x="${w - 118}" y="${ry + 8}" width="86" height="18" fill="none" stroke="${hi ? accent : C.dim}"/>
-<text x="${w - 75}" y="${ry + 21}" text-anchor="middle" fill="${hi ? accent : C.dim}" font-family="ui-monospace,monospace" font-size="8.5">${esc(r[3])}</text>`;
+<text x="${w - 75}" y="${ry + 21}" text-anchor="middle" fill="${hi ? accent : C.dim}" font-family="Figtree,system-ui,sans-serif" font-size="8.5">${esc(r[3])}</text>`;
     if (i < rows.length - 1) out += `<line x1="32" y1="${ry + 34}" x2="${w - 32}" y2="${ry + 34}" stroke="${C.line}"/>`;
   });
   return out;
@@ -114,7 +114,7 @@ const templates = {
 <circle cx="${w * 0.2}" cy="130" r="34" fill="none" stroke="${accent}" stroke-width="3" stroke-dasharray="${pct * 2} 80"/>
 <text x="${w * 0.2}" y="136" text-anchor="middle" fill="${C.white}" font-size="17" font-weight="700">${pct}%</text>`
         : `<rect x="${w * 0.55}" y="64" width="${w * 0.4}" height="${h - 90}" fill="${C.ink2}" stroke="${C.line}"/>
-<text x="${w * 0.75}" y="120" fill="${C.dim}" font-family="ui-monospace,monospace" font-size="9">FIRST VALUE</text>
+<text x="${w * 0.75}" y="120" fill="${C.dim}" font-family="Figtree,system-ui,sans-serif" font-size="9">FIRST VALUE</text>
 <rect x="${w * 0.6}" y="140" width="${w * 0.3}" height="12" fill="${accent}" opacity="0.8"/>`) +
       steps.map((s, i) => {
         const x = side ? w * 0.52 : 18;
@@ -131,7 +131,7 @@ const templates = {
       chromeBar(w, o.title || "Reconciliation hub", accent, id) +
       tableBlock(w, 58, seed, accent, "REF · SOURCE · DELTA · STATE") +
       `<rect x="18" y="${h - 68}" width="${w - 36}" height="40" fill="${C.ink2}" stroke="${C.line}"/>
-<text x="32" y="${h - 42}" fill="${C.dim}" font-family="ui-monospace,monospace" font-size="10">AUDIT TRAIL · ${pick(seed, ["2m", "5m", "8m"])} since sync</text>` +
+<text x="32" y="${h - 42}" fill="${C.dim}" font-family="Figtree,system-ui,sans-serif" font-size="10">AUDIT TRAIL · ${pick(seed, ["2m", "5m", "8m"])} since sync</text>` +
       svgClose();
   },
   mobile(w, h, o, seed, id) {
@@ -161,7 +161,7 @@ const templates = {
         return `<rect x="${bx}" y="${h - 78 - bh}" width="24" height="${bh}" fill="${accent}" opacity="${0.55 + (i % 3) * 0.15}"/>`;
       }).join("") +
       `<rect x="${w * 0.6}" y="142" width="${w * 0.34}" height="${h - 172}" fill="${C.ink2}" stroke="${C.line}"/>
-<text x="${w * 0.62}" y="168" fill="${C.dim}" font-family="ui-monospace,monospace" font-size="9">ACTIVITY</text>` +
+<text x="${w * 0.62}" y="168" fill="${C.dim}" font-family="Figtree,system-ui,sans-serif" font-size="9">ACTIVITY</text>` +
       svgClose();
   },
   support(w, h, o, seed, id) {
@@ -190,7 +190,7 @@ const templates = {
 <rect width="100%" height="100%" fill="${C.paper}"/>
 <rect width="${w * 0.4}" height="100%" fill="${C.ink}"/>
 <text x="${w * 0.2}" y="${h * 0.46}" text-anchor="middle" fill="${C.white}" font-size="${w * 0.08}" font-weight="800">${initials}</text>
-<text x="${w * 0.2}" y="${h * 0.56}" text-anchor="middle" fill="${accent}" font-family="ui-monospace,monospace" font-size="11" letter-spacing="0.14em">IDENTITY</text>
+<text x="${w * 0.2}" y="${h * 0.56}" text-anchor="middle" fill="${accent}" font-family="Figtree,system-ui,sans-serif" font-size="11" letter-spacing="0.14em">IDENTITY</text>
 <rect x="${w * 0.5}" y="${h * 0.18}" width="${w * 0.38}" height="10" fill="${C.rule}"/>
 <rect x="${w * 0.5}" y="${h * 0.28}" width="${w * 0.28}" height="10" fill="${C.rule}"/>
 <rect x="${w * 0.5}" y="${h * 0.48}" width="${w * 0.36}" height="${h * 0.32}" fill="#fff" stroke="${C.rule}"/></svg>`;
@@ -200,7 +200,7 @@ const templates = {
 <rect width="100%" height="100%" fill="#F3F3ED"/>
 <rect x="20" y="20" width="${w - 40}" height="${h - 40}" fill="#fff" stroke="${C.rule}"/>
 ${Array.from({ length: 9 }, (_, i) => `<rect x="36" y="${52 + i * 34}" width="${w - 100 - (i % 3) * 40}" height="9" fill="${i % 2 ? C.rule : "#E6E6DE"}"/>`).join("")}
-<text x="${w / 2}" y="${h - 32}" text-anchor="middle" fill="${C.dim}" font-family="ui-monospace,monospace" font-size="10">LEGACY WORKFLOW</text></svg>`;
+<text x="${w / 2}" y="${h - 32}" text-anchor="middle" fill="${C.dim}" font-family="Figtree,system-ui,sans-serif" font-size="10">LEGACY WORKFLOW</text></svg>`;
   },
   modern(w, h, o, seed, id) {
     return templates.dispatch(w, h, { title: o.title || "Unified console", subtitle: o.subtitle || "After" }, seed + 99, id);
@@ -212,7 +212,7 @@ ${Array.from({ length: 9 }, (_, i) => `<rect x="36" y="${52 + i * 34}" width="${
     return svgOpen(w, h, o.subtitle || "Transport order", id) +
       chromeBar(w, o.title || "Transport order", accent, id) +
       `<text x="32" y="98" fill="${C.white}" font-size="34" font-weight="700">$${price.toLocaleString()}</text>
-<text x="32" y="124" fill="${C.dim}" font-family="ui-monospace,monospace" font-size="10">${route} · ENCLOSED</text>` +
+<text x="32" y="124" fill="${C.dim}" font-family="Figtree,system-ui,sans-serif" font-size="10">${route} · ENCLOSED</text>` +
       ["Vehicle", "Pickup", "Carrier", "Transit"].map((s, i) =>
         `<rect x="32" y="${150 + i * 54}" width="${w - 64}" height="42" fill="${C.ink2}" stroke="${i === 2 ? accent : C.line}"/>
 <text x="48" y="${176 + i * 54}" fill="${C.text}" font-size="13">${s}</text>`).join("") +
@@ -224,7 +224,7 @@ ${Array.from({ length: 9 }, (_, i) => `<rect x="36" y="${52 + i * 34}" width="${
 <rect y="${h * 0.64}" width="${w}" height="${h * 0.36}" fill="${C.ink2}"/>
 <circle cx="${w / 2}" cy="${h * 0.36}" r="${w * 0.14}" fill="none" stroke="${C.amber}" stroke-width="2"/>
 <text x="${w / 2}" y="${h * 0.38}" text-anchor="middle" fill="${C.white}" font-size="${w * 0.12}" font-weight="800">K</text>
-<text x="${w / 2}" y="${h * 0.78}" text-anchor="middle" fill="${C.amber}" font-family="ui-monospace,monospace" font-size="11" letter-spacing="0.14em">KRIVA · STUDIO</text>
+<text x="${w / 2}" y="${h * 0.78}" text-anchor="middle" fill="${C.amber}" font-family="Figtree,system-ui,sans-serif" font-size="11" letter-spacing="0.14em">KRIVA · STUDIO</text>
 <text x="${w / 2}" y="${h * 0.84}" text-anchor="middle" fill="${C.dim}" font-size="14">Design engineering · remote-first</text></svg>`;
   },
   editorial(w, h, o, seed) {
@@ -233,7 +233,7 @@ ${Array.from({ length: 9 }, (_, i) => `<rect x="36" y="${52 + i * 34}" width="${
 <rect width="100%" height="100%" fill="${C.paper}"/>
 <rect width="6" height="100%" fill="${accent}"/>
 <text x="44" y="${h * 0.38}" fill="${C.ink}" font-size="${Math.min(44, w * 0.055)}" font-weight="800" letter-spacing="-0.03em">${esc(o.headline || "Insights")}</text>
-<text x="44" y="${h * 0.5}" fill="${C.dim}" font-family="ui-monospace,monospace" font-size="11" letter-spacing="0.13em">${esc((o.tag || "Editorial").toUpperCase())}</text></svg>`;
+<text x="44" y="${h * 0.5}" fill="${C.dim}" font-family="Figtree,system-ui,sans-serif" font-size="11" letter-spacing="0.13em">${esc((o.tag || "Editorial").toUpperCase())}</text></svg>`;
   },
 };
 

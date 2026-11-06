@@ -7,6 +7,38 @@
   const FAIL_STATUS =
     "We could not send your inquiry right now. Please try again shortly, or email hello@krivatechnologies.com.";
 
+  /* Primary: /api/inquiry (Gmail, then Resend). Backup: Web3Forms from the browser, only when the
+     server reports that delivery failed. Resolves true only after a provider accepted the message. */
+  async function sendInquiry(payload) {
+    let backup = null;
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (res.ok && body && body.ok === true && body.channel) return true;
+      backup = body && body.backup;
+    } catch (err) {}
+    if (!backup || backup.provider !== "web3forms" || !backup.key) return false;
+    const rows = ["name", "email", "company", "phone", "site", "ptype", "market", "service", "budget", "timeline", "details", "page", "inquiry_type"];
+    const out = { access_key: backup.key, subject: "KRIVA inquiry (backup channel): " + (payload.company || payload.name || "Website"), from_name: "KRIVA website", botcheck: "" };
+    rows.forEach((k) => { if (payload[k]) out[k] = String(payload[k]).slice(0, 4000); });
+    try {
+      const r = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(out),
+      });
+      const j = await r.json().catch(() => ({}));
+      return !!(r.ok && j.success === true);
+    } catch (err) {
+      return false;
+    }
+  }
+  window.krivaSendInquiry = sendInquiry;
+
   function inquiryMailto(payload) {
     payload = payload || {};
     const lines = [
@@ -63,10 +95,6 @@
     } catch (err) {}
   }
 
-  function apiSucceeded(res, body) {
-    return !!(res && res.ok && body && body.ok === true && body.channel);
-  }
-
   function wire(form) {
     const btn = form.querySelector('[type="submit"]');
     const label = form.querySelector(".inq-submit-label");
@@ -111,13 +139,7 @@
       });
       if (!payload.page) payload.page = location.pathname;
       try {
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: { Accept: "application/json", "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        const body = await res.json().catch(() => ({}));
-        if (!apiSucceeded(res, body)) throw new Error("send-failed");
+        if (!(await sendInquiry(payload))) throw new Error("send-failed");
         sending = false;
         btn.removeAttribute("aria-disabled");
         form.removeAttribute("aria-busy");

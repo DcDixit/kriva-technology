@@ -1,49 +1,15 @@
-# KRIVA, Production deployment
+# KRIVA, production deployment
 
-This folder is the **static production source** for krivatechnologies.com.
+Static HTML on Vercel, with one serverless function (`api/inquiry.js`). Pushing to `main` deploys production automatically.
 
-## Deploy to Vercel
+## Before any production deploy
+Run `docs/GO-LIVE-CHECKLIST.md`. Do not ship until form delivery passes.
 
-1. Import this repository (or this folder) as a **Static Site** project.
-2. **Root directory:** `Updated-One` (or repo root if this is the repo root).
-3. **Build command:** leave empty (static HTML).
-4. **Output directory:** `.` (project root).
-5. `vercel.json` provides 50 clean-URL rewrites + media path aliases.
+## Local preview
+`npm run preview`, then http://localhost:5177/
 
-```bash
-npx vercel --prod
-```
+## Checks
+`npm run qa:links`, `node _qa_journey.cjs`, `PORT=5177 node _qa_all_routes.cjs`
 
-## Local preview (matches production routing)
-
-```bash
-npm run preview
-# → http://localhost:5177/
-```
-
-## Asset pipeline
-
-| Step | Command |
-|------|---------|
-| Regenerate interface visuals | `npm run generate:visuals` |
-| Inject into HTML | `npm run inject:visuals` |
-| Sync OG tags + slot CSS | `npm run launch:apply` |
-
-Real client screenshots: drop into `media/` mirroring public paths, then re-run inject.
-
-## QA before cutover
-
-```bash
-npm run qa:links # internal link crawl
-npm run qa:http # 50-route HTTP smoke (start preview first)
-```
-
-## What ships
-
-- **50 pages** via clean URLs
-- **No analytics** (Privacy/Terms reflect this)
-- **Contact:** mailto brief + WhatsApp/email booking
-- **OG image:** `brand/og-default.png`
-- **Media:** `/work/*`, `/solutions/*`, `/insights/*` → `media/` via rewrite
-
-Replace stylized SVG interface patterns with real product screenshots when available.
+## After changing shared CSS
+`npm run build:home-css` rebuilds the homepage bundle. Bump the `?v=` value on anything changed under `shared/`, because it is cached for a day.
