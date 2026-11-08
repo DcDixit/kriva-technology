@@ -1190,3 +1190,103 @@ body.page-accounting .fbase a{color:#9AA5B0}
   .mask span i{transform:none!important}
   .acc-audit li{opacity:1;transform:none}
 }
+
+/* ── 2026-11 page audit ──────────────────────────────────────────
+   Scoped to body.page-accounting; this file is only loaded by the
+   accounting integrations solution page. Mirrors the SaaS page audit. */
+
+/* Spacing: hero, story, and at-a-glance are all white, so trim stacked padding */
+body.page-accounting .hero.hero--inner{padding-bottom:24px}
+body.page-accounting main > section.story{padding-block:clamp(40px,5vw,64px) clamp(32px,4vw,56px)}
+body.page-accounting main > section.acc-fit{padding-top:clamp(40px,5vw,64px) !important}
+
+/* Story: ink heading, rounded photo, plain credit under it */
+body.page-accounting .story-copy h2{color:var(--ink)}
+body.page-accounting .story-points{margin-top:20px}
+body.page-accounting section.story .story-media{background:transparent;box-shadow:none;overflow:visible;border-radius:0}
+body.page-accounting section.story .story-media img{border-radius:10px;object-position:42% 50%}
+body.page-accounting .story-media .story-credit{margin-top:10px;background:transparent}
+
+/* At a glance: visible, answer-first summary */
+.acc-fit-head{margin-bottom:clamp(28px,3.5vw,44px)}
+body.page-accounting .acc-fit-head h2{margin-top:14px;max-width:22ch}
+.acc-fit-sum{margin-top:16px;max-width:72ch;font-size:clamp(16px,1.2vw,17.5px);line-height:1.65;color:var(--ink)}
+body.page-accounting .acc-fit-foot{max-width:72ch}
+body.page-accounting .acc-card p a,
+body.page-accounting .acc-fit-foot a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+
+/* Problems: lede and body text were too dim on navy; illustrations were 194px wide */
+body.page-accounting .acc-problems .lede{color:#B9C3CC;max-width:56ch}
+body.page-accounting .acc-problems .acc-frac p{color:#B9C3CC}
+body.page-accounting .acc-problems .acc-frac .n{color:#6B7885}
+body.page-accounting .acc-frac .cons{text-transform:none;letter-spacing:.02em;font-size:12.5px;font-family:var(--f-body);font-weight:600}
+body.page-accounting .acc-problems .frac-viz{aspect-ratio:480/400;height:auto;border:1px solid var(--ink-line);border-radius:6px;overflow:hidden;background:#0E1216}
+body.page-accounting .acc-problems .frac-viz img{width:100%;height:100%;object-fit:contain;opacity:1}
+@media(min-width:961px){
+  body.page-accounting .acc-frac article{grid-template-columns:56px minmax(0,1fr) minmax(260px,360px);align-items:center}
+  body.page-accounting .acc-problems .frac-viz{max-width:360px;width:100%;margin:0}
+}
+@media(max-width:960px){
+  body.page-accounting .acc-frac article{grid-template-columns:40px minmax(0,1fr)}
+  body.page-accounting .acc-problems .frac-viz{grid-column:2;max-width:min(440px,100%);margin:4px 0 0}
+}
+@media(max-width:560px){
+  body.page-accounting .acc-frac article{grid-template-columns:1fr;gap:8px}
+  body.page-accounting .acc-problems .frac-viz{grid-column:1;max-width:100%}
+}
+
+/* Section heading beside a photo (multi-entity, process) */
+.acc-head-photo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,4vw,64px);align-items:center;margin-bottom:clamp(32px,4vw,48px)}
+.acc-head-photo .lede{margin-top:18px;max-width:48ch}
+body.page-accounting #mxH{max-width:18ch}
+.acc-photo{margin:0;min-width:0}
+.acc-photo img{display:block;width:100%;aspect-ratio:3/2;height:auto;object-fit:cover;border-radius:10px;background:var(--rule-soft)}
+.acc-photo .story-credit{margin-top:10px}
+@media(max-width:900px){.acc-head-photo{grid-template-columns:1fr}.acc-photo{max-width:640px}}
+
+/* Proof: reconstructed interface panels instead of placeholder art */
+body.page-accounting .acc-proof-frame{border:0;border-radius:0;box-shadow:none;overflow:visible}
+.acc-proof-panels{display:grid;gap:16px}
+.acc-proof-panels .pu{border-radius:10px;overflow:hidden;box-shadow:0 24px 48px -32px rgba(15,28,46,.55)}
+body.page-accounting .acc-proof-demo{margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--steel)}
+body.page-accounting .proof-note{font-size:14px;line-height:1.6;color:var(--steel);max-width:60ch;margin-top:18px}
+body.page-accounting .acc-proof-steps dt{font-size:11px;color:var(--steel)}
+body.page-accounting .acc-proof-steps div{grid-template-columns:clamp(96px,10vw,120px) 1fr}
+
+/* Process lede beside the photo */
+body.page-accounting #prH{max-width:18ch}
+
+/* Related links: visible heading, readable chips */
+body.page-accounting main > section.acc-related{padding:clamp(48px,6vw,72px) 0}
+.acc-related-h{font-family:var(--f-display);font-weight:700;font-size:clamp(20px,2vw,24px);letter-spacing:-.01em;line-height:1.25;color:var(--ink);padding-top:28px;border-top:1px solid var(--rule)}
+body.page-accounting .acc-rel{margin-top:16px;padding:0;border-top:0;gap:10px}
+body.page-accounting .acc-rel a{font-family:var(--f-body);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink);border-radius:999px;padding:10px 16px;min-height:44px;display:inline-flex;align-items:center}
+body.page-accounting .acc-rel a:hover{border-color:var(--blue);color:var(--blue)}
+
+/* Contact form: dark inputs sat inside the shared white form card. Restore light inputs. */
+body.page-accounting .acc-contact .inq-form label{color:var(--ink)}
+body.page-accounting .acc-contact .inq-form label .opt,
+body.page-accounting .acc-contact .inq-form label .req{color:var(--steel)}
+body.page-accounting .acc-contact .inq-form input,
+body.page-accounting .acc-contact .inq-form textarea{background:#fff;color:var(--ink);border:1.5px solid #B6BFC9}
+body.page-accounting .acc-contact .inq-form input:focus,
+body.page-accounting .acc-contact .inq-form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,70,229,.22)}
+body.page-accounting .acc-contact .inq-form ::placeholder{color:#6B7885}
+body.page-accounting .acc-contact .inq-form :focus-visible{outline-color:var(--blue)}
+body.page-accounting .acc-contact .inq-form .inq-note{color:var(--steel)}
+body.page-accounting .acc-contact .inq-err{color:#B42318}
+.inq-hint{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--steel)}
+body.page-accounting .acc-contact .acc-trust,
+body.page-accounting .acc-contact .eyebrow{color:#B9C3CC}
+
+/* Chapter rail: labels overlapped the content column between 1281px and 1560px */
+@media(max-width:1560px){body.page-accounting .chapters a span{display:none}}
+
+/* Proof: start the copy and panels directly under the heading */
+body.page-accounting .acc-proof-split{align-items:start;margin-top:clamp(24px,3vw,36px)}
+@media(min-width:1025px){body.page-accounting .acc-proof-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px)}}
+body.page-accounting .acc-proof-split .lede{margin-top:0}
+
+/* At a glance and Platforms are both white: one section gap, not two */
+body.page-accounting main > section.acc-fit{padding-bottom:clamp(32px,4vw,48px) !important}
+body.page-accounting main > section#platforms{padding-top:clamp(40px,5vw,64px)}

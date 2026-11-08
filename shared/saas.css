@@ -823,3 +823,118 @@ body.page-saas .fbase,body.page-saas .fbase a{color:#9AA5B0}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
 }
+
+/* ── 2026-11 page audit ──────────────────────────────────────────
+   Scoped to body.page-saas; this file is only loaded by the SaaS solution page. */
+
+/* Spacing: the hero, story, and fit sections are all white, so trim stacked padding */
+body.page-saas .hero.hero--inner{padding-bottom:24px}
+body.page-saas main > section.story{padding-block:clamp(40px,5vw,64px) clamp(32px,4vw,56px)}
+body.page-saas main > section.saas-fit{padding-top:clamp(40px,5vw,64px) !important}
+
+/* Story: heading in ink like every other H2; credit sits under the photo */
+body.page-saas .story-copy h2{color:var(--ink)}
+body.page-saas .story-media .story-credit{padding-top:10px;background:var(--white)}
+body.page-saas .story-points{margin-top:20px}
+
+/* At-a-glance summary (visible H2 replaces the screen-reader-only one) */
+.saas-fit-head{margin-bottom:clamp(28px,3.5vw,44px)}
+body.page-saas .saas-fit-head h2{margin-top:6px;max-width:22ch}
+body.page-saas .saas-fit-sum{margin-top:16px;max-width:68ch}
+body.page-saas .saas-fit .saas-callout{margin-top:28px}
+
+/* Problems: lede was #4A5868 on navy (about 2.3:1); illustrations were 194px wide */
+body.page-saas .saas-problems .lede{color:var(--ink-dim);max-width:52ch}
+body.page-saas .saas-problems .saas-frac p{color:#B9C3CC}
+body.page-saas .saas-problems .saas-frac .n{color:#6B7885}
+@media(min-width:961px){
+  body.page-saas .saas-frac article{grid-template-columns:56px minmax(0,1fr) minmax(260px,360px);align-items:center}
+  body.page-saas .saas-problems .frac-viz{max-width:360px;width:100%;margin:0}
+}
+@media(max-width:960px){
+  body.page-saas .saas-frac article{grid-template-columns:40px minmax(0,1fr)}
+  body.page-saas .saas-problems .frac-viz{grid-column:2;max-width:min(440px,100%);margin:4px 0 0}
+}
+@media(max-width:560px){
+  body.page-saas .saas-problems .frac-viz{grid-column:1}
+}
+body.page-saas .saas-problems .frac-viz{aspect-ratio:480/400;height:auto;border:1px solid var(--ink-line);border-radius:6px;overflow:hidden;background:#0E1216}
+body.page-saas .saas-problems .frac-viz img{width:100%;height:100%;object-fit:contain;opacity:1}
+
+/* Surface tabs: 10.5px uppercase labels were hard to read and wrapped to two rows */
+body.page-saas .saas-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+body.page-saas .saas-tabs::-webkit-scrollbar{display:none}
+body.page-saas .saas-tabs button{flex:none;font-family:var(--f-body);font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;padding:12px 16px}
+body.page-saas .saas-tabs button:first-child{padding-left:0}
+body.page-saas .saas-tabs button:first-child:after{left:0}
+body.page-saas .saas-copy li:before{background:var(--blue);width:8px;height:1.5px}
+body.page-saas .p-link{font-family:var(--f-body);font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink)}
+@media(min-width:1025px){body.page-saas .saas-switch > div:last-child{padding-top:70px}}
+body.page-saas .cap-note{font-family:var(--f-body);font-size:13px;letter-spacing:0;text-transform:none;color:var(--steel)}
+
+/* Shared photo frame (How we work, Finance) */
+.saas-photo{margin:0;min-width:0}
+.saas-photo img{display:block;width:100%;aspect-ratio:3/2;height:auto;object-fit:cover;border-radius:10px;background:var(--rule-soft)}
+.saas-photo .story-credit{margin-top:10px}
+
+/* How we work: heading beside the photo */
+.saas-decide-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,4vw,64px);align-items:center}
+body.page-saas .saas-decide-head .lede{max-width:46ch}
+body.page-saas #decH{max-width:18ch}
+body.page-saas .saas-process .wk{background:var(--paper-2)}
+@media(max-width:900px){.saas-decide-head{grid-template-columns:1fr}}
+
+/* Proof: before/after frame */
+.ob-bar em.is-warn{color:var(--amber)}
+.ob-bar--split{border-top:1px solid var(--ink-line)}
+body.page-saas .saas-exc{overflow:visible;border-radius:0;box-shadow:none;align-self:start}
+@media(min-width:1025px){body.page-saas .saas-exc{position:sticky;top:112px}}
+
+/* Billing, finance, and integrations */
+body.page-saas .saas-fin-lede{max-width:60ch}
+.saas-fin{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,3.5vw,48px);align-items:start;margin-top:clamp(32px,4vw,48px)}
+.saas-fin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+body.page-saas .saas-fin-grid .saas-card{display:flex;flex-direction:column;padding:26px 24px}
+body.page-saas .saas-fin-grid .p-link{margin-top:auto;padding-top:14px;align-self:flex-start}
+.saas-fin-note{margin-top:32px;font-size:14px;line-height:1.6;color:var(--steel);max-width:76ch}
+@media(max-width:1024px){.saas-fin{grid-template-columns:1fr}.saas-fin-photo{max-width:640px}}
+@media(max-width:640px){.saas-fin-grid{grid-template-columns:1fr}}
+
+/* Related links */
+body.page-saas main > section.saas-related{padding:clamp(48px,6vw,72px) 0}
+.saas-related-h{font-family:var(--f-display);font-weight:700;font-size:clamp(20px,2vw,24px);letter-spacing:-.01em;line-height:1.25;color:var(--ink);padding-top:28px;border-top:1px solid var(--rule)}
+body.page-saas .saas-related .rel-sol{margin-top:16px;padding-top:0;border-top:0}
+body.page-saas .rel-sol a{font-family:var(--f-body);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink);border-radius:999px;padding:10px 16px;min-height:44px;display:inline-flex;align-items:center}
+body.page-saas .rel-sol a:hover{border-color:var(--blue);color:var(--blue)}
+
+/* Contact form: the dark input theme above sat inside the shared white form card
+   (black boxes on white). Restore the shared light inputs. */
+body.page-saas .saas-contact .inq-form label{color:var(--ink)}
+body.page-saas .saas-contact .inq-form label .opt{color:var(--steel-2)}
+body.page-saas .saas-contact .inq-form label .req{color:var(--steel-2)}
+body.page-saas .saas-contact .inq-form input,
+body.page-saas .saas-contact .inq-form textarea{background:#fff;color:var(--ink);border:1.5px solid #B6BFC9;border-radius:8px}
+body.page-saas .saas-contact .inq-form input:focus,
+body.page-saas .saas-contact .inq-form textarea:focus{border-color:var(--blue);outline:3px solid rgba(79,70,229,.22);outline-offset:0}
+body.page-saas .saas-contact .inq-form ::placeholder{color:#6B7885}
+body.page-saas .saas-contact .inq-form :focus-visible{outline-color:var(--blue)}
+body.page-saas .saas-contact .inq-form .inq-note{color:var(--steel)}
+body.page-saas .saas-contact .inq-form .inq-err{color:#B42318}
+body.page-saas .saas-contact .inq-form .inq-fail{background:#FEF3F2;color:#B42318;border-color:#F04438}
+.inq-hint{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--steel)}
+body.page-saas .saas-contact .saas-trust{color:#B9C3CC}
+body.page-saas .saas-contact .eyebrow{color:#B9C3CC}
+
+/* Chapter rail: labels overlapped the content column between 1281px and 1560px */
+@media(max-width:1560px){body.page-saas .chapters a span{display:none}}
+body.page-saas #finH{max-width:24ch}
+body.page-saas .saas-copy li:before{height:2px}
+/* Story figure matches the other photos: rounded image, plain caption below */
+body.page-saas section.story .story-media{background:transparent;box-shadow:none;overflow:visible;border-radius:0}
+body.page-saas section.story .story-media img{border-radius:10px}
+body.page-saas .story-media .story-credit{background:transparent}
+@media(max-width:560px){
+  body.page-saas .saas-frac article{grid-template-columns:32px minmax(0,1fr);gap:8px 12px}
+  body.page-saas .saas-problems .frac-viz{grid-column:1 / -1;max-width:100%;aspect-ratio:480/400}
+}
+@media(max-width:1024px){body.page-saas .saas-switch > div:last-child,body.page-saas .saas-exc{max-width:640px}}

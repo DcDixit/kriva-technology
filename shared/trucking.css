@@ -903,3 +903,65 @@ body.page-truck .chapters a[aria-current="true"]{color:var(--ink)}
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
 }
+
+/* ── 2026-11 page audit ──────────────────────────────────────────
+   Scoped to body.page-truck; this file is only loaded by the trucking page. */
+
+/* Spacing: neighbouring white sections must not stack two full paddings */
+body.page-truck .hero.hero--inner{padding-bottom:24px}
+body.page-truck main > section.story{padding-block:clamp(40px,5vw,64px) clamp(32px,4vw,56px)}
+body.page-truck main > section.trk-fit{padding-top:clamp(40px,5vw,64px) !important}
+body.page-truck main > section.trk-related{padding-top:0;padding-bottom:clamp(64px,7vw,96px)}
+body.page-truck main > section.trk-more{padding-block:clamp(56px,6vw,80px)}
+
+/* At-a-glance summary (visible H2 replaces the old screen-reader-only one) */
+.trk-fit-head{margin-bottom:clamp(28px,3.5vw,44px)}
+body.page-truck .trk-fit-head h2{margin-top:6px;max-width:22ch}
+body.page-truck .trk-fit-sum{margin-top:16px;max-width:68ch}
+body.page-truck .trk-fit .trk-callout{margin-top:28px}
+
+/* Problem illustrations were rendered at 194px and unreadable */
+@media(min-width:961px){
+  body.page-truck .trk-frac article{grid-template-columns:56px minmax(0,1fr) minmax(240px,340px)}
+  body.page-truck .trk-problems .frac-viz{max-width:340px}
+}
+@media(max-width:960px){
+  body.page-truck .trk-problems .frac-viz{max-width:min(440px,100%)}
+}
+
+/* Feature bullets were #e6e7ea on white: invisible */
+body.page-truck .trk-feature-list li{align-items:baseline}
+body.page-truck .trk-feature-list li:before{content:"";width:8px;height:1.5px;background:var(--blue);align-self:center}
+body.page-truck .trk-feature-list li{color:var(--ink)}
+
+/* Honest-labelling notes under illustrative screens and integrations */
+.trk-viz-note{margin-top:32px;font-size:14px;line-height:1.6;color:var(--steel);max-width:76ch}
+
+/* Proof figure: the shared rounded-overflow rule clipped the caption's first letter */
+body.page-truck .trk-exc{overflow:visible;border-radius:0;box-shadow:none}
+body.page-truck .trk-exc .trk-cap{margin-top:14px}
+
+/* Integrations: 5 cards left an orphan gap in a 3-column grid */
+@media(min-width:1080px){
+  body.page-truck .trk-integ-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  body.page-truck .trk-integ-grid > .trk-card{grid-column:span 2}
+  body.page-truck .trk-integ-grid > .trk-card:nth-child(n+4){grid-column:span 3}
+}
+@media(min-width:769px) and (max-width:1079px){
+  body.page-truck .trk-integ-grid > .trk-card:last-child{grid-column:1 / -1}
+}
+
+/* Related links get a visible heading instead of a bare rule */
+.trk-related-h{
+  font-family:var(--f-display);font-weight:700;
+  font-size:clamp(20px,2vw,24px);letter-spacing:-.01em;line-height:1.25;
+  padding-top:28px;border-top:1px solid var(--rule);color:var(--ink)
+}
+body.page-truck .trk-related .rel-sol{margin-top:16px;padding-top:0;border-top:0}
+body.page-truck .trk-more ul{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:860px){body.page-truck .trk-more ul{grid-template-columns:1fr}}
+
+/* Contact band: secondary CTA was dark-on-dark; hint text failed contrast */
+body.page-truck .trk-contact .btn.ghost.on-dark{color:#fff;border-color:rgba(255,255,255,.55);background:transparent}
+body.page-truck .trk-contact .btn.ghost.on-dark:hover{color:var(--ink);border-color:#fff}
+body.page-truck section#inquire .inq-hint{margin-top:8px;font-size:14px;line-height:1.5;letter-spacing:0;text-transform:none;color:var(--steel) !important}

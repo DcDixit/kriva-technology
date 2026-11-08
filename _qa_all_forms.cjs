@@ -57,6 +57,8 @@ const submit = (page, form) =>
             : { status: 502, contentType: "application/json", body: '{"ok":false,"error":"qa"}' }
         );
       }
+      // Never let the browser backup channels send real email during QA.
+      if (/formsubmit.co|api.web3forms.com/.test(r.url())) return r.abort();
       if (/googletagmanager|google-analytics|clarity/.test(r.url())) return r.abort();
       r.continue();
     });

@@ -39,7 +39,7 @@ body.page-process .body-sm{
 
 body.page-process main > section,
 body.page-process main > header.hero{
-  scroll-margin-top:88px
+  scroll-margin-top:120px
 }
 body.page-process .sect{
   padding-block:clamp(80px,10vw,140px);
@@ -109,6 +109,66 @@ body.page-process .trk-fit-foot{
   max-width:62ch
 }
 body.page-process .trk-fit-foot a{border-bottom:1px solid currentColor}
+body.page-process .trk-fit .s-head{margin-bottom:clamp(28px,3.5vw,40px)}
+body.page-process .trk-fit .d2{max-width:14ch}
+body.page-process section.story:hover .story-media img{transform:none}
+
+/* Photography on this page */
+body.page-process section.story{
+  padding-block:clamp(12px,2vw,28px) clamp(64px,8vw,104px)
+}
+body.page-process section.story .story-media{
+  background:transparent;
+  overflow:visible;
+  border-radius:0
+}
+body.page-process section.story .story-media img{
+  width:100%;
+  height:auto;
+  aspect-ratio:3/2;
+  max-height:460px;
+  object-fit:cover;
+  object-position:center 36%;
+  border-radius:12px
+}
+body.page-process .story-credit,
+body.page-process .prc-photo figcaption{
+  margin-top:10px;
+  font-size:12.5px;
+  line-height:1.45;
+  color:var(--steel);
+  max-width:62ch
+}
+body.page-process .story-credit a,
+body.page-process .prc-photo figcaption a{
+  color:inherit;
+  border-bottom:1px solid currentColor
+}
+.prc-cad-layout,
+.prc-proof-head{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);
+  gap:clamp(28px,4vw,64px);
+  align-items:center
+}
+.prc-photo{margin:0;min-width:0}
+.prc-photo img{
+  width:100%;
+  height:auto;
+  aspect-ratio:3/2;
+  max-height:460px;
+  object-fit:cover;
+  object-position:32% 42%;
+  border-radius:12px
+}
+.prc-photo--proof img{
+  aspect-ratio:16/10;
+  max-height:340px;
+  object-position:70% center
+}
+.prc-proof-head{margin-bottom:clamp(8px,1vw,12px);align-items:start}
+.prc-proof-head .s-head{margin:0}
+.prc-proof-grid h3{margin:0}
 
 /* ── Hero grid + gate instrument ── */
 .prc-hero-grid{
@@ -161,18 +221,17 @@ body.page-process .trk-fit-foot a{border-bottom:1px solid currentColor}
   font-size:10px;
   letter-spacing:.1em;
   text-transform:uppercase;
-  color:#717F8C
+  color:#8C98A4
 }
 .prc-gate-bar b{color:#fff;font-weight:500}
 .prc-live{display:inline-flex;align-items:center;gap:7px;color:var(--amber);white-space:nowrap}
 .prc-live i{
   width:5px;height:5px;border-radius:50%;background:currentColor;
-  box-shadow:0 0 0 0 currentColor;animation:prc-pulse 2.4s var(--e-io) infinite
+  animation:prc-pulse 2.4s ease-in-out infinite
 }
 @keyframes prc-pulse{
-  0%{box-shadow:0 0 0 0 rgba(219,155,31,.45)}
-  70%{box-shadow:0 0 0 7px rgba(219,155,31,0)}
-  100%{box-shadow:0 0 0 0 currentColor}
+  0%,100%{opacity:1}
+  50%{opacity:.35}
 }
 .prc-spine{position:relative;padding:8px 0 4px;list-style:none}
 .prc-spine:before{
@@ -202,11 +261,11 @@ body.page-process .trk-fit-foot a{border-bottom:1px solid currentColor}
 .prc-spine li.on .nm{color:#fff}
 .prc-spine .wk{
   display:block;margin-top:3px;font-family:var(--f-mono);
-  font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#5C6670
+  font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#8C98A4
 }
 .prc-spine .st{
   font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
-  color:#5C6670;padding:4px 8px;border:1px solid #2A333C;white-space:nowrap
+  color:#8C98A4;padding:4px 8px;border:1px solid #2A333C;white-space:nowrap
 }
 .prc-spine li.done .st{color:var(--lime);border-color:#3730A3}
 .prc-spine li.on .st{color:#fff;background:var(--cta);border-color:var(--cta)}
@@ -242,7 +301,7 @@ body.page-process .trk-stepper .sn{
   color:var(--cta);
   margin-bottom:10px
 }
-body.page-process .trk-stepper h3{
+body.page-process .trk-stepper .prc-step-name{
   font-family:var(--f-display);
   font-weight:700;
   font-size:clamp(.98rem,1.4vw,1.1rem);
@@ -426,9 +485,9 @@ body.page-process .trk-stepper p{font-size:13.5px;line-height:1.5;color:var(--st
   font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;
   text-transform:uppercase;color:var(--cta)
 }
-.prc-proof-grid b{
+.prc-proof-grid h3{
   font-family:var(--f-display);font-weight:700;
-  font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;color:var(--ink)
+  font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;color:var(--ink);line-height:1.2
 }
 .prc-proof-grid span{font-size:14px;line-height:1.5;color:var(--steel)}
 .prc-proof-grid i{
@@ -547,11 +606,17 @@ body.page-process .mob-chips a{
 }
 body.page-process .mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
 
+@media(max-width:1280px){
+  body.page-process .mob-chips{display:flex !important}
+}
 @media(max-width:1024px){
   .prc-hero-grid,.prc-layout,.prc-eng,.prc-same,.prc-proof-grid,
+  .prc-cad-layout,.prc-proof-head,
   body.page-process .faq-grid,
   body.page-process .trk-fit-rail,
   body.page-process .trk-stepper{grid-template-columns:1fr}
+  .prc-photo{position:static}
+  .prc-photo img,.prc-photo--proof img{max-height:none}
   .prc-hero-copy .d1{max-width:none}
   .prc-sign,body.page-process .faq-grid > div:first-child{position:static}
   .cta-row{align-items:flex-start}
@@ -559,8 +624,8 @@ body.page-process .mob-chips a[aria-current="true"]{border-color:var(--ink);colo
   body.page-process .trk-stepper li:last-child{border-bottom:0}
 }
 @media(max-width:768px){
-  body.page-process .mob-chips{display:flex !important}
   body.page-process .sect{padding-block:clamp(64px,8vw,96px)}
+  body.page-process section.story{padding-bottom:clamp(48px,8vw,72px)}
 }
 @media(max-width:640px){
   .hero-actions{flex-direction:column;align-items:stretch}

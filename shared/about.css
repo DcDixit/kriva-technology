@@ -142,7 +142,46 @@ body.page-about .trk-fit-foot{
 }
 body.page-about .trk-fit-foot a{border-bottom:1px solid currentColor}
 
-/* ── Story split ── */
+body.page-about .hero{overflow:visible}
+body.page-about .ip-title--lines span{white-space:normal;text-wrap:balance}
+body.page-about .hero.hero--inner + .ab-fit{
+  padding-top:clamp(36px,5vw,64px) !important;
+  padding-bottom:clamp(72px,8vw,104px) !important
+}
+body.page-about .ab-fit .d2{margin-top:10px}
+body.page-about .ab-fit .trk-fit-rail{margin-top:28px}
+body.page-about nav[aria-label="Breadcrumb"]{margin:0}
+
+.ab-story-split{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(280px,.88fr);
+  gap:clamp(28px,4vw,64px);
+  align-items:start;
+  margin-top:clamp(28px,4vw,44px)
+}
+.ab-story-side{display:grid;gap:20px;min-width:0;align-content:start}
+.ab-photo{margin:0;min-width:0}
+.ab-photo img{
+  width:100%;
+  height:auto;
+  aspect-ratio:3/2;
+  object-fit:cover;
+  object-position:center;
+  border-radius:12px;
+  background:#f6f4ef
+}
+body.page-about .story-credit a{text-decoration:underline;text-underline-offset:2px}
+.ab-prac-head{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(260px,.8fr);
+  gap:clamp(24px,4vw,56px);
+  align-items:center
+}
+.ab-prac-head .lede{margin-top:16px}
+.ab-careers{margin-top:28px}
+.ab-careers a{border-bottom:1px solid currentColor}
+.ab-meta,.ab-foot,.ab-h{color:#A3B1C2}
+.ab-msgs span{color:#C5D0DC}
 .ab-founder{
   margin:0 0 24px;
   max-width:220px;
@@ -238,7 +277,7 @@ body.page-about .trk-fit-foot a{border-bottom:1px solid currentColor}
   font-size:10px;
   letter-spacing:.1em;
   text-transform:uppercase;
-  color:#717F8C
+  color:#A3B1C2
 }
 .ab-chip{
   flex:none;
@@ -257,7 +296,7 @@ body.page-about .trk-fit-foot a{border-bottom:1px solid currentColor}
   font-size:10px;
   letter-spacing:.12em;
   text-transform:uppercase;
-  color:#717F8C;
+  color:#A3B1C2;
   padding:14px 16px 0
 }
 .ab-msgs{list-style:none;padding:8px 16px 14px}
@@ -270,7 +309,7 @@ body.page-about .trk-fit-foot a{border-bottom:1px solid currentColor}
   font-size:10px;
   letter-spacing:.12em;
   text-transform:uppercase;
-  color:#8C98A4
+  color:#C5D0DC
 }
 .ab-msgs p{font-size:14px;line-height:1.45;color:#DDE2E7}
 .ab-msgs code{
@@ -315,7 +354,7 @@ body.page-about .trk-fit-foot a{border-bottom:1px solid currentColor}
   font-size:10px;
   letter-spacing:.12em;
   text-transform:uppercase;
-  color:#717F8C
+  color:#A3B1C2
 }
 
 /* ── Company spec grid ── */
@@ -536,7 +575,7 @@ body.page-about .trk-fit-foot a{border-bottom:1px solid currentColor}
   font-size:9.5px;
   letter-spacing:.1em;
   text-transform:uppercase;
-  color:#717F8C
+  color:#A3B1C2
 }
 .ev-act{
   flex:none;
@@ -598,8 +637,8 @@ body.page-about .trk-fit-foot a{border-bottom:1px solid currentColor}
 .ev-steps .done i{background:#A5B4FC;border-color:#A5B4FC}
 .ev-steps .now{color:#fff;background:rgba(79,70,229,.1);margin-inline:-14px;padding-inline:14px}
 .ev-steps .now i{background:var(--cta);border-color:var(--cta)}
-.ev-steps .later{color:#717F8C}
-.ev-steps em{font-style:normal;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C}
+.ev-steps .later{color:#A3B1C2}
+.ev-steps em{font-style:normal;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#A3B1C2}
 .ev-steps .done em{color:#A5B4FC}
 .ev-steps .now em{color:#C4B8FF}
 .ev-cta{
@@ -686,6 +725,9 @@ body.page-about .mob-chips a{
   letter-spacing:.1em;
   text-transform:uppercase;
   padding:8px 12px;
+  min-height:36px;
+  display:inline-flex;
+  align-items:center;
   border:1px solid #e6e7ea;
   border-radius:999px;
   color:var(--steel);
@@ -695,6 +737,7 @@ body.page-about .mob-chips a[aria-current="true"]{border-color:var(--ink);color:
 
 @media(max-width:1024px){
   .ab-story-split,
+  .ab-prac-head,
   body.page-about .trk-fit-rail,
   .ab-spec,
   .ab-practices,

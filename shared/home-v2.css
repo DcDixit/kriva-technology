@@ -44,19 +44,37 @@ main .k-clients-h{font-size:14.5px;font-weight:600;font-family:var(--f-body);let
 .k-path img{display:block;width:100%;height:210px;object-fit:cover}
 .k-path-who,.k-path h3,.k-path p,.k-path .k-more{margin-left:22px;margin-right:22px}
 .k-path-who{margin-top:16px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);line-height:1.35}
-.k-path h3{font-size:22px;margin:0;letter-spacing:-.02em}
-.k-path p{font-size:16px;line-height:1.5;color:var(--steel);margin:0}
+.k-path h3{font-size:22px;margin:0 22px;letter-spacing:-.02em}
+.k-path p{font-size:16px;line-height:1.5;color:var(--steel);margin:0 22px}
 .k-path .k-more{margin-top:auto;padding-top:4px;font-size:15.5px}
 @media (max-width:720px){
   .k-paths{grid-template-columns:1fr}
   .k-path img{height:180px}
 }
 .k-also{margin:22px 0 0;font-size:16px;color:var(--steel)}
+.k-credit{margin:8px 0 0;font-size:13px;line-height:1.5;color:var(--steel)}
+.k-credit a{color:inherit;text-decoration:underline}
+/* The shared scroll-in fade starts at .35 opacity, which leaves the cards under the hero illegible on first paint */
+.k-path{animation:none}
 
 /* Load flow band */
 .home .k-flow{background:var(--ink);color:#fff;padding-block:clamp(64px,8vw,112px);border:0}
 .k-head--dark h2{color:#fff}
 .k-head--dark .k-lede{color:#C4CFDB}
+.k-flow .wf-node{color:#97A3AF}
+.k-flow .wf-k{color:#9AA7B4;font-size:11px}
+.k-flow .wf-node-l{font-size:11px}
+.k-flow .wf-view{flex-direction:column;justify-content:center;padding:clamp(20px,3vw,32px)}
+.k-flow .wf-facts,.k-flow .wf-pod{border:1px solid var(--ink-line);border-radius:10px 10px 0 0;background:var(--ink-2)}
+.k-flow .wf-facts>div{padding:16px 18px}
+.k-flow .wf-facts span{font-size:11px;color:#9AA7B4}
+.k-flow .wf-facts b{margin-top:8px;font-size:clamp(17px,1.6vw,20px)}
+.k-flow .wf-audit{border:1px solid var(--ink-line);border-top:0;border-radius:0 0 10px 10px;padding:12px 18px;font-size:13px}
+@media (max-width:620px){
+ .k-flow .wf-view{padding:16px}
+ .k-flow .wf-facts>div{padding:12px 10px}
+ .k-flow .wf-facts b{font-size:16px;white-space:nowrap}
+}
 
 /* Specialties */
 .k-spec{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:16px}
@@ -170,7 +188,7 @@ main .k-clients-h{font-size:14.5px;font-weight:600;font-family:var(--f-body);let
 /* Markets */
 .home .k-mkts{padding-block:clamp(40px,5vw,64px)}
 main .k-mkts-h{font-size:clamp(20px,2vw,24px);margin:0 0 16px}
-.k-mkts ul{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:0;margin:0}
+.k-mkts ul{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:0;margin:0}
 .k-mkts a{display:block;height:100%;padding:18px;background:#fff;border:1px solid var(--rule);border-radius:12px;color:inherit;text-decoration:none!important}
 .k-mkts a:hover{border-color:var(--blue)}
 .k-mkts strong{display:block;font-family:var(--f-display);font-size:17px}
@@ -195,7 +213,7 @@ main .k-mkts-h{font-size:clamp(20px,2vw,24px);margin:0 0 16px}
  .k-steps{border-top:0;gap:24px}
  .k-steps li{border-top:3px solid var(--ink)}
  .k-steps li::before{top:-8px}
- .k-mkts ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .k-mkts ul{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (max-width:900px){
  .k-hero-grid,.k-int,.k-team,.k-faq-grid,.k-case{grid-template-columns:1fr}
@@ -212,6 +230,7 @@ main .k-mkts-h{font-size:clamp(20px,2vw,24px);margin:0 0 16px}
 
 /* Fixes */
 .home .k-hero{padding-top:clamp(104px,10vw,136px)}
+.home .k-hero+.k-sec{padding-top:clamp(48px,6vw,88px)}
 .k-flow .wf-panel h3,.k-flow .wf-panel-copy h3,.handoff .wf-panel h3{color:var(--ink)}
 .k-inq h2{color:var(--ink)}
 .home .k-sec h2{margin:0}
@@ -255,7 +274,7 @@ main .k-mkts-h{font-size:clamp(20px,2vw,24px);margin:0 0 16px}
  .k-table tr{background:#fff;border:1px solid var(--rule);border-radius:12px;margin-bottom:12px;overflow:hidden}
  .k-table tbody th{display:block;width:auto;padding:14px 16px 6px;border:0;font-family:var(--f-display);font-size:18px}
  .k-table td{display:block;padding:6px 16px;border:0;font-size:15.5px}
- .k-table td::before{content:attr(data-label) ": ";font-weight:700;color:var(--ink)}
+ .k-table td::before{content:attr(data-label) ":\00a0";font-weight:700;color:var(--ink)}
  .k-table td.k-us{margin-top:8px;padding:12px 16px}
 }
 .k-scope-note{margin:24px 0 0}
