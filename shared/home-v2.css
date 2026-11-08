@@ -37,25 +37,29 @@ main .k-clients-h{font-size:14.5px;font-weight:600;font-family:var(--f-body);let
 .k-logos{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px 28px;align-items:center;padding:0;margin:0}
 .k-logos img{max-height:40px;width:auto;max-width:100%;object-fit:contain}
 
-/* Buyer paths: photo plus the problem, two by two */
-.k-paths{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
-.k-path{display:flex;flex-direction:column;gap:10px;padding:0 0 22px;border:0;border-radius:0;background:#fff;box-shadow:none;color:inherit;overflow:hidden;min-width:0}
-.k-path:hover{background:var(--paper-2);transform:none;box-shadow:none}
-.k-path img{display:block;width:100%;height:210px;object-fit:cover}
-.k-path-who,.k-path h3,.k-path p,.k-path .k-more{margin-left:22px;margin-right:22px}
-.k-path-who{margin-top:16px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);line-height:1.35}
-.k-path h3{font-size:22px;margin:0 22px;letter-spacing:-.02em}
-.k-path p{font-size:16px;line-height:1.5;color:var(--steel);margin:0 22px}
-.k-path .k-more{margin-top:auto;padding-top:4px;font-size:15.5px}
-@media (max-width:720px){
-  .k-paths{grid-template-columns:1fr}
-  .k-path img{height:180px}
-}
-.k-also{margin:22px 0 0;font-size:16px;color:var(--steel)}
-.k-credit{margin:8px 0 0;font-size:13px;line-height:1.5;color:var(--steel)}
+/* Buyer paths: four separate choices, each with room around the photo and the copy */
+#solutions.k-sec{padding-block:clamp(72px,8vw,120px)}
+#solutions .k-head{margin-bottom:clamp(28px,3.6vw,48px)}
+.k-paths{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,1.8vw,22px);background:none;border:0}
+.k-path{display:flex;flex-direction:column;gap:clamp(16px,1.6vw,20px);height:100%;padding:clamp(14px,1.4vw,18px) clamp(14px,1.4vw,18px) clamp(22px,2.2vw,28px);border:1px solid var(--rule);border-radius:16px;background:#fff;box-shadow:0 1px 0 rgba(15,28,46,.04);color:inherit;text-decoration:none;overflow:visible;min-width:0;transition:border-color .2s var(--e),box-shadow .2s var(--e),transform .2s var(--e)}
+.k-path:hover{background:#fff;border-color:#C7D2FE;box-shadow:var(--shadow-lift);transform:translateY(-2px)}
+.k-path:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.k-path-media{display:block;height:clamp(176px,16vw,220px);border-radius:12px;overflow:hidden;background:#E7E4DC}
+.k-path img{display:block;width:100%;height:100%;margin:0;object-fit:cover;border-radius:0}
+.k-path-copy{display:flex;flex-direction:column;align-items:flex-start;gap:10px;flex:1;min-width:0;padding:2px clamp(6px,.7vw,10px) 0}
+.k-path-who{display:inline-flex;align-items:center;max-width:100%;margin:0;padding:5px 10px;border-radius:999px;background:#EEF2FF;font-size:12px;font-weight:700;letter-spacing:.045em;text-transform:uppercase;color:var(--blue-deep);line-height:1.35;white-space:normal}
+.k-path h3{font-size:clamp(20px,1.55vw,24px);line-height:1.28;margin:0;letter-spacing:-.022em}
+.k-path p{font-size:16px;line-height:1.55;color:var(--steel);margin:0}
+.k-path .k-more{margin-top:auto;padding-top:8px;font-size:15.5px}
+.k-paths-foot{margin-top:clamp(24px,3vw,40px);padding:clamp(18px,2vw,22px) clamp(4px,1vw,8px) 0;border-top:1px solid var(--rule)}
+.k-also{margin:0;font-size:16px;line-height:1.55;color:var(--steel);max-width:76ch}
+.k-credit{margin:10px 0 0;font-size:13px;line-height:1.5;color:var(--steel);max-width:88ch}
 .k-credit a{color:inherit;text-decoration:underline}
 /* The shared scroll-in fade starts at .35 opacity, which leaves the cards under the hero illegible on first paint */
 .k-path{animation:none}
+@media (prefers-reduced-motion:reduce){
+ .k-path,.k-path:hover{transition:none;transform:none}
+}
 
 /* Load flow band */
 .home .k-flow{background:var(--ink);color:#fff;padding-block:clamp(64px,8vw,112px);border:0}
@@ -216,13 +220,17 @@ main .k-mkts-h{font-size:clamp(20px,2vw,24px);margin:0 0 16px}
  .k-mkts ul{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (max-width:900px){
- .k-hero-grid,.k-int,.k-team,.k-faq-grid,.k-case{grid-template-columns:1fr}
+ .k-hero-grid,.k-int,.k-team,.k-faq-grid,.k-case,.k-paths{grid-template-columns:1fr}
+ .k-path-media{height:clamp(180px,42vw,240px)}
  .k-logos{grid-template-columns:repeat(3,minmax(0,1fr))}
  .k-case-more{grid-template-columns:1fr}
  .k-svc{grid-template-columns:1fr}
 }
 @media (max-width:620px){
  .k-paths,.k-spec,.k-steps,.k-assurances,.k-mkts ul{grid-template-columns:1fr}
+ .k-path{padding:12px 12px 20px}
+ .k-path-media{height:clamp(168px,48vw,210px)}
+ .k-path-copy{padding-inline:4px}
  .k-actions .btn{width:100%}
  .k-photo-card{margin-top:-40px}
  .k-logos{grid-template-columns:repeat(2,minmax(0,1fr))}

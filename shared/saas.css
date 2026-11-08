@@ -804,8 +804,8 @@ body.page-saas .fbase,body.page-saas .fbase a{color:#9AA5B0}
   .home-kpi:nth-child(3){border-right:0;border-top:1px solid var(--ink-line);grid-column:1 / -1}
   .role-row{grid-template-columns:1fr;gap:4px}
   .proof-story div,.scope div{grid-template-columns:1fr;gap:6px}
-  .ob-item{grid-template-columns:22px minmax(0,1fr)}
-  .ob-item small{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ob-item{grid-template-columns:22px minmax(0,1fr);align-items:start}
+  .ob-item small{position:static;width:auto;height:auto;overflow:visible;clip:auto;grid-column:2;margin-top:2px}
 }
 @media(max-width:560px){
   .saas-frac article{grid-template-columns:1fr;gap:8px}
@@ -861,16 +861,56 @@ body.page-saas .saas-problems .saas-frac .n{color:#6B7885}
 body.page-saas .saas-problems .frac-viz{aspect-ratio:480/400;height:auto;border:1px solid var(--ink-line);border-radius:6px;overflow:hidden;background:#0E1216}
 body.page-saas .saas-problems .frac-viz img{width:100%;height:100%;object-fit:contain;opacity:1}
 
-/* Surface tabs: 10.5px uppercase labels were hard to read and wrapped to two rows */
-body.page-saas .saas-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+/* Surface tabs: a single control, with the selected surface filled */
+body.page-saas .saas-tabs{
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  scrollbar-width:none;
+  gap:6px;
+  margin-bottom:24px;
+  padding:6px;
+  border:1px solid var(--rule);
+  border-radius:14px;
+  background:var(--paper-2)
+}
 body.page-saas .saas-tabs::-webkit-scrollbar{display:none}
-body.page-saas .saas-tabs button{flex:none;font-family:var(--f-body);font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;padding:12px 16px}
-body.page-saas .saas-tabs button:first-child{padding-left:0}
-body.page-saas .saas-tabs button:first-child:after{left:0}
+body.page-saas .saas-tabs button{
+  flex:none;
+  font-family:var(--f-body);
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none;
+  padding:10px 14px;
+  min-height:44px;
+  border-radius:10px;
+  color:var(--steel)
+}
+body.page-saas .saas-tabs button:after{display:none}
+body.page-saas .saas-tabs button:first-child{padding-left:14px}
+body.page-saas .saas-tabs button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(15,28,46,.08)}
+
+/* Product frames: type sized for a column about 520px wide */
+body.page-saas .saas-chrome{font-family:var(--f-body);font-size:14px;letter-spacing:0;text-transform:none;color:#C5D0DC;padding:12px 18px}
+body.page-saas .ob-bar{padding:16px 18px}
+body.page-saas .ob-bar b{font-size:18px}
+body.page-saas .ob-bar em{font-family:var(--f-body);font-size:14px;font-weight:700;letter-spacing:0;text-transform:none}
+body.page-saas .ob-empty{padding:20px 18px 8px}
+body.page-saas .ob-empty span{font-family:var(--f-body);font-size:14px;font-weight:700;letter-spacing:0;text-transform:none;color:#A5B4FC}
+body.page-saas .ob-empty b{font-size:clamp(1.35rem,2vw,1.7rem);margin:8px 0 8px}
+body.page-saas .ob-empty p{font-size:16px;line-height:1.5;color:#C5D0DC}
+body.page-saas .ob-acts{gap:10px;margin-top:16px}
+body.page-saas .ob-acts span{font-family:var(--f-body);font-size:15px;font-weight:700;letter-spacing:0;text-transform:none;padding:10px 16px;min-height:44px;border-radius:10px}
+body.page-saas .ob-item{grid-template-columns:22px minmax(0,1fr) auto;gap:12px;padding:14px 18px;font-size:16px;color:#DDE2E7}
+body.page-saas .ob-item small{font-family:var(--f-body);font-size:14px;font-weight:700;letter-spacing:0;text-transform:none;color:#C5D0DC}
+@media(max-width:640px){
+  body.page-saas .ob-item{grid-template-columns:22px minmax(0,1fr);align-items:start}
+  body.page-saas .ob-item small{grid-column:2;margin-top:2px}
+}
+body.page-saas .cap-note{font-family:var(--f-body);font-size:14px;letter-spacing:0;text-transform:none;color:var(--steel);line-height:1.45}
 body.page-saas .saas-copy li:before{background:var(--blue);width:8px;height:1.5px}
 body.page-saas .p-link{font-family:var(--f-body);font-size:15px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink)}
 @media(min-width:1025px){body.page-saas .saas-switch > div:last-child{padding-top:70px}}
-body.page-saas .cap-note{font-family:var(--f-body);font-size:13px;letter-spacing:0;text-transform:none;color:var(--steel)}
 
 /* Shared photo frame (How we work, Finance) */
 .saas-photo{margin:0;min-width:0}
