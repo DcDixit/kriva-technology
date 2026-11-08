@@ -7,24 +7,74 @@
   const FAIL_STATUS =
     "We could not send your inquiry right now. Please try again shortly, or email hello@krivatechnologies.com.";
 
-  /* Primary: /api/inquiry (Gmail, then Resend). Backup: Web3Forms from the browser, only when the
-     server reports that delivery failed. Resolves true only after a provider accepted the message. */
-  async function sendInquiry(payload) {
-    let backup = null;
-    try {
-      const res = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+  const INQUIRY_FIELDS = ["name", "email", "company", "phone", "site", "ptype", "market", "service", "budget", "timeline", "details", "page", "inquiry_type"];
+
+  /* FormSubmit's AJAX endpoint keeps asking for activation even after the form is live.
+     A real HTML post to the same address is accepted from every page on the site, so the
+     backup submits into a hidden frame and stays on the page. */
+  function sendViaFormSubmit(payload) {
+    return new Promise((resolve) => {
+      const id = "kriva-inq-" + Date.now();
+      const iframe = document.createElement("iframe");
+      iframe.name = id;
+      iframe.title = "Sending inquiry";
+      iframe.setAttribute("aria-hidden", "true");
+      iframe.style.cssText = "position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none";
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://formsubmit.co/hello@krivatechnologies.com";
+      form.target = id;
+      form.acceptCharset = "UTF-8";
+      const fields = {
+        _subject: "KRIVA inquiry: " + (payload.company || payload.name || "Website"),
+        _template: "table",
+        _captcha: "false",
+        _replyto: payload.email || "",
+      };
+      INQUIRY_FIELDS.forEach((k) => {
+        if (payload[k]) fields[k] = String(payload[k]).slice(0, 4000);
       });
-      const body = await res.json().catch(() => ({}));
-      if (res.ok && body && body.ok === true && body.channel) return true;
-      backup = body && body.backup;
-    } catch (err) {}
-    if (!backup || backup.provider !== "web3forms" || !backup.key) return false;
-    const rows = ["name", "email", "company", "phone", "site", "ptype", "market", "service", "budget", "timeline", "details", "page", "inquiry_type"];
-    const out = { access_key: backup.key, subject: "KRIVA inquiry (backup channel): " + (payload.company || payload.name || "Website"), from_name: "KRIVA website", botcheck: "" };
-    rows.forEach((k) => { if (payload[k]) out[k] = String(payload[k]).slice(0, 4000); });
+      Object.keys(fields).forEach((k) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = k;
+        input.value = fields[k];
+        form.appendChild(input);
+      });
+      let settled = false;
+      let loads = 0;
+      const finish = (ok) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        setTimeout(() => {
+          form.remove();
+          iframe.remove();
+        }, 400);
+        resolve(ok);
+      };
+      const timer = setTimeout(() => finish(false), 20000);
+      iframe.addEventListener("load", () => {
+        loads += 1;
+        if (loads < 2) return;
+        finish(true);
+      });
+      document.body.appendChild(iframe);
+      document.body.appendChild(form);
+      form.submit();
+    });
+  }
+
+  async function sendViaWeb3Forms(payload, key) {
+    const out = {
+      access_key: key,
+      subject: "KRIVA inquiry (backup channel): " + (payload.company || payload.name || "Website"),
+      from_name: "KRIVA website",
+      botcheck: "",
+    };
+    INQUIRY_FIELDS.forEach((k) => {
+      if (payload[k]) out[k] = String(payload[k]).slice(0, 4000);
+    });
     try {
       const r = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -36,6 +86,27 @@
     } catch (err) {
       return false;
     }
+  }
+
+  /* Primary: /api/inquiry (Gmail, then Resend). If that fails, Web3Forms when the server
+     offers a key, then FormSubmit from the browser. Resolves true only after a provider accepted. */
+  async function sendInquiry(payload) {
+    let backup = null;
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (res.ok && body && body.ok === true && body.channel) return true;
+      if (res.status === 400) return false;
+      backup = body && body.backup;
+    } catch (err) {}
+    if (backup && backup.provider === "web3forms" && backup.key) {
+      if (await sendViaWeb3Forms(payload, backup.key)) return true;
+    }
+    return sendViaFormSubmit(payload);
   }
   window.krivaSendInquiry = sendInquiry;
 

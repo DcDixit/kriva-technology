@@ -69,7 +69,7 @@ const PANELS = Object.fromEntries(Object.entries(BRING).map(([f, b]) => [f, star
 PANELS["kriva-about.html"] = `<aside class="k-aside" aria-label="Who you will work with">
         <p class="k-aside-k">Who you will work with</p>
         <ol class="k-aside-steps k-aside-steps--plain">
-          <li><strong>Dixit Panchal, founder</strong><span>Leads design at KRIVA.</span></li>
+          <li><strong>Design lead</strong><span>Leads design at KRIVA.</span></li>
           <li><strong>Nine years of experience</strong><span>What the team brings to shipping product software.</span></li>
           <li><strong>Permanent team</strong><span>Every designer and engineer. No subcontractors or freelance marketplaces.</span></li>
           <li><strong>Ahmedabad, India</strong><span>Headquarters, with calls that overlap your working day.</span></li>
