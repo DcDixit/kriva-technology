@@ -479,8 +479,7 @@ body.page-crm .crm-card li{
   padding-top:8px
 }
 #types .crm-sub{
-  padding-top:32px;
-  border-top:1px solid #e6e7ea
+  padding-top:0
 }
 .crm-sub h3{
   font-family:var(--f-display);
@@ -1040,3 +1039,124 @@ body.page-crm .mob-chips a[aria-current="true"]{border-color:var(--ink);color:va
   [data-r],[data-s]>*{opacity:1!important;transform:none!important}
   .mask span i{transform:none!important}
 }
+
+/* ── 2026-11 CRM page audit ── */
+/* status pill: the generic .go utility (15px !important) used to clobber .crm-st.go */
+.crm-st.on-sla{color:var(--sky)}
+body.page-crm .story-copy h2{color:var(--ink)}
+
+/* capability list inside the "What we deliver" card */
+body.page-crm .crm-caps{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+body.page-crm .crm-caps li{position:relative;padding-left:16px}
+body.page-crm .crm-caps li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--cta)}
+
+/* problems: three text columns now the unreadable thumbnails are gone */
+body.page-crm .crm-problems .crm-frac{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,3vw,48px);border-top:1px solid var(--ink-line);margin-top:clamp(36px,4vw,56px)}
+body.page-crm .crm-problems .crm-frac article{display:block;padding:28px 0 0;border-bottom:0}
+body.page-crm .crm-problems .crm-frac .n{display:block;margin-bottom:18px}
+body.page-crm .crm-problems .crm-frac h3{margin-bottom:10px;min-height:2.36em}
+body.page-crm .crm-problems .crm-frac p{color:#A3AEB9;font-size:15.5px}
+body.page-crm .crm-problems .crm-frac .cons{margin-top:14px;line-height:1.5}
+
+/* process photo split */
+body.page-crm .crm-photo-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(56px,6vw,88px);margin-bottom:clamp(32px,4vw,48px)}
+body.page-crm .crm-photo{margin:0;min-width:0}
+body.page-crm .crm-photo img{width:100%;height:clamp(220px,28vw,380px);object-fit:cover;object-position:center 40%;border-radius:12px;background:var(--paper-2)}
+body.page-crm .crm-photo figcaption,
+body.page-crm .crm-faq-photo figcaption{margin-top:10px;font-size:12.5px;line-height:1.5;color:var(--steel)}
+body.page-crm .crm-photo figcaption a,
+body.page-crm .crm-faq-photo figcaption a{color:inherit;text-decoration:underline}
+body.page-crm .crm-photo-copy .crm-band-k{margin-top:0}
+body.page-crm .crm-photo-copy h3{font-family:var(--f-display);font-weight:700;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.15;letter-spacing:-.022em;color:var(--ink);margin:14px 0 14px;max-width:20ch}
+body.page-crm .crm-photo-copy p:not(.crm-band-k){font-size:16.5px;line-height:1.6;color:var(--steel);max-width:44ch}
+
+/* FAQ side photo */
+body.page-crm .crm-faq-photo{margin:32px 0 0;max-width:420px}
+body.page-crm .crm-faq-photo img{width:100%;aspect-ratio:4/3;height:auto;object-fit:cover;border-radius:12px;background:var(--paper-2)}
+
+/* related links heading */
+body.page-crm .crm-related{padding-block:clamp(56px,6vw,88px) !important}
+body.page-crm .crm-rel-h{font-family:var(--f-display);font-weight:700;font-size:clamp(1.15rem,1.6vw,1.35rem);letter-spacing:-.02em;color:var(--ink);margin-bottom:18px}
+
+/* contact hint: readable on the white form card */
+body.page-crm .crm-contact #inq-details-hint{color:var(--steel)}
+
+/* chapter rail: keep the ticks, hide labels where they would sit over the content */
+@media(max-width:1560px){
+  body.page-crm .chapters a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+
+@media(max-width:960px){
+  body.page-crm .crm-problems .crm-frac{grid-template-columns:1fr}
+  body.page-crm .crm-problems .crm-frac article{display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:24px 0;border-bottom:1px solid var(--ink-line)}
+  body.page-crm .crm-problems .crm-frac .n{margin:0}
+  body.page-crm .crm-problems .crm-frac h3{min-height:0}
+  body.page-crm .crm-photo-split{grid-template-columns:1fr}
+  body.page-crm .crm-faq-photo{max-width:100%;margin-top:24px}
+  body.page-crm .crm-faq-photo img{aspect-ratio:16/10}
+}
+@media(max-width:560px){
+  body.page-crm .crm-problems .crm-frac article{grid-template-columns:1fr;gap:10px}
+  body.page-crm .crm-photo img{height:clamp(200px,58vw,300px)}
+}
+
+/* "How we work" heading: two lines on desktop so the right side is used */
+@media(min-width:1024px){
+  body.page-crm #decH{max-width:34ch}
+  body.page-crm #decide .lede{max-width:64ch;text-wrap:balance}
+}
+
+/* ShiftRail proof: board + three facts, nothing else */
+body.page-crm .crm-case-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px clamp(32px,5vw,72px);align-items:end}
+body.page-crm .crm-case-head .eyebrow{grid-column:1/-1}
+body.page-crm .crm-case-head h2{margin:0;max-width:18ch}
+body.page-crm .crm-case-head .lede{margin:0;max-width:46ch}
+body.page-crm .crm-case{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,72px);align-items:center;margin-top:clamp(40px,5vw,64px)}
+body.page-crm .crm-case-visual{margin:0;min-width:0}
+body.page-crm .crm-case-visual .crm-board{margin:0;box-shadow:0 24px 48px -24px rgba(15,28,46,.35)}
+body.page-crm .crm-case-facts{margin:0 0 28px;border-top:1px solid var(--rule)}
+body.page-crm .crm-case-facts div{padding:18px 0;border-bottom:1px solid var(--rule)}
+body.page-crm .crm-case-facts dt{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cta);margin-bottom:6px}
+body.page-crm .crm-case-facts dd{margin:0;font-size:15.5px;line-height:1.55;color:var(--ink)}
+body.page-crm .crm-case-note{margin-top:14px;font-size:13px;line-height:1.5;color:var(--steel);max-width:44ch}
+@media(max-width:960px){
+  body.page-crm .crm-case-head,body.page-crm .crm-case{grid-template-columns:1fr}
+  body.page-crm .crm-case-head h2{max-width:20ch}
+}
+@media(max-width:560px){
+  body.page-crm .crm-case-body .btn{width:100%;justify-content:center}
+}
+/* full-width board, facts as a three-column row (desktop) */
+@media(min-width:961px){
+  body.page-crm .crm-case{grid-template-columns:1fr;gap:clamp(32px,4vw,48px)}
+  body.page-crm .crm-case-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,3vw,48px);border-top:0;margin-bottom:32px}
+  body.page-crm .crm-case-facts div{border-top:2px solid var(--cta);border-bottom:0;padding:18px 0 0}
+  body.page-crm .crm-case-body{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:24px}
+  body.page-crm .crm-case-facts{grid-column:1/-1}
+  body.page-crm .crm-case-note{margin:0}
+}
+
+/* the 1100px rule hides header cell 4 for an old 6-column board; on this board cell 4 is SLA */
+body.page-crm .crm-board--proof .crm-head span:nth-child(4){display:block}
+
+/* ── 2026-11 consistency pass: one label style, one photo style, even rhythm ── */
+body.page-crm .story .eyebrow{font-size:13px;color:var(--cta);letter-spacing:.06em}
+body.page-crm .crm-card .k{display:block;font-family:var(--f-body);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cta);margin-bottom:8px}
+body.page-crm .crm-band-k{font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cta)}
+body.page-crm .crm-ico{stroke:var(--cta)}
+
+/* photos: same corners, no shadow, same 3:2 crop */
+body.page-crm section.story .story-media{border-radius:12px;box-shadow:none;background:none}
+body.page-crm section.story .story-media img,
+body.page-crm .crm-photo img,
+body.page-crm .crm-faq-photo img{height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px}
+body.page-crm .story-credit{margin-top:16px}
+
+/* section rhythm */
+body.page-crm section.story{padding-block:clamp(56px,6vw,88px) 0 !important}
+body.page-crm .crm-fit .crm-fit-rail{margin-top:clamp(32px,4vw,48px)}
+body.page-crm .crm-fit h2{margin-top:18px;max-width:22ch}
+body.page-crm .crm-related{padding-top:0 !important}
+body.page-crm #types .crm-teams{margin-bottom:0}
+body.page-crm .story-credit{font-size:12.5px;color:var(--steel)}
+body.page-crm .story-credit a{color:inherit;text-decoration:underline}

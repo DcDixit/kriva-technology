@@ -35,7 +35,7 @@ module.exports = {
   "/services/mobile-applications": "Driver mobile apps",
   "/services/no-code-low-code": "No-code / low-code",
   "/services/product-design": "Product design & UX",
-  "/services/saas-platforms": "SaaS product design",
+  "/services/saas-platforms": "SaaS platform development",
   "/services/seo-digital-marketing": "SEO & digital marketing",
   "/services/ui-ux-design": "UI/UX design",
   "/services/ux-research": "UX research",

@@ -29,7 +29,7 @@ module.exports = {
   "kriva-service-crm-development.html":
     "Custom CRM and dispatch desk workflows - HubSpot, Salesforce, or bespoke - with automation, integrations, and ops UX trucking teams use daily.",
   "kriva-service-saas-platforms.html":
-    "Multi-tenant SaaS design: admin and customer surfaces, role-based UX, shared design systems, and phased rollout. MVPs live on the SaaS solutions page.",
+    "Design and development for live multi-tenant SaaS: tenant isolation, roles, admin consoles, APIs, and SSO and billing integrations, shipped in phases.",
   "kriva-service-web-development.html":
     "Marketing sites in Next.js, React, and TypeScript - CMS when marketing must publish without engineering. Authenticated product UX is a separate service.",
   "kriva-services-index.html":
