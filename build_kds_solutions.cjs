@@ -140,7 +140,7 @@ function build(p) {
           <a class="btn" href="#inquire"><span>Book a free 20-minute fit call</span><i>→</i></a>
           <a class="btn ghost" href="/contact#brief"><span>Send a project brief</span><i>→</i></a>
         </div>
-        <ul class="k-assure"><li>Reply within one business day</li><li>You own the code</li><li>NDA on request</li></ul>
+        <ul class="k-assure"><li>Reply within one business day</li><li>You own the code</li><li>Mutual NDA available on request before sharing confidential project information.</li></ul>
       </div>
       <figure class="k-sol-ui">
         <div class="k-case-ui" aria-hidden="true">
@@ -238,7 +238,7 @@ function build(p) {
         <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
         <div><label for="inq-details">What is your team working around today? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4" placeholder="${p.placeholder}"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
         <p class="inq-fail" role="alert"></p>
-        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">No commitment. NDA on request.</p></div>
+        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">No commitment. Mutual NDA available on request before sharing confidential project information.</p></div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
       <div class="inq-done" tabindex="-1"><h3>Thank you!</h3><p>Your inquiry has been submitted successfully. We'll be in touch soon.</p></div>

@@ -19,6 +19,11 @@ const PAGE_CURRENT = {
   "kriva-insight-build-vs-buy-tms.html": null,
   "kriva-insight-dispatch-software-cost.html": null,
   "kriva-insight-quickbooks-xero-integration-guide.html": null,
+  "kriva-pricing.html": "pricing",
+  "kriva-solution-trucking-websites.html": "trucking",
+  "kriva-solution-moving-websites.html": "trucking",
+  "kriva-insight-trucking-website-cost.html": null,
+  "kriva-insight-moving-website-features.html": null,
   "kriva-solution-freight-broker.html": "trucking",
   "kriva-solution-fleet-management.html": "trucking",
   "kriva-redesign.html": null,
@@ -139,7 +144,7 @@ function resolveNav(current, opts = {}) {
 
 function headerHtml(current, opts = {}) {
   const persist = opts.persist ? " data-nav-persist" : "";
-  const group = { trucking: "solutions", saas: "solutions", integration: "solutions", operations: "services", services: "services" }[current] || current;
+  const group = { trucking: "solutions", saas: "solutions", integration: "solutions", operations: "services", services: "services", pricing: "pricing" }[current] || current;
   const on = (k) => (group === k || (k === "services" && opts.servicesCurrent) ? " is-current" : "");
   const cu = (k) => (group === k ? ' aria-current="page"' : "");
   return `<header class="nav" id="nav"${persist}>
@@ -158,6 +163,8 @@ function headerHtml(current, opts = {}) {
                   <p class="mm-label">Trucking and transportation</p>
                   <ul class="mm-list">
                     <li><a href="/solutions/trucking-logistics"><strong>Trucking software</strong><em>Dispatch CRM and TMS for carriers.</em></a></li>
+                    <li><a href="/solutions/trucking-company-websites"><strong>Trucking company websites</strong><em>Quote and recruiting sites for carriers.</em></a></li>
+                    <li><a href="/solutions/moving-company-websites"><strong>Moving company websites</strong><em>Quote-first sites for movers.</em></a></li>
                     <li><a href="/solutions/freight-broker-software"><strong>Freight broker software</strong><em>Quotes, carrier sales, and load tracking.</em></a></li>
                     <li><a href="/solutions/fleet-management-software"><strong>Fleet management software</strong><em>Dashboards, driver apps, and records.</em></a></li>
                     <li><a href="/solutions/car-transportation"><strong>Auto transport software</strong><em>Quote-to-delivery for brokers and carriers.</em></a></li>
@@ -203,6 +210,7 @@ function headerHtml(current, opts = {}) {
             <li><a class="nav-link${on("process")}" href="/process"${cu("process")}>Process</a></li>
             <li><a class="nav-link${on("about")}" href="/about"${cu("about")}>About</a></li>
             <li><a class="nav-link${on("insights")}" href="/insights"${cu("insights")}>Insights</a></li>
+            <li><a class="nav-link${on("pricing")}" href="/pricing"${cu("pricing")}>Pricing</a></li>
           </ul>
         </nav>
       </div>
@@ -220,6 +228,8 @@ function headerHtml(current, opts = {}) {
       <button type="button" class="sheet-toggle" aria-expanded="false" aria-controls="sheet-solutions">Solutions<span class="plus" aria-hidden="true"></span></button>
       <ul class="sheet-sub" id="sheet-solutions">
         <li><a href="/solutions/trucking-logistics"><strong>Trucking software</strong><span>Dispatch CRM and TMS</span></a></li>
+        <li><a href="/solutions/trucking-company-websites"><strong>Trucking company websites</strong><span>Quote and recruiting sites</span></a></li>
+        <li><a href="/solutions/moving-company-websites"><strong>Moving company websites</strong><span>Quote-first mover sites</span></a></li>
         <li><a href="/solutions/freight-broker-software"><strong>Freight broker software</strong><span>Quotes and carrier sales</span></a></li>
         <li><a href="/solutions/fleet-management-software"><strong>Fleet management software</strong><span>Dashboards and driver apps</span></a></li>
         <li><a href="/solutions/car-transportation"><strong>Auto transport software</strong><span>Quote to delivery</span></a></li>
@@ -244,6 +254,7 @@ function headerHtml(current, opts = {}) {
     <div class="sheet-item"><a class="big" href="/process">Process</a></div>
     <div class="sheet-item"><a class="big" href="/about">About</a></div>
     <div class="sheet-item"><a class="big" href="/insights">Insights</a></div>
+    <div class="sheet-item"><a class="big" href="/pricing">Pricing</a></div>
     <div class="sheet-item"><a class="big" href="/faq">FAQ</a></div>
     <div class="sheet-cta">
       <a href="${CTA_BOOK_HREF}" class="btn on-dark"><span>${CTA_PRIMARY_LABEL}</span><i>→</i></a>
@@ -273,11 +284,13 @@ const FOOTER_HTML = `<footer>
       <div class="fbrand">
         <h3>Get in touch</h3>
         <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>
-        <p class="f-blurb">Custom software for trucking, freight, and SaaS companies. Designed and built by one in-house team in Ahmedabad, India.</p>
+        <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
         <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
+        <li><a href="/solutions/trucking-company-websites">Trucking company websites</a></li>
+        <li><a href="/solutions/moving-company-websites">Moving company websites</a></li>
         <li><a href="/solutions/freight-broker-software">Freight broker software</a></li>
         <li><a href="/solutions/fleet-management-software">Fleet management software</a></li>
         <li><a href="/solutions/car-transportation">Auto transport software</a></li>
@@ -299,6 +312,7 @@ const FOOTER_HTML = `<footer>
         <li><a href="/insights">Insights</a></li>
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/careers">Careers</a></li>
+        <li><a href="/pricing">Pricing</a></li>
         <li><a href="/contact">Contact</a></li></ul></nav>
       <nav aria-label="Markets"><h3>Markets</h3><ul>
         <li><a href="/markets/us">United States</a></li>

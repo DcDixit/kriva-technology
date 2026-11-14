@@ -152,14 +152,14 @@ const graphicFaqs = [
   { q: "Is this the same as Branding?", a: "Branding owns identity rules. Graphic Design is the production lane: stationery, social, print, packaging, and campaigns that use those rules. Most clients need both; logo-only work can stand alone." },
   { q: "Do you invent logos for clients you have not briefed?", a: "No. We work from your existing marks or a scoped identity engagement. We do not generate unofficial logos." },
   { q: "Print and digital together?", a: "Yes. One art direction, with print specs and social crops in the same file set so the booth and the Instagram grid match." },
-  { q: "How does an engagement start?", a: "A 20-minute fit call or a written brief. We reply within one business day with a first scope. NDA on request." },
+  { q: "How does an engagement start?", a: "A 20-minute fit call or a written brief. We reply within one business day with a first scope. Mutual NDA available on request before sharing confidential project information." },
 ];
 
 const seoFaqs = [
   { q: "Do you guarantee first-page rankings?", a: "No. Anyone who does is selling you a claim they cannot control. We ship technical SEO, content that matches intent, and reporting you can audit." },
   { q: "Ads without a tracking setup?", a: "We will not scale spend on broken conversion tracking. Fix the events, then the budget." },
   { q: "Can you work on a site you did not build?", a: "Yes. Technical SEO and on-page work on the CMS you already have, or we pair with Web Design & Development when the template is the bottleneck." },
-  { q: "How does an engagement start?", a: "A 20-minute fit call or a written brief. We reply within one business day with a sensible first scope. NDA on request." },
+  { q: "How does an engagement start?", a: "A 20-minute fit call or a written brief. We reply within one business day with a sensible first scope. Mutual NDA available on request before sharing confidential project information." },
 ];
 
 page({
@@ -328,7 +328,7 @@ page({
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>
@@ -492,7 +492,7 @@ page({
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>

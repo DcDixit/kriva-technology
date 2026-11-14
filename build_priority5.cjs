@@ -474,7 +474,7 @@ ${quote}
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>

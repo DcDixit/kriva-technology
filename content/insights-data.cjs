@@ -2,6 +2,36 @@
 module.exports = {
   posts: [
     {
+      slug: "trucking-company-website-cost",
+      title: "How much does a trucking company website cost?",
+      category: "Trucking & Logistics",
+      read: "8 min read",
+      published: "November 2026",
+      publishedISO: "2026-11-14",
+      excerpt: "Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.",
+      byline: "KRIVA Technologies",
+      relatedSolutions: [
+        { href: "/solutions/trucking-company-websites", label: "Trucking company websites" },
+        { href: "/pricing", label: "Pricing" },
+      ],
+      blocks: [],
+    },
+    {
+      slug: "moving-company-website-features",
+      title: "What features should a moving company website have?",
+      category: "Moving",
+      read: "7 min read",
+      published: "November 2026",
+      publishedISO: "2026-11-14",
+      excerpt: "The form fields, service pages, and service area that turn a moving search into a request the office can price.",
+      byline: "KRIVA Technologies",
+      relatedSolutions: [
+        { href: "/solutions/moving-company-websites", label: "Moving company websites" },
+        { href: "/pricing", label: "Pricing" },
+      ],
+      blocks: [],
+    },
+    {
       slug: "saas-mvp-uk-guide",
       title: "SaaS MVP guide for UK startups: from idea to launch",
       category: "SaaS Growth",

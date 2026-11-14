@@ -308,7 +308,7 @@ const solutionsBody = `
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>
@@ -520,7 +520,7 @@ const aboutBody = `
   <div class="wrap">
     <p class="eyebrow" data-r>How we work</p>
     <h2 class="d2" id="indH" data-r style="margin-top:16px;max-width:18ch">Clear ownership. Measurable delivery.</h2>
-    <p class="body" data-r style="margin-top:14px">In-house design and engineering, NDA-first collaboration, and weekly demos: without fabricated review scores.</p>
+    <p class="body" data-r style="margin-top:14px">In-house design and engineering, Mutual NDA available on request before sharing confidential project information., and weekly demos: without fabricated review scores.</p>
     <p class="mono" data-r style="margin-top:36px;color:var(--steel)">Industries we focus on</p>
     <div class="ind" data-s>
       <a href="/solutions/trucking-logistics"><b>US Trucking</b><small>Dispatch &amp; fleet</small></a>
@@ -533,7 +533,7 @@ const aboutBody = `
       <span><b>Marketplaces</b><small>Two-sided platforms</small></span>
     </div>
     <div class="badges" data-r>
-      <span>NDA-first engagements</span>
+      <span>Mutual NDA available on request before sharing confidential project information.</span>
       <span>Design + dev in one team</span>
       <span>AI in the workflow</span>
       <span>Post-launch support available</span>
@@ -554,7 +554,7 @@ const aboutBody = `
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>
@@ -781,7 +781,7 @@ const processBody = `
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>

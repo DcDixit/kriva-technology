@@ -391,7 +391,7 @@ section.story .story-media img{display:block;width:100%;height:clamp(220px,32vw,
     }
   }
 }
-@keyframes kriva-rise{from{opacity:.35;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes kriva-rise{from{opacity:1;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   section.story .story-media img,.k-path img,.svc-dir a img{transition:none}
   .story,.k-path,.svc-dir a,.wk-card{animation:none}
@@ -572,3 +572,7 @@ main .btn{border-radius:var(--radius)}
 .mkt-desk .pu-rows li:nth-child(n+2){visibility:hidden}
 .svc-callout+.cap-note{padding-left:clamp(0px,12vw,170px)}
 @media (max-width:900px){.svc-callout+.cap-note{padding-left:0}}
+
+/* Five homepage service cards. The shared 1px grid paints an empty cell when the count is not a multiple of three. */
+body.home .k-grid3{gap:16px;background:transparent;border:0}
+body.home .k-grid3 > .k-card{border:1px solid var(--rule);border-radius:12px}
