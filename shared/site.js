@@ -7,7 +7,7 @@ const { CONTACT_EMAIL } = require("./studio");
 const ROOT = path.join(__dirname, "..");
 const ORIGIN = "https://krivatechnologies.com";
 const ENTITY_DESCRIPTION =
-  "KRIVA Technologies is a product, UI/UX, and engineering studio that designs and builds trucking software, B2B SaaS, and finance integrations for teams in the UK, US, Australia, UAE, and Canada.";
+  "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.";
 const SAME_AS = [
   "https://www.instagram.com/kriva_technology/",
   ];
@@ -26,6 +26,9 @@ const KNOWS_ABOUT = [
   "Accounting reconciliation",
   "SaaS onboarding UX",
   "Custom software development",
+  "Trucking company websites",
+  "Moving company websites",
+  "Website design",
 ];
 
 function vercelConfig() {
@@ -70,7 +73,7 @@ function lastmodFor(file) {
 
 function priorityFor(routePath) {
   if (routePath === "/") return "1.0";
-  if (routePath === "/contact") return "0.9";
+  if (routePath === "/contact" || routePath === "/pricing") return "0.9";
   if (routePath === "/markets" || routePath.startsWith("/markets/")) return "0.85";
   if (
     routePath === "/solutions" ||

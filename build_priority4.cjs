@@ -89,7 +89,7 @@ const CTA = `
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>
@@ -413,7 +413,7 @@ const faqItems = [
   { q: "Who owns the designs and code?", a: "You do. All Figma files, repositories, and documentation are transferred to you at project completion." },
   { q: "How is pricing structured?", a: "Fixed-scope projects, monthly retainers, or sprint-based work. Everything is scoped after discovery, with clear deliverables and milestones agreed upfront." },
   { q: "Can you work with our existing team?", a: "Absolutely. We embed with in-house designers, developers, or product managers and adapt to your tools and working style." },
-  { q: "Do you sign NDAs?", a: "Yes. Mutual NDAs are standard before we get into any sensitive product details or architecture." },
+  { q: "Do you sign NDAs?", a: "Yes. Mutual NDA available on request before sharing confidential project information." },
   { q: "Which time zones do you support?", a: "We're remote-first with overlap for US, UK, India, and APAC. We align stand-ups and async updates to your team's schedule." },
 ];
 
@@ -468,7 +468,7 @@ const faqBody = `
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>
@@ -554,7 +554,7 @@ const techBody = `
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
     </div>
@@ -624,7 +624,7 @@ function legalPage({ crumb, h1, lede, sections, contactLine }) {
       </div>
       <p class="assur" data-r>
         <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>NDA on request</span>
+        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
       </p>
     </div>
   </div>

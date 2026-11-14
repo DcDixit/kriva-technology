@@ -76,7 +76,7 @@ function formHtml(page, c) {
         <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
         <div><label for="inq-details">${c.q} <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
         <p class="inq-fail" role="alert"></p>
-        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. NDA on request.</p></div>
+        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
       <div class="inq-done" tabindex="-1"><h3>Thank you!</h3><p>Your inquiry has been submitted successfully. We'll be in touch soon.</p></div>

@@ -223,7 +223,7 @@ edit("kriva-contact.html", (s) => {
       <dl class="ct-lead-facts">
         <div><dt>Who replies</dt><dd>The KRIVA team, not a salesperson.</dd></div>
         <div><dt>What you get</dt><dd>A clear yes, no, or not yet.</dd></div>
-        <div><dt>Confidentiality</dt><dd>NDA on request.</dd></div>
+        <div><dt>Confidentiality</dt><dd>Mutual NDA available on request before sharing confidential project information.</dd></div>
       </dl>
       <p class="body-sm">Have a full scope, budget, or files? <a href="#brief">Send a project brief</a>. Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>.</p>
     </div>$1`

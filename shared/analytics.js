@@ -156,6 +156,13 @@
  return;
  }
 
+ if (url.origin === location.origin && /^\/pricing\/?$/.test(url.pathname)) {
+ send('cta_click', {
+ cta_name: textOf(a) || 'Pricing', cta_type: 'pricing', cta_location: regionOf(a), link_url: url.pathname + url.hash
+ });
+ return;
+ }
+
  if (url.origin === location.origin && /^\/contact\/?$/.test(url.pathname)) {
  send('cta_click', {
  cta_name: textOf(a) || contactType(url), cta_type: contactType(url), cta_location: regionOf(a), link_url: url.pathname + url.hash
@@ -186,6 +193,7 @@
  watchForm('fitForm', 'fit_call');
  watchForm('briefForm', 'project_brief');
  watchForm('pageInquiry', 'page_inquiry');
+ watchForm('homeInquiry', 'homepage_fit_call');
 
  /* One successful submission = one lead. generate_lead is the conversion.
  form_submit fires on success only. Chat leads use the same dedup and do not

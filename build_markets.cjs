@@ -358,7 +358,7 @@ function indexBody() {
  <a href="/contact#book" class="btn on-dark"><span>Book a free 20-min fit call</span><i>→</i></a>
  <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
  </div>
- <p class="assur" data-r><i>·</i> US · UK · UAE · Canada <i>·</i> NDA-first <i>·</i> You own the IP</p>
+ <p class="assur" data-r><i>·</i> US · UK · UAE · Canada <i>·</i> Mutual NDA available on request before sharing confidential project information. <i>·</i> You own the IP</p>
  </div>
  </div>
 </section>
