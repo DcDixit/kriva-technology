@@ -37,7 +37,7 @@ gtag('config',id,cfg);
     })(window, document, "clarity", "script", "yjj9g3gojt");
 </script>
 <!-- KRIVA_CLARITY_END -->
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('sx-motion');setTimeout(function(){if(!window.__sx)d.classList.remove('sx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -112,6 +112,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 </style>
 <link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="/media/photos/fleet-yard.webp" imagesrcset="/media/photos/fleet-yard-800.webp 800w, /media/photos/fleet-yard.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <title>Custom Fleet Management Software Development | KRIVA</title>
 <meta name="description" content="Custom fleet management software for US fleets: maintenance scheduling, driver apps, compliance records, utilization, and ELD and fuel data in one place.">
 <link rel="canonical" href="https://krivatechnologies.com/solutions/fleet-management-software">
@@ -149,29 +150,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/responsive.css?v=brand1">
 <link rel="stylesheet" href="/shared/page-inquiry.css?v=brand1">
 
-<link rel="stylesheet" href="/shared/home-v2.css?v=kds1">
 
-<style>/* Fleet solution page only */
-.k-fleet .k-sol-photo{box-shadow:none;background:none;overflow:visible}
-.k-fleet .k-sol-photo img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;box-shadow:var(--shadow-product)}
-.k-fleet .k-sol-photo .story-credit{margin-top:10px}
-.k-fleet .story-copy .k-kicker{margin:0;color:var(--blue);font-size:13px;letter-spacing:.06em}
-.k-fleet .story-copy .story-credit{margin-top:18px;font-size:13px;line-height:1.5}
-.k-fleet .story-points li{font-size:16px}
-.k-fleet .story.k-sec--tint{padding-block:clamp(56px,7vw,96px);animation:none}
-@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){.k-fleet .story.k-sec--tint .story-grid{animation:kriva-rise .7s var(--e) both;animation-timeline:view();animation-range:entry 0% cover 18%}}}
-.k-fleet .k-out-note{margin-top:18px;max-width:40ch;color:#C4CFDB;font-size:16px;line-height:1.55}
-.k-fleet .k-out{gap:16px;margin-top:0}
-.k-fleet .k-out li{font-size:17px;line-height:1.5;color:#DCE3EB}
-.k-fleet .k-out strong{display:block;color:#fff;font-weight:700}
-.k-fleet .k-rel-h{margin:24px 0 0;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--steel)}
-.k-fleet .k-rel{margin-top:10px}
-.k-fleet .k-newlinks{padding-block:clamp(8px,2vw,24px) clamp(48px,6vw,80px)}
-</style>
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
+<link rel="stylesheet" href="/shared/solutions-x.css?v=sx1">
 </head>
-<body class="k-page">
+<body class="solution page-fleet sx sx-fleet">
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <div class="nav-shell">
@@ -293,203 +277,352 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </div>
 
-<main id="main" class="k-sol k-fleet">
-<section class="k-hero k-sol-hero" aria-labelledby="h1">
-  <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li><li aria-current="page">Fleet management software</li></ol></nav>
-    <div class="k-hero-grid">
-      <div class="k-hero-copy">
-        <p class="k-kicker">For fleet owners and operations managers</p>
-        <h1 id="h1">Custom fleet management software built around your operation</h1>
-        <p class="k-lede">We design and build fleet dashboards, maintenance and compliance records, and driver apps that sit on top of the ELD and telematics provider you already use. Vehicle, driver, and cost data end up in one place instead of five portals.</p>
-        <div class="k-actions">
-          <a class="btn" href="#inquire"><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
-          <a class="btn ghost" href="/contact#brief"><span>Send a project brief</span><i aria-hidden="true">→</i></a>
-        </div>
-        <ul class="k-assure"><li>Reply within one business day</li><li>You own the code</li><li>Mutual NDA available on request before sharing confidential project information.</li></ul>
-      </div>
-      <figure class="story-media k-sol-photo">
-        <img src="/media/photos/fleet-yard.webp" srcset="/media/photos/fleet-yard-800.webp 800w, /media/photos/fleet-yard.webp 1600w" sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Three white semi trucks travelling in a line along a curving two-lane road at sunset." width="1600" height="1068" decoding="async" fetchpriority="high">
-        <figcaption class="story-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</figcaption>
-      </figure>
+<div class="sx-progress" aria-hidden="true"><i></i></div>
+
+<nav class="sx-rail" aria-label="Sections">
+ <ol>
+  <li><a href="#overview" aria-current="true"><span>Overview</span></a></li>
+  <li><a href="#problems"><span>Problems</span></a></li>
+  <li><a href="#visibility"><span>Visibility</span></a></li>
+  <li><a href="#modules"><span>Modules</span></a></li>
+  <li><a href="#maintenance"><span>Maintenance</span></a></li>
+  <li><a href="#drivers"><span>Drivers</span></a></li>
+  <li><a href="#faq"><span>FAQ</span></a></li>
+ </ol>
+</nav>
+
+<main id="main" class="k-sol">
+<section class="fl-hero" id="overview" aria-labelledby="h1">
+ <div class="wrap fl-hero-in">
+  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li><li aria-current="page">Fleet management software</li></ol></nav>
+  <div class="fl-hero-grid">
+   <div class="fl-hero-copy">
+    <p class="sx-kicker sx-hero-meta-row"><span class="sx-pulse" aria-hidden="true"></span>For fleet owners and operations managers</p>
+    <h1 class="sx-fh1" id="h1"><span class="sx-l"><span>Custom fleet management software</span></span> <span class="sx-l sx-l--em"><span>built around your operation</span></span></h1>
+    <div class="sx-hero-in">
+     <p class="sx-lede">We design and build fleet dashboards, maintenance and compliance records, and driver apps that sit on top of the ELD and telematics provider you already use. Vehicle, driver, and cost data end up in one place instead of five portals.</p>
+     <div class="sx-actions">
+      <a class="sx-btn" href="#inquire" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+      <a class="sx-link" href="/contact#brief"><span>Send a project brief</span><i aria-hidden="true">→</i></a>
+     </div>
+     <ul class="sx-meta"><li>Reply within one business day</li><li>You own the code</li><li>Mutual NDA on request</li></ul>
     </div>
+   </div>
+   <figure class="fl-con" data-console>
+    <div class="fl-con-in" role="img" aria-label="Illustrative fleet console with sample data: four units sorted by what needs action today, with miles, location, fuel, shop, and cost data joined from the ELD, GPS, fuel card, shop, and accounting systems.">
+     <div class="fl-con-top" aria-hidden="true"><span>Fleet console · Today</span><span class="fl-live"><i></i>Synced</span></div>
+     <div class="fl-kpis" aria-hidden="true">
+      <div><b>48</b><span>Units</span></div>
+      <div class="is-warn"><b>3</b><span>Service due</span></div>
+      <div class="is-risk"><b>2</b><span>Open defects</span></div>
+      <div><b>1</b><span>Idle</span></div>
+     </div>
+     <ol class="fl-units" aria-hidden="true">
+      <li data-src="eld"><span class="fl-u">T-214</span><span class="fl-what"><b>Service due in <em data-miles="1240">1,240</em> mi</b><small>Tractor · miles from ELD</small></span><i class="sx-chip sx-chip--warn">Due soon</i></li>
+      <li data-src="shop"><span class="fl-u">T-187</span><span class="fl-what"><b>Brake defect from pre-trip</b><small>Tractor · work order open</small></span><i class="sx-chip sx-chip--risk">In shop</i></li>
+      <li data-src="gps"><span class="fl-u">TR-52</span><span class="fl-what"><b>Idle 6 days, Dallas yard</b><small>Trailer · location from GPS</small></span><i class="sx-chip">Idle</i></li>
+      <li data-src="fuel acct"><span class="fl-u">V-09</span><span class="fl-what"><b>Fuel and repairs matched</b><small>Service van · synced to books</small></span><i class="sx-chip sx-chip--ok">Ready</i></li>
+     </ol>
+     <div class="fl-srcs" aria-hidden="true"><span data-src="eld">ELD</span><span data-src="gps">GPS</span><span data-src="fuel">Fuel cards</span><span data-src="shop">Shop</span><span data-src="acct">Accounting</span></div>
+    </div>
+    <figcaption>Illustrative design with sample data. Not client software or client data.</figcaption>
+   </figure>
   </div>
+ </div>
 </section>
 
-<section class="k-sec k-sec--tint" aria-labelledby="probH">
-  <div class="wrap">
-    <div class="k-head"><p class="k-kicker">The problem</p><h2 id="probH">Why fleets outgrow their tools</h2><p class="k-lede">Most fleets already own good point tools. The trouble starts in the gaps between them.</p></div>
-    <div class="k-grid3">
-      <article class="k-card"><h3>Vehicle data lives in five portals</h3><p>ELD, GPS, fuel cards, the shop system, and accounting each have their own login, and their numbers rarely agree.</p></article>
-      <article class="k-card"><h3>Maintenance runs on memory</h3><p>Service intervals live on a whiteboard, so trucks come off the road when they break, not when you plan it.</p></article>
-      <article class="k-card"><h3>Defects never reach the shop</h3><p>A driver notes a problem on an inspection, and it stays on paper or in an app the mechanic never opens.</p></article>
-      <article class="k-card"><h3>Compliance dates sneak up</h3><p>Medical cards, permits, registrations, and annual inspections are tracked in a spreadsheet one person maintains.</p></article>
-      <article class="k-card"><h3>IFTA is rebuilt every quarter</h3><p>Miles and fuel by state are pieced together from exports just before filing. ELD logs are built for hours of service, not fuel tax, so they may not hold everything a filing needs.</p></article>
-      <article class="k-card"><h3>Nobody trusts cost per mile</h3><p>Without one source of data, the number changes depending on who pulled it and from which system.</p></article>
-    </div>
+<nav class="sx-chips" aria-label="Page sections">
+ <a href="#overview">Overview</a>
+ <a href="#problems">Problems</a>
+ <a href="#visibility">Visibility</a>
+ <a href="#modules">Modules</a>
+ <a href="#maintenance">Maintenance</a>
+ <a href="#drivers">Drivers</a>
+ <a href="#faq">FAQ</a>
+</nav>
+
+<section class="sx-sec fl-prob" id="problems" aria-labelledby="probH">
+ <div class="wrap fl-prob-grid">
+  <div class="fl-prob-head">
+   <p class="sx-kicker" data-x>The problem</p>
+   <h2 id="probH" data-split>Why fleets outgrow their tools</h2>
+   <p class="sx-lede" data-x>Most fleets already own good point tools. The trouble starts in the gaps between them.</p>
   </div>
+  <ol class="fl-probs">
+   <li class="fl-pc" data-x data-spot><svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="fl-pc-n" aria-hidden="true">01</span><h3>Vehicle data lives in five portals</h3><p>ELD, GPS, fuel cards, the shop system, and accounting each have their own login, and their numbers rarely agree.</p></li>
+   <li class="fl-pc" data-x data-spot><svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><span class="fl-pc-n" aria-hidden="true">02</span><h3>Maintenance runs on memory</h3><p>Service intervals live on a whiteboard, so trucks come off the road when they break, not when you plan it.</p></li>
+   <li class="fl-pc" data-x data-spot><svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6l1 2h3v15H5V6h3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg><span class="fl-pc-n" aria-hidden="true">03</span><h3>Defects never reach the shop</h3><p>A driver notes a problem on an inspection, and it stays on paper or in an app the mechanic never opens.</p></li>
+   <li class="fl-pc" data-x data-spot><svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M12 14v3l2 1"/></svg><span class="fl-pc-n" aria-hidden="true">04</span><h3>Compliance dates sneak up</h3><p>Medical cards, permits, registrations, and annual inspections are tracked in a spreadsheet one person maintains.</p></li>
+   <li class="fl-pc" data-x data-spot><svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13"/><path d="M8 21v-6h8v6"/><path d="M3 12h18"/></svg><span class="fl-pc-n" aria-hidden="true">05</span><h3>IFTA is rebuilt every quarter</h3><p>Miles and fuel by state are pieced together from exports just before filing. ELD logs are built for hours of service, not fuel tax, so they may not hold everything a filing needs.</p></li>
+   <li class="fl-pc" data-x data-spot><svg class="fl-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16"/><path d="M6 15l4-4 3 3 5-6"/><path d="M15 8h3v3"/></svg><span class="fl-pc-n" aria-hidden="true">06</span><h3>Nobody trusts cost per mile</h3><p>Without one source of data, the number changes depending on who pulled it and from which system.</p></li>
+  </ol>
+ </div>
 </section>
 
-<section class="story story--split" aria-labelledby="dataH">
-  <div class="wrap story-grid">
-    <figure class="story-media">
-      <img src="/media/photos/inspection-data-entry.webp" srcset="/media/photos/inspection-data-entry-800.webp 800w, /media/photos/inspection-data-entry.webp 1600w" sizes="(max-width: 900px) calc(100vw - 32px), 50vw" alt="Two transportation safety staff at a weigh station desk, one typing on a laptop while the other reads details from a phone." width="1600" height="1068" loading="lazy" decoding="async">
+<section class="sx-sec fl-vis" id="visibility" aria-labelledby="dataH" data-dark>
+ <div class="wrap">
+  <div class="fl-vis-grid">
+   <div class="fl-vis-copy">
+    <p class="sx-kicker" data-x>Fleet visibility</p>
+    <h2 id="dataH" data-split>Every system has the number. Someone still types it twice.</h2>
+    <p class="sx-body" data-x>Fleet data rarely goes missing. It sits in the ELD portal, the fuel card statement, the shop's work orders, and the accounting file, and someone copies it between them every week. A custom fleet system reads those sources through their APIs or exports, so the copying stops and the figures match.</p>
+    <ul class="sx-ticks" data-x><li>Vehicle, driver, fuel, and maintenance data joined by unit number</li><li>Imports from provider APIs or scheduled exports, checked for gaps</li><li>One cost-per-mile figure you can trace back to its sources</li></ul>
+    <figure class="fl-vis-photo" data-x>
+     <img src="/media/photos/inspection-data-entry.webp" srcset="/media/photos/inspection-data-entry-800.webp 800w, /media/photos/inspection-data-entry.webp 1600w" sizes="(max-width: 1000px) calc(100vw - 32px), 40vw" alt="Two transportation safety staff at a weigh station desk, one typing on a laptop while the other reads details from a phone." width="1600" height="1068" loading="lazy" decoding="async">
+     <figcaption>Photograph: “Entering data” by Oregon Department of Transportation, <a href="https://commons.wikimedia.org/wiki/File:Entering_data_(48537333461).jpg" rel="noopener noreferrer">via Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener noreferrer">CC BY 2.0</a>. Not a KRIVA client or project.</figcaption>
     </figure>
-    <div class="story-copy">
-      <p class="k-kicker">Fleet visibility</p>
-      <h2 id="dataH">Every system has the number. Someone still types it twice.</h2>
-      <p>Fleet data rarely goes missing. It sits in the ELD portal, the fuel card statement, the shop's work orders, and the accounting file, and someone copies it between them every week. A custom fleet system reads those sources through their APIs or exports, so the copying stops and the figures match.</p>
-      <ul class="story-points"><li>Vehicle, driver, fuel, and maintenance data joined by unit number</li><li>Imports from provider APIs or scheduled exports, checked for gaps</li><li>One cost-per-mile figure you can trace back to its sources</li></ul>
-      <p class="story-credit">Photograph: “Entering data” by Oregon Department of Transportation, <a href="https://commons.wikimedia.org/wiki/File:Entering_data_(48537333461).jpg" rel="noopener noreferrer">via Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener noreferrer">CC BY 2.0</a>. Not a KRIVA client or project.</p>
+   </div>
+   <figure class="fl-merge" data-merge data-x>
+    <div class="fl-merge-in" role="img" aria-label="Illustrative diagram: the ELD portal, GPS, fuel cards, the shop system, and accounting each feed one record for unit T-214, joined by unit number.">
+     <ul class="fl-merge-src" aria-hidden="true">
+      <li><b>ELD portal</b><span>Miles and engine hours</span></li>
+      <li><b>GPS</b><span>Location and idle time</span></li>
+      <li><b>Fuel cards</b><span>Gallons and cost by state</span></li>
+      <li><b>Shop system</b><span>Work orders and repairs</span></li>
+      <li><b>Accounting</b><span>Bills and payments</span></li>
+     </ul>
+     <svg class="fl-merge-wires" viewBox="0 0 100 360" aria-hidden="true" focusable="false">
+      <path pathLength="1" d="M0 32 C 55 32, 45 180, 100 180"/>
+      <path pathLength="1" d="M0 106 C 55 106, 45 180, 100 180"/>
+      <path pathLength="1" d="M0 180 L 100 180"/>
+      <path pathLength="1" d="M0 254 C 55 254, 45 180, 100 180"/>
+      <path pathLength="1" d="M0 328 C 55 328, 45 180, 100 180"/>
+      <g class="fl-merge-pulses">
+       <circle r="3"><animateMotion dur="2.8s" repeatCount="indefinite" path="M0 32 C 55 32, 45 180, 100 180"/></circle>
+       <circle r="3"><animateMotion dur="2.8s" begin=".6s" repeatCount="indefinite" path="M0 106 C 55 106, 45 180, 100 180"/></circle>
+       <circle r="3"><animateMotion dur="2.8s" begin="1.2s" repeatCount="indefinite" path="M0 180 L 100 180"/></circle>
+       <circle r="3"><animateMotion dur="2.8s" begin="1.8s" repeatCount="indefinite" path="M0 254 C 55 254, 45 180, 100 180"/></circle>
+       <circle r="3"><animateMotion dur="2.8s" begin="2.3s" repeatCount="indefinite" path="M0 328 C 55 328, 45 180, 100 180"/></circle>
+      </g>
+     </svg>
+     <div class="fl-merge-unit" aria-hidden="true">
+      <p class="fl-merge-k">One record per unit</p>
+      <p class="fl-merge-id">T-214 <span>Tractor</span></p>
+      <dl>
+       <div><dt>Odometer</dt><dd>412,880 mi</dd></div>
+       <div><dt>Last seen</dt><dd>Joliet, IL</dd></div>
+       <div><dt>Fuel, this month</dt><dd>1,086 gal</dd></div>
+       <div><dt>Next service</dt><dd>1,240 mi</dd></div>
+       <div><dt>Cost per mile</dt><dd>Traced to 4 sources</dd></div>
+      </dl>
+     </div>
     </div>
+    <figcaption>Illustrative design with sample data. Not client software or client data.</figcaption>
+   </figure>
   </div>
+ </div>
 </section>
 
-<section class="k-sec k-sec--tint" aria-labelledby="delH">
-  <div class="wrap">
-    <div class="k-head"><p class="k-kicker">What we can scope with you</p><h2 id="delH">What a fleet management system can include</h2><p class="k-lede">Pick the modules your operation needs. Most fleets start with two or three and add the rest in later phases.</p></div>
-    <div class="k-grid3">
-      <article class="k-card k-card--line"><h3>Fleet operations dashboard</h3><p>Every unit and driver on one screen, sorted by what needs action today: overdue service, open defects, and expiring documents.</p></article>
-      <article class="k-card k-card--line"><h3>Maintenance scheduling</h3><p>Preventive maintenance by miles, engine hours, or date, with work orders, repair history, and reminders before a unit is due.</p></article>
-      <article class="k-card k-card--line"><h3>Inspections and defects</h3><p>Digital inspection checklists, with defects routed to the shop and signed off when repaired. Your compliance owner decides how this fits your DVIR process.</p></article>
-      <article class="k-card k-card--line"><h3>Driver records and apps</h3><p>Driver profiles, documents, and a mobile app for inspections and status updates that queues offline and syncs when the signal returns.</p></article>
-      <article class="k-card k-card--line"><h3>Compliance tracking</h3><p>Expiry reminders for medical cards, licenses, permits, registrations, and annual inspections, plus records you can pull up for an audit.</p></article>
-      <article class="k-card k-card--line"><h3>Utilization and assignments</h3><p>Which driver had which unit, miles and hours per vehicle, and which units sit idle, so decisions to add or retire trucks rest on data.</p></article>
-      <article class="k-card k-card--line"><h3>ELD, GPS, and fuel card data</h3><p>We read data from your existing providers' APIs or exports. We don't sell ELD hardware, and you keep the providers you already use.</p></article>
-      <article class="k-card k-card--line"><h3>IFTA and fuel records</h3><p>Miles and fuel by jurisdiction kept as trips happen, ready for your accountant or filing tool. We prepare the data; we don't file returns.</p></article>
-      <article class="k-card k-card--line"><h3>Cost and accounting sync</h3><p>Fuel, maintenance, and repair costs connected to QuickBooks or Xero, so cost per mile comes from one source.</p></article>
-    </div>
-    <p class="k-note k-scope-note">We scope each module with you during discovery, based on what your providers allow and what your operation needs. Compliance rules stay with your compliance owner, and we do not give legal or tax advice.</p>
-    <div class="k-int-logos k-sol-logos">
-      <img src="/brand/logos/intuit-quickbooks.svg" alt="Intuit QuickBooks" width="165" height="42" loading="lazy">
-      <img src="/brand/logos/xero.svg" alt="Xero" width="52" height="52" loading="lazy">
-      <p class="k-note">We build on the public Intuit and Xero APIs as an independent team, not as a partner of either company.</p>
-    </div>
+<section class="sx-sec fl-mods-sec" id="modules" aria-labelledby="delH">
+ <div class="wrap">
+  <div class="sx-head">
+   <div>
+    <p class="sx-kicker" data-x>What we can scope with you</p>
+    <h2 id="delH" data-split>What a fleet management system can include</h2>
+   </div>
+   <div class="sx-head-aside"><p class="sx-lede" data-x>Pick the modules your operation needs. Most fleets start with two or three and add the rest in later phases.</p></div>
   </div>
+  <div class="fl-mods" data-picker>
+   <article class="fl-mod" data-x data-spot data-mod="Fleet operations dashboard"><p class="fl-mod-g">Operations</p><h3>Fleet operations dashboard</h3><p>Every unit and driver on one screen, sorted by what needs action today: overdue service, open defects, and expiring documents.</p><button type="button" class="fl-pick" aria-pressed="false" hidden><span class="sr">Add fleet operations dashboard to my first phase</span></button></article>
+   <article class="fl-mod" data-x data-spot data-mod="Maintenance scheduling"><p class="fl-mod-g">Maintenance</p><h3>Maintenance scheduling</h3><p>Preventive maintenance by miles, engine hours, or date, with work orders, repair history, and reminders before a unit is due.</p><button type="button" class="fl-pick" aria-pressed="false" hidden><span class="sr">Add maintenance scheduling to my first phase</span></button></article>
+   <article class="fl-mod" data-x data-spot data-mod="Inspections and defects"><p class="fl-mod-g">Maintenance</p><h3>Inspections and defects</h3><p>Digital inspection checklists, with defects routed to the shop and signed off when repaired. Your compliance owner decides how this fits your DVIR process.</p><button type="button" class="fl-pick" aria-pressed="false" hidden><span class="sr">Add inspections and defects to my first phase</span></button></article>
+   <article class="fl-mod" data-x data-spot data-mod="Driver records and apps"><p class="fl-mod-g">Drivers</p><h3>Driver records and apps</h3><p>Driver profiles, documents, and a mobile app for inspections and status updates that queues offline and syncs when the signal returns.</p><button type="button" class="fl-pick" aria-pressed="false" hidden><span class="sr">Add driver records and apps to my first phase</span></button></article>
+   <article class="fl-mod" data-x data-spot data-mod="Compliance tracking"><p class="fl-mod-g">Compliance</p><h3>Compliance tracking</h3><p>Expiry reminders for medical cards, licenses, permits, registrations, and annual inspections, plus records you can pull up for an audit.</p><button type="button" class="fl-pick" aria-pressed="false" hidden><span class="sr">Add compliance tracking to my first phase</span></button></article>
+   <article class="fl-mod" data-x data-spot data-mod="Utilization and assignments"><p class="fl-mod-g">Operations</p><h3>Utilization and assignments</h3><p>Which driver had which unit, miles and hours per vehicle, and which units sit idle, so decisions to add or retire trucks rest on data.</p><button type="button" class="fl-pick" aria-pressed="false" hidden><span class="sr">Add utilization and assignments to my first phase</span></button></article>
+   <article class="fl-mod" data-x data-spot data-mod="ELD, GPS, and fuel card data"><p class="fl-mod-g">Data</p><h3>ELD, GPS, and fuel card data</h3><p>We read data from your existing providers' APIs or exports. We don't sell ELD hardware, and you keep the providers you already use.</p><button type="button" class="fl-pick" aria-pressed="false" hidden><span class="sr">Add ELD, GPS, and fuel card data to my first phase</span></button></article>
+   <article class="fl-mod" data-x data-spot data-mod="IFTA and fuel records"><p class="fl-mod-g">Data</p><h3>IFTA and fuel records</h3><p>Miles and fuel by jurisdiction kept as trips happen, ready for your accountant or filing tool. We prepare the data; we don't file returns.</p><button type="button" class="fl-pick" aria-pressed="false" hidden><span class="sr">Add IFTA and fuel records to my first phase</span></button></article>
+   <article class="fl-mod" data-x data-spot data-mod="Cost and accounting sync"><p class="fl-mod-g">Finance</p><h3>Cost and accounting sync</h3><p>Fuel, maintenance, and repair costs connected to QuickBooks or Xero, so cost per mile comes from one source.</p><p class="fl-mod-logos"><img src="/brand/logos/intuit-quickbooks.svg" alt="Intuit QuickBooks" width="94" height="24" loading="lazy"><img src="/brand/logos/xero.svg" alt="Xero" width="24" height="24" loading="lazy"></p><button type="button" class="fl-pick" aria-pressed="false" hidden><span class="sr">Add cost and accounting sync to my first phase</span></button></article>
+  </div>
+  <div class="fl-tray" data-tray hidden>
+   <p class="fl-tray-t" aria-live="polite"><b data-tray-n>0</b> <span data-tray-w>modules</span> picked for a first phase</p>
+   <button type="button" class="sx-btn fl-tray-go" data-tray-go><span>Add them to my inquiry</span><i aria-hidden="true">→</i></button>
+  </div>
+  <p class="sx-note">We scope each module with you during discovery, based on what your providers allow and what your operation needs. Compliance rules stay with your compliance owner, and we do not give legal or tax advice. We build on the public Intuit and Xero APIs as an independent team, not as a partner of either company.</p>
+ </div>
 </section>
 
-<section class="story story--split story--flip" aria-labelledby="mntH">
-  <div class="wrap story-grid">
-    <figure class="story-media">
-      <img src="/media/photos/fleet-shop-truck.webp" srcset="/media/photos/fleet-shop-truck-800.webp 800w, /media/photos/fleet-shop-truck.webp 1600w" sizes="(max-width: 900px) calc(100vw - 32px), 50vw" alt="A technician works beneath a raised truck cab in a service bay." width="1600" height="1067" loading="lazy" decoding="async">
-    </figure>
-    <div class="story-copy">
-      <p class="k-kicker">Maintenance coordination</p>
-      <h2 id="mntH">From reported defect to repaired truck, in one record.</h2>
-      <p>When a driver flags a defect, it should reach the shop as a work order, not a text message. Preventive maintenance should come due from mileage, engine hours, or date, before a breakdown takes the truck off the road.</p>
-      <ul class="story-points"><li>Preventive maintenance due lists by miles, engine hours, or date</li><li>Inspection defects routed to the shop as work orders</li><li>Repair history, parts, and labor cost per unit</li></ul>
-      <p class="story-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</p>
-    </div>
+<section class="sx-sec fl-mnt" id="maintenance" aria-labelledby="mntH">
+ <div class="wrap fl-mnt-grid" data-wo>
+  <figure class="fl-mnt-media">
+   <div class="fl-mnt-img"><img src="/media/photos/fleet-shop-truck.webp" srcset="/media/photos/fleet-shop-truck-800.webp 800w, /media/photos/fleet-shop-truck.webp 1600w" sizes="(max-width: 1000px) calc(100vw - 32px), 50vw" alt="A technician works beneath a raised truck cab in a service bay." width="1600" height="1067" loading="lazy" decoding="async"></div>
+   <div class="fl-wo" aria-hidden="true">
+    <div class="fl-wo-top"><span>Work order 1182</span><span data-wo-state>Reported</span></div>
+    <p class="fl-wo-t">T-187 · Brake air leak</p>
+    <p class="fl-wo-m">Flagged by the driver on the pre-trip inspection</p>
+    <ol class="fl-wo-bar"><li></li><li></li><li></li><li></li></ol>
+   </div>
+   <figcaption>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product. Work order card is an illustrative design with sample data.</figcaption>
+  </figure>
+  <div class="fl-mnt-copy">
+   <p class="sx-kicker" data-x>Maintenance coordination</p>
+   <h2 id="mntH" data-split>From reported defect to repaired truck, in one record.</h2>
+   <p class="sx-body" data-x>When a driver flags a defect, it should reach the shop as a work order, not a text message. Preventive maintenance should come due from mileage, engine hours, or date, before a breakdown takes the truck off the road.</p>
+   <ul class="sx-ticks" data-x><li>Preventive maintenance due lists by miles, engine hours, or date</li><li>Inspection defects routed to the shop as work orders</li><li>Repair history, parts, and labor cost per unit</li></ul>
+   <ol class="fl-path" aria-label="How a defect moves through the record">
+    <li data-wo-step="Reported"><b>Driver flags it</b><span>On the inspection, with a photo, in the app.</span></li>
+    <li data-wo-step="Work order open"><b>The shop gets a work order</b><span>Unit, defect, and history arrive together.</span></li>
+    <li data-wo-step="In the bay"><b>Repair is logged</b><span>Parts and labor are written to the unit.</span></li>
+    <li data-wo-step="Signed off"><b>Signed off, back in service</b><span>The record closes, and the next service date resets.</span></li>
+   </ol>
   </div>
+ </div>
 </section>
 
-<section class="story story--split k-sec--tint" aria-labelledby="drvH">
-  <div class="wrap story-grid">
-    <figure class="story-media">
-      <img src="/media/photos/roadside-inspection-driver-paperwork.webp" srcset="/media/photos/roadside-inspection-driver-paperwork-800.webp 800w, /media/photos/roadside-inspection-driver-paperwork.webp 1600w" sizes="(max-width: 900px) calc(100vw - 32px), 50vw" alt="A transportation safety inspector in a DOT cap and high-visibility vest reviews paperwork with a truck driver." width="1600" height="1068" loading="lazy" decoding="async">
-    </figure>
-    <div class="story-copy">
-      <p class="k-kicker">Driver management and compliance</p>
-      <h2 id="drvH">Driver records ready before anyone asks for them.</h2>
-      <p>Medical cards, licenses, permits, and annual inspections expire on their own schedules. One person's spreadsheet works until that person is on leave. Driver apps have the opposite problem: they are used one-handed, in a cab or a yard, often on a weak signal.</p>
-      <ul class="story-points"><li>Expiry reminders for driver and vehicle documents, with an audit trail</li><li>A driver app for inspections, documents, and status that works offline</li><li>Your compliance owner sets the rules; the software keeps the records</li></ul>
-      <p class="story-credit">Photograph: “Reviewing paperwork” by Oregon Department of Transportation, <a href="https://commons.wikimedia.org/wiki/File:Reviewing_paperwork_(48537333941).jpg" rel="noopener noreferrer">via Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener noreferrer">CC BY 2.0</a>. Not a KRIVA client or project.</p>
+<section class="sx-sec fl-drv" id="drivers" aria-labelledby="drvH">
+ <div class="wrap">
+  <div class="fl-drv-grid">
+   <div class="fl-drv-copy">
+    <p class="sx-kicker" data-x>Driver management and compliance</p>
+    <h2 id="drvH" data-split>Driver records ready before anyone asks for them.</h2>
+    <p class="sx-body" data-x>Medical cards, licenses, permits, and annual inspections expire on their own schedules. One person's spreadsheet works until that person is on leave. Driver apps have the opposite problem: they are used one-handed, in a cab or a yard, often on a weak signal.</p>
+    <ul class="sx-ticks" data-x><li>Expiry reminders for driver and vehicle documents, with an audit trail</li><li>A driver app for inspections, documents, and status that works offline</li><li>Your compliance owner sets the rules; the software keeps the records</li></ul>
+   </div>
+   <figure class="fl-drv-media" data-x>
+    <div class="fl-drv-img"><img src="/media/photos/roadside-inspection-driver-paperwork.webp" srcset="/media/photos/roadside-inspection-driver-paperwork-800.webp 800w, /media/photos/roadside-inspection-driver-paperwork.webp 1600w" sizes="(max-width: 1000px) calc(100vw - 32px), 50vw" alt="A transportation safety inspector in a DOT cap and high-visibility vest reviews paperwork with a truck driver." width="1600" height="1068" loading="lazy" decoding="async"></div>
+    <div class="fl-phone" data-phone aria-hidden="true">
+     <div class="fl-phone-in">
+      <p class="fl-phone-k">Pre-trip · T-214</p>
+      <ul class="fl-phone-list"><li>Brakes and air lines</li><li>Lights and reflectors</li><li>Tires and wheels</li><li>Coupling devices</li></ul>
+      <p class="fl-phone-net"><i></i><span data-net>Offline · 3 updates queued</span></p>
+     </div>
     </div>
+    <figcaption>Photograph: “Reviewing paperwork” by Oregon Department of Transportation, <a href="https://commons.wikimedia.org/wiki/File:Reviewing_paperwork_(48537333941).jpg" rel="noopener noreferrer">via Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener noreferrer">CC BY 2.0</a>. Not a KRIVA client or project. Phone screen is an illustrative design.</figcaption>
+   </figure>
   </div>
-</section>
-
-<section class="k-sec k-sec--ink" aria-labelledby="impH">
-  <div class="wrap k-team">
-    <div>
-      <p class="k-kicker">The outcome</p>
-      <h2 id="impH">What this is designed to change</h2>
-      <p class="k-out-note">These are design goals, not reported results. We have not published fleet metrics, and we won't quote numbers we can't show you.</p>
+  <figure class="fl-run" data-x>
+   <div class="fl-run-in" role="img" aria-label="Illustrative compliance timeline with sample data for the next 60 days: trailer TR-52 annual inspection in 9 days, driver D-07 medical card in 18 days, tractor T-214 registration in 34 days, and driver D-12 license in 51 days.">
+    <div class="fl-run-top" aria-hidden="true"><b>Documents coming due</b><span>Next 60 days</span></div>
+    <div class="fl-run-axis" aria-hidden="true">
+     <span style="--d:0">Today</span><span style="--d:15">15 days</span><span style="--d:30">30</span><span style="--d:45">45</span><span style="--d:60">60</span>
     </div>
-    <ul class="k-ticks k-ticks--dark k-out">
-      <li><strong>Fleet managers<span class="sr">:</span></strong> One screen showing which units and drivers need attention today.</li>
-      <li><strong>Maintenance leads<span class="sr">:</span></strong> Planned service and a defect queue instead of roadside surprises.</li>
-      <li><strong>Drivers<span class="sr">:</span></strong> An app built for the cab and the yard that keeps working on a weak signal.</li>
-      <li><strong>Finance<span class="sr">:</span></strong> Cost per mile and IFTA data pulled from the same source as everyone else.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="k-sec" aria-labelledby="buyH">
-  <div class="wrap k-int">
-    <div>
-      <p class="k-kicker">An honest answer</p>
-      <h2 id="buyH">Should a fleet build or buy?</h2>
-      <p class="k-lede">Most fleets should start with an established telematics and ELD platform, and we won't try to replace that hardware. Custom software makes sense on top of it: when maintenance, compliance, and cost data cross several systems, when your mix of vehicles and equipment doesn't fit an off-the-shelf tool, or when the reports you need don't exist anywhere.</p>
-      <a class="k-more" href="/insights/build-vs-buy-tms">Read our build vs buy guide <i aria-hidden="true">→</i></a>
-    </div>
-    <div class="k-int-panel">
-      <h3 class="k-panel-h">Why talk to KRIVA</h3>
-      <p class="k-panel-p">We have not published a fleet management case study, so ask us on the fit call what we have built that is closest to your operation. Our nearest published example is ShiftRail, a representative project: a dispatch console rolled out beside the existing TMS. The same approach applies here: observe the work, ship weekly, and roll out in phases.</p>
-      <a class="k-more" href="/work/shiftrail-dispatch">Read the ShiftRail case study <i aria-hidden="true">→</i></a>
-    </div>
-  </div>
-</section>
-
-<section class="k-sec k-sec--tint" aria-labelledby="stepsH">
-  <div class="wrap">
-    <div class="k-head k-head--split"><div><p class="k-kicker">How to start</p><h2 id="stepsH">From first call to live software.</h2></div><a class="k-more" href="/process">See the full process <i aria-hidden="true">→</i></a></div>
-    <ol class="k-steps">
-      <li><span class="k-step-t">20 minutes, free</span><h3>Fit call</h3><p>Show us what your team works around. You leave with a clear yes, no, or not yet.</p></li>
-      <li><span class="k-step-t">1 to 2 weeks</span><h3>Discovery</h3><p>We map how your shop, drivers, and office really work, check what your providers' data allows, and write a scoped brief you sign off.</p></li>
-      <li><span class="k-step-t">6 to 20 weeks</span><h3>Design and build</h3><p>Working software on a real URL every week, with a QA check before each demo.</p></li>
-      <li><span class="k-step-t">Your choice</span><h3>Launch and support</h3><p>Phased go-live, then a monthly retainer or a clean handover to your team.</p></li>
+    <ol class="fl-run-items" aria-hidden="true">
+     <li class="is-risk" style="--d:9"><b>9 days</b><span>TR-52 annual inspection</span></li>
+     <li class="is-warn" style="--d:18"><b>18 days</b><span>D-07 medical card</span></li>
+     <li style="--d:34"><b>34 days</b><span>T-214 registration</span></li>
+     <li style="--d:51"><b>51 days</b><span>D-12 license</span></li>
     </ol>
-  </div>
+   </div>
+   <figcaption>Illustrative design with sample data. Not client software or client data.</figcaption>
+  </figure>
+ </div>
 </section>
 
-<section class="k-sec" aria-labelledby="faqH">
-  <div class="wrap k-faq-grid">
-    <div><p class="k-kicker">Questions</p><h2 id="faqH">Fleet management software questions</h2>
-      <p class="k-rel-h">Related reading</p>
-      <ul class="k-rel"><li><a href="/insights/build-vs-buy-tms">Build vs buy: a guide for transport software</a></li><li><a href="/services/mobile-applications">Driver app development</a></li><li><a href="/services/dashboard-design">Fleet and operations dashboards</a></li><li><a href="/services/api-integrations">ELD and telematics API integrations</a></li><li><a href="/markets/us">Software for US companies</a></li></ul>
-    </div>
-    <div class="k-faq">
-      <details open><summary>Will this replace our ELD or telematics provider?</summary><p>No. We read data from your provider where its API or export allows it. ELD devices and their certification stay with your provider.</p></details>
-      <details><summary>Which telematics, fuel card, and maintenance systems can you connect to?</summary><p>Any provider that offers an API or a reliable data export. Access often depends on your plan with that provider, so we confirm what each one allows during discovery, before we quote.</p></details>
-      <details><summary>Can driver inspections in the app replace our paper DVIRs?</summary><p>We can build digital inspection checklists and route defects to the shop. Whether the app serves as your official DVIR record depends on your compliance requirements and ELD setup, so your compliance owner decides. Some fleets keep the DVIR in the ELD app and pull defects from there instead.</p></details>
-      <details><summary>Can drivers use the app with poor signal?</summary><p>That is a core design requirement for driver apps: updates queue offline and sync when the connection returns. We confirm the devices and conditions to test against during discovery.</p></details>
-      <details><summary>Can one system cover trucks, trailers, vans, and equipment?</summary><p>Usually, yes. The data model is built around the assets you actually run, so tractors, trailers, service vans, and yard equipment can share maintenance schedules and records while keeping the fields each type needs.</p></details>
-      <details><summary>How long does a first version take?</summary><p>A focused first version is usually 6 to 10 weeks after a 1 to 2 week discovery. A full platform with integrations usually runs 12 to 20 weeks.</p></details>
-      <details><summary>How is pricing structured?</summary><p>Website, app, design, dashboard, and accounting work have published starting prices for a defined scope. Dispatch platforms and other custom software are quoted after discovery. Engagements run as fixed-scope projects, sprints, or a monthly retainer. Starting prices: <a href="/pricing">the pricing page</a>.</p></details>
-      <details><summary>Who owns the software?</summary><p>You do. Code, designs, and documentation transfer to you at project close or earlier.</p></details>
-    </div>
+<section class="sx-sec fl-out" aria-labelledby="impH" data-dark>
+ <div class="wrap">
+  <div class="sx-head">
+   <div>
+    <p class="sx-kicker" data-x>The outcome</p>
+    <h2 id="impH" data-split>What this is designed to change</h2>
+   </div>
+   <div class="sx-head-aside"><p class="sx-lede" data-x>These are design goals, not reported results. We have not published fleet metrics, and we won't quote numbers we can't show you.</p></div>
   </div>
+  <ul class="fl-roles">
+   <li data-x data-spot><span class="fl-role-n" aria-hidden="true">01</span><strong>Fleet managers<span class="sr">:</span></strong> One screen showing which units and drivers need attention today.</li>
+   <li data-x data-spot><span class="fl-role-n" aria-hidden="true">02</span><strong>Maintenance leads<span class="sr">:</span></strong> Planned service and a defect queue instead of roadside surprises.</li>
+   <li data-x data-spot><span class="fl-role-n" aria-hidden="true">03</span><strong>Drivers<span class="sr">:</span></strong> An app built for the cab and the yard that keeps working on a weak signal.</li>
+   <li data-x data-spot><span class="fl-role-n" aria-hidden="true">04</span><strong>Finance<span class="sr">:</span></strong> Cost per mile and IFTA data pulled from the same source as everyone else.</li>
+  </ul>
+ </div>
 </section>
 
-<section class="k-newlinks" aria-labelledby="moreSolH"><div class="wrap"><h2 id="moreSolH">More transportation solutions</h2><ul><li><a href="/solutions/trucking-logistics"><strong>Trucking software</strong><span>Dispatch CRM and TMS work for carriers, built around the load record.</span></a></li><li><a href="/solutions/freight-broker-software"><strong>Freight broker software</strong><span>Quotes, carrier sales, tracking, and billing in one load record.</span></a></li><li><a href="/solutions/car-transportation"><strong>Auto transport software</strong><span>Quote-to-delivery for car-carrier brokers and carriers.</span></a></li><li><a href="/solutions/accounting-integrations"><strong>QuickBooks and Xero integrations</strong><span>Fuel, repair, and settlement costs synced to your books.</span></a></li></ul></div></section>
+<section class="sx-sec sx-fbuy" aria-labelledby="buyH">
+ <div class="wrap sx-fbuy-grid">
+  <div>
+   <p class="sx-kicker" data-x>An honest answer</p>
+   <h2 id="buyH" data-split>Should a fleet build or buy?</h2>
+   <p class="sx-lede" data-x>Most fleets should start with an established telematics and ELD platform, and we won't try to replace that hardware. Custom software makes sense on top of it: when maintenance, compliance, and cost data cross several systems, when your mix of vehicles and equipment doesn't fit an off-the-shelf tool, or when the reports you need don't exist anywhere.</p>
+   <a class="sx-more sx-fbuy-link" href="/insights/build-vs-buy-tms" data-x>Read our build vs buy guide <i aria-hidden="true">→</i></a>
+  </div>
+  <aside class="sx-panel" data-x>
+   <h3>Why talk to KRIVA</h3>
+   <p>We have not published a fleet management case study, so ask us on the fit call what we have built that is closest to your operation. Our nearest published example is ShiftRail, a representative project: a dispatch console rolled out beside the existing TMS. The same approach applies here: observe the work, ship weekly, and roll out in phases.</p>
+   <a class="sx-btn" href="/work/shiftrail-dispatch" data-cursor="Read" data-magnet><span>Read the ShiftRail case study</span><i aria-hidden="true">→</i></a>
+  </aside>
+ </div>
+</section>
 
-<section class="inq-sec" id="inquire" aria-labelledby="inqH">
-  <div class="wrap inq-grid">
-    <div class="inq-copy">
-      <p class="eyebrow">Start a conversation</p>
-      <h2 class="d2" id="inqH">Tell us what your fleet team works around.</h2>
-      <p class="lede">We will tell you whether to fix it, integrate it, rebuild it, or leave it alone. We reply within one business day.</p>
-      <p class="inq-help">Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>. Have a longer brief or files? <a href="/contact#brief">Send a project brief</a>.</p>
-    </div>
-    <div>
+<section class="sx-sec sx-fstart" aria-labelledby="stepsH">
+ <div class="wrap">
+  <div class="sx-head">
+   <div>
+    <p class="sx-kicker" data-x>How to start</p>
+    <h2 id="stepsH" data-split>From first call to live software.</h2>
+   </div>
+   <div class="sx-head-aside"><a class="sx-more" href="/process" data-x>See the full process <i aria-hidden="true">→</i></a></div>
+  </div>
+  <div class="sx-steps-wrap" data-steps>
+   <div class="sx-steps-line" aria-hidden="true"><i></i></div>
+   <ol class="sx-steps">
+    <li><span class="sx-step-n" aria-hidden="true">01</span><span class="sx-step-t">20 minutes, free</span><h3>Fit call</h3><p>Show us what your team works around. You leave with a clear yes, no, or not yet.</p></li>
+    <li><span class="sx-step-n" aria-hidden="true">02</span><span class="sx-step-t">1 to 2 weeks</span><h3>Discovery</h3><p>We map how your shop, drivers, and office really work, check what your providers' data allows, and write a scoped brief you sign off.</p></li>
+    <li><span class="sx-step-n" aria-hidden="true">03</span><span class="sx-step-t">6 to 20 weeks</span><h3>Design and build</h3><p>Working software on a real URL every week, with a QA check before each demo.</p></li>
+    <li><span class="sx-step-n" aria-hidden="true">04</span><span class="sx-step-t">Your choice</span><h3>Launch and support</h3><p>Phased go-live, then a monthly retainer or a clean handover to your team.</p></li>
+   </ol>
+  </div>
+ </div>
+</section>
+
+<section class="sx-sec sx-faq" id="faq" aria-labelledby="faqH">
+ <div class="wrap sx-faq-grid">
+  <div class="sx-faq-head">
+   <p class="sx-kicker" data-x>Questions</p>
+   <h2 id="faqH" data-split>Fleet management software questions</h2>
+   <nav class="sx-frel" aria-label="Related reading"><p class="sx-frel-h">Related reading</p>
+    <ul><li><a class="sx-frel-a" href="/insights/build-vs-buy-tms">Build vs buy: a guide for transport software</a></li><li><a class="sx-frel-a" href="/services/mobile-applications">Driver app development</a></li><li><a class="sx-frel-a" href="/services/dashboard-design">Fleet and operations dashboards</a></li><li><a class="sx-frel-a" href="/services/api-integrations">ELD and telematics API integrations</a></li><li><a class="sx-frel-a" href="/markets/us">Software for US companies</a></li></ul></nav>
+  </div>
+  <div class="sx-faq-list">
+   <details open><summary>Will this replace our ELD or telematics provider?</summary><p class="sx-a">No. We read data from your provider where its API or export allows it. ELD devices and their certification stay with your provider.</p></details>
+   <details><summary>Which telematics, fuel card, and maintenance systems can you connect to?</summary><p class="sx-a">Any provider that offers an API or a reliable data export. Access often depends on your plan with that provider, so we confirm what each one allows during discovery, before we quote.</p></details>
+   <details><summary>Can driver inspections in the app replace our paper DVIRs?</summary><p class="sx-a">We can build digital inspection checklists and route defects to the shop. Whether the app serves as your official DVIR record depends on your compliance requirements and ELD setup, so your compliance owner decides. Some fleets keep the DVIR in the ELD app and pull defects from there instead.</p></details>
+   <details><summary>Can drivers use the app with poor signal?</summary><p class="sx-a">That is a core design requirement for driver apps: updates queue offline and sync when the connection returns. We confirm the devices and conditions to test against during discovery.</p></details>
+   <details><summary>Can one system cover trucks, trailers, vans, and equipment?</summary><p class="sx-a">Usually, yes. The data model is built around the assets you actually run, so tractors, trailers, service vans, and yard equipment can share maintenance schedules and records while keeping the fields each type needs.</p></details>
+   <details><summary>How long does a first version take?</summary><p class="sx-a">A focused first version is usually 6 to 10 weeks after a 1 to 2 week discovery. A full platform with integrations usually runs 12 to 20 weeks.</p></details>
+   <details><summary>How is pricing structured?</summary><p class="sx-a">Website, app, design, dashboard, and accounting work have published starting prices for a defined scope. Dispatch platforms and other custom software are quoted after discovery. Engagements run as fixed-scope projects, sprints, or a monthly retainer. Starting prices: <a href="/pricing">the pricing page</a>.</p></details>
+   <details><summary>Who owns the software?</summary><p class="sx-a">You do. Code, designs, and documentation transfer to you at project close or earlier.</p></details>
+  </div>
+ </div>
+</section>
+
+<section class="sx-next fl-next" aria-labelledby="moreSolH">
+ <div class="wrap">
+  <h2 id="moreSolH">More transportation solutions</h2>
+  <ul>
+   <li><a class="sx-next-a" href="/solutions/trucking-logistics"><strong>Trucking software</strong><span>Dispatch CRM and TMS work for carriers, built around the load record.</span><i class="sx-arrow" aria-hidden="true">→</i></a></li>
+   <li><a class="sx-next-a" href="/solutions/freight-broker-software"><strong>Freight broker software</strong><span>Quotes, carrier sales, tracking, and billing in one load record.</span><i class="sx-arrow" aria-hidden="true">→</i></a></li>
+   <li><a class="sx-next-a" href="/solutions/car-transportation"><strong>Auto transport software</strong><span>Quote-to-delivery for car-carrier brokers and carriers.</span><i class="sx-arrow" aria-hidden="true">→</i></a></li>
+   <li><a class="sx-next-a" href="/solutions/accounting-integrations"><strong>QuickBooks and Xero integrations</strong><span>Fuel, repair, and settlement costs synced to your books.</span><i class="sx-arrow" aria-hidden="true">→</i></a></li>
+  </ul>
+ </div>
+</section>
+
+<section class="sx-inq inq-sec" id="inquire" aria-labelledby="inqH" data-dark>
+ <div class="wrap sx-inq-grid inq-grid">
+  <div class="inq-copy">
+   <p class="sx-kicker">Start a conversation</p>
+   <h2 id="inqH">Tell us what your fleet team works around.</h2>
+   <p class="sx-lede">We will tell you whether to fix it, integrate it, rebuild it, or leave it alone. We reply within one business day.</p>
+   <p class="inq-help sx-inq-help">Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>. Have a longer brief or files? <a href="/contact#brief">Send a project brief</a>.</p>
+   <ul class="sx-trust"><li>Reply within one business day</li><li>You own the code</li><li>Mutual NDA available on request before sharing confidential project information.</li></ul>
+  </div>
+  <div>
       <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
         <input type="hidden" name="inquiry_type" value="page_inquiry">
         <input type="hidden" name="page" value="/solutions/fleet-management-software">
         <input type="hidden" name="service" value="Solution: fleet management software">
         <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
         <div class="inq-row">
-          <div><label for="inq-name">Name <span class="req">Required</span></label><input id="inq-name" name="name" required autocomplete="name"><p class="inq-err" id="inq-name-err">Enter your name.</p></div>
-          <div><label for="inq-email">Work email <span class="req">Required</span></label><input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email"><p class="inq-err" id="inq-email-err">Enter a valid work email.</p></div>
+          <div><label for="inq-name">Name <span class="req">Required</span></label><input id="inq-name" name="name" required autocomplete="name" aria-describedby="inq-name-err"><p class="inq-err" id="inq-name-err">Enter your name.</p></div>
+          <div><label for="inq-email">Work email <span class="req">Required</span></label><input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email" aria-describedby="inq-email-err"><p class="inq-err" id="inq-email-err">Enter a valid work email.</p></div>
         </div>
         <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
-        <div><label for="inq-details">What is your team working around today? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4" placeholder="Example: We run 60 trucks and 40 trailers. Maintenance is on a whiteboard, defects come in by text, and IFTA is rebuilt from exports every quarter."></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
+        <div><label for="inq-details">What is your team working around today? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4" aria-describedby="inq-details-err" placeholder="Example: We run 60 trucks and 40 trailers. Maintenance is on a whiteboard, defects come in by text, and IFTA is rebuilt from exports every quarter."></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
         <p class="inq-fail" role="alert"></p>
         <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i aria-hidden="true">→</i></button><p class="inq-note">No commitment. Mutual NDA available on request before sharing confidential project information.</p></div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
       <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
-    </div>
   </div>
+ </div>
 </section>
 </main>
 
@@ -554,6 +687,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
   </div>
 </footer>
+
+<div class="sx-cursor" aria-hidden="true"><i class="sx-cursor-dot"></i><i class="sx-cursor-ring"><b></b></i></div>
+<script src="/shared/solutions-x.js?v=sx1" defer></script>
 
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://krivatechnologies.com/solutions/fleet-management-software#service","name":"Custom fleet management software development","description":"Custom fleet management software for US fleets: maintenance scheduling, driver apps, compliance records, utilization, and ELD and fuel data in one place.","url":"https://krivatechnologies.com/solutions/fleet-management-software","serviceType":"Fleet management software development","image":"https://krivatechnologies.com/brand/og/solutions-fleet-management-software.png","provider":{"@id":"https://krivatechnologies.com/#organization","@type":"ProfessionalService","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},"areaServed":[{"@type":"Country","name":"United States"}],"audience":{"@type":"BusinessAudience","audienceType":"Fleet owners and fleet operations managers"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Fleet management software modules","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Fleet operations dashboard"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Maintenance scheduling"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Inspections and defects"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Driver records and apps"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Compliance tracking"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Utilization and assignments"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"ELD, GPS, and fuel card data"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"IFTA and fuel records"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Cost and accounting sync"}}]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krivatechnologies.com/"},{"@type":"ListItem","position":2,"name":"Solutions","item":"https://krivatechnologies.com/solutions"},{"@type":"ListItem","position":3,"name":"Fleet management software","item":"https://krivatechnologies.com/solutions/fleet-management-software"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will this replace our ELD or telematics provider?","acceptedAnswer":{"@type":"Answer","text":"No. We read data from your provider where its API or export allows it. ELD devices and their certification stay with your provider."}},{"@type":"Question","name":"Which telematics, fuel card, and maintenance systems can you connect to?","acceptedAnswer":{"@type":"Answer","text":"Any provider that offers an API or a reliable data export. Access often depends on your plan with that provider, so we confirm what each one allows during discovery, before we quote."}},{"@type":"Question","name":"Can driver inspections in the app replace our paper DVIRs?","acceptedAnswer":{"@type":"Answer","text":"We can build digital inspection checklists and route defects to the shop. Whether the app serves as your official DVIR record depends on your compliance requirements and ELD setup, so your compliance owner decides. Some fleets keep the DVIR in the ELD app and pull defects from there instead."}},{"@type":"Question","name":"Can drivers use the app with poor signal?","acceptedAnswer":{"@type":"Answer","text":"That is a core design requirement for driver apps: updates queue offline and sync when the connection returns. We confirm the devices and conditions to test against during discovery."}},{"@type":"Question","name":"Can one system cover trucks, trailers, vans, and equipment?","acceptedAnswer":{"@type":"Answer","text":"Usually, yes. The data model is built around the assets you actually run, so tractors, trailers, service vans, and yard equipment can share maintenance schedules and records while keeping the fields each type needs."}},{"@type":"Question","name":"How long does a first version take?","acceptedAnswer":{"@type":"Answer","text":"A focused first version is usually 6 to 10 weeks after a 1 to 2 week discovery. A full platform with integrations usually runs 12 to 20 weeks."}},{"@type":"Question","name":"How is pricing structured?","acceptedAnswer":{"@type":"Answer","text":"Website, app, design, dashboard, and accounting work have published starting prices for a defined scope. Dispatch platforms and other custom software are quoted after discovery. Engagements run as fixed-scope projects, sprints, or a monthly retainer. Starting prices: https://krivatechnologies.com/pricing."}},{"@type":"Question","name":"Who owns the software?","acceptedAnswer":{"@type":"Answer","text":"You do. Code, designs, and documentation transfer to you at project close or earlier."}}]}]}</script>

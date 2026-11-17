@@ -38,6 +38,7 @@ gtag('config',id,cfg);
 </script>
 <!-- KRIVA_CLARITY_END -->
 <script>document.documentElement.classList.add('js')</script>
+<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('svx-motion');setTimeout(function(){if(!window.__svx)d.classList.remove('svx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- KRIVA_ICONS_START -->
@@ -80,7 +81,6 @@ gtag('config',id,cfg);
 <meta name="twitter:description" content="Feature-level UI/UX for existing products: dispatch assignment, exception queues, driver status, quote and booking steps, SaaS settings. Dev-ready specs.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
-<link rel="stylesheet" href="/shared/slot-assets.css?v=brand1">
 <style>
 /* Shared KRIVA tokens + primitives */
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
@@ -186,184 +186,21 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .mob-chips a[aria-current="true"]{border-color:var(--ink);color:var(--ink)}
 @media(max-width:1280px){.mob-chips{display:flex}}
 
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(22px,3vw,40px)}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
-.tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);color:var(--steel)}
-.aside-card{background:var(--white);border:1px solid var(--rule);padding:clamp(18px,2.2vw,26px)}
-.aside-card h2{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:400;margin-bottom:14px}
-.aside-card ul{list-style:none;display:grid;gap:10px}
-.aside-card li{font-size:14.5px;display:flex;gap:9px;align-items:flex-start}
-.aside-card li:before{content:"·";color:var(--rule);flex:none}
-.contrast{margin-top:18px;padding:14px 16px;border-left:2px solid var(--amber);background:var(--paper-2);font-size:14.5px;line-height:1.55;color:var(--ink);max-width:54ch}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
-
-.shot{position:relative;background:var(--ink);overflow:hidden;margin-top:clamp(28px,3.5vw,48px)}
-.shot .media{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden}
-.slot{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(14px,2vw,22px);background:linear-gradient(160deg,#161C22,#0F1C2E)}
-.slot .skel{display:grid;gap:7px}
-.slot .skel i{display:block;height:7px;background:#1F262E}
-.slot .skel i:nth-child(1){width:34%}.slot .skel i:nth-child(2){width:58%}.slot .skel i:nth-child(3){width:46%}
-.slot .tagline{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5C6670;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.shot-cap{margin-top:12px;display:flex;gap:11px;align-items:baseline;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel-2)}
-
-body.design-ux .lp-split{align-items:start}
-body.design-ux .lp-pair figure{min-width:0}
-.ux-before{background:#FFFFFF;color:var(--ink);padding:12px 12px 10px}
-.ux-before-file{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.ux-sheet-h,.ux-sheet-row{
-  display:grid;grid-template-columns:minmax(0,1.2fr) repeat(3,minmax(0,.7fr));
-  gap:6px;align-items:center;font-family:var(--f-mono);font-size:11px
-}
-.ux-sheet-h{padding:6px 0;border-bottom:1px solid var(--rule);letter-spacing:.08em;text-transform:uppercase;color:var(--steel);font-size:9.5px}
-.ux-sheet-row{padding:8px 0;border-bottom:1px solid #E6E6DE;color:var(--steel-2)}
-.ux-sheet-row span:last-child{text-align:right;color:var(--ink)}
-.ux-before-foot{margin-top:10px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
-.ux-after{background:linear-gradient(180deg,#12181E 0%,#0F1C2E 100%);color:#DDE2E7}
-.ux-after-bar{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:12px 12px 10px;border-bottom:1px solid var(--ink-line)}
-.ux-after-title{font-family:var(--f-display);font-weight:700;font-size:.95rem;letter-spacing:-.02em;color:#fff}
-.ux-after-meta{margin-top:3px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C}
-.ux-after-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--ink-line)}
-.ux-after-kpis div{padding:10px 12px;border-right:1px solid var(--ink-line)}
-.ux-after-kpis div:last-child{border-right:0}
-.ux-after-kpis span{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C}
-.ux-after-kpis b{display:block;margin-top:5px;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;color:#fff}
-.ux-after-kpis .is-warn b{color:var(--amber)}
-.ux-chip{
-  display:inline-flex;align-items:center;gap:5px;padding:2px 7px;flex:none;white-space:nowrap;font-style:normal;
-  font-family:var(--f-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor
-}
-.ux-chip:before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
-.ux-chip.s0{color:#717F8C}.ux-chip.s1{color:var(--amber)}.ux-chip.s2{color:#A5B4FC}
-.ux-pay-row{
-  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.8fr) auto;
-  gap:6px 8px;align-items:center;
-  padding:9px 12px;border-bottom:1px solid #1A2027;
-  font-family:var(--f-mono);font-size:11.5px;color:#B9C3CC
-}
-.ux-pay-row:last-child{border-bottom:0}
-.ux-pay-row b{color:#fff;font-weight:600}
-.ux-pay-row.is-hold{background:rgba(219,155,31,.08)}
-@media(max-width:1024px){
-  .ux-hide-sm{display:none}
-}
-
-.ux-kit{
-  flex:1;width:100%;min-width:0;display:flex;flex-direction:column;
-  background:linear-gradient(180deg,#12181E 0%,#0F1C2E 100%);color:#DDE2E7
-}
-.ux-kit-bar{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:12px 16px;border-bottom:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#717F8C
-}
-.ux-kit-live{color:var(--amber);display:inline-flex;align-items:center;gap:7px}
-.ux-kit-live:before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
-.ux-kit-body{display:grid;grid-template-columns:minmax(108px,.28fr) minmax(0,1fr);flex:1;min-width:0}
-.ux-kit-rail{
-  display:flex;flex-direction:column;gap:2px;padding:14px 12px;
-  border-right:1px solid var(--ink-line);background:#10161C
-}
-.ux-kit-rail span{
-  padding:9px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8C98A4
-}
-.ux-kit-rail .is-on{color:#fff;background:rgba(79,70,229,.16);border-left:2px solid var(--cta);padding-left:8px}
-.ux-kit-main{padding:16px 16px 18px;min-width:0}
-.ux-kit-h{font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.02em;color:#fff;margin-bottom:14px}
-.ux-kit-main ul{list-style:none;display:grid}
-.ux-kit-main li{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:11px 0;border-top:1px solid var(--ink-line);
-  font-family:var(--f-mono);font-size:12.5px;color:#B9C3CC
-}
-.ux-kit-main li:first-child{border-top:0;padding-top:0}
-.ux-kit-main b{color:#fff;font-weight:600}
-.ux-kit-tokens{
-  display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--ink-line)
-}
-.ux-kit-tokens span{
-  display:inline-flex;align-items:center;gap:7px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;color:#8C98A4
-}
-.ux-kit-tokens i{width:8px;height:8px;flex:none}
-.ux-kit-tokens .t-cta{background:var(--cta)}
-.ux-kit-tokens .t-ink{background:#DDE2E7}
-.ux-kit-tokens .t-lime{background:#A5B4FC}
-@media(max-width:767px){
-  .ux-kit-body{grid-template-columns:1fr}
-  .ux-kit-rail{flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--ink-line);padding:10px 12px}
-  .ux-kit-rail .is-on{border-left:0;border-bottom:2px solid var(--cta);padding-left:10px}
-}
-
-.chal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.chal article{background:var(--paper);padding:clamp(22px,2.6vw,34px)}
-.chal .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:12px}
-.chal h3{margin-bottom:10px}
-.chal p{color:var(--steel);max-width:32ch}
-@media(max-width:860px){.chal{grid-template-columns:1fr}}
-
-.approach{display:grid;gap:0;margin-top:clamp(28px,3.5vw,48px);border-top:1px solid var(--rule)}
-.ap-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:clamp(22px,2.8vw,36px) 0;border-bottom:1px solid var(--rule)}
-.ap-row .idx{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.04em;color:var(--rule);line-height:1}
-@media(max-width:640px){.ap-row{grid-template-columns:1fr;gap:8px}}
-
-.deliv{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:clamp(28px,3.5vw,48px)}
-.deliv div{background:var(--white);padding:clamp(18px,2.2vw,26px)}
-.deliv b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
-.deliv p{font-size:15px;line-height:1.5;color:var(--ink)}
-@media(max-width:900px){.deliv{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.deliv{grid-template-columns:1fr}}
-
-.outcomes{margin-top:clamp(48px,5vw,80px);padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--rule)}
-.gain{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start}
-.gain ul{list-style:none;display:grid;gap:14px}
-.gain li{padding:16px 18px;background:var(--white);border:1px solid var(--rule);font-size:15.5px;line-height:1.5}
-@media(max-width:800px){.gain{grid-template-columns:1fr}}
-
-.faq{margin-top:clamp(28px,3.5vw,48px);display:grid;gap:12px;max-width:760px}
-.faq details{background:var(--white);border:1px solid var(--rule);padding:16px 18px}
-.faq summary{cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:1.05rem;letter-spacing:-.015em;list-style:none}
-.faq summary:-webkit-details-marker{display:none}
-.faq p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--steel)}
-
-.rel{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px);margin-top:clamp(28px,3.5vw,48px)}
-.rel a{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:clamp(18px,2.2vw,26px);background:var(--white);border:1px solid var(--rule);min-height:160px;transition:transform .5s var(--e),border-color .4s}
-.rel a:hover{border-color:var(--ink)}
-.rel .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
-.rel .arrow{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.rel .arrow i{font-style:normal;transition:transform .42s var(--e)}
-.rel a:hover .arrow i{transform:translateX(6px)}
-@media(max-width:860px){.rel{grid-template-columns:1fr}}
-
-.sib{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.sib a{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);transition:border-color var(--t-fast),color var(--t-fast)}
-.sib a:hover{border-color:var(--blue);color:var(--blue)}
-
-/* Phase 11 · intentional brief board (no empty screenshot theater) */
-.brief{margin-top:clamp(28px,3.5vw,48px);border:1px solid var(--rule);background:var(--white);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
-.brief-main{padding:clamp(22px,2.8vw,36px);border-right:1px solid var(--rule)}
-.brief-side{padding:clamp(22px,2.8vw,36px);background:var(--paper-2);display:grid;align-content:space-between;gap:24px}
-.brief .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
-.brief-list{list-style:none;display:grid;gap:12px}
-.brief-list li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:15px;line-height:1.45}
-.brief-list .n{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--steel);padding-top:3px}
-.brief-meta{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);display:grid;gap:10px}
-.brief-meta b{color:var(--ink);font-weight:500}
-@media(max-width:800px){.brief{grid-template-columns:1fr}.brief-main{border-right:0;border-bottom:1px solid var(--rule)}}
-
 </style>
 
 
 <link rel="stylesheet" href="/shared/inner.css?v=brand1">
 <link rel="stylesheet" href="/shared/system.css?v=brand1">
 <link rel="stylesheet" href="/shared/responsive.css?v=brand1">
-<link rel="stylesheet" href="/shared/archetypes.css?v=brand1">
 
 <link rel="stylesheet" href="/shared/page-inquiry.css?v=brand1">
 
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
+<link rel="stylesheet" href="/shared/services-x.css?v=svx1">
+<link rel="stylesheet" href="/shared/services-x-uiux.css?v=ux1">
 </head>
-<body class="service design-ux arch-product">
+<body class="page-uiux svx svx-uiux">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -376,7 +213,7 @@ body.design-ux .lp-pair figure{min-width:0}
       <div class="nav-primary">
         <nav aria-label="Primary">
           <ul class="nav-links">
-            <li class="nav-item is-current" data-mm>
+            <li class="nav-item" data-mm>
               <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="mm-solutions" aria-haspopup="true">Solutions<span class="nav-chev" aria-hidden="true"></span></button>
               <div class="mm mm--wide" id="mm-solutions">
                 <div class="mm-col">
@@ -487,135 +324,389 @@ body.design-ux .lp-pair figure{min-width:0}
   </div>
 </div>
 
-<nav class="chapters" id="chapters" aria-label="Sections">
-  <a href="#overview"><span>Overview</span><i></i></a>
-  <a href="#workflows"><span>Workflows</span><i></i></a>
-  <a href="#density"><span>Dense screens</span><i></i></a>
-  <a href="#deliver"><span>Deliverables</span><i></i></a>
-  <a href="#approach"><span>How we work</span><i></i></a>
-  <a href="#work"><span>Work</span><i></i></a>
-  <a href="#faq"><span>FAQ</span><i></i></a>
+<nav class="svx-rail" id="chapters" aria-label="Sections">
+  <ol>
+    <li><a href="#overview" aria-current="true"><span>Overview</span></a></li>
+    <li><a href="#workflows"><span>Workflows</span></a></li>
+    <li><a href="#density"><span>Dense screens</span></a></li>
+    <li><a href="#deliver"><span>Deliverables</span></a></li>
+    <li><a href="#approach"><span>How we work</span></a></li>
+    <li><a href="#work"><span>Work</span></a></li>
+    <li><a href="#faq"><span>FAQ</span></a></li>
+  </ol>
 </nav>
 
 <main id="main">
 
-<header class="hero lp-hero" id="overview">
+<header class="svx-hero uxx-hero" id="overview" data-dark>
+  <div class="svx-hero-bg" aria-hidden="true"><div class="uxx-cols"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="svx-glow"></div></div>
   <div class="wrap">
-    <ol class="crumbs" data-r>
+    <ol class="crumbs svx-crumbs">
       <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
       <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
       <li aria-current="page">UI/UX Design</li>
     </ol>
-    <div class="k-hero-split lp-stack" style="margin-top:clamp(22px,3vw,40px)">
-      <div>
-        <p class="eyebrow" data-r>Service · Feature-level UI/UX</p>
-        <h1 class="d1 mask">UI/UX design for dispatch tools and SaaS products</h1>
-        <p class="lede" data-r>UI/UX for one workflow or module at a time in a product that already exists: load assignment, exception queues, driver status, quote and booking steps, and SaaS settings. Flows, prototypes, and specs your engineers can build from.</p>
-        <div class="hero-actions" data-r>
-          <a href="/contact#book" class="btn"><span>Book a free 20-minute fit call</span><i>→</i></a>
-          <a href="/work/shiftrail-dispatch" class="btn ghost"><span>See ShiftRail</span><i>→</i></a>
+    <p class="svx-kicker eyebrow svx-pill"><i aria-hidden="true"></i>Service · Feature-level UI/UX</p>
+    <h1 class="svx-h1 uxx-h1"><span class="svx-l"><span>UI/UX design for dispatch tools</span></span> <span class="svx-l"><span>and <em>SaaS products</em></span></span></h1>
+    <div class="uxx-hero-row">
+      <p class="svx-lede lede uxx-hero-lede">UI/UX for one workflow or module at a time in a product that already exists: load assignment, exception queues, driver status, quote and booking steps, and SaaS settings. Flows, prototypes, and specs your engineers can build from.</p>
+      <div class="svx-actions uxx-actions">
+        <a href="/contact#book" class="btn svx-btn" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+        <a href="/work/shiftrail-dispatch" class="svx-link" data-cursor="Case"><span>See ShiftRail</span><i aria-hidden="true">→</i></a>
+      </div>
+    </div>
+
+    <figure class="uxx-cmp-wrap">
+      <div class="uxx-cmp" data-ux-cmp style="--cut:50%">
+        <div class="uxx-cmp-bar">
+          <span class="uxx-cmp-file"><i class="uxx-glyph" aria-hidden="true"></i>Load assignment · <b>one workflow</b></span>
+          <span class="uxx-seg" role="group" aria-label="Show screen">
+            <button type="button" class="uxx-seg-b" data-cut="100" aria-pressed="false">Before</button>
+            <button type="button" class="uxx-seg-b" data-cut="50" aria-pressed="true">Compare</button>
+            <button type="button" class="uxx-seg-b" data-cut="0" aria-pressed="false">After</button>
+          </span>
+        </div>
+        <div class="uxx-cmp-stage">
+          <!-- BEFORE: the spreadsheet everyone works around -->
+          <div class="uxx-scr uxx-scr--b" aria-hidden="true">
+            <div class="uxx-xl-top"><span class="uxx-xl-file">loads_master_v7.xlsx</span><span class="uxx-xl-tools"><i>Filter</i><i>Sort</i><i>Export</i><i>Edit</i><i>Clone</i><i>Delete</i></span></div>
+            <div class="uxx-xl">
+              <div class="uxx-xl-r uxx-xl-h"><span>Load</span><span>Lane<i class="uxx-mk">1</i></span><span class="c-pk">Pickup</span><span>Driver</span><span>Status</span><span class="c-rt">Rate</span><span class="c-nt">Notes</span><span class="c-mn"></span></div>
+              <div class="uxx-xl-r"><span>#4819</span><span>ATL → CLT</span><span class="c-pk">08:00</span><span>M. Chen</span><span><i class="sw s-b"></i></span><span class="c-rt">$1,420</span><span class="c-nt">ok</span><span class="c-mn">⋯</span></div>
+              <div class="uxx-xl-r"><span>#4822</span><span>DAL → HOU</span><span class="c-pk">11:00</span><span>A. Patel</span><span><i class="sw s-b"></i></span><span class="c-rt">$1,980</span><span class="c-nt">see email<i class="uxx-mk">3</i></span><span class="c-mn">⋯</span></div>
+              <div class="uxx-xl-r"><span>#4825</span><span>MEM → STL</span><span class="c-pk">16:15</span><span>—</span><span><i class="sw s-a"></i></span><span class="c-rt">$1,120</span><span class="c-nt"></span><span class="c-mn">⋯</span></div>
+              <div class="uxx-xl-r"><span>#4827</span><span>PHX → LAX</span><span class="c-pk">09:30</span><span>J. Reyes</span><span><i class="sw s-r"></i><i class="uxx-mk">2</i></span><span class="c-rt">$2,210</span><span class="c-nt">late??</span><span class="c-mn">⋯</span></div>
+              <div class="uxx-xl-r"><span>#4831</span><span>DAL → OKC</span><span class="c-pk">14:00</span><span>—</span><span><i class="sw s-a"></i></span><span class="c-rt">$1,640</span><span class="c-nt">call shipper</span><span class="c-mn">⋯</span></div>
+              <div class="uxx-xl-r"><span>#4834</span><span>ATL → SAV</span><span class="c-pk">13:45</span><span>—</span><span><i class="sw s-a"></i></span><span class="c-rt">$860</span><span class="c-nt"></span><span class="c-mn">⋯</span></div>
+              <div class="uxx-xl-r"><span>#4836</span><span>HOU → SAT</span><span class="c-pk">17:30</span><span>R. Ortiz</span><span><i class="sw s-b"></i></span><span class="c-rt">$990</span><span class="c-nt">ok</span><span class="c-mn">⋯</span></div>
+            </div>
+            <ol class="uxx-notes uxx-notes--b">
+              <li><span>Every column weighs the same</span></li>
+              <li><span>Status is colour only</span></li>
+              <li><span>Assign hides in a row menu</span></li>
+            </ol>
+          </div>
+          <!-- AFTER: arranged around the task -->
+          <div class="uxx-scr uxx-scr--a" aria-hidden="true">
+            <div class="uxx-ap-top">
+              <div><p class="uxx-ap-h">Unassigned loads <em>3</em></p><p class="uxx-ap-s">Sorted by pickup time · next one first</p></div>
+              <span class="uxx-ap-f"><i></i>Needs a driver</span>
+            </div>
+            <ul class="uxx-ap-list">
+              <li class="is-next"><span class="uxx-ap-t"><b>13:45</b><small>in 1h 10m</small></span><span class="uxx-ap-l"><b>ATL → SAV<i class="uxx-mk">1</i></b><small>#4834 · dry van</small></span><span class="uxx-ap-d"><i>RO</i><span><b>R. Ortiz</b><small>12 mi · hours OK</small></span></span><span class="uxx-st st-due"><i></i>Due soon</span><span class="uxx-mkw uxx-mkw--btn"><i class="uxx-mk">3</i><span class="uxx-ap-btn">Assign</span></span></li>
+              <li><span class="uxx-ap-t"><b>14:00</b><small>in 1h 25m</small></span><span class="uxx-ap-l"><b>DAL → OKC</b><small>#4831 · reefer</small></span><span class="uxx-ap-d"><i>KL</i><span><b>K. Lee</b><small>8 mi · hours OK</small></span></span><span class="uxx-mkw uxx-mkw--st"><span class="uxx-st st-open"><i></i>Open</span><i class="uxx-mk">2</i></span><span class="uxx-ap-btn">Assign</span></li>
+              <li><span class="uxx-ap-t"><b>16:15</b><small>in 3h 40m</small></span><span class="uxx-ap-l"><b>MEM → STL</b><small>#4825 · flatbed</small></span><span class="uxx-ap-d"><i>DS</i><span><b>D. Shah</b><small>21 mi · 6h left</small></span></span><span class="uxx-st st-open"><i></i>Open</span><span class="uxx-ap-btn">Assign</span></li>
+            </ul>
+            <p class="uxx-ap-foot"><span>4 assigned loads hidden</span><span class="uxx-ap-key"><kbd>J</kbd><kbd>K</kbd> move · <kbd>A</kbd> assign</span></p>
+            <ol class="uxx-notes uxx-notes--a">
+              <li><span>The next decision on top</span></li>
+              <li><span>Status: shape and word</span></li>
+              <li><span>One primary action per row</span></li>
+            </ol>
+          </div>
+          <span class="uxx-tag uxx-tag--b" aria-hidden="true">Before</span>
+          <span class="uxx-tag uxx-tag--a" aria-hidden="true">After</span>
+          <div class="uxx-handle" aria-hidden="true"><i></i></div>
+          <label class="sr" for="uxxCut">Compare the current and redesigned load assignment screen</label>
+          <input class="uxx-range" id="uxxCut" type="range" min="0" max="100" step="1" value="50" aria-valuetext="Half before, half after">
         </div>
       </div>
-      <aside class="k-aside" aria-label="How a project starts">
-        <p class="k-aside-k">How a project starts</p>
-        <ol class="k-aside-steps">
-          <li><strong>Free 20-minute fit call</strong><span>You leave with a clear yes, no, or not yet.</span></li>
-          <li><strong>Discovery, 1 to 2 weeks</strong><span>A scoped brief and timeline you sign off.</span></li>
-          <li><strong>Design and build</strong><span>Working software on a real URL every week.</span></li>
-        </ol>
-        <p class="k-aside-bring"><b>Bring to the call:</b> The workflow or module that causes the most trouble.</p>
-        <a class="k-aside-link" href="/process">See the full process <i aria-hidden="true">→</i></a>
-      </aside>
-    </div>
+      <figcaption class="uxx-cmp-cap"><span>Drag, or use the arrow keys, to compare.</span><span>Illustrative screens · sample data</span></figcaption>
+    </figure>
+
+    <aside class="svx-start uxx-start" aria-label="How a project starts">
+      <p class="svx-start-k">How a project starts</p>
+      <ol class="svx-start-steps">
+        <li><strong>Free 20-minute fit call</strong><span>You leave with a clear yes, no, or not yet.</span></li>
+        <li><strong>Discovery, 1 to 2 weeks</strong><span>A scoped brief and timeline you sign off.</span></li>
+        <li><strong>Design and build</strong><span>Working software on a real URL every week.</span></li>
+      </ol>
+      <div class="svx-start-side">
+        <p class="svx-start-bring"><b>Bring to the call:</b> The workflow or module that causes the most trouble.</p>
+        <a class="svx-more svx-more--dark" href="/process"><span>See the full process</span><i aria-hidden="true">→</i></a>
+      </div>
+    </aside>
   </div>
 </header>
 
-<section class="story story--flip" aria-label="The screen">
-  <div class="wrap story-grid">
-    <figure class="story-media">
-      <img src="/media/photos/ui-design-review.webp" alt="A person drawing a screen flow on paper with a pen." width="1600" height="1067" loading="lazy" decoding="async">
+<section class="svx-sec uxx-story" aria-label="The screen">
+  <div class="wrap uxx-story-grid">
+    <figure class="uxx-story-media">
+      <div class="uxx-story-img" data-clip><img src="/media/photos/ui-design-review.webp" alt="A person drawing a screen flow on paper with a pen." width="1600" height="1067" loading="eager" decoding="async" data-par></div>
+      <div class="uxx-story-ann" aria-hidden="true">
+        <span class="uxx-ruler uxx-ruler--x"><i>1 primary action</i></span>
+        <span class="uxx-ruler uxx-ruler--y"><i>hierarchy</i></span>
+      </div>
     </figure>
-    <div class="story-copy">
-      <p class="eyebrow">The screen</p>
-      <h2>Arranged around the task, not the feature list.</h2>
-      <p>We structure screens so the next action is obvious: hierarchy, empty states, and the edge cases operators actually hit.</p>
-      <ul class="story-points"><li>One primary action per view</li><li>Hierarchy before decoration</li><li>The awkward states, drawn too</li></ul>
-      <p class="story-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+    <div class="uxx-story-copy">
+      <p class="svx-kicker eyebrow" data-x>The screen</p>
+      <h2 data-split>Arranged around the task, not the feature list.</h2>
+      <p class="uxx-story-p" data-x>We structure screens so the next action is obvious: hierarchy, empty states, and the edge cases operators actually hit.</p>
+      <ul class="uxx-checks">
+        <li data-x><i aria-hidden="true"></i>One primary action per view</li>
+        <li data-x style="--d:.08s"><i aria-hidden="true"></i>Hierarchy before decoration</li>
+        <li data-x style="--d:.16s"><i aria-hidden="true"></i>The awkward states, drawn too</li>
+      </ul>
+      <p class="svx-credit" data-x>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
     </div>
   </div>
 </section>
 
-
-<section class="sect" id="workflows" aria-labelledby="wfH" style="background:var(--white);border-block:1px solid var(--rule)">
+<section class="svx-sec uxx-wf-sec" id="workflows" aria-labelledby="wfH">
   <div class="wrap">
-    <p class="eyebrow" data-r>Workflows we redesign most</p>
-    <h2 class="d2" id="wfH" data-r style="margin-top:16px">Pick the workflow that hurts. Start there.</h2>
-    <div class="lp-frac" data-s>
-      <article><span class="offer-no">01 · Assignment</span><div><h3 class="d3">Dispatch and load assignment</h3><p class="body-sm" style="margin-top:8px">Load rows, driver matching, and bulk actions. The aim is fewer clicks per decision, with the status of each load readable at a glance.</p></div></article>
-      <article><span class="offer-no">02 · Exceptions</span><div><h3 class="d3">Exception triage queues</h3><p class="body-sm" style="margin-top:8px">Late pickups, missing documents, and rejected loads sorted by urgency and owner, so the next action is obvious.</p></div></article>
-      <article><span class="offer-no">03 · Driver</span><div><h3 class="d3">Status updates and document capture</h3><p class="body-sm" style="margin-top:8px">Accept a load, update status, and photograph a document with one hand on a small screen, including poor-connection states.</p></div></article>
-      <article><span class="offer-no">04 · Quote and booking</span><div><h3 class="d3">From request to confirmation</h3><p class="body-sm" style="margin-top:8px">A quote or booking flow that asks for what dispatch needs, in an order customers can finish, with clear error and confirmation states.</p></div></article>
-      <article><span class="offer-no">05 · SaaS</span><div><h3 class="d3">Onboarding, settings, and permissions</h3><p class="body-sm" style="margin-top:8px">First-session setup, role screens, and settings pages that support teams can explain without a screen share.</p></div></article>
+    <div class="svx-head">
+      <div class="svx-head-main">
+        <p class="svx-kicker eyebrow" data-x>Workflows we redesign most</p>
+        <h2 id="wfH" data-split>Pick the workflow that hurts. Start there.</h2>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="lp-ink" id="density" aria-labelledby="denH">
-  <div class="wrap">
-    <p class="eyebrow">Designing for all-day use</p>
-    <p class="lp-pull" id="denH">Dense screens still need a hierarchy.</p>
-    <p class="lede" style="margin-top:24px">Operators spend hours in these screens. We design table density, status that does not rely on color alone, keyboard paths for desk users, and empty, loading, and error states, so the tenth hour reads as clearly as the first.</p>
-  </div>
-</section>
-
-<section class="sect" id="deliver" aria-labelledby="delH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>What design and engineering share</p>
-    <h2 class="d2" id="delH" data-r style="margin-top:16px">Specs first. Moodboard never.</h2>
-    <div class="deliv" data-s>
-      <div><b>Flows</b><p>Maps of the redesigned workflow, including exits and failures</p></div>
-      <div><b>Prototype</b><p>Interactive Figma prototype for stakeholder and user review</p></div>
-      <div><b>UI kit</b><p>Components, states, and tokens, in a library your team owns</p></div>
-      <div><b>Handoff</b><p>Annotated specs, edge cases, and empty and error states</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sect" id="approach" aria-labelledby="apH" style="background:var(--paper-2);border-block:1px solid var(--rule)">
-  <div class="wrap">
-    <p class="eyebrow" data-r>How we work</p>
-    <h2 class="d2" id="apH" data-r style="margin-top:16px">Audit, redesign, support the build.</h2>
-    <ol class="lp-time" data-s>
-      <li><span class="wk">01 · Audit</span><div><h3 class="d3">Where the current flow stalls</h3><p class="body-sm" style="margin-top:8px">We walk the live workflow, review screens, support tickets, and any analytics you can share, and agree on the problem before drawing anything.</p></div></li>
-      <li><span class="wk">02 · Redesign</span><div><h3 class="d3">Flows and prototype</h3><p class="body-sm" style="margin-top:8px">Revised flows and an interactive prototype, reviewed with the people who use the screen when you can arrange access.</p></div></li>
-      <li><span class="wk">03 · Build support</span><div><h3 class="d3">Specs and answers</h3><p class="body-sm" style="margin-top:8px">Final specs and a kit, plus answers to engineering questions while the build is under way.</p></div></li>
-    </ol>
-    <p class="body-sm" data-r style="margin-top:28px;max-width:70ch"><b>You provide:</b> current screens or access to the product, a decision-maker, and a conversation with one or two people who use the workflow. <b>Not included:</b> new strategy for the whole product (<a href="/services/product-design">product design</a>) or evidence gathering from scratch (<a href="/services/ux-research">UX research</a>).</p>
-  </div>
-</section>
-
-<section class="featwork" id="work" aria-labelledby="pfH" style="padding:0">
-  <article class="lp-case" data-r>
-    <a href="/work/payroll-pro-saas" aria-label="Read the PayrollPro case">
-      <div class="ux-kit" role="img" aria-label="Illustrative PayrollPro kit: role permissions, shared tokens, and flows a product team can keep shipping.">
-        <div class="ux-kit-bar">
-          <span>PayrollPro · kit</span>
-          <span class="ux-kit-live">Tokens live</span>
+    <div class="uxx-wf" data-ux-wf>
+      <ol class="uxx-wf-list">
+        <li class="uxx-wf-item is-on" data-x>
+          <span class="uxx-wf-k">01 · Assignment</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="true" aria-controls="uxxWfStage">Dispatch and load assignment</button></h3>
+          <p class="uxx-wf-p">Load rows, driver matching, and bulk actions. The aim is fewer clicks per decision, with the status of each load readable at a glance.</p>
+        </li>
+        <li class="uxx-wf-item" data-x style="--d:.05s">
+          <span class="uxx-wf-k">02 · Exceptions</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="false" aria-controls="uxxWfStage">Exception triage queues</button></h3>
+          <p class="uxx-wf-p">Late pickups, missing documents, and rejected loads sorted by urgency and owner, so the next action is obvious.</p>
+        </li>
+        <li class="uxx-wf-item" data-x style="--d:.1s">
+          <span class="uxx-wf-k">03 · Driver</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="false" aria-controls="uxxWfStage">Status updates and document capture</button></h3>
+          <p class="uxx-wf-p">Accept a load, update status, and photograph a document with one hand on a small screen, including poor-connection states.</p>
+        </li>
+        <li class="uxx-wf-item" data-x style="--d:.15s">
+          <span class="uxx-wf-k">04 · Quote and booking</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="false" aria-controls="uxxWfStage">From request to confirmation</button></h3>
+          <p class="uxx-wf-p">A quote or booking flow that asks for what dispatch needs, in an order customers can finish, with clear error and confirmation states.</p>
+        </li>
+        <li class="uxx-wf-item" data-x style="--d:.2s">
+          <span class="uxx-wf-k">05 · SaaS</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="false" aria-controls="uxxWfStage">Onboarding, settings, and permissions</button></h3>
+          <p class="uxx-wf-p">First-session setup, role screens, and settings pages that support teams can explain without a screen share.</p>
+        </li>
+      </ol>
+      <div class="uxx-wf-stage" id="uxxWfStage" data-on="0" data-x>
+        <div class="uxx-wf-bar" aria-hidden="true">
+          <span class="cr-dots"><i></i><i></i><i></i></span>
+          <span class="uxx-wf-name"><b>Assignment</b><b>Exceptions</b><b>Driver app</b><b>Quote and booking</b><b>Settings</b></span>
+          <span class="uxx-wf-count"><b class="svx-tnum" data-wf-n>01</b> / 05</span>
         </div>
-        <div class="ux-kit-body">
-          <div class="ux-kit-rail" aria-hidden="true">
-            <span class="is-on">Roles</span>
-            <span>Tokens</span>
-            <span>Flows</span>
+        <div class="uxx-wf-views" aria-hidden="true">
+          <!-- 01 assignment -->
+          <div class="uxx-v uxx-v--as">
+            <div class="uxx-as-row is-sel"><i class="cb"></i><b>#4834</b><span>ATL → SAV</span><span class="uxx-st st-due"><i></i>Due soon</span></div>
+            <div class="uxx-as-row is-sel"><i class="cb"></i><b>#4831</b><span>DAL → OKC</span><span class="uxx-st st-open"><i></i>Open</span></div>
+            <div class="uxx-as-row"><i class="cb"></i><b>#4825</b><span>MEM → STL</span><span class="uxx-st st-open"><i></i>Open</span></div>
+            <div class="uxx-as-row is-done"><i class="cb"></i><b>#4822</b><span>DAL → HOU</span><span class="uxx-st st-ok"><i></i>Assigned</span></div>
+            <div class="uxx-as-match"><i>RO</i><span><b>R. Ortiz</b> · best match · 12 mi · hours OK</span></div>
+            <div class="uxx-as-bulk"><span><b>2</b> selected</span><span class="uxx-as-go">Assign both to R. Ortiz</span></div>
           </div>
-          <div class="ux-kit-main">
-            <p class="ux-kit-h">Finance · permissions</p>
-            <ul>
-              <li><b>File cycle</b><em class="ux-chip s2">Allow</em></li>
-              <li><b>Hold pay</b><em class="ux-chip s2">Allow</em></li>
-              <li><b>Edit tokens</b><em class="ux-chip s0">Deny</em></li>
-            </ul>
-            <div class="ux-kit-tokens">
+          <!-- 02 exceptions -->
+          <div class="uxx-v uxx-v--ex">
+            <p class="uxx-ex-g">Now <span>2</span></p>
+            <div class="uxx-ex-row r1"><span class="uxx-st st-late"><i></i>Late pickup</span><b>#4827 · PHX → LAX</b><span class="uxx-ex-o"><i>JR</i>J. Reyes</span></div>
+            <div class="uxx-ex-row r2"><span class="uxx-st st-err"><i></i>Missing POD</span><b>#4819 · ATL → CLT</b><span class="uxx-ex-o"><i>MC</i>M. Chen</span></div>
+            <p class="uxx-ex-g">Today <span>1</span></p>
+            <div class="uxx-ex-row r3"><span class="uxx-st st-due"><i></i>Rejected load</span><b>#4811 · HOU → SAT</b><span class="uxx-ex-o is-none"><i>+</i>Take it</span></div>
+          </div>
+          <!-- 03 driver -->
+          <div class="uxx-v uxx-v--dr">
+            <div class="uxx-ph">
+              <i class="uxx-ph-n"></i>
+              <p class="uxx-ph-off"><i></i>Weak signal · 2 updates queued</p>
+              <p class="uxx-ph-id">#4822 <span>DAL → HOU</span></p>
+              <div class="uxx-ph-st"><span class="on">Arrived</span><span class="cur">Loaded</span><span>Delivered</span></div>
+              <div class="uxx-ph-cam"><i></i><span>Photograph the BOL</span></div>
+              <span class="uxx-ph-btn">Mark loaded</span>
+            </div>
+            <ul class="uxx-dr-side"><li>Thumb-reach actions</li><li>Works offline, syncs later</li><li>One document per step</li></ul>
+          </div>
+          <!-- 04 quote -->
+          <div class="uxx-v uxx-v--qt">
+            <ol class="uxx-qt-steps"><li class="ok">Lane</li><li class="cur">Freight</li><li>Dates</li><li>Confirm</li></ol>
+            <div class="uxx-qt-f"><span>Equipment</span><b>Dry van, 53 ft</b></div>
+            <div class="uxx-qt-f is-err"><span>Weight (lb)</span><b>52,000</b><em>Over the 45,000 lb limit for this lane. Split the load or choose flatbed.</em></div>
+            <div class="uxx-qt-done"><i></i><span><b>Quote Q-2291 confirmed</b>Dispatch has everything it needs</span></div>
+          </div>
+          <!-- 05 saas -->
+          <div class="uxx-v uxx-v--sa">
+            <div class="uxx-sa-on"><b>Set up your workspace</b><span class="uxx-sa-bar"><i></i></span><small>3 of 5 done</small></div>
+            <div class="uxx-sa-t">
+              <p><span>Role</span><span>Loads</span><span>Billing</span><span>Settings</span></p>
+              <p><span>Admin</span><i class="y"></i><i class="y"></i><i class="y"></i></p>
+              <p><span>Dispatcher</span><i class="y"></i><i class="n"></i><i class="n"></i></p>
+              <p><span>Accountant</span><i class="r"></i><i class="y"></i><i class="n"></i></p>
+            </div>
+            <p class="uxx-sa-why"><i></i>Why can't I edit billing? <span>Ask your admin. Your role is Dispatcher.</span></p>
+          </div>
+        </div>
+        <p class="uxx-wf-cap" aria-hidden="true">Redesigned view · sample data</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svx-sec uxx-den" id="density" aria-labelledby="denH" data-dark>
+  <div class="wrap uxx-den-grid">
+    <div class="uxx-den-copy">
+      <p class="svx-kicker eyebrow" data-x>Designing for all-day use</p>
+      <h2 class="uxx-pull" id="denH" data-split>Dense screens still need a hierarchy.</h2>
+      <p class="svx-lede lede" data-x>Operators spend hours in these screens. We design table density, status that does not rely on color alone, keyboard paths for desk users, and empty, loading, and error states, so the tenth hour reads as clearly as the first.</p>
+    </div>
+    <div class="uxx-den-demo" data-ux-den data-state="data" data-x style="--d:.1s">
+      <div class="uxx-den-ctl">
+        <span class="uxx-seg uxx-seg--l" role="group" aria-label="Board state">
+          <button type="button" class="uxx-seg-b" data-state="data" aria-pressed="true">Data</button>
+          <button type="button" class="uxx-seg-b" data-state="empty" aria-pressed="false">Empty</button>
+          <button type="button" class="uxx-seg-b" data-state="loading" aria-pressed="false">Loading</button>
+          <button type="button" class="uxx-seg-b" data-state="error" aria-pressed="false">Error</button>
+        </span>
+        <button type="button" class="uxx-sw" role="switch" aria-checked="false" data-gray><i aria-hidden="true"></i>No colour</button>
+      </div>
+      <p class="sr" aria-live="polite" data-den-live>Showing the board with data.</p>
+      <div class="uxx-den-board" aria-hidden="true">
+        <div class="uxx-den-h"><span>Load</span><span>Lane</span><span class="c-dr">Driver</span><span>Status</span></div>
+        <div class="uxx-den-body">
+          <div class="uxx-den-rows">
+            <div class="uxx-den-r"><b>#4827</b><span>PHX → LAX</span><span class="c-dr">J. Reyes</span><span class="uxx-st st-late"><i></i>Late</span></div>
+            <div class="uxx-den-r"><b>#4819</b><span>ATL → CLT</span><span class="c-dr">M. Chen</span><span class="uxx-st st-err"><i></i>Missing POD</span></div>
+            <div class="uxx-den-r"><b>#4834</b><span>ATL → SAV</span><span class="c-dr">—</span><span class="uxx-st st-due"><i></i>Due soon</span></div>
+            <div class="uxx-den-r"><b>#4822</b><span>DAL → HOU</span><span class="c-dr">A. Patel</span><span class="uxx-st st-ok"><i></i>Assigned</span></div>
+            <div class="uxx-den-r"><b>#4836</b><span>HOU → SAT</span><span class="c-dr">R. Ortiz</span><span class="uxx-st st-ok"><i></i>Assigned</span></div>
+            <div class="uxx-den-r"><b>#4815</b><span>MEM → BNA</span><span class="c-dr">K. Lee</span><span class="uxx-st st-done"><i></i>Delivered</span></div>
+            <i class="uxx-den-focus"></i>
+          </div>
+          <div class="uxx-den-empty"><i></i><b>No loads waiting</b><span>New tenders land here as they arrive.</span><em>Create a load</em></div>
+          <div class="uxx-den-load"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="uxx-den-err"><b><i></i>Couldn't refresh the board</b><span>Showing loads from 14:02. Nothing was lost.</span><em>Try again</em></div>
+        </div>
+        <div class="uxx-den-foot"><span class="uxx-den-keys"><kbd>J</kbd><kbd>K</kbd> rows · <kbd>Enter</kbd> open · <kbd>A</kbd> assign</span><span class="uxx-den-gray">Still readable without colour</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svx-sec uxx-dl-sec" id="deliver" aria-labelledby="delH">
+  <div class="wrap">
+    <div class="svx-head">
+      <div class="svx-head-main">
+        <p class="svx-kicker eyebrow" data-x>What design and engineering share</p>
+        <h2 id="delH" data-split>Specs first. Moodboard never.</h2>
+      </div>
+    </div>
+    <div class="uxx-dl">
+      <article class="uxx-dl-card" data-spot data-x>
+        <div class="uxx-art uxx-art--flow" aria-hidden="true">
+          <svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid meet"><path class="ln" d="M38 60 H86"/><path class="ln" d="M126 60 H170"/><path class="ln ex" d="M106 74 V100 H170"/><rect x="10" y="46" width="28" height="28" rx="8"/><rect x="86" y="46" width="40" height="28" rx="14" class="dec"/><rect x="170" y="46" width="56" height="28" rx="8"/><rect x="170" y="88" width="56" height="24" rx="8" class="exr"/><text x="198" y="64">Done</text><text x="198" y="104" class="ext">Fail</text><text x="106" y="64">?</text></svg>
+        </div>
+        <span class="uxx-dl-n svx-tnum" aria-hidden="true">01</span>
+        <h3 class="uxx-dl-k">Flows</h3>
+        <p class="uxx-dl-p">Maps of the redesigned workflow, including exits and failures</p>
+      </article>
+      <article class="uxx-dl-card" data-spot data-x style="--d:.06s">
+        <div class="uxx-art uxx-art--proto" aria-hidden="true">
+          <span class="ph"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="tap"></i></span>
+          <span class="ph ph2"><i class="b1"></i><i class="b2"></i><i class="b3"></i></span>
+          <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M4 30 C 30 2, 60 2, 92 18"/></svg>
+        </div>
+        <span class="uxx-dl-n svx-tnum" aria-hidden="true">02</span>
+        <h3 class="uxx-dl-k">Prototype</h3>
+        <p class="uxx-dl-p">Interactive Figma prototype for stakeholder and user review</p>
+      </article>
+      <article class="uxx-dl-card" data-spot data-x style="--d:.12s">
+        <div class="uxx-art uxx-art--kit" aria-hidden="true">
+          <span class="k k1">Assign</span><span class="k k2">Assign</span><span class="k k3">Assign</span><span class="k k4">Assign</span>
+          <small>default</small><small>hover</small><small>disabled</small><small>error</small>
+        </div>
+        <span class="uxx-dl-n svx-tnum" aria-hidden="true">03</span>
+        <h3 class="uxx-dl-k">UI kit</h3>
+        <p class="uxx-dl-p">Components, states, and tokens, in a library your team owns</p>
+      </article>
+      <article class="uxx-dl-card" data-spot data-x style="--d:.18s">
+        <div class="uxx-art uxx-art--spec" aria-hidden="true">
+          <span class="fld"><i></i></span>
+          <span class="rl rl-h"><b>16</b></span>
+          <span class="rl rl-v"><b>48</b></span>
+          <span class="nt">Error: show under the field, keep the value</span>
+        </div>
+        <span class="uxx-dl-n svx-tnum" aria-hidden="true">04</span>
+        <h3 class="uxx-dl-k">Handoff</h3>
+        <p class="uxx-dl-p">Annotated specs, edge cases, and empty and error states</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="svx-sec uxx-ap-sec" id="approach" aria-labelledby="apH">
+  <div class="wrap">
+    <div class="svx-head">
+      <div class="svx-head-main">
+        <p class="svx-kicker eyebrow" data-x>How we work</p>
+        <h2 id="apH" data-split>Audit, redesign, support the build.</h2>
+      </div>
+    </div>
+    <ol class="uxx-steps" data-steps aria-label="How we work">
+      <li data-x>
+        <span class="uxx-step-dot" aria-hidden="true"></span>
+        <span class="uxx-step-k">01 · Audit</span>
+        <h3>Where the current flow stalls</h3>
+        <p>We walk the live workflow, review screens, support tickets, and any analytics you can share, and agree on the problem before drawing anything.</p>
+      </li>
+      <li data-x style="--d:.08s">
+        <span class="uxx-step-dot" aria-hidden="true"></span>
+        <span class="uxx-step-k">02 · Redesign</span>
+        <h3>Flows and prototype</h3>
+        <p>Revised flows and an interactive prototype, reviewed with the people who use the screen when you can arrange access.</p>
+      </li>
+      <li data-x style="--d:.16s">
+        <span class="uxx-step-dot" aria-hidden="true"></span>
+        <span class="uxx-step-k">03 · Build support</span>
+        <h3>Specs and answers</h3>
+        <p>Final specs and a kit, plus answers to engineering questions while the build is under way.</p>
+      </li>
+    </ol>
+    <div class="uxx-terms" data-x>
+      <p class="uxx-terms-c"><b>You provide:</b> current screens or access to the product, a decision-maker, and a conversation with one or two people who use the workflow.</p>
+      <p class="uxx-terms-c uxx-terms-c--no"><b>Not included:</b> new strategy for the whole product (<a href="/services/product-design">product design</a>) or evidence gathering from scratch (<a href="/services/ux-research">UX research</a>).</p>
+    </div>
+  </div>
+</section>
+
+<section class="svx-sec uxx-work" id="work" aria-labelledby="pfH" data-dark>
+  <div class="wrap uxx-work-grid">
+    <a class="uxx-kit-link" href="/work/payroll-pro-saas" aria-label="Read the PayrollPro case" data-cursor="Case" data-x>
+      <div class="uxx-kit" data-ux-kit data-tab="0" role="img" aria-label="Illustrative PayrollPro kit: role permissions, shared tokens, and flows a product team can keep shipping.">
+        <div class="uxx-kit-bar">
+          <span>PayrollPro · kit</span>
+          <span class="uxx-kit-live">Tokens live</span>
+        </div>
+        <div class="uxx-kit-body">
+          <div class="uxx-kit-rail" aria-hidden="true">
+            <span class="r0">Roles</span>
+            <span class="r1">Tokens</span>
+            <span class="r2">Flows</span>
+          </div>
+          <div class="uxx-kit-main">
+            <div class="uxx-kit-v v0">
+              <p class="uxx-kit-h">Finance · permissions</p>
+              <ul>
+                <li><b>File cycle</b><em class="uxx-chip s2">Allow</em></li>
+                <li><b>Hold pay</b><em class="uxx-chip s2">Allow</em></li>
+                <li><b>Edit tokens</b><em class="uxx-chip s0">Deny</em></li>
+              </ul>
+            </div>
+            <div class="uxx-kit-v v1" aria-hidden="true">
+              <p class="uxx-kit-h">Tokens · colour</p>
+              <div class="uxx-kit-sw"><span><i class="t-cta"></i>--cta</span><span><i class="t-ink"></i>--ink</span><span><i class="t-lime"></i>--ready</span><span><i class="t-warn"></i>--hold</span></div>
+            </div>
+            <div class="uxx-kit-v v2" aria-hidden="true">
+              <p class="uxx-kit-h">Flows · first pay run</p>
+              <ol class="uxx-kit-fl"><li>SSO</li><li>Team</li><li>Roles</li><li>Pay run</li></ol>
+            </div>
+            <div class="uxx-kit-tokens">
               <span><i class="t-cta"></i>--cta</span>
               <span><i class="t-ink"></i>--ink</span>
               <span><i class="t-lime"></i>--ready</span>
@@ -624,78 +715,133 @@ body.design-ux .lp-pair figure{min-width:0}
         </div>
       </div>
     </a>
-    <div>
-      <p class="eyebrow">Related work</p>
-      <h3 class="d2" id="pfH">PayrollPro</h3>
-      <p>Progressive onboarding and permission clarity after SSO. For dispatch-desk UX, see <a href="/work/shiftrail-dispatch" style="text-decoration:underline">ShiftRail</a>.</p>
-      <a href="/work/payroll-pro-saas" class="btn on-dark" style="margin-top:22px"><span>Read the case</span><i>→</i></a>
-    </div>
-  </article>
-</section>
-
-<section class="sect" id="faq" aria-labelledby="faqH" style="background:var(--white);border-top:1px solid var(--rule)">
-  <div class="wrap">
-    <p class="eyebrow" data-r>FAQ</p>
-    <h2 class="d2" id="faqH" data-r style="margin-top:16px">About UI/UX design</h2>
-    <div class="faq" data-r>
-      <details><summary>Can you redesign just one screen or workflow?</summary><p>Yes, that is the usual brief. Pick the workflow that hurts most, such as load assignment or the exception queue, and we redesign it with its neighbors in view so the change fits the rest of the product. A broader brief belongs under <a href="/services/product-design">product design</a>.</p></details>
-      <details><summary>Do you work with our in-house designers and engineers?</summary><p>Yes. We embed alongside your designers or product manager, work in Figma, and share libraries your team owns. Engineers get states, edge cases, and annotated specs they can build from, and we answer questions during the build.</p></details>
-      <details><summary>Do you design the driver-facing mobile screens too?</summary><p>Yes, for flows like accepting a load, updating status, and uploading documents. A full native or cross-platform app brief fits <a href="/services/mobile-applications">mobile app design</a> better, and we will tell you which one applies.</p></details>
-      <details><summary>Do you write the front-end code?</summary><p>This service delivers design: flows, prototypes, UI kit, and specs. KRIVA is also an engineering studio, so implementation can be scoped as a separate engagement.</p></details>
-    </div>
-    <div class="sib" data-r style="margin-top:32px">
-      <a href="/services/product-design">Product Design</a>
-      <a href="/services/dashboard-design">Dashboard Design</a>
-      <a href="/services/design-systems">Design Systems</a>
-      <a href="/insights/crm-dashboard-ux-patterns">CRM &amp; dashboard UX patterns</a>
-      <a href="/services">All services</a>
+    <div class="uxx-work-copy">
+      <p class="svx-kicker eyebrow" data-x>Related work</p>
+      <h3 class="uxx-work-h" id="pfH" data-split>PayrollPro</h3>
+      <p class="uxx-work-p" data-x>Progressive onboarding and permission clarity after SSO. For dispatch-desk UX, see <a href="/work/shiftrail-dispatch">ShiftRail</a>.</p>
+      <div class="uxx-work-cta" data-x>
+        <a href="/work/payroll-pro-saas" class="btn svx-btn" data-magnet><span>Read the case</span><i aria-hidden="true">→</i></a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="cta-band on-ink" aria-labelledby="ctaH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Start a project</p>
-    <h2 class="d2" id="ctaH" data-r>Which workflow hurts most?</h2>
-    <div class="cta-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-minute fit call</span><i>→</i></a>
-        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
+<section class="svx-sec cr-faq uxx-faq" id="faq" aria-labelledby="faqH">
+  <div class="wrap cr-faq-grid">
+    <div class="cr-faq-side">
+      <p class="svx-kicker eyebrow" data-x>FAQ</p>
+      <h2 id="faqH" data-split>About UI/UX design</h2>
+      <nav class="uxx-sib" aria-label="Related services and reading" data-x>
+        <a href="/services/product-design">Product Design</a>
+        <a href="/services/dashboard-design">Dashboard Design</a>
+        <a href="/services/design-systems">Design Systems</a>
+        <a href="/insights/crm-dashboard-ux-patterns">CRM &amp; dashboard UX patterns</a>
+        <a href="/services">All services</a>
+      </nav>
+    </div>
+    <div class="faq-list cr-faq-list">
+      <div class="faq-item" data-x>
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+          <span class="qn num">01</span>
+          <span class="qt">Can you redesign just one screen or workflow?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
+          <p>Yes, that is the usual brief. Pick the workflow that hurts most, such as load assignment or the exception queue, and we redesign it with its neighbors in view so the change fits the rest of the product. A broader brief belongs under <a href="/services/product-design">product design</a>.</p>
+        </div></div></div>
       </div>
-      <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
-        <span><i>◆</i>No commitment required</span>
+      <div class="faq-item" data-x>
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+          <span class="qn num">02</span>
+          <span class="qt">Do you work with our in-house designers and engineers?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
+          <p>Yes. We embed alongside your designers or product manager, work in Figma, and share libraries your team owns. Engineers get states, edge cases, and annotated specs they can build from, and we answer questions during the build.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item" data-x>
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+          <span class="qn num">03</span>
+          <span class="qt">Do you design the driver-facing mobile screens too?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
+          <p>Yes, for flows like accepting a load, updating status, and uploading documents. A full native or cross-platform app brief fits <a href="/services/mobile-applications">mobile app design</a> better, and we will tell you which one applies.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item" data-x>
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+          <span class="qn num">04</span>
+          <span class="qt">Do you write the front-end code?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
+          <p>This service delivers design: flows, prototypes, UI kit, and specs. KRIVA is also an engineering studio, so implementation can be scoped as a separate engagement.</p>
+        </div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svx-sec uxx-close" aria-labelledby="ctaH">
+  <div class="wrap">
+    <div class="uxx-close-in">
+      <div class="uxx-close-copy">
+        <p class="svx-kicker eyebrow" data-x>Start a project</p>
+        <h2 id="ctaH" data-split>Which workflow hurts most?</h2>
+      </div>
+      <div class="uxx-pick" data-ux-pick data-x style="--d:.08s">
+        <button type="button" class="uxx-pick-b" data-wf="Dispatch and load assignment">Dispatch and load assignment</button>
+        <button type="button" class="uxx-pick-b" data-wf="Exception triage queues">Exception triage queues</button>
+        <button type="button" class="uxx-pick-b" data-wf="Status updates and document capture">Status updates and document capture</button>
+        <button type="button" class="uxx-pick-b" data-wf="From request to confirmation">From request to confirmation</button>
+        <button type="button" class="uxx-pick-b" data-wf="Onboarding, settings, and permissions">Onboarding, settings, and permissions</button>
+      </div>
+    </div>
+    <div class="uxx-close-row" data-x>
+      <div class="uxx-close-cta">
+        <a href="/contact#book" class="svx-more"><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+        <a href="/contact#brief" class="svx-more"><span>Send a project brief</span><i aria-hidden="true">→</i></a>
+      </div>
+      <p class="uxx-assur">
+        <span>Reply within one business day</span>
+        <span>Mutual NDA available on request before sharing confidential project information.</span>
+        <span>No commitment required</span>
       </p>
     </div>
   </div>
 </section>
 
-<section class="inq-sec" id="inquire" aria-labelledby="inqH">
-  <div class="wrap inq-grid">
-    <div class="inq-copy">
-      <p class="eyebrow">Start a conversation</p>
-      <h2 class="d2" id="inqH">Tell us what you need built.</h2>
-      <p class="lede">We will tell you whether to fix it, integrate it, rebuild it, or leave it alone. We reply within one business day.</p>
-      <p class="inq-help">Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>. Have a longer brief or files? <a href="/contact#brief">Send a project brief</a>.</p>
-    </div>
-    <div>
-      <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
-        <input type="hidden" name="inquiry_type" value="page_inquiry">
-        <input type="hidden" name="page" value="/services/ui-ux-design">
-        <input type="hidden" name="service" value="Service: ui-ux-design">
-        <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
-        <div class="inq-row">
-          <div><label for="inq-name">Name <span class="req">Required</span></label><input id="inq-name" name="name" required autocomplete="name"><p class="inq-err" id="inq-name-err">Enter your name.</p></div>
-          <div><label for="inq-email">Work email <span class="req">Required</span></label><input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email"><p class="inq-err" id="inq-email-err">Enter a valid work email.</p></div>
+<section class="inq-sec cr-inq uxx-inq" id="inquire" aria-labelledby="inqH">
+  <div class="wrap">
+    <div class="cr-inq-card" data-dark>
+      <div class="inq-grid cr-inq-grid">
+        <div class="inq-copy">
+          <p class="svx-kicker eyebrow">Start a conversation</p>
+          <h2 id="inqH">Tell us what you need built.</h2>
+          <p class="svx-lede lede">We will tell you whether to fix it, integrate it, rebuild it, or leave it alone. We reply within one business day.</p>
+          <p class="inq-help uxx-help">Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>. Have a longer brief or files? <a href="/contact#brief">Send a project brief</a>.</p>
         </div>
-        <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
-        <div><label for="inq-details">What do you need help with? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
-        <p class="inq-fail" role="alert"></p>
-        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
-        <p class="inq-status" data-inq-status aria-live="polite"></p>
-      </form>
-      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
+        <div>
+          <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
+            <input type="hidden" name="inquiry_type" value="page_inquiry">
+            <input type="hidden" name="page" value="/services/ui-ux-design">
+            <input type="hidden" name="service" value="Service: ui-ux-design">
+            <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
+            <div class="inq-row">
+              <div><label for="inq-name">Name <span class="req">Required</span></label><input id="inq-name" name="name" required autocomplete="name"><p class="inq-err" id="inq-name-err">Enter your name.</p></div>
+              <div><label for="inq-email">Work email <span class="req">Required</span></label><input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email"><p class="inq-err" id="inq-email-err">Enter a valid work email.</p></div>
+            </div>
+            <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
+            <div><label for="inq-details">What do you need help with? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
+            <p class="inq-fail" role="alert"></p>
+            <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
+            <p class="inq-status" data-inq-status aria-live="polite"></p>
+          </form>
+          <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -764,52 +910,8 @@ body.design-ux .lp-pair figure{min-width:0}
 </footer>
 
 
-<script>
-(function(){
-'use strict';
-const readers=[]; let ticking=false;
-const onScroll=()=>{ if(!ticking){ requestAnimationFrame(run); ticking=true; } };
-function run(){ const y=scrollY; for(const r of readers) r(y); ticking=false; }
-addEventListener('scroll', onScroll, {passive:true});
-addEventListener('resize', onScroll, {passive:true});
-const io=new IntersectionObserver(es=>{
-  for(const e of es){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }
-},{threshold:.12, rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>{
-  if(el.hasAttribute('data-mask')) el.classList.add('mask');
-  io.observe(el);
-});
-const bar=document.getElementById('progress');
-if(bar) readers.push(y=>{
-  const h=document.documentElement.scrollHeight-innerHeight;
-  bar.style.transform='scaleX('+(h>0?Math.min(1,y/h):0)+')';
-});
-const chLinks=[...document.querySelectorAll('#chapters a')];
-const chTargets=chLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-const chRail=document.getElementById('chapters');
-if(chRail) readers.push(y=>chRail.classList.toggle('show', y>420));
-const chIO=new IntersectionObserver(es=>{
-  for(const e of es){
-    if(!e.isIntersecting) continue;
-    const i=chTargets.indexOf(e.target);
-    chLinks.forEach((a,j)=>a.setAttribute('aria-current', j===i?'true':'false'));
-  }
-},{rootMargin:'-40% 0px -55% 0px'});
-chTargets.forEach(t=>chIO.observe(t));
-const mob=[...document.querySelectorAll('#mobChips a')];
-if(mob.length){
-  const mobIO=new IntersectionObserver(es=>{
-    for(const e of es){
-      if(!e.isIntersecting) continue;
-      const id=e.target.id;
-      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
-    }
-  },{rootMargin:'-35% 0px -55% 0px'});
-  chTargets.forEach(t=>mobIO.observe(t));
-}
-run();
-})();
-</script>
+<script src="/shared/services-x.js?v=svx1" defer></script>
+<script src="/shared/services-x-uiux.js?v=ux1" defer></script>
 <!-- KRIVA_SCHEMA_START -->
 <script type="application/ld+json">
 {

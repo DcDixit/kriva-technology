@@ -38,6 +38,7 @@ gtag('config',id,cfg);
 </script>
 <!-- KRIVA_CLARITY_END -->
 <script>document.documentElement.classList.add('js')</script>
+<script>(function(d){if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('ix-motion');setTimeout(function(){if(!window.__ix)d.classList.remove('ix-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- KRIVA_ICONS_START -->
@@ -149,210 +150,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/inner.css?v=brand1">
 <link rel="stylesheet" href="/shared/system.css?v=brand1">
 <link rel="stylesheet" href="/shared/responsive.css?v=brand1">
-<style>
-/* Page-scoped Insights: loaded last */
-body.page-insights{overflow-x:clip}
-body.page-insights .sect{padding-block:clamp(80px,10vw,140px)}
-body.page-insights .hero .d1{
-  font-size:clamp(1.85rem,1rem + 3.55vw,4.65rem);line-height:.94;letter-spacing:-.032em
-}
-body.page-insights .d2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
-body.page-insights .lede{max-width:42ch;font-size:clamp(1.05rem,1.3vw,1.22rem);letter-spacing:-.01em}
-body.page-insights .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch;line-height:.93;letter-spacing:-.032em}
-
-.ins-hero{
-  background:var(--paper);color:var(--ink);overflow:hidden;
-  padding:calc(72px + clamp(28px,5vw,64px)) 0 clamp(36px,4vw,56px);
-  scroll-margin-top:88px
-}
-.ins-hero .d1{margin:18px 0 20px;max-width:11ch}
-.ins-mast{
-  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)
-}
-.ins-mast span{display:inline-flex;align-items:center;gap:8px}
-.ins-mast span:before{content:"";width:6px;height:6px;background:var(--cta);flex:none}
-
-.ins-topics{padding-block:0 clamp(40px,5vw,72px)}
-.ins-topic-rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
-.ins-topic-card{
-  background:#fff;border:1px solid #e6e7ea;border-radius:12px;
-  padding:clamp(24px,3vw,32px) clamp(20px,2.5vw,28px);min-width:0
-}
-.ins-topic-card h3{
-  font-family:var(--f-display);font-weight:700;
-  font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.2;
-  color:var(--ink);margin-bottom:10px
-}
-.ins-topic-card p{font-size:14.5px;line-height:1.55;color:var(--steel);max-width:42ch}
-.ins-topic-card .ins-topic-go{
-  position:relative;z-index:2;display:inline-flex;margin-top:16px;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--steel);padding:0 0 2px;background:none;border:none;
-  border-bottom:1px solid currentColor;border-radius:0;cursor:pointer;text-align:left
-}
-.ins-topic-card .ins-topic-go:hover{color:var(--ink);border-color:var(--ink)}
-
-.ins-lead{background:var(--ink);color:#DDE2E7;overflow:hidden}
-.ins-lead[hidden]{display:none !important}
-.ins-lead-shot{
-  display:block;background:#0A0D10;overflow:hidden;
-  border-bottom:1px solid var(--ink-line)
-}
-.ins-lead-shot img{
-  width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center;
-  transform:scale(1.02);transition:transform 1.1s var(--e)
-}
-.ins-lead-shot:hover img{transform:scale(1.05)}
-.ins-lead-shot .pu{min-height:0}
-.ins-lead-shot:has(.pu){background:#0F1C2E}
-.ins-lead-shot:hover .pu{transform:none}
-.ins-lead-bar{
-  display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);
-  gap:clamp(24px,4vw,56px);align-items:center;
-  padding:clamp(32px,5vw,64px) var(--gutter);
-  max-width:var(--maxw);margin-inline:auto
-}
-.ins-lead .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
-.ins-lead h2{color:#fff;margin:10px 0 12px;max-width:18ch}
-.ins-lead .lede{color:#8C98A4}
-.ins-lead-meta{
-  display:flex;flex-wrap:wrap;gap:10px 18px;margin:18px 0 22px;
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#717F8C
-}
-
-.ins-bar{
-  position:sticky;top:58px;z-index:60;
-  background:rgba(255,255,255,.94);border-bottom:1px solid var(--rule)
-}
-@supports(backdrop-filter:blur(1px)){@media(min-width:900px){.ins-bar{backdrop-filter:blur(12px) saturate(1.4)}}}
-.ins-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:12px;min-width:0}
-.ins-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;min-width:0;max-width:100%}
-.ins-chips::-webkit-scrollbar{display:none}
-.ins-chip{
-  flex:none;scroll-snap-align:start;display:inline-flex;align-items:center;gap:7px;
-  min-height:48px;padding:8px 14px;border:1px solid var(--rule);white-space:nowrap;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);
-  background:transparent;
-  transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e),background var(--t-fast) var(--e)
-}
-.ins-chip u{text-decoration:none;font-size:9.5px;color:var(--steel-2)}
-.ins-chip:hover{color:var(--ink);border-color:var(--steel-2)}
-.ins-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.ins-chip[aria-pressed="true"] u{color:var(--amber)}
-.ins-count{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);white-space:nowrap;flex:none}
-
-.ins-index{padding-block:clamp(48px,6vw,88px) clamp(72px,9vw,128px)}
-#ledger{scroll-margin-top:128px}
-#ledger > .ins-row:first-of-type{border-top:1px solid var(--rule)}
-.ins-row{
-  display:grid;grid-template-columns:7.5rem minmax(0,1.4fr) minmax(0,.7fr) auto;
-  gap:clamp(16px,2.5vw,36px);align-items:start;
-  padding:clamp(26px,3vw,40px) 0;border-bottom:1px solid var(--rule);
-  color:inherit;min-width:0;position:relative;
-  transition:opacity .4s var(--e),transform .4s var(--e),padding-left .4s var(--e)
-}
-.ins-row.out{opacity:0;transform:translate3d(0,12px,0);pointer-events:none}
-.ins-row[hidden]{display:none !important}
-.ins-row:hover{padding-left:8px}
-.ins-row .n{
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--cta);padding-top:6px
-}
-.ins-row h3{
-  font-family:var(--f-display);font-weight:700;
-  font-size:clamp(1.28rem,2.2vw,1.85rem);line-height:1.12;letter-spacing:-.028em;max-width:22ch
-}
-.ins-row h3 a:after{content:"";position:absolute;inset:0;z-index:2}
-.ins-row .cat{
-  display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--steel);margin-bottom:10px
-}
-.ins-row .ex{font-size:15px;line-height:1.6;color:var(--steel);margin-top:12px;max-width:52ch}
-.ins-row .rel{
-  position:relative;z-index:3;margin-top:14px;font-size:14px;line-height:1.5;color:var(--steel)
-}
-.ins-row .rel a{border-bottom:1px solid var(--rule)}
-.ins-row .rel a:hover{color:var(--ink);border-color:var(--ink)}
-.ins-row .meta{
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--steel);display:grid;gap:8px;padding-top:6px
-}
-.ins-row .go{
-  display:inline-flex;align-items:center;gap:8px;margin-top:6px;
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
-  border-bottom:1px solid currentColor;align-self:start
-}
-.ins-row .go i{font-style:normal;transition:transform .42s var(--e)}
-.ins-row:hover .go i{transform:translateX(6px)}
-
-.ins-empty{padding-block:clamp(56px,8vw,100px);text-align:center}
-.ins-empty[hidden]{display:none}
-.ins-empty .body-sm{margin:14px auto 22px}
-
-.ins-read{background:var(--paper-2);border-block:1px solid var(--rule)}
-.ins-read-grid{
-  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
-  gap:clamp(28px,4vw,72px);align-items:end
-}
-.ins-read h2{margin-top:18px}
-.ins-read .lede{margin-top:16px}
-.ins-read .lede a{border-bottom:1px solid var(--rule)}
-.ins-read .lede a:hover{color:var(--ink);border-color:var(--ink)}
-.ins-links{display:grid;gap:0;border-top:1px solid var(--rule);margin-top:8px}
-.ins-links a{
-  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-  padding:16px 0;border-bottom:1px solid var(--rule);min-height:48px;
-  transition:padding-left .4s var(--e)
-}
-.ins-links a:hover{padding-left:8px}
-.ins-links b{font-family:var(--f-display);font-weight:700;letter-spacing:-.02em}
-.ins-links span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--cta)}
-
-@media(max-width:1024px){
-  .ins-topic-rail,.ins-lead-bar,.ins-read-grid,.ins-row{grid-template-columns:1fr}
-  .ins-hero .d1{max-width:none}
-  .cta-row{align-items:flex-start}
-  .ins-row .meta{display:flex;flex-wrap:wrap;gap:14px;padding-top:0}
-  .ins-row .go{display:none}
-}
-@media(max-width:860px){
-  .ins-bar .wrap{flex-direction:column;align-items:stretch;gap:10px}
-  .ins-count{align-self:flex-end}
-}
-@media(max-width:640px){
-  .hero-actions{flex-direction:column;align-items:stretch}
-  .hero-actions .btn,.cta-actions .btn{width:100%;justify-content:center;min-height:48px}
-  .cta-row{flex-direction:column;align-items:stretch}
-  .ins-lead-shot:hover img{transform:none}
-  .ins-row:hover{padding-left:0}
-}
-@media(max-width:390px){
-  body.page-insights .hero .d1{font-size:1.9rem}
-}
-@media(hover:none){
-  .ins-links a:hover,.ins-row:hover{padding-left:0}
-  .ins-lead-shot:hover img{transform:none}
-}
-@media (prefers-reduced-motion:reduce){
-  html:focus-within{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;transition-delay:0ms!important}
-  [data-r],[data-s]>*{opacity:1!important;transform:none!important}
-  .mask span i{transform:none!important}
-  .ins-lead-shot img{transform:none!important}
-}
-@media(min-width:1600px){
-  body.page-insights .hero .d1{font-size:4.55rem}
-}
-</style>
-<link rel="stylesheet" href="/shared/slot-assets.css?v=brand1">
 
 <link rel="stylesheet" href="/shared/page-inquiry.css?v=brand1">
 
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
+<link rel="stylesheet" href="/shared/insights-x.css?v=ix4">
 </head>
-<body class="page-insights">
+<body class="page-insights ix">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -478,307 +283,409 @@ body.page-insights .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12c
 
 <main id="main">
 
-<header class="hero ins-hero" id="overview" aria-labelledby="h1">
-  <div class="wrap">
-    <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li aria-current="page">Insights</li>
-    </ol>
-    <p class="eyebrow" data-r>Insights</p>
-    <h1 class="d1 mask" id="h1" data-mask>
-      <span><i>Practical notes on</i></span>
-      <span><i>product design &amp; delivery.</i></span>
-    </h1>
-    <p class="lede" data-r>Guides and field notes on SaaS onboarding, trucking dispatch CRM, product design, MVP trade-offs, and integrations - written for founders and operators from real project work.</p>
-    <div class="hero-actions" data-r>
-      <a href="#ledger" class="btn"><span>Browse the notes</span><i>→</i></a>
-      <a href="/contact#book" class="btn ghost"><span>Book a free 20-minute fit call</span><i>→</i></a>
+<nav class="ix-rail" id="chapters" aria-label="On this page">
+  <ol>
+    <li><a href="#overview"><span>Overview</span></a></li>
+    <li><a href="#featured"><span>Featured</span></a></li>
+    <li><a href="#topics"><span>Topics</span></a></li>
+    <li><a href="#notes"><span>All notes</span></a></li>
+    <li><a href="#field-notes"><span>The notes</span></a></li>
+    <li><a href="#more"><span>Keep reading</span></a></li>
+    <li><a href="#inquire"><span>Contact</span></a></li>
+  </ol>
+</nav>
+
+<header class="ix-hero" id="overview" aria-labelledby="h1">
+  <div class="ix-hero-bg" aria-hidden="true"><div class="ix-hero-grid"></div><div class="ix-glow"></div></div>
+  <div class="wrap ix-hero-in">
+    <div class="ix-hero-copy">
+      <ol class="crumbs" data-ix>
+        <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+        <li aria-current="page">Insights</li>
+      </ol>
+      <p class="ix-kicker eyebrow" data-ix>Insights</p>
+      <h1 class="ix-h1" id="h1" data-ix-split>Practical notes on product design &amp; <em>delivery.</em></h1>
+      <p class="lede ix-lede" data-ix style="--d:.15s">Guides and field notes on SaaS onboarding, trucking dispatch CRM, product design, MVP trade-offs, and integrations - written for founders and operators from real project work.</p>
+      <div class="ix-actions" data-ix style="--d:.25s">
+        <a href="#ledger" class="btn ix-btn" data-magnet><span>Browse the notes</span><i></i></a>
+        <a href="/contact#book" class="ix-link"><span>Book a free 20-minute fit call</span><i></i></a>
+      </div>
+      <dl class="ix-stats" data-ix style="--d:.35s">
+        <div><dt>Notes</dt><dd><b class="ix-tnum" data-count="12">12</b></dd></div>
+        <div><dt>Topics</dt><dd><b class="ix-tnum" data-count="6">6</b></dd></div>
+        <div><dt>Minutes of reading</dt><dd><b class="ix-tnum" data-count="90">90</b></dd></div>
+      </dl>
+      <p class="ix-mast" data-ix style="--d:.4s"><span>Product · SaaS · Trucking</span><span>From real projects</span></p>
     </div>
-    <p class="ins-mast" data-r>
-      <span>Insights · 7 notes</span>
-      <span>Product · SaaS · Trucking</span>
-      <span>From real projects</span>
-    </p>
+
+    <div class="ix-desk" data-ix style="--d:.2s">
+      <p class="ix-desk-k"><i></i>Latest on the desk</p>
+      <div class="ix-stack" data-ix-stack>
+        <a class="ix-note" href="/insights/trucking-company-website-cost" data-cursor="Read" data-tone="amber">
+          <span class="ix-note-top"><span class="ix-pill">Trucking &amp; Logistics</span><span class="ix-tnum">Nov 2026 · 8 min</span></span>
+          <span class="ix-note-art ix-art-site" aria-hidden="true"><span class="b"></span><span class="h"></span><span class="l"></span><span class="l s"></span><span class="tag">from $4,800</span></span>
+          <strong>How much does a trucking company website cost?</strong>
+        </a>
+        <a class="ix-note" href="/insights/moving-company-website-features" data-cursor="Read" data-tone="amber">
+          <span class="ix-note-top"><span class="ix-pill">Moving</span><span class="ix-tnum">Nov 2026 · 7 min</span></span>
+          <span class="ix-note-art ix-art-form" aria-hidden="true"><span class="f">Moving from</span><span class="f">Moving to</span><span class="f">Move date</span><span class="go-b">Get my estimate</span></span>
+          <strong>What features should a moving company website have?</strong>
+        </a>
+        <a class="ix-note" href="/insights/dispatch-software-cost" data-cursor="Read" data-tone="amber">
+          <span class="ix-note-top"><span class="ix-pill">Trucking &amp; Logistics</span><span class="ix-tnum">Nov 2026 · 7 min</span></span>
+          <span class="ix-note-art ix-art-bars" aria-hidden="true"><i style="--w:92%"></i><i style="--w:74%"></i><i style="--w:66%"></i><i style="--w:52%"></i><i style="--w:44%"></i><i style="--w:33%"></i><i style="--w:24%"></i></span>
+          <strong>What does custom dispatch software cost?</strong>
+        </a>
+      </div>
+      <div class="ix-stack-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+    </div>
   </div>
 </header>
 
-<section class="story story--flip" aria-label="The notes">
-  <div class="wrap story-grid">
-    <figure class="story-media">
-      <img src="/media/photos/notes-desk.webp" alt="An open notebook and a laptop on a wooden desk." width="1600" height="1200" loading="lazy" decoding="async">
-    </figure>
-    <div class="story-copy">
-      <p class="eyebrow">The notes</p>
-      <h2>Field notes from the work, not a content calendar.</h2>
-      <p>Guides on SaaS onboarding, trucking dispatch CRM, product design, MVP trade-offs, and integrations, written for founders and operators from project work.</p>
-      <ul class="story-points"><li>Dispatch, SaaS, and finance</li><li>Written from project work</li><li>Next to the solutions and the work</li></ul>
-      <p class="story-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+<article class="ix-feat" id="featured" data-cat="SaaS Growth" aria-labelledby="featH" data-dark>
+  <div class="ix-feat-bg" aria-hidden="true"></div>
+  <div class="wrap ix-feat-in">
+    <div class="ix-feat-copy">
+      <p class="ix-kicker eyebrow" data-ix><span class="k">SaaS Growth · Featured</span></p>
+      <h2 id="featH" data-ix-split>SaaS MVP guide for UK startups: from idea to launch</h2>
+      <p class="ix-lede" data-ix style="--d:.1s">A practical UK-focused playbook for scoping SaaS MVPs, prioritizing core workflows, and launching with analytics that investors care about.</p>
+      <p class="ix-feat-meta" data-ix style="--d:.15s"><span>May 2026</span><span>10 min read</span></p>
+      <div data-ix style="--d:.2s"><a href="/insights/saas-mvp-uk-guide" class="btn ix-btn" data-magnet><span>Read article</span><i></i></a></div>
     </div>
-  </div>
-</section>
-
-
-<section class="ins-topics" aria-labelledby="topicsH">
-  <div class="wrap">
-    <h2 class="sr" id="topicsH">Topics covered in KRIVA insights</h2>
-    <div class="ins-topic-rail" data-s>
-      <article class="ins-topic-card">
-        <h3>SaaS &amp; product design</h3>
-        <p>Onboarding, MVP scope, CRM dashboards, and activation patterns from B2B product work.</p>
-        <button type="button" class="ins-topic-go" data-cat="Product">Browse product notes →</button>
-      </article>
-      <article class="ins-topic-card">
-        <h3>Trucking &amp; logistics ops</h3>
-        <p>Dispatch CRM, build-vs-buy decisions, software cost, and desk workflows for carriers and brokers.</p>
-        <button type="button" class="ins-topic-go" data-cat="Trucking &amp; Logistics">Browse trucking notes →</button>
-      </article>
-      <article class="ins-topic-card">
-        <h3>Strategy &amp; delivery</h3>
-        <p>MVP choices, agency fit, and AI in design - how we scope and ship in practice.</p>
-        <button type="button" class="ins-topic-go" data-cat="Strategy">Browse strategy notes →</button>
-      </article>
-    </div>
-  </div>
-</section>
-
-<article class="ins-lead on-ink" id="featured" data-cat="SaaS Growth" aria-labelledby="featH">
-  <a class="ins-lead-shot" href="/insights/saas-mvp-uk-guide">
-    <div class="pu" role="img" aria-label="UK SaaS MVP first sitting: workspace and import done, first payroll lock now, roles later.">
-      <div class="pu-bar">
-        <div>
-          <p class="pu-title">First sitting</p>
-          <p class="pu-meta">UK MVP · Northwind Ltd</p>
+    <div class="ix-feat-stage" data-ix style="--d:.15s">
+      <a class="ix-sit" href="/insights/saas-mvp-uk-guide" data-cursor="Read" data-ix-tilt>
+        <div class="ix-sit-card" role="img" aria-label="UK SaaS MVP first sitting: workspace and import done, first payroll lock now, roles later.">
+          <div class="ix-sit-bar">
+            <div>
+              <p class="ix-sit-title">First sitting</p>
+              <p class="ix-sit-meta">UK MVP · Northwind Ltd</p>
+            </div>
+            <span class="ix-sit-chip">Roles later</span>
+          </div>
+          <div class="ix-sit-split">
+            <div class="ix-sit-col">
+              <p class="ix-sit-h">In the MVP</p>
+              <ol class="ix-sit-steps">
+                <li class="done"><i></i><span>Workspace created</span><em>Done</em></li>
+                <li class="done"><i></i><span>Import 12 records</span><em>Done</em></li>
+                <li class="now"><i></i><span>Lock first payroll</span><em>Now</em></li>
+                <li class="later"><i></i><span>Invite the rest of the team</span><em>Later</em></li>
+              </ol>
+            </div>
+            <div class="ix-sit-col">
+              <p class="ix-sit-h">Cut from v1</p>
+              <ul class="ix-sit-cut">
+                <li><b>Role matrix</b> After first value</li>
+                <li><b>White-label</b> Not this sitting</li>
+                <li class="hot"><b>Marketplace</b> Out of scope</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ix-sit-prog"><span>Path to first value</span><i><b></b></i></div>
         </div>
-        <span class="pu-chip warn">Roles later</span>
-      </div>
-      <div class="pu-split">
-        <div class="pu-col">
-          <p class="pu-h">In the MVP</p>
-          <ol class="pu-steps">
-            <li class="done"><i></i><span>Workspace created</span><em>Done</em></li>
-            <li class="done"><i></i><span>Import 12 records</span><em>Done</em></li>
-            <li class="now"><i></i><span>Lock first payroll</span><em>Now</em></li>
-            <li class="later"><i></i><span>Invite the rest of the team</span><em>Later</em></li>
-          </ol>
-        </div>
-        <div class="pu-col">
-          <p class="pu-h">Cut from v1</p>
-          <ul class="pu-mini">
-            <li><b>Role matrix</b> After first value</li>
-            <li><b>White-label</b> Not this sitting</li>
-            <li class="hot"><b>Marketplace</b> Out of scope</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </a>
-  <div class="ins-lead-bar">
-    <div data-r>
-      <span class="k">SaaS Growth · Featured</span>
-      <h2 class="d2" id="featH">SaaS MVP guide for UK startups: from idea to launch</h2>
-    </div>
-    <div data-r>
-      <p class="lede">A practical UK-focused playbook for scoping SaaS MVPs, prioritizing core workflows, and launching with analytics that investors care about.</p>
-      <p class="ins-lead-meta"><span>May 2026</span><span>9 min read</span></p>
-      <a href="/insights/saas-mvp-uk-guide" class="btn on-dark"><span>Read article</span><i>→</i></a>
+      </a>
     </div>
   </div>
 </article>
 
-<div class="ins-bar" id="ins-bar">
+<section class="ix-topics" id="topics" aria-labelledby="topicsH">
   <div class="wrap">
-    <div class="ins-chips" role="group" aria-label="Filter articles by category">
-      <button type="button" class="ins-chip" data-cat="all" aria-pressed="true">All <u class="num">12</u></button>
-      <button type="button" class="ins-chip" data-cat="SaaS Growth" aria-pressed="false">SaaS Growth <u class="num">1</u></button>
-      <button type="button" class="ins-chip" data-cat="Trucking &amp; Logistics" aria-pressed="false">Trucking &amp; Logistics <u class="num">5</u></button>
-      <button type="button" class="ins-chip" data-cat="Finance &amp; Integrations" aria-pressed="false">Finance &amp; Integrations <u class="num">1</u></button>
-      <button type="button" class="ins-chip" data-cat="AI &amp; Design" aria-pressed="false">AI &amp; Design <u class="num">1</u></button>
-      <button type="button" class="ins-chip" data-cat="Product" aria-pressed="false">Product <u class="num">2</u></button>
-      <button type="button" class="ins-chip" data-cat="Strategy" aria-pressed="false">Strategy <u class="num">2</u></button>
+    <div class="ix-head">
+      <div>
+        <p class="ix-kicker eyebrow" data-ix>Topics</p>
+        <h2 id="topicsH" data-ix-split>Topics covered in KRIVA insights</h2>
+      </div>
+      <p class="ix-lede ix-head-aside" data-ix style="--d:.1s">Pick the desk you sit at. The list below filters to match.</p>
     </div>
-    <p class="ins-count" id="count" aria-live="polite">Showing 12 of 12</p>
-  </div>
-</div>
-
-<section class="ins-index" aria-labelledby="listH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Browse</p>
-    <h2 class="d2" id="listH" data-r>All notes, newest first.</h2>
-    <div id="ledger">
-      <article class="ins-row" data-cat="Trucking &amp; Logistics">
-        <span class="n num">01</span>
-        <div>
-          <p class="cat">Trucking &amp; Logistics</p>
-          <h3><a href="/insights/trucking-company-website-cost">How much does a trucking company website cost?</a></h3>
-          <p class="ex">Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.</p>
-          <p class="rel"><a href="/solutions/trucking-company-websites">Trucking websites</a> · <a href="/pricing">Pricing</a></p>
-        </div>
-        <div class="meta"><span>Nov 2026</span><span>8 min read</span></div>
-        <span class="go">Read <i>→</i></span>
+    <div class="ix-desks">
+      <article class="ix-desk-card" data-ix data-spot data-tone="indigo" style="--d:0s">
+        <span class="ix-desk-n ix-tnum">01</span>
+        <span class="ix-desk-ic" aria-hidden="true"><i></i><i></i><i></i></span>
+        <h3>SaaS &amp; product design</h3>
+        <p>Onboarding, MVP scope, CRM dashboards, and activation patterns from B2B product work.</p>
+        <p class="ix-desk-count"><b class="ix-tnum" data-topic-count="Product">2</b> notes</p>
+        <button type="button" class="ix-desk-go" data-cat="Product" data-cursor="Filter">Browse product notes <i></i></button>
       </article>
-      <article class="ins-row" data-cat="Trucking &amp; Logistics">
-        <span class="n num">02</span>
-        <div>
-          <p class="cat">Moving</p>
-          <h3><a href="/insights/moving-company-website-features">What features should a moving company website have?</a></h3>
-          <p class="ex">The form fields, service pages, and service area that turn a moving search into a request the office can price.</p>
-          <p class="rel"><a href="/solutions/moving-company-websites">Moving websites</a> · <a href="/pricing">Pricing</a></p>
-        </div>
-        <div class="meta"><span>Nov 2026</span><span>7 min read</span></div>
-        <span class="go">Read <i>→</i></span>
+      <article class="ix-desk-card" data-ix data-spot data-tone="amber" style="--d:.08s">
+        <span class="ix-desk-n ix-tnum">02</span>
+        <span class="ix-desk-ic" aria-hidden="true"><i></i><i></i><i></i></span>
+        <h3>Trucking &amp; logistics ops</h3>
+        <p>Dispatch CRM, build-vs-buy decisions, software cost, and desk workflows for carriers and brokers.</p>
+        <p class="ix-desk-count"><b class="ix-tnum" data-topic-count="Trucking &amp; Logistics">5</b> notes</p>
+        <button type="button" class="ix-desk-go" data-cat="Trucking &amp; Logistics" data-cursor="Filter">Browse trucking notes <i></i></button>
       </article>
-
-      <article class="ins-row" data-cat="Trucking &amp; Logistics">
-        <span class="n num">03</span>
-        <div>
-          <p class="cat">Trucking &amp; Logistics</p>
-          <h3><a href="/insights/dispatch-software-cost">What does custom dispatch software cost? What actually drives the budget</a></h3>
-          <p class="ex">Why dispatch software quotes vary so widely, the seven drivers behind the number, what is usually left out, and how to get quotes you can compare.</p>
-          <p class="rel"><a href="/services/crm-development">Dispatch CRM &amp; TMS</a> · <a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/solutions/car-transportation">Auto transport software</a></p>
-        </div>
-        <div class="meta"><span>Nov 2026</span><span>7 min read</span></div>
-        <span class="go">Read <i>→</i></span>
+      <article class="ix-desk-card" data-ix data-spot data-tone="coral" style="--d:.16s">
+        <span class="ix-desk-n ix-tnum">03</span>
+        <span class="ix-desk-ic" aria-hidden="true"><i></i><i></i><i></i></span>
+        <h3>Strategy &amp; delivery</h3>
+        <p>MVP choices, agency fit, and AI in design - how we scope and ship in practice.</p>
+        <p class="ix-desk-count"><b class="ix-tnum" data-topic-count="Strategy">2</b> notes</p>
+        <button type="button" class="ix-desk-go" data-cat="Strategy" data-cursor="Filter">Browse strategy notes <i></i></button>
       </article>
-      <article class="ins-row" data-cat="Trucking &amp; Logistics">
-        <span class="n num">04</span>
-        <div>
-          <p class="cat">Trucking &amp; Logistics</p>
-          <h3><a href="/insights/build-vs-buy-tms">Build vs buy a TMS: when custom dispatch software pays off</a></h3>
-          <p class="ex">When an off-the-shelf TMS is the right call, when custom dispatch software pays off, and the third option most carriers and brokers should consider first.</p>
-          <p class="rel"><a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/services/crm-development">Dispatch CRM &amp; TMS</a> · <a href="/work/shiftrail-dispatch">ShiftRail case study</a></p>
-        </div>
-        <div class="meta"><span>Nov 2026</span><span>6 min read</span></div>
-        <span class="go">Read <i>→</i></span>
-      </article>
-      <article class="ins-row" data-cat="Finance &amp; Integrations">
-        <span class="n num">05</span>
-        <div>
-          <p class="cat">Finance &amp; Integrations</p>
-          <h3><a href="/insights/quickbooks-xero-integration-guide">QuickBooks and Xero integration: what a production-ready sync needs</a></h3>
-          <p class="ex">What a QuickBooks Online or Xero integration must handle in production: OAuth tokens, rate limits, idempotency, mapping, tax, reconciliation, and rollout.</p>
-          <p class="rel"><a href="/solutions/accounting-integrations">Accounting integrations</a> · <a href="/services/api-integrations">API integrations</a> · <a href="/work/finance-sync-hub">FinanceSync case study</a></p>
-        </div>
-        <div class="meta"><span>Nov 2026</span><span>6 min read</span></div>
-        <span class="go">Read <i>→</i></span>
-      </article>
-      <article class="ins-row" data-cat="Trucking &amp; Logistics">
-        <span class="n num">06</span>
-        <div>
-          <p class="cat">Trucking &amp; Logistics</p>
-          <h3><a href="/insights/trucking-dispatch-crm-guide">Dispatch CRM for US trucking: what it is and what actually works</a></h3>
-          <p class="ex">What a trucking dispatch CRM is, how it works beside the TMS, and four desk patterns that hold up: bulk assignment, SLA on the row, role density, and phased rollout.</p>
-          <p class="rel"><a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/services/crm-development">Dispatch CRM &amp; TMS</a> · <a href="/work/shiftrail-dispatch">ShiftRail case study</a></p>
-        </div>
-        <div class="meta"><span>May 2026</span><span>10 min read</span></div>
-        <span class="go">Read <i>→</i></span>
-      </article>
-      <article class="ins-row" data-cat="AI &amp; Design">
-        <span class="n num">07</span>
-        <div>
-          <p class="cat">AI &amp; Design</p>
-          <h3><a href="/insights/ai-in-product-design-2026">How AI is changing product design workflows in 2026</a></h3>
-          <p class="ex">Practical ways agencies use Claude, GPT, and Figma AI to accelerate research, prototyping, and design QA without sacrificing quality.</p>
-          <p class="rel"><a href="/services/ai-assisted-development">AI-assisted development</a> · <a href="/services/product-design">Product design</a></p>
-        </div>
-        <div class="meta"><span>January 2026</span><span>8 min read</span></div>
-        <span class="go">Read <i>→</i></span>
-      </article>
-      <article class="ins-row" data-cat="Product">
-        <span class="n num">08</span>
-        <div>
-          <p class="cat">Product</p>
-          <h3><a href="/insights/saas-onboarding-patterns">SaaS onboarding patterns that improve activation</a></h3>
-          <p class="ex">Five onboarding patterns for B2B SaaS activation, progressive disclosure, role paths, and time-to-value, with PayrollPro as the worked example.</p>
-          <p class="rel"><a href="/solutions/saas">SaaS solutions</a> · <a href="/work/payroll-pro-saas">PayrollPro case study</a></p>
-        </div>
-        <div class="meta"><span>December 2025</span><span>6 min read</span></div>
-        <span class="go">Read <i>→</i></span>
-      </article>
-      <article class="ins-row" data-cat="Strategy">
-        <span class="n num">09</span>
-        <div>
-          <p class="cat">Strategy</p>
-          <h3><a href="/insights/no-code-vs-custom-mvp">No-code vs custom: choosing the right path for your MVP</a></h3>
-          <p class="ex">When Bubble or Webflow gets you to market in weeks, and when you need custom code from day one. An honest framework.</p>
-          <p class="rel"><a href="/services/no-code-low-code">No-code / low-code</a> · <a href="/services/web-development">Web development</a></p>
-        </div>
-        <div class="meta"><span>November 2025</span><span>7 min read</span></div>
-        <span class="go">Read <i>→</i></span>
-      </article>
-      <article class="ins-row" data-cat="Product">
-        <span class="n num">10</span>
-        <div>
-          <p class="cat">Product</p>
-          <h3><a href="/insights/crm-dashboard-ux-patterns">CRM dashboard UX patterns that sales teams actually use</a></h3>
-          <p class="ex">How to reduce clutter, surface the right KPIs, and design CRM views reps actually open every morning instead of once a quarter.</p>
-          <p class="rel"><a href="/services/crm-development">CRM design</a> · <a href="/services/dashboard-design">Dashboard design</a></p>
-        </div>
-        <div class="meta"><span>October 2025</span><span>6 min read</span></div>
-        <span class="go">Read <i>→</i></span>
-      </article>
-      <article class="ins-row" data-cat="Strategy">
-        <span class="n num">11</span>
-        <div>
-          <p class="cat">Strategy</p>
-          <h3><a href="/insights/choosing-a-digital-agency">How to choose a software partner for a logistics product</a></h3>
-          <p class="ex">Red flags, good signals, and the questions that reveal whether an agency can actually ship, not just pitch.</p>
-          <p class="rel"><a href="/about">About KRIVA</a> · <a href="/process">How we work</a></p>
-        </div>
-        <div class="meta"><span>September 2025</span><span>5 min read</span></div>
-        <span class="go">Read <i>→</i></span>
-      </article>
-
-    </div>
-    <div class="ins-empty" id="empty" hidden>
-      <p class="d3">No articles in this category.</p>
-      <p class="body-sm">Try another topic, or start with the notes that match how you work.</p>
-      <a href="#ins-bar" class="btn" id="reset-filter"><span>Show all notes</span><i>→</i></a>
     </div>
   </div>
 </section>
 
-<section class="sect ins-read" aria-labelledby="moreH">
-  <div class="wrap ins-read-grid">
-    <div>
-      <p class="eyebrow" data-r>Keep reading</p>
-      <h2 class="d2" id="moreH" data-r>Related on the site.</h2>
-      <p class="lede" data-r>The notes sit next to the work. Start on <a href="/solutions">Solutions</a> if you know the market, <a href="/services">Services</a> if you know the capability, or <a href="/work">Work</a> for proof.</p>
+<section class="ix-index" id="notes" aria-labelledby="listH">
+  <div class="ix-bar" id="ins-bar">
+    <div class="wrap ix-bar-in">
+      <div class="ix-chips" role="group" aria-label="Filter articles by category">
+        <span class="ix-chip-ink" aria-hidden="true"></span>
+        <button type="button" class="ix-chip" data-cat="all" aria-pressed="true">All <u class="ix-tnum">12</u></button>
+        <button type="button" class="ix-chip" data-cat="SaaS Growth" aria-pressed="false">SaaS Growth <u class="ix-tnum">1</u></button>
+        <button type="button" class="ix-chip" data-cat="Trucking &amp; Logistics" aria-pressed="false">Trucking &amp; Logistics <u class="ix-tnum">5</u></button>
+        <button type="button" class="ix-chip" data-cat="Finance &amp; Integrations" aria-pressed="false">Finance &amp; Integrations <u class="ix-tnum">1</u></button>
+        <button type="button" class="ix-chip" data-cat="AI &amp; Design" aria-pressed="false">AI &amp; Design <u class="ix-tnum">1</u></button>
+        <button type="button" class="ix-chip" data-cat="Product" aria-pressed="false">Product <u class="ix-tnum">2</u></button>
+        <button type="button" class="ix-chip" data-cat="Strategy" aria-pressed="false">Strategy <u class="ix-tnum">2</u></button>
+      </div>
+      <p class="ix-count" id="count" aria-live="polite">Showing 12 of 12</p>
     </div>
-    <nav class="ins-links" aria-label="Related pages" data-s>
-      <a href="/solutions/saas"><b>SaaS solutions</b><span>Onboarding &amp; MVPs</span></a>
-      <a href="/solutions/trucking-logistics"><b>Trucking solutions</b><span>Dispatch &amp; fleet</span></a>
-      <a href="/services/product-design"><b>Product design &amp; UX</b><span>Research to launch UI</span></a>
-      <a href="/work"><b>Case studies</b><span>Held up after launch</span></a>
-      <a href="/about"><b>About the studio</b><span>Remote-first studio</span></a>
-      <a href="/contact#brief"><b>Send a brief</b><span>Written, no call</span></a>
+  </div>
+  <div class="wrap">
+    <div class="ix-head ix-head--list">
+      <div>
+        <p class="ix-kicker eyebrow" data-ix>Browse</p>
+        <h2 id="listH" data-ix-split>All notes, newest first.</h2>
+      </div>
+    </div>
+    <div id="ledger" class="ix-grid">
+
+      <article class="ix-card" data-cat="SaaS Growth" data-featured data-tone="indigo" data-cursor="Read" hidden>
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no">Featured</span>
+          <span class="ix-art ix-art-check"><b>First sitting · UK MVP</b><span class="pg"><i></i></span><span class="c d">Workspace created</span><span class="c d">Import 12 records</span><span class="c">Lock first payroll</span><span class="c">Invite the rest of the team</span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">SaaS Growth</span><span class="ix-when ix-tnum">May 2026<i aria-hidden="true"></i>10 min read</span></p>
+          <h3><a href="/insights/saas-mvp-uk-guide">SaaS MVP guide for UK startups: from idea to launch</a></h3>
+          <p class="ex">A practical UK-focused playbook for scoping SaaS MVPs, prioritizing core workflows, and launching with analytics that investors care about.</p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card is-big" data-cat="Trucking &amp; Logistics" data-tone="amber" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">01</span>
+          <span class="ix-art ix-art-site"><span class="b"></span><span class="h"></span><span class="l"></span><span class="l s"></span><span class="cta">Get a quote</span><span class="tag">from $4,800</span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Trucking &amp; Logistics</span><span class="ix-when ix-tnum">Nov 2026<i aria-hidden="true"></i>8 min read</span></p>
+          <h3><a href="/insights/trucking-company-website-cost">How much does a trucking company website cost?</a></h3>
+          <p class="ex">Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.</p>
+          <p class="rel"><a href="/solutions/trucking-company-websites">Trucking websites</a> · <a href="/pricing">Pricing</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card is-big" data-cat="Trucking &amp; Logistics" data-tone="amber" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">02</span>
+          <span class="ix-art ix-art-form"><span class="f">Moving from</span><span class="f">Moving to</span><span class="f">Move date</span><span class="f">Home size</span><span class="go-b">Get my estimate</span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Moving</span><span class="ix-when ix-tnum">Nov 2026<i aria-hidden="true"></i>7 min read</span></p>
+          <h3><a href="/insights/moving-company-website-features">What features should a moving company website have?</a></h3>
+          <p class="ex">The form fields, service pages, and service area that turn a moving search into a request the office can price.</p>
+          <p class="rel"><a href="/solutions/moving-company-websites">Moving websites</a> · <a href="/pricing">Pricing</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card" data-cat="Trucking &amp; Logistics" data-tone="amber" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">03</span>
+          <span class="ix-art ix-art-bars"><b>7 budget drivers</b><i style="--w:92%"></i><i style="--w:74%"></i><i style="--w:66%"></i><i style="--w:52%"></i><i style="--w:44%"></i><i style="--w:33%"></i><i style="--w:24%"></i></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Trucking &amp; Logistics</span><span class="ix-when ix-tnum">Nov 2026<i aria-hidden="true"></i>7 min read</span></p>
+          <h3><a href="/insights/dispatch-software-cost">What does custom dispatch software cost? What actually drives the budget</a></h3>
+          <p class="ex">Why dispatch software quotes vary so widely, the seven drivers behind the number, what is usually left out, and how to get quotes you can compare.</p>
+          <p class="rel"><a href="/services/crm-development">Dispatch CRM &amp; TMS</a> · <a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/solutions/car-transportation">Auto transport software</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card" data-cat="Trucking &amp; Logistics" data-tone="amber" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">04</span>
+          <span class="ix-art ix-art-fork"><span class="o">Buy</span><span class="o mid">Third option</span><span class="o">Build</span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Trucking &amp; Logistics</span><span class="ix-when ix-tnum">Nov 2026<i aria-hidden="true"></i>6 min read</span></p>
+          <h3><a href="/insights/build-vs-buy-tms">Build vs buy a TMS: when custom dispatch software pays off</a></h3>
+          <p class="ex">When an off-the-shelf TMS is the right call, when custom dispatch software pays off, and the third option most carriers and brokers should consider first.</p>
+          <p class="rel"><a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/services/crm-development">Dispatch CRM &amp; TMS</a> · <a href="/work/shiftrail-dispatch">ShiftRail case study</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card" data-cat="Finance &amp; Integrations" data-tone="sky" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">05</span>
+          <span class="ix-art ix-art-sync"><span class="n">Your app</span><span class="w"><i></i><i></i></span><span class="n">Ledger</span><span class="ok">Reconciled</span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Finance &amp; Integrations</span><span class="ix-when ix-tnum">Nov 2026<i aria-hidden="true"></i>6 min read</span></p>
+          <h3><a href="/insights/quickbooks-xero-integration-guide">QuickBooks and Xero integration: what a production-ready sync needs</a></h3>
+          <p class="ex">What a QuickBooks Online or Xero integration must handle in production: OAuth tokens, rate limits, idempotency, mapping, tax, reconciliation, and rollout.</p>
+          <p class="rel"><a href="/solutions/accounting-integrations">Accounting integrations</a> · <a href="/services/api-integrations">API integrations</a> · <a href="/work/finance-sync-hub">FinanceSync case study</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card" data-cat="Trucking &amp; Logistics" data-tone="amber" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">06</span>
+          <span class="ix-art ix-art-rows"><span class="r"><i></i><b></b><em>SLA 12m</em></span><span class="r on"><i></i><b></b><em>SLA 4m</em></span><span class="r on"><i></i><b></b><em>SLA 9m</em></span><span class="r"><i></i><b></b><em>SLA 31m</em></span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Trucking &amp; Logistics</span><span class="ix-when ix-tnum">May 2026<i aria-hidden="true"></i>10 min read</span></p>
+          <h3><a href="/insights/trucking-dispatch-crm-guide">Dispatch CRM for US trucking: what it is and what actually works</a></h3>
+          <p class="ex">What a trucking dispatch CRM is, how it works beside the TMS, and four desk patterns that hold up: bulk assignment, SLA on the row, role density, and phased rollout.</p>
+          <p class="rel"><a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/services/crm-development">Dispatch CRM &amp; TMS</a> · <a href="/work/shiftrail-dispatch">ShiftRail case study</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card" data-cat="AI &amp; Design" data-tone="violet" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">07</span>
+          <span class="ix-art ix-art-ai"><span class="p">Draft three onboarding flows</span><span class="fr"><i></i><i></i><i></i></span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">AI &amp; Design</span><span class="ix-when ix-tnum">January 2026<i aria-hidden="true"></i>8 min read</span></p>
+          <h3><a href="/insights/ai-in-product-design-2026">How AI is changing product design workflows in 2026</a></h3>
+          <p class="ex">Practical ways agencies use Claude, GPT, and Figma AI to accelerate research, prototyping, and design QA without sacrificing quality.</p>
+          <p class="rel"><a href="/services/ai-assisted-development">AI-assisted development</a> · <a href="/services/product-design">Product design</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card" data-cat="Product" data-tone="indigo" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">08</span>
+          <span class="ix-art ix-art-check"><b>Getting started · 3 of 5</b><span class="pg"><i></i></span><span class="c d">Create workspace</span><span class="c d">Invite a teammate</span><span class="c d">Import data</span><span class="c">First report</span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Product</span><span class="ix-when ix-tnum">December 2025<i aria-hidden="true"></i>7 min read</span></p>
+          <h3><a href="/insights/saas-onboarding-patterns">SaaS onboarding patterns that improve activation</a></h3>
+          <p class="ex">Five onboarding patterns for B2B SaaS activation, progressive disclosure, role paths, and time-to-value, with PayrollPro as the worked example.</p>
+          <p class="rel"><a href="/solutions/saas">SaaS solutions</a> · <a href="/work/payroll-pro-saas">PayrollPro case study</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card" data-cat="Strategy" data-tone="coral" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">09</span>
+          <span class="ix-art ix-art-lanes"><span class="ln"><b>No-code</b><i style="--w:38%"></i><em>Weeks</em></span><span class="ln"><b>Custom</b><i style="--w:86%"></i><em>Day one</em></span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Strategy</span><span class="ix-when ix-tnum">November 2025<i aria-hidden="true"></i>7 min read</span></p>
+          <h3><a href="/insights/no-code-vs-custom-mvp">No-code vs custom: choosing the right path for your MVP</a></h3>
+          <p class="ex">When Bubble or Webflow gets you to market in weeks, and when you need custom code from day one. An honest framework.</p>
+          <p class="rel"><a href="/services/no-code-low-code">No-code / low-code</a> · <a href="/services/web-development">Web development</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card" data-cat="Product" data-tone="indigo" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">10</span>
+          <span class="ix-art ix-art-dash"><span class="k"><i></i><b></b></span><span class="k"><i></i><b></b></span><span class="k"><i></i><b></b></span><svg class="sp" viewBox="0 0 120 36" preserveAspectRatio="none"><path d="M0 30 L15 26 L30 28 L45 18 L60 21 L75 12 L90 15 L105 6 L120 8"/></svg></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Product</span><span class="ix-when ix-tnum">October 2025<i aria-hidden="true"></i>6 min read</span></p>
+          <h3><a href="/insights/crm-dashboard-ux-patterns">CRM dashboard UX patterns that sales teams actually use</a></h3>
+          <p class="ex">How to reduce clutter, surface the right KPIs, and design CRM views reps actually open every morning instead of once a quarter.</p>
+          <p class="rel"><a href="/services/crm-development">CRM design</a> · <a href="/services/dashboard-design">Dashboard design</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+      <article class="ix-card" data-cat="Strategy" data-tone="coral" data-cursor="Read">
+        <div class="ix-cover" aria-hidden="true">
+          <span class="ix-no ix-tnum">11</span>
+          <span class="ix-art ix-art-flags"><span class="g">Shows shipped work</span><span class="x">Vague on process</span><span class="g">Names the trade-offs</span><span class="x">No one owns QA</span></span>
+        </div>
+        <div class="ix-card-body">
+          <p class="ix-card-meta"><span class="ix-pill cat">Strategy</span><span class="ix-when ix-tnum">September 2025<i aria-hidden="true"></i>8 min read</span></p>
+          <h3><a href="/insights/choosing-a-digital-agency">How to choose a software partner for a logistics product</a></h3>
+          <p class="ex">Red flags, good signals, and the questions that reveal whether an agency can actually ship, not just pitch.</p>
+          <p class="rel"><a href="/about">About KRIVA</a> · <a href="/process">How we work</a></p>
+          <span class="ix-read" aria-hidden="true">Read <i></i></span>
+        </div>
+      </article>
+
+    </div>
+    <div class="ix-empty" id="empty" hidden>
+      <p class="ix-empty-h">No articles in this category.</p>
+      <p class="ix-lede">Try another topic, or start with the notes that match how you work.</p>
+      <a href="#ins-bar" class="btn ix-btn" id="reset-filter"><span>Show all notes</span><i></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="ix-story" id="field-notes" aria-labelledby="storyH">
+  <div class="ix-marquee" aria-hidden="true"><div class="ix-marquee-in"><span>Dispatch CRM</span><span>SaaS onboarding</span><span>MVP scope</span><span>QuickBooks &amp; Xero</span><span>Build vs buy</span><span>CRM dashboards</span><span>AI in design</span><span>Moving websites</span><span>Dispatch CRM</span><span>SaaS onboarding</span><span>MVP scope</span><span>QuickBooks &amp; Xero</span><span>Build vs buy</span><span>CRM dashboards</span><span>AI in design</span><span>Moving websites</span></div></div>
+  <div class="wrap ix-story-grid">
+    <figure class="ix-story-media" data-ix>
+      <img src="/media/photos/notes-desk.webp" alt="An open notebook and a laptop on a wooden desk." width="1600" height="1200" loading="lazy" decoding="async" data-par>
+    </figure>
+    <div class="ix-story-copy">
+      <p class="ix-kicker eyebrow" data-ix>The notes</p>
+      <h2 id="storyH" data-ix-split>Field notes from the work, not a content calendar.</h2>
+      <p class="ix-lede" data-ix style="--d:.1s">Guides on SaaS onboarding, trucking dispatch CRM, product design, MVP trade-offs, and integrations, written for founders and operators from project work.</p>
+      <ul class="ix-points" data-ix style="--d:.15s"><li><i class="ix-tnum">01</i>Dispatch, SaaS, and finance</li><li><i class="ix-tnum">02</i>Written from project work</li><li><i class="ix-tnum">03</i>Next to the solutions and the work</li></ul>
+      <p class="ix-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ix-more" id="more" aria-labelledby="moreH">
+  <div class="wrap ix-more-grid">
+    <div>
+      <p class="ix-kicker eyebrow" data-ix>Keep reading</p>
+      <h2 id="moreH" data-ix-split>Related on the site.</h2>
+      <p class="ix-lede" data-ix style="--d:.1s">The notes sit next to the work. Start on <a class="ix-inline" href="/solutions">Solutions</a> if you know the market, <a class="ix-inline" href="/services">Services</a> if you know the capability, or <a class="ix-inline" href="/work">Work</a> for proof.</p>
+    </div>
+    <nav class="ix-links" aria-label="Related pages">
+      <a href="/solutions/saas" data-ix data-spot style="--d:0s"><b>SaaS solutions</b><span>Onboarding &amp; MVPs</span><i></i></a>
+      <a href="/solutions/trucking-logistics" data-ix data-spot style="--d:.05s"><b>Trucking solutions</b><span>Dispatch &amp; fleet</span><i></i></a>
+      <a href="/services/product-design" data-ix data-spot style="--d:.1s"><b>Product design &amp; UX</b><span>Research to launch UI</span><i></i></a>
+      <a href="/work" data-ix data-spot style="--d:.15s"><b>Case studies</b><span>Held up after launch</span><i></i></a>
+      <a href="/about" data-ix data-spot style="--d:.2s"><b>About the studio</b><span>Remote-first studio</span><i></i></a>
+      <a href="/contact#brief" data-ix data-spot style="--d:.25s"><b>Send a brief</b><span>Written, no call</span><i></i></a>
     </nav>
   </div>
 </section>
 
-<section class="cta-band on-ink" aria-labelledby="ctaH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Next step</p>
-    <h2 class="d2" id="ctaH" data-r>Tell us what you're building.</h2>
-    <p class="lede" data-r>A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
-    <div class="cta-row">
-      <div class="cta-actions" data-r>
-        <a href="/contact#book" class="btn on-dark"><span>Book a free 20-minute fit call</span><i>→</i></a>
-        <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
+<section class="cta-band ix-cta" aria-labelledby="ctaH" data-dark>
+  <div class="ix-cta-bg" aria-hidden="true"></div>
+  <div class="wrap ix-cta-in">
+    <p class="ix-kicker eyebrow" data-ix>Next step</p>
+    <h2 id="ctaH" data-ix-split>Tell us what you're building.</h2>
+    <p class="ix-lede" data-ix style="--d:.1s">A short fit call or a written brief. You leave with a clear yes, no, or not-yet.</p>
+    <div class="ix-cta-row">
+      <div class="ix-cta-actions" data-ix style="--d:.15s">
+        <a href="/contact#book" class="btn ix-btn" data-magnet><span>Book a free 20-minute fit call</span><i></i></a>
+        <a href="/contact#brief" class="ix-link"><span>Send a project brief</span><i></i></a>
       </div>
-      <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
-        <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
-        <span><i>◆</i>No commitment required</span>
+      <p class="ix-assur" data-ix style="--d:.2s">
+        <span>Reply within one business day</span>
+        <span>Mutual NDA available on request before sharing confidential project information.</span>
+        <span>No commitment required</span>
       </p>
     </div>
   </div>
 </section>
 
-<section class="inq-sec" id="inquire" aria-labelledby="inqH">
-  <div class="wrap inq-grid">
+<section class="inq-sec ix-inq" id="inquire" aria-labelledby="inqH">
+  <div class="wrap"><div class="inq-grid" data-dark>
     <div class="inq-copy">
-      <p class="eyebrow">Start a conversation</p>
-      <h2 class="d2" id="inqH">Tell us what your team works around.</h2>
+      <p class="ix-kicker eyebrow">Start a conversation</p>
+      <h2 id="inqH">Tell us what your team works around.</h2>
       <p class="lede">We will tell you whether to fix it, integrate it, rebuild it, or leave it alone. We reply within one business day.</p>
       <p class="inq-help">Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>. Have a longer brief or files? <a href="/contact#brief">Send a project brief</a>.</p>
     </div>
@@ -800,7 +707,7 @@ body.page-insights .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12c
       </form>
       <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
     </div>
-  </div>
+  </div></div>
 </section>
 </main>
 
@@ -867,85 +774,6 @@ body.page-insights .cta-band h2{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12c
 </footer>
 
 
-<script>
-(function(){
-'use strict';
-const reduce=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
-const readers=[]; let ticking=false;
-const onScroll=()=>{ if(!ticking){ requestAnimationFrame(run); ticking=true; } };
-function run(){ const y=scrollY; for(const r of readers) r(y); ticking=false; }
-addEventListener('scroll', onScroll, {passive:true});
-addEventListener('resize', onScroll, {passive:true});
-const io=new IntersectionObserver(es=>{
-  for(const e of es){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }
-},{threshold:.12, rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>{
-  if(el.hasAttribute('data-mask')) el.classList.add('mask');
-  io.observe(el);
-});
-const bar=document.getElementById('progress');
-if(bar) readers.push(y=>{
-  const h=document.documentElement.scrollHeight-innerHeight;
-  bar.style.transform='scaleX('+(h>0?Math.min(1,y/h):0)+')';
-});
-
-const chips=[...document.querySelectorAll('.ins-chip')];
-const posts=[...document.querySelectorAll('#ledger [data-cat]')];
-const countEl=document.getElementById('count');
-const empty=document.getElementById('empty');
-const featured=document.getElementById('featured');
-const featCat=featured?featured.getAttribute('data-cat'):null;
-let current='all';
-function apply(cat, push){
-  if(cat===current && push!=='init') return;
-  current=cat;
-  chips.forEach(c=>c.setAttribute('aria-pressed', String(c.getAttribute('data-cat')===cat)));
-  const featOn=cat==='all'||cat===featCat;
-  if(featured) featured.hidden=!featOn;
-  let shown=featOn?1:0;
-  posts.forEach(p=>{
-    if(p.hasAttribute('data-featured')){ p.hidden=true; return; }
-    const match=cat==='all'||p.getAttribute('data-cat')===cat;
-    p.hidden=!match;
-    if(match) shown++;
-  });
-  if(empty) empty.hidden=shown>0;
-  if(countEl) countEl.textContent='Showing '+shown+' of '+(posts.length+(featured?1:0));
-  const keep=posts.filter(p=>!p.hidden);
-  keep.forEach((el,i)=>{
-    el.classList.add('out');
-    setTimeout(()=>el.classList.remove('out'), reduce()?0:40+i*45);
-  });
-  if(push!=='init'){
-    const url=cat==='all'?location.pathname:location.pathname+'?filter='+encodeURIComponent(cat);
-    if (window.krivaReplaceUrl) window.krivaReplaceUrl(url);
-    else (window.__krivaNativeReplaceState || History.prototype.replaceState).call(history, null, '', url);
-  }
-}
-chips.forEach(c=>c.addEventListener('click',()=>apply(c.getAttribute('data-cat'))));
-document.querySelectorAll('.ins-topic-go').forEach(b=>b.addEventListener('click',()=>{
-  apply(b.getAttribute('data-cat'));
-  const bar=document.getElementById('ins-bar');
-  if(bar) bar.scrollIntoView({behavior:reduce()?'auto':'smooth',block:'start'});
-}));
-const chipRow=document.querySelector('.ins-chips');
-if(chipRow) chipRow.addEventListener('keydown',e=>{
-  if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
-  const i=chips.indexOf(document.activeElement);
-  if(i<0) return;
-  e.preventDefault();
-  chips[(i+(e.key==='ArrowRight'?1:chips.length-1))%chips.length].focus();
-});
-const reset=document.getElementById('reset-filter');
-if(reset) reset.addEventListener('click',e=>{ e.preventDefault(); apply('all'); });
-const initial=new URLSearchParams(location.search).get('filter');
-if(initial && chips.some(c=>c.getAttribute('data-cat')===initial)) apply(initial,'init');
-else apply('all','init');
-
-if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
-run();
-})();
-</script>
 <!-- KRIVA_SCHEMA_START -->
 <script type="application/ld+json">
 {
@@ -1119,6 +947,7 @@ run();
 }
 </script>
 <!-- KRIVA_SCHEMA_END -->
+<script src="/shared/insights-x.js?v=ix3" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 </body>
 </html>

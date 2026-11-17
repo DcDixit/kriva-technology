@@ -37,7 +37,7 @@ gtag('config',id,cfg);
     })(window, document, "clarity", "script", "yjj9g3gojt");
 </script>
 <!-- KRIVA_CLARITY_END -->
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('sx-motion');setTimeout(function(){if(!window.__sx)d.classList.remove('sx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- KRIVA_ICONS_START -->
@@ -80,7 +80,7 @@ gtag('config',id,cfg);
 <meta name="twitter:description" content="Custom QuickBooks Online and Xero integrations: idempotent sync, reconciliation, multi-entity books, and an exception queue finance can clear before close.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og/solutions-accounting-integrations.png">
 <!-- KRIVA_OG_IMAGE_END -->
-<style>
+<style>/* Shared KRIVA primitives (same block as industries/solutions hubs) */
 *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 html:focus-within{scroll-behavior:smooth}
@@ -90,7 +90,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img,svg{max-width:100%;display:block}
 :selection{background:var(--blue);color:#fff}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible,.acc-ledger :focus-visible,.acc-ex-card :focus-visible{outline-color:var(--amber)}
+.on-ink :focus-visible,footer :focus-visible,.cta-band :focus-visible{outline-color:var(--amber)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--f-mono);font-size:12px}
 .skip:focus{left:12px}
@@ -109,15 +109,16 @@ html.js [data-s]>*{opacity:0;transform:translate3d(0,18px,0);transition:opacity 
 html.js [data-s].in>*{opacity:1;transform:none}
 [data-s].in>*:nth-child(1){transition-delay:0ms}[data-s].in>*:nth-child(2){transition-delay:70ms}
 [data-s].in>*:nth-child(3){transition-delay:140ms}[data-s].in>*:nth-child(4){transition-delay:210ms}
+[data-s].in>*:nth-child(5){transition-delay:280ms}
 .mask span{display:block;overflow:hidden;padding-bottom:.02em}
 .mask span i{display:block;font-style:normal;transform:translate3d(0,110%,0);transition:transform 1.05s var(--e)}
 .mask.in span i{transform:none}
 .mask.in span:nth-child(2) i{transition-delay:90ms}
 .btn{--btn-fg:#fff;--btn-bg:var(--cta);--btn-hover:var(--ink);
-  position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
-  padding:13px 22px;min-height:48px;border:1px solid var(--cta);background:var(--btn-bg);color:var(--btn-fg);
-  font-family:var(--f-mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
+ position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;
+ padding:13px 22px;min-height:48px;border:1px solid var(--cta);background:var(--btn-bg);color:var(--btn-fg);
+ font-family:var(--f-mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+ transition:color var(--t-fast) var(--e),border-color var(--t-fast) var(--e)}
 .btn>*{position:relative;z-index:1}
 .btn:before{content:"";position:absolute;inset:0;background:var(--btn-hover);transform:translate3d(0,101%,0);transition:transform .5s var(--e)}
 .btn:hover:before,.btn:focus-visible:before{transform:none}
@@ -129,15 +130,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .btn.on-dark{--btn-bg:var(--cta);--btn-fg:#fff;--btn-hover:#fff;border-color:var(--cta)}
 .btn.on-dark:hover{color:var(--ink);border-color:#fff}
 .btn.ghost.on-dark{--btn-bg:transparent;--btn-fg:#DDE2E7;border-color:#3A444E}
-.flag{border:1px solid var(--rule);padding:2px 7px;font-family:var(--f-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--steel);flex:none}
 .crumbs{display:flex;gap:9px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);list-style:none;flex-wrap:wrap}
 .crumbs a:hover{color:var(--ink)}
 .crumbs li[aria-current]{color:var(--ink)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .sect{padding-block:clamp(80px,10vw,140px);scroll-margin-top:88px}
-.s-head{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(24px,4vw,72px);flex-wrap:wrap}
-.s-head h2,.s-title{margin-top:18px}
-.s-head .lede{margin-top:18px}
 .cta-band{background:var(--ink);color:#DDE2E7;overflow:hidden}
 .cta-band .wrap{padding-block:clamp(88px,11vw,160px)}
 .cta-band .eyebrow{color:var(--ink-dim)}
@@ -148,31 +145,19 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .assur{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-dim)}
 .assur i{font-style:normal;color:var(--amber);margin-right:7px}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
-.chapters{position:fixed;right:calc(var(--gutter) - 8px);top:50%;transform:translateY(-50%);z-index:70;display:grid;gap:2px;opacity:0;transition:opacity var(--t-mid) var(--e);pointer-events:none}
-.chapters.show{opacity:1;pointer-events:auto}
-.chapters a{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:5px 8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--steel-2)}
-.chapters a span{opacity:0;transform:translateX(6px);transition:opacity var(--t-fast) var(--e),transform var(--t-fast) var(--e)}
-.chapters:hover a span,.chapters a[aria-current="true"] span{opacity:1;transform:none}
-.chapters a i{display:block;width:18px;height:1px;background:var(--rule);flex:none;transition:width var(--t-fast) var(--e),background var(--t-fast)}
-.chapters a:hover i{width:26px;background:var(--steel)}
-.chapters a[aria-current="true"]{color:var(--ink)}
-.chapters a[aria-current="true"] i{width:34px;background:var(--blue)}
-@media(max-width:1280px){.chapters{display:none}}
 </style>
 <link rel="stylesheet" href="/shared/inner.css?v=brand1">
 <link rel="stylesheet" href="/shared/system.css?v=brand1">
 <link rel="stylesheet" href="/shared/responsive.css?v=brand1">
 <link rel="stylesheet" href="/shared/page-inquiry.css?v=brand1">
-<link rel="stylesheet" href="/shared/product-ui.css?v=brand1">
-<link rel="stylesheet" href="/shared/accounting.css?v=audit2612">
-<link rel="stylesheet" href="/shared/slot-assets.css?v=brand1">
 
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
+<link rel="stylesheet" href="/shared/solutions-x.css?v=sx1">
+<link rel="stylesheet" href="/shared/solutions-x-acc.css?v=1">
 </head>
-<body class="solution page-accounting">
+<body class="solution page-accounting sx sx-acc">
 <a class="skip" href="#main">Skip to content</a>
-<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="nav-shell">
@@ -294,720 +279,675 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </div>
 
-<nav class="chapters" id="chapters" aria-label="Sections">
-  <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
-  <a href="#platforms"><span>Platforms</span><i></i></a>
-  <a href="#problems"><span>Problems</span><i></i></a>
-  <a href="#close"><span>Close</span><i></i></a>
-  <a href="#build"><span>Build</span><i></i></a>
-  <a href="#proof"><span>Work</span><i></i></a>
-  <a href="#process"><span>Process</span><i></i></a>
-  <a href="#faq"><span>FAQ</span><i></i></a>
-</nav>
+<div class="sx-progress" aria-hidden="true"><i></i></div>
 
-<nav class="mob-chips" id="mobChips" aria-label="Page sections">
-  <a href="#overview">Overview</a>
-  <a href="#platforms">Platforms</a>
-  <a href="#problems">Problems</a>
-  <a href="#close">Close</a>
-  <a href="#build">Build</a>
-  <a href="#proof">Work</a>
-  <a href="#process">Process</a>
-  <a href="#faq">FAQ</a>
+<nav class="sx-rail" aria-label="Sections">
+ <ol>
+  <li><a href="#overview" aria-current="true"><span>Overview</span></a></li>
+  <li><a href="#platforms"><span>Platforms</span></a></li>
+  <li><a href="#problems"><span>Problems</span></a></li>
+  <li><a href="#close"><span>Close cycle</span></a></li>
+  <li><a href="#build"><span>What we build</span></a></li>
+  <li><a href="#architecture"><span>Architecture</span></a></li>
+  <li><a href="#matrix"><span>Multi-entity</span></a></li>
+  <li><a href="#proof"><span>Our work</span></a></li>
+  <li><a href="#process"><span>Process</span></a></li>
+  <li><a href="#faq"><span>FAQ</span></a></li>
+  <li><a href="#inquire"><span>Contact</span></a></li>
+ </ol>
 </nav>
 
 <main id="main">
 
-<header class="hero hero--inner" id="overview">
-  <div class="wrap">
-    <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li>
-      <li aria-current="page">QuickBooks and Xero integrations</li>
-    </ol>
-    <div class="k-hero-split ip-hero" data-r>
-      <p class="ip-kicker">For SaaS and operations platforms with live books</p>
-      <h1 class="ip-title ip-title--lines">QuickBooks and Xero integrations your finance team can trust</h1>
-      <p class="ip-desc">We design and build QuickBooks Online and Xero integrations that keep invoices, payments, and customers in step with your ledger. When a record does not match, finance sees it in an exception queue with a clear next step, not in a log file an engineer has to read. A defined sync with one accounting product <a href="/pricing#accounting">starts at $8,000</a>.</p>
-      <div class="ip-actions">
-        <a href="/contact#book" class="btn sm"><span>Book a free 20-minute fit call</span><i>→</i></a>
-        <a href="/contact#brief" class="btn sm ghost"><span>Send a project brief</span><i>→</i></a>
-      </div>
-      <p class="ip-meta">Public Intuit and Xero APIs · Retries that cannot double-post · You own the code</p>
-      <aside class="k-aside" aria-label="How a project starts">
-        <p class="k-aside-k">How a project starts</p>
-        <ol class="k-aside-steps">
-          <li><strong>Free 20-minute fit call</strong><span>You leave with a clear yes, no, or not yet.</span></li>
-          <li><strong>Discovery, 1 to 2 weeks</strong><span>A scoped brief and timeline you sign off.</span></li>
-          <li><strong>Design and build</strong><span>Working software on a real URL every week.</span></li>
-        </ol>
-        <p class="k-aside-bring"><b>Bring to the call:</b> Which books you run, QuickBooks, Xero, or both, and where the numbers stop matching.</p>
-        <a class="k-aside-link" href="/process">See the full process <i aria-hidden="true">→</i></a>
-      </aside>
+<svg class="acx-defs" aria-hidden="true" focusable="false" width="0" height="0">
+ <symbol id="acx-qb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#2CA01C"/><path fill="#fff" d="M12.642 4.1335c.9554 0 1.7296.776 1.7296 1.7332v9.0667h1.6c1.614 0 2.9275-1.3156 2.9275-2.933 0-1.6173-1.3136-2.9333-2.9276-2.9333h-.6654V7.3334h.6654c2.5722 0 4.6577 2.0897 4.6577 4.667 0 2.5774-2.0855 4.6666-4.6577 4.6666H12.642zM7.9837 7.333h3.3291v12.533c-.9555 0-1.73-.7759-1.73-1.7332V9.0662H7.9837c-1.6146 0-2.9277 1.316-2.9277 2.9334 0 1.6175 1.3131 2.9333 2.9277 2.9333h.6654v1.7332h-.6654c-2.5725 0-4.6577-2.0892-4.6577-4.6665 0-2.5771 2.0852-4.6666 4.6577-4.6666Z"/></symbol>
+ <symbol id="acx-xero" viewBox="0 0 24 24"><path fill="#13B5EA" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.585 14.655c-1.485 0-2.69-1.206-2.69-2.689 0-1.485 1.207-2.691 2.69-2.691 1.485 0 2.69 1.207 2.69 2.691s-1.207 2.689-2.69 2.689zM7.53 14.644c-.099 0-.192-.041-.267-.116l-2.043-2.04-2.052 2.047c-.069.068-.16.108-.258.108-.202 0-.368-.166-.368-.368 0-.099.04-.191.111-.263l2.04-2.05-2.038-2.047c-.075-.069-.113-.162-.113-.261 0-.203.166-.366.368-.366.098 0 .188.037.258.105l2.055 2.048 2.048-2.045c.069-.071.162-.108.26-.108.211 0 .375.165.375.366 0 .098-.029.188-.104.258l-2.056 2.055 2.055 2.051c.068.069.104.16.104.258 0 .202-.165.368-.365.368h-.01zm8.017-4.591c-.796.101-.882.476-.882 1.404v2.787c0 .202-.165.366-.366.366-.203 0-.367-.165-.368-.366v-4.53c0-.204.16-.366.362-.366.166 0 .316.125.346.289.27-.209.6-.317.93-.317h.105c.195 0 .359.165.359.368 0 .201-.164.352-.375.359 0 0-.09 0-.164.008l.053-.002zm-3.091 2.205H8.625c0 .019.003.037.006.057.02.105.045.211.083.31.194.531.765 1.275 1.829 1.29.33-.003.631-.086.9-.229.21-.12.391-.271.525-.428.045-.058.09-.112.12-.168.18-.229.405-.186.54-.083.164.135.18.391.045.57l-.016.016c-.21.27-.435.495-.689.66-.255.164-.525.284-.811.345-.33.09-.645.104-.975.06-1.095-.135-2.01-.93-2.28-2.01-.06-.21-.09-.42-.09-.645 0-.855.421-1.695 1.125-2.205.885-.615 2.085-.66 3-.075.63.405 1.035 1.021 1.185 1.771.075.419-.21.794-.734.81l.068-.046zm6.129-2.223c-1.064 0-1.931.865-1.931 1.931 0 1.064.866 1.931 1.931 1.931s1.931-.867 1.931-1.931c0-1.065-.866-1.933-1.931-1.933v.002zm0 2.595c-.367 0-.666-.297-.666-.666 0-.367.3-.665.666-.665.367 0 .667.299.667.665 0 .369-.3.667-.667.666zm-8.04-2.603c-.91 0-1.672.623-1.886 1.466v.03h3.776c-.203-.855-.973-1.494-1.891-1.494v-.002z"/></symbol>
+</svg>
+
+<header class="acx-hero" id="overview">
+ <div class="wrap">
+  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li><li aria-current="page">QuickBooks and Xero integrations</li></ol></nav>
+  <div class="acx-hero-grid">
+   <div class="acx-hero-copy">
+    <p class="sx-kicker eyebrow sx-hero-meta-row"><span class="sx-pulse" aria-hidden="true"></span>For SaaS and operations platforms with live books</p>
+    <h1 class="sx-fh1 acx-h1"><span class="sx-l"><span>QuickBooks and Xero</span></span> <span class="sx-l"><span>integrations your</span></span> <span class="sx-l sx-l--em"><span>finance team can trust</span></span></h1>
+    <div class="sx-hero-in">
+     <p class="sx-lede lede">We design and build QuickBooks Online and Xero integrations that keep invoices, payments, and customers in step with your ledger. When a record does not match, finance sees it in an exception queue with a clear next step, not in a log file an engineer has to read. A defined sync with one accounting product <a class="acx-price" href="/pricing#accounting">starts at $8,000</a>.</p>
+     <div class="sx-actions">
+      <a href="/contact#book" class="sx-btn" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+      <a href="/contact#brief" class="sx-link"><span>Send a project brief</span><i aria-hidden="true">→</i></a>
+     </div>
+     <ul class="sx-meta" aria-label="How we build">
+      <li>Public Intuit and Xero APIs</li>
+      <li>Retries that cannot double-post</li>
+      <li>You own the code</li>
+     </ul>
     </div>
+   </div>
+   <figure class="acx-hero-fig">
+    <div class="acx-tie" data-acx-tie data-ledger="qbo">
+     <div class="acx-tie-top">
+      <p class="acx-tie-k"><span class="acx-tie-live" aria-hidden="true"><i></i></span>Job <b>#2291-08</b> · <span data-acx-tie-state>tied out</span></p>
+      <div class="acx-sw" role="group" aria-label="Show the ledger side as">
+       <button type="button" class="acx-sw-b" data-ledger-set="qbo" aria-pressed="true"><svg aria-hidden="true"><use href="#acx-qb"/></svg>QuickBooks</button>
+       <button type="button" class="acx-sw-b" data-ledger-set="xero" aria-pressed="false"><svg aria-hidden="true"><use href="#acx-xero"/></svg>Xero</button>
+       <i class="acx-sw-pill" aria-hidden="true"></i>
+      </div>
+     </div>
+     <div class="acx-tie-body" role="img" aria-label="Illustrative sync job 2291-08: four August invoices from the product matched to entries in QuickBooks Online or Xero. Three tie out; INV-2293 for Halden Co shows 1,204.75 in the source and 1,240.75 in the ledger, flagged as an exception. Job total: 247 matched, 1 exception.">
+      <div class="acx-tie-cols" aria-hidden="true"><span>Source events</span><span><svg><use href="#acx-qb" data-acx-ledger-logo/></svg><b data-acx-ledger-name>QuickBooks Online</b></span></div>
+      <ol class="acx-tie-rows" aria-hidden="true">
+       <li class="is-ok"><div class="acx-tie-src"><b>INV-2291</b><span>Acme Ltd</span><em class="sx-tnum">4,120.00</em></div><i class="acx-tie-link"><i></i></i><div class="acx-tie-dst"><b data-ref="2291">Invoice 2291</b><span class="acx-st">Matched</span></div></li>
+       <li class="is-ok"><div class="acx-tie-src"><b>INV-2292</b><span>Northgate</span><em class="sx-tnum">880.50</em></div><i class="acx-tie-link"><i></i></i><div class="acx-tie-dst"><b data-ref="2292">Invoice 2292</b><span class="acx-st">Matched</span></div></li>
+       <li class="is-warn"><div class="acx-tie-src"><b>INV-2293</b><span>Halden Co</span><em class="sx-tnum">1,204.75</em></div><i class="acx-tie-link"><i></i></i><div class="acx-tie-dst"><b data-ref="2293">Invoice 2293</b><span class="acx-st acx-st--warn">1,240.75</span></div></li>
+       <li class="is-ok"><div class="acx-tie-src"><b>INV-2294</b><span>Brightside</span><em class="sx-tnum">310.00</em></div><i class="acx-tie-link"><i></i></i><div class="acx-tie-dst"><b data-ref="2294">Invoice 2294</b><span class="acx-st">Matched</span></div></li>
+      </ol>
+      <div class="acx-tie-foot" aria-hidden="true">
+       <p class="acx-tally"><b class="sx-tnum" data-acx-count="247">247</b><span>matched</span></p>
+       <p class="acx-tally acx-tally--warn"><b class="sx-tnum">1</b><span>exception</span></p>
+       <p class="acx-tie-note">Transposition suspected · <span data-acx-route>to the operator queue</span></p>
+      </div>
+     </div>
+    </div>
+    <figcaption>Illustrative sync job, sample data. Switch the ledger to see the same job in Xero.</figcaption>
+   </figure>
   </div>
+ </div>
 </header>
 
-<section class="story story--split" aria-labelledby="storyH">
-  <div class="wrap story-grid">
-    <figure class="story-media">
-      <img src="/media/photos/finance-office-workstation.webp" srcset="/media/photos/finance-office-workstation-800.webp 800w, /media/photos/finance-office-workstation.webp 1600w" sizes="(max-width:900px) calc(100vw - 32px), 640px" alt="A finance office employee works through an account at a cubicle desk, with a desktop monitor, a laptop, and a desk phone." width="1600" height="900" loading="lazy" decoding="async">
-      <figcaption class="story-credit">Photograph: U.S. Department of Agriculture, Office of the Chief Financial Officer (<a href="https://commons.wikimedia.org/wiki/File:Working_at_National_Finance_Center_Alternate_Worksite,_Bossier_City,_Louisiana_February_2017.jpg" rel="noopener noreferrer">public domain</a>). Not a KRIVA client or product.</figcaption>
-    </figure>
-    <div class="story-copy">
-      <p class="eyebrow">The close</p>
-      <h2 id="storyH">Month-end should not start in a spreadsheet.</h2>
-      <p>The people who close the books need to see what synced, what did not, and what to do about it. We build that view into the integration, so finance can finish the close without waiting on an engineer.</p>
-      <ul class="story-points"><li>Invoices, payments, credit notes, and customers in step with the ledger</li><li>Every mismatch shown with both values and a likely cause</li><li>Retry, confirm, and park actions kept on the record for audit</li></ul>
+<nav class="sx-chips" aria-label="Page sections">
+ <a href="#overview">Overview</a>
+ <a href="#platforms">Platforms</a>
+ <a href="#problems">Problems</a>
+ <a href="#close">Close</a>
+ <a href="#build">Build</a>
+ <a href="#architecture">Architecture</a>
+ <a href="#matrix">Multi-entity</a>
+ <a href="#proof">Work</a>
+ <a href="#process">Process</a>
+ <a href="#faq">FAQ</a>
+ <a href="#inquire">Contact</a>
+</nav>
+
+<section class="acx-story" aria-labelledby="storyH">
+ <div class="wrap">
+  <div class="acx-story-grid">
+   <div class="acx-story-copy">
+    <p class="sx-kicker eyebrow" data-x>The close</p>
+    <h2 id="storyH" data-split>Month-end should not start in a spreadsheet.</h2>
+    <p class="acx-story-p" data-x>The people who close the books need to see what synced, what did not, and what to do about it. We build that view into the integration, so finance can finish the close without waiting on an engineer.</p>
+   </div>
+   <figure class="acx-story-fig">
+    <div class="acx-story-img" data-acx-par>
+     <img src="/media/photos/finance-office-workstation.webp" srcset="/media/photos/finance-office-workstation-800.webp 800w, /media/photos/finance-office-workstation.webp 1600w" sizes="(max-width:1000px) calc(100vw - 32px), 760px" alt="A finance office employee works through an account at a cubicle desk, with a desktop monitor, a laptop, and a desk phone." width="1600" height="900" loading="lazy" decoding="async">
     </div>
+    <div class="acx-story-card" data-x>
+     <p class="acx-story-card-k" aria-hidden="true"><span>Close checklist</span><span>Aug</span></p>
+     <ul class="acx-story-pts"><li>Invoices, payments, credit notes, and customers in step with the ledger</li><li>Every mismatch shown with both values and a likely cause</li><li>Retry, confirm, and park actions kept on the record for audit</li></ul>
+    </div>
+    <figcaption class="sx-credit">Photograph: U.S. Department of Agriculture, Office of the Chief Financial Officer (<a href="https://commons.wikimedia.org/wiki/File:Working_at_National_Finance_Center_Alternate_Worksite,_Bossier_City,_Louisiana_February_2017.jpg" rel="noopener noreferrer">public domain</a>). Not a KRIVA client or product.</figcaption>
+   </figure>
   </div>
+ </div>
 </section>
 
-<section class="acc-fit" aria-labelledby="fitH">
-  <div class="wrap">
-    <div class="acc-fit-head">
-      <p class="eyebrow" data-r>At a glance</p>
-      <h2 class="d2" id="fitH" data-r>What a QuickBooks or Xero integration should do</h2>
-      <p class="acc-fit-sum" data-r>A QuickBooks or Xero integration moves financial records from your product into your accounting ledger automatically: invoices, payments, credit notes, customers, and the tax and account codes behind them. A good one also proves the two sides agree. KRIVA builds the connector on the public Intuit and Xero APIs, a match step that compares amounts, tax, entity, and currency, and an exception queue where finance resolves anything that does not match before close.</p>
-    </div>
-    <div class="acc-fit-rail" data-s>
-      <article class="acc-card">
-        <h3>Who it is for</h3>
-        <p>SaaS and operations platforms that already invoice, collect, or pay out, and need those movements to land cleanly in QuickBooks Online or Xero, including teams with books in more than one country.</p>
-      </article>
-      <article class="acc-card">
-        <h3>What we build</h3>
-        <p>The connector, data mapping, matching, retry rules, and the operator screens finance uses when a line does not match. Design and engineering come from the same in-house team.</p>
-      </article>
-      <article class="acc-card">
-        <h3>What this page is not</h3>
-        <p>CRM, payment, and other operational connectors are covered under <a href="/services/api-integrations">API integrations</a>. No-code Zapier or Make workflows are covered under <a href="/services/automation-systems">workflow automation</a>.</p>
-      </article>
-    </div>
-    <p class="acc-fit-foot" data-r>Our bar: the integration is not finished when data syncs. It is finished when finance can close the books with confidence.</p>
+<section class="sx-sec acx-glance" id="about-service" aria-labelledby="fitH">
+ <div class="wrap">
+  <div class="acx-glance-top">
+   <div>
+    <p class="sx-kicker eyebrow" data-x>At a glance</p>
+    <h2 id="fitH" data-split>What a QuickBooks or Xero integration should do</h2>
+   </div>
+   <p class="lede acx-fit-sum" data-x>A QuickBooks or Xero integration moves financial records from your product into your accounting ledger automatically: invoices, payments, credit notes, customers, and the tax and account codes behind them. A good one also proves the two sides agree. KRIVA builds the connector on the public Intuit and Xero APIs, a match step that compares amounts, tax, entity, and currency, and an exception queue where finance resolves anything that does not match before close.</p>
   </div>
+  <ol class="acx-facts">
+   <li data-x><span class="acx-facts-n">01</span><h3>Who it is for</h3><p>SaaS and operations platforms that already invoice, collect, or pay out, and need those movements to land cleanly in QuickBooks Online or Xero, including teams with books in more than one country.</p></li>
+   <li data-x><span class="acx-facts-n">02</span><h3>What we build</h3><p>The connector, data mapping, matching, retry rules, and the operator screens finance uses when a line does not match. Design and engineering come from the same in-house team.</p></li>
+   <li data-x><span class="acx-facts-n">03</span><h3>What this page is not</h3><p>CRM, payment, and other operational connectors are covered under <a class="acx-in" href="/services/api-integrations">API integrations</a>. No-code Zapier or Make workflows are covered under <a class="acx-in" href="/services/automation-systems">workflow automation</a>.</p></li>
+  </ol>
+  <p class="sx-callout" data-x><span><strong>Our bar:</strong> the integration is not finished when data syncs. It is finished when finance can close the books with confidence.</span></p>
+ </div>
 </section>
 
-<section id="platforms" aria-labelledby="plH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Platforms</p>
-    <h2 class="d2" id="plH" data-r>The two ledgers we build for</h2>
-    <p class="lede" data-r>QuickBooks Online and Xero, through their public APIs. A common setup is QuickBooks for US entities and Xero for UK or Australian ones. When you run both, the two connectors share one operator view.</p>
-    <div class="acc-plat" data-s>
-      <article class="acc-card">
-        <div class="acc-lockup">
-          <img src="/brand/logos/quickbooks.svg" alt="" width="32" height="32" loading="lazy" decoding="async">
-          <div><b>QuickBooks Online</b><span>Intuit API</span></div>
-        </div>
-        <p>QuickBooks Online is the usual ledger for US books. We map invoices, payments, customers, items, and tax codes through Intuit's public API, with OAuth 2.0 token refresh, backoff when Intuit throttles requests (HTTP 429), and writes keyed to your source records so a retry cannot post twice.</p>
-        <ul>
-          <li>Invoices, payments, credit memos, and bills</li>
-          <li>Customers, vendors, and chart of accounts mapping</li>
-          <li>Multi-entity books with separate tokens per QuickBooks company</li>
-          <li>Change data capture polling to catch what webhooks miss</li>
-        </ul>
-      </article>
-      <article class="acc-card">
-        <div class="acc-lockup">
-          <img src="/brand/logos/xero.svg" alt="" width="32" height="32" loading="lazy" decoding="async">
-          <div><b>Xero</b><span>Xero API</span></div>
-        </div>
-        <p>Xero is common for UK, Australian, and dual-region teams. We build a separate connector against Xero's public API, with the same operator dashboard and exception language as QuickBooks, so finance is not learning two products. Xero limits calls per organization (60 a minute, plus a daily allowance that depends on your app's Xero plan), so we queue and pace work instead of firing it in bursts.</p>
-        <ul>
-          <li>Invoices, bank transactions, contacts, and tracking categories</li>
-          <li>Multiple Xero organizations under one set of authorizations, with unified triage</li>
-          <li>VAT and multi-currency lines with readable deltas</li>
-          <li>Webhooks plus If-Modified-Since polling so silent drift cannot hide</li>
-        </ul>
-      </article>
-    </div>
+<section class="sx-sec acx-plat" id="platforms" aria-labelledby="plH">
+ <div class="wrap">
+  <div class="sx-head">
+   <div>
+    <p class="sx-kicker eyebrow" data-x>Platforms</p>
+    <h2 id="plH" data-split>The two ledgers we build for</h2>
+   </div>
+   <div class="sx-head-aside"><p class="sx-lede lede" data-x>QuickBooks Online and Xero, through their public APIs. A common setup is QuickBooks for US entities and Xero for UK or Australian ones. When you run both, the two connectors share one operator view.</p></div>
   </div>
+  <div class="acx-pl" data-acx-pl>
+   <div class="acx-pl-tabs" role="tablist" aria-label="Accounting platform" hidden>
+    <button type="button" role="tab" id="acx-tab-qbo" aria-controls="acx-pl-qbo" aria-selected="true" class="acx-pl-tab"><svg aria-hidden="true"><use href="#acx-qb"/></svg><span><b>QuickBooks Online</b><em>Intuit API</em></span></button>
+    <button type="button" role="tab" id="acx-tab-xero" aria-controls="acx-pl-xero" aria-selected="false" tabindex="-1" class="acx-pl-tab"><svg aria-hidden="true"><use href="#acx-xero"/></svg><span><b>Xero</b><em>Xero API</em></span></button>
+    <i class="acx-pl-ind" aria-hidden="true"></i>
+   </div>
+   <div class="acx-pl-panels">
+    <article class="acx-pl-card" id="acx-pl-qbo" aria-labelledby="acx-pl-qbo-h" data-x data-spot>
+     <div class="acx-pl-copy">
+      <div class="acx-lockup">
+       <svg aria-hidden="true"><use href="#acx-qb"/></svg>
+       <div><h3 id="acx-pl-qbo-h">QuickBooks Online</h3><span>Intuit API</span></div>
+      </div>
+      <p>QuickBooks Online is the usual ledger for US books. We map invoices, payments, customers, items, and tax codes through Intuit's public API, with OAuth 2.0 token refresh, backoff when Intuit throttles requests (HTTP 429), and writes keyed to your source records so a retry cannot post twice.</p>
+     </div>
+     <div class="acx-pl-side">
+      <div class="acx-gauge" aria-hidden="true">
+       <p class="acx-gauge-k"><span>Requests</span><b>429 · backing off</b></p>
+       <div class="acx-gauge-bars"><i style="--h:.42"></i><i style="--h:.58"></i><i style="--h:.5"></i><i style="--h:.74"></i><i style="--h:.92"></i><i class="is-hot" style="--h:1"></i><i style="--h:.36"></i><i style="--h:.3"></i><i style="--h:.46"></i><i style="--h:.4"></i></div>
+       <p class="acx-gauge-f"><span>Token refresh · OAuth 2.0</span><span>Keyed writes</span></p>
+      </div>
+      <ul class="acx-pl-list">
+       <li>Invoices, payments, credit memos, and bills</li>
+       <li>Customers, vendors, and chart of accounts mapping</li>
+       <li>Multi-entity books with separate tokens per QuickBooks company</li>
+       <li>Change data capture polling to catch what webhooks miss</li>
+      </ul>
+     </div>
+    </article>
+    <article class="acx-pl-card" id="acx-pl-xero" aria-labelledby="acx-pl-xero-h" data-x data-spot>
+     <div class="acx-pl-copy">
+      <div class="acx-lockup">
+       <svg aria-hidden="true"><use href="#acx-xero"/></svg>
+       <div><h3 id="acx-pl-xero-h">Xero</h3><span>Xero API</span></div>
+      </div>
+      <p>Xero is common for UK, Australian, and dual-region teams. We build a separate connector against Xero's public API, with the same operator dashboard and exception language as QuickBooks, so finance is not learning two products. Xero limits calls per organization (60 a minute, plus a daily allowance that depends on your app's Xero plan), so we queue and pace work instead of firing it in bursts.</p>
+     </div>
+     <div class="acx-pl-side">
+      <div class="acx-gauge acx-gauge--paced" aria-hidden="true">
+       <p class="acx-gauge-k"><span>Calls per minute</span><b>Paced under 60</b></p>
+       <div class="acx-gauge-bars"><i style="--h:.62"></i><i style="--h:.64"></i><i style="--h:.6"></i><i style="--h:.66"></i><i style="--h:.63"></i><i style="--h:.65"></i><i style="--h:.61"></i><i style="--h:.64"></i><i style="--h:.62"></i><i style="--h:.65"></i><b class="acx-gauge-cap"></b></div>
+       <p class="acx-gauge-f"><span>Per-organization queue</span><span>Webhooks + polling</span></p>
+      </div>
+      <ul class="acx-pl-list">
+       <li>Invoices, bank transactions, contacts, and tracking categories</li>
+       <li>Multiple Xero organizations under one set of authorizations, with unified triage</li>
+       <li>VAT and multi-currency lines with readable deltas</li>
+       <li>Webhooks plus If-Modified-Since polling so silent drift cannot hide</li>
+      </ul>
+     </div>
+    </article>
+   </div>
+  </div>
+ </div>
 </section>
 
-<section class="acc-problems on-ink" id="problems" aria-labelledby="probH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Why this exists</p>
-    <h2 class="d2" id="probH" data-r>When finance stops trusting the sync</h2>
-    <p class="lede" data-r>The connector worked in staging. Month-end is where it breaks. These are the three failure patterns we design against from the first week.</p>
-    <div class="acc-frac" data-r>
-      <article>
-        <span class="n num">01</span>
-        <div>
-          <h3 class="d3">Silent drift</h3>
-          <p>Jobs report success while amounts, tax, or entity mapping quietly diverge. Controllers find the difference in a spreadsheet, not in the product.<span class="cons">Cost: variances surface outside the product</span></p>
-        </div>
-        <figure class="frac-viz">
-          <img src="/media/solutions/accounting/prob-silent-drift.svg" alt="Illustration: a nightly sync marked successful with zero errors, while the product's month total and the ledger total differ by 285.25." width="480" height="400" decoding="async" loading="lazy">
-        </figure>
-      </article>
-      <article>
-        <span class="n num">02</span>
-        <div>
-          <h3 class="d3">Errors finance cannot act on</h3>
-          <p>Exceptions pile up as raw API errors with no invoice, customer, or amount attached. An outsourced bookkeeper cannot fix them without engineering, so the close slips.<span class="cons">Cost: close waits on an engineering ticket</span></p>
-        </div>
-        <figure class="frac-viz">
-          <img src="/media/solutions/accounting/prob-raw-api-errors.svg" alt="Illustration: a list of raw API error codes such as 400, 401, and 429, with no invoice or amount, and no next step for finance." width="480" height="400" decoding="async" loading="lazy">
-        </figure>
-      </article>
-      <article>
-        <span class="n num">03</span>
-        <div>
-          <h3 class="d3">Retries that post twice</h3>
-          <p>A request times out, the job retries, and the same invoice lands in the ledger twice. Without a key tied to the source record, every retry can make the books worse.<span class="cons">Cost: duplicate postings and overstated balances</span></p>
-        </div>
-        <figure class="frac-viz">
-          <img src="/media/solutions/accounting/prob-duplicate-retry.svg" alt="Illustration: a timed-out invoice post is retried without a source key, and the same 2,640.00 invoice appears twice in accounts receivable." width="480" height="400" decoding="async" loading="lazy">
-        </figure>
-      </article>
-    </div>
+<section class="sx-sec acx-probs" id="problems" aria-labelledby="probH" data-dark>
+ <div class="wrap">
+  <div class="sx-head">
+   <div>
+    <p class="sx-kicker eyebrow" data-x>Why this exists</p>
+    <h2 id="probH" data-split>When finance stops trusting the sync</h2>
+   </div>
+   <div class="sx-head-aside"><p class="sx-lede lede" data-x>The connector worked in staging. Month-end is where it breaks. These are the three failure patterns we design against from the first week.</p></div>
   </div>
+  <ol class="acx-pr">
+   <li class="acx-pr-card" data-x data-spot>
+    <figure class="acx-pr-viz"><img src="/media/solutions/accounting/prob-silent-drift.svg" alt="Illustration: a nightly sync marked successful with zero errors, while the product's month total and the ledger total differ by 285.25." width="480" height="400" decoding="async" loading="lazy"></figure>
+    <div class="acx-pr-copy">
+     <span class="acx-pr-n">01</span>
+     <h3>Silent drift</h3>
+     <p>Jobs report success while amounts, tax, or entity mapping quietly diverge. Controllers find the difference in a spreadsheet, not in the product.</p>
+     <p class="acx-pr-cost">Cost: variances surface outside the product</p>
+    </div>
+   </li>
+   <li class="acx-pr-card" data-x data-spot>
+    <figure class="acx-pr-viz"><img src="/media/solutions/accounting/prob-raw-api-errors.svg" alt="Illustration: a list of raw API error codes such as 400, 401, and 429, with no invoice or amount, and no next step for finance." width="480" height="400" decoding="async" loading="lazy"></figure>
+    <div class="acx-pr-copy">
+     <span class="acx-pr-n">02</span>
+     <h3>Errors finance cannot act on</h3>
+     <p>Exceptions pile up as raw API errors with no invoice, customer, or amount attached. An outsourced bookkeeper cannot fix them without engineering, so the close slips.</p>
+     <p class="acx-pr-cost">Cost: close waits on an engineering ticket</p>
+    </div>
+   </li>
+   <li class="acx-pr-card" data-x data-spot>
+    <figure class="acx-pr-viz"><img src="/media/solutions/accounting/prob-duplicate-retry.svg" alt="Illustration: a timed-out invoice post is retried without a source key, and the same 2,640.00 invoice appears twice in accounts receivable." width="480" height="400" decoding="async" loading="lazy"></figure>
+    <div class="acx-pr-copy">
+     <span class="acx-pr-n">03</span>
+     <h3>Retries that post twice</h3>
+     <p>A request times out, the job retries, and the same invoice lands in the ledger twice. Without a key tied to the source record, every retry can make the books worse.</p>
+     <p class="acx-pr-cost">Cost: duplicate postings and overstated balances</p>
+    </div>
+   </li>
+  </ol>
+ </div>
 </section>
 
-<section class="acc-band" id="close" aria-labelledby="clH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>One close cycle</p>
-    <h2 class="d2" id="clH" data-r>From import to audit trail in one sync job</h2>
-    <p class="lede" data-r>Follow one job through seven stages. An honest <strong>247 matched and 1 exception</strong> is more useful than a "100% success" that hides the problem.</p>
-    <div class="acc-story-grid">
-      <div class="acc-story-stick">
-        <div class="acc-ledger" id="lg" data-state="1">
-          <div class="acc-lg-bar">
-            <span class="acc-src">
-              <span class="act"><img src="/brand/logos/quickbooks.svg" alt="QuickBooks" loading="lazy" decoding="async" width="12" height="12">QuickBooks Online</span>
-              <span><img src="/brand/logos/xero.svg" alt="Xero" loading="lazy" decoding="async" width="12" height="12">Xero</span>
-            </span>
-            <span class="acc-job">Job <b>#2291-08</b> · <span id="jobState">queued</span></span>
-          </div>
-          <div class="acc-syncbar">
-            <span class="lbl" id="syncLbl">Import</span>
-            <span class="track" id="syncTrack" style="--p:.18"><i></i></span>
-            <span class="val" id="syncVal">248 / 248</span>
-          </div>
-          <div class="acc-recs">
-            <div class="acc-rec"><span class="ref">INV-2291</span><span class="desc">Acme Ltd · Aug</span><span class="amt">4,120.00</span><span class="st"><span class="acc-tag t-idle" data-rec="a">Imported</span></span></div>
-            <div class="acc-rec"><span class="ref">INV-2292</span><span class="desc">Northgate · Aug</span><span class="amt">880.50</span><span class="st"><span class="acc-tag t-idle" data-rec="b">Imported</span></span></div>
-            <div class="acc-rec flagged"><span class="ref">INV-2293</span><span class="desc">Halden Co · Aug</span><span class="amt" id="amtC">1,204.75</span><span class="st"><span class="acc-tag t-idle" data-rec="c">Imported</span></span></div>
-            <div class="acc-rec"><span class="ref">INV-2294</span><span class="desc">Brightside · Aug</span><span class="amt">310.00</span><span class="st"><span class="acc-tag t-idle" data-rec="d">Imported</span></span></div>
-          </div>
-          <div class="acc-exdetail">
-            <div>
-              <div class="acc-exdetail-in">
-                <b id="exTitle">Exception · amount variance on INV-2293</b>
-                <span id="exBody">Source 1,204.75 · ledger 1,240.75 · transposition suspected</span>
-              </div>
-            </div>
-          </div>
-          <ul class="acc-audit" id="auditLog">
-            <li data-from="1"><u>14:02</u> Job started · 248 records imported</li>
-            <li data-from="2"><u>14:03</u> Validated against ledger schema</li>
-            <li data-from="3"><u>14:04</u> 247 matched · 1 remaining</li>
-            <li class="warn" data-from="4"><u>14:04</u> 1 exception · amount variance</li>
-            <li data-from="5"><u>14:09</u> Operator review · controller confirmed value</li>
-            <li class="ok" data-from="6"><u>14:11</u> Reconciled · amount aligned</li>
-            <li class="ok" data-from="7"><u>14:11</u> Audit entry written</li>
-          </ul>
-          <div class="acc-pips" id="pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <p class="sr" aria-live="polite" id="announce"></p>
-      </div>
-      <div id="beats">
-        <div class="acc-beat" data-beat="1">
-          <span class="n">01 · Import</span>
-          <h3 class="d3">Source events land as records, not a JSON dump.</h3>
-          <p>Invoices, payments, and credit notes queue with stable keys and idempotent workers. Finance sees counts, not a log file.</p>
-        </div>
-        <div class="acc-beat" data-beat="2">
-          <span class="n">02 · Validate</span>
-          <h3 class="d3">Schema and tax codes before the match.</h3>
-          <p>Missing accounts, unknown tax, or a currency the org does not hold fail here, not inside the ledger.</p>
-        </div>
-        <div class="acc-beat" data-beat="3">
-          <span class="n">03 · Match</span>
-          <h3 class="d3">247 of 248 is a result, not a silent 100%.</h3>
-          <p>The job reports what matched. The one that did not stays visible instead of disappearing into "success."</p>
-        </div>
-        <div class="acc-beat warn" data-beat="4">
-          <span class="n">04 · Exception</span>
-          <h3 class="d3">A variance with a human-readable delta.</h3>
-          <p>Source 1,204.75 against ledger 1,240.75. Transposition suspected. No raw Intuit or Xero payload in the operator view.</p>
-        </div>
-        <div class="acc-beat warn" data-beat="5">
-          <span class="n">05 · Review</span>
-          <h3 class="d3">Finance acts without an engineering ticket.</h3>
-          <p>Retry, confirm the correct value, or park it. Every action is attributable. Outsourced controllers can finish this step.</p>
-        </div>
-        <div class="acc-beat" data-beat="6">
-          <span class="n">06 · Reconcile</span>
-          <h3 class="d3">The line closes. The amount is honest.</h3>
-          <p>Once confirmed, the record matches both books. Close does not wait on a Slack thread.</p>
-        </div>
-        <div class="acc-beat" data-beat="7">
-          <span class="n">07 · Audit</span>
-          <h3 class="d3">Who changed what, when, and why.</h3>
-          <p>The trail is written in language an accountant will accept. That is the bar: the integration is finished when finance can confidently close the books.</p>
-        </div>
-      </div>
-    </div>
+<section class="sx-sec acx-close" id="close" aria-labelledby="clH">
+ <div class="wrap">
+  <div class="sx-head">
+   <div>
+    <p class="sx-kicker eyebrow" data-x>One close cycle</p>
+    <h2 id="clH" data-split>From import to audit trail in one sync job</h2>
+   </div>
+   <div class="sx-head-aside"><p class="sx-lede lede" data-x>Follow one job through seven stages. An honest <strong>247 matched and 1 exception</strong> is more useful than a "100% success" that hides the problem.</p></div>
   </div>
+  <div class="acx-close-grid" data-acx-close>
+   <div class="acx-close-stick">
+    <div class="acx-led" data-state="7">
+     <div class="acx-led-bar">
+      <span class="acx-led-src" aria-hidden="true">
+       <span class="is-on"><svg><use href="#acx-qb"/></svg>QuickBooks Online</span>
+       <span><svg><use href="#acx-xero"/></svg>Xero</span>
+      </span>
+      <span class="acx-led-job">Job <b>#2291-08</b> · <span data-led="job">closed</span></span>
+     </div>
+     <div class="acx-led-sync">
+      <span class="acx-led-lbl" data-led="lbl">Audit</span>
+      <span class="acx-led-track" data-led="track" style="--p:1"><i></i></span>
+      <span class="acx-led-val sx-tnum" data-led="val">248 / 248</span>
+     </div>
+     <div class="acx-led-recs">
+      <div class="acx-led-rec"><span class="ref">INV-2291</span><span class="desc">Acme Ltd · Aug</span><span class="amt sx-tnum">4,120.00</span><span class="acx-tag t-ok" data-rec="a">Matched</span></div>
+      <div class="acx-led-rec"><span class="ref">INV-2292</span><span class="desc">Northgate · Aug</span><span class="amt sx-tnum">880.50</span><span class="acx-tag t-ok" data-rec="b">Matched</span></div>
+      <div class="acx-led-rec is-flag"><span class="ref">INV-2293</span><span class="desc">Halden Co · Aug</span><span class="amt sx-tnum" data-led="amt">1,240.75</span><span class="acx-tag t-ok" data-rec="c">Reconciled</span></div>
+      <div class="acx-led-rec"><span class="ref">INV-2294</span><span class="desc">Brightside · Aug</span><span class="amt sx-tnum">310.00</span><span class="acx-tag t-ok" data-rec="d">Matched</span></div>
+     </div>
+     <div class="acx-led-ex">
+      <div><div class="acx-led-ex-in">
+       <b data-led="exTitle">Exception · amount variance on INV-2293</b>
+       <span data-led="exBody">Source 1,204.75 · ledger 1,240.75 · transposition suspected</span>
+      </div></div>
+     </div>
+     <ul class="acx-led-audit">
+      <li class="acx-a" data-from="1"><u>14:02</u> Job started · 248 records imported</li>
+      <li class="acx-a" data-from="2"><u>14:03</u> Validated against ledger schema</li>
+      <li class="acx-a" data-from="3"><u>14:04</u> 247 matched · 1 remaining</li>
+      <li class="acx-a warn" data-from="4"><u>14:04</u> 1 exception · amount variance</li>
+      <li class="acx-a" data-from="5"><u>14:09</u> Operator review · controller confirmed value</li>
+      <li class="acx-a ok" data-from="6"><u>14:11</u> Reconciled · amount aligned</li>
+      <li class="acx-a ok" data-from="7"><u>14:11</u> Audit entry written</li>
+     </ul>
+     <div class="acx-led-pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <p class="sr" aria-live="polite" data-led="announce"></p>
+   </div>
+   <ol class="acx-beats">
+    <li class="acx-beat" data-beat="1">
+     <span class="acx-beat-n"><b>01</b> Import</span>
+     <h3>Source events land as records, not a JSON dump.</h3>
+     <p>Invoices, payments, and credit notes queue with stable keys and idempotent workers. Finance sees counts, not a log file.</p>
+    </li>
+    <li class="acx-beat" data-beat="2">
+     <span class="acx-beat-n"><b>02</b> Validate</span>
+     <h3>Schema and tax codes before the match.</h3>
+     <p>Missing accounts, unknown tax, or a currency the org does not hold fail here, not inside the ledger.</p>
+    </li>
+    <li class="acx-beat" data-beat="3">
+     <span class="acx-beat-n"><b>03</b> Match</span>
+     <h3>247 of 248 is a result, not a silent 100%.</h3>
+     <p>The job reports what matched. The one that did not stays visible instead of disappearing into "success."</p>
+    </li>
+    <li class="acx-beat is-warn" data-beat="4">
+     <span class="acx-beat-n"><b>04</b> Exception</span>
+     <h3>A variance with a human-readable delta.</h3>
+     <p>Source 1,204.75 against ledger 1,240.75. Transposition suspected. No raw Intuit or Xero payload in the operator view.</p>
+    </li>
+    <li class="acx-beat is-warn" data-beat="5">
+     <span class="acx-beat-n"><b>05</b> Review</span>
+     <h3>Finance acts without an engineering ticket.</h3>
+     <p>Retry, confirm the correct value, or park it. Every action is attributable. Outsourced controllers can finish this step.</p>
+    </li>
+    <li class="acx-beat" data-beat="6">
+     <span class="acx-beat-n"><b>06</b> Reconcile</span>
+     <h3>The line closes. The amount is honest.</h3>
+     <p>Once confirmed, the record matches both books. Close does not wait on a Slack thread.</p>
+    </li>
+    <li class="acx-beat" data-beat="7">
+     <span class="acx-beat-n"><b>07</b> Audit</span>
+     <h3>Who changed what, when, and why.</h3>
+     <p>The trail is written in language an accountant will accept. That is the bar: the integration is finished when finance can confidently close the books.</p>
+    </li>
+   </ol>
+  </div>
+ </div>
 </section>
 
-<section id="build" aria-labelledby="buildH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Capabilities</p>
-    <h2 class="d2" id="buildH" data-r>What we deliver for QuickBooks and Xero</h2>
-    <p class="lede" data-r>Connectors and operator UX from the same in-house team: no handoff between "the API person" and "the dashboard person."</p>
-    <div class="acc-surfaces" data-s>
-      <article class="acc-card">
-        <span class="acc-k">01 · Reconciliation</span>
-        <h3>Sync that holds at close</h3>
-        <p>Match invoices, payments, and credit notes with counts finance can trust. See <a href="/work/finance-sync-hub">FinanceSync</a>.</p>
-        <ul>
-          <li>Idempotent Intuit and Xero workers</li>
-          <li>Per-company tokens and rate-limit backoff</li>
-          <li>Parallel run before cutover</li>
-        </ul>
-        <a href="/services/api-integrations" class="acc-text-link">Integrations &amp; APIs <i>→</i></a>
-      </article>
-      <article class="acc-card">
-        <span class="acc-k">02 · Exceptions</span>
-        <h3>Dashboards operators can finish</h3>
-        <p>Discrepancy cards with remediation steps for outsourced finance teams.</p>
-        <ul>
-          <li>Queue ordered by close risk</li>
-          <li>Named actions: retry, confirm, park</li>
-          <li>No raw JSON in the operator view</li>
-        </ul>
-        <a href="/services/dashboard-design" class="acc-text-link">Dashboard design <i>→</i></a>
-      </article>
-      <article class="acc-card">
-        <span class="acc-k">03 · Audit</span>
-        <h3>Trail an accountant will accept</h3>
-        <p>Who changed the amount, which job retried, and why the line closed.</p>
-        <ul>
-          <li>Attributable operator actions</li>
-          <li>Job history across QBO and Xero orgs</li>
-          <li>Alerts when a run stalls before close</li>
-        </ul>
-        <a href="/insights/quickbooks-xero-integration-guide" class="acc-text-link">QuickBooks and Xero integration guide <i>→</i></a>
-      </article>
-    </div>
-    <div class="acc-exgrid" data-r>
-      <div>
-        <p class="eyebrow">Types we surface</p>
-        <div class="acc-extypes">
-          <div class="acc-extype">
-            <span class="code">AMT</span>
-            <div>
-              <h3>Amount variance</h3>
-              <p>Source and ledger disagree. Both values and suspected cause, not a status code.</p>
-            </div>
-          </div>
-          <div class="acc-extype">
-            <span class="code">TAX</span>
-            <div>
-              <h3>Tax / VAT mismatch</h3>
-              <p>Wrong code, missing rate, or a US/UK org using the other region's rules.</p>
-            </div>
-          </div>
-          <div class="acc-extype">
-            <span class="code">ENT</span>
-            <div>
-              <h3>Entity mapping</h3>
-              <p>Posted to the wrong company file or Xero org. Multi-entity is first-class.</p>
-            </div>
-          </div>
-          <div class="acc-extype">
-            <span class="code">DUP</span>
-            <div>
-              <h3>Duplicate or orphan</h3>
-              <p>A retry that already posted, or a payment with no matching invoice.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <p class="eyebrow">Operator view</p>
-        <div class="acc-ex-card" role="img" aria-label="Exception card: amount variance on INV-2293, source 1204.75, ledger 1240.75, close risk, actions retry, confirm, or park, assigned to the controller, audit pending review">
-          <div class="acc-ex-card-h">
-            <b>INV-2293 · Amount variance</b>
-            <span class="sev">Close risk</span>
-          </div>
-          <div class="acc-ex-delta">
-            <div><span class="k">Source value</span><span class="v">1,204.75</span></div>
-            <div><span class="k">Ledger value</span><span class="v warn">1,240.75</span></div>
-          </div>
-          <p class="acc-ex-cause"><b>Suspected cause:</b> digit transposition · Halden Co</p>
-          <div class="acc-ex-actions" aria-hidden="true">
-            <span class="primary">Retry</span>
-            <span>Confirm</span>
-            <span>Park</span>
-          </div>
-          <div class="acc-ex-foot">
-            <span>Assigned <b>Controller</b> · 14:09</span>
-            <span>Audit <b>Pending review</b></span>
-          </div>
-        </div>
-        <p class="acc-cap-note"><span class="flag">Demo</span> Operator UI pattern · illustrative data</p>
-      </div>
-    </div>
+<section class="sx-sec acx-build" id="build" aria-labelledby="buildH">
+ <div class="wrap">
+  <div class="sx-head">
+   <div>
+    <p class="sx-kicker eyebrow" data-x>Capabilities</p>
+    <h2 id="buildH" data-split>What we deliver for QuickBooks and Xero</h2>
+   </div>
+   <div class="sx-head-aside"><p class="sx-lede lede" data-x>Connectors and operator UX from the same in-house team: no handoff between "the API person" and "the dashboard person."</p></div>
   </div>
+  <div class="acx-caps">
+   <article class="acx-cap" data-x data-spot>
+    <span class="acx-cap-k"><b>01</b>Reconciliation</span>
+    <h3>Sync that holds at close</h3>
+    <p>Match invoices, payments, and credit notes with counts finance can trust. See <a class="acx-in" href="/work/finance-sync-hub" data-kriva-cta="capability_financesync">FinanceSync</a>.</p>
+    <ul class="sx-ticks">
+     <li>Idempotent Intuit and Xero workers</li>
+     <li>Per-company tokens and rate-limit backoff</li>
+     <li>Parallel run before cutover</li>
+    </ul>
+    <a href="/services/api-integrations" class="sx-more" data-kriva-cta="service_api">Integrations &amp; APIs <i aria-hidden="true">→</i></a>
+   </article>
+   <article class="acx-cap" data-x data-spot>
+    <span class="acx-cap-k"><b>02</b>Exceptions</span>
+    <h3>Dashboards operators can finish</h3>
+    <p>Discrepancy cards with remediation steps for outsourced finance teams.</p>
+    <ul class="sx-ticks">
+     <li>Queue ordered by close risk</li>
+     <li>Named actions: retry, confirm, park</li>
+     <li>No raw JSON in the operator view</li>
+    </ul>
+    <a href="/services/dashboard-design" class="sx-more" data-kriva-cta="service_dashboard">Dashboard design <i aria-hidden="true">→</i></a>
+   </article>
+   <article class="acx-cap" data-x data-spot>
+    <span class="acx-cap-k"><b>03</b>Audit</span>
+    <h3>Trail an accountant will accept</h3>
+    <p>Who changed the amount, which job retried, and why the line closed.</p>
+    <ul class="sx-ticks">
+     <li>Attributable operator actions</li>
+     <li>Job history across QBO and Xero orgs</li>
+     <li>Alerts when a run stalls before close</li>
+    </ul>
+    <a href="/insights/quickbooks-xero-integration-guide" class="sx-more" data-kriva-cta="guide_qbo_xero">QuickBooks and Xero integration guide <i aria-hidden="true">→</i></a>
+   </article>
+  </div>
+  <div class="acx-exq" data-acx-exq>
+   <div class="acx-exq-types">
+    <p class="sx-kicker eyebrow" data-x>Types we surface</p>
+    <ul class="acx-extypes" data-x>
+     <li><button type="button" class="acx-extype" data-cursor="Inspect" data-ex="amt" aria-pressed="true"><span class="code">AMT</span><span class="acx-extype-t"><b>Amount variance</b><span>Source and ledger disagree. Both values and suspected cause, not a status code.</span></span></button></li>
+     <li><button type="button" class="acx-extype" data-cursor="Inspect" data-ex="tax" aria-pressed="false"><span class="code">TAX</span><span class="acx-extype-t"><b>Tax / VAT mismatch</b><span>Wrong code, missing rate, or a US/UK org using the other region's rules.</span></span></button></li>
+     <li><button type="button" class="acx-extype" data-cursor="Inspect" data-ex="ent" aria-pressed="false"><span class="code">ENT</span><span class="acx-extype-t"><b>Entity mapping</b><span>Posted to the wrong company file or Xero org. Multi-entity is first-class.</span></span></button></li>
+     <li><button type="button" class="acx-extype" data-cursor="Inspect" data-ex="dup" aria-pressed="false"><span class="code">DUP</span><span class="acx-extype-t"><b>Duplicate or orphan</b><span>A retry that already posted, or a payment with no matching invoice.</span></span></button></li>
+    </ul>
+   </div>
+   <div class="acx-exq-view" data-x>
+    <p class="sx-kicker eyebrow">Operator view</p>
+    <div class="acx-ex-card" role="img" aria-label="Exception card: amount variance on INV-2293, source 1204.75, ledger 1240.75, close risk, actions retry, confirm, or park, assigned to the controller, audit pending review" data-ex-card>
+     <div class="acx-ex-h">
+      <b data-exf="title">INV-2293 · Amount variance</b>
+      <span class="acx-ex-sev">Close risk</span>
+     </div>
+     <div class="acx-ex-delta">
+      <div><span class="k" data-exf="k1">Source value</span><span class="v sx-tnum" data-exf="v1">1,204.75</span></div>
+      <div class="is-warn"><span class="k" data-exf="k2">Ledger value</span><span class="v sx-tnum" data-exf="v2">1,240.75</span></div>
+     </div>
+     <p class="acx-ex-cause"><b>Suspected cause:</b> <span data-exf="cause">digit transposition · Halden Co</span></p>
+     <div class="acx-ex-actions" aria-hidden="true">
+      <span class="is-primary">Retry</span>
+      <span>Confirm</span>
+      <span>Park</span>
+     </div>
+     <div class="acx-ex-foot">
+      <span>Assigned <b>Controller</b> · 14:09</span>
+      <span>Audit <b>Pending review</b></span>
+     </div>
+    </div>
+    <p class="acx-cap-note"><span class="acx-flag">Demo</span> Operator UI pattern · illustrative data</p>
+   </div>
+  </div>
+ </div>
 </section>
 
-<section class="acc-arch on-ink" id="architecture" aria-labelledby="arH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Architecture</p>
-    <h2 class="d2" id="arH" data-r>A path from source event to a closed ledger</h2>
-    <p class="lede" data-r>The same job, seen by your engineering team. Six components we design and build, so each failure surfaces at the stage it belongs to instead of as a generic error at month-end.</p>
-    <div class="acc-flow" id="flow">
-      <div class="acc-node">
-        <span class="nn">01</span>
-        <b>Source events</b>
-        <p>Invoices, payments, payouts, and credit notes from your product or ops platform.</p>
-      </div>
-      <div class="acc-node">
-        <span class="nn">02</span>
-        <b>Queue &amp; workers</b>
-        <p>Idempotent jobs, backoff, and canaries. Retries that cannot duplicate a posting.</p>
-      </div>
-      <div class="acc-node">
-        <span class="nn">03</span>
-        <b>QBO / Xero API</b>
-        <p>Direct calls to the public APIs, token refresh, and rate-limit handling per company or organization.</p>
-      </div>
-      <div class="acc-node">
-        <span class="nn">04</span>
-        <b>Match engine</b>
-        <p>Amount, tax, entity, and currency compared with a readable delta.</p>
-      </div>
-      <div class="acc-node">
-        <span class="nn">05</span>
-        <b>Exception queue</b>
-        <p>Operator triage with retry, confirm, or park, before close rather than after.</p>
-      </div>
-      <div class="acc-node">
-        <span class="nn">06</span>
-        <b>Ledger + audit</b>
-        <p>Closed records and an attributable trail finance can keep.</p>
-      </div>
-    </div>
+<section class="sx-sec acx-arch" id="architecture" aria-labelledby="arH" data-dark>
+ <div class="wrap">
+  <div class="sx-head">
+   <div>
+    <p class="sx-kicker eyebrow" data-x>Architecture</p>
+    <h2 id="arH" data-split>A path from source event to a closed ledger</h2>
+   </div>
+   <div class="sx-head-aside"><p class="sx-lede lede" data-x>The same job, seen by your engineering team. Six components we design and build, so each failure surfaces at the stage it belongs to instead of as a generic error at month-end.</p></div>
   </div>
+  <div class="acx-path" data-acx-path>
+   <div class="acx-path-line" aria-hidden="true"><i></i><b class="acx-path-dot"></b></div>
+   <ol class="acx-path-nodes">
+    <li class="acx-node"><span class="acx-node-n">01</span><b>Source events</b><p>Invoices, payments, payouts, and credit notes from your product or ops platform.</p></li>
+    <li class="acx-node"><span class="acx-node-n">02</span><b>Queue &amp; workers</b><p>Idempotent jobs, backoff, and canaries. Retries that cannot duplicate a posting.</p></li>
+    <li class="acx-node"><span class="acx-node-n">03</span><b>QBO / Xero API</b><p>Direct calls to the public APIs, token refresh, and rate-limit handling per company or organization.</p></li>
+    <li class="acx-node"><span class="acx-node-n">04</span><b>Match engine</b><p>Amount, tax, entity, and currency compared with a readable delta.</p></li>
+    <li class="acx-node is-warn"><span class="acx-node-n">05</span><b>Exception queue</b><p>Operator triage with retry, confirm, or park, before close rather than after.</p></li>
+    <li class="acx-node"><span class="acx-node-n">06</span><b>Ledger + audit</b><p>Closed records and an attributable trail finance can keep.</p></li>
+   </ol>
+  </div>
+ </div>
 </section>
 
-<section class="acc-band" id="matrix" aria-labelledby="mxH">
-  <div class="wrap">
-    <div class="acc-head-photo">
-      <div>
-        <p class="eyebrow" data-r>Multi-entity accounting</p>
-        <h2 class="d2" id="mxH" data-r>Multi-entity, multi-currency, still one operator view</h2>
-        <p class="lede" data-r>When the books are not one company in one currency, the integration has to keep entities, currencies, and tax rules apart while finance still works from a single queue.</p>
-      </div>
-      <figure class="acc-photo" data-r>
-        <img src="/media/photos/accounting-close-notes.webp" alt="Notebooks, pens, and printed charts spread on a desk during a finance review." width="1600" height="1067" loading="lazy" decoding="async">
-        <figcaption class="story-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</figcaption>
-      </figure>
-    </div>
-    <div class="acc-matrix" data-s>
-      <article class="acc-card">
-        <span class="acc-k">Entities</span>
-        <h3>Each company file connected on its own</h3>
-        <p>A business that bills in several countries may run QuickBooks Online in the US and Xero in the UK or Australia. Each company or organization keeps its own connection and tokens; exceptions from all of them land in one queue.</p>
-        <div class="acc-entities">
-          <span>Acme US · QBO<b>USD</b></span>
-          <span>Acme UK · Xero<b>GBP</b></span>
-          <span>Acme EU · Xero<b>EUR</b></span>
-        </div>
-      </article>
-      <article class="acc-card">
-        <span class="acc-k">Currency</span>
-        <h3>FX lines with a readable delta</h3>
-        <p>We do not hide a conversion inside a "matched" tag. Operators see source currency, ledger currency, and the difference that needs a decision.</p>
-        <div class="acc-entities">
-          <span>Source amount<b>GBP 1,204.75</b></span>
-          <span>Ledger amount<b>USD 1,540.20</b></span>
-          <span>FX delta shown<b class="warn">Decision</b></span>
-        </div>
-      </article>
-      <article class="acc-card">
-        <span class="acc-k">Tax</span>
-        <h3>VAT and sales tax as mapping, not a guess</h3>
-        <p>Tax codes are signed off in discovery. A missing or wrong code is an exception type, not a silent post to the default account.</p>
-        <div class="acc-entities">
-          <span>UK VAT codes<b>Mapped</b></span>
-          <span>US sales tax<b>Mapped</b></span>
-          <span>Missing code<b class="warn">Exception</b></span>
-        </div>
-      </article>
-    </div>
+<section class="sx-sec acx-mx" id="matrix" aria-labelledby="mxH">
+ <div class="wrap">
+  <div class="acx-mx-head">
+   <div>
+    <p class="sx-kicker eyebrow" data-x>Multi-entity accounting</p>
+    <h2 id="mxH" data-split>Multi-entity, multi-currency, still one operator view</h2>
+    <p class="sx-lede lede" data-x>When the books are not one company in one currency, the integration has to keep entities, currencies, and tax rules apart while finance still works from a single queue.</p>
+   </div>
+   <figure class="acx-mx-photo" data-x>
+    <div class="acx-mx-img" data-acx-par><img src="/media/photos/accounting-close-notes.webp" alt="Notebooks, pens, and printed charts spread on a desk during a finance review." width="1600" height="1067" loading="lazy" decoding="async"></div>
+    <figcaption class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</figcaption>
+   </figure>
   </div>
+  <div class="acx-mx-grid" data-acx-mx>
+   <article class="acx-mx-card" data-x data-spot>
+    <span class="acx-mx-k">Entities</span>
+    <h3>Each company file connected on its own</h3>
+    <p>A business that bills in several countries may run QuickBooks Online in the US and Xero in the UK or Australia. Each company or organization keeps its own connection and tokens; exceptions from all of them land in one queue.</p>
+    <ul class="acx-rows">
+     <li><span><svg aria-hidden="true"><use href="#acx-qb"/></svg>Acme US · QBO</span><b>USD</b></li>
+     <li><span><svg aria-hidden="true"><use href="#acx-xero"/></svg>Acme UK · Xero</span><b>GBP</b></li>
+     <li><span><svg aria-hidden="true"><use href="#acx-xero"/></svg>Acme EU · Xero</span><b>EUR</b></li>
+    </ul>
+   </article>
+   <article class="acx-mx-card" data-x data-spot>
+    <span class="acx-mx-k">Currency</span>
+    <h3>FX lines with a readable delta</h3>
+    <p>We do not hide a conversion inside a "matched" tag. Operators see source currency, ledger currency, and the difference that needs a decision.</p>
+    <ul class="acx-rows">
+     <li><span>Source amount</span><b class="sx-tnum">GBP 1,204.75</b></li>
+     <li><span>Ledger amount</span><b class="sx-tnum">USD 1,540.20</b></li>
+     <li class="is-warn"><span>FX delta shown</span><b>Decision</b></li>
+    </ul>
+   </article>
+   <article class="acx-mx-card" data-x data-spot>
+    <span class="acx-mx-k">Tax</span>
+    <h3>VAT and sales tax as mapping, not a guess</h3>
+    <p>Tax codes are signed off in discovery. A missing or wrong code is an exception type, not a silent post to the default account.</p>
+    <ul class="acx-rows">
+     <li><span>UK VAT codes</span><b>Mapped</b></li>
+     <li><span>US sales tax</span><b>Mapped</b></li>
+     <li class="is-warn"><span>Missing code</span><b>Exception</b></li>
+    </ul>
+   </article>
+  </div>
+  <div class="acx-mx-queue" aria-hidden="true"><i class="acx-mx-wire"></i><i class="acx-mx-wire"></i><i class="acx-mx-wire"></i><p><b>One exception queue</b><span>US · UK · EU books</span></p></div>
+ </div>
 </section>
 
-<section id="proof" aria-labelledby="pfH">
-  <div class="wrap">
-    <p class="eyebrow" data-r>Related work</p>
-    <h2 class="d2" id="pfH" data-r>FinanceSync: a QuickBooks and Xero reconciliation hub</h2>
-    <div class="acc-proof-split" data-r>
-      <div>
-        <p class="lede">A representative project for a FinOps platform with UK and US books. QuickBooks and Xero sync drifted silently across entities, so finance stopped trusting automated postings before month-end.</p>
-        <dl class="acc-proof-steps">
-          <div><dt>Problem</dt><dd>Variances were found in spreadsheets after the fact, not in the product.</dd></div>
-          <div><dt>Approach</dt><dd>Idempotent QuickBooks and Xero sync workers for multi-entity books, with backoff for each platform's rate limits.</dd></div>
-          <div><dt>Operator view</dt><dd>Anomalies surfaced before close, with discrepancy cards that show human-readable deltas and remediation steps.</dd></div>
-        </dl>
-        <dl class="acc-scope">
-          <div><dt>Sector</dt><dd>FinOps platform · UK and US</dd></div>
-          <div><dt>Scope</dt><dd>QuickBooks and Xero sync, anomaly triage, operator dashboards</dd></div>
-        </dl>
-        <div class="proof-cta">
-          <a href="/work/finance-sync-hub" class="btn"><span>Read the FinanceSync case study</span><i>→</i></a>
-        </div>
-        <p class="proof-note">Representative project: it shows the kind of problem we take on and how we approach it. The project name may be a portfolio name, the interface is reconstructed, and we do not publish outcome figures for this case.</p>
+<section class="sx-sec acx-proof" id="proof" aria-labelledby="pfH">
+ <div class="wrap">
+  <div class="acx-case" data-x>
+   <div class="acx-case-copy">
+    <p class="sx-kicker eyebrow">Related work</p>
+    <h2 id="pfH">FinanceSync: a QuickBooks and Xero reconciliation hub</h2>
+    <p class="sx-lede lede">A representative project for a FinOps platform with UK and US books. QuickBooks and Xero sync drifted silently across entities, so finance stopped trusting automated postings before month-end.</p>
+    <dl class="acx-case-steps">
+     <div><dt>Problem</dt><dd>Variances were found in spreadsheets after the fact, not in the product.</dd></div>
+     <div><dt>Approach</dt><dd>Idempotent QuickBooks and Xero sync workers for multi-entity books, with backoff for each platform's rate limits.</dd></div>
+     <div><dt>Operator view</dt><dd>Anomalies surfaced before close, with discrepancy cards that show human-readable deltas and remediation steps.</dd></div>
+    </dl>
+    <dl class="acx-case-scope">
+     <div><dt>Sector</dt><dd>FinOps platform · UK and US</dd></div>
+     <div><dt>Scope</dt><dd>QuickBooks and Xero sync, anomaly triage, operator dashboards</dd></div>
+    </dl>
+    <a href="/work/finance-sync-hub" class="sx-btn" data-magnet data-cursor="Read" data-kriva-cta="proof_financesync"><span>Read the FinanceSync case study</span><i aria-hidden="true">→</i></a>
+    <p class="sx-note">Representative project: it shows the kind of problem we take on and how we approach it. The project name may be a portfolio name, the interface is reconstructed, and we do not publish outcome figures for this case.</p>
+   </div>
+   <figure class="acx-case-ui">
+    <div class="acx-case-panels">
+     <div class="acx-pu" role="img" aria-label="Illustrative FinanceSync close view: March close across QuickBooks, Xero, and bank, with 4 unmatched items, including INV-2041 short by 420 pounds, INV-2048 matched, and INV-2052 waiting to retry.">
+      <div class="acx-pu-bar">
+       <div>
+        <p class="acx-pu-title">March close</p>
+        <p class="acx-pu-meta">QuickBooks · Xero · bank</p>
+       </div>
+       <span class="acx-pu-chip is-warn">4 unmatched</span>
       </div>
-      <figure class="acc-proof-frame">
-        <div class="acc-proof-panels">
-          <div class="pu" role="img" aria-label="Illustrative FinanceSync close view: March close across QuickBooks, Xero, and bank, with 4 unmatched items, including INV-2041 short by 420 pounds, INV-2048 matched, and INV-2052 waiting to retry.">
-            <div class="pu-bar">
-              <div>
-                <p class="pu-title">March close</p>
-                <p class="pu-meta">QuickBooks · Xero · bank</p>
-              </div>
-              <span class="pu-chip warn">4 unmatched</span>
-            </div>
-            <ul class="pu-rows">
-              <li class="risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
-              <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
-              <li><b>INV-2052</b><span>QB &rarr; Xero</span><em>Retry</em></li>
-            </ul>
-          </div>
-          <div class="pu" role="img" aria-label="Illustrative FinanceSync worker status: QuickBooks US books, Xero UK books, and bank feed all running with idempotent retry.">
-            <div class="pu-bar">
-              <div>
-                <p class="pu-title">Sync workers</p>
-                <p class="pu-meta">Idempotent retry</p>
-              </div>
-              <span class="pu-chip ok">Running</span>
-            </div>
-            <ul class="pu-rows">
-              <li class="on"><b>QuickBooks</b><span>US books</span><em>Running</em></li>
-              <li class="on"><b>Xero</b><span>UK books</span><em>Running</em></li>
-              <li class="on"><b>Bank</b><span>Feed</span><em>Running</em></li>
-            </ul>
-          </div>
-        </div>
-        <figcaption class="acc-proof-demo"><span class="flag">Illustrative</span> Reconstructed interface from the FinanceSync case · no client data</figcaption>
-      </figure>
+      <ul class="acx-pu-rows">
+       <li class="is-risk"><b>INV-2041</b><span>QB &rarr; Bank</span><em>&minus;&pound;420</em></li>
+       <li><b>INV-2048</b><span>Xero &rarr; Bank</span><em>Match</em></li>
+       <li><b>INV-2052</b><span>QB &rarr; Xero</span><em>Retry</em></li>
+      </ul>
+     </div>
+     <div class="acx-pu" role="img" aria-label="Illustrative FinanceSync worker status: QuickBooks US books, Xero UK books, and bank feed all running with idempotent retry.">
+      <div class="acx-pu-bar">
+       <div>
+        <p class="acx-pu-title">Sync workers</p>
+        <p class="acx-pu-meta">Idempotent retry</p>
+       </div>
+       <span class="acx-pu-chip is-ok">Running</span>
+      </div>
+      <ul class="acx-pu-rows">
+       <li class="is-on"><b>QuickBooks</b><span>US books</span><em>Running</em></li>
+       <li class="is-on"><b>Xero</b><span>UK books</span><em>Running</em></li>
+       <li class="is-on"><b>Bank</b><span>Feed</span><em>Running</em></li>
+      </ul>
+     </div>
     </div>
+    <figcaption><span class="acx-flag">Illustrative</span> Reconstructed interface from the FinanceSync case · no client data</figcaption>
+   </figure>
   </div>
+ </div>
 </section>
 
-<section class="acc-band" id="process" aria-labelledby="prH">
-  <div class="wrap">
-    <div class="acc-head-photo">
-      <div>
-        <p class="eyebrow" data-r>Process</p>
-        <h2 class="d2" id="prH" data-r>How we deliver a connector finance will use</h2>
-        <p class="lede" data-r>Four phases, each closed by a sign-off your finance lead can read: data mapping, connector build, operator screens, and a parallel run on live books before cutover.</p>
-      </div>
-      <figure class="acc-photo" data-r>
-        <img src="/media/photos/finance-signature.webp" alt="A person signs a set of documents with a pen during a finance close." width="1600" height="1067" loading="lazy" decoding="async">
-        <figcaption class="story-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</figcaption>
-      </figure>
-    </div>
-    <ol class="acc-process" data-s>
-      <li>
-        <span class="wk">01</span>
-        <h3 class="d3">Data mapping</h3>
-        <p>Entities, tax codes, edge cases, and failure modes between your product and QBO or Xero. We do not start workers until mapping is signed.</p>
-        <span class="acc-gate">Mapping signed off</span>
-      </li>
-      <li>
-        <span class="wk">02</span>
-        <h3 class="d3">Connector build</h3>
-        <p>Sync jobs, webhooks, and retries against a QuickBooks sandbox company or a Xero demo organization. Staging must survive a forced timeout without duplicating a post.</p>
-        <span class="acc-gate">Staging validated</span>
-      </li>
-      <li>
-        <span class="wk">03</span>
-        <h3 class="d3">Operator UX</h3>
-        <p>Dashboards and alerts so finance can clear exceptions without engineering tickets. If they still Slack us to close a line, the UX is not done.</p>
-        <span class="acc-gate">Finance self-serve</span>
-      </li>
-      <li>
-        <span class="wk">04</span>
-        <h3 class="d3">Go-live &amp; monitor</h3>
-        <p>Parallel run against live books, reconciliation checks, and a monitoring playbook. Cutover only after a clean close cycle.</p>
-        <span class="acc-gate">Parallel run clean</span>
-      </li>
+<section class="sx-sec acx-deliv" id="process" aria-labelledby="prH">
+ <div class="wrap">
+  <div class="acx-deliv-head">
+   <div>
+    <p class="sx-kicker eyebrow" data-x>Process</p>
+    <h2 id="prH" data-split>How we deliver a connector finance will use</h2>
+    <p class="sx-lede lede" data-x>Four phases, each closed by a sign-off your finance lead can read: data mapping, connector build, operator screens, and a parallel run on live books before cutover.</p>
+   </div>
+   <figure class="acx-deliv-photo" data-x>
+    <div class="acx-deliv-img" data-acx-par><img src="/media/photos/finance-signature.webp" alt="A person signs a set of documents with a pen during a finance close." width="1600" height="1067" loading="lazy" decoding="async"></div>
+    <figcaption class="sx-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</figcaption>
+   </figure>
+  </div>
+  <div class="sx-steps-wrap" data-steps>
+   <div class="sx-steps-line" aria-hidden="true"><i></i></div>
+   <ol class="sx-steps">
+    <li><span class="sx-step-n">01</span><h3>Data mapping</h3><p>Entities, tax codes, edge cases, and failure modes between your product and QBO or Xero. We do not start workers until mapping is signed.</p><span class="acx-gate">Mapping signed off</span></li>
+    <li><span class="sx-step-n">02</span><h3>Connector build</h3><p>Sync jobs, webhooks, and retries against a QuickBooks sandbox company or a Xero demo organization. Staging must survive a forced timeout without duplicating a post.</p><span class="acx-gate">Staging validated</span></li>
+    <li><span class="sx-step-n">03</span><h3>Operator UX</h3><p>Dashboards and alerts so finance can clear exceptions without engineering tickets. If they still Slack us to close a line, the UX is not done.</p><span class="acx-gate">Finance self-serve</span></li>
+    <li><span class="sx-step-n">04</span><h3>Go-live &amp; monitor</h3><p>Parallel run against live books, reconciliation checks, and a monitoring playbook. Cutover only after a clean close cycle.</p><span class="acx-gate">Parallel run clean</span></li>
+   </ol>
+  </div>
+ </div>
+</section>
+
+<section class="sx-sec sx-faq" id="faq" aria-labelledby="faqH">
+ <div class="wrap sx-faq-grid">
+  <div class="sx-faq-head">
+   <p class="sx-kicker eyebrow" data-x>FAQ</p>
+   <h2 id="faqH" data-split>About QuickBooks &amp; Xero integrations</h2>
+   <p class="sx-lede lede" data-x>Asked most often by finance and engineering leads before a first call.</p>
+  </div>
+  <div class="sx-faq-list">
+   <details><summary id="faqb1">QuickBooks Desktop or QuickBooks Online?</summary><p class="sx-a">We build against QuickBooks Online through Intuit's public API. QuickBooks Desktop uses a different integration route and is not what this page covers; if you are on Desktop, tell us on the fit call and we will say plainly whether we can help. Xero is a cloud API only.</p></details>
+   <details><summary id="faqb2">Can you sync both Xero and QuickBooks for different regions?</summary><p class="sx-a">Yes. Multi-region billing with separate connectors and a unified operator dashboard is a common SaaS pattern: QBO for US entities, Xero for UK, one exception queue.</p></details>
+   <details><summary id="faqb3">How do you handle sync failures?</summary><p class="sx-a">Every job logs errors, retries with backoff and source-record keys so a retry cannot double-post, and surfaces exceptions in an operator dashboard with a next step. Expired or revoked authorizations show up as a reconnect task, not a silent stall. Failures are visible before close, not after.</p></details>
+   <details><summary id="faqb4">How is this different from your API integrations service?</summary><p class="sx-a"><a href="/services/api-integrations">API integrations</a> covers CRM, payments, ELD, and general connectors. This page is the finance-specific solution: QuickBooks, Xero, matching, the close, and the operator screens around exceptions. Many products need both.</p></details>
+   <details><summary id="faqb5">How long does a typical integration take?</summary><p class="sx-a">A focused QBO or Xero connector with operator UX usually takes weeks, not days: mapping sign-off, a build against a sandbox, and a parallel run on live books. Production access also depends on Intuit's app assessment for QuickBooks and Xero's connection limits for new apps. Dual-region or multi-entity setups run longer. We give a real range on the first call, not a padded one.</p></details>
+   <details><summary id="faqb6">Stripe or payment processor sync?</summary><p class="sx-a">Yes, as source events. Payments and payouts from a processor such as Stripe enter the same queue as invoices and are matched in the ledger. Building the payment connector itself is covered under <a href="/services/api-integrations">API integrations</a>; the matching and close screens are covered here.</p></details>
+   <details><summary id="faqb7">What data can a QuickBooks or Xero integration sync?</summary><p class="sx-a">Typically invoices, payments, credit notes, customers or contacts, and the account, item, and tax codes they depend on. In QuickBooks Online that can include bills and vendors; in Xero, bank transactions and tracking categories. The exact list, and which system is the source of truth for each record, is agreed and signed off during data mapping.</p></details>
+   <details><summary id="faqb8">How is pricing structured?</summary><p class="sx-a">Fixed-scope projects, monthly retainers, or sprint-based work. Everything is scoped after discovery, with deliverables and milestones agreed upfront, so you know the cost before the build starts. You own the code and documentation at handover.</p></details>
+  </div>
+ </div>
+</section>
+
+<section class="sx-related" aria-labelledby="relH">
+ <div class="wrap">
+  <div class="sx-related-in">
+   <h2 id="relH">Related guides, services, and work</h2>
+   <nav class="sx-pills" aria-label="Related guides, services, and work">
+    <a href="/insights/quickbooks-xero-integration-guide">QuickBooks and Xero integration guide</a>
+    <a href="/work/finance-sync-hub">FinanceSync reconciliation case study</a>
+    <a href="/solutions/saas">SaaS product development</a>
+    <a href="/services/api-integrations">API integration services</a>
+    <a href="/services/dashboard-design">Finance and operations dashboards</a>
+    <a href="/markets/uk">Software development for UK teams</a>
+    <a href="/markets/au">Software development for Australian teams</a>
+   </nav>
+  </div>
+ </div>
+</section>
+
+<section class="sx-inq" id="inquire" aria-labelledby="inqH" data-dark>
+ <div class="wrap sx-inq-grid inq-grid">
+  <div class="inq-copy">
+   <p class="sx-kicker eyebrow">Start a conversation</p>
+   <h2 id="inqH">Tell us where your close breaks.</h2>
+   <p class="sx-lede lede">Name the source system, whether you run QuickBooks Online, Xero, or both, and where matching breaks. We reply with whether you need a new connector, better operator screens, or both.</p>
+   <ul class="sx-trust">
+    <li>Reply within one business day</li>
+    <li>Mutual NDA available on request before sharing confidential project information.</li>
+    <li>No obligation</li>
+   </ul>
+   <aside class="sx-start sx-start--inq" aria-label="How a project starts">
+    <p class="sx-start-k">How a project starts</p>
+    <ol class="sx-start-steps">
+     <li><b>Free 20-minute fit call</b>You leave with a clear yes, no, or not yet.</li>
+     <li><b>Discovery, 1 to 2 weeks</b>A scoped brief and timeline you sign off.</li>
+     <li><b>Design and build</b>Working software on a real URL every week.</li>
     </ol>
-  </div>
-</section>
-
-<section class="faq-sec" id="faq" aria-labelledby="faqH">
-  <div class="wrap faq-grid">
-    <div class="faq-side">
-      <p class="eyebrow" data-r>FAQ</p>
-      <h2 class="d2" id="faqH" data-r>About QuickBooks &amp; Xero integrations</h2>
-      <p class="lede" data-r>Asked most often by finance and engineering leads before a first call.</p>
+    <div class="sx-start-side">
+     <p class="sx-start-bring"><b>Bring to the call:</b> Which books you run, QuickBooks, Xero, or both, and where the numbers stop matching.</p>
+     <a class="sx-link" href="/process">See the full process <i aria-hidden="true">→</i></a>
     </div>
-    <div class="faq-list" data-r>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa1" id="faqb1">
-          <span class="qn num">01</span>
-          <span class="qt">QuickBooks Desktop or QuickBooks Online?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa1" role="region" aria-labelledby="faqb1"><div><div class="faq-a-in">
-          <p>We build against QuickBooks Online through Intuit's public API. QuickBooks Desktop uses a different integration route and is not what this page covers; if you are on Desktop, tell us on the fit call and we will say plainly whether we can help. Xero is a cloud API only.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa2" id="faqb2">
-          <span class="qn num">02</span>
-          <span class="qt">Can you sync both Xero and QuickBooks for different regions?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa2" role="region" aria-labelledby="faqb2"><div><div class="faq-a-in">
-          <p>Yes. Multi-region billing with separate connectors and a unified operator dashboard is a common SaaS pattern: QBO for US entities, Xero for UK, one exception queue.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa3" id="faqb3">
-          <span class="qn num">03</span>
-          <span class="qt">How do you handle sync failures?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa3" role="region" aria-labelledby="faqb3"><div><div class="faq-a-in">
-          <p>Every job logs errors, retries with backoff and source-record keys so a retry cannot double-post, and surfaces exceptions in an operator dashboard with a next step. Expired or revoked authorizations show up as a reconnect task, not a silent stall. Failures are visible before close, not after.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa4" id="faqb4">
-          <span class="qn num">04</span>
-          <span class="qt">How is this different from your API integrations service?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa4" role="region" aria-labelledby="faqb4"><div><div class="faq-a-in">
-          <p><a href="/services/api-integrations">API integrations</a> covers CRM, payments, ELD, and general connectors. This page is the finance-specific solution: QuickBooks, Xero, matching, the close, and the operator screens around exceptions. Many products need both.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa5" id="faqb5">
-          <span class="qn num">05</span>
-          <span class="qt">How long does a typical integration take?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa5" role="region" aria-labelledby="faqb5"><div><div class="faq-a-in">
-          <p>A focused QBO or Xero connector with operator UX usually takes weeks, not days: mapping sign-off, a build against a sandbox, and a parallel run on live books. Production access also depends on Intuit's app assessment for QuickBooks and Xero's connection limits for new apps. Dual-region or multi-entity setups run longer. We give a real range on the first call, not a padded one.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa6" id="faqb6">
-          <span class="qn num">06</span>
-          <span class="qt">Stripe or payment processor sync?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa6" role="region" aria-labelledby="faqb6"><div><div class="faq-a-in">
-          <p>Yes, as source events. Payments and payouts from a processor such as Stripe enter the same queue as invoices and are matched in the ledger. Building the payment connector itself is covered under <a href="/services/api-integrations">API integrations</a>; the matching and close screens are covered here.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa7" id="faqb7">
-          <span class="qn num">07</span>
-          <span class="qt">What data can a QuickBooks or Xero integration sync?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa7" role="region" aria-labelledby="faqb7"><div><div class="faq-a-in">
-          <p>Typically invoices, payments, credit notes, customers or contacts, and the account, item, and tax codes they depend on. In QuickBooks Online that can include bills and vendors; in Xero, bank transactions and tracking categories. The exact list, and which system is the source of truth for each record, is agreed and signed off during data mapping.</p>
-        </div></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fa8" id="faqb8">
-          <span class="qn num">08</span>
-          <span class="qt">How is pricing structured?</span>
-          <span class="qi" aria-hidden="true"></span>
-        </button>
-        <div class="faq-a" id="fa8" role="region" aria-labelledby="faqb8"><div><div class="faq-a-in">
-          <p>Fixed-scope projects, monthly retainers, or sprint-based work. Everything is scoped after discovery, with deliverables and milestones agreed upfront, so you know the cost before the build starts. You own the code and documentation at handover.</p>
-        </div></div></div>
-      </div>
+   </aside>
+  </div>
+  <div>
+   <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
+    <input type="hidden" name="inquiry_type" value="page_inquiry">
+    <input type="hidden" name="page" value="/solutions/accounting-integrations">
+    <input type="hidden" name="service" value="QuickBooks &amp; Xero Integrations">
+    <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
+    <div class="inq-row">
+     <div>
+      <label for="inq-name">Name <span class="req">Required</span></label>
+      <input id="inq-name" name="name" required autocomplete="name">
+      <p class="inq-err" id="inq-name-err">Enter your name.</p>
+     </div>
+     <div>
+      <label for="inq-email">Work email <span class="req">Required</span></label>
+      <input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email">
+      <p class="inq-err" id="inq-email-err">Enter a valid work email.</p>
+     </div>
     </div>
-  </div>
-</section>
-
-<section class="acc-related" aria-labelledby="relH">
-  <div class="wrap">
-    <h2 class="acc-related-h" id="relH">Related guides, services, and work</h2>
-    <nav class="acc-rel" aria-label="Related guides, services, and work">
-      <a href="/insights/quickbooks-xero-integration-guide">QuickBooks and Xero integration guide</a>
-      <a href="/work/finance-sync-hub">FinanceSync reconciliation case study</a>
-      <a href="/solutions/saas">SaaS product development</a>
-      <a href="/services/api-integrations">API integration services</a>
-      <a href="/services/dashboard-design">Finance and operations dashboards</a>
-      <a href="/markets/uk">Software development for UK teams</a>
-      <a href="/markets/au">Software development for Australian teams</a>
-    </nav>
-  </div>
-</section>
-
-<section class="acc-contact" id="inquire" aria-labelledby="inqH">
-  <div class="wrap inq-grid">
-    <div class="inq-copy">
-      <p class="eyebrow">Start a conversation</p>
-      <h2 class="d2" id="inqH">Tell us where your close breaks.</h2>
-      <p class="lede">Name the source system, whether you run QuickBooks Online, Xero, or both, and where matching breaks. We reply with whether you need a new connector, better operator screens, or both.</p>
-      <p class="acc-trust">
-        <span>Reply within one business day</span>
-        <span>Mutual NDA available on request before sharing confidential project information.</span>
-        <span>No obligation</span>
-      </p>
+    <div class="inq-row">
+     <div>
+      <label for="inq-company">Company <span class="opt">Optional</span></label>
+      <input id="inq-company" name="company" autocomplete="organization">
+     </div>
+     <div>
+      <label for="inq-phone">Phone <span class="opt">Optional</span></label>
+      <input id="inq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+     </div>
     </div>
     <div>
-      <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
-        <input type="hidden" name="inquiry_type" value="page_inquiry">
-        <input type="hidden" name="page" value="/solutions/accounting-integrations">
-        <input type="hidden" name="service" value="QuickBooks &amp; Xero Integrations">
-        <p class="inq-hp"><label>Leave blank <input name="website_hp" tabindex="-1" autocomplete="off"></label></p>
-        <div class="inq-row">
-          <div>
-            <label for="inq-name">Name <span class="req">Required</span></label>
-            <input id="inq-name" name="name" required autocomplete="name">
-            <p class="inq-err" id="inq-name-err">Enter your name.</p>
-          </div>
-          <div>
-            <label for="inq-email">Work email <span class="req">Required</span></label>
-            <input id="inq-email" name="email" type="email" required autocomplete="email" inputmode="email">
-            <p class="inq-err" id="inq-email-err">Enter a valid work email.</p>
-          </div>
-        </div>
-        <div class="inq-row">
-          <div>
-            <label for="inq-company">Company <span class="opt">Optional</span></label>
-            <input id="inq-company" name="company" autocomplete="organization">
-          </div>
-          <div>
-            <label for="inq-phone">Phone <span class="opt">Optional</span></label>
-            <input id="inq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
-          </div>
-        </div>
-        <div>
-          <label for="inq-details">What do you need help with? <span class="req">Required</span></label>
-          <textarea id="inq-details" name="details" required rows="4" placeholder="Example: invoices sync, payments duplicate, and the close still needs a spreadsheet to match exceptions." aria-describedby="inq-details-hint"></textarea>
-          <p class="inq-hint" id="inq-details-hint">A few sentences on the source system, the ledger, and where the close breaks is enough.</p>
-          <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
-        </div>
-        <p class="inq-fail" role="alert"></p>
-        <div class="inq-actions">
-          <button type="submit" class="btn"><span class="inq-submit-label">Send inquiry</span><i>→</i></button>
-          <p class="inq-note">Private · not shared</p>
-        </div>
-        <p class="inq-status" data-inq-status aria-live="polite"></p>
-      </form>
-      <div class="inq-done" tabindex="-1">
-        <h3>Inquiry received.</h3>
-        <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
-      </div>
+     <label for="inq-details">What do you need help with? <span class="req">Required</span></label>
+     <textarea id="inq-details" name="details" required rows="4" placeholder="Example: invoices sync, payments duplicate, and the close still needs a spreadsheet to match exceptions." aria-describedby="inq-details-hint"></textarea>
+     <p class="inq-hint" id="inq-details-hint">A few sentences on the source system, the ledger, and where the close breaks is enough.</p>
+     <p class="inq-err" id="inq-details-err">Add enough detail for us to reply usefully.</p>
     </div>
+    <p class="inq-fail" role="alert"></p>
+    <div class="inq-actions">
+     <button type="submit" class="btn"><span class="inq-submit-label">Send inquiry</span><i>→</i></button>
+     <p class="inq-note">Private · not shared</p>
+    </div>
+    <p class="inq-status" data-inq-status aria-live="polite"></p>
+   </form>
+   <div class="inq-done" tabindex="-1">
+    <h3>Inquiry received.</h3>
+    <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+   </div>
   </div>
+ </div>
 </section>
 
 </main>
@@ -1074,138 +1014,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </footer>
 
-
-<script>
-(function(){
-'use strict';
-const reduce=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
-const readers=[]; let ticking=false;
-const onScroll=()=>{ if(!ticking){ requestAnimationFrame(run); ticking=true; } };
-function run(){ const y=scrollY; for(const r of readers) r(y); ticking=false; }
-addEventListener('scroll', onScroll, {passive:true});
-addEventListener('resize', onScroll, {passive:true});
-const io=new IntersectionObserver(es=>{
-  for(const e of es){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }
-},{threshold:.12, rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>{
-  if(el.hasAttribute('data-mask')) el.classList.add('mask');
-  io.observe(el);
-});
-const bar=document.getElementById('progress');
-if(bar) readers.push(y=>{
-  const h=document.documentElement.scrollHeight-innerHeight;
-  bar.style.transform='scaleX('+(h>0?Math.min(1,y/h):0)+')';
-});
-const chLinks=[...document.querySelectorAll('#chapters a')];
-const chTargets=chLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-const chRail=document.getElementById('chapters');
-if(chRail) readers.push(y=>chRail.classList.toggle('show', y>420));
-const chIO=new IntersectionObserver(es=>{
-  for(const e of es){
-    if(!e.isIntersecting) continue;
-    const i=chTargets.indexOf(e.target);
-    chLinks.forEach((a,j)=>a.setAttribute('aria-current', j===i?'true':'false'));
-  }
-},{rootMargin:'-40% 0px -55% 0px'});
-chTargets.forEach(t=>chIO.observe(t));
-
-const mob=[...document.querySelectorAll('#mobChips a')];
-if(mob.length){
-  const mobIO=new IntersectionObserver(es=>{
-    for(const e of es){
-      if(!e.isIntersecting) continue;
-      const id=e.target.id;
-      mob.forEach(a=>a.setAttribute('aria-current', a.getAttribute('href')==='#'+id?'true':'false'));
-    }
-  },{rootMargin:'-35% 0px -55% 0px'});
-  chTargets.forEach(t=>mobIO.observe(t));
-}
-
-const flow=document.getElementById('flow');
-if(flow){
-  new IntersectionObserver((es,o)=>{ if(es[0].isIntersecting){ flow.classList.add('in'); o.disconnect(); } },{threshold:.3}).observe(flow);
-}
-
-const lg=document.getElementById('lg');
-const beats=[...document.querySelectorAll('.acc-beat')];
-const auditItems=[...document.querySelectorAll('#auditLog li')];
-const pips=[...document.querySelectorAll('#pips i')];
-const tags={};
-['a','b','c','d'].forEach(k=>tags[k]=document.querySelector('[data-rec="'+k+'"]'));
-const el=id=>document.getElementById(id);
-
-const S={
-  1:{job:'queued',    lbl:'Import',  p:.2,  val:'248 / 248', clean:['Imported','t-idle'],  ex:['Imported','t-idle'], label:'Imported'},
-  2:{job:'running',   lbl:'Validate',p:.45, val:'248 / 248', clean:['Validated','t-sync'], ex:['Validated','t-sync'],label:'Validated'},
-  3:{job:'running',   lbl:'Match',   p:.72, val:'247 / 248', clean:['Matched','t-ok'],     ex:['Matching','t-sync'], label:'Matched'},
-  4:{job:'exception', lbl:'Match',   p:.72, val:'247 / 248', clean:['Matched','t-ok'],     ex:['Exception','t-warn'],label:'Exception detected'},
-  5:{job:'retrying',  lbl:'Review',  p:.88, val:'247 / 248', clean:['Matched','t-ok'],     ex:['In review','t-warn'],label:'Operator review'},
-  6:{job:'resolved',  lbl:'Close',   p:1,   val:'248 / 248', clean:['Matched','t-ok'],     ex:['Reconciled','t-ok'], label:'Reconciled'},
-  7:{job:'closed',    lbl:'Audit',   p:1,   val:'248 / 248', clean:['Matched','t-ok'],     ex:['Reconciled','t-ok'], label:'Audit trail written'}
-};
-
-let state=0;
-function setState(n){
-  if(!lg||n===state) return;
-  state=n;
-  const s=S[n]; if(!s) return;
-  lg.dataset.state=n;
-  const jobState=el('jobState'); if(jobState) jobState.textContent=s.job;
-  const syncLbl=el('syncLbl'); if(syncLbl) syncLbl.textContent=s.lbl;
-  const syncVal=el('syncVal'); if(syncVal) syncVal.textContent=s.val;
-  const syncTrack=el('syncTrack'); if(syncTrack) syncTrack.style.setProperty('--p', s.p);
-  ['a','b','d'].forEach(k=>{ if(tags[k]){ tags[k].textContent=s.clean[0]; tags[k].className='acc-tag '+s.clean[1]; } });
-  if(tags.c){ tags.c.textContent=s.ex[0]; tags.c.className='acc-tag '+s.ex[1]; }
-  const amtC=el('amtC'); if(amtC) amtC.textContent=n>=6?'1,240.75':'1,204.75';
-  const exTitle=el('exTitle');
-  const exBody=el('exBody');
-  if(n>=5){
-    if(exTitle) exTitle.textContent='Exception · queued for operator review';
-    if(exBody) exBody.textContent='Retry did not clear · finance to confirm correct value';
-  } else {
-    if(exTitle) exTitle.textContent='Exception · amount variance on INV-2293';
-    if(exBody) exBody.textContent='Source 1,204.75 · ledger 1,240.75 · transposition suspected';
-  }
-  auditItems.forEach(li=>li.classList.toggle('on', +li.dataset.from<=n));
-  pips.forEach((p,i)=>{
-    p.classList.remove('on','done','warn');
-    if(i<n-1) p.classList.add('done');
-    else if(i===n-1) p.classList.add(n===4||n===5?'warn':'on');
-  });
-  const announce=el('announce');
-  if(announce) announce.textContent='Stage '+n+' of 7: '+s.label;
-}
-
-if(lg&&beats.length){
-  const bIO=new IntersectionObserver(es=>{
-    for(const e of es){
-      if(!e.isIntersecting) continue;
-      beats.forEach(b=>b.classList.toggle('on', b===e.target));
-      setState(+e.target.dataset.beat);
-    }
-  },{rootMargin:'-45% 0px -45% 0px'});
-  beats.forEach(b=>bIO.observe(b));
-  setState(1);
-}
-
-document.querySelectorAll('.faq-q').forEach(btn=>{
-  const item=btn.closest('.faq-item');
-  btn.addEventListener('click',()=>{
-    const open=btn.getAttribute('aria-expanded')==='true';
-    document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(o=>{
-      if(o===btn) return;
-      o.setAttribute('aria-expanded','false');
-      o.closest('.faq-item').classList.remove('open');
-    });
-    btn.setAttribute('aria-expanded', String(!open));
-    item.classList.toggle('open', !open);
-  });
-});
-
-if(reduce()) document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>el.classList.add('in'));
-run();
-})();
-</script>
+<div class="sx-cursor" aria-hidden="true"><i class="sx-cursor-dot"></i><i class="sx-cursor-ring"><b></b></i></div>
+<script src="/shared/solutions-x.js?v=sx1" defer></script>
+<script src="/shared/solutions-x-acc.js?v=1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
 <script type="application/ld+json">
