@@ -494,18 +494,18 @@ const truckMain = `
       <h2 id="work">Sites we have designed</h2>
       ${proof([
         {
-          href: "https://schwarzlogistics.com",
-          src: "/media/work/web/schwarz-logistics-800.webp",
-          alt: "Schwarz Logistics website homepage, an asset-based trucking carrier site designed by KRIVA",
-          title: "Schwarz Logistics",
-          text: "Fleet services and a quote-led homepage for an asset-based carrier. Opens the live site.",
-        },
-        {
           href: "https://elite-one.us",
           src: "/media/work/web/eliteone-transportation-800.webp",
           alt: "EliteOne Transportation website homepage, a heavy-haul carrier site designed by KRIVA",
           title: "EliteOne Transportation",
           text: "A quote-led site for a Tacoma heavy-haul carrier. Opens the live site.",
+        },
+        {
+          href: "https://schwarzlogistics.com",
+          src: "/media/work/web/schwarz-logistics-800.webp",
+          alt: "Schwarz Logistics website homepage, an asset-based trucking carrier site designed by KRIVA",
+          title: "Schwarz Logistics",
+          text: "Fleet services and a quote-led homepage for an asset-based carrier. Opens the live site.",
         },
       ])}
 

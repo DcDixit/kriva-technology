@@ -41,7 +41,8 @@ const SHOTS = ['eliteone-transportation', 'schwarz-logistics', 'keep-moving', 'e
 const DOMAINS = ['elite-one.us', 'schwarzlogistics.com', 'keepmovingus.com', 'xtramilemovers.com', 'xmileautotransport.com', 'fitnesskeepmoving.com', 'cascadiacollection.com'];
 const tile = (i) => `<div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>${DOMAINS[i]}</span></div><img src="/media/work/web/${SHOTS[i]}-800.webp" alt="" width="800" height="500" decoding="async"${i > 2 ? ' loading="lazy"' : ''}></div>`;
 const col = (order) => { const t = order.map(tile).join(''); return `<div class="wx-col"><div class="wx-track">${t}${t}</div></div>`; };
-const NAMES = ['ShiftRail', 'PayrollPro', 'FinanceSync', 'HealthTrack', 'CRMPulse', 'SupportAI', 'LocalServe', 'BrandLift', 'EliteOne', 'Schwarz Logistics', 'Keep Moving', 'Extra Mile Movers', 'Xmile Group', 'Keep Moving Fitness', 'Cascadia Collection'];
+// Client order rule: EliteOne always first, Schwarz Logistics always last.
+const NAMES = ['EliteOne', 'ShiftRail', 'PayrollPro', 'FinanceSync', 'HealthTrack', 'CRMPulse', 'SupportAI', 'LocalServe', 'BrandLift', 'Keep Moving', 'Extra Mile Movers', 'Xmile Group', 'Keep Moving Fitness', 'Cascadia Collection', 'Schwarz Logistics'];
 const run = NAMES.map((n) => `<span>${n}</span><i></i>`).join('');
 
 cut(`<header class="hero hero--inner" id="overview"`, `<section class="wk-index" aria-label="Published work">`, `<header class="wx-hero" id="overview" aria-labelledby="h1" data-dark>
@@ -69,7 +70,7 @@ cut(`<header class="hero hero--inner" id="overview"`, `<section class="wk-index"
       <div class="wx-reel" aria-hidden="true">
         <div class="wx-reel-in">
           ${col([0, 2, 4, 6])}
-          ${col([1, 3, 5, 0])}
+          ${col([3, 5, 0, 1])}
           ${col([4, 6, 2, 3])}
         </div>
       </div>
@@ -181,7 +182,7 @@ cut(`<section class="story story--split story--flip wk-how"`, `</main>`, `<secti
     </div>
     <div class="wx-read-main">
       <nav class="wk-markets wx-markets" aria-label="Solutions related to this work">
-        <a class="wx-mk" data-x href="/solutions/trucking-logistics"><u aria-hidden="true">01</u><b>Trucking software</b><span>ShiftRail · EliteOne · Schwarz</span>${ARROW}</a>
+        <a class="wx-mk" data-x href="/solutions/trucking-logistics"><u aria-hidden="true">01</u><b>Trucking software</b><span>EliteOne · ShiftRail · Schwarz</span>${ARROW}</a>
         <a class="wx-mk" data-x href="/solutions/saas"><u aria-hidden="true">02</u><b>SaaS product development</b><span>PayrollPro · CRMPulse · SupportAI</span>${ARROW}</a>
         <a class="wx-mk" data-x href="/solutions/accounting-integrations"><u aria-hidden="true">03</u><b>QuickBooks and Xero integrations</b><span>FinanceSync</span>${ARROW}</a>
         <a class="wx-mk" data-x href="/solutions/car-transportation"><u aria-hidden="true">04</u><b>Auto transport software</b><span>Xmile Group</span>${ARROW}</a>

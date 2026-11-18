@@ -580,6 +580,29 @@ body.hx main .x-also li a:hover{color:#fff}
 .hx section#inquire .inq-form input:focus,.hx section#inquire .inq-form select:focus,.hx section#inquire .inq-form textarea:focus{box-shadow:0 0 0 4px rgba(79,70,229,.18)}
 @media (max-width:900px){.hx .x-inq-grid{grid-template-columns:1fr}}
 
+/* ───────── Client logos band (under the hero) ─────────
+   Order is fixed by the owner: EliteOne first, Schwarz Logistics last. Logos keep their
+   official colours on white. --h on each <img> is an optical height (area-balanced). */
+.hx .x-clients{position:relative;background:#fff;padding-block:clamp(48px,6vw,80px) clamp(40px,5vw,64px);border-bottom:1px solid var(--rule,#E6E8EC)}
+.hx .x-clients-h{margin:0 auto clamp(28px,3.4vw,44px);max-width:44ch;text-align:center;font-size:12.5px;font-weight:650!important;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-2,#5B6470)}
+.hx .x-clients-row{list-style:none;margin:0;padding:0;display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:32px}
+.hx .x-client{flex:0 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;min-height:64px;margin:0;padding:0}
+.hx .x-client img{display:block;height:var(--h,40px);width:auto;max-width:100%;object-fit:contain}
+.hx .x-clients-more{margin:clamp(28px,3.4vw,40px) 0 0;text-align:center;font-size:15px;line-height:1.5}
+.hx .x-clients-link{color:var(--x-ink);font-weight:650;text-decoration:underline;text-decoration-color:rgba(15,28,46,.25);text-underline-offset:4px;text-decoration-thickness:1px;transition:color .25s,text-decoration-color .25s}
+.hx .x-clients-link i{display:inline-block;margin-left:8px;font-style:normal;text-decoration:none;transition:transform .4s var(--x-e)}
+.hx .x-clients-link:hover{color:var(--x-indigo);text-decoration-color:currentColor}
+.hx .x-clients-link:hover i{transform:translateX(4px)}
+@media (max-width:1279px){
+  .hx .x-clients-row{flex-wrap:wrap;justify-content:center;gap:28px 40px}
+  .hx .x-client{flex:0 0 calc(25% - 30px)}
+}
+@media (max-width:639px){
+  .hx .x-clients-row{gap:24px 24px}
+  .hx .x-client{flex:0 0 calc(50% - 12px);min-height:56px}
+  .hx .x-client img{height:calc(var(--h,40px) * .88)}
+}
+
 /* ───────── Reduced motion: everything static and visible ───────── */
 @media (prefers-reduced-motion:reduce){
   .hx *,.hx *::before,.hx *::after{animation:none!important;transition-duration:.01ms!important}
