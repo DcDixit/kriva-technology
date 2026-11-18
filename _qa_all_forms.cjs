@@ -79,7 +79,7 @@ const submit = (page, form) =>
           const text = scope.innerText || "";
           return {
             invalid: f.querySelectorAll('[aria-invalid="true"]').length,
-            success: /thank you|has been (sent|submitted)|received/i.test(text) && (f.classList.contains("sent") || !vis(f) || [...scope.querySelectorAll(".inq-done.on,.done.on,.success.on,[data-done].on")].some(vis)),
+            success: /thank you|has been (sent|submitted)|received|accepted/i.test(text) && (f.classList.contains("sent") || !vis(f) || [...scope.querySelectorAll(".inq-done.on,.done.on,.success.on,[data-done].on")].some(vis)),
             mail: [...scope.querySelectorAll('a[href^="mailto:"]')].some((a) => a.href.includes("subject=") && vis(a)),
           };
         }, form);

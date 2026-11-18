@@ -43,14 +43,15 @@ function postJson(path, payload) {
 function assertNoSecrets(raw) {
  const text = String(raw || "");
  const forbidden = [
- process.env.GMAIL_APP_PASSWORD, process.env.RESEND_API_KEY, process.env.WEB3FORMS_ACCESS_KEY, "formsubmit.co", ].filter(Boolean);
+ process.env.GMAIL_APP_PASSWORD, process.env.WEB3FORMS_ACCESS_KEY, "formsubmit.co", ].filter(Boolean);
  for (const secret of forbidden) {
  if (text.includes(secret)) {
  throw new Error("response leaked a secret or FormSubmit URL");
  }
  }
- if (/krivatechnlogies@gmail\.com/i.test(text)) {
- throw new Error("response leaked private Gmail user");
+ const smtpUser = String(process.env.GMAIL_USER || "").trim();
+ if (smtpUser && !/^hello@krivatechnologies\.com$/i.test(smtpUser) && text.includes(smtpUser)) {
+ throw new Error("response leaked the private SMTP user");
  }
 }
 

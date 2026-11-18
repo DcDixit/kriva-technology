@@ -151,7 +151,7 @@ Correction stands.)
 
 **17 services:** product-design, ui-ux-design, ux-research, wireframing-prototyping, design-systems, mobile-applications, web-application-design, saas-platforms, dashboard-design, crm-development, branding, logo-design, web-development, api-integrations, ai-assisted-development, no-code-low-code, automation-systems.
 
-**Contact facts:** krivatechnlogies@gmail.com · +91 97244 54455 · WhatsApp wa.me/919724454455 ·
+**Contact facts:** hello@krivatechnologies.com · +91 97244 54455 · WhatsApp wa.me/919724454455 ·
 511 - I The Address, Ahmedabad, Gujarat 380060, IN · "reply within one business day" ·
 NDA on request · no commitment required · **no self-serve calendar exists**.
 

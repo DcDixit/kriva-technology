@@ -33,8 +33,8 @@
   }
 
   /* True only when a provider accepts the message.
-     Gmail or Resend: /api/inquiry returns ok and a channel name. That is SMTP or API
-     acceptance, not proof the message is sitting in the inbox.
+     Gmail: /api/inquiry returns ok and a channel name. That is SMTP acceptance,
+     not proof the message is sitting in the inbox.
      Web3Forms: its API returns success true. The access key is a public form key.
      A cross-origin FormSubmit load cannot be confirmed, so it is not used. */
   async function sendInquiry(payload) {

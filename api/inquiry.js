@@ -510,36 +510,6 @@ async function sendViaGmail(data) {
   throw lastErr || new Error("gmail send failed");
 }
 
-function envConfigured(name) {
-  return Boolean(String(process.env[name] || "").trim());
-}
-
-async function sendViaResend(data) {
-  if (!envConfigured("RESEND_API_KEY")) return null;
-  const email = field(data, "email");
-  const { text, html, subject } = buildMessage(data);
-  const payload = {
-    from: process.env.RESEND_FROM || "KRIVA <onboarding@resend.dev>",
-    to: [TO],
-    reply_to: email,
-    subject,
-    text,
-    html,
-  };
-  const cc = ccRecipients();
-  if (cc.length) payload.cc = cc;
-  const r = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: "Bearer " + process.env.RESEND_API_KEY,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-  if (!r.ok) throw new Error("resend " + r.status);
-  return { channel: "resend" };
-}
-
 async function deliver(data) {
   let gmailIssue = "";
   try {
@@ -548,24 +518,9 @@ async function deliver(data) {
     gmailIssue = gmailCredentialIssue() || "gmail_unavailable";
   } catch (err) {
     gmailIssue = "smtp_rejected";
-    console.error("inquiry send failed (gmail), trying optional backup:", smtpErrorMeta(err));
+    console.error("inquiry send failed (gmail):", smtpErrorMeta(err));
   }
-
-  const resendConfigured = envConfigured("RESEND_API_KEY");
-  if (!resendConfigured) {
-    console.error("inquiry resend: RESEND_API_KEY is not set; skipping Resend");
-  } else {
-    try {
-      const resendResult = await sendViaResend(data);
-      if (resendResult) return resendResult;
-    } catch (err) {
-      console.error("inquiry send failed (resend):", err && err.message);
-    }
-  }
-
-
-  const fallback = resendConfigured ? "configured but rejected" : "not configured";
-  console.error("inquiry delivery failed: " + gmailIssue + "; fallback " + fallback);
+  console.error("inquiry delivery failed: " + gmailIssue);
   throw new Error("inquiry delivery failed");
 }
 
@@ -574,29 +529,18 @@ async function sendConfirmation(data, delivered) {
   if (/^(0|off|false|no)$/i.test(String(process.env.INQUIRY_AUTOREPLY || "").trim())) return;
   const to = field(data, "email");
   if (!isEmail(to) || to.toLowerCase() === TO.toLowerCase()) return;
+  if (!delivered || delivered.channel !== "gmail" || !delivered.transport) return;
   const { text, html, subject } = buildConfirmation(data);
   try {
-    if (delivered && delivered.channel === "gmail" && delivered.transport) {
-      const { user } = gmailCredentials();
-      await sendWithTransport({ ...delivered.transport, connectionTimeout: 2500, greetingTimeout: 2500, socketTimeout: 3500 }, {
-        from: "KRIVA Technologies <" + user + ">",
-        to,
-        replyTo: CONTACT_EMAIL,
-        subject,
-        text,
-        html,
-      });
-    } else if (envConfigured("RESEND_API_KEY") && envConfigured("RESEND_FROM")) {
-      const r = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + process.env.RESEND_API_KEY,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ from: process.env.RESEND_FROM, to: [to], reply_to: CONTACT_EMAIL, subject, text, html }),
-      });
-      if (!r.ok) throw new Error("resend " + r.status);
-    }
+    const { user } = gmailCredentials();
+    await sendWithTransport({ ...delivered.transport, connectionTimeout: 2500, greetingTimeout: 2500, socketTimeout: 3500 }, {
+      from: "KRIVA Technologies <" + user + ">",
+      to,
+      replyTo: CONTACT_EMAIL,
+      subject,
+      text,
+      html,
+    });
   } catch (err) {
     console.error("inquiry confirmation failed:", smtpErrorMeta(err));
   }

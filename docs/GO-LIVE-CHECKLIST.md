@@ -7,7 +7,7 @@ Run these in order. Merging into `main` deploys production. Paste credentials on
 Production forms return 502. Vercel logs show `GMAIL_APP_PASSWORD wrong_length (length 13)`, and neither backup channel is set.
 
 **Gmail App Password**
-1. Sign in to `krivatechnlogies@gmail.com` at https://myaccount.google.com/apppasswords. Turn on 2-Step Verification first if Google asks.
+1. Sign in to the Google Workspace account `hello@krivatechnologies.com` at https://myaccount.google.com/apppasswords. Turn on 2-Step Verification first if Google asks. The App Password must belong to the same account as `GMAIL_USER`; confirm with `vercel env ls` that `GMAIL_USER` in production is `hello@krivatechnologies.com`.
 2. Create an app password named "KRIVA website" and copy the 16 letters.
 3. In this project folder, run:
    ```
