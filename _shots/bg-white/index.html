@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Background review</title>
+<style>
+:root{--ink:#0F1C2E;--rule:#DFE2E6;--steel:#55626F;--indigo:#4F46E5}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,sans-serif;color:var(--ink);background:#fff}
+header{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:12px 16px;background:#fff;border-bottom:1px solid var(--rule)}
+h1{font-size:16px;margin:0 12px 0 0}select,button{font:inherit;padding:6px 10px;border:1px solid var(--rule);border-radius:8px;background:#fff;cursor:pointer}
+button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px;align-items:start}
+.grid.m{grid-template-columns:repeat(2,minmax(0,420px));justify-content:center}
+figure{margin:0}figcaption{font-weight:700;margin-bottom:6px;color:var(--steel)}img{width:100%;display:block;border:1px solid var(--rule)}
+.note{color:var(--steel);font-size:13px}
+@media (max-width:700px){.grid,.grid.m{grid-template-columns:1fr}}
+</style></head><body>
+<header><h1>Cream → white review</h1>
+<button id="prev">←</button><select id="page"></select><button id="next">→</button>
+<button data-vp="desktop-1440" aria-pressed="true">Desktop 1440</button><button data-vp="mobile-390" aria-pressed="false">Mobile 390</button>
+<span class="note">Arrow keys switch page. Shots use reduced motion so every section is revealed.</span></header>
+<div class="grid" id="g"><figure><figcaption>Before</figcaption><img id="b" alt="Before"></figure><figure><figcaption>After</figcaption><img id="a" alt="After"></figure></div>
+<script>
+const pages=["home","about","contact","process","faq","privacy","terms","technologies","services","solutions","work","insights","careers","industries","markets","markets__us","markets__uk","markets__uae","markets__ca","markets__au","solutions__trucking-logistics","solutions__freight-broker-software","solutions__fleet-management-software","solutions__saas","solutions__accounting-integrations","solutions__car-transportation","work__shiftrail-dispatch","work__payroll-pro-saas","work__finance-sync-hub","work__healthtrack-mobile","work__brandlift-ecommerce","work__crm-pulse-dashboard","work__ai-support-automation","work__marketplace-mvp","insights__ai-in-product-design-2026","insights__saas-onboarding-patterns","insights__saas-mvp-uk-guide","insights__no-code-vs-custom-mvp","insights__trucking-dispatch-crm-guide","insights__dispatch-software-cost","insights__build-vs-buy-tms","insights__quickbooks-xero-integration-guide","insights__crm-dashboard-ux-patterns","insights__choosing-a-digital-agency","services__ai-assisted-development","services__api-integrations","services__automation-systems","services__branding","services__crm-development","services__dashboard-design","services__design-systems","services__graphic-design","services__logo-design","services__mobile-applications","services__no-code-low-code","services__product-design","services__saas-platforms","services__seo-digital-marketing","services__ui-ux-design","services__ux-research","services__web-application-design","services__web-development","services__wireframing-prototyping","pricing","solutions__trucking-company-websites","solutions__moving-company-websites","insights__trucking-company-website-cost","insights__moving-company-website-features"];
+const sel=document.getElementById('page');pages.forEach(p=>sel.add(new Option('/'+(p==='home'?'':p.replace(/__/g,'/')),p)));
+let vp='desktop-1440';
+const show=()=>{const p=sel.value;document.getElementById('b').src=`before/${vp}/${p}.jpg`;document.getElementById('a').src=`after/${vp}/${p}.jpg`;document.getElementById('g').className='grid'+(vp.startsWith('mobile')?' m':'');try{localStorage.setItem('bgp',p)}catch(e){}};
+const step=d=>{sel.selectedIndex=(sel.selectedIndex+d+pages.length)%pages.length;show()};
+document.getElementById('prev').onclick=()=>step(-1);document.getElementById('next').onclick=()=>step(1);sel.onchange=show;
+document.querySelectorAll('[data-vp]').forEach(b=>b.onclick=()=>{vp=b.dataset.vp;document.querySelectorAll('[data-vp]').forEach(x=>x.setAttribute('aria-pressed',x===b));show()});
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)});
+try{const s=localStorage.getItem('bgp');if(s&&pages.includes(s))sel.value=s}catch(e){}
+show();
+</script></body></html>
