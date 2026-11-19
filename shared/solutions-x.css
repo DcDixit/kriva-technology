@@ -141,7 +141,10 @@ body.sx header.nav .nav-cta a.btn{border-radius:999px}
 .sx-motion .sx .sx-pulse::after{animation:sx-ping 2.2s var(--sx-e) infinite}
 @keyframes sx-ping{from{transform:scale(.4);opacity:1}to{transform:scale(1.6);opacity:0}}
 @keyframes sx-rise{from{transform:translate3d(0,105%,0)}to{transform:none}}
-.sx-motion .sx .sx-hero-in{animation:sx-fade 1.1s var(--sx-e) .4s both}
+/* Hero lede + CTAs stay visible from the first frame (transform only, no opacity 0).
+   An opacity-0 start meant mobile Chrome recorded no LCP at all on the 9 solution pages. */
+.sx-motion .sx .sx-hero-in{animation:sx-lift 1s var(--sx-e) both}
+@keyframes sx-lift{from{transform:translate3d(0,18px,0)}to{transform:none}}
 .sx-motion .sx .sx-record{animation:sx-fade 1.2s var(--sx-e) .55s both}
 .sx-motion .sx .sx-hero-meta-row{animation:sx-fade 1s var(--sx-e) both}
 @keyframes sx-fade{from{opacity:0;transform:translate3d(0,26px,0)}to{opacity:1;transform:none}}

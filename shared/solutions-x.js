@@ -311,10 +311,14 @@
     targets.forEach((t) => { if (t.getBoundingClientRect().top <= vh * 0.4) on = t; });
     const id = on ? '#' + on.id : '';
     if (id !== current) {
+      /* On a top-of-page load the strip only needs a 2px nudge to the gutter, so do it instantly:
+         a smooth programmatic scroll before any input stops Chrome recording LCP on mobile.
+         Deep links (#faq) and later section changes behave exactly as before. */
+      const atTopOnLoad = current === '' && on === targets[0];
       current = id;
       navLinks.forEach((a) => a.setAttribute('aria-current', a.getAttribute('href') === id ? 'true' : 'false'));
       const chip = chips && $(`a[href="${id}"]`, chips);
-      if (chip && getComputedStyle(chips).display !== 'none') chips.scrollTo({ left: chip.offsetLeft - 16, behavior: reduce() ? 'auto' : 'smooth' });
+      if (chip && getComputedStyle(chips).display !== 'none') chips.scrollTo({ left: chip.offsetLeft - 16, behavior: atTopOnLoad || reduce() ? 'auto' : 'smooth' });
     }
     if (rail) {
       rail.classList.toggle('is-show', scrollY > vh * 0.5);

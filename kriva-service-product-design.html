@@ -17,9 +17,14 @@ var gpc=navigator.globalPrivacyControl===true;
 var host=location.hostname;
 var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
 var optedOut=!!window['ga-disable-'+id]||gpc;
+/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
+var ua=navigator.userAgent||'';
+var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
+var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
+window.__krivaNoTrack=bot||internal;
 gtag('js',new Date());
 if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||(local&&!debug))return;
+if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
 var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
@@ -30,7 +35,7 @@ gtag('config',id,cfg);
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
+    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
@@ -163,7 +168,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/services-x.css?v=svx1">
-<link rel="stylesheet" href="/shared/services-x-pd.css?v=pd1">
+<link rel="stylesheet" href="/shared/services-x-pd.css?v=pd2">
 </head>
 <body class="page-product-design svx svx-pd">
 <a class="skip" href="#main">Skip to content</a>
@@ -321,7 +326,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <li aria-current="page">Product Design</li>
     </ol>
     <p class="svx-kicker eyebrow svx-pill"><i aria-hidden="true"></i>Product design for logistics software and SaaS</p>
-    <h1 class="svx-h1 pdx-h1"><span class="svx-l"><span>Product design for logistics</span></span> <span class="svx-l"><span>software and SaaS,</span></span> <span class="svx-l pdx-h1-sel"><span><em>mapped before code</em><b class="pdx-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><small>Frame · before code</small></b></span></span></h1>
+    <h1 class="svx-h1 pdx-h1"><span class="svx-l"><span>Product design for logistics</span></span> <span class="svx-l"><span>software and SaaS,</span></span> <span class="svx-l pdx-h1-sel"><span><em>mapped before code</em><b class="pdx-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><small data-label="Frame · before code"></small></b></span></span></h1>
     <div class="svx-hero-grid pdx-hero-grid">
       <div class="svx-hero-copy">
         <p class="svx-lede lede pdx-hero-lede">Product design for logistics platforms and B2B SaaS: role-by-role journeys, one clickable prototype, and launch-ready UI that covers dispatch, driver, customer, and back-office surfaces together. Design for one core workflow <a href="/pricing#design">starts at $6,500</a>.</p>

@@ -17,9 +17,14 @@ var gpc=navigator.globalPrivacyControl===true;
 var host=location.hostname;
 var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
 var optedOut=!!window['ga-disable-'+id]||gpc;
+/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
+var ua=navigator.userAgent||'';
+var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
+var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
+window.__krivaNoTrack=bot||internal;
 gtag('js',new Date());
 if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||(local&&!debug))return;
+if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
 var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
@@ -30,7 +35,7 @@ gtag('config',id,cfg);
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
+    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
@@ -126,7 +131,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="alternate" href="https://krivatechnologies.com/llms-full.txt" type="text/plain" title="KRIVA extended site summary">
 <meta name="target" content="US, GB, AE, CA, AU">
 <meta name="coverage" content="United States, United Kingdom, United Arab Emirates, Canada, Australia">
-<link rel="alternate" hreflang="en" href="https://krivatechnologies.com/markets/au">
+<link rel="alternate" hreflang="en-us" href="https://krivatechnologies.com/markets/us">
+<link rel="alternate" hreflang="en-gb" href="https://krivatechnologies.com/markets/uk">
+<link rel="alternate" hreflang="en-ae" href="https://krivatechnologies.com/markets/uae">
+<link rel="alternate" hreflang="en-ca" href="https://krivatechnologies.com/markets/ca">
+<link rel="alternate" hreflang="en-au" href="https://krivatechnologies.com/markets/au">
+<link rel="alternate" hreflang="x-default" href="https://krivatechnologies.com/markets">
 <!-- KRIVA_SEO_END -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KRIVA Technologies">

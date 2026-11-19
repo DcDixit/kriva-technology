@@ -32,13 +32,20 @@ function hreflangDefault(canonicalUrl) {
   return `<link rel="alternate" hreflang="en" href="${canonicalUrl}">`;
 }
 
+/* /markets/au is live but not in markets-data.cjs (that data lags the HTML), so add it
+   here; otherwise the cluster drops Australia and /markets/au gets no regional signal. */
+const MARKET_CLUSTER = [
+  ...markets.map((m) => ({ hreflang: m.hreflang, path: m.path })),
+  ...(markets.some((m) => m.path === "/markets/au") ? [] : [{ hreflang: "en-au", path: "/markets/au" }]),
+];
+
 const MARKET_PATHS = new Set([
   "/markets",
-  ...markets.map((m) => m.path),
+  ...MARKET_CLUSTER.map((m) => m.path),
 ]);
 
 function hreflangMarketCluster() {
-  const lines = markets.map(
+  const lines = MARKET_CLUSTER.map(
     (m) => `<link rel="alternate" hreflang="${m.hreflang}" href="${ORIGIN}${m.path}">`
   );
   lines.push(`<link rel="alternate" hreflang="x-default" href="${ORIGIN}/markets">`);

@@ -42,7 +42,8 @@
  var RESERVED = { page_view: 1, user_engagement: 1, scroll: 1, session_start: 1, first_visit: 1 };
  function send(name, params) {
  if (!name || RESERVED[name]) return;
- if (!validId || optedOut || (local && !debug)) return;
+ /* __krivaNoTrack is set by the head snippet for automated browsers and internal devices. */
+ if (!validId || optedOut || ((local || window.__krivaNoTrack) && !debug)) return;
  var payload = params ? Object.assign({}, params) : {};
  gtag('event', name, payload);
  }
@@ -69,7 +70,8 @@
  send('form_submit', {
  form_id: params.form_id, form_name: params.form_name, form_destination: location.pathname, lead_type: params.lead_type
  });
- send('contact_form_submit', params);
+ /* contact_form_submit was removed on 2026-11-19: it repeated generate_lead with the
+ same params, and marked as a key event it counted every lead twice more. */
  }
 
  function textOf(el) {

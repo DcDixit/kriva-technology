@@ -103,9 +103,14 @@ const JS_TAG = [
   'var host=location.hostname;',
   "var local=host==='localhost'||host==='127.0.0.1'||/\\.vercel\\.app$/.test(host);",
   "var optedOut=!!window['ga-disable-'+id]||gpc;",
+  "/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */",
+  "var ua=navigator.userAgent||'';",
+  "var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);",
+  "var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}",
+  'window.__krivaNoTrack=bot||internal;',
   "gtag('js',new Date());",
   "if(optedOut)gtag('consent','update',{analytics_storage:'denied'});",
-  'if(optedOut||(local&&!debug))return;',
+  'if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;',
   "var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};",
   'if(debug)cfg.debug_mode=true;',
   "gtag('config',id,cfg);",
@@ -116,7 +121,7 @@ const JS_TAG = [
   '<!-- KRIVA_GA_END -->',
   '<!-- KRIVA_CLARITY_START -->',
   '<script type="text/javascript">',
-  '    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true)return;var h=location.hostname;if(h===\'localhost\'||h===\'127.0.0.1\'||/\\.vercel\\.app$/.test(h))return;',
+  '    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h===\'localhost\'||h===\'127.0.0.1\'||/\\.vercel\\.app$/.test(h))return;',
   '        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};',
   '        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;',
   '        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);',
@@ -444,7 +449,7 @@ function main() {
   return results.every((r) => r.startsWith("OK")) ? 0 : 1;
 }
 
-module.exports = { PAGE_CURRENT, CONTACT_EMAIL, headerHtml, FOOTER_HTML, applyFile, main };
+module.exports = { PAGE_CURRENT, CONTACT_EMAIL, headerHtml, FOOTER_HTML, JS_TAG, applyFile, main };
 
 if (require.main === module) {
   process.exit(main());
