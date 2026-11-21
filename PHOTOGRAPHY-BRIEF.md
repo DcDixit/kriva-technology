@@ -27,8 +27,8 @@ the first is possible, ship only the first.
 
 The site is editorial, ink-on-paper, restrained. Photography must match, not fight it.
 
-- Available light. No flash, no studio seamless, no coloured gels.
-- Neutral or desaturated colour. Anything close to the paper tone (`#EAEAE4`) or ink
+- Available light. No flash, no studio seamless, no colored gels.
+- Neutral or desaturated color. Anything close to the paper tone (`#EAEAE4`) or ink
  (`#0E1216`) will sit naturally.
 - Candid over posed. Someone mid-sentence beats someone smiling at the lens.
 - Real screens with real work. Do not stage a fake dashboard.
@@ -46,7 +46,7 @@ people who are not on the team. Client logos you do not have written permission 
 
 - **Format:** supply original JPEG or HEIC at full resolution. Conversion is handled here.
 - **Delivery on site:** AVIF with WebP fallback, plus 1x/2x variants.
-- **Colour:** sRGB.
+- **Color:** sRGB.
 - **Strip EXIF GPS** before sending.
 - **Naming:** `founder-portrait.jpg`, `working-moment.jpg`, `craft-detail.jpg`.
 

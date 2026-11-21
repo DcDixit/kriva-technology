@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('svx-motion');setTimeout(function(){if(!window.__svx)d.classList.remove('svx-motion')},2500)}})(document.documentElement)</script>
 <script>document.documentElement.classList.add('js')</script>
@@ -59,7 +64,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/services/dashboard-design">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -165,6 +169,112 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/services-x.css?v=svx1">
 <link rel="stylesheet" href="/shared/services-x-dash.css?v=dbx1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/services/dashboard-design#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://krivatechnologies.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fleet dashboards",
+          "item": "https://krivatechnologies.com/services/dashboard-design"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/services/dashboard-design#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can you improve a dashboard we already have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often, yes. If your TMS or reporting tool lets us control layout and filters, we redesign inside it. If it does not, we say so and show what a custom view would cost in time. Either way we start by watching how the dashboard is used today."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the data come from, and how fresh is it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From the systems you already run: the TMS, CRM, accounting tool, and telematics if the vendor offers an API. A dashboard is only as current as its slowest source, so we agree refresh timing per source and show \"last updated\" on screen. We do not promise live data we cannot get."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a dashboard replace our morning-scan spreadsheet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That is the most common reason people call. If the spreadsheet exists because filters and actions do not match the work, a redesigned view can retire it. ShiftRail is the example: the desk moved off a second sheet once exceptions and SLA sat on the board."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you decide what goes at the top?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each role gets one primary question, such as which loads will miss their appointment. The top of the screen answers that question and lets the user act. A chart that does not change a decision moves lower or goes away."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you only design, or also build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both are possible. Some teams want designs and specs for their own engineers; others want us to build the views too. We scope the data work separately because it is often the larger part."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do you need from us?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Screenshots or exports of what people use today, access to the data sources or sample exports, and time with two or three people who use the dashboard daily. A named person who can settle disagreements between roles helps a lot."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="page-dashboard svx svx-dash">
 <a class="skip" href="#main">Skip to content</a>
@@ -215,15 +325,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -270,6 +381,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -286,7 +399,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -319,8 +432,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div><div class="dbx-hero-rows"></div></div>
   <div class="wrap">
     <ol class="crumbs svx-crumbs">
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Dashboard Design</li>
     </ol>
     <p class="svx-kicker eyebrow svx-pill"><i aria-hidden="true"></i>Fleet and operations dashboards</p>
@@ -410,7 +523,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <span class="dbx-hud-clock"><i></i>06:00 · shift starts</span>
         <span class="dbx-hud-q"><b>1</b>Which loads need a person now?</span>
       </div>
-      <figcaption class="svx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</figcaption>
+      <figcaption class="svx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
     </figure>
   </div>
 </section>
@@ -778,7 +891,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
             <li>Where the actions on each row actually happen</li>
             <li>Bulk actions and audited overrides</li>
           </ul>
-          <a class="svx-more" href="/services/crm-development"><span>CRM development</span><i aria-hidden="true">→</i></a>
+          <a class="svx-more" href="/services/crm-development"><span>Custom CRM development</span><i aria-hidden="true">→</i></a>
         </article>
         <article class="dbx-rel-card" data-spot>
           <p class="dbx-rel-k" aria-hidden="true">Connectors</p>
@@ -826,61 +939,61 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
     <div class="faq-list cr-faq-list">
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq0" id="fqb0">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq0" id="fqb0">
           <span class="qn num">01</span>
           <span class="qt">Can you improve a dashboard we already have?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq0" role="region" aria-labelledby="fqb0"><div><div class="faq-a-in">
           <p>Often, yes. If your TMS or reporting tool lets us control layout and filters, we redesign inside it. If it does not, we say so and show what a custom view would cost in time. Either way we start by watching how the dashboard is used today.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
           <span class="qn num">02</span>
           <span class="qt">Where does the data come from, and how fresh is it?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
           <p>From the systems you already run: the TMS, CRM, accounting tool, and telematics if the vendor offers an API. A dashboard is only as current as its slowest source, so we agree refresh timing per source and show "last updated" on screen. We do not promise live data we cannot get.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">03</span>
           <span class="qt">Can a dashboard replace our morning-scan spreadsheet?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
           <p>That is the most common reason people call. If the spreadsheet exists because filters and actions do not match the work, a redesigned view can retire it. ShiftRail is the example: the desk moved off a second sheet once exceptions and SLA sat on the board.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">04</span>
           <span class="qt">How do you decide what goes at the top?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
           <p>Each role gets one primary question, such as which loads will miss their appointment. The top of the screen answers that question and lets the user act. A chart that does not change a decision moves lower or goes away.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">05</span>
           <span class="qt">Do you only design, or also build?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
           <p>Both are possible. Some teams want designs and specs for their own engineers; others want us to build the views too. We scope the data work separately because it is often the larger part.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
           <span class="qn num">06</span>
           <span class="qt">What do you need from us?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
           <p>Screenshots or exports of what people use today, access to the data sources or sample exports, and time with two or three people who use the dashboard daily. A named person who can settle disagreements between roles helps a lot.</p>
         </div></div></div>
@@ -897,7 +1010,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <h2 id="inqH">Show us the report your team rebuilds in a spreadsheet every morning.</h2>
           <p class="svx-lede lede">Send the report or screen, who uses it, and the decision it is meant to support. We will say whether the fix is hierarchy, data, or the system behind it. No RFP required.</p>
           <p class="cr-trust">
-            <span>Reply within one business day</span>
+            <span>We reply within one business day</span>
             <span>Mutual NDA available on request before sharing confidential project information.</span>
             <span>No obligation</span>
           </p>
@@ -945,7 +1058,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           </form>
           <div class="inq-done" tabindex="-1">
             <h3>Inquiry received.</h3>
-            <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+            <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
           </div>
         </div>
       </div>
@@ -972,7 +1085,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -989,7 +1102,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -1009,7 +1124,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -1020,254 +1135,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <script src="/shared/services-x-dash.js?v=dbx1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://krivatechnologies.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Dashboard Design",
-          "item": "https://krivatechnologies.com/services/dashboard-design"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/services/dashboard-design#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can you improve a dashboard we already have?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Often, yes. If your TMS or reporting tool lets us control layout and filters, we redesign inside it. If it does not, we say so and show what a custom view would cost in time. Either way we start by watching how the dashboard is used today."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where does the data come from, and how fresh is it?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "From the systems you already run: the TMS, CRM, accounting tool, and telematics if the vendor offers an API. A dashboard is only as current as its slowest source, so we agree refresh timing per source and show \"last updated\" on screen. We do not promise live data we cannot get."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can a dashboard replace our morning-scan spreadsheet?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "That is the most common reason people call. If the spreadsheet exists because filters and actions do not match the work, a redesigned view can retire it. ShiftRail is the example: the desk moved off a second sheet once exceptions and SLA sat on the board."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do you decide what goes at the top?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Each role gets one primary question, such as which loads will miss their appointment. The top of the screen answers that question and lets the user act. A chart that does not change a decision moves lower or goes away."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you only design, or also build?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Both are possible. Some teams want designs and specs for their own engineers; others want us to build the views too. We scope the data work separately because it is often the larger part."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What do you need from us?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Screenshots or exports of what people use today, access to the data sources or sample exports, and time with two or three people who use the dashboard daily. A named person who can settle disagreements between roles helps a lot."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/services/dashboard-design#service",
-      "name": "Fleet and operations dashboard design",
-      "serviceType": "Dashboard design",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "CA",
-        "GB",
-        "AE"
-      ],
-      "description": "Dashboard design for fleet, dispatch, and billing teams and SaaS admin panels: exceptions, owners, and next actions ahead of equal-weight charts.",
-      "url": "https://krivatechnologies.com/services/dashboard-design"
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

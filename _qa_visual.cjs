@@ -1,5 +1,5 @@
 /* Real-browser QA: computed-style contrast, horizontal overflow, tap targets,
-   focus visibility, and accordion keyboard behaviour. Screenshots to _shots/.
+   focus visibility, and accordion keyboard behavior. Screenshots to _shots/.
    Requires the preview server: $env:PORT=5199; node serve-preview.js */
 
 const fs = require('fs');
@@ -15,7 +15,7 @@ const PAGES = ['/', '/about', '/contact', '/faq', '/process', '/work',
   '/services/crm-development', '/insights'];
 const WIDTHS = [1440, 1280, 1024, 768, 390, 375];
 
-/* Runs in the page: walks every text node, resolves the real backdrop colour,
+/* Runs in the page: walks every text node, resolves the real backdrop color,
    and computes the WCAG ratio. This catches failures a CSS grep cannot. */
 const AUDIT = () => {
   const lum = ([r, g, b]) => {
@@ -152,7 +152,7 @@ const AUDIT = () => {
     }
   }
 
-  /* accordion + focus behaviour on the homepage */
+  /* accordion + focus behavior on the homepage */
   console.log('\n──── interaction checks ────');
   const page = await browser.newPage();
   await page.setViewport({ width: 1440, height: 900 });

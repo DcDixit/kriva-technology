@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('sx-motion');setTimeout(function(){if(!window.__sx)d.classList.remove('sx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/solutions/moving-company-websites">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -71,7 +75,7 @@ gtag('config',id,cfg);
 <link rel="alternate" type="application/rss+xml" title="KRIVA Insights" href="https://krivatechnologies.com/feed.xml">
 <!-- KRIVA_SEO_END -->
 <meta property="og:title" content="Moving company website design for US movers">
-<meta property="og:description" content="Moving company websites that collect origin, destination, move size, and date. US movers. Design and development starts at $4,800. Booking software is quoted separately.">
+<meta property="og:description" content="Moving company websites that collect origin, destination, move size, and date. Design starts at $4,800. Booking software is quoted separately.">
 <meta property="og:url" content="https://krivatechnologies.com/solutions/moving-company-websites">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -80,7 +84,7 @@ gtag('config',id,cfg);
 <meta property="og:image:alt" content="Moving company website design by KRIVA Technologies">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Moving company website design for US movers">
-<meta name="twitter:description" content="Moving company websites that collect origin, destination, move size, and date. US movers. Design and development starts at $4,800. Booking software is quoted separately.">
+<meta name="twitter:description" content="Moving company websites that collect origin, destination, move size, and date. Design starts at $4,800. Booking software is quoted separately.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <meta property="og:type" content="website">
@@ -287,6 +291,88 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/solutions-x.css?v=sx3">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/solutions/moving-company-websites#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Solutions",
+          "item": "https://krivatechnologies.com/solutions"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Moving company websites",
+          "item": "https://krivatechnologies.com/solutions/moving-company-websites"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/solutions/moving-company-websites#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Will the site give customers an instant moving price?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only if your pricing rules are simple enough to write down. Many movers should collect origin, destination, move size, date, and stairs or elevator, then confirm the price. We will say which approach fits before we build it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you build a booking app or a moving CRM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as custom software, quoted separately. The published moving work on this site is website design. We will not pretend a booking product already exists in the portfolio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which US cities do you serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We work remotely with moving companies across the United States. We do not create a separate page for each state. The site should describe the cities and corridors you actually serve."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="solution page-moving sx sx-move sx-paper-hero">
 <a class="skip" href="#main">Skip to content</a>
@@ -336,15 +422,16 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -391,6 +478,8 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -407,7 +496,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -444,7 +533,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
     </div>
     <figure class="sx-mr-fig">
      <div class="sx-mr" data-mr role="img" aria-label="Illustrative move request form: origin, destination, move size, date, and access details, filled in before the office calls back.">
-      <div class="sx-mr-head" aria-hidden="true"><b>Get a moving quote</b><span>Step 1 of 1</span></div>
+      <div class="sx-mr-head" aria-hidden="true"><b>Get a moving quote</b></div>
       <div class="sx-mr-route" aria-hidden="true">
        <div class="sx-mr-f"><span>Origin</span><b data-v="Dallas, TX">Dallas, TX</b></div>
        <div class="sx-mr-line"><i></i></div>
@@ -567,9 +656,9 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
     <h2 id="faq" data-split>Questions we hear before a quote</h2>
    </div>
    <div class="sx-faq-list">
-    <details><summary>Will the site give customers an instant moving price?</summary><p class="sx-a">Only if your pricing rules are simple enough to write down. Many movers should collect origin, destination, move size, date, and stairs or elevator, then confirm the price. We will say which approach fits before we build it.</p></details>
-    <details><summary>Can you build a booking app or a moving CRM?</summary><p class="sx-a">Yes, as custom software, quoted separately. The published moving work on this site is website design. We will not pretend a booking product already exists in the portfolio.</p></details>
-    <details><summary>Which US cities do you serve?</summary><p class="sx-a">We work remotely with moving companies across the United States. We do not create a separate page for each state. The site should describe the cities and corridors you actually serve.</p></details>
+    <details><summary><h3 class="faq-q-h">Will the site give customers an instant moving price?</h3></summary><p class="sx-a">Only if your pricing rules are simple enough to write down. Many movers should collect origin, destination, move size, date, and stairs or elevator, then confirm the price. We will say which approach fits before we build it.</p></details>
+    <details><summary><h3 class="faq-q-h">Can you build a booking app or a moving CRM?</h3></summary><p class="sx-a">Yes, as custom software, quoted separately. The published moving work on this site is website design. We will not pretend a booking product already exists in the portfolio.</p></details>
+    <details><summary><h3 class="faq-q-h">Which US cities do you serve?</h3></summary><p class="sx-a">We work remotely with moving companies across the United States. We do not create a separate page for each state. The site should describe the cities and corridors you actually serve.</p></details>
    </div>
   </div>
  </section>
@@ -647,13 +736,13 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <p class="inq-fail" role="alert"></p>
         <div class="inq-actions">
           <button type="submit" class="btn"><span class="inq-submit-label">Get a free project estimate</span><i>→</i></button>
-          <p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p>
+          <p class="inq-note">We reply within one business day. Mutual NDA available on request before sharing confidential project information.</p>
         </div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
       <div class="inq-done" tabindex="-1">
         <h3>Estimate request received.</h3>
-        <p>We will reply within one business day. If you still need a scheduled call, use the <a href="/contact#book">contact page</a>.</p>
+        <p>We reply within one business day. If you still need a scheduled call, use the <a href="/contact#book">contact page</a>.</p>
       </div>
   </div>
  </div>
@@ -677,7 +766,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -694,7 +783,9 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -714,7 +805,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -726,122 +817,8 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
 
 
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "United States"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada."
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://krivatechnologies.com/solutions/moving-company-websites#webpage",
-      "url": "https://krivatechnologies.com/solutions/moving-company-websites",
-      "name": "Moving company website design for US movers",
-      "description": "Moving company websites that collect origin, destination, move size, and date. US movers. Design and development starts at $4,800. Booking software is quoted separately.",
-      "inLanguage": "en-US",
-      "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://krivatechnologies.com/#website",
-        "name": "KRIVA Technologies",
-        "url": "https://krivatechnologies.com"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "breadcrumb": {
-        "@id": "https://krivatechnologies.com/solutions/moving-company-websites#breadcrumb"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Solutions",
-          "item": "https://krivatechnologies.com/solutions"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Moving company websites",
-          "item": "https://krivatechnologies.com/solutions/moving-company-websites"
-        }
-      ],
-      "@id": "https://krivatechnologies.com/solutions/moving-company-websites#breadcrumb"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/solutions/moving-company-websites#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Will the site give customers an instant moving price?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Only if your pricing rules are simple enough to write down. Many movers should collect origin, destination, move size, date, and stairs or elevator, then confirm the price. We will say which approach fits before we build it."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you build a booking app or a moving CRM?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, as custom software, quoted separately. The published moving work on this site is website design. We will not pretend a booking product already exists in the portfolio."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which US cities do you serve?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We work remotely with moving companies across the United States. We do not create a separate page for each state. The site should describe the cities and corridors you actually serve."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/solutions/moving-company-websites#service",
-      "name": "Moving company website design",
-      "serviceType": "Moving company website design",
-      "url": "https://krivatechnologies.com/solutions/moving-company-websites",
-      "areaServed": {
-        "@type": "Country",
-        "name": "United States"
-      },
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "Moving company websites that collect origin, destination, move size, and date. US movers. Design and development starts at $4,800. Booking software is quoted separately."
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

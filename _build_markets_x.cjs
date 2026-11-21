@@ -20,8 +20,8 @@ const more = (label) => `<span class="mx-more">${label} <i aria-hidden="true"></
 const rail = (items) => `<nav class="mx-rail" aria-label="Page sections"><ol>${items.map(([id, l]) => `<li><a href="#${id}"><span>${l}</span></a></li>`).join('')}</ol></nav>`;
 
 const crumbs = (here) => `<ol class="crumbs">
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/markets">Markets</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/markets">Markets</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">${here}</li>
     </ol>`;
 
@@ -369,7 +369,7 @@ ${hero({
         </div>
         <p class="k">Investors</p>
         <h3>Activation metrics investors ask about</h3>
-        <p>Seed and Series A conversations turn on activation and retention, not sign-ups. We define the activation event with you, instrument it from the first release, and design onboarding around reaching it, so the dashboard in your investor update reflects behaviour you have deliberately shaped.</p>
+        <p>Seed and Series A conversations turn on activation and retention, not sign-ups. We define the activation event with you, instrument it from the first release, and design onboarding around reaching it, so the dashboard in your investor update reflects behavior you have deliberately shaped.</p>
         ${link('/insights/saas-mvp-uk-guide', 'UK SaaS MVP guide')}
       </article>
       <article class="uk-tile is-ink" data-x style="--d:.08s" data-dark>
@@ -566,7 +566,7 @@ const UAE = (src) => {
   ];
   const tabs = [
     ['Multi-entity, multi-currency operations', 'Entities and currency', 'Free-zone and mainland entities usually have separate books, separate licences, and separate reporting - but one dispatch desk and one customer. We model the entity boundary in the data rather than in a spreadsheet, so a controller can see group-level exposure and still produce per-entity reporting. Settlement in AED beside USD or EUR is handled at the transaction level, not reconciled by hand at month end.', '/solutions/accounting-integrations', 'Accounting integrations'],
-    ['Bilingual and right-to-left interfaces', 'Arabic and English', 'Arabic support is a layout problem before it is a translation problem. Retrofitting right-to-left into a product built left-to-right means reworking navigation, tables, form flow, icons, and every mixed-direction string where an Arabic label sits next to a Latin reference number. We structure the interface for bidirectional text from the first wireframe, which costs very little up front and a great deal later.', '/services/ui-ux-design', 'UI/UX design'],
+    ['Bilingual and right-to-left interfaces', 'Arabic and English', 'Arabic support is a layout problem before it is a translation problem. Retrofitting right-to-left into a product built left-to-right means reworking navigation, tables, form flow, icons, and every mixed-direction string where an Arabic label sits next to a Latin reference number. We structure the interface for bidirectional text from the first wireframe, which costs very little up front and a great deal later.', '/services/product-design', 'UI/UX design'],
     ['Regional finance and tax reporting', 'Finance and tax', 'Finance workflows have to survive audit. We build reconciliation views that show which records synced, which failed, and why - with a retry path an operator can run without engineering help. Where UAE VAT and e-invoicing obligations apply, the reporting surface is built to expose the underlying records rather than a summary figure nobody can trace back.', '/services/api-integrations', 'API integrations']
   ];
   return `<main id="main">
@@ -820,7 +820,7 @@ ${hero({
           <p class="k">Language</p>
           <h3>Bilingual interfaces for Quebec</h3>
           <p>Supporting French is a layout and content-structure problem before it is a translation problem: French strings run longer, and labels, tables, and buttons need room for that. We build components and content keys for both languages from the first wireframe, and your team or a translation partner supplies the copy.</p>
-          ${link('/services/ui-ux-design', 'UI/UX design')}
+          ${link('/services/product-design', 'UI/UX design')}
         </div>
         <div class="ca-lang" data-ca-lang lang="en">
           <div class="ca-lang-top"><span>Same buttons, two languages</span><span class="ca-lang-sw" role="group" aria-label="Interface language"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">FR</button></span></div>
@@ -892,7 +892,7 @@ ${rail([['overview', 'Overview'], ['desks', 'Industries'], ['desk-story', 'The d
     <div class="in-hero-grid">
       <div class="mx-hero-copy">
         <ol class="crumbs">
-          <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+          <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
           <li aria-current="page">Industries</li>
         </ol>
         <p class="mx-kicker mx-pill eyebrow"><i aria-hidden="true"></i>Company · Industries</p>
@@ -958,7 +958,7 @@ ${rail([['overview', 'Overview'], ['desks', 'Industries'], ['desk-story', 'The d
       <h2 id="storyH" data-split>Start from the desk, then the solution path.</h2>
       <p class="mx-body" data-x>Trucking ops, B2B SaaS, finance sync, auto transport, and CRM. Each industry maps to a solution path, the services behind it, and published work where we have it.</p>
       <ul class="in-story-pts" data-x><li>Five desks, not a generic catalog</li><li>A solution path for each</li><li>Published work where it exists</li></ul>
-      <p class="in-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+      <p class="in-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>

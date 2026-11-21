@@ -8,7 +8,7 @@ const PAGES = [
   '/services/crm-development',
   '/services/saas-platforms',
   '/services/product-design',
-  '/services/ui-ux-design',
+  '/services/product-design',
   '/services/ux-research',
   '/services/wireframing-prototyping',
   '/services/design-systems',

@@ -1,4 +1,4 @@
-/* KRIVA Insights · article "ix" layer behaviour. Progress, reveals, contents rail, copy link,
+/* KRIVA Insights · article "ix" layer behavior. Progress, reveals, contents rail, copy link,
    heading anchors, pointer glow, count-up. Every effect degrades to static content without JS
    or with reduced motion (html.ix-motion is only set when motion is allowed). */
 (function () {

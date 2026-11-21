@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('sx-motion');setTimeout(function(){if(!window.__sx)d.classList.remove('sx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -59,7 +64,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/solutions/car-transportation">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -161,6 +165,128 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/solutions-x.css?v=sx3">
 <link rel="stylesheet" href="/shared/solutions-x-car.css?v=cx1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/solutions/car-transportation#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Solutions",
+          "item": "https://krivatechnologies.com/solutions"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Auto transport software",
+          "item": "https://krivatechnologies.com/solutions/car-transportation"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/solutions/car-transportation#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is auto transport software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Auto transport software runs the vehicle shipping workflow for brokers and car carriers: customer quotes and booking, carrier assignment and dispatch, driver condition reports and proof of delivery (POD), customer shipment tracking, and invoicing. A custom build keeps all of it on one order record instead of separate tools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you improve our current platform without replacing it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and that is where most engagements start. We map the quote-to-delivery journey first, find where orders leak into texts and spreadsheets, then recommend whether the fix is configuration, a connected tool, a redesign, or a rebuild."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this connect with our existing TMS, CRM, or accounting software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, where the system offers an API or data export. The order record connects through defined integrations, with visible validation errors, failed-sync states, and retries instead of silent drift. We confirm what each of your systems exposes during discovery, before anything is scoped. See API integrations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you build quote engines and customer tracking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We build itemized quote engines with pricing rules your team can adjust as routes, seasons, and fuel costs change, and customer tracking with status, ETA updates, and one shareable link per order."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the driver app work with weak or no signal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We design condition capture, signatures, and POD to work offline: updates queue on the phone when signal drops and sync when it returns, with clear states for what has sent and what is still pending."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a custom auto transport software project take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version usually runs 6 to 10 weeks, and a full platform with integrations 12 to 20 weeks, with working software on a live URL every week. See how we deliver and how pricing works."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does custom auto transport software cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cost depends on how many tools and integrations are in scope, so we quote after discovery, broken into team, weeks, and phases, with exclusions listed. Starting with one high-pain piece, such as the quote and booking portal, keeps the first phase small. Our dispatch software cost guide explains how to compare quotes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns the final code and design files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do. Designs, source code, and documentation transfer to your accounts at launch. Ongoing support is optional, with no lock-in."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="solution page-car sx sx-car">
 <a class="skip" href="#main">Skip to content</a>
@@ -209,15 +335,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -264,6 +391,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -280,7 +409,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -305,11 +434,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <header class="cx-hero" id="overview">
  <div class="wrap">
-  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li><li aria-current="page">Auto transport software</li></ol></nav>
+  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li><li><a href="/solutions">Solutions</a></li><li class="crumb-sep" aria-hidden="true"></li><li aria-current="page">Auto transport software</li></ol></nav>
   <div class="cx-hero-grid">
    <div class="cx-hero-copy">
     <p class="sx-kicker sx-hero-meta-row"><span class="sx-pulse" aria-hidden="true"></span>Auto transport and car shipping</p>
-    <h1 class="sx-fh1 cx-h1"><span class="sx-l"><span>Custom auto transport</span></span> <span class="sx-l"><span>software, from quote</span></span> <span class="sx-l sx-l--em"><span>to proof of delivery</span></span></h1>
+    <h1 class="sx-fh1 cx-h1"><span class="sx-l"><span>Custom auto transport</span></span> <span class="sx-l"><span>software from quote</span></span> <span class="sx-l sx-l--em"><span>to signed POD</span></span></h1>
+    <p class="sx-lede">Custom auto transport software, from quote to proof of delivery</p>
     <div class="sx-hero-in">
      <p class="sx-lede">For car shipping brokers and carriers whose quotes, carrier dispatch, driver updates, and proof of delivery live in different tools. We design and build the booking portal, dispatch console, driver app, and customer tracking around one order record, from the first quote to the final invoice.</p>
      <div class="sx-actions">
@@ -339,7 +469,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <li><span>Delivery</span><b>POD</b><em>Signed</em></li>
      </ol>
     </div>
-    <figcaption>Illustrative order, sample data. Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client.</figcaption>
+    <figcaption>Illustrative order, sample data. Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
    </figure>
   </div>
  </div>
@@ -371,7 +501,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <ul class="cx-ramp-pts"><li>Quote, dispatch, and delivery on one order</li><li>Condition photos and notes attached to the move</li><li>Driver updates that reach the desk without a call</li></ul>
    </div>
   </div>
-  <p class="sx-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:2008-08-11_Unloading_a_VW_New_Beetle_2.jpg" rel="noopener noreferrer" target="_blank">Ildar Sagdejev</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener noreferrer license" target="_blank">CC BY-SA 4.0</a>, cropped. Not a KRIVA client.</p>
+  <p class="sx-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:2008-08-11_Unloading_a_VW_New_Beetle_2.jpg" rel="noopener noreferrer" target="_blank">Ildar Sagdejev</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener noreferrer license" target="_blank">CC BY-SA 4.0</a>, cropped. <!-- TODO(kriva): replace with own product UI --></p>
  </div>
 </section>
 
@@ -523,7 +653,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
      </div>
      <p class="cx-cr-sign">Signature captured · 4:18p</p>
     </div>
-    <figcaption>Illustrative report, sample data. Photo: <a href="https://commons.wikimedia.org/wiki/File:2008-08-11_Unloading_a_VW_New_Beetle_3.jpg" rel="noopener noreferrer" target="_blank">Ildar Sagdejev</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener noreferrer license" target="_blank">CC BY-SA 4.0</a>, cropped. Not a KRIVA client.</figcaption>
+    <figcaption>Illustrative report, sample data. Photo: <a href="https://commons.wikimedia.org/wiki/File:2008-08-11_Unloading_a_VW_New_Beetle_3.jpg" rel="noopener noreferrer" target="_blank">Ildar Sagdejev</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener noreferrer license" target="_blank">CC BY-SA 4.0</a>, cropped. <!-- TODO(kriva): replace with own product UI --></figcaption>
    </figure>
   </div>
  </div>
@@ -797,14 +927,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
    <p class="sx-lede" data-x>What auto transport brokers and carriers ask us most often before a first call.</p>
   </div>
   <div class="sx-faq-list">
-   <details><summary id="fqb1">What is auto transport software?</summary><p class="sx-a">Auto transport software runs the vehicle shipping workflow for brokers and car carriers: customer quotes and booking, carrier assignment and dispatch, driver condition reports and proof of delivery (POD), customer shipment tracking, and invoicing. A custom build keeps all of it on one order record instead of separate tools.</p></details>
-   <details><summary id="fqb2">Can you improve our current platform without replacing it?</summary><p class="sx-a">Yes, and that is where most engagements start. We map the quote-to-delivery journey first, find where orders leak into texts and spreadsheets, then recommend whether the fix is configuration, a connected tool, a redesign, or a rebuild.</p></details>
-   <details><summary id="fqb3">Can this connect with our existing TMS, CRM, or accounting software?</summary><p class="sx-a">Usually, where the system offers an API or data export. The order record connects through defined integrations, with visible validation errors, failed-sync states, and retries instead of silent drift. We confirm what each of your systems exposes during discovery, before anything is scoped. See <a href="/services/api-integrations">API integrations</a>.</p></details>
-   <details><summary id="fqb4">Do you build quote engines and customer tracking?</summary><p class="sx-a">Yes. We build itemized quote engines with pricing rules your team can adjust as routes, seasons, and fuel costs change, and customer tracking with status, ETA updates, and one shareable link per order.</p></details>
-   <details><summary id="fqb5">Can the driver app work with weak or no signal?</summary><p class="sx-a">Yes. We design condition capture, signatures, and POD to work offline: updates queue on the phone when signal drops and sync when it returns, with clear states for what has sent and what is still pending.</p></details>
-   <details><summary id="fqb6">How long does a custom auto transport software project take?</summary><p class="sx-a">Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version usually runs 6 to 10 weeks, and a full platform with integrations 12 to 20 weeks, with working software on a live URL every week. See <a href="/process">how we deliver</a> and <a href="/pricing">how pricing works</a>.</p></details>
-   <details><summary id="fqb7">How much does custom auto transport software cost?</summary><p class="sx-a">Cost depends on how many tools and integrations are in scope, so we quote after discovery, broken into team, weeks, and phases, with exclusions listed. Starting with one high-pain piece, such as the quote and booking portal, keeps the first phase small. Our <a href="/insights/dispatch-software-cost">dispatch software cost guide</a> explains how to compare quotes.</p></details>
-   <details><summary id="fqb8">Who owns the final code and design files?</summary><p class="sx-a">You do. Designs, source code, and documentation transfer to your accounts at launch. Ongoing support is optional, with no lock-in.</p></details>
+   <details><summary id="fqb1"><h3 class="faq-q-h">What is auto transport software?</h3></summary><p class="sx-a">Auto transport software runs the vehicle shipping workflow for brokers and car carriers: customer quotes and booking, carrier assignment and dispatch, driver condition reports and proof of delivery (POD), customer shipment tracking, and invoicing. A custom build keeps all of it on one order record instead of separate tools.</p></details>
+   <details><summary id="fqb2"><h3 class="faq-q-h">Can you improve our current platform without replacing it?</h3></summary><p class="sx-a">Yes, and that is where most engagements start. We map the quote-to-delivery journey first, find where orders leak into texts and spreadsheets, then recommend whether the fix is configuration, a connected tool, a redesign, or a rebuild.</p></details>
+   <details><summary id="fqb3"><h3 class="faq-q-h">Can this connect with our existing TMS, CRM, or accounting software?</h3></summary><p class="sx-a">Usually, where the system offers an API or data export. The order record connects through defined integrations, with visible validation errors, failed-sync states, and retries instead of silent drift. We confirm what each of your systems exposes during discovery, before anything is scoped. See <a href="/services/api-integrations">API integrations</a>.</p></details>
+   <details><summary id="fqb4"><h3 class="faq-q-h">Do you build quote engines and customer tracking?</h3></summary><p class="sx-a">Yes. We build itemized quote engines with pricing rules your team can adjust as routes, seasons, and fuel costs change, and customer tracking with status, ETA updates, and one shareable link per order.</p></details>
+   <details><summary id="fqb5"><h3 class="faq-q-h">Can the driver app work with weak or no signal?</h3></summary><p class="sx-a">Yes. We design condition capture, signatures, and POD to work offline: updates queue on the phone when signal drops and sync when it returns, with clear states for what has sent and what is still pending.</p></details>
+   <details><summary id="fqb6"><h3 class="faq-q-h">How long does a custom auto transport software project take?</h3></summary><p class="sx-a">Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version usually runs 6 to 10 weeks, and a full platform with integrations 12 to 20 weeks, with working software on a live URL every week. See <a href="/process">how we deliver</a> and <a href="/pricing">how pricing works</a>.</p></details>
+   <details><summary id="fqb7"><h3 class="faq-q-h">How much does custom auto transport software cost?</h3></summary><p class="sx-a">Cost depends on how many tools and integrations are in scope, so we quote after discovery, broken into team, weeks, and phases, with exclusions listed. Starting with one high-pain piece, such as the quote and booking portal, keeps the first phase small. Our <a href="/insights/dispatch-software-cost">dispatch software cost guide</a> explains how to compare quotes.</p></details>
+   <details><summary id="fqb8"><h3 class="faq-q-h">Who owns the final code and design files?</h3></summary><p class="sx-a">You do. Designs, source code, and documentation transfer to your accounts at launch. Ongoing support is optional, with no lock-in.</p></details>
   </div>
  </div>
 </section>
@@ -816,7 +946,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
    <h2 id="inqH">What's breaking in quote-to-POD?</h2>
    <p class="sx-lede">Tell us which step, from quote and booking to dispatch, tracking, or POD, still lives outside the system. We will tell you whether it needs configuring, connecting, redesigning, or rebuilding. No commitment required.</p>
    <ul class="sx-trust">
-    <li>Reply within one business day</li>
+    <li>We reply within one business day</li>
     <li>Mutual NDA available on request before sharing confidential project information.</li>
     <li>No obligation</li>
    </ul>
@@ -876,7 +1006,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
    </form>
    <div class="inq-done" tabindex="-1">
      <h3>Inquiry received.</h3>
-     <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+     <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
    </div>
   </div>
  </div>
@@ -911,7 +1041,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -928,7 +1058,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -948,7 +1080,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -961,336 +1093,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <script src="/shared/solutions-x-car.js?v=cx1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Solutions",
-          "item": "https://krivatechnologies.com/solutions"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Auto transport software",
-          "item": "https://krivatechnologies.com/solutions/car-transportation"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/solutions/car-transportation#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is auto transport software?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Auto transport software runs the vehicle shipping workflow for brokers and car carriers: customer quotes and booking, carrier assignment and dispatch, driver condition reports and proof of delivery (POD), customer shipment tracking, and invoicing. A custom build keeps all of it on one order record instead of separate tools."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you improve our current platform without replacing it?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, and that is where most engagements start. We map the quote-to-delivery journey first, find where orders leak into texts and spreadsheets, then recommend whether the fix is configuration, a connected tool, a redesign, or a rebuild."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can this connect with our existing TMS, CRM, or accounting software?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Usually, where the system offers an API or data export. The order record connects through defined integrations, with visible validation errors, failed-sync states, and retries instead of silent drift. We confirm what each of your systems exposes during discovery, before anything is scoped."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you build quote engines and customer tracking?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. We build itemized quote engines with pricing rules your team can adjust as routes, seasons, and fuel costs change, and customer tracking with status, ETA updates, and one shareable link per order."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can the driver app work with weak or no signal?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. We design condition capture, signatures, and POD to work offline: updates queue on the phone when signal drops and sync when it returns, with clear states for what has sent and what is still pending."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does a custom auto transport software project take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version usually runs 6 to 10 weeks, and a full platform with integrations 12 to 20 weeks, with working software on a live URL every week."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does custom auto transport software cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Cost depends on how many tools and integrations are in scope, so we quote after discovery, broken into team, weeks, and phases, with exclusions listed. Starting with one high-pain piece, such as the quote and booking portal, keeps the first phase small."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who owns the final code and design files?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You do. Designs, source code, and documentation transfer to your accounts at launch. Ongoing support is optional, with no lock-in."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/solutions/car-transportation#service",
-      "name": "Custom auto transport software development",
-      "serviceType": "Auto transport software development",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "GB",
-        "AE",
-        "CA"
-      ],
-      "description": "Custom auto transport software for car shipping brokers and carriers: quote and booking portals, carrier dispatch consoles, driver apps for condition reports and proof of delivery, customer shipment tracking, and CRM, TMS, and QuickBooks or Xero integrations.",
-      "url": "https://krivatechnologies.com/solutions/car-transportation",
-      "image": "https://krivatechnologies.com/brand/og/solutions-car-transportation.png",
-      "audience": {
-        "@type": "BusinessAudience",
-        "audienceType": "Auto transport brokers and car carriers"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Auto transport software",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Quote and booking portal"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Carrier dispatch console"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Driver app for condition reports and POD"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Customer shipment tracking"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "CRM, TMS, and accounting integrations"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://krivatechnologies.com/solutions/car-transportation#webpage",
-      "url": "https://krivatechnologies.com/solutions/car-transportation",
-      "name": "Custom Auto Transport & Car Shipping Software | KRIVA",
-      "description": "Custom auto transport software for car shipping brokers and carriers: quote and booking portals, carrier dispatch, driver condition reports, POD, and tracking.",
-      "isPartOf": {
-        "@id": "https://krivatechnologies.com/#website"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/solutions/car-transportation#service"
-      },
-      "primaryImageOfPage": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/media/photos/car-carrier.webp",
-        "width": 1600,
-        "height": 1067
-      },
-      "inLanguage": "en"
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

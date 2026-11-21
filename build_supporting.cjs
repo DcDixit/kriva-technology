@@ -73,7 +73,7 @@ ${schema ? `<script type="application/ld+json">\n${JSON.stringify(schema, null, 
 <header class="hero">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">${ogTitle}</li>
     </ol>
     <p class="eyebrow" data-r style="margin-top:22px">${eyebrow}</p>

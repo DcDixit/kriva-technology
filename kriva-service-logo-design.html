@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>document.documentElement.classList.add('js')</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/services/logo-design">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -273,14 +277,103 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/inner.css?v=brand1">
 <link rel="stylesheet" href="/shared/system.css?v=brand1">
 <link rel="stylesheet" href="/shared/responsive.css?v=brand1">
-<link rel="stylesheet" href="/shared/archetypes.css?v=brand1">
-
 <link rel="stylesheet" href="/shared/page-inquiry.css?v=brand1">
 
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
+<link rel="stylesheet" href="/shared/services-x.css?v=svx1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/services/logo-design#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://krivatechnologies.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Logo design",
+          "item": "https://krivatechnologies.com/services/logo-design"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/services/logo-design#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is logo design part of a full rebrand?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It can stand alone or open a branding engagement. Logo owns the mark; branding owns the wider visual language."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do we receive at the end?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The mark in working formats (SVG and PNG, plus favicon and app-icon sizes), color, one-color, and inverse variants, clear-space and minimum-size rules, and a short usage sheet your vendors can follow."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you rework our existing logo instead of starting over?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Many engagements are refinements: fixing legibility at small sizes, building the missing one-color and inverse versions, or tightening a mark that was only designed for one surface."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you handle trademark registration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. We design the mark and can flag obvious look-alikes we notice, but we do not run searches or give legal clearance. Take the final mark to a trademark attorney."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
-<body class="service design-ux arch-brand">
+<body class="service design-ux arch-brand svx svx-moved">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -329,15 +422,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -384,6 +478,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -400,33 +496,26 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
-<nav class="chapters" id="chapters" aria-label="Sections">
-  <a href="#overview"><span>Overview</span><i></i></a>
-  <a href="#contexts"><span>Contexts</span><i></i></a>
-  <a href="#breaks"><span>Failures</span><i></i></a>
-  <a href="#deliver"><span>Deliverables</span><i></i></a>
-  <a href="#method"><span>Method</span><i></i></a>
-  <a href="#scope"><span>Scope</span><i></i></a>
-  <a href="#work"><span>Work</span><i></i></a>
-  <a href="#faq"><span>FAQ</span><i></i></a>
-</nav>
+<nav class="svx-rail" id="chapters" aria-label="Sections"><ol><li><a href="#overview" aria-current="true"><span>Overview</span></a></li><li><a href="#contexts"><span>Contexts</span></a></li><li><a href="#breaks"><span>Failures</span></a></li><li><a href="#deliver"><span>Deliverables</span></a></li><li><a href="#method"><span>Method</span></a></li><li><a href="#scope"><span>Scope</span></a></li><li><a href="#work"><span>Work</span></a></li><li><a href="#faq"><span>FAQ</span></a></li></ol></nav>
+<nav class="mob-chips" id="mobChips" aria-label="Page sections"><a href="#overview">Overview</a><a href="#contexts">Contexts</a><a href="#breaks">Failures</a><a href="#deliver">Deliverables</a><a href="#method">Method</a><a href="#scope">Scope</a><a href="#work">Work</a><a href="#faq">FAQ</a></nav>
 
 <main id="main">
 
-<header class="hero lp-hero" id="overview">
+<header class="svx-hero" id="overview" data-dark>
+<div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div></div>
   <div class="wrap">
-    <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
+    <ol class="crumbs svx-crumbs" data-r>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Logo Design</li>
     </ol>
     <div class="k-hero-split" style="margin-top:clamp(22px,3vw,40px)">
       <p class="eyebrow" data-r>Service · The mark</p>
-      <h1 class="d1 mask">Logo design for logistics and SaaS brands</h1>
+      <h1 class="svx-h1 d1 mask">Logo design for logistics and SaaS brands</h1>
       <p class="lede" data-r>For carriers, brokers, and software companies whose mark disappears at favicon size, breaks in a dark console, or only exists as a flattened image. Logo owns the mark; branding owns the wider visual language.</p>
       <p class="contrast" data-r>A supporting service, usually alongside a product or a branding engagement, and available on its own when the mark is the only problem.</p>
       <div class="hero-actions" data-r>
@@ -457,7 +546,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <h2>A mark that still reads at favicon size.</h2>
       <p>Logo design is for carriers, brokers, and software companies whose mark disappears small, breaks in a dark console, or only exists as a flattened image. Branding owns the wider system.</p>
       <ul class="story-points"><li>A mark that holds in a console</li><li>Files a product team can use</li><li>Separate from a full brand system</li></ul>
-      <p class="story-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+      <p class="story-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>
@@ -545,10 +634,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <p class="eyebrow" data-r>FAQ</p>
     <h2 class="d2" id="faqH" data-r style="margin-top:16px">Questions about logo design</h2>
     <div class="faq" data-r>
-      <details><summary>Is logo design part of a full rebrand?</summary><p>It can stand alone or open a <a href="/services/branding">branding</a> engagement. Logo owns the mark; branding owns the wider visual language.</p></details>
-      <details><summary>What do we receive at the end?</summary><p>The mark in working formats (SVG and PNG, plus favicon and app-icon sizes), color, one-color, and inverse variants, clear-space and minimum-size rules, and a short usage sheet your vendors can follow.</p></details>
-      <details><summary>Can you rework our existing logo instead of starting over?</summary><p>Yes. Many engagements are refinements: fixing legibility at small sizes, building the missing one-color and inverse versions, or tightening a mark that was only designed for one surface.</p></details>
-      <details><summary>Do you handle trademark registration?</summary><p>No. We design the mark and can flag obvious look-alikes we notice, but we do not run searches or give legal clearance. Take the final mark to a trademark attorney.</p></details>
+      <details><summary><h3 class="faq-q-h">Is logo design part of a full rebrand?</h3></summary><p>It can stand alone or open a <a href="/services/branding">branding</a> engagement. Logo owns the mark; branding owns the wider visual language.</p></details>
+      <details><summary><h3 class="faq-q-h">What do we receive at the end?</h3></summary><p>The mark in working formats (SVG and PNG, plus favicon and app-icon sizes), color, one-color, and inverse variants, clear-space and minimum-size rules, and a short usage sheet your vendors can follow.</p></details>
+      <details><summary><h3 class="faq-q-h">Can you rework our existing logo instead of starting over?</h3></summary><p>Yes. Many engagements are refinements: fixing legibility at small sizes, building the missing one-color and inverse versions, or tightening a mark that was only designed for one surface.</p></details>
+      <details><summary><h3 class="faq-q-h">Do you handle trademark registration?</h3></summary><p>No. We design the mark and can flag obvious look-alikes we notice, but we do not run searches or give legal clearance. Take the final mark to a trademark attorney.</p></details>
     </div>
     <div class="sib" data-r style="margin-top:32px">
       <a href="/services/branding">Branding</a>
@@ -569,7 +658,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
+        <span><i>◆</i>We reply within one business day</span>
         <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
@@ -598,10 +687,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
         <div><label for="inq-details">What do you need help with? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
         <p class="inq-fail" role="alert"></p>
-        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
+        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">We reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
-      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
+      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We reply within one business day. This confirms our mail service accepted the message.</p></div>
     </div>
   </div>
 </section>
@@ -624,7 +713,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -641,7 +730,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -661,7 +752,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -717,239 +808,8 @@ run();
 })();
 </script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://krivatechnologies.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Logo design",
-          "item": "https://krivatechnologies.com/services/logo-design"
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/services/logo-design#service",
-      "name": "Logo design for logistics and software brands",
-      "serviceType": "Logo design",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "GB",
-        "AE",
-        "CA"
-      ],
-      "description": "Logo design for carriers, brokers, and software companies: a mark tested at favicon, app icon, and decal sizes, delivered with lockups and a usage sheet.",
-      "url": "https://krivatechnologies.com/services/logo-design"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/services/logo-design#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is logo design part of a full rebrand?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It can stand alone or open a branding engagement. Logo owns the mark; branding owns the wider visual language."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What do we receive at the end?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The mark in working formats (SVG and PNG, plus favicon and app-icon sizes), color, one-color, and inverse variants, clear-space and minimum-size rules, and a short usage sheet your vendors can follow."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you rework our existing logo instead of starting over?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Many engagements are refinements: fixing legibility at small sizes, building the missing one-color and inverse versions, or tightening a mark that was only designed for one surface."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you handle trademark registration?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. We design the mark and can flag obvious look-alikes we notice, but we do not run searches or give legal clearance. Take the final mark to a trademark attorney."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

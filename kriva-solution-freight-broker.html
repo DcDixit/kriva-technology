@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('sx-motion');setTimeout(function(){if(!window.__sx)d.classList.remove('sx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -123,7 +128,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="canonical" href="https://krivatechnologies.com/solutions/freight-broker-software">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -159,6 +163,120 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/solutions-x.css?v=sx3">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/solutions/freight-broker-software#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Solutions",
+          "item": "https://krivatechnologies.com/solutions"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Freight broker software",
+          "item": "https://krivatechnologies.com/solutions/freight-broker-software"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/solutions/freight-broker-software#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is custom broker software different from a TMS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A TMS is a packaged system that covers the standard broker workflow for many companies at once. Custom broker software is built around one brokerage's quoting, carrier sales, and customer service. Many brokerages use both: the TMS stays the record, and custom tools handle the parts the TMS makes awkward."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this work with our existing TMS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, yes, if the TMS offers an API or data export. We build beside it and only replace parts of it when that clearly pays off. We check what your TMS allows during discovery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you connect to load boards, tracking providers, and EDI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Where the provider offers an API or EDI connection and your plan includes access. Access rules vary by provider, so we confirm this before scoping rather than assuming it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you automate carrier onboarding and compliance checks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We can build the onboarding packet, document capture, insurance expiry reminders, and checks against public FMCSA data or a monitoring service you subscribe to. Your compliance owner sets the rules, and we do not give legal advice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a first version take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A focused first version is usually 6 to 10 weeks after a 1 to 2 week discovery. A full platform with integrations usually runs 12 to 20 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does custom freight broker software cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cost follows scope: team size multiplied by weeks. We price after discovery, as a fixed-scope project, sprints, or a monthly retainer. Our guide to custom dispatch software cost explains what drives the budget."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns the software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do. Code, designs, and documentation transfer to you at project close or earlier."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="solution page-freight sx sx-freight">
 <a class="skip" href="#main">Skip to content</a>
@@ -207,15 +325,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -262,6 +381,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -278,7 +399,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -298,7 +419,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <main id="main" class="k-sol">
 <section class="sx-fhero" id="overview" aria-labelledby="h1">
  <div class="wrap">
-  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li><li aria-current="page">Freight broker software</li></ol></nav>
+  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li><li><a href="/solutions">Solutions</a></li><li class="crumb-sep" aria-hidden="true"></li><li aria-current="page">Freight broker software</li></ol></nav>
   <div class="sx-fhero-grid">
    <div class="sx-fhero-copy">
     <p class="sx-kicker sx-hero-meta-row">For US freight brokers and 3PLs</p>
@@ -313,7 +434,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
    </div>
    <figure class="sx-fhero-photo">
     <div class="sx-fhero-img"><img src="/media/photos/freight-aisle-racking.webp" srcset="/media/photos/freight-aisle-racking-960.webp 960w, /media/photos/freight-aisle-racking.webp 1600w" sizes="(max-width: 980px) calc(100vw - 32px), 46vw" alt="A long warehouse aisle lined with pallet racking and staged freight." width="1600" height="1050" fetchpriority="high" decoding="async"></div>
-    <figcaption>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client.</figcaption>
+    <figcaption>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
    </figure>
   </div>
  </div>
@@ -442,7 +563,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <h2 id="carrierH">Updates should come from the freight, not from a check call</h2>
     <p class="sx-body">Pickups slip, appointments move, and a bill of lading gets signed with the wrong count. The broker usually hears last. We build the carrier-facing pieces that close that gap, so updates and paperwork arrive from the people handling the freight.</p>
     <ul class="sx-ticks"><li>Load acceptance and rate confirmation sign-off by link</li><li>Status and ETA updates from the carrier, written to the load</li><li>BOL and proof of delivery uploaded from the dock or cab</li></ul>
-    <p class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</p>
+    <p class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></p>
    </div>
   </article>
   <article class="sx-side" aria-labelledby="visH" data-x>
@@ -452,7 +573,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <h2 id="visH">Shippers notice who tells them first</h2>
     <p class="sx-body">A shipper judges a broker by whether they hear about a problem before they find it. When exceptions surface on the board and the load record holds the latest status, your team can call the customer before the customer calls you.</p>
     <ul class="sx-ticks"><li>Exceptions sorted by risk, not by load number</li><li>Customer status updates sent from the load record</li><li>Proof of delivery shared as soon as delivery is confirmed</li></ul>
-    <p class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</p>
+    <p class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></p>
    </div>
   </article>
  </div>
@@ -532,13 +653,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <ul><li><a class="sx-frel-a" href="/solutions/trucking-logistics">Custom trucking software for carriers</a></li><li><a class="sx-frel-a" href="/solutions/fleet-management-software">Fleet management software</a></li><li><a class="sx-frel-a" href="/solutions/car-transportation">Auto transport software for brokers and carriers</a></li><li><a class="sx-frel-a" href="/insights/build-vs-buy-tms">Build vs buy a TMS</a></li><li><a class="sx-frel-a" href="/insights/dispatch-software-cost">What custom dispatch software costs</a></li></ul></nav>
   </div>
   <div class="sx-faq-list">
-   <details open><summary>How is custom broker software different from a TMS?</summary><p class="sx-a">A TMS is a packaged system that covers the standard broker workflow for many companies at once. Custom broker software is built around one brokerage's quoting, carrier sales, and customer service. Many brokerages use both: the TMS stays the record, and custom tools handle the parts the TMS makes awkward.</p></details>
-   <details><summary>Can this work with our existing TMS?</summary><p class="sx-a">Usually, yes, if the TMS offers an API or data export. We build beside it and only replace parts of it when that clearly pays off. We check what your TMS allows during discovery.</p></details>
-   <details><summary>Can you connect to load boards, tracking providers, and EDI?</summary><p class="sx-a">Where the provider offers an API or EDI connection and your plan includes access. Access rules vary by provider, so we confirm this before scoping rather than assuming it.</p></details>
-   <details><summary>Can you automate carrier onboarding and compliance checks?</summary><p class="sx-a">We can build the onboarding packet, document capture, insurance expiry reminders, and checks against public FMCSA data or a monitoring service you subscribe to. Your compliance owner sets the rules, and we do not give legal advice.</p></details>
-   <details><summary>How long does a first version take?</summary><p class="sx-a">A focused first version is usually 6 to 10 weeks after a 1 to 2 week discovery. A full platform with integrations usually runs 12 to 20 weeks.</p></details>
-   <details><summary>How much does custom freight broker software cost?</summary><p class="sx-a">Cost follows scope: team size multiplied by weeks. We price after discovery, as a fixed-scope project, sprints, or a monthly retainer. Our guide to <a href="/insights/dispatch-software-cost">custom dispatch software cost</a> explains what drives the budget.</p></details>
-   <details><summary>Who owns the software?</summary><p class="sx-a">You do. Code, designs, and documentation transfer to you at project close or earlier.</p></details>
+   <details open><summary><h3 class="faq-q-h">How is custom broker software different from a TMS?</h3></summary><p class="sx-a">A TMS is a packaged system that covers the standard broker workflow for many companies at once. Custom broker software is built around one brokerage's quoting, carrier sales, and customer service. Many brokerages use both: the TMS stays the record, and custom tools handle the parts the TMS makes awkward.</p></details>
+   <details><summary><h3 class="faq-q-h">Can this work with our existing TMS?</h3></summary><p class="sx-a">Usually, yes, if the TMS offers an API or data export. We build beside it and only replace parts of it when that clearly pays off. We check what your TMS allows during discovery.</p></details>
+   <details><summary><h3 class="faq-q-h">Can you connect to load boards, tracking providers, and EDI?</h3></summary><p class="sx-a">Where the provider offers an API or EDI connection and your plan includes access. Access rules vary by provider, so we confirm this before scoping rather than assuming it.</p></details>
+   <details><summary><h3 class="faq-q-h">Can you automate carrier onboarding and compliance checks?</h3></summary><p class="sx-a">We can build the onboarding packet, document capture, insurance expiry reminders, and checks against public FMCSA data or a monitoring service you subscribe to. Your compliance owner sets the rules, and we do not give legal advice.</p></details>
+   <details><summary><h3 class="faq-q-h">How long does a first version take?</h3></summary><p class="sx-a">A focused first version is usually 6 to 10 weeks after a 1 to 2 week discovery. A full platform with integrations usually runs 12 to 20 weeks.</p></details>
+   <details><summary><h3 class="faq-q-h">How much does custom freight broker software cost?</h3></summary><p class="sx-a">Cost follows scope: team size multiplied by weeks. We price after discovery, as a fixed-scope project, sprints, or a monthly retainer. Our guide to <a href="/insights/dispatch-software-cost">custom dispatch software cost</a> explains what drives the budget.</p></details>
+   <details><summary><h3 class="faq-q-h">Who owns the software?</h3></summary><p class="sx-a">You do. Code, designs, and documentation transfer to you at project close or earlier.</p></details>
   </div>
  </div>
 </section>
@@ -550,7 +671,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
    <h2 id="inqH">Tell us what your desk works around.</h2>
    <p class="sx-lede">We will tell you whether to fix it, integrate it, rebuild it, or leave it alone. We reply within one business day.</p>
    <p class="inq-help sx-inq-help">Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>. Have a longer brief or files? <a href="/contact#brief">Send a project brief</a>.</p>
-   <ul class="sx-trust"><li>Reply within one business day</li><li>You own the code</li><li>Mutual NDA available on request before sharing confidential project information.</li></ul>
+   <ul class="sx-trust"><li>We reply within one business day</li><li>You own the code</li><li>Mutual NDA available on request before sharing confidential project information.</li></ul>
   </div>
   <div>
       <form class="inq-form" id="pageInquiry" action="/api/inquiry" method="post" novalidate>
@@ -568,7 +689,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">No commitment. Mutual NDA available on request before sharing confidential project information.</p></div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
-      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
+      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We reply within one business day. This confirms our mail service accepted the message.</p></div>
   </div>
  </div>
 </section>
@@ -591,7 +712,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -608,7 +729,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -628,7 +751,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -639,6 +762,6 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <script src="/shared/solutions-x.js?v=sx3" defer></script>
 
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://krivatechnologies.com/solutions/freight-broker-software#webpage","url":"https://krivatechnologies.com/solutions/freight-broker-software","name":"Freight Broker Software Development | Custom Broker TMS | KRIVA","description":"Custom freight broker software for US brokerages and 3PLs: quoting, carrier sales and onboarding, load tracking, and billing synced to QuickBooks or Xero.","inLanguage":"en","isPartOf":{"@id":"https://krivatechnologies.com/#website"},"about":{"@id":"https://krivatechnologies.com/solutions/freight-broker-software#service"},"breadcrumb":{"@id":"https://krivatechnologies.com/solutions/freight-broker-software#breadcrumb"},"primaryImageOfPage":{"@id":"https://krivatechnologies.com/solutions/freight-broker-software#hero-image"},"image":[{"@id":"https://krivatechnologies.com/solutions/freight-broker-software#hero-image","@type":"ImageObject","contentUrl":"https://krivatechnologies.com/media/photos/freight-aisle-racking.webp","width":1600,"height":1050,"caption":"A small team working on laptops around a shared desk, one person wearing headphones.","license":"https://unsplash.com/license","acquireLicensePage":"https://unsplash.com/photos/1521737604893-d14cc237f11d","creditText":"Unsplash","creator":{"@type":"Organization","name":"Unsplash contributor"}},{"@type":"ImageObject","contentUrl":"https://krivatechnologies.com/media/photos/freight-forklift-operator.webp","width":1024,"height":681,"caption":"A forklift operator in a high-visibility vest moving through a warehouse lined with stacked pallets.","license":"https://creativecommons.org/licenses/by/2.0/","acquireLicensePage":"https://www.flickr.com/photos/toolstop/4325154436/","creditText":"toolstop via Flickr, CC BY 2.0","creator":{"@type":"Organization","name":"toolstop"}},{"@type":"ImageObject","contentUrl":"https://krivatechnologies.com/media/photos/freight-aisle-crew.webp","width":623,"height":330,"caption":"A warehouse worker looks toward the camera while colleagues sort boxed goods on a distribution floor.","license":"https://creativecommons.org/publicdomain/mark/1.0/","acquireLicensePage":"https://www.flickr.com/photos/usdagov/37287403296/","creditText":"U.S. Department of Agriculture, public domain","creator":{"@type":"Organization","name":"U.S. Department of Agriculture"}}]},{"@type":"Service","@id":"https://krivatechnologies.com/solutions/freight-broker-software#service","name":"Custom freight broker software development","description":"Custom freight broker software for US brokerages and 3PLs: quoting, carrier sales and onboarding, load tracking, and billing synced to QuickBooks or Xero.","url":"https://krivatechnologies.com/solutions/freight-broker-software","serviceType":"Freight broker software development","category":"Transportation and logistics software","image":"https://krivatechnologies.com/brand/og/solutions-freight-broker-software.png","provider":{"@id":"https://krivatechnologies.com/#organization","@type":"ProfessionalService","name":"KRIVA Technologies","url":"https://krivatechnologies.com"},"audience":{"@type":"BusinessAudience","audienceType":"Freight brokers and third-party logistics (3PL) companies"},"areaServed":[{"@type":"Country","name":"United States"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Freight broker software modules","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Quoting and customer management"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Carrier sales and capacity"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Carrier onboarding"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Load tracking board"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Documents and billing"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Margin and team reporting"}}]}},{"@type":"BreadcrumbList","@id":"https://krivatechnologies.com/solutions/freight-broker-software#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krivatechnologies.com/"},{"@type":"ListItem","position":2,"name":"Solutions","item":"https://krivatechnologies.com/solutions"},{"@type":"ListItem","position":3,"name":"Freight broker software","item":"https://krivatechnologies.com/solutions/freight-broker-software"}]},{"@type":"FAQPage","@id":"https://krivatechnologies.com/solutions/freight-broker-software#faq","mainEntity":[{"@type":"Question","name":"How is custom broker software different from a TMS?","acceptedAnswer":{"@type":"Answer","text":"A TMS is a packaged system that covers the standard broker workflow for many companies at once. Custom broker software is built around one brokerage's quoting, carrier sales, and customer service. Many brokerages use both: the TMS stays the record, and custom tools handle the parts the TMS makes awkward."}},{"@type":"Question","name":"Can this work with our existing TMS?","acceptedAnswer":{"@type":"Answer","text":"Usually, yes, if the TMS offers an API or data export. We build beside it and only replace parts of it when that clearly pays off. We check what your TMS allows during discovery."}},{"@type":"Question","name":"Can you connect to load boards, tracking providers, and EDI?","acceptedAnswer":{"@type":"Answer","text":"Where the provider offers an API or EDI connection and your plan includes access. Access rules vary by provider, so we confirm this before scoping rather than assuming it."}},{"@type":"Question","name":"Can you automate carrier onboarding and compliance checks?","acceptedAnswer":{"@type":"Answer","text":"We can build the onboarding packet, document capture, insurance expiry reminders, and checks against public FMCSA data or a monitoring service you subscribe to. Your compliance owner sets the rules, and we do not give legal advice."}},{"@type":"Question","name":"How long does a first version take?","acceptedAnswer":{"@type":"Answer","text":"A focused first version is usually 6 to 10 weeks after a 1 to 2 week discovery. A full platform with integrations usually runs 12 to 20 weeks."}},{"@type":"Question","name":"How much does custom freight broker software cost?","acceptedAnswer":{"@type":"Answer","text":"Cost follows scope: team size multiplied by weeks. We price after discovery, as a fixed-scope project, sprints, or a monthly retainer. Our guide to custom dispatch software cost explains what drives the budget."}},{"@type":"Question","name":"Who owns the software?","acceptedAnswer":{"@type":"Answer","text":"You do. Code, designs, and documentation transfer to you at project close or earlier."}}]}]}</script>
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

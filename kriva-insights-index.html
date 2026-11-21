@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>document.documentElement.classList.add('js')</script>
 <script>(function(d){if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('ix-motion');setTimeout(function(){if(!window.__ix)d.classList.remove('ix-motion')},2500)}})(document.documentElement)</script>
@@ -59,7 +64,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/insights">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -161,6 +165,52 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/insights-x.css?v=ix4">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/insights#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Insights & guides",
+          "item": "https://krivatechnologies.com/insights"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="page-insights ix">
 <a class="skip" href="#main">Skip to content</a>
@@ -211,15 +261,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -266,6 +317,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -282,7 +335,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -305,7 +358,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="wrap ix-hero-in">
     <div class="ix-hero-copy">
       <ol class="crumbs" data-ix>
-        <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+        <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
         <li aria-current="page">Insights</li>
       </ol>
       <p class="ix-kicker eyebrow" data-ix>Insights</p>
@@ -317,7 +370,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       </div>
       <dl class="ix-stats" data-ix style="--d:.35s">
         <div><dt>Notes</dt><dd><b class="ix-tnum" data-count="12">12</b></dd></div>
-        <div><dt>Topics</dt><dd><b class="ix-tnum" data-count="6">6</b></dd></div>
+        <div><dt>Topics</dt><dd><b class="ix-tnum" data-count="7">7</b></dd></div>
         <div><dt>Minutes of reading</dt><dd><b class="ix-tnum" data-count="90">90</b></dd></div>
       </dl>
       <p class="ix-mast" data-ix style="--d:.4s"><span>Product · SaaS · Trucking</span><span>From real projects</span></p>
@@ -436,13 +489,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <div class="wrap ix-bar-in">
       <div class="ix-chips" role="group" aria-label="Filter articles by category">
         <span class="ix-chip-ink" aria-hidden="true"></span>
-        <button type="button" class="ix-chip" data-cat="all" aria-pressed="true">All <u class="ix-tnum">12</u></button>
-        <button type="button" class="ix-chip" data-cat="SaaS Growth" aria-pressed="false">SaaS Growth <u class="ix-tnum">1</u></button>
-        <button type="button" class="ix-chip" data-cat="Trucking &amp; Logistics" aria-pressed="false">Trucking &amp; Logistics <u class="ix-tnum">5</u></button>
-        <button type="button" class="ix-chip" data-cat="Finance &amp; Integrations" aria-pressed="false">Finance &amp; Integrations <u class="ix-tnum">1</u></button>
-        <button type="button" class="ix-chip" data-cat="AI &amp; Design" aria-pressed="false">AI &amp; Design <u class="ix-tnum">1</u></button>
-        <button type="button" class="ix-chip" data-cat="Product" aria-pressed="false">Product <u class="ix-tnum">2</u></button>
-        <button type="button" class="ix-chip" data-cat="Strategy" aria-pressed="false">Strategy <u class="ix-tnum">2</u></button>
+        <button type="button" class="ix-chip" data-cat="all" aria-pressed="true">All <u class="ix-tnum" data-topic-count="all">12</u></button>
+        <button type="button" class="ix-chip" data-cat="SaaS Growth" aria-pressed="false">SaaS Growth <u class="ix-tnum" data-topic-count="SaaS Growth">1</u></button>
+        <button type="button" class="ix-chip" data-cat="Trucking &amp; Logistics" aria-pressed="false">Trucking &amp; Logistics <u class="ix-tnum" data-topic-count="Trucking &amp; Logistics">4</u></button>
+        <button type="button" class="ix-chip" data-cat="Moving" aria-pressed="false">Moving <u class="ix-tnum" data-topic-count="Moving">1</u></button>
+        <button type="button" class="ix-chip" data-cat="Finance &amp; Integrations" aria-pressed="false">Finance &amp; Integrations <u class="ix-tnum" data-topic-count="Finance &amp; Integrations">1</u></button>
+        <button type="button" class="ix-chip" data-cat="AI &amp; Design" aria-pressed="false">AI &amp; Design <u class="ix-tnum" data-topic-count="AI &amp; Design">1</u></button>
+        <button type="button" class="ix-chip" data-cat="Product" aria-pressed="false">Product <u class="ix-tnum" data-topic-count="Product">2</u></button>
+        <button type="button" class="ix-chip" data-cat="Strategy" aria-pressed="false">Strategy <u class="ix-tnum" data-topic-count="Strategy">2</u></button>
       </div>
       <p class="ix-count" id="count" aria-live="polite">Showing 12 of 12</p>
     </div>
@@ -483,7 +537,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         </div>
       </article>
 
-      <article class="ix-card is-big" data-cat="Trucking &amp; Logistics" data-tone="amber" data-cursor="Read">
+      <article class="ix-card is-big" data-cat="Moving" data-tone="amber" data-cursor="Read">
         <div class="ix-cover" aria-hidden="true">
           <span class="ix-no ix-tnum">02</span>
           <span class="ix-art ix-art-form"><span class="f">Moving from</span><span class="f">Moving to</span><span class="f">Move date</span><span class="f">Home size</span><span class="go-b">Get my estimate</span></span>
@@ -506,7 +560,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <p class="ix-card-meta"><span class="ix-pill cat">Trucking &amp; Logistics</span><span class="ix-when ix-tnum">Nov 2026<i aria-hidden="true"></i>7 min read</span></p>
           <h3><a href="/insights/dispatch-software-cost">What does custom dispatch software cost? What actually drives the budget</a></h3>
           <p class="ex">Why dispatch software quotes vary so widely, the seven drivers behind the number, what is usually left out, and how to get quotes you can compare.</p>
-          <p class="rel"><a href="/services/crm-development">Dispatch CRM &amp; TMS</a> · <a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/solutions/car-transportation">Auto transport software</a></p>
+          <p class="rel"><a href="/services/crm-development">Custom CRM development</a> · <a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/solutions/car-transportation">Auto transport software</a></p>
           <span class="ix-read" aria-hidden="true">Read <i></i></span>
         </div>
       </article>
@@ -520,7 +574,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <p class="ix-card-meta"><span class="ix-pill cat">Trucking &amp; Logistics</span><span class="ix-when ix-tnum">Nov 2026<i aria-hidden="true"></i>6 min read</span></p>
           <h3><a href="/insights/build-vs-buy-tms">Build vs buy a TMS: when custom dispatch software pays off</a></h3>
           <p class="ex">When an off-the-shelf TMS is the right call, when custom dispatch software pays off, and the third option most carriers and brokers should consider first.</p>
-          <p class="rel"><a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/services/crm-development">Dispatch CRM &amp; TMS</a> · <a href="/work/shiftrail-dispatch">ShiftRail case study</a></p>
+          <p class="rel"><a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/services/crm-development">Custom CRM development</a> · <a href="/work/shiftrail-dispatch">ShiftRail case study</a></p>
           <span class="ix-read" aria-hidden="true">Read <i></i></span>
         </div>
       </article>
@@ -548,7 +602,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <p class="ix-card-meta"><span class="ix-pill cat">Trucking &amp; Logistics</span><span class="ix-when ix-tnum">May 2026<i aria-hidden="true"></i>9 min read</span></p>
           <h3><a href="/insights/trucking-dispatch-crm-guide">Dispatch CRM for US trucking: what it is and what actually works</a></h3>
           <p class="ex">What a trucking dispatch CRM is, how it works beside the TMS, and four desk patterns that hold up: bulk assignment, SLA on the row, role density, and phased rollout.</p>
-          <p class="rel"><a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/services/crm-development">Dispatch CRM &amp; TMS</a> · <a href="/work/shiftrail-dispatch">ShiftRail case study</a></p>
+          <p class="rel"><a href="/solutions/trucking-logistics">Trucking solutions</a> · <a href="/services/crm-development">Custom CRM development</a> · <a href="/work/shiftrail-dispatch">ShiftRail case study</a></p>
           <span class="ix-read" aria-hidden="true">Read <i></i></span>
         </div>
       </article>
@@ -562,7 +616,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <p class="ix-card-meta"><span class="ix-pill cat">AI &amp; Design</span><span class="ix-when ix-tnum">January 2026<i aria-hidden="true"></i>3 min read</span></p>
           <h3><a href="/insights/ai-in-product-design-2026">How AI is changing product design workflows in 2026</a></h3>
           <p class="ex">Practical ways agencies use Claude, GPT, and Figma AI to accelerate research, prototyping, and design QA without sacrificing quality.</p>
-          <p class="rel"><a href="/services/ai-assisted-development">AI-assisted development</a> · <a href="/services/product-design">Product design</a></p>
+          <p class="rel"><a href="/services/ai-assisted-development">AI-assisted development</a> · <a href="/services/product-design">Product and UI/UX design</a></p>
           <span class="ix-read" aria-hidden="true">Read <i></i></span>
         </div>
       </article>
@@ -643,7 +697,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <h2 id="storyH" data-ix-split>Field notes from the work, not a content calendar.</h2>
       <p class="ix-lede" data-ix style="--d:.1s">Guides on SaaS onboarding, trucking dispatch CRM, product design, MVP trade-offs, and integrations, written for founders and operators from project work.</p>
       <ul class="ix-points" data-ix style="--d:.15s"><li><i class="ix-tnum">01</i>Dispatch, SaaS, and finance</li><li><i class="ix-tnum">02</i>Written from project work</li><li><i class="ix-tnum">03</i>Next to the solutions and the work</li></ul>
-      <p class="ix-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+      <p class="ix-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>
@@ -658,7 +712,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <nav class="ix-links" aria-label="Related pages">
       <a href="/solutions/saas" data-ix data-spot style="--d:0s"><b>SaaS solutions</b><span>Onboarding &amp; MVPs</span><i></i></a>
       <a href="/solutions/trucking-logistics" data-ix data-spot style="--d:.05s"><b>Trucking solutions</b><span>Dispatch &amp; fleet</span><i></i></a>
-      <a href="/services/product-design" data-ix data-spot style="--d:.1s"><b>Product design &amp; UX</b><span>Research to launch UI</span><i></i></a>
+      <a href="/services/product-design" data-ix data-spot style="--d:.1s"><b>Product and UI/UX design</b><span>Research to launch UI</span><i></i></a>
       <a href="/work" data-ix data-spot style="--d:.15s"><b>Case studies</b><span>Held up after launch</span><i></i></a>
       <a href="/about" data-ix data-spot style="--d:.2s"><b>About the studio</b><span>Remote-first studio</span><i></i></a>
       <a href="/contact#brief" data-ix data-spot style="--d:.25s"><b>Send a project brief</b><span>Written, no call</span><i></i></a>
@@ -678,7 +732,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <a href="/contact#brief" class="ix-link"><span>Send a project brief</span><i></i></a>
       </div>
       <p class="ix-assur" data-ix style="--d:.2s">
-        <span>Reply within one business day</span>
+        <span>We reply within one business day</span>
         <span>Mutual NDA available on request before sharing confidential project information.</span>
         <span>No commitment required</span>
       </p>
@@ -707,10 +761,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
         <div><label for="inq-details">What is your team working around today? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
         <p class="inq-fail" role="alert"></p>
-        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
+        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">We reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
-      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
+      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We reply within one business day. This confirms our mail service accepted the message.</p></div>
     </div>
   </div></div>
 </section>
@@ -733,7 +787,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -750,7 +804,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -770,7 +826,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -780,179 +836,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Insights",
-          "item": "https://krivatechnologies.com/insights"
-        }
-      ]
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
 <script src="/shared/insights-x.js?v=ix3" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

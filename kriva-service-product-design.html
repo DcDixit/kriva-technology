@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('svx-motion');setTimeout(function(){if(!window.__svx)d.classList.remove('svx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/services/product-design">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -169,6 +173,97 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/services-x.css?v=svx1">
 <link rel="stylesheet" href="/shared/services-x-pd.css?v=pd2">
+<link rel="stylesheet" href="/shared/services-x-uiux.css?v=ux1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/services/product-design#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://krivatechnologies.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Product and UI/UX design",
+          "item": "https://krivatechnologies.com/services/product-design"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/services/product-design#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is product design different from UI/UX design?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Product design covers the whole product across roles: dispatcher, driver, customer, and back office. UI/UX design covers a single workflow or module in a product that already exists. If you can name the one screen that hurts, start there."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you cover driver and customer surfaces, not just dispatch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, that is the point. We map each role's tasks and where they hand off, then design the surfaces together. Driver mobile screens follow the same journeys as Mobile app development, so the status a dispatcher sees matches what the driver taps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we start with exceptions and the back office?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Late loads, missing documents, invoicing, and permissions are the surfaces most teams skip. A smaller first engagement can cover those, with the rest of the map planned for later."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you write code, or only deliver designs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This service delivers design: journeys, prototype, UI, and specs engineers can build against. KRIVA is also an engineering studio, so a build can be scoped separately, or your team can build from the handoff."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="page-product-design svx svx-pd">
 <a class="skip" href="#main">Skip to content</a>
@@ -219,15 +314,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -274,6 +370,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -290,7 +388,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -302,7 +400,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <li><a href="#process"><span>Process</span></a></li>
     <li><a href="#proof"><span>Related work</span></a></li>
     <li><a href="#related"><span>Related</span></a></li>
-    <li><a href="#faq"><span>FAQ</span></a></li>
+    <li><a href="#workflows"><span>Workflows</span></a></li><li><a href="#density"><span>Density</span></a></li><li><a href="#deliver"><span>Deliverables</span></a></li><li><a href="#faq"><span>FAQ</span></a></li>
   </ol>
 </nav>
 <nav class="mob-chips" id="mobChips" aria-label="Page sections">
@@ -312,7 +410,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <a href="#process">Process</a>
   <a href="#proof">Cases</a>
   <a href="#related">Related</a>
-  <a href="#faq">FAQ</a>
+  <a href="#workflows">Workflows</a><a href="#density">Density</a><a href="#deliver">Deliverables</a><a href="#faq">FAQ</a>
 </nav>
 
 <main id="main">
@@ -321,12 +419,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div></div>
   <div class="wrap">
     <ol class="crumbs svx-crumbs">
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
-      <li aria-current="page">Product Design</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li aria-current="page">Product and UI/UX design</li>
     </ol>
     <p class="svx-kicker eyebrow svx-pill"><i aria-hidden="true"></i>Product design for logistics software and SaaS</p>
-    <h1 class="svx-h1 pdx-h1"><span class="svx-l"><span>Product design for logistics</span></span> <span class="svx-l"><span>software and SaaS,</span></span> <span class="svx-l pdx-h1-sel"><span><em>mapped before code</em><b class="pdx-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><small data-label="Frame · before code"></small></b></span></span></h1>
+    <h1 class="svx-h1 pdx-h1"><span class="svx-l"><span>Product design services</span></span> <span class="svx-l"><span>from strategy to</span></span> <span class="svx-l pdx-h1-sel"><span><em>launch-ready UI</em><b class="pdx-sel" aria-hidden="true"><i></i><i></i><i></i><i></i><small data-label="Frame · before code"></small></b></span></span></h1>
+    <p class="svx-lede lede">Product design for logistics software and SaaS, mapped before code</p>
     <div class="svx-hero-grid pdx-hero-grid">
       <div class="svx-hero-copy">
         <p class="svx-lede lede pdx-hero-lede">Product design for logistics platforms and B2B SaaS: role-by-role journeys, one clickable prototype, and launch-ready UI that covers dispatch, driver, customer, and back-office surfaces together. Design for one core workflow <a href="/pricing#design">starts at $6,500</a>.</p>
@@ -426,7 +525,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li data-x style="--d:.06s"><span class="svx-tnum" aria-hidden="true">02</span>States, including empty and failed</li>
         <li data-x style="--d:.12s"><span class="svx-tnum" aria-hidden="true">03</span>Specs engineering can implement</li>
       </ul>
-      <p class="svx-credit" data-x>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+      <p class="svx-credit" data-x>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>
@@ -466,7 +565,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <article class="pdx-tile pdx-tile--alt" data-spot data-x style="--d:.16s">
         <span class="pdx-tile-n" aria-hidden="true">03</span>
         <h3>When another service fits better</h3>
-        <p>One module or workflow in a live product: <a href="/services/ui-ux-design">UI/UX design</a>. Evidence before deciding: <a href="/services/ux-research">UX research</a>. Tenants, roles, and billing on a live SaaS: <a href="/services/saas-platforms">SaaS product design</a>.</p>
+        <p>One module or workflow in a live product: <a href="/services/product-design">UI/UX design</a>. Evidence before deciding: <a href="/services/ux-research">UX research</a>. Tenants, roles, and billing on a live SaaS: <a href="/services/saas-platforms">SaaS product design</a>.</p>
         <span class="pdx-zoom" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><b>Whole product is all six lanes</b></span>
       </article>
     </div>
@@ -714,6 +813,282 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
 </section>
 
+<div class="svx-uiux">
+<section class="svx-sec uxx-wf-sec" id="workflows" aria-labelledby="wfH">
+  <div class="wrap">
+    <div class="svx-head">
+      <div class="svx-head-main">
+        <p class="svx-kicker eyebrow" data-x>Workflows we redesign most</p>
+        <h2 id="wfH" data-split>Pick the workflow that hurts. Start there.</h2>
+      </div>
+    </div>
+    <div class="uxx-wf" data-ux-wf>
+      <ol class="uxx-wf-list">
+        <li class="uxx-wf-item is-on" data-x>
+          <span class="uxx-wf-k">01 · Assignment</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="true" aria-controls="uxxWfStage">Dispatch and load assignment</button></h3>
+          <p class="uxx-wf-p">Load rows, driver matching, and bulk actions. The aim is fewer clicks per decision, with the status of each load readable at a glance.</p>
+        </li>
+        <li class="uxx-wf-item" data-x style="--d:.05s">
+          <span class="uxx-wf-k">02 · Exceptions</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="false" aria-controls="uxxWfStage">Exception triage queues</button></h3>
+          <p class="uxx-wf-p">Late pickups, missing documents, and rejected loads sorted by urgency and owner, so the next action is obvious.</p>
+        </li>
+        <li class="uxx-wf-item" data-x style="--d:.1s">
+          <span class="uxx-wf-k">03 · Driver</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="false" aria-controls="uxxWfStage">Status updates and document capture</button></h3>
+          <p class="uxx-wf-p">Accept a load, update status, and photograph a document with one hand on a small screen, including poor-connection states.</p>
+        </li>
+        <li class="uxx-wf-item" data-x style="--d:.15s">
+          <span class="uxx-wf-k">04 · Quote and booking</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="false" aria-controls="uxxWfStage">From request to confirmation</button></h3>
+          <p class="uxx-wf-p">A quote or booking flow that asks for what dispatch needs, in an order customers can finish, with clear error and confirmation states.</p>
+        </li>
+        <li class="uxx-wf-item" data-x style="--d:.2s">
+          <span class="uxx-wf-k">05 · SaaS</span>
+          <h3><button type="button" class="uxx-wf-btn" aria-pressed="false" aria-controls="uxxWfStage">Onboarding, settings, and permissions</button></h3>
+          <p class="uxx-wf-p">First-session setup, role screens, and settings pages that support teams can explain without a screen share.</p>
+        </li>
+      </ol>
+      <div class="uxx-wf-stage" id="uxxWfStage" data-on="0" data-x>
+        <div class="uxx-wf-bar" aria-hidden="true">
+          <span class="cr-dots"><i></i><i></i><i></i></span>
+          <span class="uxx-wf-name"><b>Assignment</b><b>Exceptions</b><b>Driver app</b><b>Quote and booking</b><b>Settings</b></span>
+          <span class="uxx-wf-count"><b class="svx-tnum" data-wf-n>01</b> / 05</span>
+        </div>
+        <div class="uxx-wf-views" aria-hidden="true">
+          <!-- 01 assignment -->
+          <div class="uxx-v uxx-v--as">
+            <div class="uxx-as-row is-sel"><i class="cb"></i><b>#4834</b><span>ATL → SAV</span><span class="uxx-st st-due"><i></i>Due soon</span></div>
+            <div class="uxx-as-row is-sel"><i class="cb"></i><b>#4831</b><span>DAL → OKC</span><span class="uxx-st st-open"><i></i>Open</span></div>
+            <div class="uxx-as-row"><i class="cb"></i><b>#4825</b><span>MEM → STL</span><span class="uxx-st st-open"><i></i>Open</span></div>
+            <div class="uxx-as-row is-done"><i class="cb"></i><b>#4822</b><span>DAL → HOU</span><span class="uxx-st st-ok"><i></i>Assigned</span></div>
+            <div class="uxx-as-match"><i>RO</i><span><b>R. Ortiz</b> · best match · 12 mi · hours OK</span></div>
+            <div class="uxx-as-bulk"><span><b>2</b> selected</span><span class="uxx-as-go">Assign both to R. Ortiz</span></div>
+          </div>
+          <!-- 02 exceptions -->
+          <div class="uxx-v uxx-v--ex">
+            <p class="uxx-ex-g">Now <span>2</span></p>
+            <div class="uxx-ex-row r1"><span class="uxx-st st-late"><i></i>Late pickup</span><b>#4827 · PHX → LAX</b><span class="uxx-ex-o"><i>JR</i>J. Reyes</span></div>
+            <div class="uxx-ex-row r2"><span class="uxx-st st-err"><i></i>Missing POD</span><b>#4819 · ATL → CLT</b><span class="uxx-ex-o"><i>MC</i>M. Chen</span></div>
+            <p class="uxx-ex-g">Today <span>1</span></p>
+            <div class="uxx-ex-row r3"><span class="uxx-st st-due"><i></i>Rejected load</span><b>#4811 · HOU → SAT</b><span class="uxx-ex-o is-none"><i>+</i>Take it</span></div>
+          </div>
+          <!-- 03 driver -->
+          <div class="uxx-v uxx-v--dr">
+            <div class="uxx-ph">
+              <i class="uxx-ph-n"></i>
+              <p class="uxx-ph-off"><i></i>Weak signal · 2 updates queued</p>
+              <p class="uxx-ph-id">#4822 <span>DAL → HOU</span></p>
+              <div class="uxx-ph-st"><span class="on">Arrived</span><span class="cur">Loaded</span><span>Delivered</span></div>
+              <div class="uxx-ph-cam"><i></i><span>Photograph the BOL</span></div>
+              <span class="uxx-ph-btn">Mark loaded</span>
+            </div>
+            <ul class="uxx-dr-side"><li>Thumb-reach actions</li><li>Works offline, syncs later</li><li>One document per step</li></ul>
+          </div>
+          <!-- 04 quote -->
+          <div class="uxx-v uxx-v--qt">
+            <ol class="uxx-qt-steps"><li class="ok">Lane</li><li class="cur">Freight</li><li>Dates</li><li>Confirm</li></ol>
+            <div class="uxx-qt-f"><span>Equipment</span><b>Dry van, 53 ft</b></div>
+            <div class="uxx-qt-f is-err"><span>Weight (lb)</span><b>52,000</b><em>Over the 45,000 lb limit for this lane. Split the load or choose flatbed.</em></div>
+            <div class="uxx-qt-done"><i></i><span><b>Quote Q-2291 confirmed</b>Dispatch has everything it needs</span></div>
+          </div>
+          <!-- 05 saas -->
+          <div class="uxx-v uxx-v--sa">
+            <div class="uxx-sa-on"><b>Set up your workspace</b><span class="uxx-sa-bar"><i></i></span><small>3 of 5 done</small></div>
+            <div class="uxx-sa-t">
+              <p><span>Role</span><span>Loads</span><span>Billing</span><span>Settings</span></p>
+              <p><span>Admin</span><i class="y"></i><i class="y"></i><i class="y"></i></p>
+              <p><span>Dispatcher</span><i class="y"></i><i class="n"></i><i class="n"></i></p>
+              <p><span>Accountant</span><i class="r"></i><i class="y"></i><i class="n"></i></p>
+            </div>
+            <p class="uxx-sa-why"><i></i>Why can't I edit billing? <span>Ask your admin. Your role is Dispatcher.</span></p>
+          </div>
+        </div>
+        <p class="uxx-wf-cap" aria-hidden="true">Redesigned view · sample data</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svx-sec uxx-den" id="density" aria-labelledby="denH" data-dark>
+  <div class="wrap uxx-den-grid">
+    <div class="uxx-den-copy">
+      <p class="svx-kicker eyebrow" data-x>Designing for all-day use</p>
+      <h2 class="uxx-pull" id="denH" data-split>Dense screens still need a hierarchy.</h2>
+      <p class="svx-lede lede" data-x>Operators spend hours in these screens. We design table density, status that does not rely on color alone, keyboard paths for desk users, and empty, loading, and error states, so the tenth hour reads as clearly as the first.</p>
+    </div>
+    <div class="uxx-den-demo" data-ux-den data-state="data" data-x style="--d:.1s">
+      <div class="uxx-den-ctl">
+        <span class="uxx-seg uxx-seg--l" role="group" aria-label="Board state">
+          <button type="button" class="uxx-seg-b" data-state="data" aria-pressed="true">Data</button>
+          <button type="button" class="uxx-seg-b" data-state="empty" aria-pressed="false">Empty</button>
+          <button type="button" class="uxx-seg-b" data-state="loading" aria-pressed="false">Loading</button>
+          <button type="button" class="uxx-seg-b" data-state="error" aria-pressed="false">Error</button>
+        </span>
+        <button type="button" class="uxx-sw" role="switch" aria-checked="false" data-gray><i aria-hidden="true"></i>No color</button>
+      </div>
+      <p class="sr" aria-live="polite" data-den-live>Showing the board with data.</p>
+      <div class="uxx-den-board" aria-hidden="true">
+        <div class="uxx-den-h"><span>Load</span><span>Lane</span><span class="c-dr">Driver</span><span>Status</span></div>
+        <div class="uxx-den-body">
+          <div class="uxx-den-rows">
+            <div class="uxx-den-r"><b>#4827</b><span>PHX → LAX</span><span class="c-dr">J. Reyes</span><span class="uxx-st st-late"><i></i>Late</span></div>
+            <div class="uxx-den-r"><b>#4819</b><span>ATL → CLT</span><span class="c-dr">M. Chen</span><span class="uxx-st st-err"><i></i>Missing POD</span></div>
+            <div class="uxx-den-r"><b>#4834</b><span>ATL → SAV</span><span class="c-dr">—</span><span class="uxx-st st-due"><i></i>Due soon</span></div>
+            <div class="uxx-den-r"><b>#4822</b><span>DAL → HOU</span><span class="c-dr">A. Patel</span><span class="uxx-st st-ok"><i></i>Assigned</span></div>
+            <div class="uxx-den-r"><b>#4836</b><span>HOU → SAT</span><span class="c-dr">R. Ortiz</span><span class="uxx-st st-ok"><i></i>Assigned</span></div>
+            <div class="uxx-den-r"><b>#4815</b><span>MEM → BNA</span><span class="c-dr">K. Lee</span><span class="uxx-st st-done"><i></i>Delivered</span></div>
+            <i class="uxx-den-focus"></i>
+          </div>
+          <div class="uxx-den-empty"><i></i><b>No loads waiting</b><span>New tenders land here as they arrive.</span><em>Create a load</em></div>
+          <div class="uxx-den-load"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="uxx-den-err"><b><i></i>Couldn't refresh the board</b><span>Showing loads from 14:02. Nothing was lost.</span><em>Try again</em></div>
+        </div>
+        <div class="uxx-den-foot"><span class="uxx-den-keys"><kbd>J</kbd><kbd>K</kbd> rows · <kbd>Enter</kbd> open · <kbd>A</kbd> assign</span><span class="uxx-den-gray">Still readable without color</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svx-sec uxx-dl-sec" id="deliver" aria-labelledby="delH">
+  <div class="wrap">
+    <div class="svx-head">
+      <div class="svx-head-main">
+        <p class="svx-kicker eyebrow" data-x>What design and engineering share</p>
+        <h2 id="delH" data-split>Specs first. Moodboard never.</h2>
+      </div>
+    </div>
+    <div class="uxx-dl">
+      <article class="uxx-dl-card" data-spot data-x>
+        <div class="uxx-art uxx-art--flow" aria-hidden="true">
+          <svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMid meet"><path class="ln" d="M38 60 H86"/><path class="ln" d="M126 60 H170"/><path class="ln ex" d="M106 74 V100 H170"/><rect x="10" y="46" width="28" height="28" rx="8"/><rect x="86" y="46" width="40" height="28" rx="14" class="dec"/><rect x="170" y="46" width="56" height="28" rx="8"/><rect x="170" y="88" width="56" height="24" rx="8" class="exr"/><text x="198" y="64">Done</text><text x="198" y="104" class="ext">Fail</text><text x="106" y="64">?</text></svg>
+        </div>
+        <span class="uxx-dl-n svx-tnum" aria-hidden="true">01</span>
+        <h3 class="uxx-dl-k">Flows</h3>
+        <p class="uxx-dl-p">Maps of the redesigned workflow, including exits and failures</p>
+      </article>
+      <article class="uxx-dl-card" data-spot data-x style="--d:.06s">
+        <div class="uxx-art uxx-art--proto" aria-hidden="true">
+          <span class="ph"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="tap"></i></span>
+          <span class="ph ph2"><i class="b1"></i><i class="b2"></i><i class="b3"></i></span>
+          <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M4 30 C 30 2, 60 2, 92 18"/></svg>
+        </div>
+        <span class="uxx-dl-n svx-tnum" aria-hidden="true">02</span>
+        <h3 class="uxx-dl-k">Prototype</h3>
+        <p class="uxx-dl-p">Interactive Figma prototype for stakeholder and user review</p>
+      </article>
+      <article class="uxx-dl-card" data-spot data-x style="--d:.12s">
+        <div class="uxx-art uxx-art--kit" aria-hidden="true">
+          <span class="k k1">Assign</span><span class="k k2">Assign</span><span class="k k3">Assign</span><span class="k k4">Assign</span>
+          <small>default</small><small>hover</small><small>disabled</small><small>error</small>
+        </div>
+        <span class="uxx-dl-n svx-tnum" aria-hidden="true">03</span>
+        <h3 class="uxx-dl-k">UI kit</h3>
+        <p class="uxx-dl-p">Components, states, and tokens, in a library your team owns</p>
+      </article>
+      <article class="uxx-dl-card" data-spot data-x style="--d:.18s">
+        <div class="uxx-art uxx-art--spec" aria-hidden="true">
+          <span class="fld"><i></i></span>
+          <span class="rl rl-h"><b>16</b></span>
+          <span class="rl rl-v"><b>48</b></span>
+          <span class="nt">Error: show under the field, keep the value</span>
+        </div>
+        <span class="uxx-dl-n svx-tnum" aria-hidden="true">04</span>
+        <h3 class="uxx-dl-k">Handoff</h3>
+        <p class="uxx-dl-p">Annotated specs, edge cases, and empty and error states</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="svx-sec uxx-ap-sec" id="approach" aria-labelledby="apH">
+  <div class="wrap">
+    <div class="svx-head">
+      <div class="svx-head-main">
+        <p class="svx-kicker eyebrow" data-x>How we work</p>
+        <h2 id="apH" data-split>Audit, redesign, support the build.</h2>
+      </div>
+    </div>
+    <ol class="uxx-steps" data-steps aria-label="How we work">
+      <li data-x>
+        <span class="uxx-step-dot" aria-hidden="true"></span>
+        <span class="uxx-step-k">01 · Audit</span>
+        <h3>Where the current flow stalls</h3>
+        <p>We walk the live workflow, review screens, support tickets, and any analytics you can share, and agree on the problem before drawing anything.</p>
+      </li>
+      <li data-x style="--d:.08s">
+        <span class="uxx-step-dot" aria-hidden="true"></span>
+        <span class="uxx-step-k">02 · Redesign</span>
+        <h3>Flows and prototype</h3>
+        <p>Revised flows and an interactive prototype, reviewed with the people who use the screen when you can arrange access.</p>
+      </li>
+      <li data-x style="--d:.16s">
+        <span class="uxx-step-dot" aria-hidden="true"></span>
+        <span class="uxx-step-k">03 · Build support</span>
+        <h3>Specs and answers</h3>
+        <p>Final specs and a kit, plus answers to engineering questions while the build is under way.</p>
+      </li>
+    </ol>
+    <div class="uxx-terms" data-x>
+      <p class="uxx-terms-c"><b>You provide:</b> current screens or access to the product, a decision-maker, and a conversation with one or two people who use the workflow.</p>
+      <p class="uxx-terms-c uxx-terms-c--no"><b>Not included:</b> evidence gathering from scratch (<a href="/services/ux-research">UX research</a>).</p>
+    </div>
+  </div>
+</section>
+
+<section class="svx-sec uxx-work" id="work" aria-labelledby="pfH" data-dark>
+  <div class="wrap uxx-work-grid">
+    <a class="uxx-kit-link" href="/work/payroll-pro-saas" aria-label="Read the PayrollPro case" data-cursor="Case" data-x>
+      <div class="uxx-kit" data-ux-kit data-tab="0" role="img" aria-label="Illustrative PayrollPro kit: role permissions, shared tokens, and flows a product team can keep shipping.">
+        <div class="uxx-kit-bar">
+          <span>PayrollPro · kit</span>
+          <span class="uxx-kit-live">Tokens live</span>
+        </div>
+        <div class="uxx-kit-body">
+          <div class="uxx-kit-rail" aria-hidden="true">
+            <span class="r0">Roles</span>
+            <span class="r1">Tokens</span>
+            <span class="r2">Flows</span>
+          </div>
+          <div class="uxx-kit-main">
+            <div class="uxx-kit-v v0">
+              <p class="uxx-kit-h">Finance · permissions</p>
+              <ul>
+                <li><b>File cycle</b><em class="uxx-chip s2">Allow</em></li>
+                <li><b>Hold pay</b><em class="uxx-chip s2">Allow</em></li>
+                <li><b>Edit tokens</b><em class="uxx-chip s0">Deny</em></li>
+              </ul>
+            </div>
+            <div class="uxx-kit-v v1" aria-hidden="true">
+              <p class="uxx-kit-h">Tokens · color</p>
+              <div class="uxx-kit-sw"><span><i class="t-cta"></i>--cta</span><span><i class="t-ink"></i>--ink</span><span><i class="t-lime"></i>--ready</span><span><i class="t-warn"></i>--hold</span></div>
+            </div>
+            <div class="uxx-kit-v v2" aria-hidden="true">
+              <p class="uxx-kit-h">Flows · first pay run</p>
+              <ol class="uxx-kit-fl"><li>SSO</li><li>Team</li><li>Roles</li><li>Pay run</li></ol>
+            </div>
+            <div class="uxx-kit-tokens">
+              <span><i class="t-cta"></i>--cta</span>
+              <span><i class="t-ink"></i>--ink</span>
+              <span><i class="t-lime"></i>--ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    <div class="uxx-work-copy">
+      <p class="svx-kicker eyebrow" data-x>Related work</p>
+      <h3 class="uxx-work-h" id="pfH" data-split>PayrollPro</h3>
+      <p class="uxx-work-p" data-x>Progressive onboarding and permission clarity after SSO. For dispatch-desk UX, see <a href="/work/shiftrail-dispatch">ShiftRail</a>.</p>
+      <div class="uxx-work-cta" data-x>
+        <a href="/work/payroll-pro-saas" class="btn svx-btn" data-magnet><span>Read the case</span><i aria-hidden="true">→</i></a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
 <section class="svx-sec pdx-rel-sec" id="related" aria-labelledby="relH">
   <div class="wrap">
     <div class="svx-head">
@@ -730,7 +1105,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <span class="pdx-scope" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><b>One workflow</b></span>
         <h3>UI/UX design</h3>
         <p>One workflow or module in an existing product: assignment, exception handling, or a booking step.</p>
-        <a class="svx-more" href="/services/ui-ux-design"><span>Explore UI/UX design</span><i aria-hidden="true">→</i></a>
+        <a class="svx-more" href="#workflows"><span>See the workflow redesign</span><i aria-hidden="true">→</i></a>
       </article>
       <article class="pdx-rel-card" data-spot data-x style="--d:.06s">
         <span class="pdx-scope pdx-scope--q" aria-hidden="true"><i class="q"></i><i class="q"></i><i class="q"></i><i></i><i></i><i></i><b>Evidence first</b></span>
@@ -760,43 +1135,83 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
     <div class="faq-list cr-faq-list">
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
           <span class="qn num">01</span>
           <span class="qt">How is product design different from UI/UX design?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
-          <p>Product design covers the whole product across roles: dispatcher, driver, customer, and back office. <a href="/services/ui-ux-design">UI/UX design</a> covers a single workflow or module in a product that already exists. If you can name the one screen that hurts, start there.</p>
+          <p>Product design covers the whole product across roles: dispatcher, driver, customer, and back office. <a href="/services/product-design">UI/UX design</a> covers a single workflow or module in a product that already exists. If you can name the one screen that hurts, start there.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">02</span>
           <span class="qt">Do you cover driver and customer surfaces, not just dispatch?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
-          <p>Yes, that is the point. We map each role's tasks and where they hand off, then design the surfaces together. Driver mobile screens follow the same journeys as <a href="/services/mobile-applications">mobile app design</a>, so the status a dispatcher sees matches what the driver taps.</p>
+          <p>Yes, that is the point. We map each role's tasks and where they hand off, then design the surfaces together. Driver mobile screens follow the same journeys as <a href="/services/mobile-applications">Mobile app development</a>, so the status a dispatcher sees matches what the driver taps.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">03</span>
           <span class="qt">Can we start with exceptions and the back office?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
           <p>Yes. Late loads, missing documents, invoicing, and permissions are the surfaces most teams skip. A smaller first engagement can cover those, with the rest of the map planned for later.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">04</span>
           <span class="qt">Do you write code, or only deliver designs?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
           <p>This service delivers design: journeys, prototype, UI, and specs engineers can build against. KRIVA is also an engineering studio, so a build can be scoped separately, or your team can build from the handoff.</p>
+        </div></div></div>
+      </div>
+<div class="faq-item" data-x>
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
+          <span class="qn num">05</span>
+          <span class="qt">Can you redesign just one screen or workflow?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button></h3>
+        <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
+          <p>Yes, that is the usual brief. Pick the workflow that hurts most, such as load assignment or the exception queue, and we redesign it with its neighbors in view so the change fits the rest of the product. A broader brief is the rest of this page.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item" data-x>
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
+          <span class="qn num">06</span>
+          <span class="qt">Do you work with our in-house designers and engineers?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button></h3>
+        <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
+          <p>Yes. We embed alongside your designers or product manager, work in Figma, and share libraries your team owns. Engineers get states, edge cases, and annotated specs they can build from, and we answer questions during the build.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item" data-x>
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
+          <span class="qn num">07</span>
+          <span class="qt">Do you design the driver-facing mobile screens too?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button></h3>
+        <div class="faq-a" id="fq7" role="region" aria-labelledby="fqb7"><div><div class="faq-a-in">
+          <p>Yes, for flows like accepting a load, updating status, and uploading documents. A full native or cross-platform app brief fits <a href="/services/mobile-applications">Mobile app development</a> better, and we will tell you which one applies.</p>
+        </div></div></div>
+      </div>
+      <div class="faq-item" data-x>
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq8" id="fqb8">
+          <span class="qn num">08</span>
+          <span class="qt">Do you write the front-end code?</span>
+          <span class="qi" aria-hidden="true"></span>
+        </button></h3>
+        <div class="faq-a" id="fq8" role="region" aria-labelledby="fqb8"><div><div class="faq-a-in">
+          <p>This service delivers design: flows, prototypes, UI kit, and specs. KRIVA is also an engineering studio, so implementation can be scoped as a separate engagement.</p>
         </div></div></div>
       </div>
     </div>
@@ -812,7 +1227,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <h2 id="inqH">Show us where the product story stops.</h2>
           <p class="svx-lede lede">Tell us which role or handoff is undesigned, such as exceptions, the back office, or the driver side. We will review the brief and tell you whether the gap is strategy, flows, or launch-ready UI. No RFP required.</p>
           <p class="cr-trust">
-            <span>Reply within one business day</span>
+            <span>We reply within one business day</span>
             <span>Mutual NDA available on request before sharing confidential project information.</span>
             <span>No obligation</span>
           </p>
@@ -860,7 +1275,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           </form>
           <div class="inq-done" tabindex="-1">
             <h3>Inquiry received.</h3>
-            <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+            <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
           </div>
         </div>
       </div>
@@ -887,7 +1302,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -904,7 +1319,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -924,7 +1341,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -935,240 +1352,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <script src="/shared/services-x.js?v=svx1" defer></script>
 <script src="/shared/services-x-pd.js?v=pd1" defer></script>
+<script src="/shared/services-x-uiux.js?v=ux1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://krivatechnologies.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Product design",
-          "item": "https://krivatechnologies.com/services/product-design"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/services/product-design#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How is product design different from UI/UX design?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Product design covers the whole product across roles: dispatcher, driver, customer, and back office. UI/UX design covers a single workflow or module in a product that already exists. If you can name the one screen that hurts, start there."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you cover driver and customer surfaces, not just dispatch?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, that is the point. We map each role's tasks and where they hand off, then design the surfaces together. Driver mobile screens follow the same journeys as mobile app design, so the status a dispatcher sees matches what the driver taps."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can we start with exceptions and the back office?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Late loads, missing documents, invoicing, and permissions are the surfaces most teams skip. A smaller first engagement can cover those, with the rest of the map planned for later."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you write code, or only deliver designs?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "This service delivers design: journeys, prototype, UI, and specs engineers can build against. KRIVA is also an engineering studio, so a build can be scoped separately, or your team can build from the handoff."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/services/product-design#service",
-      "name": "Product design for logistics software and SaaS",
-      "serviceType": "Custom software development",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "GB",
-        "AE",
-        "CA"
-      ],
-      "description": "Whole-product design for logistics software and B2B SaaS: role-by-role journeys, one clickable prototype, and launch-ready UI covering dispatch to back office.",
-      "url": "https://krivatechnologies.com/services/product-design"
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

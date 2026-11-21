@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>document.documentElement.classList.add('js')</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/services/graphic-design">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -163,8 +167,99 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
+<link rel="stylesheet" href="/shared/services-x.css?v=svx1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/services/graphic-design#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://krivatechnologies.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Graphic design",
+          "item": "https://krivatechnologies.com/services/graphic-design"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/services/graphic-design#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this the same as branding?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Branding sets the identity rules. Graphic design is production on those rules: decks, collateral, templates, and print files. If the rules do not exist yet, start with branding."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you draw diagrams of our dispatch or integration workflow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We make clean workflow and architecture diagrams for decks and one-pagers. Your team confirms the steps are accurate; we do not invent your process."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you handle printing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We deliver print-ready PDFs with bleed and color specs. Your print vendor produces them. We do not manage print runs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns the files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do. Editable source files and templates are delivered with the work. If a font needs its own license, we flag it before you commit to it."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
-<body class="page-graphic-design">
+<body class="page-graphic-design svx svx-moved">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -213,15 +308,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -268,6 +364,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -284,19 +382,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
-<nav class="chapters" id="chapters" aria-label="Sections">
-  <a href="#overview" aria-current="true"><span>Overview</span><i></i></a>
-  <a href="#problems"><span>Problems</span><i></i></a>
-  <a href="#catalogue"><span>What we make</span><i></i></a>
-  <a href="#process"><span>Process</span><i></i></a>
-  <a href="#proof"><span>Work</span><i></i></a>
-  <a href="#related"><span>Related</span><i></i></a>
-  <a href="#faq"><span>FAQ</span><i></i></a>
-</nav>
+<nav class="svx-rail" id="chapters" aria-label="Sections"><ol><li><a href="#overview" aria-current="true"><span>Overview</span></a></li><li><a href="#problems"><span>Problems</span></a></li><li><a href="#catalogue"><span>What we make</span></a></li><li><a href="#process"><span>Process</span></a></li><li><a href="#proof"><span>Work</span></a></li><li><a href="#related"><span>Related</span></a></li><li><a href="#faq"><span>FAQ</span></a></li></ol></nav>
+<nav class="mob-chips" id="mobChips" aria-label="Page sections"><a href="#overview">Overview</a><a href="#problems">Problems</a><a href="#catalogue">What we make</a><a href="#process">Process</a><a href="#proof">Work</a><a href="#related">Related</a><a href="#faq">FAQ</a></nav>
 
 <nav class="mob-chips" id="mobChips" aria-label="Page sections">
   <a href="#overview">Overview</a>
@@ -311,16 +402,17 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <main id="main">
 
-<header class="hero hero--inner" id="overview">
+<header class="svx-hero" id="overview" data-dark>
+<div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div></div>
   <div class="wrap">
-    <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
+    <ol class="crumbs svx-crumbs" data-r>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Graphic Design</li>
     </ol>
     <div class="k-hero-split ip-hero" data-r>
       <p class="ip-kicker">Graphic design</p>
-      <h1 class="ip-title ip-title--lines">Graphic design for logistics and software teams</h1>
+      <h1 class="svx-h1 ip-title ip-title--lines">Graphic design for logistics and software teams</h1>
       <p class="ip-desc">Graphic design for logistics and software teams: sales decks, capability sheets, trade-show graphics, and social templates built on brand rules you already have.</p>
       <div class="ip-actions">
         <a href="#inquire" class="btn sm"><span>Book a free 20-minute fit call</span><i>→</i></a>
@@ -351,7 +443,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <h2>Decks and sheets that follow the brand you already have.</h2>
       <p>Sales decks, capability sheets, trade-show graphics, and social templates drift when each one starts from a blank file. The kit is the set of pieces marketing can reuse.</p>
       <ul class="story-points"><li>Decks and one-pagers on the same rules</li><li>Social templates, not one-off posts</li><li>Print-ready files you own</li></ul>
-      <p class="story-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</p>
+      <p class="story-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>
@@ -518,41 +610,41 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
     <div class="faq-list" data-r>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="gq1" id="gqb1">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="gq1" id="gqb1">
           <span class="qn num">01</span>
           <span class="qt">Is this the same as branding?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="gq1" role="region" aria-labelledby="gqb1"><div><div class="faq-a-in">
           <p>No. <a href="/services/branding">Branding</a> sets the identity rules. Graphic design is production on those rules: decks, collateral, templates, and print files. If the rules do not exist yet, start with branding.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="gq2" id="gqb2">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="gq2" id="gqb2">
           <span class="qn num">02</span>
           <span class="qt">Can you draw diagrams of our dispatch or integration workflow?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="gq2" role="region" aria-labelledby="gqb2"><div><div class="faq-a-in">
           <p>Yes. We make clean workflow and architecture diagrams for decks and one-pagers. Your team confirms the steps are accurate; we do not invent your process.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="gq3" id="gqb3">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="gq3" id="gqb3">
           <span class="qn num">03</span>
           <span class="qt">Do you handle printing?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="gq3" role="region" aria-labelledby="gqb3"><div><div class="faq-a-in">
           <p>We deliver print-ready PDFs with bleed and color specs. Your print vendor produces them. We do not manage print runs.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="gq4" id="gqb4">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="gq4" id="gqb4">
           <span class="qn num">04</span>
           <span class="qt">Who owns the files?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="gq4" role="region" aria-labelledby="gqb4"><div><div class="faq-a-in">
           <p>You do. Editable source files and templates are delivered with the work. If a font needs its own license, we flag it before you commit to it.</p>
         </div></div></div>
@@ -568,7 +660,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <h2 class="d2" id="inqH">Need a kit your team can reuse?</h2>
       <p class="lede">Tell us which materials are off-brand or stuck in locked files: decks, one-pagers, social, or print. We will review the brief and say whether a kit makes sense. No RFP required.</p>
       <p class="gd-trust">
-        <span>Reply within one business day</span>
+        <span>We reply within one business day</span>
         <span>Mutual NDA available on request before sharing confidential project information.</span>
         <span>No obligation</span>
       </p>
@@ -616,7 +708,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       </form>
       <div class="inq-done" tabindex="-1">
         <h3>Inquiry received.</h3>
-        <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+        <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
       </div>
     </div>
   </div>
@@ -641,7 +733,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -658,7 +750,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -678,7 +772,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -755,238 +849,7 @@ run();
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://krivatechnologies.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Graphic design",
-          "item": "https://krivatechnologies.com/services/graphic-design"
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/services/graphic-design#service",
-      "name": "Graphic design for logistics and software teams",
-      "serviceType": "Graphic design",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "GB",
-        "AE",
-        "CA"
-      ],
-      "description": "Sales decks, one-pagers, social templates, and print files for logistics and software teams, built on your brand rules and delivered as editable source files.",
-      "url": "https://krivatechnologies.com/services/graphic-design"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/services/graphic-design#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is this the same as branding?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Branding sets the identity rules. Graphic design is production on those rules: decks, collateral, templates, and print files. If the rules do not exist yet, start with branding."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you draw diagrams of our dispatch or integration workflow?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. We make clean workflow and architecture diagrams for decks and one-pagers. Your team confirms the steps are accurate; we do not invent your process."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you handle printing?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We deliver print-ready PDFs with bleed and color specs. Your print vendor produces them. We do not manage print runs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who owns the files?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You do. Editable source files and templates are delivered with the work. If a font needs its own license, we flag it before you commit to it."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

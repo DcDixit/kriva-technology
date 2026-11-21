@@ -1,4 +1,4 @@
-/* KRIVA Contact · "ctx" layer behaviour (body.svx-ct). Loaded after services-x.js.
+/* KRIVA Contact · "ctx" layer behavior (body.svx-ct). Loaded after services-x.js.
    Progressive enhancement only: the inline page script still owns validation and submission,
    and every form control stays in the DOM unchanged. Without this file the page is complete. */
 (function () {

@@ -97,6 +97,7 @@ function escMultiline(value) {
 function typeLabel(inquiryType) {
   if (inquiryType === "fit_call") return "Fit call request";
   if (inquiryType === "page_inquiry") return "Page inquiry";
+  if (inquiryType === "lead_magnet") return "Guide download";
   return "Project brief";
 }
 
@@ -298,7 +299,7 @@ function buildMessage(data) {
     footerHtml,
   });
 
-  const subject = "KRIVA " + kind + ": " + (company ? company + " (" + name + ")" : name || "Website");
+  const subject = "KRIVA " + kind + ": " + (company ? company + " (" + (name || email) + ")" : name || email || "Website");
   return { text, html, subject, inquiryType };
 }
 
@@ -317,6 +318,20 @@ function buildConfirmation(data) {
     ["Budget", pick("budget")],
     ["Timeline", pick("timeline")],
   ].filter(([, v]) => v);
+
+  if (inquiryType === "lead_magnet") {
+    const note = "The download link is on the page you just used. If it did not appear, reply to this email and we will send it.";
+    return {
+      subject: "Your KRIVA download",
+      text: note + "\n\nKRIVA Technologies · " + SITE_URL,
+      html: layout({
+        preheader: note,
+        chip: "",
+        bodyHtml: '<p style="margin:0 0 16px;font-family:' + FONT + ";font-size:16px;line-height:24px;color:" + C.ink + ';">' + note + "</p>",
+        footerHtml: "You received this because your email was entered to download a file on krivatechnologies.com.",
+      }),
+    };
+  }
 
   const steps = [
     ["We review your request", "A senior team member reads it and checks it against similar work we have delivered."],
@@ -573,7 +588,13 @@ module.exports = async function handler(req, res) {
 
   const name = field(data, "name");
   const email = field(data, "email");
-  if (!name || !isEmail(email)) {
+  const leadMagnet = field(data, "inquiry_type") === "lead_magnet";
+  if (leadMagnet) {
+    if (!isEmail(email)) {
+      sendJson(res, 400, { ok: false, error: "A valid work email is required." });
+      return;
+    }
+  } else if (!name || !isEmail(email)) {
     sendJson(res, 400, { ok: false, error: "Name and a valid email are required." });
     return;
   }

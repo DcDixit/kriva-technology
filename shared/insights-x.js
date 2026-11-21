@@ -211,7 +211,10 @@
   /* Topic counts come from the list itself, so they stay right as notes are added */
   $$('[data-topic-count]').forEach((b) => {
     const cat = b.getAttribute('data-topic-count');
-    b.textContent = posts.filter((p) => p.getAttribute('data-cat') === cat).length + (featCat === cat ? 1 : 0);
+    const n = cat === 'all'
+      ? posts.length + (featured ? 1 : 0)
+      : posts.filter((p) => p.getAttribute('data-cat') === cat).length + (featCat === cat ? 1 : 0);
+    b.textContent = String(n);
   });
 
   const moveInk = () => {
@@ -312,7 +315,7 @@
   }
   const darks = $$('main [data-dark]');
 
-  /* ── Scroll loop: progress, sticky offset under the header, rail colour, parallax ── */
+  /* ── Scroll loop: progress, sticky offset under the header, rail color, parallax ── */
   const prog = $('#progress');
   const nav = $('#nav');
   const pars = $$('[data-par]');

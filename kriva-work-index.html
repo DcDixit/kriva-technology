@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('wx-motion');setTimeout(function(){if(!window.__wx)d.classList.remove('wx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/work">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -73,7 +77,7 @@ gtag('config',id,cfg);
 <meta property="og:site_name" content="KRIVA Technologies">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Case Studies: Trucking Software, SaaS &amp; Web Design | KRIVA">
-<meta property="og:description" content="Eight product case studies, from a US trucking dispatch CRM to SaaS onboarding and QuickBooks and Xero reconciliation, plus seven client websites designed by KRIVA.">
+<meta property="og:description" content="Eight product case studies, from a US trucking dispatch CRM to SaaS onboarding and QuickBooks and Xero, plus seven client websites designed by KRIVA.">
 <meta property="og:url" content="https://krivatechnologies.com/work">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og/work.png">
@@ -84,7 +88,7 @@ gtag('config',id,cfg);
 <meta property="og:image:alt" content="KRIVA Technologies: case studies in trucking software, SaaS, and web design">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Case Studies: Trucking Software, SaaS &amp; Web Design | KRIVA">
-<meta name="twitter:description" content="Eight product case studies, from a US trucking dispatch CRM to SaaS onboarding and QuickBooks and Xero reconciliation, plus seven client websites designed by KRIVA.">
+<meta name="twitter:description" content="Eight product case studies, from a US trucking dispatch CRM to SaaS onboarding and QuickBooks and Xero, plus seven client websites designed by KRIVA.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og/work.png">
 <meta name="twitter:image:alt" content="KRIVA Technologies: case studies in trucking software, SaaS, and web design">
 <!-- KRIVA_OG_IMAGE_END -->
@@ -163,6 +167,106 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/work-x.css?v=wx1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/work#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Case studies",
+          "item": "https://krivatechnologies.com/work"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/work#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are these real client projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The seven website projects are client sites, and each card links to the live site. The eight product case studies are representative projects: they describe a real kind of problem and how we solved it, but project names may be portfolio names."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are the product screens illustrations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We rebuild every interface for this site so no client data, customer names, or internal figures are shown. The layouts reflect what we designed and built, not a live client system."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why don't you publish results or metrics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We only publish an outcome number when a client approves it in writing. None of the cases on this page has approved figures yet, so we don't show any. Ask us on a call what we can share about a specific project."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we see more detail on a project like ours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. On a free 20-minute fit call we walk you through the case closest to your project. Mutual NDA available on request before sharing confidential project information."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do projects like these take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Discovery takes 1 to 2 weeks. A focused MVP or redesign is usually 6 to 10 weeks, and a full platform with integrations usually runs 12 to 20 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns the code and designs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do. Figma files, repositories, and documentation transfer to you at project close or earlier, with no lock-in."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="page-work wx">
 <a class="skip" href="#main">Skip to content</a>
@@ -213,15 +317,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -268,6 +373,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -284,7 +391,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -306,7 +413,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="wx-hero-bg" aria-hidden="true"><div class="wx-grid"></div><div class="wx-glow"></div></div>
   <div class="wrap">
     <ol class="crumbs wx-crumbs">
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Work</li>
     </ol>
     <p class="wx-kicker wx-pill"><i aria-hidden="true"></i>Our work</p>
@@ -326,9 +433,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
       </div>
       <div class="wx-reel" aria-hidden="true">
         <div class="wx-reel-in">
-          <div class="wx-col"><div class="wx-track"><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>elite-one.us</span></div><img src="/media/work/web/eliteone-transportation-800.webp" alt="" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>keepmovingus.com</span></div><img src="/media/work/web/keep-moving-800.webp" alt="" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xmileautotransport.com</span></div><img src="/media/work/web/xmile-auto-transport-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>cascadiacollection.com</span></div><img src="/media/work/web/cascadia-collection-homepage-illustration-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>elite-one.us</span></div><img src="/media/work/web/eliteone-transportation-800.webp" alt="" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>keepmovingus.com</span></div><img src="/media/work/web/keep-moving-800.webp" alt="" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xmileautotransport.com</span></div><img src="/media/work/web/xmile-auto-transport-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>cascadiacollection.com</span></div><img src="/media/work/web/cascadia-collection-homepage-illustration-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div></div></div>
-          <div class="wx-col"><div class="wx-track"><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xtramilemovers.com</span></div><img src="/media/work/web/extra-mile-movers-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>fitnesskeepmoving.com</span></div><img src="/media/work/web/keep-moving-fitness-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>elite-one.us</span></div><img src="/media/work/web/eliteone-transportation-800.webp" alt="" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>schwarzlogistics.com</span></div><img src="/media/work/web/schwarz-logistics-800.webp" alt="" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xtramilemovers.com</span></div><img src="/media/work/web/extra-mile-movers-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>fitnesskeepmoving.com</span></div><img src="/media/work/web/keep-moving-fitness-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>elite-one.us</span></div><img src="/media/work/web/eliteone-transportation-800.webp" alt="" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>schwarzlogistics.com</span></div><img src="/media/work/web/schwarz-logistics-800.webp" alt="" width="800" height="500" decoding="async"></div></div></div>
-          <div class="wx-col"><div class="wx-track"><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xmileautotransport.com</span></div><img src="/media/work/web/xmile-auto-transport-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>cascadiacollection.com</span></div><img src="/media/work/web/cascadia-collection-homepage-illustration-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>keepmovingus.com</span></div><img src="/media/work/web/keep-moving-800.webp" alt="" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xtramilemovers.com</span></div><img src="/media/work/web/extra-mile-movers-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xmileautotransport.com</span></div><img src="/media/work/web/xmile-auto-transport-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>cascadiacollection.com</span></div><img src="/media/work/web/cascadia-collection-homepage-illustration-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>keepmovingus.com</span></div><img src="/media/work/web/keep-moving-800.webp" alt="" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xtramilemovers.com</span></div><img src="/media/work/web/extra-mile-movers-800.webp" alt="" width="800" height="500" decoding="async" loading="lazy"></div></div></div>
+          <div class="wx-col"><div class="wx-track"><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>elite-one.us</span></div><img src="/media/work/web/eliteone-transportation-800.webp" alt="EliteOne Transportation website homepage" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>keepmovingus.com</span></div><img loading="lazy" src="/media/work/web/keep-moving-800.webp" alt="Keep Moving website homepage" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xmileautotransport.com</span></div><img src="/media/work/web/xmile-auto-transport-800.webp" alt="Xmile Auto Transport website homepage" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>cascadiacollection.com</span></div><img src="/media/work/web/cascadia-collection-homepage-illustration-800.webp" alt="Illustrative Cascadia Collection homepage layout" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>elite-one.us</span></div><img loading="lazy" src="/media/work/web/eliteone-transportation-800.webp" alt="EliteOne Transportation website homepage" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>keepmovingus.com</span></div><img loading="lazy" src="/media/work/web/keep-moving-800.webp" alt="Keep Moving website homepage" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xmileautotransport.com</span></div><img src="/media/work/web/xmile-auto-transport-800.webp" alt="Xmile Auto Transport website homepage" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>cascadiacollection.com</span></div><img src="/media/work/web/cascadia-collection-homepage-illustration-800.webp" alt="Illustrative Cascadia Collection homepage layout" width="800" height="500" decoding="async" loading="lazy"></div></div></div>
+          <div class="wx-col"><div class="wx-track"><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xtramilemovers.com</span></div><img src="/media/work/web/extra-mile-movers-800.webp" alt="Extra Mile Movers website homepage" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>fitnesskeepmoving.com</span></div><img src="/media/work/web/keep-moving-fitness-800.webp" alt="Keep Moving Fitness website homepage" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>elite-one.us</span></div><img loading="lazy" src="/media/work/web/eliteone-transportation-800.webp" alt="EliteOne Transportation website homepage" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>schwarzlogistics.com</span></div><img loading="lazy" src="/media/work/web/schwarz-logistics-800.webp" alt="Schwarz Logistics website homepage" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xtramilemovers.com</span></div><img src="/media/work/web/extra-mile-movers-800.webp" alt="Extra Mile Movers website homepage" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>fitnesskeepmoving.com</span></div><img src="/media/work/web/keep-moving-fitness-800.webp" alt="Keep Moving Fitness website homepage" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>elite-one.us</span></div><img loading="lazy" src="/media/work/web/eliteone-transportation-800.webp" alt="EliteOne Transportation website homepage" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>schwarzlogistics.com</span></div><img loading="lazy" src="/media/work/web/schwarz-logistics-800.webp" alt="Schwarz Logistics website homepage" width="800" height="500" decoding="async"></div></div></div>
+          <div class="wx-col"><div class="wx-track"><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xmileautotransport.com</span></div><img src="/media/work/web/xmile-auto-transport-800.webp" alt="Xmile Auto Transport website homepage" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>cascadiacollection.com</span></div><img src="/media/work/web/cascadia-collection-homepage-illustration-800.webp" alt="Illustrative Cascadia Collection homepage layout" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>keepmovingus.com</span></div><img loading="lazy" src="/media/work/web/keep-moving-800.webp" alt="Keep Moving website homepage" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xtramilemovers.com</span></div><img src="/media/work/web/extra-mile-movers-800.webp" alt="Extra Mile Movers website homepage" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xmileautotransport.com</span></div><img src="/media/work/web/xmile-auto-transport-800.webp" alt="Xmile Auto Transport website homepage" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>cascadiacollection.com</span></div><img src="/media/work/web/cascadia-collection-homepage-illustration-800.webp" alt="Illustrative Cascadia Collection homepage layout" width="800" height="500" decoding="async" loading="lazy"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>keepmovingus.com</span></div><img loading="lazy" src="/media/work/web/keep-moving-800.webp" alt="Keep Moving website homepage" width="800" height="500" decoding="async"></div><div class="wx-tile"><div class="wx-tile-bar"><i></i><i></i><i></i><span>xtramilemovers.com</span></div><img src="/media/work/web/extra-mile-movers-800.webp" alt="Extra Mile Movers website homepage" width="800" height="500" decoding="async" loading="lazy"></div></div></div>
         </div>
       </div>
     </div>
@@ -623,7 +730,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
                 <p class="wk-gate-title">Review queue</p>
                 <p class="wk-gate-meta">Claude draft · human gate</p>
               </div>
-              <span class="wk-gate-holdchip">Hold send</span>
+              <span class="flag">Illustrative</span><span class="wk-gate-holdchip">Hold send</span>
             </div>
             <div class="wk-gate-ticket">
               <p class="wk-gate-k">#4812 · Billing · 94%</p>
@@ -718,6 +825,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
                 <span class="wk-brand-dots"><i style="background:#0F1C2E"></i><i style="background:#8B7355"></i><i style="background:#FFFFFF"></i></span>
               </div>
               <div class="wk-brand-row">
+                <!-- TODO(kriva): sample product is a linen overshirt on an electronics brand case; replace with an electronics sample product -->
                 <p class="wk-brand-prod">Linen overshirt</p>
                 <p class="wk-brand-price">&pound;128</p>
               </div>
@@ -889,7 +997,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <div class="wx-how-grid">
       <figure class="wx-how-img" data-x>
         <div class="wx-img"><img data-par src="/media/photos/work-phase-sketches-960.webp" srcset="/media/photos/work-phase-sketches-960.webp 960w, /media/photos/work-phase-sketches.webp 1600w" sizes="(min-width:1001px) 40vw, 92vw" alt="A notebook of screen sketches and a pen on a wooden desk." width="1600" height="1067" loading="lazy" decoding="async"></div>
-        <figcaption class="story-credit">Stock photo (<a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>). Not a KRIVA client.</figcaption>
+        <figcaption class="story-credit">Stock photo (<a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>). <!-- TODO(kriva): replace with own product UI --></figcaption>
       </figure>
       <div class="wx-how-copy">
         <ul class="wx-points">
@@ -911,7 +1019,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <p class="wx-lede" data-x>Most of this work sits in four areas. Each solution page explains what we build for that market and how a project runs.</p>
       <figure class="wx-read-media" data-x>
         <div class="wx-img"><img data-par class="is-subject-low" src="/media/photos/work-dock-check-800.webp" srcset="/media/photos/work-dock-check-800.webp 800w, /media/photos/work-dock-check.webp 1600w" sizes="(min-width:1001px) 36vw, 92vw" alt="A warehouse lead stands in an aisle of pallet racking loaded with freight." width="1600" height="1067" loading="lazy" decoding="async"></div>
-        <figcaption>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client.</figcaption>
+        <figcaption>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
       </figure>
     </div>
     <div class="wx-read-main">
@@ -934,12 +1042,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <p class="wx-lede" data-x>Straight answers about what these case studies show and what they don't. More in our <a class="wx-inline" href="/faq">full FAQ</a>.</p>
     </div>
     <div class="wk-faq-list wx-faq-list">
-      <details open><summary>Are these real client projects?</summary><p>The seven website projects are client sites, and each card links to the live site. The eight product case studies are representative projects: they describe a real kind of problem and how we solved it, but project names may be portfolio names.</p></details>
-      <details><summary>Why are the product screens illustrations?</summary><p>We rebuild every interface for this site so no client data, customer names, or internal figures are shown. The layouts reflect what we designed and built, not a live client system.</p></details>
-      <details><summary>Why don't you publish results or metrics?</summary><p>We only publish an outcome number when a client approves it in writing. None of the cases on this page has approved figures yet, so we don't show any. Ask us on a call what we can share about a specific project.</p></details>
-      <details><summary>Can we see more detail on a project like ours?</summary><p>Yes. On a free 20-minute fit call we walk you through the case closest to your project. Mutual NDA available on request before sharing confidential project information.</p></details>
-      <details><summary>How long do projects like these take?</summary><p>Discovery takes 1 to 2 weeks. A focused MVP or redesign is usually 6 to 10 weeks, and a full platform with integrations usually runs 12 to 20 weeks.</p></details>
-      <details><summary>Who owns the code and designs?</summary><p>You do. Figma files, repositories, and documentation transfer to you at project close or earlier, with no lock-in.</p></details>
+      <details open><summary><h3 class="faq-q-h">Are these real client projects?</h3></summary><p>The seven website projects are client sites, and each card links to the live site. The eight product case studies are representative projects: they describe a real kind of problem and how we solved it, but project names may be portfolio names.</p></details>
+      <details><summary><h3 class="faq-q-h">Why are the product screens illustrations?</h3></summary><p>We rebuild every interface for this site so no client data, customer names, or internal figures are shown. The layouts reflect what we designed and built, not a live client system.</p></details>
+      <details><summary><h3 class="faq-q-h">Why don't you publish results or metrics?</h3></summary><p>We only publish an outcome number when a client approves it in writing. None of the cases on this page has approved figures yet, so we don't show any. Ask us on a call what we can share about a specific project.</p></details>
+      <details><summary><h3 class="faq-q-h">Can we see more detail on a project like ours?</h3></summary><p>Yes. On a free 20-minute fit call we walk you through the case closest to your project. Mutual NDA available on request before sharing confidential project information.</p></details>
+      <details><summary><h3 class="faq-q-h">How long do projects like these take?</h3></summary><p>Discovery takes 1 to 2 weeks. A focused MVP or redesign is usually 6 to 10 weeks, and a full platform with integrations usually runs 12 to 20 weeks.</p></details>
+      <details><summary><h3 class="faq-q-h">Who owns the code and designs?</h3></summary><p>You do. Figma files, repositories, and documentation transfer to you at project close or earlier, with no lock-in.</p></details>
     </div>
   </div>
 </section>
@@ -951,7 +1059,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <div class="inq-copy">
           <p class="wx-kicker eyebrow">Start a conversation</p>
           <h2 class="d2" id="inqH">Want to see work closer to your project?</h2>
-          <p class="lede wx-lede">Tell us what your team is building or working around. We'll reply within one business day and walk you through the most relevant case.</p>
+          <p class="lede wx-lede">Tell us what your team is building or working around. We reply within one business day and walk you through the most relevant case.</p>
           <p class="inq-help">Prefer email? <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>. Have a longer brief or files? <a href="/contact#brief">Send a project brief</a>.</p>
         </div>
         <div>
@@ -967,10 +1075,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
         <div><label for="inq-details">What is your team working around today? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
         <p class="inq-fail" role="alert"></p>
-        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
+        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">We reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
-      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
+      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We reply within one business day. This confirms our mail service accepted the message.</p></div>
         </div>
       </div>
     </div>
@@ -995,7 +1103,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -1012,7 +1120,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -1032,7 +1142,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -1042,226 +1152,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "CollectionPage",
-      "@id": "https://krivatechnologies.com/work#webpage",
-      "url": "https://krivatechnologies.com/work",
-      "name": "Case Studies: Trucking Software, SaaS & Web Design",
-      "description": "Eight product case studies (dispatch CRM, SaaS onboarding, QuickBooks and Xero reconciliation, mobile, AI support) and seven client websites designed by KRIVA.",
-      "inLanguage": "en",
-      "isPartOf": { "@id": "https://krivatechnologies.com/#website" },
-      "about": { "@id": "https://krivatechnologies.com/#organization" },
-      "primaryImageOfPage": { "@type": "ImageObject", "url": "https://krivatechnologies.com/brand/og/work.png", "width": 1200, "height": 630 },
-      "breadcrumb": { "@id": "https://krivatechnologies.com/work#breadcrumb" },
-      "mainEntity": {
-        "@type": "ItemList",
-        "name": "KRIVA case studies and client websites",
-        "numberOfItems": 15,
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "ShiftRail: trucking dispatch CRM", "url": "https://krivatechnologies.com/work/shiftrail-dispatch" },
-          { "@type": "ListItem", "position": 2, "name": "PayrollPro: B2B SaaS onboarding", "url": "https://krivatechnologies.com/work/payroll-pro-saas" },
-          { "@type": "ListItem", "position": 3, "name": "FinanceSync: QuickBooks and Xero reconciliation", "url": "https://krivatechnologies.com/work/finance-sync-hub" },
-          { "@type": "ListItem", "position": 4, "name": "HealthTrack: patient mobile app", "url": "https://krivatechnologies.com/work/healthtrack-mobile" },
-          { "@type": "ListItem", "position": 5, "name": "CRMPulse: HubSpot sales dashboard", "url": "https://krivatechnologies.com/work/crm-pulse-dashboard" },
-          { "@type": "ListItem", "position": 6, "name": "SupportAI: support ticket automation", "url": "https://krivatechnologies.com/work/ai-support-automation" },
-          { "@type": "ListItem", "position": 7, "name": "LocalServe: no-code marketplace MVP", "url": "https://krivatechnologies.com/work/marketplace-mvp" },
-          { "@type": "ListItem", "position": 8, "name": "BrandLift: rebrand and Shopify storefront", "url": "https://krivatechnologies.com/work/brandlift-ecommerce" },
-          { "@type": "ListItem", "position": 9, "name": "EliteOne Transportation website", "url": "https://elite-one.us" },
-          { "@type": "ListItem", "position": 10, "name": "Keep Moving website", "url": "https://keepmovingus.com" },
-          { "@type": "ListItem", "position": 11, "name": "Extra Mile Movers website", "url": "https://xtramilemovers.com" },
-          { "@type": "ListItem", "position": 12, "name": "Xmile Group transport and moving websites", "url": "https://xmileautotransport.com" },
-          { "@type": "ListItem", "position": 13, "name": "Keep Moving Fitness website", "url": "https://fitnesskeepmoving.com" },
-          { "@type": "ListItem", "position": 14, "name": "Cascadia Collection website", "url": "https://cascadiacollection.com" },
-          { "@type": "ListItem", "position": 15, "name": "Schwarz Logistics website", "url": "https://schwarzlogistics.com" }
-        ]
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/work#faq",
-      "mainEntity": [
-        { "@type": "Question", "name": "Are these real client projects?", "acceptedAnswer": { "@type": "Answer", "text": "The seven website projects are client sites, and each card links to the live site. The eight product case studies are representative projects: they describe a real kind of problem and how we solved it, but project names may be portfolio names." } },
-        { "@type": "Question", "name": "Why are the product screens illustrations?", "acceptedAnswer": { "@type": "Answer", "text": "We rebuild every interface for this site so no client data, customer names, or internal figures are shown. The layouts reflect what we designed and built, not a live client system." } },
-        { "@type": "Question", "name": "Why don't you publish results or metrics?", "acceptedAnswer": { "@type": "Answer", "text": "We only publish an outcome number when a client approves it in writing. None of the cases on this page has approved figures yet, so we don't show any. Ask us on a call what we can share about a specific project." } },
-        { "@type": "Question", "name": "Can we see more detail on a project like ours?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. On a free 20-minute fit call we walk you through the case closest to your project. Mutual NDA available on request before sharing confidential project information." } },
-        { "@type": "Question", "name": "How long do projects like these take?", "acceptedAnswer": { "@type": "Answer", "text": "Discovery takes 1 to 2 weeks. A focused MVP or redesign is usually 6 to 10 weeks, and a full platform with integrations usually runs 12 to 20 weeks." } },
-        { "@type": "Question", "name": "Who owns the code and designs?", "acceptedAnswer": { "@type": "Answer", "text": "You do. Figma files, repositories, and documentation transfer to you at project close or earlier, with no lock-in." } }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://krivatechnologies.com/work#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Work",
-          "item": "https://krivatechnologies.com/work"
-        }
-      ]
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
 <script src="/shared/work-x.js?v=wx1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

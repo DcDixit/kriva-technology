@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('ix-motion');setTimeout(function(){if(!window.__ix)d.classList.remove('ix-motion')},2500)}})(document.documentElement)</script>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>document.documentElement.classList.add('js')</script>
 <meta charset="utf-8">
@@ -58,7 +64,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/insights/trucking-dispatch-crm-guide">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -75,6 +80,7 @@ gtag('config',id,cfg);
 <meta property="og:url" content="https://krivatechnologies.com/insights/trucking-dispatch-crm-guide">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og/insights-trucking-dispatch-crm-guide.png">
+<!-- TODO(kriva): dedicated 1200×630 article image; og:image uses the per-article field or falls back to /brand/og-default.png -->
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Guide · Dispatch CRM for US trucking: what it is and what actually works">
@@ -292,8 +298,77 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
 
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
+<link rel="stylesheet" href="/shared/insight-x.css?v=ix4">
+<link rel="stylesheet" href="/shared/growth.css?v=lead14">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/insights/trucking-dispatch-crm-guide#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Insights & guides",
+          "item": "https://krivatechnologies.com/insights"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dispatch CRM for US trucking",
+          "item": "https://krivatechnologies.com/insights/trucking-dispatch-crm-guide"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://krivatechnologies.com/insights/trucking-dispatch-crm-guide#article",
+      "headline": "Dispatch CRM for US trucking: what it is and what actually works",
+      "datePublished": "2026-05-20",
+      "dateModified": "2026-05-20",
+      "image": "https://krivatechnologies.com/brand/og/insights-trucking-dispatch-crm-guide.png",
+      "author": {
+        "@id": "https://krivatechnologies.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://krivatechnologies.com/#organization"
+      },
+      "mainEntityOfPage": "https://krivatechnologies.com/insights/trucking-dispatch-crm-guide"
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
-<body class="page-insight-truck">
+<body class="page-insight-truck ix">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="nav">
@@ -341,15 +416,16 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -396,6 +472,8 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -412,34 +490,33 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
 <main id="main">
 
 <div class="progress" id="progress" aria-hidden="true"></div>
-<nav class="mob-chips" id="mobChips" aria-label="Article sections">
-  <a href="#intro">Intro</a>
-  <a href="#what">What it is</a>
-  <a href="#how">How it works</a>
-  <a href="#problems">Problems</a>
-  <a href="#features">Features</a>
-  <a href="#choose">Choosing</a>
-  <a href="#takeaways">Takeaways</a>
-</nav>
 <article>
-  <header class="art-hero" id="intro">
-    <div class="wrap">
-      <a class="back" href="/insights">← Insights</a>
-      <p class="cat" data-r>Trucking &amp; Logistics</p>
-      <h1 class="d1" id="h1" data-r>Dispatch CRM for US trucking: what it is and what actually works</h1>
-      <p class="lede" data-r>A trucking dispatch CRM is the console the desk uses to assign loads, watch SLA, and take driver updates - usually beside the TMS, not instead of it. Four patterns hold up when volume outgrows the vendor screen: bulk assignment, SLA on the row, role-based density, and a rollout the floor can absorb.</p>
-      <div class="art-meta" data-r>
+  <header class="ix-hero" id="intro" data-dark>
+  <div class="ix-hero-bg" aria-hidden="true"><div class="ix-grid"></div><div class="ix-glow"></div></div>
+  <div class="wrap">
+    <nav class="ix-crumbs" aria-label="Breadcrumb"><ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/insights">Insights</a></li>
+      <li aria-current="page">Dispatch CRM for US trucking: what it is and what actually works</li>
+    </ol></nav>
+    <p class="ix-cat cat">Trucking &amp; Logistics</p>
+    <h1 class="ix-h1" id="h1" data-r>Dispatch CRM for US trucking: what it is and what actually works</h1>
+    <div class="ix-hero-grid">
+      <div class="ix-hero-copy">
+        <p class="ix-lede lede">A trucking dispatch CRM is the console the desk uses to assign loads, watch SLA, and take driver updates - usually beside the TMS, not instead of it. Four patterns hold up when volume outgrows the vendor screen: bulk assignment, SLA on the row, role-based density, and a rollout the floor can absorb.</p>
+        <div class="ix-meta art-meta" data-r>
         <span><time datetime="2026-05-20">May 2026</time></span>
         <span>9 min read</span>
         <span>KRIVA Technologies</span>
         <span>Product Design &amp; UI/UX</span>
+      </div>
       </div>
       <figure class="arch-frame art-cover" data-r>
         <div class="arch-chrome" aria-hidden="true"><i></i><i></i><i></i><span>dispatch · load board</span></div>
@@ -447,15 +524,10 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <figcaption>Illustrative dispatch console · TMS stays the record; this board runs the shift</figcaption>
       </figure>
     </div>
-  </header>
-  <div class="wrap">
-    <div class="prose" data-r>
-      <p><a href="/markets/us">US carriers</a> post loads in the TMS because billing, compliance, and customer records live there. Dispatchers run the shift in a spreadsheet because that is where bulk reassignment, detention notes, and SLA burndown actually happen. The gap is not missing software. It is two systems of record, reconciled after the shift instead of during it.</p>
-      <p>A trucking dispatch CRM closes that gap. It is the board the desk works during the shift, while the transportation management system remains the record billing and compliance trust. The rest of this guide covers what that console is, how it works, which desks need one, and the four patterns that held up on a US desk.</p>
-
-      <nav class="art-toc" aria-label="On this page">
-        <p>On this page</p>
-        <ol>
+  </div>
+</header>
+  <div class="wrap ix-body">
+    <aside class="ix-toc"><div class="ix-toc-panel" id="ixToc"><nav aria-label="On this page"><p class="ix-toc-h">On this page</p><ol>
           <li><a href="#what"><span class="n">01</span>What a trucking dispatch CRM is</a></li>
           <li><a href="#how"><span class="n">02</span>How it works beside the TMS</a></li>
           <li><a href="#problems"><span class="n">03</span>Problems it solves</a></li>
@@ -463,8 +535,11 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
           <li><a href="#features"><span class="n">05</span>Features that matter on the desk</a></li>
           <li><a href="#outcomes"><span class="n">06</span>How it improves dispatch operations</a></li>
           <li><a href="#choose"><span class="n">07</span>Choosing or building one</a></li>
-        </ol>
-      </nav>
+        </ol></nav></div></aside><div class="ix-prose prose" data-r>
+      <p><a href="/markets/us">US carriers</a> post loads in the TMS because billing, compliance, and customer records live there. Dispatchers run the shift in a spreadsheet because that is where bulk reassignment, detention notes, and SLA burndown actually happen. The gap is not missing software. It is two systems of record, reconciled after the shift instead of during it.</p>
+      <p>A trucking dispatch CRM closes that gap. It is the board the desk works during the shift, while the transportation management system remains the record billing and compliance trust. The rest of this guide covers what that console is, how it works, which desks need one, and the four patterns that held up on a US desk.</p>
+
+      
 
       <h2 id="what">What is a trucking dispatch CRM?</h2>
       <p>A trucking dispatch CRM is operational software for the dispatch desk: load assignment, exception handling, driver communication, and the audit trail around those actions. Sales CRMs track deals. A dispatch CRM tracks loads, drivers or carriers, and time.</p>
@@ -480,7 +555,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <li>Driver or carrier updates - app, ELD, or phone - land on the same row instead of in a side thread.</li>
         <li>Delivery, POD, and detention write back so settlement is not a third spreadsheet.</li>
       </ol>
-      <p>Automation belongs in that loop as human-gated steps: flag a detention risk, queue a reassign, retry a failed sync. Silent status changes nobody can roll back are how the desk loses trust. Integrations are how the loop stays honest - TMS, telematics, driver app, EDI, and finance - with visible retries instead of silent drift. See <a href="/services/automation-systems">automation systems</a> and <a href="/services/api-integrations">API integrations</a> for how those connectors are scoped.</p>
+      <p>Automation belongs in that loop as human-gated steps: flag a detention risk, queue a reassign, retry a failed sync. Silent status changes nobody can roll back are how the desk loses trust. Integrations are how the loop stays honest - TMS, telematics, driver app, EDI, and finance - with visible retries instead of silent drift. See <a href="/services/automation-systems">Workflow automation</a> and <a href="/services/api-integrations">API integrations</a> for how those connectors are scoped.</p>
       <div class="art-note">
         <p>Keep the TMS as the source of record unless the architecture itself is the constraint. That is the usual path on US trucking desks - extend the stack, then rebuild only the surfaces dispatch actually works.</p>
       </div>
@@ -527,7 +602,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
 
       <h2 id="who">Which trucking businesses need one</h2>
       <p>A dispatch CRM is a fit when dispatch volume makes per-row clicks the bottleneck, the shared spreadsheet is the queue people trust, supervisors cannot see SLA risk without leaving the board, or driver updates live in WhatsApp, a second app, or a call that never hits the TMS.</p>
-      <p>Carriers, brokers, and 3PL dispatch teams are the usual buyers. High-volume desks with bulk work are where this pays off first, and that is the volume where a sheet starts to lie. Auto-transport operations follow a similar pattern (quotes, carriers, POD) with different objects; that workflow lives on the <a href="/solutions/car-transportation">car transportation</a> side.</p>
+      <p>Carriers, brokers, and 3PL dispatch teams are the usual buyers. High-volume desks with bulk work are where this pays off first, and that is the volume where a sheet starts to lie. Auto-transport operations follow a similar pattern (quotes, carriers, POD) with different objects; that workflow lives on the <a href="/solutions/car-transportation">Auto transport software</a> side.</p>
       <p>It is less useful when the TMS already supports bulk assignment, row-level SLA, role-specific density, and audited overrides. Then the work is configuration, not a new console. <a href="/faq">KRIVA’s FAQ</a> covers what we build in trucking; the decision still starts with the screen the team is working around.</p>
 
       <h2 id="features">Features that matter on the dispatch desk</h2>
@@ -635,8 +710,8 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
     <nav class="rel-sol" aria-label="Related pages" data-r>
       <a href="/markets/us">US market</a>
       <a href="/solutions/trucking-logistics">Trucking &amp; logistics solutions</a>
-      <a href="/services/crm-development">Dispatch CRM &amp; TMS</a>
-      <a href="/services/automation-systems">Automation systems</a>
+      <a href="/services/crm-development">Custom CRM development</a>
+      <a href="/services/automation-systems">Workflow automation</a>
       <a href="/services/api-integrations">API integrations</a>
       <a href="/work/shiftrail-dispatch">ShiftRail case study</a>
     </nav>
@@ -695,13 +770,13 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <p class="inq-fail" role="alert"></p>
         <div class="inq-actions">
           <button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button>
-          <p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p>
+          <p class="inq-note">We reply within one business day. Mutual NDA available on request before sharing confidential project information.</p>
         </div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
       <div class="inq-done" tabindex="-1">
         <h3>Inquiry received.</h3>
-        <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+        <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
       </div>
     </div>
   </div>
@@ -718,7 +793,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
+        <span><i>◆</i>We reply within one business day</span>
         <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
@@ -745,7 +820,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -762,7 +837,9 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -782,7 +859,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -832,207 +909,9 @@ if(mob.length && chTargets.length){
 })();
 </script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Insights",
-          "item": "https://krivatechnologies.com/insights"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Dispatch CRM for trucking",
-          "item": "https://krivatechnologies.com/insights/trucking-dispatch-crm-guide"
-        }
-      ]
-    },
-    {
-      "@type": "BlogPosting",
-      "wordCount": 1954,
-      "articleSection": "Software development",
-      "keywords": "What is a trucking dispatch CRM?, How a dispatch CRM works beside the TMS, What problems a dispatch CRM solves, Which trucking businesses need one, Features that matter on the dispatch desk, How a dispatch CRM improves dispatch operations, What to consider when choosing or building one, Key takeaways",
-      "headline": "Dispatch CRM for US trucking: what it is and what actually works",
-      "datePublished": "2026-05-20",
-      "dateModified": "2026-05-20",
-      "image": "https://krivatechnologies.com/brand/og/insights-trucking-dispatch-crm-guide.png",
-      "inLanguage": "en",
-      "author": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://krivatechnologies.com/insights/trucking-dispatch-crm-guide"
-      },
-      "url": "https://krivatechnologies.com/insights/trucking-dispatch-crm-guide",
-      "description": "Trucking dispatch CRM beside the TMS: bulk assignment, SLA on the row, role density, and phased rollout - four desk patterns that hold up."
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
+<link rel="stylesheet" href="/shared/consent.css">
+<script src="/shared/insight-x.js?v=ix3" defer></script>
 </body>
 </html>

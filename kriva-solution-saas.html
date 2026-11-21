@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('sx-motion');setTimeout(function(){if(!window.__sx)d.classList.remove('sx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/solutions/saas">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -178,6 +182,136 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/solutions-x.css?v=sx3">
 <link rel="stylesheet" href="/shared/solutions-x-saas.css?v=1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/solutions/saas#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Solutions",
+          "item": "https://krivatechnologies.com/solutions"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "SaaS product solutions",
+          "item": "https://krivatechnologies.com/solutions/saas"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/solutions/saas#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you work with early-stage and scaling SaaS teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We work with pre-seed MVPs through Series A and later scaling products. Team size and engagement model follow stage and runway, not a fixed package."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you redesign an existing SaaS product?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Redesigns ship in phases so current users keep a working path. We typically start with onboarding, roles, or the daily home rather than a full visual restyle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide design-only and design-and-build engagements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Many teams start with product design and extend into engineering with the same in-house team. You choose the model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you help define onboarding and activation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Before any screens, we name the user, the product job, and the event that means the product has actually been used. A finished setup checklist is not treated as that event."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you design multi-tenant roles and admin workflows?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Safe default permissions, invitations, workspace access, and admin controls that stay understandable when SSO and policy arrive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns the final design files and source code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do. Design files and source code transfer to your accounts. KRIVA does not subcontract; the team on the first call is the team that designs and builds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a SaaS MVP or redesign take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A focused MVP or redesign usually takes 6 to 10 weeks. A full SaaS platform with integrations runs 12 to 20 weeks. Both start with 1 to 2 weeks of discovery that ends in a scoped brief and timeline you sign off. See how we deliver."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is pricing structured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fixed-scope projects, monthly retainers, or sprint-based work. Everything is scoped after discovery, with deliverables and milestones agreed upfront, so you know the cost before the build starts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this page different from SaaS platform design?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This page covers the full product, from MVP through integrations. SaaS platform design focuses on multi-tenant admin and customer UX for products that are already live."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="solution page-saas sx sx-saas">
 <a class="skip" href="#main">Skip to content</a>
@@ -228,15 +362,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -283,6 +418,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -299,7 +436,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 <div class="sx-progress" aria-hidden="true"><i></i></div>
@@ -322,11 +459,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <header class="sx-hero sas-hero" id="overview">
  <div class="wrap">
-  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li><li aria-current="page">SaaS product development</li></ol></nav>
+  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li><li><a href="/solutions">Solutions</a></li><li class="crumb-sep" aria-hidden="true"></li><li aria-current="page">SaaS product development</li></ol></nav>
   <div class="sas-hero-grid">
    <div class="sas-hero-copy">
     <p class="sx-kicker sx-hero-meta-row"><span class="sx-pulse" aria-hidden="true"></span>B2B SaaS product design and engineering</p>
-    <h1 class="sx-fh1 sas-h1"><span class="sx-l"><span>SaaS product design</span></span> <span class="sx-l"><span>and development,</span></span> <span class="sx-l sx-l--em"><span>from MVP to daily use</span></span></h1>
+    <h1 class="sx-fh1 sas-h1"><span class="sx-l"><span>B2B SaaS product design,</span></span> <span class="sx-l"><span>MVPs and</span></span> <span class="sx-l sx-l--em"><span>onboarding</span></span></h1>
+    <p class="sx-lede">SaaS product design and development, from MVP to daily use</p>
     <div class="sx-hero-in">
      <p class="sx-lede">We design and build B2B SaaS products: the first MVP, onboarding, multi-tenant roles, admin panels, and the integrations behind them. The aim is that new accounts reach real value instead of an empty dashboard.</p>
      <div class="sx-actions">
@@ -363,7 +501,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
      </div>
     </div>
     <p class="sas-act-chip" aria-hidden="true"><b>≠</b>Setup complete is not a used product</p>
-    <figcaption>Illustrative product, sample data. Not a KRIVA client.</figcaption>
+    <figcaption>Illustrative product, sample data. <!-- TODO(kriva): replace with own product UI --></figcaption>
    </figure>
   </div>
  </div>
@@ -394,7 +532,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
      <li style="--i:1"><span>02</span>Tenant model</li>
      <li style="--i:0"><span>01</span>MVP scope</li>
     </ol>
-    <figcaption class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</figcaption>
+    <figcaption class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
    </figure>
    <div class="sas-story-copy">
     <p class="sx-kicker" data-x>One team, product to platform</p>
@@ -432,7 +570,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <p>Empty dashboards, setup walls, role confusion, and integrations that stall before real records reach the home screen.</p>
    </article>
   </div>
-  <p class="sx-callout" data-x><span><strong>Which page fits you?</strong> Start here for MVP scope, onboarding, and design-and-build. If your product is live and the multi-tenant admin needs work, see <a href="/services/saas-platforms">SaaS platform design</a>. For research and flows without tenant scope, see <a href="/services/product-design">product design and UX</a>.</span></p>
+  <p class="sx-callout" data-x><span><strong>Which page fits you?</strong> Start here for MVP scope, onboarding, and design-and-build. If your product is live and the multi-tenant admin needs work, see <a href="/services/saas-platforms">SaaS platform design</a>. For research and flows without tenant scope, see <a href="/services/product-design">Product and UI/UX design</a>.</span></p>
  </div>
 </section>
 
@@ -542,7 +680,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
        <li>A written list of what we will not build</li>
        <li>Product events tracked from the first release</li>
       </ul>
-      <a href="/services/product-design" class="sx-more" data-kriva-cta="service_product_design">Product design and UX <i aria-hidden="true">→</i></a>
+      <a href="/services/product-design" class="sx-more" data-kriva-cta="service_product_design">Product and UI/UX design<i aria-hidden="true">→</i></a>
      </div>
      <div class="sas-panel" id="panel-onboarding" role="tabpanel" aria-labelledby="tab-onboarding" hidden>
       <h3>Onboarding and activation</h3>
@@ -661,7 +799,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
    </div>
    <figure class="sas-dec-photo" data-x>
     <div class="sas-dec-img" data-sas-par><img src="/media/photos/saas-working-laptop.webp" alt="A person works through a product screen on a laptop at a bright desk." width="1600" height="1067" loading="lazy" decoding="async"></div>
-    <figcaption class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</figcaption>
+    <figcaption class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
    </figure>
   </div>
   <div class="sas-stage" data-sas-stage>
@@ -755,7 +893,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
    </figure>
   </div>
   <div class="sas-proof-foot">
-   <p class="sas-note" data-x>Product frames on this page are illustrative demo data, not client records. Signed-off numeric outcomes appear only on the <a class="sas-in" href="/work/shiftrail-dispatch">ShiftRail case study</a>.</p>
+   <p class="sas-note" data-x>Product frames on this page are illustrative demo data, not client records.</p>
    <a class="sas-also" href="/work/crm-pulse-dashboard" data-x data-cursor="Read" data-kriva-cta="related_crmpulse">
     <span class="sas-also-k">Also published</span>
     <span class="sas-also-t"><b>CRMPulse</b>: custom HubSpot pipeline views, stage definitions, and leadership dashboards for a B2B sales team. Illustrative interface, no outcome figures published.</span>
@@ -784,7 +922,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
      <li><span>Accounting</span><b>Posted to ledger</b></li>
      <li class="is-ex"><span>Exception queue</span><b>1 to review</b></li>
     </ol>
-    <figcaption class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product. Event flow is illustrative.</figcaption>
+    <figcaption class="sx-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --> Event flow is illustrative.</figcaption>
    </figure>
    <div class="sas-fin-cards">
     <article class="sas-fcard" data-x data-spot>
@@ -821,15 +959,15 @@ html.js [data-s].in>*{opacity:1;transform:none}
    <p class="sx-lede" data-x>Stage, redesigns, engagement models, roles, timelines, pricing, and ownership.</p>
   </div>
   <div class="sx-faq-list">
-   <details><summary id="fqb1">Do you work with early-stage and scaling SaaS teams?</summary><p class="sx-a" id="fa1">Yes. We work with pre-seed MVPs through Series A and later scaling products. Team size and engagement model follow stage and runway, not a fixed package.</p></details>
-   <details><summary id="fqb2">Can you redesign an existing SaaS product?</summary><p class="sx-a" id="fa2">Yes. Redesigns ship in phases so current users keep a working path. We typically start with onboarding, roles, or the daily home rather than a full visual restyle.</p></details>
-   <details><summary id="fqb3">Do you provide design-only and design-and-build engagements?</summary><p class="sx-a" id="fa3">Yes. Many teams start with product design and extend into engineering with the same in-house team. You choose the model.</p></details>
-   <details><summary id="fqb4">Can you help define onboarding and activation?</summary><p class="sx-a" id="fa4">Yes. Before any screens, we name the user, the product job, and the event that means the product has actually been used. A finished setup checklist is not treated as that event.</p></details>
-   <details><summary id="fqb5">Do you design multi-tenant roles and admin workflows?</summary><p class="sx-a" id="fa5">Yes. Safe default permissions, invitations, workspace access, and admin controls that stay understandable when SSO and policy arrive.</p></details>
-   <details><summary id="fqb6">Who owns the final design files and source code?</summary><p class="sx-a" id="fa6">You do. Design files and source code transfer to your accounts. KRIVA does not subcontract; the team on the first call is the team that designs and builds.</p></details>
-   <details><summary id="fqb7">How long does a SaaS MVP or redesign take?</summary><p class="sx-a" id="fa7">A focused MVP or redesign usually takes 6 to 10 weeks. A full SaaS platform with integrations runs 12 to 20 weeks. Both start with 1 to 2 weeks of discovery that ends in a scoped brief and timeline you sign off. See <a class="sas-in" href="/process">how we deliver</a>.</p></details>
-   <details><summary id="fqb8">How is pricing structured?</summary><p class="sx-a" id="fa8">Fixed-scope projects, monthly retainers, or sprint-based work. Everything is scoped after discovery, with deliverables and milestones agreed upfront, so you know the cost before the build starts.</p></details>
-   <details><summary id="fqb9">How is this page different from SaaS platform design?</summary><p class="sx-a" id="fa9">This page covers the full product, from MVP through integrations. <a class="sas-in" href="/services/saas-platforms">SaaS platform design</a> focuses on multi-tenant admin and customer UX for products that are already live.</p></details>
+   <details><summary id="fqb1"><h3 class="faq-q-h">Do you work with early-stage and scaling SaaS teams?</h3></summary><p class="sx-a" id="fa1">Yes. We work with pre-seed MVPs through Series A and later scaling products. Team size and engagement model follow stage and runway, not a fixed package.</p></details>
+   <details><summary id="fqb2"><h3 class="faq-q-h">Can you redesign an existing SaaS product?</h3></summary><p class="sx-a" id="fa2">Yes. Redesigns ship in phases so current users keep a working path. We typically start with onboarding, roles, or the daily home rather than a full visual restyle.</p></details>
+   <details><summary id="fqb3"><h3 class="faq-q-h">Do you provide design-only and design-and-build engagements?</h3></summary><p class="sx-a" id="fa3">Yes. Many teams start with product design and extend into engineering with the same in-house team. You choose the model.</p></details>
+   <details><summary id="fqb4"><h3 class="faq-q-h">Can you help define onboarding and activation?</h3></summary><p class="sx-a" id="fa4">Yes. Before any screens, we name the user, the product job, and the event that means the product has actually been used. A finished setup checklist is not treated as that event.</p></details>
+   <details><summary id="fqb5"><h3 class="faq-q-h">Do you design multi-tenant roles and admin workflows?</h3></summary><p class="sx-a" id="fa5">Yes. Safe default permissions, invitations, workspace access, and admin controls that stay understandable when SSO and policy arrive.</p></details>
+   <details><summary id="fqb6"><h3 class="faq-q-h">Who owns the final design files and source code?</h3></summary><p class="sx-a" id="fa6">You do. Design files and source code transfer to your accounts. KRIVA does not subcontract; the team on the first call is the team that designs and builds.</p></details>
+   <details><summary id="fqb7"><h3 class="faq-q-h">How long does a SaaS MVP or redesign take?</h3></summary><p class="sx-a" id="fa7">A focused MVP or redesign usually takes 6 to 10 weeks. A full SaaS platform with integrations runs 12 to 20 weeks. Both start with 1 to 2 weeks of discovery that ends in a scoped brief and timeline you sign off. See <a class="sas-in" href="/process">how we deliver</a>.</p></details>
+   <details><summary id="fqb8"><h3 class="faq-q-h">How is pricing structured?</h3></summary><p class="sx-a" id="fa8">Fixed-scope projects, monthly retainers, or sprint-based work. Everything is scoped after discovery, with deliverables and milestones agreed upfront, so you know the cost before the build starts.</p></details>
+   <details><summary id="fqb9"><h3 class="faq-q-h">How is this page different from SaaS platform design?</h3></summary><p class="sx-a" id="fa9">This page covers the full product, from MVP through integrations. <a class="sas-in" href="/services/saas-platforms">SaaS platform design</a> focuses on multi-tenant admin and customer UX for products that are already live.</p></details>
   </div>
  </div>
 </section>
@@ -859,7 +997,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
    <h2 id="inqH">Show us where users stop before reaching value.</h2>
    <p class="sx-lede">Share the onboarding flow, empty state, role setup, or workflow users never finish. We will tell you whether it is an activation, UX, or build problem, and what we would do first.</p>
    <ul class="sx-trust">
-    <li>Reply within one business day</li>
+    <li>We reply within one business day</li>
     <li>Mutual NDA available on request before sharing confidential project information.</li>
     <li>No obligation</li>
    </ul>
@@ -919,7 +1057,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
    </form>
    <div class="inq-done" tabindex="-1">
      <h3>Inquiry received.</h3>
-     <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+     <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
    </div>
   </div>
  </div>
@@ -944,7 +1082,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -961,7 +1099,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -981,7 +1121,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -994,353 +1134,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <script src="/shared/solutions-x-saas.js?v=1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Solutions",
-          "item": "https://krivatechnologies.com/solutions"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "SaaS product development",
-          "item": "https://krivatechnologies.com/solutions/saas"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/solutions/saas#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do you work with early-stage and scaling SaaS teams?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. We work with pre-seed MVPs through Series A and later scaling products. Team size and engagement model follow stage and runway, not a fixed package."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you redesign an existing SaaS product?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Redesigns ship in phases so current users keep a working path. We typically start with onboarding, roles, or the daily home rather than a full visual restyle."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you provide design-only and design-and-build engagements?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Many teams start with product design and extend into engineering with the same in-house team. You choose the model."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you help define onboarding and activation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Before any screens, we name the user, the product job, and the event that means the product has actually been used. A finished setup checklist is not treated as that event."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you design multi-tenant roles and admin workflows?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Safe default permissions, invitations, workspace access, and admin controls that stay understandable when SSO and policy arrive."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who owns the final design files and source code?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You do. Design files and source code transfer to your accounts. KRIVA does not subcontract; the team on the first call is the team that designs and builds."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does a SaaS MVP or redesign take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A focused MVP or redesign usually takes 6 to 10 weeks. A full SaaS platform with integrations runs 12 to 20 weeks. Both start with 1 to 2 weeks of discovery that ends in a scoped brief and timeline you sign off. See how we deliver."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is pricing structured?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Fixed-scope projects, monthly retainers, or sprint-based work. Everything is scoped after discovery, with deliverables and milestones agreed upfront, so you know the cost before the build starts."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is this page different from SaaS platform design?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "This page covers the full product, from MVP through integrations. SaaS platform design focuses on multi-tenant admin and customer UX for products that are already live."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/solutions/saas#service",
-      "name": "SaaS product design and development",
-      "serviceType": "B2B SaaS product development",
-      "description": "Design and development of B2B SaaS products: MVPs, onboarding and activation flows, multi-tenant roles and admin panels, dashboards, billing and plan screens, and integrations such as QuickBooks, Xero, SSO, and CRM data.",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "GB",
-        "AE",
-        "CA",
-        "AU"
-      ],
-      "audience": {
-        "@type": "BusinessAudience",
-        "audienceType": "Early-stage and scaling B2B software companies"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "SaaS product development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "MVP scoping and development"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Onboarding and activation design"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Multi-tenant roles and admin panels"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dashboards and daily-use home views"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Billing and plan screens"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks and Xero integrations"
-            }
-          }
-        ]
-      },
-      "url": "https://krivatechnologies.com/solutions/saas",
-      "image": "https://krivatechnologies.com/brand/og/solutions-saas.png"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://krivatechnologies.com/solutions/saas#webpage",
-      "url": "https://krivatechnologies.com/solutions/saas",
-      "name": "SaaS Product Development: MVPs, Onboarding & Admin | KRIVA",
-      "description": "B2B SaaS product design and development: MVPs, onboarding, multi-tenant roles, admin panels, and QuickBooks or Xero sync. You own the code and designs.",
-      "isPartOf": {
-        "@id": "https://krivatechnologies.com/#website"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/solutions/saas#service"
-      },
-      "inLanguage": "en",
-      "primaryImageOfPage": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/media/photos/process-engineer-monitors.webp",
-        "width": 1600,
-        "height": 1067
-      },
-      "dateModified": "2026-11-08"
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

@@ -3,7 +3,7 @@
   "use strict";
   const ENDPOINT = "/api/inquiry";
   const SUCCESS_MSG =
-    "Your inquiry was accepted. We will reply within one business day.";
+    "Your inquiry was accepted. We reply within one business day.";
   const FAIL_STATUS =
     "We could not send your inquiry right now. Please try again shortly, or email hello@krivatechnologies.com.";
 

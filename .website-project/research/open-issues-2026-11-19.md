@@ -23,7 +23,7 @@ These were found while testing the 2026-11-19 analytics and SEO changes. **None 
 | Symptom | Fails at step 1: `No element found for selector: .k-path[href="/solutions/freight-broker-software"]` |
 | Cause | The script was last changed on 2026-11-06 (6a7377c). The homepage's `.k-path` links were removed in the 17 Nov redesign (297ee76). The script still targets the old homepage. |
 | Present at HEAD? | Yes. HEAD's homepage has 0 `.k-path` elements. |
-| Impact | The end-to-end GA4 journey test can't run, so it no longer guards against tracking regressions. For this review, the same behaviour was tested with a separate script that serves the local build under the production hostname (results in the review report, §3). |
+| Impact | The end-to-end GA4 journey test can't run, so it no longer guards against tracking regressions. For this review, the same behavior was tested with a separate script that serves the local build under the production hostname (results in the review report, §3). |
 | Possible fix (not applied) | Update the step-1 selectors to the current homepage links (for example the solution links in the "What we build" section) and re-check the expected event list. `contact_form_submit` is no longer sent, but the script never asserted it. QA tooling only; no site change. |
 
 ## OI-3. Deep links on mobile solution pages often record no LCP (minor, for reference)
@@ -31,7 +31,7 @@ These were found while testing the 2026-11-19 analytics and SEO changes. **None 
 | | |
 |---|---|
 | Symptom | Opening a solution page on mobile at a section link (for example `/solutions/saas#faq`) usually records no Largest Contentful Paint. |
-| Present at HEAD? | Yes: 0 of 3 runs on HEAD for /solutions/saas#faq, /car-transportation#faq and /trucking-company-websites#faq. The 2026-11-19 change keeps deep-link behaviour exactly as it was. |
+| Present at HEAD? | Yes: 0 of 3 runs on HEAD for /solutions/saas#faq, /car-transportation#faq and /trucking-company-websites#faq. The 2026-11-19 change keeps deep-link behavior exactly as it was. |
 | Cause | Content below the hero reveals from `opacity:0` on scroll, and the section-chip strip runs a smooth scroll to the active chip. |
 | Impact | Low. Search and ad visitors land at the top of the page, where LCP is now recorded on all 9 pages. |
 | Possible fix (not applied) | Would need changes to the reveal animations. Not worth the design risk now. |

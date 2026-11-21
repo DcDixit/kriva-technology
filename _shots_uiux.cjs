@@ -1,11 +1,11 @@
-// Review captures for /services/ui-ux-design: viewport frames down the page at 1440 and 390,
+// Review captures for /services/product-design: viewport frames down the page at 1440 and 390,
 // plus overflow/link/console checks. Usage: node _shots_uiux.cjs [outDir] [--reduce]
 const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
 
 const BASE = 'http://localhost:5177';
-const URL = BASE + '/services/ui-ux-design';
+const URL = BASE + '/services/product-design';
 const OUT = process.argv[2] || path.join('_shots', 'ui-ux-design');
 const REDUCE = process.argv.includes('--reduce');
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

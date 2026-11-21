@@ -16,7 +16,7 @@ const VISUALS = {
  <p class="pu-title">ShiftRail</p>
  <p class="pu-meta">Dispatch · 3 selected</p>
  </div>
- <span class="pu-act">Reassign</span>
+ <span class="flag">Illustrative</span><span class="pu-act">Reassign</span>
  </div>
  <div class="pu-kpis">
  <div><span>Active</span><b>128</b></div>
@@ -48,7 +48,7 @@ const VISUALS = {
  <p class="pu-title">Dispatch</p>
  <p class="pu-meta">SLA remaining</p>
  </div>
- <span class="pu-act">Reassign</span>
+ <span class="flag">Illustrative</span><span class="pu-act">Reassign</span>
  </div>
  <ul class="pu-rows">
  <li class="on"><b>#4822</b><span>ATL &rarr; CLT</span><em>9m</em></li>
@@ -59,7 +59,6 @@ const VISUALS = {
  <div class="pu-bar">
  <div>
  <p class="pu-title">Home</p>
- <p class="pu-meta">Northwind Ltd · empty</p>
  </div>
  <span class="pu-chip warn">No scan yet</span>
  </div>
@@ -196,8 +195,8 @@ function marketBody(m) {
 <header class="hero hero--inner mkt-hero">
  <div class="wrap">
  <ol class="crumbs" data-r>
- <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
- <li><a href="${indexPath}">Markets</a></li><li aria-hidden="true">/</li>
+ <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+ <li><a href="${indexPath}">Markets</a></li><li class="crumb-sep" aria-hidden="true"></li>
  <li aria-current="page">${esc(m.country)}</li>
  </ol>
  <p class="eyebrow" data-r style="margin-top:22px">${esc(m.eyebrow)}</p>
@@ -285,7 +284,7 @@ function indexBody() {
 <header class="hero" id="overview" aria-labelledby="h1">
  <div class="wrap">
  <ol class="crumbs" data-r>
- <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+ <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
  <li aria-current="page">Markets</li>
  </ol>
  <div class="mkt-hero-grid">

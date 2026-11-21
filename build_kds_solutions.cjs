@@ -130,7 +130,7 @@ function build(p) {
   const main = `<main id="main" class="k-sol">
 <section class="k-hero k-sol-hero" aria-labelledby="h1">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li><li aria-current="page">${p.crumb}</li></ol></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li><li><a href="/solutions">Solutions</a></li><li class="crumb-sep" aria-hidden="true"></li><li aria-current="page">${p.crumb}</li></ol></nav>
     <div class="k-hero-grid">
       <div class="k-hero-copy">
         <p class="k-kicker">${p.kicker}</p>

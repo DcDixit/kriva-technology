@@ -54,7 +54,7 @@ Evolved through pushback into: **content-faithful rebuild of the real site, page
 
 ## 3. DESIGN SYSTEM (identical token block in all 8 files)
 
-Concept: **the site looks like the operations software KRIVA sells.** Mono system labels, hairline rules, tabular numerals, DOT-signage colour semantics. Not a generic agency site.
+Concept: **the site looks like the operations software KRIVA sells.** Mono system labels, hairline rules, tabular numerals, DOT-signage color semantics. Not a generic agency site.
 
 ```css
 :root{

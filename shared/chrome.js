@@ -270,7 +270,6 @@
     '/services/api-integrations': 'Connections with visible failures.',
     '/services/automation-systems': 'Repeat work, with a human gate.',
     '/services/product-design': 'From the job to a shippable UI.',
-    '/services/ui-ux-design': 'Screens arranged around the task.',
     '/services/dashboard-design': 'The morning scan, then the record.',
     '/services/branding': 'Identity the product can use.'
   };
@@ -290,7 +289,6 @@
     '/services/api-integrations': '<path d="M4 9a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Z"/><path d="M16 7a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-2"/><path d="M8 12h8"/>',
     '/services/automation-systems': '<rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/>',
     '/services/product-design': '<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>',
-    '/services/ui-ux-design': '<rect width="18" height="7" x="3" y="3" rx="1"/><rect width="9" height="7" x="3" y="14" rx="1"/><rect width="5" height="7" x="16" y="14" rx="1"/>',
     '/services/dashboard-design': '<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
     '/services/branding': '<circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>'
   };
@@ -312,6 +310,14 @@
     svg.innerHTML = body;
     return svg;
   };
+
+  if (!document.querySelector('script[data-kriva-features]')) {
+    const feat = document.createElement('script');
+    feat.src = '/shared/features.js';
+    feat.defer = true;
+    feat.setAttribute('data-kriva-features', '');
+    document.head.appendChild(feat);
+  }
 
   document.querySelectorAll('#mm-solutions a[href], #mm-services a[href], #sheet-solutions a[href], #sheet-services a[href]').forEach((a) => {
     const href = a.getAttribute('href');

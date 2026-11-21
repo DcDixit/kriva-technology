@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('sx-motion');setTimeout(function(){if(!window.__sx)d.classList.remove('sx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/solutions/trucking-logistics">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -172,6 +176,144 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/solutions-x.css?v=sx3">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/solutions/trucking-logistics#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Solutions",
+          "item": "https://krivatechnologies.com/solutions"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Trucking & logistics solutions",
+          "item": "https://krivatechnologies.com/solutions/trucking-logistics"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/solutions/trucking-logistics#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can you work with our existing TMS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, that's the most common path. We keep your TMS as the source of record when that makes sense and build dispatch consoles, driver apps, or portals connected through its API, EDI, or file exchange, scoped in discovery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do we need to replace our current software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often no. Many projects tune gaps, add a console beside the TMS, or replace one module at a time. Full replacement is an option when spreadsheets run dispatch, exceptions surface too late, or the architecture cannot support your model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you build a custom dispatch workflow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We map assignment, bulk actions, exceptions, and supervisor overrides from how dispatch works today, then build the board or console around that, usually the first module we ship."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you connect accounting systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Load-to-invoice workflows and reconciliation states can sync to QuickBooks or Xero, with retry visibility finance can trust, not silent drift between ops and books."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you build driver-facing software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Driver and carrier apps for load acceptance, in-transit updates, and POD, with offline queue where yard signal is weak. Updates sync back to dispatch and your TMS."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you improve a spreadsheet-based workflow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We map what the spreadsheet actually controls first, the queue, the SLA logic, the handoffs, then rebuild it as an audited board so nothing dispatch relies on gets lost in the transition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we start with one workflow instead of rebuilding everything?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Most engagements start with the highest-pain module, usually dispatch, and expand in whatever sequence carries the least operational risk. New surfaces run in parallel with phased cutover after operations signs off."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a custom trucking software project take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version usually runs 6 to 10 weeks, and a full platform with integrations 12 to 20 weeks, with working software on a live URL every week. See how we deliver."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does custom dispatch or TMS software cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Custom software cost is team size multiplied by weeks, so it depends on how many surfaces and integrations are in scope. We quote after discovery, broken into team, weeks, and phases, with exclusions listed. Our dispatch software cost guide explains how to compare quotes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you build ELD devices or replace our ELD provider?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. We build software, not ELD hardware. Where your ELD or telematics provider offers an API or data export, we bring its location and hours-of-service data into dispatch views. What is available depends on the provider and is confirmed in discovery."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="solution page-truck sx sx-truck">
 <a class="skip" href="#main">Skip to content</a>
@@ -221,15 +363,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -276,6 +419,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -292,7 +437,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -314,7 +459,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <header class="sx-hero" id="overview">
  <div class="wrap">
-  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><a href="/solutions">Solutions</a></li><li aria-hidden="true">/</li><li aria-current="page">Trucking &amp; logistics</li></ol></nav>
+  <nav class="crumbs sx-hero-meta-row" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li><li><a href="/solutions">Solutions</a></li><li class="crumb-sep" aria-hidden="true"></li><li aria-current="page">Trucking &amp; logistics</li></ol></nav>
   <div class="sx-hero-grid">
    <div class="sx-hero-copy">
     <p class="sx-kicker sx-hero-meta-row"><span class="sx-pulse" aria-hidden="true"></span>US trucking and logistics</p>
@@ -367,7 +512,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <ul class="sx-road-pts"><li>An owner on every row</li><li>Time left, visible before the customer calls</li><li>Driver updates written back to the load</li></ul>
    </div>
   </figure>
-  <p class="sx-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+  <p class="sx-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></p>
  </div>
 </section>
 
@@ -460,14 +605,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
      <h3>Dispatch workspace</h3>
      <p class="sx-surface-p">Plan, assign, and update loads from one board, with bulk actions, time left on every row, and audited overrides for high-volume desks.</p>
      <ul class="sx-ticks"><li>Bulk assign &amp; row-level SLA</li><li>Exception queue sorted by risk</li><li>Audited supervisor overrides</li></ul>
-     <a href="/services/crm-development" class="sx-more">Dispatch CRM &amp; TMS <i aria-hidden="true">→</i></a>
+     <a href="/services/crm-development" class="sx-more">Custom CRM development<i aria-hidden="true">→</i></a>
     </article>
     <article class="sx-surface">
      <span class="sx-surface-k"><b>2</b>Driver</span>
      <h3>Driver &amp; carrier interface</h3>
      <p class="sx-surface-p">Give drivers only what they need: load acceptance, stop progression, and proof of delivery (POD) that queues on weak signal and works one-handed in the yard.</p>
      <ul class="sx-ticks"><li>One-tap load acceptance</li><li>Offline queue &amp; POD sync</li><li>Large touch targets for yard use</li></ul>
-     <a href="/services/mobile-applications" class="sx-more">Driver mobile apps <i aria-hidden="true">→</i></a>
+     <a href="/services/mobile-applications" class="sx-more">Mobile app development<i aria-hidden="true">→</i></a>
     </article>
     <article class="sx-surface">
      <span class="sx-surface-k"><b>3</b>Operations</span>
@@ -605,8 +750,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
      <li>Finance reconciliation states</li>
     </ul>
     <p class="sx-lock">
-     <img src="/brand/logos/quickbooks.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
-     <img src="/brand/logos/xero.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
+     <img aria-hidden="true" src="/brand/logos/quickbooks.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
+     <img aria-hidden="true" src="/brand/logos/xero.svg" alt="" width="22" height="22" loading="lazy" decoding="async">
      QuickBooks &amp; Xero
     </p>
    </article>
@@ -627,7 +772,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
      <li>POD capture with offline queue</li>
      <li>Sync back to dispatch and TMS</li>
     </ul>
-    <a href="/services/mobile-applications" class="sx-more">Mobile applications <i aria-hidden="true">→</i></a>
+    <a href="/services/mobile-applications" class="sx-more">Mobile app development<i aria-hidden="true">→</i></a>
    </article>
   </div>
   <p class="sx-note">What we can connect depends on the API, EDI, or data export each vendor offers. We confirm what your systems expose during discovery, before anything is scoped. QuickBooks and Xero are trademarks of their owners; we build against their public APIs.</p>
@@ -642,16 +787,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
    <p class="sx-lede" data-x>Direct answers, including when custom is not the right move.</p>
   </div>
   <div class="sx-faq-list">
-   <details><summary>Can you work with our existing TMS?</summary><p class="sx-a">Yes, that's the most common path. We keep your TMS as the source of record when that makes sense and build dispatch consoles, driver apps, or portals connected through its API, EDI, or file exchange, scoped in discovery.</p></details>
-   <details><summary>Do we need to replace our current software?</summary><p class="sx-a">Often no. Many projects tune gaps, add a console beside the TMS, or replace one module at a time. Full replacement is an option when spreadsheets run dispatch, exceptions surface too late, or the architecture cannot support your model.</p></details>
-   <details><summary>Can you build a custom dispatch workflow?</summary><p class="sx-a">Yes. We map assignment, bulk actions, exceptions, and supervisor overrides from how dispatch works today, then build the board or console around that, usually the first module we ship.</p></details>
-   <details><summary>Can you connect accounting systems?</summary><p class="sx-a">Yes. Load-to-invoice workflows and reconciliation states can sync to <a href="/solutions/accounting-integrations">QuickBooks or Xero</a>, with retry visibility finance can trust, not silent drift between ops and books.</p></details>
-   <details><summary>Can you build driver-facing software?</summary><p class="sx-a">Yes. <a href="/services/mobile-applications">Driver and carrier apps</a> for load acceptance, in-transit updates, and POD, with offline queue where yard signal is weak. Updates sync back to dispatch and your TMS.</p></details>
-   <details><summary>Can you improve a spreadsheet-based workflow?</summary><p class="sx-a">Yes. We map what the spreadsheet actually controls first, the queue, the SLA logic, the handoffs, then rebuild it as an audited board so nothing dispatch relies on gets lost in the transition.</p></details>
-   <details><summary>Can we start with one workflow instead of rebuilding everything?</summary><p class="sx-a">Yes. Most engagements start with the highest-pain module, usually dispatch, and expand in whatever sequence carries the least operational risk. New surfaces run in parallel with phased cutover after operations signs off.</p></details>
-   <details><summary>How long does a custom trucking software project take?</summary><p class="sx-a">Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version usually runs 6 to 10 weeks, and a full platform with integrations 12 to 20 weeks, with working software on a live URL every week. See <a href="/process">how we deliver</a>.</p></details>
-   <details><summary>How much does custom dispatch or TMS software cost?</summary><p class="sx-a">Custom software cost is team size multiplied by weeks, so it depends on how many surfaces and integrations are in scope. We quote after discovery, broken into team, weeks, and phases, with exclusions listed. Our <a href="/insights/dispatch-software-cost">dispatch software cost guide</a> explains how to compare quotes.</p></details>
-   <details><summary>Do you build ELD devices or replace our ELD provider?</summary><p class="sx-a">No. We build software, not ELD hardware. Where your ELD or telematics provider offers an API or data export, we bring its location and hours-of-service data into dispatch views. What is available depends on the provider and is confirmed in discovery.</p></details>
+   <details><summary><h3 class="faq-q-h">Can you work with our existing TMS?</h3></summary><p class="sx-a">Yes, that's the most common path. We keep your TMS as the source of record when that makes sense and build dispatch consoles, driver apps, or portals connected through its API, EDI, or file exchange, scoped in discovery.</p></details>
+   <details><summary><h3 class="faq-q-h">Do we need to replace our current software?</h3></summary><p class="sx-a">Often no. Many projects tune gaps, add a console beside the TMS, or replace one module at a time. Full replacement is an option when spreadsheets run dispatch, exceptions surface too late, or the architecture cannot support your model.</p></details>
+   <details><summary><h3 class="faq-q-h">Can you build a custom dispatch workflow?</h3></summary><p class="sx-a">Yes. We map assignment, bulk actions, exceptions, and supervisor overrides from how dispatch works today, then build the board or console around that, usually the first module we ship.</p></details>
+   <details><summary><h3 class="faq-q-h">Can you connect accounting systems?</h3></summary><p class="sx-a">Yes. Load-to-invoice workflows and reconciliation states can sync to <a href="/solutions/accounting-integrations">QuickBooks or Xero</a>, with retry visibility finance can trust, not silent drift between ops and books.</p></details>
+   <details><summary><h3 class="faq-q-h">Can you build driver-facing software?</h3></summary><p class="sx-a">Yes. <a href="/services/mobile-applications">Driver and carrier apps</a> for load acceptance, in-transit updates, and POD, with offline queue where yard signal is weak. Updates sync back to dispatch and your TMS.</p></details>
+   <details><summary><h3 class="faq-q-h">Can you improve a spreadsheet-based workflow?</h3></summary><p class="sx-a">Yes. We map what the spreadsheet actually controls first, the queue, the SLA logic, the handoffs, then rebuild it as an audited board so nothing dispatch relies on gets lost in the transition.</p></details>
+   <details><summary><h3 class="faq-q-h">Can we start with one workflow instead of rebuilding everything?</h3></summary><p class="sx-a">Yes. Most engagements start with the highest-pain module, usually dispatch, and expand in whatever sequence carries the least operational risk. New surfaces run in parallel with phased cutover after operations signs off.</p></details>
+   <details><summary><h3 class="faq-q-h">How long does a custom trucking software project take?</h3></summary><p class="sx-a">Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version usually runs 6 to 10 weeks, and a full platform with integrations 12 to 20 weeks, with working software on a live URL every week. See <a href="/process">how we deliver</a>.</p></details>
+   <details><summary><h3 class="faq-q-h">How much does custom dispatch or TMS software cost?</h3></summary><p class="sx-a">Custom software cost is team size multiplied by weeks, so it depends on how many surfaces and integrations are in scope. We quote after discovery, broken into team, weeks, and phases, with exclusions listed. Our <a href="/insights/dispatch-software-cost">dispatch software cost guide</a> explains how to compare quotes.</p></details>
+   <details><summary><h3 class="faq-q-h">Do you build ELD devices or replace our ELD provider?</h3></summary><p class="sx-a">No. We build software, not ELD hardware. Where your ELD or telematics provider offers an API or data export, we bring its location and hours-of-service data into dispatch views. What is available depends on the provider and is confirmed in discovery.</p></details>
   </div>
  </div>
 </section>
@@ -661,13 +806,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <h2 id="relH">Related guides and services</h2>
   <nav class="sx-pills" aria-label="Related guides and services">
    <a href="/markets/us">US market</a>
-   <a href="/services/crm-development">Dispatch CRM development</a>
+   <a href="/services/crm-development">Custom CRM development</a>
    <a href="/insights/trucking-dispatch-crm-guide">Dispatch CRM guide</a>
    <a href="/insights/build-vs-buy-tms">Build vs buy a TMS</a>
    <a href="/insights/dispatch-software-cost">Dispatch software cost</a>
    <a href="/work/shiftrail-dispatch">ShiftRail case study</a>
    <a href="/services/dashboard-design">Fleet dashboards</a>
-   <a href="/services/mobile-applications">Driver mobile apps</a>
+   <a href="/services/mobile-applications">Mobile app development</a>
   </nav>
  </div>
 </section>
@@ -683,7 +828,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <a href="/contact#brief" class="sx-link"><span>Send a project brief</span><i aria-hidden="true">→</i></a>
    </div>
    <ul class="sx-trust">
-    <li>Reply within one business day</li>
+    <li>We reply within one business day</li>
     <li>Mutual NDA available on request before sharing confidential project information.</li>
     <li>No obligation</li>
     <li>Phased rollout</li>
@@ -734,7 +879,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
  </form>
  <div class="inq-done" tabindex="-1">
  <h3>Inquiry received.</h3>
- <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+ <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
  </div>
    <aside class="sx-start sx-start--inq" aria-label="How a project starts">
     <p class="sx-start-k">How a project starts</p>
@@ -781,7 +926,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -798,7 +943,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -818,7 +965,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -831,154 +978,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <script src="/shared/solutions-x.js?v=sx3" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org", "@graph": [
- {
- "@type": "ProfessionalService", "@id": "https://krivatechnologies.com/#organization", "name": "KRIVA Technologies", "alternateName": "KRIVA", "url": "https://krivatechnologies.com", "logo": {
- "@type": "ImageObject", "url": "https://krivatechnologies.com/apple-touch-icon.png", "width": 180, "height": 180
- }, "image": "https://krivatechnologies.com/brand/og-default.png", "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.", "email": "hello@krivatechnologies.com", "foundingDate": "2025-01-01", "priceRange": "$$", "address": {
- "@type": "PostalAddress", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "addressCountry": "IN"
- }, "contactPoint": {
- "@type": "ContactPoint", "contactType": "sales", "email": "hello@krivatechnologies.com", "url": "https://krivatechnologies.com/contact", "areaServed": [
- "US", "GB", "AE", "CA", "AU"
- ], "availableLanguage": [
- "English"
- ]
- }, "areaServed": [
- {
- "@type": "Country", "name": "United States"
- }, {
- "@type": "Country", "name": "United Kingdom"
- }, {
- "@type": "Country", "name": "United Arab Emirates"
- }, {
- "@type": "Country", "name": "Canada"
- }, {
- "@type": "Country", "name": "Australia"
- }
- ], "knowsAbout": [
- "Trucking software", "Dispatch CRM", "Transportation Management Systems", "Fleet management software", "B2B SaaS development", "QuickBooks integration", "Xero integration", "Driver mobile apps", "Auto transport software", "Car carrier dispatch", "Accounting reconciliation", "SaaS onboarding UX", "Custom software development"
- ], "sameAs": [
- "https://www.instagram.com/kriva_technology/"
- ], "hasOfferCatalog": {
- "@type": "OfferCatalog", "name": "KRIVA software development services", "itemListElement": [
- {
- "@type": "Offer", "itemOffered": {
- "@type": "Service", "name": "Dispatch CRM & TMS development", "url": "https://krivatechnologies.com/solutions/trucking-logistics"
- }
- }, {
- "@type": "Offer", "itemOffered": {
- "@type": "Service", "name": "B2B SaaS product design", "url": "https://krivatechnologies.com/solutions/saas"
- }
- }, {
- "@type": "Offer", "itemOffered": {
- "@type": "Service", "name": "QuickBooks & Xero integrations", "url": "https://krivatechnologies.com/solutions/accounting-integrations"
- }
- }, {
- "@type": "Offer", "itemOffered": {
- "@type": "Service", "name": "Auto transport software", "url": "https://krivatechnologies.com/solutions/car-transportation"
- }
- }
- ]
- }
- }, {
- "@type": "WebSite", "@id": "https://krivatechnologies.com/#website", "name": "KRIVA Technologies", "url": "https://krivatechnologies.com", "inLanguage": [
- "en", "en-US", "en-GB", "en-AE", "en-CA", "en-AU"
- ], "publisher": {
- "@id": "https://krivatechnologies.com/#organization"
- }, "about": {
- "@id": "https://krivatechnologies.com/#organization"
- }, "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.", "speakable": {
- "@type": "SpeakableSpecification", "cssSelector": [
- "h1", ".lede", ".eyebrow"
- ]
- }
- }, {
- "@type": "BreadcrumbList", "itemListElement": [
- {
- "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krivatechnologies.com/"
- }, {
- "@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://krivatechnologies.com/solutions"
- }, {
- "@type": "ListItem", "position": 3, "name": "Trucking & logistics", "item": "https://krivatechnologies.com/solutions/trucking-logistics"
- }
- ]
- }, {
- "@type": "FAQPage", "@id": "https://krivatechnologies.com/solutions/trucking-logistics#faq", "mainEntity": [
- {
- "@type": "Question", "name": "Can you work with our existing TMS?", "acceptedAnswer": {
- "@type": "Answer", "text": "Yes, that's the most common path. We keep your TMS as the source of record when that makes sense and build dispatch consoles, driver apps, or portals connected through its API, EDI, or file exchange, scoped in discovery."
- }
- }, {
- "@type": "Question", "name": "Do we need to replace our current software?", "acceptedAnswer": {
- "@type": "Answer", "text": "Often no. Many projects tune gaps, add a console beside the TMS, or replace one module at a time. Full replacement is an option when spreadsheets run dispatch, exceptions surface too late, or the architecture cannot support your model."
- }
- }, {
- "@type": "Question", "name": "Can you build a custom dispatch workflow?", "acceptedAnswer": {
- "@type": "Answer", "text": "Yes. We map assignment, bulk actions, exceptions, and supervisor overrides from how dispatch works today, then build the board or console around that, usually the first module we ship."
- }
- }, {
- "@type": "Question", "name": "Can you connect accounting systems?", "acceptedAnswer": {
- "@type": "Answer", "text": "Yes. Load-to-invoice workflows and reconciliation states can sync to QuickBooks or Xero, with retry visibility finance can trust, not silent drift between ops and books."
- }
- }, {
- "@type": "Question", "name": "Can you build driver-facing software?", "acceptedAnswer": {
- "@type": "Answer", "text": "Yes. Driver and carrier apps for load acceptance, in-transit updates, and POD, with offline queue where yard signal is weak. Updates sync back to dispatch and your TMS."
- }
- }, {
- "@type": "Question", "name": "Can you improve a spreadsheet-based workflow?", "acceptedAnswer": {
- "@type": "Answer", "text": "Yes. We map what the spreadsheet actually controls first, the queue, the SLA logic, the handoffs, then rebuild it as an audited board so nothing dispatch relies on gets lost in the transition."
- }
- }, {
- "@type": "Question", "name": "Can we start with one workflow instead of rebuilding everything?", "acceptedAnswer": {
- "@type": "Answer", "text": "Yes. Most engagements start with the highest-pain module, usually dispatch, and expand in whatever sequence carries the least operational risk. New surfaces run in parallel with phased cutover after operations signs off."
- }
- }, {
- "@type": "Question", "name": "How long does a custom trucking software project take?", "acceptedAnswer": {
- "@type": "Answer", "text": "Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version usually runs 6 to 10 weeks, and a full platform with integrations 12 to 20 weeks, with working software on a live URL every week."
- }
- }, {
- "@type": "Question", "name": "How much does custom dispatch or TMS software cost?", "acceptedAnswer": {
- "@type": "Answer", "text": "Custom software cost is team size multiplied by weeks, so it depends on how many surfaces and integrations are in scope. KRIVA quotes after discovery, broken into team, weeks, and phases, with exclusions listed."
- }
- }, {
- "@type": "Question", "name": "Do you build ELD devices or replace our ELD provider?", "acceptedAnswer": {
- "@type": "Answer", "text": "No. KRIVA builds software, not ELD hardware. Where your ELD or telematics provider offers an API or data export, we bring its location and hours-of-service data into dispatch views. What is available depends on the provider and is confirmed in discovery."
- }
- }
- ]
- }, {
- "@type": "Service", "@id": "https://krivatechnologies.com/solutions/trucking-logistics#service", "name": "Custom trucking software and TMS development", "serviceType": "Custom trucking software development", "category": "Transportation management software", "provider": {
- "@id": "https://krivatechnologies.com/#organization"
- }, "audience": {
- "@type": "BusinessAudience", "audienceType": "Trucking carriers, freight brokers, and logistics operations teams"
- }, "areaServed": [
- "US", "GB", "AE", "CA", "AU"
- ], "description": "Custom trucking software for US carriers and brokers: dispatch consoles, driver and carrier apps, operations dashboards, and integrations with TMS, ELD or telematics, EDI, and QuickBooks or Xero, built beside the existing TMS with phased rollout. The client owns the code.", "image": "https://krivatechnologies.com/brand/og/solutions-trucking-logistics.png", "url": "https://krivatechnologies.com/solutions/trucking-logistics", "hasOfferCatalog": {
- "@type": "OfferCatalog", "name": "Trucking software we build", "itemListElement": [
- { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dispatch workspace", "description": "Load board with bulk assignment, time left on every row, an exception queue sorted by risk, and audited supervisor overrides." } },
- { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Driver and carrier app", "description": "Load acceptance, stop progression, and proof-of-delivery capture with an offline queue for weak signal." } },
- { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Operations portal", "description": "Status, exceptions, delivery progress, and lane performance with drill-down to supporting records." } },
- { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Trucking integrations", "description": "Connectors to TMS, ELD and telematics, EDI, and QuickBooks or Xero, with retry queues operators can see." } }
- ]
- }
- }, {
- "@type": "WebPage", "@id": "https://krivatechnologies.com/solutions/trucking-logistics#webpage", "url": "https://krivatechnologies.com/solutions/trucking-logistics", "name": "Custom Trucking Software & TMS Development | KRIVA", "description": "Custom trucking software for US carriers: dispatch consoles, driver apps, fleet dashboards, and QuickBooks or Xero sync built beside your TMS. You own the code.", "inLanguage": "en", "isPartOf": {
- "@id": "https://krivatechnologies.com/#website"
- }, "about": {
- "@id": "https://krivatechnologies.com/solutions/trucking-logistics#service"
- }, "primaryImageOfPage": {
- "@type": "ImageObject", "url": "https://krivatechnologies.com/brand/og/solutions-trucking-logistics.png", "width": 1200, "height": 630
- }, "speakable": {
- "@type": "SpeakableSpecification", "cssSelector": [
- "h1", ".trk-fit-sum"
- ]
- }
- }
- ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

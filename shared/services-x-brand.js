@@ -13,7 +13,7 @@
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const onView = (el, fn, threshold = 0.3) => new IntersectionObserver(([e]) => fn(e.isIntersecting), { threshold }).observe(el);
 
-  /* ── Hero rig: one sample identity, three colour modes, four surfaces checked in turn ── */
+  /* ── Hero rig: one sample identity, three color modes, four surfaces checked in turn ── */
   const rig = $('[data-bd-rig]');
   if (rig) {
     const modes = $$('.bdx-mode', rig);
@@ -21,7 +21,7 @@
     const at = $('[data-bd-at]', rig);
     const score = $('[data-bd-score]', rig);
     const live = $('[data-bd-live]', rig);
-    const names = { full: 'Full colour', one: 'One colour', rev: 'Reversed' };
+    const names = { full: 'Full color', one: 'One color', rev: 'Reversed' };
     const order = ['full', 'one', 'rev'];
     let mode = 'full', t = 0, visible = false, userAt = 0;
 

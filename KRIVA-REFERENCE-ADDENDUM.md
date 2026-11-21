@@ -30,7 +30,7 @@
 | Service (canonical label) | Slug | Family (recorded, not yet applied) |
 |---|---|---|
 | Product Design | `/services/product-design` | Product Interfaces |
-| UI/UX Design | `/services/ui-ux-design` | Product Interfaces |
+| UI/UX Design | `/services/product-design` | Product Interfaces |
 | UX Research | `/services/ux-research` | Product Interfaces |
 | Wireframing & Prototyping | `/services/wireframing-prototyping` | Product Interfaces |
 | Design Systems | `/services/design-systems` | Product Interfaces |

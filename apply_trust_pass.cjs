@@ -214,7 +214,7 @@ edit("kriva-contact.html", (s) => {
     copy,
     `<div class="inq-copy">
       <ol class="crumbs">
-        <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+        <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
         <li aria-current="page">Contact</li>
       </ol>
       <p class="eyebrow">Contact</p>

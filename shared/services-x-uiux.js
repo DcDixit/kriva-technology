@@ -5,8 +5,7 @@
    motion nothing auto-plays and each picture shows its final, readable state. */
 (function () {
   'use strict';
-  const body = document.body;
-  if (!body || !body.classList.contains('svx-uiux')) return;
+  if (!document.querySelector('[data-ux-wf],[data-ux-den],[data-ux-kit],[data-ux-cmp]')) return;
   const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
   const $ = (s, el = document) => el.querySelector(s);
@@ -96,7 +95,7 @@
     }
   }
 
-  /* ── Dense screens: switch the board's state, check it without colour ── */
+  /* ── Dense screens: switch the board's state, check it without color ── */
   const den = $('[data-ux-den]');
   if (den) {
     const segs = $$('.uxx-seg-b', den);
@@ -104,7 +103,7 @@
     const live = $('[data-den-live]', den);
     const rows = $('.uxx-den-rows', den);
     const words = { data: 'the board with data', empty: 'the empty state', loading: 'the loading state', error: 'the error state' };
-    const say = () => { if (live) live.textContent = 'Showing ' + words[den.dataset.state] + (den.dataset.gray === '1' ? ', without colour.' : '.'); };
+    const say = () => { if (live) live.textContent = 'Showing ' + words[den.dataset.state] + (den.dataset.gray === '1' ? ', without color.' : '.'); };
     segs.forEach((b) => b.addEventListener('click', () => {
       den.dataset.state = b.dataset.state;
       segs.forEach((o) => o.setAttribute('aria-pressed', String(o === b)));

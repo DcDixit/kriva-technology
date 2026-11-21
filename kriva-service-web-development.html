@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('svx-motion');setTimeout(function(){if(!window.__svx)d.classList.remove('svx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/services/web-development">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -73,7 +77,7 @@ gtag('config',id,cfg);
 <meta property="og:site_name" content="KRIVA Technologies">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Web Development for Trucking &amp; Logistics | KRIVA">
-<meta property="og:description" content="Next.js websites for freight and B2B SaaS teams. A six-page public site with one form starts at $4,800. A content editor, login, or booking system is quoted separately.">
+<meta property="og:description" content="Next.js websites for freight and B2B SaaS. A six-page site with one form starts at $4,800. A content editor, login, or booking system is quoted separately.">
 <meta property="og:url" content="https://krivatechnologies.com/services/web-development">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -82,7 +86,7 @@ gtag('config',id,cfg);
 <meta property="og:image:alt" content="Service · Web development for trucking and logistics companies">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Web Development for Trucking &amp; Logistics | KRIVA">
-<meta name="twitter:description" content="Next.js websites for freight and B2B SaaS teams. A six-page public site with one form starts at $4,800. A content editor, login, or booking system is quoted separately.">
+<meta name="twitter:description" content="Next.js websites for freight and B2B SaaS. A six-page site with one form starts at $4,800. A content editor, login, or booking system is quoted separately.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <style>
@@ -169,6 +173,96 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/services-x.css?v=svx1">
 <link rel="stylesheet" href="/shared/services-x-web.css?v=wd1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/services/web-development#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://krivatechnologies.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Web development",
+          "item": "https://krivatechnologies.com/services/web-development"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/services/web-development#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can you build a public shipment tracking page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as long as your dispatch system or TMS can expose the status data. We design and build the lookup page, the status states, and the exception messaging, then connect it to the data source you give us. If status only lives in spreadsheets or phone calls, we will say so in the first conversation and scope the data work first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do the quote and booking forms connect to our dispatch system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They can. We build the form, validation, and confirmation steps, then post to an endpoint you provide, or to email or your CRM when there is no API. A direct connection to a TMS depends on what that system offers; integrations and APIs is the service that scopes it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a carrier or customer portal part of this service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Anything behind a login, such as load offers, documents, or invoice status, is application work. We design it under web application design and scope the build separately so the brief stays clear."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you use WordPress?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually not as the front end. Next.js is the default. A headless CMS is an option when marketing needs to publish pages without an engineering ticket, and we agree on what the CMS will and will not control before the build starts."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="page-web svx svx-web">
 <a class="skip" href="#main">Skip to content</a>
@@ -219,15 +313,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -274,6 +369,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -290,7 +387,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -322,12 +419,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div></div>
   <div class="wrap">
     <ol class="crumbs svx-crumbs">
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
-      <li aria-current="page">Web Development</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li aria-current="page">Web development</li>
     </ol>
     <p class="svx-kicker eyebrow svx-pill"><i aria-hidden="true"></i>Web development for freight and B2B SaaS</p>
-    <h1 class="svx-h1 wd-h1"><span class="svx-l"><span>Web development for</span></span> <span class="svx-l"><span><em>trucking and logistics companies</em></span></span></h1>
+    <h1 class="svx-h1 wd-h1"><span class="svx-l"><span>Website design and development</span></span> <span class="svx-l"><span><em>with Next.js and CMS</em></span></span></h1>
+    <p class="svx-lede lede">Web development for trucking and logistics companies</p>
     <div class="svx-hero-grid wd-hero-grid">
       <div class="svx-hero-copy">
         <p class="svx-lede lede wd-hero-lede">Next.js sites and public web surfaces for trucking, logistics, auto-transport, and B2B SaaS teams: quote requests, service pages, and the marketing site around them. <a href="/pricing#websites">The $4,800 start</a> covers up to six public pages and one form. A content editor, a customer login, or a booking system is quoted separately. Screens behind a login are designed under <a href="/services/web-application-design">web application design</a>. Industry pages: <a href="/solutions/trucking-company-websites">trucking company websites</a> and <a href="/solutions/moving-company-websites">moving company websites</a>.</p>
@@ -415,7 +513,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li data-x style="--d:.06s"><span class="svx-tnum" aria-hidden="true">02</span>Pages that stay fast</li>
         <li data-x style="--d:.12s"><span class="svx-tnum" aria-hidden="true">03</span>The same visual system as the product</li>
       </ul>
-      <p class="svx-credit" data-x>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</p>
+      <p class="svx-credit" data-x>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>
@@ -448,15 +546,15 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <span class="cms"><b>CMS</b>Publish without engineering</span>
         </div>
         <ul class="wd-logos" aria-hidden="true">
-          <li><img src="/brand/logos/tech/nextdotjs.svg" alt="" width="22" height="22" loading="lazy">Next.js</li>
-          <li><img src="/brand/logos/tech/react-color.svg" alt="" width="22" height="22" loading="lazy">React</li>
-          <li><img src="/brand/logos/tech/typescript-color.svg" alt="" width="22" height="22" loading="lazy">TypeScript</li>
+          <li><img aria-hidden="true" src="/brand/logos/tech/nextdotjs.svg" alt="" width="22" height="22" loading="lazy">Next.js</li>
+          <li><img aria-hidden="true" src="/brand/logos/tech/react-color.svg" alt="" width="22" height="22" loading="lazy">React</li>
+          <li><img aria-hidden="true" src="/brand/logos/tech/typescript-color.svg" alt="" width="22" height="22" loading="lazy">TypeScript</li>
         </ul>
       </article>
       <article class="wd-tile wd-tile--stop" data-spot data-x style="--d:.16s">
         <span class="wd-tile-n" aria-hidden="true">03</span>
         <h3>What it does not cover</h3>
-        <p>Dispatcher consoles, carrier or customer portals behind a login, and driver apps are separate work. We point you to <a href="/services/web-application-design">web application design</a> or <a href="/services/mobile-applications">mobile apps</a> in the first call if that is the real gap.</p>
+        <p>Dispatcher consoles, carrier or customer portals behind a login, and driver apps are separate work. We point you to <a href="/services/web-application-design">web application design</a> or <a href="/services/mobile-applications">Mobile app development</a> in the first call if that is the real gap.</p>
         <span class="wd-stop-line" aria-hidden="true"><i></i>The login is where this service stops</span>
       </article>
     </div>
@@ -614,7 +712,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
             <p class="in">return &lt;<u>QuoteFlow</u> steps={[<s>'lane'</s>, <s>'load'</s>, <s>'contact'</s>]} /&gt;</p>
             <p>}</p>
           </div>
-          <ul class="wd-art-logos"><li><img src="/brand/logos/tech/nextdotjs.svg" alt="" width="20" height="20" loading="lazy"></li><li><img src="/brand/logos/tech/react-color.svg" alt="" width="20" height="20" loading="lazy"></li><li><img src="/brand/logos/tech/typescript-color.svg" alt="" width="20" height="20" loading="lazy"></li></ul>
+          <ul class="wd-art-logos"><li><img src="/brand/logos/tech/nextdotjs.svg" alt="Next.js logo" width="20" height="20" loading="lazy"></li><li><img src="/brand/logos/tech/react-color.svg" alt="React logo" width="20" height="20" loading="lazy"></li><li><img aria-hidden="true" src="/brand/logos/tech/typescript-color.svg" alt="" width="20" height="20" loading="lazy"></li></ul>
         </div>
         <span class="wd-k">Stack</span>
         <h3>Next.js, React, TypeScript</h3>
@@ -798,9 +896,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
       </a>
       <a class="wd-rel-card" href="/solutions/car-transportation" data-spot data-x style="--d:.18s">
         <span class="wd-rel-n svx-tnum" aria-hidden="true">04</span>
-        <h3>Car transportation</h3>
+        <h3>Auto transport software</h3>
         <p>Quote, booking, and tracking flows for auto-transport companies.</p>
-        <span class="wd-rel-go">Car transportation <i aria-hidden="true"></i></span>
+        <span class="wd-rel-go">Auto transport software<i aria-hidden="true"></i></span>
       </a>
     </div>
   </div>
@@ -819,41 +917,41 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
     <div class="faq-list cr-faq-list">
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
           <span class="qn num">01</span>
           <span class="qt">Can you build a public shipment tracking page?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
           <p>Yes, as long as your dispatch system or TMS can expose the status data. We design and build the lookup page, the status states, and the exception messaging, then connect it to the data source you give us. If status only lives in spreadsheets or phone calls, we will say so in the first conversation and scope the data work first.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">02</span>
           <span class="qt">Do the quote and booking forms connect to our dispatch system?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
           <p>They can. We build the form, validation, and confirmation steps, then post to an endpoint you provide, or to email or your CRM when there is no API. A direct connection to a TMS depends on what that system offers; <a href="/services/api-integrations">integrations and APIs</a> is the service that scopes it.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">03</span>
           <span class="qt">Is a carrier or customer portal part of this service?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
           <p>No. Anything behind a login, such as load offers, documents, or invoice status, is application work. We design it under <a href="/services/web-application-design">web application design</a> and scope the build separately so the brief stays clear.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">04</span>
           <span class="qt">Do you use WordPress?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
           <p>Usually not as the front end. Next.js is the default. A headless CMS is an option when marketing needs to publish pages without an engineering ticket, and we agree on what the CMS will and will not control before the build starts.</p>
         </div></div></div>
@@ -871,7 +969,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <h2 id="inqH">Tell us which page costs you calls today.</h2>
           <p class="svx-lede lede">A quote flow, a tracking page, a carrier sign-up, or a marketing site your team can run. If the real gap is a logged-in portal, we will point you to the right service.</p>
           <p class="web-trust cr-trust">
-            <span>Reply within one business day</span>
+            <span>We reply within one business day</span>
             <span>Mutual NDA available on request before sharing confidential project information.</span>
             <span>No obligation</span>
           </p>
@@ -919,7 +1017,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           </form>
           <div class="inq-done" tabindex="-1">
             <h3>Inquiry received.</h3>
-            <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+            <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
           </div>
         </div>
       </div>
@@ -946,7 +1044,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -963,7 +1061,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -983,7 +1083,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -996,238 +1096,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <script src="/shared/services-x-web.js?v=wd1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://krivatechnologies.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Web development",
-          "item": "https://krivatechnologies.com/services/web-development"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/services/web-development#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can you build a public shipment tracking page?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, as long as your dispatch system or TMS can expose the status data. We design and build the lookup page, the status states, and the exception messaging, then connect it to the data source you give us. If status only lives in spreadsheets or phone calls, we will say so in the first conversation and scope the data work first."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do the quote and booking forms connect to our dispatch system?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "They can. We build the form, validation, and confirmation steps, then post to an endpoint you provide, or to email or your CRM when there is no API. A direct connection to a TMS depends on what that system offers; integrations and APIs is the service that scopes it."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is a carrier or customer portal part of this service?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Anything behind a login, such as load offers, documents, or invoice status, is application work. We design it under web application design and scope the build separately so the brief stays clear."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you use WordPress?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Usually not as the front end. Next.js is the default. A headless CMS is an option when marketing needs to publish pages without an engineering ticket, and we agree on what the CMS will and will not control before the build starts."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/services/web-development#service",
-      "name": "Web development for trucking and logistics",
-      "serviceType": "Custom software development",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "GB",
-        "AE",
-        "CA"
-      ],
-      "description": "Next.js websites for freight and B2B SaaS teams. A six-page public site with one form starts at $4,800. A content editor, login, or booking system is quoted separately.",
-      "url": "https://krivatechnologies.com/services/web-development"
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

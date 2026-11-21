@@ -49,7 +49,7 @@ cut(`<header class="hero hero--inner" id="overview"`, `<section class="wk-index"
   <div class="wx-hero-bg" aria-hidden="true"><div class="wx-grid"></div><div class="wx-glow"></div></div>
   <div class="wrap">
     <ol class="crumbs wx-crumbs">
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Work</li>
     </ol>
     <p class="wx-kicker wx-pill"><i aria-hidden="true"></i>Our work</p>
@@ -155,7 +155,7 @@ cut(`<section class="story story--split story--flip wk-how"`, `</main>`, `<secti
     <div class="wx-how-grid">
       <figure class="wx-how-img" data-x>
         <div class="wx-img"><img data-par src="/media/photos/work-phase-sketches-960.webp" srcset="/media/photos/work-phase-sketches-960.webp 960w, /media/photos/work-phase-sketches.webp 1600w" sizes="(min-width:1001px) 40vw, 92vw" alt="A notebook of screen sketches and a pen on a wooden desk." width="1600" height="1067" loading="lazy" decoding="async"></div>
-        <figcaption class="story-credit">Stock photo (<a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>). Not a KRIVA client.</figcaption>
+        <figcaption class="story-credit">Stock photo (<a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>). <!-- TODO(kriva): replace with own product UI --></figcaption>
       </figure>
       <div class="wx-how-copy">
         <ul class="wx-points">
@@ -177,7 +177,7 @@ cut(`<section class="story story--split story--flip wk-how"`, `</main>`, `<secti
       <p class="wx-lede" data-x>Most of this work sits in four areas. Each solution page explains what we build for that market and how a project runs.</p>
       <figure class="wx-read-media" data-x>
         <div class="wx-img"><img data-par class="is-subject-low" src="/media/photos/work-dock-check-800.webp" srcset="/media/photos/work-dock-check-800.webp 800w, /media/photos/work-dock-check.webp 1600w" sizes="(min-width:1001px) 36vw, 92vw" alt="A warehouse lead stands in an aisle of pallet racking loaded with freight." width="1600" height="1067" loading="lazy" decoding="async"></div>
-        <figcaption>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client.</figcaption>
+        <figcaption>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
       </figure>
     </div>
     <div class="wx-read-main">

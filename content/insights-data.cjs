@@ -245,7 +245,7 @@ module.exports = {
         { type: "list", items: [
           "You need to test demand with real payments or bookings in weeks, not months.",
           "The core workflow is standard (marketplace, directory, landing + CRM handoff).",
-          "You expect significant pivots before committing to a engineering team.",
+          "You expect significant pivots before committing to an engineering team.",
           "Integrations are limited to well-supported Zapier/Make connectors.",
         ]},
         { type: "heading", text: "When custom code makes sense early" },

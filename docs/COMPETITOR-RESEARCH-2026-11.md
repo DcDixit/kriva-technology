@@ -68,7 +68,7 @@ Nothing on the KRIVA site copies these companies' words, layouts, images, or cod
 
 ## US and UK agency benchmark, 6 November 2026
 
-Public home pages and one case study each, read as text, so fonts and exact colours were not assessed. Their claims are their own and unverified.
+Public home pages and one case study each, read as text, so fonts and exact colors were not assessed. Their claims are their own and unverified.
 
 | Company | Headline | Main CTA | Proof they show | First contact |
 |---|---|---|---|---|

@@ -40,12 +40,16 @@
  }
 
  var RESERVED = { page_view: 1, user_engagement: 1, scroll: 1, session_start: 1, first_visit: 1 };
+ function consented() {
+ try { return localStorage.getItem('kriva_consent') === 'accept'; } catch (err) { return false; }
+ }
  function send(name, params) {
  if (!name || RESERVED[name]) return;
- /* __krivaNoTrack is set by the head snippet for automated browsers and internal devices. */
- if (!validId || optedOut || ((local || window.__krivaNoTrack) && !debug)) return;
+ /* Events wait for an explicit Accept. Local preview is included so the events can be checked in dev. */
+ if (!validId || optedOut || !consented() || window.__krivaNoTrack) return;
  var payload = params ? Object.assign({}, params) : {};
  gtag('event', name, payload);
+ if (debug || local) console.info('[kriva]', name, payload);
  }
 
  function sendLead(d) {
@@ -196,6 +200,22 @@
  watchForm('briefForm', 'project_brief');
  watchForm('pageInquiry', 'page_inquiry');
  watchForm('homeInquiry', 'homepage_fit_call');
+
+ window.addEventListener('kriva:lead', function (e) {
+ var d = (e && e.detail) || {};
+ if (d.type === 'fit_call' || d.form_id === 'fitForm') send('fit_call_submit', { form_id: 'fitForm', form_name: 'fit_call' });
+ if (d.type === 'project_brief' || d.form_id === 'briefForm') send('brief_submit', { form_id: 'briefForm', form_name: 'project_brief' });
+ if (d.type === 'lead_magnet' || d.form_id === 'leadMagnet') send('lead_magnet_submit', { form_id: 'leadMagnet', form_name: 'lead_magnet' });
+ });
+
+ document.addEventListener('click', function (e) {
+ var el = e.target && e.target.closest && e.target.closest('a,button');
+ if (!el) return;
+ var label = textOf(el);
+ if (label === 'Get a free project estimate' || label === 'Get my estimate') {
+ send('estimate_click', { cta_name: label, link_url: el.getAttribute('href') || location.pathname });
+ }
+ }, true);
 
  /* One successful submission = one lead. generate_lead is the conversion.
  form_submit fires on success only. Chat leads use the same dedup and do not

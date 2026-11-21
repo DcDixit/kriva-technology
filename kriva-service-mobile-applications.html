@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('svx-motion');setTimeout(function(){if(!window.__svx)d.classList.remove('svx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/services/mobile-applications">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -164,6 +168,104 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/services-x.css?v=svx1">
 <link rel="stylesheet" href="/shared/services-x-mob.css?v=mb1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/services/mobile-applications#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://krivatechnologies.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mobile app development",
+          "item": "https://krivatechnologies.com/services/mobile-applications"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/services/mobile-applications#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Native, React Native, or Flutter for a driver app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the job. Heavy camera use, background location, Bluetooth hardware, or strict battery limits can push toward native. A cross-platform framework often fits when the screens are mostly forms, status, and document capture. We make the call after the first workshop and write down why."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does offline proof of delivery work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The app saves the photo or signature on the phone, shows it as queued, and retries when signal returns. The driver sees what has uploaded and what is still waiting, and dispatch sees the same state. We agree conflict rules with you, such as what happens if the load was reassigned while the phone was offline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the app connect to our TMS or dispatch system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, as far as the TMS exposes. We read the API docs and test with your account first. If the TMS has no usable API, an intermediate service or scheduled sync is the fallback, and we tell you the limits before the build starts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who publishes the app to the App Store and Google Play?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do, from your own Apple and Google developer accounts, with our help preparing builds and store listings. Review times are set by Apple and Google, so we plan the launch around them rather than promise a date."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you design only, or also build the app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both are possible. Some teams want designs and prototypes for their own mobile engineers. Others want design and build together. Either way the backend contract is designed alongside the screens, because most mobile problems start there."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="page-mobile svx svx-mob">
 <a class="skip" href="#main">Skip to content</a>
@@ -214,15 +316,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -269,6 +372,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -285,7 +390,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -320,9 +425,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div></div>
   <div class="wrap">
     <ol class="crumbs svx-crumbs">
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
-      <li aria-current="page">Mobile Applications</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li aria-current="page">Mobile app development</li>
     </ol>
     <div class="svx-hero-grid mb-hero-grid">
       <div class="svx-hero-copy mb-hero-copy">
@@ -426,7 +531,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><i aria-hidden="true">02</i>Offline queue for proof of delivery</li>
         <li><i aria-hidden="true">03</i>The same load record as the desk</li>
       </ul>
-      <p class="svx-credit" data-x>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client or product.</p>
+      <p class="svx-credit" data-x>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>
@@ -658,7 +763,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h2 id="backendH" data-split>The phone is one part of the product.</h2>
       </div>
       <div class="svx-head-aside">
-        <p class="svx-lede lede" data-x>Native, React Native, Flutter, or design-only is chosen by the job: camera, location, push, battery, offline needs, and timeline. Every phone action has to reach your <a class="mb-inl" href="/services/crm-development">dispatch CRM</a>, your TMS through <a class="mb-inl" href="/services/api-integrations">an API integration</a>, or your <a class="mb-inl" href="/services/saas-platforms">SaaS backend</a>. Car haulers can start from <a class="mb-inl" href="/solutions/car-transportation">car transportation</a>.</p>
+        <p class="svx-lede lede" data-x>Native, React Native, Flutter, or design-only is chosen by the job: camera, location, push, battery, offline needs, and timeline. Every phone action has to reach your <a class="mb-inl" href="/services/crm-development">dispatch CRM</a>, your TMS through <a class="mb-inl" href="/services/api-integrations">an API integration</a>, or your <a class="mb-inl" href="/services/saas-platforms">SaaS backend</a>. Car haulers can start from <a class="mb-inl" href="/solutions/car-transportation">Auto transport software</a>.</p>
       </div>
     </div>
     <ol class="mb-pipe" data-x aria-label="Mobile action through offline queue or API call to connected system, then success or visible failure to retry or human resolution">
@@ -753,56 +858,56 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <p class="svx-lede lede" data-x>Platform choice, offline behavior, TMS fit, and store publishing.</p>
       <figure class="cr-faq-photo" data-clip>
         <div class="cr-faq-img"><img src="/media/photos/mobile-in-hand.webp" alt="Hands holding a smartphone showing a mobile app." width="1600" height="1067" loading="lazy" decoding="async" data-par></div>
-        <figcaption>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</figcaption>
+        <figcaption>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
       </figure>
     </div>
     <div class="faq-list cr-faq-list" data-x>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq0" id="fqb0">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq0" id="fqb0">
           <span class="qn num">01</span>
           <span class="qt">Native, React Native, or Flutter for a driver app?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq0" role="region" aria-labelledby="fqb0"><div><div class="faq-a-in">
           <p>It depends on the job. Heavy camera use, background location, Bluetooth hardware, or strict battery limits can push toward native. A cross-platform framework often fits when the screens are mostly forms, status, and document capture. We make the call after the first workshop and write down why.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
           <span class="qn num">02</span>
           <span class="qt">How does offline proof of delivery work?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
           <p>The app saves the photo or signature on the phone, shows it as queued, and retries when signal returns. The driver sees what has uploaded and what is still waiting, and dispatch sees the same state. We agree conflict rules with you, such as what happens if the load was reassigned while the phone was offline.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">03</span>
           <span class="qt">Can the app connect to our TMS or dispatch system?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
           <p>Usually, as far as the TMS exposes. We read the API docs and test with your account first. If the TMS has no usable API, an intermediate service or scheduled sync is the fallback, and we tell you the limits before the build starts.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">04</span>
           <span class="qt">Who publishes the app to the App Store and Google Play?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
           <p>You do, from your own Apple and Google developer accounts, with our help preparing builds and store listings. Review times are set by Apple and Google, so we plan the launch around them rather than promise a date.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">05</span>
           <span class="qt">Can you design only, or also build the app?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
           <p>Both are possible. Some teams want designs and prototypes for their own mobile engineers. Others want design and build together. Either way the backend contract is designed alongside the screens, because most mobile problems start there.</p>
         </div></div></div>
@@ -820,7 +925,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <h2 id="inqH">Show us the task drivers still do by phone call or paper.</h2>
           <p class="svx-lede lede">Tell us the job, the people who do it, and the system it has to update. We will tell you what the app needs to do offline and whether a build is the right move. No RFP required.</p>
           <p class="cr-trust">
-            <span>Reply within one business day</span>
+            <span>We reply within one business day</span>
             <span>Mutual NDA available on request before sharing confidential project information.</span>
             <span>No obligation</span>
           </p>
@@ -869,7 +974,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           </form>
           <div class="inq-done" tabindex="-1">
             <h3>Inquiry received.</h3>
-            <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+            <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
           </div>
         </div>
       </div>
@@ -896,7 +1001,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -913,7 +1018,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -933,7 +1040,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -946,246 +1053,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <script src="/shared/services-x-mob.js?v=mb1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://krivatechnologies.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Mobile Applications",
-          "item": "https://krivatechnologies.com/services/mobile-applications"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/services/mobile-applications#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Native, React Native, or Flutter for a driver app?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It depends on the job. Heavy camera use, background location, Bluetooth hardware, or strict battery limits can push toward native. A cross-platform framework often fits when the screens are mostly forms, status, and document capture. We make the call after the first workshop and write down why."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does offline proof of delivery work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The app saves the photo or signature on the phone, shows it as queued, and retries when signal returns. The driver sees what has uploaded and what is still waiting, and dispatch sees the same state. We agree conflict rules with you, such as what happens if the load was reassigned while the phone was offline."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can the app connect to our TMS or dispatch system?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Usually, as far as the TMS exposes. We read the API docs and test with your account first. If the TMS has no usable API, an intermediate service or scheduled sync is the fallback, and we tell you the limits before the build starts."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who publishes the app to the App Store and Google Play?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You do, from your own Apple and Google developer accounts, with our help preparing builds and store listings. Review times are set by Apple and Google, so we plan the launch around them rather than promise a date."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you design only, or also build the app?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Both are possible. Some teams want designs and prototypes for their own mobile engineers. Others want design and build together. Either way the backend contract is designed alongside the screens, because most mobile problems start there."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/services/mobile-applications#service",
-      "name": "Driver and field mobile app design and development",
-      "serviceType": "Mobile app design and development",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "CA",
-        "GB",
-        "AE"
-      ],
-      "description": "Mobile app design and development for drivers, field staff, and B2B companion apps, with offline proof of delivery and backend sync.",
-      "url": "https://krivatechnologies.com/services/mobile-applications"
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

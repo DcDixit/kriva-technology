@@ -250,8 +250,8 @@ ${CASE_CSS}
 <header class="ph" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/work">Work</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/work">Work</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">${esc(c.shortName)}</li>
     </ol>
 
@@ -303,7 +303,7 @@ ${CASE_CSS}
       <div class="m"><b class="num" style="font-size:clamp(1.15rem,2.4vw,1.55rem);letter-spacing:-.02em;line-height:1.15">${esc(c.scope)}</b><span>Scope</span><em>From published case source</em></div>
       <div class="m"><b class="num" style="font-size:clamp(1.15rem,2.4vw,1.55rem);letter-spacing:-.02em;line-height:1.15">${esc(c.tags.join(" · "))}</b><span>Capabilities</span><em>Linked below</em></div>
     </div>
-    <p class="mrail-note">Client labels may be portfolio names. Signed-off numeric outcomes appear only on FleetFlow in this redesign.</p>
+    <p class="mrail-note">Client labels may be portfolio names.</p>
   </div>
 </section>
 

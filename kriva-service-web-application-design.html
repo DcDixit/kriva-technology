@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>document.documentElement.classList.add('js')</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/services/web-application-design">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -273,14 +277,111 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/inner.css?v=brand1">
 <link rel="stylesheet" href="/shared/system.css?v=brand1">
 <link rel="stylesheet" href="/shared/responsive.css?v=brand1">
-<link rel="stylesheet" href="/shared/archetypes.css?v=brand1">
-
 <link rel="stylesheet" href="/shared/page-inquiry.css?v=brand1">
 
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
+<link rel="stylesheet" href="/shared/services-x.css?v=svx1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/services/web-application-design#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://krivatechnologies.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Web application design",
+          "item": "https://krivatechnologies.com/services/web-application-design"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/services/web-application-design#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you design carrier portals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A carrier portal usually covers load offers, accept or decline, document upload such as BOL and proof of delivery, and payment status. We map what a carrier needs to finish in one visit, then design the screens, states, and error cases around those tasks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you design a load-board interface?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Load boards are search-and-compare screens: saved filters, equipment and lane fields, dense result rows, and quick actions. We design for fast scanning and repeat use. The matching logic and data feeds sit with your engineers or a separate build engagement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a customer portal and a public tracking page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A tracking page is public and lookup-only, with no login, and belongs under web development. A customer portal sits behind a login and adds shipment history, documents, invoices, and requests, which is what this service designs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you build the portal as well?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This service delivers the design: flows, screens, states, and specs. We are an engineering studio too, so a build can be scoped separately, or your own team can build from the handoff."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a dispatcher console a web application design job?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually it is closer to CRM design or dashboard design, because the work centers on queues, exceptions, and bulk actions. If the console is one part of a larger web app, we scope it together."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
-<body class="service design-ux arch-web">
+<body class="service design-ux arch-web svx svx-moved">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -329,15 +430,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -384,6 +486,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -400,33 +504,27 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
-<nav class="chapters" id="chapters" aria-label="Sections">
-  <a href="#overview"><span>Overview</span><i></i></a>
-  <a href="#audience"><span>Who it's for</span><i></i></a>
-  <a href="#screens"><span>Key screens</span><i></i></a>
-  <a href="#approach"><span>How we work</span><i></i></a>
-  <a href="#scope"><span>Scope</span><i></i></a>
-  <a href="#work"><span>Work</span><i></i></a>
-  <a href="#faq"><span>FAQ</span><i></i></a>
-</nav>
+<nav class="svx-rail" id="chapters" aria-label="Sections"><ol><li><a href="#overview" aria-current="true"><span>Overview</span></a></li><li><a href="#audience"><span>Who it's for</span></a></li><li><a href="#screens"><span>Key screens</span></a></li><li><a href="#approach"><span>How we work</span></a></li><li><a href="#scope"><span>Scope</span></a></li><li><a href="#work"><span>Work</span></a></li><li><a href="#faq"><span>FAQ</span></a></li></ol></nav>
+<nav class="mob-chips" id="mobChips" aria-label="Page sections"><a href="#overview">Overview</a><a href="#audience">Who it's for</a><a href="#screens">Key screens</a><a href="#approach">How we work</a><a href="#scope">Scope</a><a href="#work">Work</a><a href="#faq">FAQ</a></nav>
 
 <main id="main">
 
-<header class="hero lp-hero" id="overview">
+<header class="svx-hero" id="overview" data-dark>
+<div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div></div>
   <div class="wrap">
-    <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
+    <ol class="crumbs svx-crumbs" data-r>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Web Application Design</li>
     </ol>
     <div class="k-hero-split lp-stack" style="margin-top:clamp(22px,3vw,40px)">
       <div>
         <p class="eyebrow" data-r>Service · Logged-in web app design</p>
-        <h1 class="d1 mask">Web application design for carrier portals and load boards</h1>
+        <h1 class="svx-h1 d1 mask">Web application design for carrier portals and load boards</h1>
         <p class="lede" data-r>UX and UI for the web apps people sign in to: carrier portals, customer shipment portals, load-board interfaces, and SaaS workspaces. We design what happens after login, including the tables, filters, and error states that decide whether the app gets used.</p>
         <div class="hero-actions" data-r>
           <a href="/contact#book" class="btn"><span>Book a free 20-minute fit call</span><i>→</i></a>
@@ -457,7 +555,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <h2>The screens people use after they sign in.</h2>
       <p>UX and UI for carrier portals, customer shipment portals, load-board interfaces, and SaaS workspaces. The tables, filters, and error states decide whether the app gets used.</p>
       <ul class="story-points"><li>Tables, filters, and errors</li><li>Portals and load boards</li><li>The work after login</li></ul>
-      <p class="story-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+      <p class="story-credit">Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>
@@ -534,7 +632,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <ul>
           <li><b>You provide:</b> current screens or spreadsheets, access to two or three people from each role if possible, and one decision-maker for scope.</li>
           <li><b>Needs your systems:</b> live status, rates, and document review depend on APIs or data your team owns. See <a href="/services/api-integrations">integrations and APIs</a>.</li>
-          <li><b>Separate services:</b> public pages are <a href="/services/web-development">web development</a>. Whole-product strategy is <a href="/services/product-design">product design</a>.</li>
+          <li><b>Separate services:</b> public pages are <a href="/services/web-development">web development</a>. Whole-product strategy is <a href="/services/product-design">Product and UI/UX design</a>.</li>
         </ul>
       </div>
     </div>
@@ -567,11 +665,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <p class="eyebrow" data-r>FAQ</p>
     <h2 class="d2" id="faqH" data-r style="margin-top:16px">About web application design</h2>
     <div class="faq" data-r>
-      <details><summary>Do you design carrier portals?</summary><p>Yes. A carrier portal usually covers load offers, accept or decline, document upload such as BOL and proof of delivery, and payment status. We map what a carrier needs to finish in one visit, then design the screens, states, and error cases around those tasks.</p></details>
-      <details><summary>Can you design a load-board interface?</summary><p>Yes. Load boards are search-and-compare screens: saved filters, equipment and lane fields, dense result rows, and quick actions. We design for fast scanning and repeat use. The matching logic and data feeds sit with your engineers or a separate build engagement.</p></details>
-      <details><summary>What is the difference between a customer portal and a public tracking page?</summary><p>A tracking page is public and lookup-only, with no login, and belongs under <a href="/services/web-development">web development</a>. A customer portal sits behind a login and adds shipment history, documents, invoices, and requests, which is what this service designs.</p></details>
-      <details><summary>Do you build the portal as well?</summary><p>This service delivers the design: flows, screens, states, and specs. We are an engineering studio too, so a build can be scoped separately, or your own team can build from the handoff.</p></details>
-      <details><summary>Is a dispatcher console a web application design job?</summary><p>Usually it is closer to <a href="/services/crm-development">CRM design</a> or <a href="/services/dashboard-design">dashboard design</a>, because the work centers on queues, exceptions, and bulk actions. If the console is one part of a larger web app, we scope it together.</p></details>
+      <details><summary><h3 class="faq-q-h">Do you design carrier portals?</h3></summary><p>Yes. A carrier portal usually covers load offers, accept or decline, document upload such as BOL and proof of delivery, and payment status. We map what a carrier needs to finish in one visit, then design the screens, states, and error cases around those tasks.</p></details>
+      <details><summary><h3 class="faq-q-h">Can you design a load-board interface?</h3></summary><p>Yes. Load boards are search-and-compare screens: saved filters, equipment and lane fields, dense result rows, and quick actions. We design for fast scanning and repeat use. The matching logic and data feeds sit with your engineers or a separate build engagement.</p></details>
+      <details><summary><h3 class="faq-q-h">What is the difference between a customer portal and a public tracking page?</h3></summary><p>A tracking page is public and lookup-only, with no login, and belongs under <a href="/services/web-development">web development</a>. A customer portal sits behind a login and adds shipment history, documents, invoices, and requests, which is what this service designs.</p></details>
+      <details><summary><h3 class="faq-q-h">Do you build the portal as well?</h3></summary><p>This service delivers the design: flows, screens, states, and specs. We are an engineering studio too, so a build can be scoped separately, or your own team can build from the handoff.</p></details>
+      <details><summary><h3 class="faq-q-h">Is a dispatcher console a web application design job?</h3></summary><p>Usually it is closer to <a href="/services/crm-development">CRM design</a> or <a href="/services/dashboard-design">dashboard design</a>, because the work centers on queues, exceptions, and bulk actions. If the console is one part of a larger web app, we scope it together.</p></details>
     </div>
     <div class="sib" data-r style="margin-top:32px">
       <a href="/solutions/trucking-logistics">Trucking &amp; logistics solutions</a>
@@ -592,7 +690,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
+        <span><i>◆</i>We reply within one business day</span>
         <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
@@ -621,10 +719,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
         <div><label for="inq-details">What do you need help with? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
         <p class="inq-fail" role="alert"></p>
-        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
+        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">We reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
-      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
+      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We reply within one business day. This confirms our mail service accepted the message.</p></div>
     </div>
   </div>
 </section>
@@ -647,7 +745,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -664,7 +762,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -684,7 +784,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -740,247 +840,8 @@ run();
 })();
 </script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://krivatechnologies.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Web application design",
-          "item": "https://krivatechnologies.com/services/web-application-design"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/services/web-application-design#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do you design carrier portals?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. A carrier portal usually covers load offers, accept or decline, document upload such as BOL and proof of delivery, and payment status. We map what a carrier needs to finish in one visit, then design the screens, states, and error cases around those tasks."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you design a load-board interface?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Load boards are search-and-compare screens: saved filters, equipment and lane fields, dense result rows, and quick actions. We design for fast scanning and repeat use. The matching logic and data feeds sit with your engineers or a separate build engagement."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the difference between a customer portal and a public tracking page?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A tracking page is public and lookup-only, with no login, and belongs under web development. A customer portal sits behind a login and adds shipment history, documents, invoices, and requests, which is what this service designs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you build the portal as well?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "This service delivers the design: flows, screens, states, and specs. We are an engineering studio too, so a build can be scoped separately, or your own team can build from the handoff."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is a dispatcher console a web application design job?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Usually it is closer to CRM design or dashboard design, because the work centers on queues, exceptions, and bulk actions. If the console is one part of a larger web app, we scope it together."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/services/web-application-design#service",
-      "name": "Web application design for portals and load boards",
-      "serviceType": "Custom software development",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "GB",
-        "AE",
-        "CA"
-      ],
-      "description": "UX and UI for logged-in web apps: carrier portals, customer shipment portals, load-board interfaces, and SaaS workspaces. Designed screens and specs.",
-      "url": "https://krivatechnologies.com/services/web-application-design"
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

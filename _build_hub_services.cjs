@@ -181,8 +181,8 @@ page({
   main: `<header class="hero lp-hero" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Graphic Design</li>
     </ol>
     <div class="lp-split" style="margin-top:clamp(22px,3vw,40px)">
@@ -206,6 +206,7 @@ page({
           <div class="pu-pdp">
             <p class="pu-meta">Shopify · PDP</p>
             <div class="pu-swatch"><span class="pu-shirt"></span><span class="pu-bl">BL</span></div>
+            <!-- TODO(kriva): sample product is a linen overshirt on an electronics brand case; replace with an electronics sample product -->
             <p class="pu-prod">Linen overshirt <span>&pound;128</span></p>
             <span class="pu-bag">Add to bag</span>
           </div>
@@ -287,7 +288,8 @@ page({
         <div class="pu-pdp">
           <p class="pu-meta">Shopify · PDP</p>
           <div class="pu-swatch"><span class="pu-shirt"></span><span class="pu-bl">BL</span></div>
-          <p class="pu-prod">Linen overshirt <span>&pound;128</span></p>
+          <!-- TODO(kriva): sample product is a linen overshirt on an electronics brand case; replace with an electronics sample product -->
+            <p class="pu-prod">Linen overshirt <span>&pound;128</span></p>
           <span class="pu-bag">Add to bag</span>
         </div>
       </div>
@@ -355,8 +357,8 @@ page({
   main: `<header class="hero lp-hero" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">SEO &amp; Digital Marketing</li>
     </ol>
     <div class="lp-split" style="margin-top:clamp(22px,3vw,40px)">

@@ -11,10 +11,10 @@
 
 **Basis:** **Confirmed** = measured on the live site or in the source with evidence · **Recommendation** = judgement · **Verify** = a risk to check before it counts as an issue.
 **Effort:** S = under a day · M = 1–3 days · L = a week or more.
-**Risk** (what could break if the change goes wrong): **Low** = cosmetic or reversible text · **Med** = forms, tracking or search signals on a few pages · **High** = site-wide behaviour, indexing, redirects.
+**Risk** (what could break if the change goes wrong): **Low** = cosmetic or reversible text · **Med** = forms, tracking or search signals on a few pages · **High** = site-wide behavior, indexing, redirects.
 
 **Scope guardrails**
-- Reuse the existing design system, components and layouts. No new visual style. Visual changes are limited to token values (colour, type size) and removing elements.
+- Reuse the existing design system, components and layouts. No new visual style. Visual changes are limited to token values (color, type size) and removing elements.
 - Deferred as redesign: varied hero layouts (U-01), inner-page H1 scale (U-02).
 - No URL changes, redirects, robots.txt or canonical changes before Phase 3.
 
@@ -37,7 +37,7 @@
 | **D2** | Positioning | Lead with **US trucking, moving and logistics** (already the homepage H1); SaaS, QuickBooks/Xero and design are supporting practices. | Homepage, pricing, llms.txt and all seven real client sites already point there. | SaaS leads feel less addressed; /solutions/saas stays live. |
 | **D3** | 19 services + 8 solutions + industries | Consolidate to about 9 services and merge /industries, **only in Phase 3, after the Search Console baseline**. Pages with meaningful impressions keep their content. | Removes self-competition and maintenance. | Short-term ranking wobble; mitigated by §5.4. |
 | **D4** | "Book a call" opens a form | Add a real scheduler (Cal.com, Calendly or HubSpot Meetings; check current prices) on /contact; header label "Book a call". | Matches the label; removes a business-day delay for hot leads. | Zero-cost alternative: rename the button "Request a call". |
-| **D5** | Consent model | **One banner for all visitors**, equal Accept/Reject, **basic consent mode** (no Google Analytics or Clarity requests at all before Accept), and a footer "Cookie settings" link. | Geo-targeting on static Vercel needs middleware; one behaviour everywhere is simplest and covers UK/EEA/Canada. | GA4 counts only consented users (current data is already bot-inflated). |
+| **D5** | Consent model | **One banner for all visitors**, equal Accept/Reject, **basic consent mode** (no Google Analytics or Clarity requests at all before Accept), and a footer "Cookie settings" link. | Geo-targeting on static Vercel needs middleware; one behavior everywhere is simplest and covers UK/EEA/Canada. | GA4 counts only consented users (current data is already bot-inflated). |
 | **D6** | Market pages | Keep; footer and About links only; no new investment except /markets/us. | Localised and low risk. | — |
 | **D7** | Homepage length | Cut 13 sections to about 8 using existing components. | The pitch repeats about four times. | Content moves to inner pages only. |
 
@@ -45,7 +45,7 @@
 
 ## 3. Master sequence (do in this order)
 
-Ordering logic: **(1)** safety nets and baselines first (zero site risk, required by everything else); **(2)** verify the conversion path; **(3)** high-value, low-risk fixes; **(4)** search-signal changes as a separate release so any search movement can be attributed; **(5)** site-wide behaviour changes (consent, hero rendering) each in their own release; **(6)** owner-asset-dependent content; **(7)** structural SEO changes last.
+Ordering logic: **(1)** safety nets and baselines first (zero site risk, required by everything else); **(2)** verify the conversion path; **(3)** high-value, low-risk fixes; **(4)** search-signal changes as a separate release so any search movement can be attributed; **(5)** site-wide behavior changes (consent, hero rendering) each in their own release; **(6)** owner-asset-dependent content; **(7)** structural SEO changes last.
 
 | # | ID | Task | Priority | Basis | Risk | Depends on | Effort | Release |
 |---|---|---|---|---|---|---|---|---|
@@ -255,7 +255,7 @@ Redirect map (old → new, every URL) reviewed by the owner; each source keeps i
 | Check | Acceptance criterion |
 |---|---|
 | Before any choice (fresh profile) | No cookies named `_ga`, `_ga_*`, `_clck`, `_clsk`, `CLID`, `MUID`; **no** requests to `googletagmanager.com/gtag`, `*.google-analytics.com`, `*.clarity.ms` (DevTools Network, filter by domain) |
-| Banner | Shown on the first page view on every template; Accept and Reject have equal size, colour weight and position level; links to the privacy policy; built from existing button styles |
+| Banner | Shown on the first page view on every template; Accept and Reject have equal size, color weight and position level; links to the privacy policy; built from existing button styles |
 | Accept | GA4 loads and sends exactly one `page_view` for the current page; Clarity loads; the choice persists across pages and reloads; the banner does not reappear |
 | Reject | Nothing loads; the choice persists across pages and reloads; the banner does not reappear |
 | Change of mind | Footer "Cookie settings" reopens the banner; switching Accept → Reject stops further hits from the next page and clears `_ga`/`_clck` cookies on the domain |
@@ -421,7 +421,7 @@ After any rollback: re-run §7 I (smoke test), log the incident in `project-reco
 
 - [ ] **#20 T-04 + QW-11 · Scheduler and CTA label (release 1D)**
   - **Files:** `_build_contact_x.cjs` → `kriva-contact.html` (`#book`); header CTA in all HTML files
-  - **Done when:** the scheduler loads after consent if it sets cookies (check the tool's behaviour), shows US-hours slots, and a test booking creates a calendar event and confirmation email; the header label is changed on all 68 pages; the Brief form is unchanged and passes §6.1.
+  - **Done when:** the scheduler loads after consent if it sets cookies (check the tool's behavior), shows US-hours slots, and a test booking creates a calendar event and confirmation email; the header label is changed on all 68 pages; the Brief form is unchanged and passes §6.1.
 
 ### Phase 2 (content; each item ships when its owner input arrives)
 

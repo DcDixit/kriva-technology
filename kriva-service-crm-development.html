@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('svx-motion');setTimeout(function(){if(!window.__svx)d.classList.remove('svx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/services/crm-development">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -163,6 +167,128 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/services-x.css?v=svx1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/services/crm-development#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://krivatechnologies.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Custom CRM development",
+          "item": "https://krivatechnologies.com/services/crm-development"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/services/crm-development#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should we customize our CRM or replace it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We assess first. If stages, permissions, and the CRM's own bulk actions already fit, configuration is the answer and nothing needs building. Replacement comes up only when the platform cannot support bulk work, role-based views, or audited overrides for the way your desk runs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will this replace our TMS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not by default. The TMS stays the system of record and the new console runs beside it, rolled out by role or module. If you want to retire a TMS module later, we scope that as a separate step."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the dispatch board work with our TMS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, depending on what the TMS exposes. We check API access, export options, and your account permissions first. If there is no usable API, scheduled exports or an import step are the fallback, with more failure modes. We tell you before the build which case you are in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you migrate data from a legacy CRM or spreadsheets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, when it is in scope. We map fields, run test imports on sanitized samples, and agree a cutover by role or module so the desk keeps working. Messy history sometimes needs a decision from your team about what to keep."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do you need from us to start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A day of watching the desk work, a sanitized export of recent loads or deals, sandbox or admin access to the CRM and TMS, and one person per role who can say whether a screen works for them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Designs, code, and documentation transfer to your accounts. Changes after go-live can stay with your team, or we can agree a support retainer if you want one. We do not host your data unless we scope hosting as part of the project."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a custom CRM project take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version, such as one console or one pipeline, is usually 6 to 10 weeks after that. A larger build with several integrations usually runs 12 to 20 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does custom CRM development cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cost follows scope: team size multiplied by weeks. We price after discovery, as a fixed-scope project, sprints, or a monthly retainer. Our guide to custom dispatch software cost explains what drives the budget."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="page-crm svx svx-crm">
 <a class="skip" href="#main">Skip to content</a>
@@ -213,15 +339,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -268,6 +395,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -284,7 +413,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -315,9 +444,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div></div>
   <div class="wrap">
     <ol class="crumbs svx-crumbs">
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
-      <li aria-current="page">CRM development</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li aria-current="page">Custom CRM development</li>
     </ol>
     <p class="svx-kicker eyebrow svx-pill"><i aria-hidden="true"></i>Custom CRM development</p>
     <h1 class="svx-h1"><span class="svx-l"><span>Custom CRM development</span></span> <span class="svx-l"><span>for <em>dispatch and sales teams</em></span></span></h1>
@@ -386,7 +515,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <p class="svx-kicker eyebrow" data-x>The desk</p>
       <h2 id="deskH" data-split>The work that never makes the system of record.</h2>
       <p class="cr-desk-p" data-x>Dispatch, sales, and account teams keep a second system because the official one cannot show the owner, the time left, and the next action in one place. A custom CRM is that missing screen, built on your records and your rules.</p>
-      <p class="svx-credit" data-x>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+      <p class="svx-credit" data-x>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>
@@ -595,7 +724,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <div class="cr-map">
       <figure class="cr-map-photo" data-clip>
         <div class="cr-map-img"><img src="/media/photos/crm-sales-meeting.webp" alt="A team maps a workflow on a whiteboard of sticky notes while colleagues follow along on laptops." width="1600" height="1200" loading="lazy" decoding="async" data-par></div>
-        <figcaption>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</figcaption>
+        <figcaption>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
       </figure>
       <div class="cr-map-copy">
         <p class="svx-kicker" data-x>Delivery process</p>
@@ -750,86 +879,86 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <p class="svx-lede lede" data-x>Short answers on scope, timelines, cost, and what we need before a first call.</p>
       <figure class="cr-faq-photo" data-x>
         <div class="cr-faq-img"><img src="/media/photos/markets-agreement.webp" alt="Two people shake hands across a desk with an open laptop and coffee cups after a meeting." width="1600" height="1067" loading="lazy" decoding="async"></div>
-        <figcaption>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. Not a KRIVA client.</figcaption>
+        <figcaption>Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></figcaption>
       </figure>
     </div>
     <div class="faq-list cr-faq-list">
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq0" id="fqb0">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq0" id="fqb0">
           <span class="qn num">01</span>
           <span class="qt">Should we customize our CRM or replace it?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq0" role="region" aria-labelledby="fqb0"><div><div class="faq-a-in">
           <p>We assess first. If stages, permissions, and the CRM's own bulk actions already fit, configuration is the answer and nothing needs building. Replacement comes up only when the platform cannot support bulk work, role-based views, or audited overrides for the way your desk runs.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
           <span class="qn num">02</span>
           <span class="qt">Will this replace our TMS?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
           <p>Not by default. The TMS stays the system of record and the new console runs beside it, rolled out by role or module. If you want to retire a TMS module later, we scope that as a separate step.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">03</span>
           <span class="qt">Can the dispatch board work with our TMS?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
           <p>Usually, depending on what the TMS exposes. We check API access, export options, and your account permissions first. If there is no usable API, scheduled exports or an import step are the fallback, with more failure modes. We tell you before the build which case you are in.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">04</span>
           <span class="qt">Can you migrate data from a legacy CRM or spreadsheets?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
           <p>Yes, when it is in scope. We map fields, run test imports on sanitized samples, and agree a cutover by role or module so the desk keeps working. Messy history sometimes needs a decision from your team about what to keep.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">05</span>
           <span class="qt">What do you need from us to start?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
           <p>A day of watching the desk work, a sanitized export of recent loads or deals, sandbox or admin access to the CRM and TMS, and one person per role who can say whether a screen works for them.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
           <span class="qn num">06</span>
           <span class="qt">What happens after launch?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
           <p>Designs, code, and documentation transfer to your accounts. Changes after go-live can stay with your team, or we can agree a support retainer if you want one. We do not host your data unless we scope hosting as part of the project.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
           <span class="qn num">07</span>
           <span class="qt">How long does a custom CRM project take?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
           <p>Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version, such as one console or one pipeline, is usually 6 to 10 weeks after that. A larger build with several integrations usually runs 12 to 20 weeks.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
           <span class="qn num">08</span>
           <span class="qt">How much does custom CRM development cost?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq7" role="region" aria-labelledby="fqb7"><div><div class="faq-a-in">
           <p>Cost follows scope: team size multiplied by weeks. We price after discovery, as a fixed-scope project, sprints, or a monthly retainer. Our guide to <a href="/insights/dispatch-software-cost">custom dispatch software cost</a> explains what drives the budget.</p>
         </div></div></div>
@@ -866,7 +995,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <h2 id="inqH">Show us the work your TMS or CRM cannot hold.</h2>
           <p class="svx-lede lede">Name the system, the desk, and the step that still lives in a spreadsheet. We will say whether it needs configuration, a console beside it, or nothing at all. No RFP required.</p>
           <p class="crm-trust cr-trust">
-            <span>Reply within one business day</span>
+            <span>We reply within one business day</span>
             <span>Mutual NDA available on request before sharing confidential project information.</span>
             <span>No obligation</span>
           </p>
@@ -914,7 +1043,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           </form>
           <div class="inq-done" tabindex="-1">
             <h3>Inquiry received.</h3>
-            <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+            <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
           </div>
         </div>
       </div>
@@ -941,7 +1070,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -958,7 +1087,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -978,7 +1109,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -990,413 +1121,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <script src="/shared/services-x.js?v=svx1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://krivatechnologies.com/services/crm-development#webpage",
-      "url": "https://krivatechnologies.com/services/crm-development",
-      "name": "Custom CRM Development for Dispatch & Sales Teams | KRIVA",
-      "description": "Custom CRM development for logistics and B2B teams: dispatch boards, sales pipelines, workflow automation, and reporting, built beside your TMS or HubSpot.",
-      "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://krivatechnologies.com/#website"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/services/crm-development#service"
-      },
-      "breadcrumb": {
-        "@id": "https://krivatechnologies.com/services/crm-development#breadcrumb"
-      },
-      "primaryImageOfPage": {
-        "@id": "https://krivatechnologies.com/services/crm-development#desk-photo"
-      },
-      "image": [
-        {
-          "@type": "ImageObject",
-          "contentUrl": "https://krivatechnologies.com/media/photos/freight-broker-desk-team.webp",
-          "caption": "An operations team working on laptops around a shared desk, one person wearing headphones.",
-          "license": "https://unsplash.com/license",
-          "acquireLicensePage": "https://unsplash.com/license",
-          "creditText": "Unsplash",
-          "@id": "https://krivatechnologies.com/services/crm-development#desk-photo",
-          "width": 1600,
-          "height": 1050
-        },
-        {
-          "@type": "ImageObject",
-          "contentUrl": "https://krivatechnologies.com/media/photos/crm-sales-meeting.webp",
-          "caption": "A team maps a workflow on a whiteboard of sticky notes while colleagues follow along on laptops.",
-          "license": "https://unsplash.com/license",
-          "acquireLicensePage": "https://unsplash.com/license",
-          "creditText": "Unsplash",
-          "width": 1600,
-          "height": 1200
-        },
-        {
-          "@type": "ImageObject",
-          "contentUrl": "https://krivatechnologies.com/media/photos/markets-agreement.webp",
-          "caption": "Two people shake hands across a desk with an open laptop and coffee cups after a meeting.",
-          "license": "https://www.pexels.com/license/",
-          "acquireLicensePage": "https://www.pexels.com/license/",
-          "creditText": "Pexels",
-          "width": 1600,
-          "height": 1067
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://krivatechnologies.com/services/crm-development#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://krivatechnologies.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "CRM development",
-          "item": "https://krivatechnologies.com/services/crm-development"
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/services/crm-development#service",
-      "name": "Custom CRM development",
-      "serviceType": "Custom CRM development",
-      "category": "Business software development",
-      "description": "Custom CRMs and operations consoles for dispatch, sales, and account teams: role-based views, pipelines and stage rules, bulk actions, exception queues, workflow automation, reporting, and an audit trail, built beside the existing TMS or HubSpot.",
-      "url": "https://krivatechnologies.com/services/crm-development",
-      "image": "https://krivatechnologies.com/brand/og/services-crm-development.png",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "audience": {
-        "@type": "BusinessAudience",
-        "audienceType": "Trucking, logistics, and freight brokerage operations teams; B2B sales and service teams"
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Custom CRM development capabilities",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch boards and operations consoles"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Sales pipelines and stage definitions"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Workflow automation with approval steps"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "CRM configuration and HubSpot customization"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "CRM, TMS, and accounting integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Data migration from legacy CRMs and spreadsheets"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Reporting, exception, and SLA views"
-            }
-          }
-        ]
-      },
-      "subjectOf": [
-        {
-          "@type": "CreativeWork",
-          "name": "ShiftRail dispatch console (representative project)",
-          "url": "https://krivatechnologies.com/work/shiftrail-dispatch"
-        },
-        {
-          "@type": "CreativeWork",
-          "name": "CRMPulse sales dashboard (representative project)",
-          "url": "https://krivatechnologies.com/work/crm-pulse-dashboard"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/services/crm-development#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Should we customize our CRM or replace it?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We assess first. If stages, permissions, and the CRM's own bulk actions already fit, configuration is the answer and nothing needs building. Replacement comes up only when the platform cannot support bulk work, role-based views, or audited overrides for the way your desk runs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Will this replace our TMS?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Not by default. The TMS stays the system of record and the new console runs beside it, rolled out by role or module. If you want to retire a TMS module later, we scope that as a separate step."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can the dispatch board work with our TMS?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Usually, depending on what the TMS exposes. We check API access, export options, and your account permissions first. If there is no usable API, scheduled exports or an import step are the fallback, with more failure modes. We tell you before the build which case you are in."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you migrate data from a legacy CRM or spreadsheets?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, when it is in scope. We map fields, run test imports on sanitized samples, and agree a cutover by role or module so the desk keeps working. Messy history sometimes needs a decision from your team about what to keep."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What do you need from us to start?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A day of watching the desk work, a sanitized export of recent loads or deals, sandbox or admin access to the CRM and TMS, and one person per role who can say whether a screen works for them."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens after launch?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Designs, code, and documentation transfer to your accounts. Changes after go-live can stay with your team, or we can agree a support retainer if you want one. We do not host your data unless we scope hosting as part of the project."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does a custom CRM project take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Discovery takes 1 to 2 weeks and ends with a scoped brief and timeline you sign off. A focused first version, such as one console or one pipeline, is usually 6 to 10 weeks after that. A larger build with several integrations usually runs 12 to 20 weeks."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does custom CRM development cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Cost follows scope: team size multiplied by weeks. We price after discovery, as a fixed-scope project, sprints, or a monthly retainer. Our guide to custom dispatch software cost explains what drives the budget."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

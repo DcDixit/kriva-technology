@@ -14,7 +14,7 @@ const WEB_ID = ORIGIN + "/#website";
 const CRUMB_NAME = {
   about: "About",
   process: "Process",
-  technologies: "Tools & stack",
+  technologies: "Technologies",
   industries: "Industries",
   faq: "FAQ",
   careers: "Careers",
@@ -33,19 +33,19 @@ const CRUMB_NAME = {
   "trucking-logistics": "Trucking & logistics",
   saas: "SaaS",
   "accounting-integrations": "Accounting integrations",
-  "car-transportation": "Car transportation",
+  "car-transportation": "Auto transport software",
   "ai-assisted-development": "AI-assisted development",
   "api-integrations": "API integrations",
-  "automation-systems": "Automation systems",
+  "automation-systems": "Workflow automation",
   branding: "Branding",
-  "crm-development": "Dispatch CRM & TMS",
+  "crm-development": "Custom CRM development",
   "dashboard-design": "Fleet dashboards",
   "design-systems": "Design systems",
   "graphic-design": "Graphic design",
   "logo-design": "Logo design",
-  "mobile-applications": "Driver mobile apps",
+  "mobile-applications": "Mobile app development",
   "no-code-low-code": "No-code / low-code",
-  "product-design": "Product design",
+  "product-design": "Product and UI/UX design",
   "saas-platforms": "SaaS platforms",
   "seo-digital-marketing": "SEO & digital marketing",
   "ui-ux-design": "UI/UX design",
@@ -317,6 +317,85 @@ function jsonLdScript(graph) {
   );
 }
 
+/** Facts approved for public structured data. Anything else stays a TODO. */
+const ORG_SAME_AS = [
+  "https://www.instagram.com/kriva_technology/",
+  "https://www.linkedin.com/company/kriva-technologies",
+];
+
+function organizationFact() {
+  return {
+    "@type": "Organization",
+    "@id": ORG_ID,
+    name: "KRIVA Technologies",
+    url: ORIGIN,
+    email: CONTACT_EMAIL,
+    foundingDate: "2025",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Ahmedabad",
+      addressRegion: "Gujarat",
+      addressCountry: "IN",
+    },
+    sameAs: ORG_SAME_AS.slice(),
+  };
+}
+
+function breadcrumbFromRoute(route) {
+  if (!route || route === "/") return null;
+  const labels = require("../content/page-labels.cjs");
+  const parts = route.split("/").filter(Boolean);
+  const items = [{ "@type": "ListItem", position: 1, name: "Home", item: ORIGIN + "/" }];
+  let acc = "";
+  parts.forEach((part, index) => {
+    acc += "/" + part;
+    const name = labels[acc] || CRUMB_NAME[part] || part.replace(/-/g, " ");
+    items.push({
+      "@type": "ListItem",
+      position: index + 2,
+      name,
+      item: ORIGIN + acc,
+    });
+  });
+  return {
+    "@type": "BreadcrumbList",
+    "@id": ORIGIN + route + "#breadcrumb",
+    itemListElement: items,
+  };
+}
+
+function articleFact({ headline, datePublished, dateModified, image, url }) {
+  return {
+    "@type": "Article",
+    "@id": url + "#article",
+    headline,
+    datePublished,
+    dateModified,
+    image,
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    mainEntityOfPage: url,
+  };
+}
+
+/** One graph: Organization, plus FAQ, Article, and BreadcrumbList when the page has them. */
+function structuredDataGraph({ route, faqs, article }) {
+  const nodes = [organizationFact()];
+  const crumbs = breadcrumbFromRoute(route);
+  if (crumbs) nodes.push(crumbs);
+  if (faqs && faqs.length) nodes.push(faqPage(faqs, ORIGIN + route + "#faq"));
+  if (article && article.headline) {
+    nodes.push(articleFact({
+      headline: article.headline,
+      datePublished: article.datePublished,
+      dateModified: article.dateModified || article.datePublished,
+      image: article.image,
+      url: ORIGIN + route,
+    }));
+  }
+  return { "@context": "https://schema.org", "@graph": nodes };
+}
+
 module.exports = {
   ORG_ID,
   WEB_ID,
@@ -332,4 +411,9 @@ module.exports = {
   pageKind,
   graphForPage,
   jsonLdScript,
+  ORG_SAME_AS,
+  organizationFact,
+  breadcrumbFromRoute,
+  articleFact,
+  structuredDataGraph,
 };

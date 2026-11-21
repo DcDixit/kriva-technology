@@ -23,7 +23,7 @@ const out = process.argv[2] || null;
         if (r === 255 && g === 255 && b === 255) return 'white';
         if (L > 225 && r - b >= 4 && r >= g) return 'cream';
         if (L > 225) return 'light-tint';
-        return 'colour';
+        return 'color';
       };
       const hex = (c) => c ? '#' + [c.r, c.g, c.b].map((x) => Math.round(x).toString(16).padStart(2, '0')).join('') + (c.a < 1 ? '@' + c.a : '') : '-';
       const desc = (e) => e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (e.className && typeof e.className === 'string' ? '.' + e.className.trim().split(/\s+/).slice(0, 3).join('.') : '');

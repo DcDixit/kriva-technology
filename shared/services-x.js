@@ -249,7 +249,7 @@
   }
   const darks = $$('[data-dark]').filter((d) => d.closest('main'));
 
-  /* ── The scroll loop: progress, rail colour, parallax, process line ── */
+  /* ── The scroll loop: progress, rail color, parallax, process line ── */
   const bar = $('#progress');
   const pars = $$('[data-par]');
   const steps = $('[data-steps]');

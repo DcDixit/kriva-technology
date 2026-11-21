@@ -1,0 +1,56 @@
+/* Consent banner and FAQ question headings. Loaded last so heading size stays with the summary or button. */
+.kriva-consent{
+  position:fixed;
+  z-index:120;
+  left:50%;
+  bottom:16px;
+  transform:translateX(-50%);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:16px;
+  width:min(880px,calc(100% - 32px));
+  padding:16px 18px;
+  background:var(--ink);
+  color:var(--paper);
+  border-radius:16px;
+  box-shadow:0 18px 50px -24px rgba(15,28,46,.55);
+  font-family:var(--f-body);
+  font-size:15px;
+  line-height:1.45;
+}
+.kriva-consent[hidden]{display:none}
+.kriva-consent p{margin:0;flex:1 1 260px}
+.kriva-consent a{color:var(--lilac)}
+.kriva-consent-actions{display:flex;gap:8px;flex:none}
+.kriva-consent button{
+  font-family:var(--f-body);
+  font-weight:650;
+  font-size:14px;
+  min-height:44px;
+  padding:0 16px;
+  border-radius:999px;
+  cursor:pointer;
+}
+.kriva-consent [data-consent="accept"]{background:var(--blue);color:#fff;border:0}
+.kriva-consent [data-consent="accept"]:hover{background:var(--blue-deep)}
+.kriva-consent [data-consent="reject"]{background:transparent;color:var(--paper);border:1px solid var(--ink-dim)}
+.kriva-consent [data-consent="reject"]:hover{border-color:var(--paper)}
+.kriva-consent button:focus-visible{outline:2px solid var(--lilac);outline-offset:3px}
+
+main summary > h3.faq-q-h,
+main h3.faq-q-wrap{
+  margin:0!important;
+  font:inherit!important;
+  letter-spacing:inherit!important;
+  line-height:inherit!important;
+  color:inherit!important;
+  text-transform:none!important;
+}
+.sx-faq-list summary > h3.faq-q-h,
+.x-faq-list summary > h3.faq-q-h,
+.wx-faq-list summary > h3.faq-q-h{
+  display:block;
+  grid-column:2;
+  min-width:0;
+}

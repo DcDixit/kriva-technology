@@ -256,7 +256,7 @@ const pricingMain = `
     <div class="px-hero-meta" data-r>
       <nav aria-label="Breadcrumb">
         <ol class="crumbs">
-          <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+          <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
           <li aria-current="page">Pricing</li>
         </ol>
       </nav>
@@ -309,7 +309,7 @@ const pricingMain = `
           "Mobile layout, one quote or contact form, on-page titles and headings",
           "Launch on your domain",
         ],
-        note: "Best for carriers, movers, and brokers whose current site does not explain the service or capture a useful enquiry. Extra pages, CMS, photography, copywriting, online booking, and customer logins change the price.",
+        note: "Best for carriers, movers, and brokers whose current site does not explain the service or capture a useful inquiry. Extra pages, CMS, photography, copywriting, online booking, and customer logins change the price.",
         href: "/solutions/trucking-company-websites",
         link: "Trucking company websites",
         links: [
@@ -521,7 +521,7 @@ ${inquiry({
   page: "/solutions/trucking-company-websites",
   service: "Trucking company website",
   heading: "Get a website quote",
-  lede: "Send your current site, what you haul, and whether the next enquiry should come from shippers, drivers, or both.",
+  lede: "Send your current site, what you haul, and whether the next inquiry should come from shippers, drivers, or both.",
   placeholder: "Example: 40-truck reefer carrier. We need shipper pages, a driver page, and a quote form. Our current site is a one-page template.",
 })}`;
 

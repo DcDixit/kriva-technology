@@ -309,8 +309,8 @@ ${PAGE_CSS}
 <header class="hero" id="overview">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">${esc(label)}</li>
     </ol>
     <nav class="mob-chips" id="mobChips" aria-label="On this page">

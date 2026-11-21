@@ -39,7 +39,7 @@ The site's ceiling is set by **trust and focus, not code**. The biggest gains co
 | Technical SEO and on-page | **8.0** | Lighthouse SEO 100 on all 12 templates; 68/68 pages have a unique title, canonical, one H1, an OG image and JSON-LD; clean redirects; sitemap, robots and llms.txt present. Lost points: overlapping pages, organisation as author, `sameAs` = Instagram only, boilerplate keyword headings, 8 title/description length issues |
 | GEO / AI-search readiness | **6.5** | Strong: llms.txt, FAQPage and Speakable schema, answer-first cost articles, AI crawlers allowed. Weak: no named experts, no third-party corroboration (LinkedIn, Clutch, Google Business Profile), no original data, and many disclaimers that weaken quotable claims |
 | Performance | **7.5** | Lighthouse mobile performance 83–99 on 10 of 12 templates, LCP 1.8–3.1s, CLS 0. One page records no LCP at all (reproducible); /services ships about 1.1 MB of avoidable image weight; TBT up to 330ms. No field data |
-| Accessibility | **7.0** | Lighthouse accessibility 96–100; every image has alt text and dimensions; forms labelled; honeypot correctly hidden. But axe finds colour-contrast failures on **32 pages (241 elements, some at 1.9:1)** and text under 12px on every page |
+| Accessibility | **7.0** | Lighthouse accessibility 96–100; every image has alt text and dimensions; forms labelled; honeypot correctly hidden. But axe finds color-contrast failures on **32 pages (241 elements, some at 1.9:1)** and text under 12px on every page |
 | Responsiveness | **8.0** | 68/68 pages have no sideways scroll at 390px. Only 390px and 1440px tested |
 | UI / visual design | **7.0** | Polished, consistent system. But every page uses the same hero formula (dark indigo glow, giant two-tone H1, mock-up, dot rail), and pages are very long (homepage about 22,400px desktop / 25,800px mobile) |
 | Content and messaging | **5.5** | Specific, intelligent copy. But diluted positioning, defensive disclaimers, jargon ("fit call", "the desk", "works around") and repeated sections |
@@ -167,7 +167,7 @@ Clean, no action: HSTS, X-Frame-Options, nosniff, Referrer-Policy and Permission
 
 | ID | Severity | Issue | Fix |
 |---|---|---|---|
-| A-01 | High | **Colour contrast fails on 32 of 68 pages (241 elements)**, worst cases 1.92:1 and 1.96:1 (`#3f4b5a` and `#4f4b3f` text on `#0f1c2e`), often at 8–11px. Mostly muted labels inside the dark demo panels. | Raise muted-label tokens to at least 4.5:1 on dark backgrounds. |
+| A-01 | High | **Color contrast fails on 32 of 68 pages (241 elements)**, worst cases 1.92:1 and 1.96:1 (`#3f4b5a` and `#4f4b3f` text on `#0f1c2e`), often at 8–11px. Mostly muted labels inside the dark demo panels. | Raise muted-label tokens to at least 4.5:1 on dark backgrounds. |
 | A-02 | Medium | **Text under 12px on every page** (95 instances on /work, 45 on /markets): eyebrow labels, chips, mock-UI labels. | Set a 12px floor for real text (decorative mock-UI excepted, marked `aria-hidden`). |
 | A-03 | Low | `<aside>` nested inside another landmark on 12 pages; invalid `role="listitem"` on 3 pages (/contact, /solutions/accounting-integrations, /services/dashboard-design). | Markup fixes. |
 | A-04 | Low | 17–21 tap targets under 24px on home, about and process (mobile), mostly the right-hand section dot rail. | Hide the dot rail on touch devices or enlarge the targets. |

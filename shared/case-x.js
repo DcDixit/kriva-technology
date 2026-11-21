@@ -1,4 +1,4 @@
-/* KRIVA Work · case study "csx" layer behaviour. First page: ShiftRail (body.svx-case).
+/* KRIVA Work · case study "csx" layer behavior. First page: ShiftRail (body.svx-case).
    services-x.js (loaded first) owns reveals, split headlines, cursor, rail, progress, magnets
    and spotlights. This file adds the page's own demos. Every demo is readable without JS and
    settles on a static, complete state under reduced motion. */

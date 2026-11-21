@@ -187,7 +187,7 @@ const solutionsBody = `
 <header class="hero">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Solutions</li>
     </ol>
     <div class="hero-grid">
@@ -374,7 +374,7 @@ const aboutBody = `
 <header class="hero">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">About</li>
     </ol>
     <div class="hero-grid">
@@ -641,7 +641,7 @@ const processBody = `
 <header class="hero">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Process</li>
     </ol>
     <div class="hero-grid">

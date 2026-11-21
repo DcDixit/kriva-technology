@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>(function(d){d.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('svx-motion');setTimeout(function(){if(!window.__svx)d.classList.remove('svx-motion')},2500)}})(document.documentElement)</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/services/api-integrations">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -170,6 +174,120 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
 <link rel="stylesheet" href="/shared/services-x.css?v=svx1">
 <link rel="stylesheet" href="/shared/services-x-api.css?v=svxa1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/services/api-integrations#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://krivatechnologies.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "API integrations",
+          "item": "https://krivatechnologies.com/services/api-integrations"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/services/api-integrations#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you build Bitbucket integrations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Bitbucket webhooks, repository events, and Pipelines status land in the same structure as ledger and CRM connectors: stable keys, retries, and an exception queue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from QuickBooks & Xero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That solution page is the finance market path: close, matching, and operator UX for books. This service is the connector craft used there and on Bitbucket, payments, CRM, and other APIs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from automation workflows?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Integrations move data between systems of record. Automation orchestrates steps, often with a human on send. Many briefs need both."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle sync failures?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Exception views, retries, and the source record. Operators get Retry, Match, or Park. Failures are not silently skipped."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will you finish an API we already started?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We harden the connector and add the operational surface the first pass skipped: keys, mapping, and a resolution path."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bitbucket Pipelines only?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Bitbucket is one published example. The same event → validate → write → exception pattern applies to CRM, payments, fleet, and ledger APIs - including Custom CRM development destinations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle security and data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We scope role-based access and audit trails into the product where you need them, and verify signed webhooks on integrations that support them. Integrations are tested against staging with sanitized data. Mutual NDA available on request before sharing confidential project information."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
 <body class="page-api svx svx-api">
 <a class="skip" href="#main">Skip to content</a>
@@ -220,15 +338,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -275,6 +394,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -291,7 +412,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
@@ -327,8 +448,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
   <div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div><div class="ai-hero-lines"></div></div>
   <div class="wrap">
     <ol class="crumbs svx-crumbs">
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
-      <li><a href="/services">Services</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
+      <li><a href="/services">Services</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Integrations &amp; APIs</li>
     </ol>
     <p class="svx-kicker eyebrow svx-pill"><i aria-hidden="true"></i>Integrations &amp; APIs</p>
@@ -415,7 +536,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li data-x style="--d:.06s"><span class="svx-tnum">02</span>A history of what was sent</li>
         <li data-x style="--d:.12s"><span class="svx-tnum">03</span>Failures shown where the operator works</li>
       </ul>
-      <p class="svx-credit" data-x>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. Not a KRIVA client or product.</p>
+      <p class="svx-credit" data-x>Photograph via <a href="https://unsplash.com/license" rel="noopener noreferrer">Unsplash License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
 </section>
@@ -602,7 +723,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
             <div class="ai-resp"><b>200 OK</b><span>Invoice 4412 created</span><em>380 ms</em></div>
             <dl class="ai-kv">
               <div><dt>Auth</dt><dd>OAuth 2.0 · token refreshed 09:12</dd></div>
-              <div><dt>Rate limit</dt><dd>Backoff honoured · within budget</dd></div>
+              <div><dt>Rate limit</dt><dd>Backoff honored · within budget</dd></div>
               <div><dt>Sandbox</dt><dd>Same mapping tested first</dd></div>
             </dl>
             <p class="ai-pane-note">Each API keeps its own auth, rate limits, and sandbox. The path stays the same.</p>
@@ -856,7 +977,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <li>When the brief needs both sync and steps</li>
         </ul>
         <div class="ai-rel-links">
-          <a class="ai-rel-a" href="/services/automation-systems"><span>Automation</span><i aria-hidden="true"></i></a>
+          <a class="ai-rel-a" href="/services/automation-systems"><span>Workflow automation</span><i aria-hidden="true"></i></a>
         </div>
       </article>
       <article class="ai-rel-card" data-spot data-x style="--d:.18s">
@@ -868,7 +989,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <li>Audit trails on overrides and matches</li>
         </ul>
         <div class="ai-rel-links">
-          <a class="ai-rel-a" href="/services/crm-development"><span>CRM development</span><i aria-hidden="true"></i></a>
+          <a class="ai-rel-a" href="/services/crm-development"><span>Custom CRM development</span><i aria-hidden="true"></i></a>
         </div>
       </article>
     </div>
@@ -889,71 +1010,71 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
     <div class="faq-list ai-faq-list">
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
           <span class="qn num">01</span>
           <span class="qt">Do you build Bitbucket integrations?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
           <p>Yes. Bitbucket webhooks, repository events, and Pipelines status land in the same structure as ledger and CRM connectors: stable keys, retries, and an exception queue.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">02</span>
           <span class="qt">How is this different from QuickBooks &amp; Xero?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
           <p>That solution page is the finance market path: close, matching, and operator UX for books. This service is the connector craft used there and on Bitbucket, payments, CRM, and other APIs.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">03</span>
           <span class="qt">How is this different from automation workflows?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
           <p>Integrations move data between systems of record. Automation orchestrates steps, often with a human on send. Many briefs need both.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">04</span>
           <span class="qt">How do you handle sync failures?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
           <p>Exception views, retries, and the source record. Operators get Retry, Match, or Park. Failures are not silently skipped.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
           <span class="qn num">05</span>
           <span class="qt">Will you finish an API we already started?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
           <p>Yes. We harden the connector and add the operational surface the first pass skipped: keys, mapping, and a resolution path.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
           <span class="qn num">06</span>
           <span class="qt">Bitbucket Pipelines only?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
-          <p>No. Bitbucket is one published example. The same event → validate → write → exception pattern applies to CRM, payments, fleet, and ledger APIs - including <a class="ai-inline" href="/services/crm-development">CRM development</a> destinations.</p>
+          <p>No. Bitbucket is one published example. The same event → validate → write → exception pattern applies to CRM, payments, fleet, and ledger APIs - including <a class="ai-inline" href="/services/crm-development">Custom CRM development</a> destinations.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
           <span class="qn num">07</span>
           <span class="qt">How do you handle security and data?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq7" role="region" aria-labelledby="fqb7"><div><div class="faq-a-in">
           <p>We scope role-based access and audit trails into the product where you need them, and verify signed webhooks on integrations that support them. Integrations are tested against staging with sanitized data. Mutual NDA available on request before sharing confidential project information.</p>
         </div></div></div>
@@ -972,7 +1093,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <h2 id="inqH">Name the connector that fails after the first sync.</h2>
           <p class="svx-lede lede">Tell us the source event, destination API, and what happens when a write fails. Bitbucket, payments, CRM, fleet, or another scoped API. We'll review the systems and recommend the connector structure - no RFP required.</p>
           <p class="api-trust ai-trust">
-            <span>Reply within one business day</span>
+            <span>We reply within one business day</span>
             <span>Mutual NDA available on request before sharing confidential project information.</span>
             <span>No obligation</span>
           </p>
@@ -1020,7 +1141,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           </form>
           <div class="inq-done" tabindex="-1">
             <h3>Inquiry received.</h3>
-            <p>We will reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
+            <p>We reply within one business day. If you still need a longer brief or a scheduled call, use the <a href="/contact#brief">contact page</a>.</p>
           </div>
         </div>
       </div>
@@ -1047,7 +1168,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -1064,7 +1185,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -1084,7 +1207,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -1097,262 +1220,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <script src="/shared/services-x-api.js?v=svxa1" defer></script>
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://krivatechnologies.com/#organization",
-      "name": "KRIVA Technologies",
-      "alternateName": "KRIVA",
-      "url": "https://krivatechnologies.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://krivatechnologies.com/apple-touch-icon.png",
-        "width": 180,
-        "height": 180
-      },
-      "image": "https://krivatechnologies.com/brand/og-default.png",
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "email": "hello@krivatechnologies.com",
-      "foundingDate": "2025-01-01",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ahmedabad",
-        "addressRegion": "Gujarat",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "sales",
-        "email": "hello@krivatechnologies.com",
-        "url": "https://krivatechnologies.com/contact",
-        "areaServed": [
-          "US",
-          "GB",
-          "AE",
-          "CA",
-          "AU"
-        ],
-        "availableLanguage": [
-          "English"
-        ]
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ],
-      "knowsAbout": [
-        "Trucking software",
-        "Dispatch CRM",
-        "Transportation Management Systems",
-        "Fleet management software",
-        "B2B SaaS development",
-        "QuickBooks integration",
-        "Xero integration",
-        "Driver mobile apps",
-        "Auto transport software",
-        "Car carrier dispatch",
-        "Accounting reconciliation",
-        "SaaS onboarding UX",
-        "Custom software development"
-      ],
-      "sameAs": [
-        "https://www.instagram.com/kriva_technology/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KRIVA software development services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Dispatch CRM & TMS development",
-              "url": "https://krivatechnologies.com/solutions/trucking-logistics"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "B2B SaaS product design",
-              "url": "https://krivatechnologies.com/solutions/saas"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "QuickBooks & Xero integrations",
-              "url": "https://krivatechnologies.com/solutions/accounting-integrations"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auto transport software",
-              "url": "https://krivatechnologies.com/solutions/car-transportation"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://krivatechnologies.com/#website",
-      "name": "KRIVA Technologies",
-      "url": "https://krivatechnologies.com",
-      "inLanguage": [
-        "en",
-        "en-US",
-        "en-GB",
-        "en-AE",
-        "en-CA",
-        "en-AU"
-      ],
-      "publisher": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "about": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "description": "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          ".lede",
-          ".eyebrow"
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krivatechnologies.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://krivatechnologies.com/services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "API integrations",
-          "item": "https://krivatechnologies.com/services/api-integrations"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krivatechnologies.com/services/api-integrations#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do you build Bitbucket integrations?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Bitbucket webhooks, repository events, and Pipelines status land in the same structure as ledger and CRM connectors: stable keys, retries, and an exception queue."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is this different from QuickBooks & Xero?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "That solution page is the finance market path: close, matching, and operator UX for books. This service is the connector craft used there and on Bitbucket, payments, CRM, and other APIs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is this different from automation workflows?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Integrations move data between systems of record. Automation orchestrates steps, often with a human on send. Many briefs need both."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do you handle sync failures?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Exception views, retries, and the source record. Operators get Retry, Match, or Park. Failures are not silently skipped."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Will you finish an API we already started?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. We harden the connector and add the operational surface the first pass skipped: keys, mapping, and a resolution path."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Bitbucket Pipelines only?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Bitbucket is one published example. The same event → validate → write → exception pattern applies to CRM, payments, fleet, and ledger APIs - including CRM development destinations."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do you handle security and data?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We scope role-based access and audit trails into the product where you need them, and verify signed webhooks on integrations that support them. Integrations are tested against staging with sanitized data. Mutual NDA available on request before sharing confidential project information."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://krivatechnologies.com/services/api-integrations#service",
-      "name": "Connectors that hold after the first sync",
-      "serviceType": "Custom software development",
-      "provider": {
-        "@id": "https://krivatechnologies.com/#organization"
-      },
-      "areaServed": [
-        "US",
-        "GB",
-        "AE",
-        "CA"
-      ],
-      "description": "API integrations from source event to destination: connectors, validation, and exception queues for payments, CRM, fleet, and Bitbucket workflows.",
-      "url": "https://krivatechnologies.com/services/api-integrations"
-    }
-  ]
-}
-</script>
 <!-- KRIVA_SCHEMA_END -->
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

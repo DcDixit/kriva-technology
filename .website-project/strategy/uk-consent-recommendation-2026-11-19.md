@@ -31,7 +31,7 @@ Status: **recommendation only. Nothing is implemented; this waits for the owner'
 
 **Other markets (brief; not a full legal review)**
 - **EEA and Switzerland** (GA4 showed visitors from Germany and the Netherlands): GDPR and ePrivacy require consent for analytics cookies, with no equivalent of the UK exception. Treat them the same as the UK.
-- **US:** no opt-in rule for analytics. State privacy laws are opt-out based, and the site already honours GPC.
+- **US:** no opt-in rule for analytics. State privacy laws are opt-out based, and the site already honors GPC.
 - **Canada:** PIPEDA generally allows implied consent with clear notice. Quebec's Law 25 requires technologies that identify, locate or profile people to be off by default; a notice-plus-opt-out approach is low risk for this site.
 - **Australia:** the Privacy Act has no cookie-banner rule; privacy-policy notice is enough today.
 - **UAE:** PDPL is consent-based in principle. Not assessed in depth.
@@ -54,7 +54,7 @@ Status: **recommendation only. Nothing is implemented; this waits for the owner'
 1. **(Recommended)** A tiny Vercel Routing Middleware reads Vercel's `x-vercel-ip-country` header and sets a short-lived, strictly necessary `kriva_region` cookie on HTML responses. The head snippet reads it before GA4 or Clarity load. Server-side and accurate; small edge cost.
 2. **No-backend fallback:** use the browser time zone (`Europe/*`, plus `Atlantic/Reykjavik` and similar). Free and instant, but misses VPN users and travellers. Use it only as a fail-safe when the cookie is missing.
 
-**Behaviour**
+**Behavior**
 - Before a choice: GA4 consent stays `denied` and no GA4 config call is made (Google Consent Mode "basic", so no cookieless pings), and Clarity is not loaded. Advanced mode is avoided because the ICO's view on cookieless pings is not settled.
 - **Accept analytics:** `gtag('consent','update',{analytics_storage:'granted'})`, then GA4 config and page view; load Clarity and call `clarity('consentv2',{ad_Storage:'denied',analytics_Storage:'granted'})`.
 - **Reject:** nothing loads. Ask again only after 6 months.

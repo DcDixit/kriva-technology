@@ -80,7 +80,7 @@ The review of all 69 pages and the shared files found three side effects in the 
 | Hreflang | All 6 market pages carry an identical, reciprocal 6-tag set |
 | **Mobile and desktop performance**: LCP on 68 routes × 2 viewports | **136 of 136** page loads record LCP (median 168 ms, max 288 ms locally). Before: 9 pages recorded none on mobile. |
 | Solution pages, repeated runs | 27 of 27 mobile runs record LCP (9 pages × 3) |
-| Deep links (#faq, 4 pages × 3 runs) | Active chip in view and LCP behaviour identical to HEAD (see OI-3) |
+| Deep links (#faq, 4 pages × 3 runs) | Active chip in view and LCP behavior identical to HEAD (see OI-3) |
 | **Tracking** (local build served as https://krivatechnologies.com; requests captured, nothing sent to Google) | Automated browser: 0 GA4, 0 Clarity. Normal visitor: page_view + Clarity. Marked internal: nothing across pages, and the parameter is stripped. Unmarking restores tracking. Other parameters and #anchors are kept. `ga_debug=1` override works. Lead: `generate_lead` + `form_submit` (HEAD also sent `contact_form_submit`). |
 | **Forms**: `_qa_all_forms.cjs` (stubbed, no email sent) | 66 forms on 68 routes, **0 failures** |
 | Links: `_crawl_links.js` | 68 files, 119 hrefs, **0 missing** |

@@ -102,7 +102,7 @@ module.exports = {
         },
         {
           "href": "/services/automation-systems",
-          "label": "Automation Workflows"
+          "label": "Workflow automation"
         },
         {
           "href": "/insights/crm-dashboard-ux-patterns",
@@ -318,7 +318,7 @@ module.exports = {
       "related": [
         {
           "href": "/services/automation-systems",
-          "label": "Automation Workflows"
+          "label": "Workflow automation"
         },
         {
           "href": "/services/dashboard-design",
@@ -340,10 +340,10 @@ module.exports = {
     {
       "slug": "mobile-applications",
       "file": "kriva-service-mobile-applications.html",
-      "h1": "Mobile App Design",
-      "title": "Mobile App Design · iOS & Android UX · KRIVA",
+      "h1": "Mobile app development",
+      "title": "Mobile app development · iOS & Android UX · KRIVA",
       "meta": "Native-quality mobile UX for iOS and Android: focused on clarity, onboarding, and retention for patient, driver, and field apps.",
-      "ogTitle": "Mobile App Design: iOS & Android UX",
+      "ogTitle": "Mobile app development: iOS & Android UX",
       "eyebrow": "Service · Product interfaces",
       "family": "Apps & dashboards",
       "bullets": [
@@ -420,19 +420,19 @@ module.exports = {
           "label": "Driver mobile context"
         },
         {
-          "href": "/services/ui-ux-design",
+          "href": "/services/product-design",
           "k": "Service",
           "label": "UI/UX Design"
         }
       ],
       "related": [
         {
-          "href": "/services/ui-ux-design",
+          "href": "/services/product-design",
           "label": "UI/UX Design"
         },
         {
           "href": "/services/product-design",
-          "label": "Product Design"
+          "label": "Product and UI/UX design"
         },
         {
           "href": "/work/healthtrack-mobile",
@@ -441,7 +441,7 @@ module.exports = {
       ],
       "chromeNav": "services",
       "h1Display": "Mobile UX built for interrupted attention.",
-      "serviceLabel": "Mobile App Design",
+      "serviceLabel": "Mobile app development",
       "challengesH2": "When mobile is just a shrunk desktop",
       "deliverablesH2": "What ships to the stores",
       "outcomesH2": "What changes in the hand",
@@ -538,7 +538,7 @@ module.exports = {
       "related": [
         {
           "href": "/services/product-design",
-          "label": "Product Design"
+          "label": "Product and UI/UX design"
         },
         {
           "href": "/services/dashboard-design",
@@ -560,7 +560,7 @@ module.exports = {
     {
       "slug": "automation-systems",
       "file": "kriva-service-automation-systems.html",
-      "h1": "Automation Workflows",
+      "h1": "Workflow automation",
       "title": "Business Process Automation for Ops Teams | KRIVA",
       "meta": "Business process automation for ops teams: map the loop, then keep a person on send, approve, and ledger steps. Make, Zapier, or custom.",
       "ogTitle": "Business Process Automation for Ops Teams",
@@ -661,7 +661,7 @@ module.exports = {
       ],
       "chromeNav": "operations",
       "h1Display": "Automate the queue. Keep humans on the send.",
-      "serviceLabel": "Automation Workflows",
+      "serviceLabel": "Workflow automation",
       "challengesH2": "When the same steps burn every shift",
       "deliverablesH2": "What runs without babysitting",
       "outcomesH2": "What changes in the queue",
@@ -755,17 +755,17 @@ module.exports = {
         {
           "href": "/services/automation-systems",
           "k": "Service",
-          "label": "Automation Workflows"
+          "label": "Workflow automation"
         }
       ],
       "related": [
         {
           "href": "/services/automation-systems",
-          "label": "Automation Workflows"
+          "label": "Workflow automation"
         },
         {
           "href": "/services/product-design",
-          "label": "Product Design"
+          "label": "Product and UI/UX design"
         },
         {
           "href": "/insights/ai-in-product-design-2026",
@@ -783,10 +783,10 @@ module.exports = {
     {
       "slug": "web-development",
       "file": "kriva-service-web-development.html",
-      "h1": "Web Design & Development",
-      "title": "Web Design & Development · Next.js sites · KRIVA",
+      "h1": "Web development",
+      "title": "Web development · Next.js sites · KRIVA",
       "meta": "Fast, accessible marketing sites and web apps with modern stacks, CMS flexibility, and SEO foundations: typically Next.js, React, TypeScript.",
-      "ogTitle": "Web Design & Development: Next.js sites",
+      "ogTitle": "Web development: Next.js sites",
       "eyebrow": "Service · Build & integration",
       "family": "Build & brand",
       "bullets": [
@@ -884,7 +884,7 @@ module.exports = {
       ],
       "chromeNav": "services",
       "h1Display": "Marketing sites your team can actually run.",
-      "serviceLabel": "Web Design & Development",
+      "serviceLabel": "Web development",
       "challengesH2": "When the site can't keep up with marketing",
       "deliverablesH2": "What marketing can update next week",
       "outcomesH2": "What changes on the public site",
@@ -981,15 +981,15 @@ module.exports = {
       "related": [
         {
           "href": "/services/web-development",
-          "label": "Web Design & Development"
+          "label": "Web development"
         },
         {
           "href": "/services/product-design",
-          "label": "Product Design"
+          "label": "Product and UI/UX design"
         },
         {
           "href": "/services/automation-systems",
-          "label": "Automation Workflows"
+          "label": "Workflow automation"
         }
       ],
       "chromeNav": "services",
@@ -1003,10 +1003,10 @@ module.exports = {
     {
       "slug": "product-design",
       "file": "kriva-service-product-design.html",
-      "h1": "Product Design",
-      "title": "Product Design · Strategy to launch-ready UI · KRIVA",
+      "h1": "Product and UI/UX design",
+      "title": "Product and UI/UX design · Strategy to launch-ready UI · KRIVA",
       "meta": "Full product design for SaaS, dashboards, and digital platforms: from concept through launch-ready UI, not just individual screens.",
-      "ogTitle": "Product Design: Strategy to launch-ready UI",
+      "ogTitle": "Product and UI/UX design: Strategy to launch-ready UI",
       "eyebrow": "Service · Product & UX",
       "family": "Product & UX",
       "bullets": [
@@ -1090,7 +1090,7 @@ module.exports = {
       ],
       "related": [
         {
-          "href": "/services/ui-ux-design",
+          "href": "/services/product-design",
           "label": "UI/UX Design: sibling"
         },
         {
@@ -1104,7 +1104,7 @@ module.exports = {
       ],
       "chromeNav": "saas",
       "h1Display": "End-to-end product design: strategy to ship.",
-      "serviceLabel": "Product Design",
+      "serviceLabel": "Product and UI/UX design",
       "challengesH2": "When screens ship without a product story",
       "deliverablesH2": "What the product team leaves with",
       "outcomesH2": "What changes in the product story",
@@ -1112,6 +1112,7 @@ module.exports = {
     },
     {
       "slug": "ui-ux-design",
+      "redirect": "/services/product-design",
       "file": "kriva-service-ui-ux-design.html",
       "h1": "UI/UX Design",
       "title": "UI/UX Design · Flows, prototypes & systems · KRIVA",
@@ -1209,7 +1210,7 @@ module.exports = {
         },
         {
           "href": "/services/mobile-applications",
-          "label": "Mobile App Design"
+          "label": "Mobile app development"
         },
         {
           "href": "/services/saas-platforms",
@@ -1304,7 +1305,7 @@ module.exports = {
         {
           "href": "/services/web-development",
           "k": "Service",
-          "label": "Web Design & Development"
+          "label": "Web development"
         },
         {
           "href": "/work",
@@ -1315,7 +1316,7 @@ module.exports = {
       "related": [
         {
           "href": "/services/web-development",
-          "label": "Web Design & Development"
+          "label": "Web development"
         },
         {
           "href": "/services/logo-design",
@@ -1419,20 +1420,20 @@ module.exports = {
         {
           "href": "/services/product-design",
           "k": "Service",
-          "label": "Product Design"
+          "label": "Product and UI/UX design"
         }
       ],
       "related": [
         {
           "href": "/services/product-design",
-          "label": "Product Design"
+          "label": "Product and UI/UX design"
         },
         {
           "href": "/services/wireframing-prototyping",
           "label": "Wireframing & Prototyping"
         },
         {
-          "href": "/services/ui-ux-design",
+          "href": "/services/product-design",
           "label": "UI/UX Design"
         }
       ],
@@ -1538,12 +1539,12 @@ module.exports = {
           "label": "UX Research"
         },
         {
-          "href": "/services/ui-ux-design",
+          "href": "/services/product-design",
           "label": "UI/UX Design"
         },
         {
           "href": "/services/product-design",
-          "label": "Product Design"
+          "label": "Product and UI/UX design"
         }
       ],
       "chromeNav": "services",
@@ -1649,10 +1650,10 @@ module.exports = {
         },
         {
           "href": "/services/product-design",
-          "label": "Product Design"
+          "label": "Product and UI/UX design"
         },
         {
-          "href": "/services/ui-ux-design",
+          "href": "/services/product-design",
           "label": "UI/UX Design"
         }
       ],
@@ -1763,7 +1764,7 @@ module.exports = {
         },
         {
           "href": "/services/web-development",
-          "label": "Web Design & Development"
+          "label": "Web development"
         }
       ],
       "chromeNav": "services",
@@ -1859,7 +1860,7 @@ module.exports = {
         {
           "href": "/services/web-development",
           "k": "Service",
-          "label": "Web Design & Development"
+          "label": "Web development"
         }
       ],
       "related": [
@@ -1869,7 +1870,7 @@ module.exports = {
         },
         {
           "href": "/services/web-development",
-          "label": "Web Design & Development"
+          "label": "Web development"
         },
         {
           "href": "/work/brandlift-ecommerce",

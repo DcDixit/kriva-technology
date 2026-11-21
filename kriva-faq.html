@@ -3,44 +3,49 @@
 <head>
 <script src="/shared/chrome.js" defer></script>
 <!-- KRIVA_GA_START -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
 window.__krivaNativeReplaceState=History.prototype.replaceState;
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
 (function(){
-var id='G-FHG12KTF8C';
-var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
-var gpc=navigator.globalPrivacyControl===true;
-var host=location.hostname;
-var local=host==='localhost'||host==='127.0.0.1'||/\.vercel\.app$/.test(host);
-var optedOut=!!window['ga-disable-'+id]||gpc;
-/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */
-var ua=navigator.userAgent||'';
-var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);
-var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}
-window.__krivaNoTrack=bot||internal;
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
 gtag('js',new Date());
-if(optedOut)gtag('consent','update',{analytics_storage:'denied'});
-if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;
-var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
 if(debug)cfg.debug_mode=true;
 gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
 })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>
 <script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
 <!-- KRIVA_GA_END -->
 <!-- KRIVA_CLARITY_START -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||/\.vercel\.app$/.test(h))return;
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yjj9g3gojt");
-</script>
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
 <!-- KRIVA_CLARITY_END -->
 <script>document.documentElement.classList.add('js')</script>
 <meta charset="utf-8">
@@ -58,7 +63,6 @@ gtag('config',id,cfg);
 <link rel="canonical" href="https://krivatechnologies.com/faq">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="bingbot" content="index, follow, max-image-preview:large">
 <meta name="author" content="KRIVA Technologies">
 <meta name="publisher" content="KRIVA Technologies">
@@ -82,7 +86,7 @@ gtag('config',id,cfg);
 <meta property="og:image:alt" content="FAQ · Working with KRIVA Technologies">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FAQ · Working with KRIVA · Product Design &amp; UI/UX">
-<meta name="twitter:description" content="Straight answers on KRIVA services, timelines, pricing, ownership, and remote collaboration for trucking, SaaS, and integration teams in the US, UK, UAE, and Canada.">
+<meta name="twitter:description" content="Straight answers on KRIVA services, timelines, pricing, and remote collaboration for trucking, SaaS, and integration teams in the US, UK, UAE, and Canada.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <style>
@@ -160,8 +164,189 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
+<link rel="stylesheet" href="/shared/services-x.css?v=svx1">
+<!-- KRIVA_LD_START -->
+<!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://krivatechnologies.com/#organization",
+      "name": "KRIVA Technologies",
+      "url": "https://krivatechnologies.com",
+      "email": "hello@krivatechnologies.com",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/kriva_technology/",
+        "https://www.linkedin.com/company/kriva-technologies"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krivatechnologies.com/faq#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krivatechnologies.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "FAQ",
+          "item": "https://krivatechnologies.com/faq"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krivatechnologies.com/faq#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What services do you offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We build websites, mobile apps, and custom software for trucking, moving, and logistics companies: trucking software, freight broker software, fleet management software, auto transport software, and trucking and moving company websites. We also build SaaS products and QuickBooks and Xero integrations. Services include custom CRM development, mobile app development, web development, API integrations, workflow automation, Product and UI/UX design, UI/UX design, business dashboards, and branding. We focus on these areas because we have spent years on them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you subcontract any work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Every designer and engineer on your project is a permanent KRIVA team member. We do not use freelance marketplaces or offshore subcontractors. The team you meet on the first call is the team that builds your product."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with startups and enterprises?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both. For startups, we are used to fast timelines, limited scope, and investor-facing deliverables. For scale-ups and enterprises, we are used to compliance requirements, complex integrations, and multi-stakeholder sign-off. We scope projects accordingly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you work with our existing team?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We embed with in-house designers, developers, or product managers and adapt to your tools and working style."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a typical project take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A focused MVP or redesign is usually 6 to 10 weeks. A full-stack SaaS platform with integrations runs 12 to 20 weeks. Discovery sprints are 1 to 2 weeks. We give an honest timeline on the first call. See our delivery process for how phases and sign-off gates work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you use AI in your delivery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We use Claude for content and brief drafting, GitHub Copilot for code generation, Cursor for rapid prototyping, and Figma AI for asset generation. Every output is reviewed by a senior team member before it reaches you. AI makes us faster; people make sure it is right."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns the design files and code after the project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You do. All Figma files, GitHub repositories, and documentation transfer to you at project close, or earlier if you prefer. No lock-in or vendor dependency. We help onboard your internal team on what we built."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is pricing structured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Five scopes have published starting prices: websites from $4,800, mobile apps from $18,000, UI/UX and SaaS design from $6,500, custom software from $15,000, and QuickBooks and Xero integrations from $8,000. Each covers a defined scope. Dispatch platforms and other larger custom software are quoted after discovery. Engagements run as fixed-scope projects, monthly retainers, or sprint-based work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After go-live you can move to a monthly retainer: iteration sprints, performance monitoring, and roadmap support. You can scale the retainer up or pause it as needed. We do not vanish after handoff."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are you based, and how do remote work and time zones work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Headquarters is in Ahmedabad, Gujarat, India. The studio is remote-first: we overlap call hours with the US, UK, UAE, and Canada, work async between those windows, and align stand-ups to your team's schedule. In-person meetings are not required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do you need from us to get started?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A brief (we will send a template), your timeline, and a 20-minute fit call. If you do not have a brief yet, we will write one together. Many teams arrive with a problem, not a spec."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you sign NDAs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Mutual NDA available on request before sharing confidential project information."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should we buy a TMS instead of building one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often, yes. If your freight and workflows are standard, a boxed TMS will be cheaper and faster, and we will say so on the call. Custom software pays off when spreadsheets run your core decisions or your workflow is your edge. Many teams keep the TMS as the record and build the desk tools around it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle quality assurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "QA runs inside every build sprint. Regression checks run before each weekly demo, integrations are tested against staging with sanitized data, and launch has a go-live checklist your team signs off."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you approach security?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We scope role-based access and audit trails into the product where you need them, and verify signed webhooks on integrations that support them. Mutual NDA available on request before sharing confidential project information. If you need a specific certification or compliance evidence from your vendors, raise it on the fit call so we can tell you plainly whether we can meet it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you connect to our ELD, TMS, or accounting software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, where the provider offers an API or data export. We build QuickBooks Online and Xero integrations on their public APIs, and we check what your ELD or TMS provider allows during discovery rather than assuming it."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- KRIVA_LD_END -->
 </head>
-<body class="page-faq">
+<body class="page-faq svx svx-moved">
 <a class="skip" href="#main">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
@@ -210,15 +395,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
                     <li><a href="/services/web-development"><strong>Web development</strong></a></li>
                     <li><a href="/services/api-integrations"><strong>API integrations</strong></a></li>
                     <li><a href="/services/automation-systems"><strong>Workflow automation</strong></a></li>
+                    <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong></a></li>
                   </ul>
                 </div>
                 <div class="mm-col">
                   <p class="mm-label">Design</p>
                   <ul class="mm-list">
-                    <li><a href="/services/product-design"><strong>Product design</strong></a></li>
-                    <li><a href="/services/ui-ux-design"><strong>UI/UX design</strong></a></li>
+                    <li><a href="/services/product-design"><strong>Product and UI/UX design</strong></a></li>
                     <li><a href="/services/dashboard-design"><strong>Business dashboards</strong></a></li>
                     <li><a href="/services/branding"><strong>Branding and graphic design</strong></a></li>
+                    <li><a href="/services/logo-design"><strong>Logo design</strong></a></li>
                   </ul>
                   <a class="mm-all" href="/services">All services <i>→</i></a>
                 </div>
@@ -265,6 +451,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/automation-systems"><strong>Workflow automation</strong><span>Human-gated workflows</span></a></li>
         <li><a href="/services/dashboard-design"><strong>Business dashboards</strong><span>Ops and KPI views</span></a></li>
         <li><a href="/services/product-design"><strong>Product and UI/UX design</strong><span>Research to launch-ready UI</span></a></li>
+        <li><a href="/services/ai-assisted-development"><strong>AI-assisted development</strong><span>AI drafts, people sign off</span></a></li>
+        <li><a href="/services/logo-design"><strong>Logo design</strong><span>Logistics and SaaS brands</span></a></li>
         <li><a href="/services"><strong>All services</strong><span>Full capability list</span></a></li>
       </ul>
     </div>
@@ -281,21 +469,22 @@ html.js [data-s].in>*{opacity:1;transform:none}
   </div>
   <div class="sheet-foot">
     <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
-    <span>Ahmedabad, India · Working with US, UK, Australian, and UAE teams</span>
+    <span>Ahmedabad, India · Working with US, UK, Canadian, Australian, and UAE teams</span>
   </div>
 </div>
 
 <main id="main">
 
-<header class="hero faq-hero" id="overview" aria-labelledby="h1">
+<header class="svx-hero" id="overview" aria-labelledby="h1" data-dark>
+<div class="svx-hero-bg" aria-hidden="true"><div class="svx-grid"></div><div class="svx-glow"></div></div>
   <div class="wrap">
-    <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+    <ol class="crumbs svx-crumbs" data-r>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">FAQ</li>
     </ol>
     <p class="eyebrow" data-r>FAQ</p>
-    <h1 class="d1 mask" id="h1">Questions buyers ask before booking a call</h1>
-    <p class="lede" data-r>Services, timelines, pricing, ownership, and how we work with your team, without agency vagueness. If you are comparing studios, read <a href="/insights/choosing-a-digital-agency">how to choose a software partner</a>; if you already know the workflow, <a href="/contact#book">book a fit call</a> or <a href="/contact#brief">send a brief</a>.</p>
+    <h1 class="svx-h1 d1 mask" id="h1">Questions buyers ask before booking a call</h1>
+    <p class="lede" data-r>Services, timelines, pricing, ownership, and how we work with your team, without agency vagueness. If you are comparing studios, read <a href="/insights/choosing-a-digital-agency">how to choose a software partner</a>; if you already know the workflow, <a href="/contact#book">book a free 20-minute fit call</a> or <a href="/contact#brief">send a brief</a>.</p>
     <div class="hero-actions" data-r>
       <a href="#together" class="btn"><span>Browse answers</span><i>→</i></a>
       <a href="/contact#book" class="btn ghost"><span>Book a free 20-minute fit call</span><i>→</i></a>
@@ -303,7 +492,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <p class="faq-mast" data-r>
       <span>In-house team</span>
       <span>Mutual NDA available on request before sharing confidential project information.</span>
-      <span>Reply in one business day</span>
+      <span>We reply within one business day.</span>
     </p>
   </div>
 </header>
@@ -328,41 +517,41 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
     <div class="faq-list" data-r>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq1" id="fqb1">
           <span class="qn num">01</span>
           <span class="qt">What services do you offer?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq1" role="region" aria-labelledby="fqb1"><div><div class="faq-a-in">
-          <p>We build websites, mobile apps, and custom software for trucking, moving, and logistics companies: <a href="/solutions/trucking-logistics">trucking software</a>, <a href="/solutions/freight-broker-software">freight broker software</a>, <a href="/solutions/fleet-management-software">fleet management software</a>, <a href="/solutions/car-transportation">auto transport software</a>, and <a href="/solutions/trucking-company-websites">trucking</a> and <a href="/solutions/moving-company-websites">moving company websites</a>. We also build <a href="/solutions/saas">SaaS products</a> and <a href="/solutions/accounting-integrations">QuickBooks and Xero integrations</a>. Services include <a href="/services/crm-development">custom CRM development</a>, <a href="/services/mobile-applications">mobile app development</a>, <a href="/services/web-development">web development</a>, <a href="/services/api-integrations">API integrations</a>, <a href="/services/automation-systems">workflow automation</a>, <a href="/services/product-design">product design</a>, <a href="/services/ui-ux-design">UI/UX design</a>, <a href="/services/dashboard-design">business dashboards</a>, and <a href="/services/branding">branding</a>. We focus on these areas because we have spent years on them.</p>
+          <p>We build websites, mobile apps, and custom software for trucking, moving, and logistics companies: <a href="/solutions/trucking-logistics">trucking software</a>, <a href="/solutions/freight-broker-software">freight broker software</a>, <a href="/solutions/fleet-management-software">fleet management software</a>, <a href="/solutions/car-transportation">auto transport software</a>, and <a href="/solutions/trucking-company-websites">trucking</a> and <a href="/solutions/moving-company-websites">moving company websites</a>. We also build <a href="/solutions/saas">SaaS products</a> and <a href="/solutions/accounting-integrations">QuickBooks and Xero integrations</a>. Services include <a href="/services/crm-development">custom CRM development</a>, <a href="/services/mobile-applications">mobile app development</a>, <a href="/services/web-development">web development</a>, <a href="/services/api-integrations">API integrations</a>, <a href="/services/automation-systems">workflow automation</a>, <a href="/services/product-design">Product and UI/UX design</a>, <a href="/services/product-design">UI/UX design</a>, <a href="/services/dashboard-design">business dashboards</a>, and <a href="/services/branding">branding</a>. We focus on these areas because we have spent years on them.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq3" id="fqb3">
           <span class="qn num">02</span>
           <span class="qt">Do you subcontract any work?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq3" role="region" aria-labelledby="fqb3"><div><div class="faq-a-in">
           <p>No. Every designer and engineer on your project is a permanent KRIVA team member. We do not use freelance marketplaces or offshore subcontractors. The team you meet on the first call is the team that builds your product.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq4" id="fqb4">
           <span class="qn num">03</span>
           <span class="qt">Do you work with startups and enterprises?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq4" role="region" aria-labelledby="fqb4"><div><div class="faq-a-in">
           <p>Both. For startups, we are used to fast timelines, limited scope, and investor-facing deliverables. For scale-ups and enterprises, we are used to compliance requirements, complex integrations, and multi-stakeholder sign-off. We scope projects accordingly.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq11" id="fqb11">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq11" id="fqb11">
           <span class="qn num">04</span>
           <span class="qt">Can you work with our existing team?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq11" role="region" aria-labelledby="fqb11"><div><div class="faq-a-in">
           <p>Yes. We embed with in-house designers, developers, or product managers and adapt to your tools and working style.</p>
         </div></div></div>
@@ -381,51 +570,51 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
     <div class="faq-list" data-r>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq2" id="fqb2">
           <span class="qn num">05</span>
           <span class="qt">How long does a typical project take?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq2" role="region" aria-labelledby="fqb2"><div><div class="faq-a-in">
           <p>A focused MVP or redesign is usually 6 to 10 weeks. A full-stack SaaS platform with integrations runs 12 to 20 weeks. Discovery sprints are 1 to 2 weeks. We give an honest timeline on the first call. See our <a href="/process">delivery process</a> for how phases and sign-off gates work.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq5" id="fqb5">
           <span class="qn num">06</span>
           <span class="qt">How do you use AI in your delivery?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq5" role="region" aria-labelledby="fqb5"><div><div class="faq-a-in">
           <p>We use Claude for content and brief drafting, GitHub Copilot for code generation, Cursor for rapid prototyping, and Figma AI for asset generation. Every output is reviewed by a senior team member before it reaches you. AI makes us faster; people make sure it is right.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq6" id="fqb6">
           <span class="qn num">07</span>
           <span class="qt">Who owns the design files and code after the project?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq6" role="region" aria-labelledby="fqb6"><div><div class="faq-a-in">
           <p>You do. All Figma files, GitHub repositories, and documentation transfer to you at project close, or earlier if you prefer. No lock-in or vendor dependency. We help onboard your internal team on what we built.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq10" id="fqb10">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq10" id="fqb10">
           <span class="qn num">08</span>
           <span class="qt">How is pricing structured?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq10" role="region" aria-labelledby="fqb10"><div><div class="faq-a-in">
           <p>Five scopes have <a href="/pricing">published starting prices</a>: websites from $4,800, mobile apps from $18,000, UI/UX and SaaS design from $6,500, custom software from $15,000, and QuickBooks and Xero integrations from $8,000. Each covers a defined scope. Dispatch platforms and other larger custom software are quoted after <a href="/process">discovery</a>. Engagements run as fixed-scope projects, monthly retainers, or sprint-based work.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq7" id="fqb7">
           <span class="qn num">09</span>
           <span class="qt">What happens after launch?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq7" role="region" aria-labelledby="fqb7"><div><div class="faq-a-in">
           <p>After go-live you can move to a monthly retainer: iteration sprints, performance monitoring, and roadmap support. You can scale the retainer up or pause it as needed. We do not vanish after handoff.</p>
         </div></div></div>
@@ -445,71 +634,71 @@ html.js [data-s].in>*{opacity:1;transform:none}
     </div>
     <div class="faq-list" data-r>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq8" id="fqb8">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq8" id="fqb8">
           <span class="qn num">10</span>
           <span class="qt">Where are you based, and how do remote work and time zones work?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq8" role="region" aria-labelledby="fqb8"><div><div class="faq-a-in">
           <p>Headquarters is in Ahmedabad, Gujarat, India. The studio is remote-first: we overlap call hours with the US, UK, <a href="/markets/uae">UAE</a>, and <a href="/markets/ca">Canada</a>, work async between those windows, and align stand-ups to your team&rsquo;s schedule. In-person meetings are not required.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq9" id="fqb9">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq9" id="fqb9">
           <span class="qn num">11</span>
           <span class="qt">What do you need from us to get started?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq9" role="region" aria-labelledby="fqb9"><div><div class="faq-a-in">
           <p>A brief (<a href="/contact#brief">we will send a template</a>), your timeline, and a 20-minute fit call. If you do not have a brief yet, we will write one together. Many teams arrive with a problem, not a spec.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq12" id="fqb12">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq12" id="fqb12">
           <span class="qn num">12</span>
           <span class="qt">Do you sign NDAs?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq12" role="region" aria-labelledby="fqb12"><div><div class="faq-a-in">
           <p>Yes. Mutual NDA available on request before sharing confidential project information.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq13" id="fqb13">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq13" id="fqb13">
           <span class="qn num">13</span>
           <span class="qt">Should we buy a TMS instead of building one?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq13" role="region" aria-labelledby="fqb13"><div><div class="faq-a-in">
           <p>Often, yes. If your freight and workflows are standard, a boxed TMS will be cheaper and faster, and we will say so on the call. Custom software pays off when spreadsheets run your core decisions or your workflow is your edge. Many teams keep the TMS as the record and build the desk tools around it.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq14" id="fqb14">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq14" id="fqb14">
           <span class="qn num">14</span>
           <span class="qt">How do you handle quality assurance?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq14" role="region" aria-labelledby="fqb14"><div><div class="faq-a-in">
           <p>QA runs inside every build sprint. Regression checks run before each weekly demo, integrations are tested against staging with sanitized data, and launch has a go-live checklist your team signs off.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq15" id="fqb15">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq15" id="fqb15">
           <span class="qn num">15</span>
           <span class="qt">How do you approach security?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq15" role="region" aria-labelledby="fqb15"><div><div class="faq-a-in">
           <p>We scope role-based access and audit trails into the product where you need them, and verify signed webhooks on integrations that support them. Mutual NDA available on request before sharing confidential project information. If you need a specific certification or compliance evidence from your vendors, raise it on the fit call so we can tell you plainly whether we can meet it.</p>
         </div></div></div>
       </div>
       <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="fq16" id="fqb16">
+        <h3 class="faq-q-wrap"><button type="button" class="faq-q" aria-expanded="false" aria-controls="fq16" id="fqb16">
           <span class="qn num">16</span>
           <span class="qt">Can you connect to our ELD, TMS, or accounting software?</span>
           <span class="qi" aria-hidden="true"></span>
-        </button>
+        </button></h3>
         <div class="faq-a" id="fq16" role="region" aria-labelledby="fqb16"><div><div class="faq-a-in">
           <p>Usually, where the provider offers an API or data export. We build QuickBooks Online and Xero integrations on their public APIs, and we check what your ELD or TMS provider allows during discovery rather than assuming it.</p>
         </div></div></div>
@@ -529,7 +718,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <a href="/contact#brief" class="btn ghost on-dark"><span>Send a project brief</span><i>→</i></a>
       </div>
       <p class="assur" data-r>
-        <span><i>◆</i>Reply within one business day</span>
+        <span><i>◆</i>We reply within one business day</span>
         <span><i>◆</i>Mutual NDA available on request before sharing confidential project information.</span>
         <span><i>◆</i>No commitment required</span>
       </p>
@@ -558,10 +747,10 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <div><label for="inq-company">Company <span class="opt">Optional</span></label><input id="inq-company" name="company" autocomplete="organization"></div>
         <div><label for="inq-details">What is your team working around today? <span class="req">Required</span></label><textarea id="inq-details" name="details" required rows="4"></textarea><p class="inq-err" id="inq-details-err">A sentence or two is enough.</p></div>
         <p class="inq-fail" role="alert"></p>
-        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">Reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
+        <div class="inq-actions"><button type="submit" class="btn"><span class="inq-submit-label">Book a free 20-minute fit call</span><i>→</i></button><p class="inq-note">We reply within one business day. Mutual NDA available on request before sharing confidential project information.</p></div>
         <p class="inq-status" data-inq-status aria-live="polite"></p>
       </form>
-      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We will reply within one business day. This confirms our mail service accepted the message.</p></div>
+      <div class="inq-done" tabindex="-1"><h3>Inquiry accepted</h3><p>Your inquiry was accepted. We reply within one business day. This confirms our mail service accepted the message.</p></div>
     </div>
   </div>
 </section>
@@ -584,7 +773,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <h3>Get in touch</h3>
         <a href="mailto:hello@krivatechnologies.com">hello@krivatechnologies.com</a>
         <p class="f-blurb">Websites and custom software for US trucking, moving, and logistics companies, plus SaaS and accounting integrations. Designed and built in Ahmedabad, India.</p>
-        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a></div>
+        <div class="fsocial"><a href="https://www.instagram.com/kriva_technology/" rel="noopener noreferrer" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/kriva-technologies" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
       </div>
       <nav aria-label="Solutions"><h3>Solutions</h3><ul>
         <li><a href="/solutions/trucking-logistics">Trucking software</a></li>
@@ -601,7 +790,9 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/services/api-integrations">API integrations</a></li>
         <li><a href="/services/automation-systems">Workflow automation</a></li>
         <li><a href="/services/dashboard-design">Business dashboards</a></li>
-        <li><a href="/services/product-design">Product design</a></li>
+        <li><a href="/services/product-design">Product and UI/UX design</a></li>
+        <li><a href="/services/ai-assisted-development">AI-assisted development</a></li>
+        <li><a href="/services/logo-design">Logo design</a></li>
         <li><a href="/services">All services</a></li></ul></nav>
       <nav aria-label="Company"><h3>Company</h3><ul>
         <li><a href="/work">Work</a></li>
@@ -621,7 +812,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><a href="/markets/ca">Canada</a></li>
         <li><a href="/industries">Industries</a></li></ul></nav>
     </div>
-    <p class="fmark" aria-hidden="true"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="" width="560" height="145" loading="lazy"></p>
+    <p class="fmark"><img src="/brand/logos/kriva-lockup-inverse.svg" alt="KRIVA Technologies" width="560" height="145" loading="lazy"></p>
     <div class="fbase">
       <span>© 2026 KRIVA Technologies</span>
       <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
@@ -671,8 +862,8 @@ run();
 })();
 </script>
 <!-- KRIVA_SCHEMA_START -->
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://krivatechnologies.com/#organization","name":"KRIVA Technologies","alternateName":"KRIVA","url":"https://krivatechnologies.com","logo":{"@type":"ImageObject","url":"https://krivatechnologies.com/apple-touch-icon.png","width":180,"height":180},"image":"https://krivatechnologies.com/brand/og-default.png","description":"KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.","email":"hello@krivatechnologies.com","foundingDate":"2025-01-01","priceRange":"$$","address":{"@type":"PostalAddress","addressLocality":"Ahmedabad","addressRegion":"Gujarat","addressCountry":"IN"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@krivatechnologies.com","url":"https://krivatechnologies.com/contact","areaServed":["US","GB","AE","CA","AU"],"availableLanguage":["English"]},"areaServed":[{"@type":"Country","name":"United States"},{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"United Arab Emirates"},{"@type":"Country","name":"Canada"},{"@type":"Country","name":"Australia"}],"knowsAbout":["Trucking software","Dispatch CRM","Transportation Management Systems","Fleet management software","B2B SaaS development","QuickBooks integration","Xero integration","Driver mobile apps","Auto transport software","Car carrier dispatch","Accounting reconciliation","SaaS onboarding UX","Custom software development"],"sameAs":["https://www.instagram.com/kriva_technology/"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"KRIVA software development services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Dispatch CRM & TMS development","url":"https://krivatechnologies.com/solutions/trucking-logistics"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"B2B SaaS product design","url":"https://krivatechnologies.com/solutions/saas"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"QuickBooks & Xero integrations","url":"https://krivatechnologies.com/solutions/accounting-integrations"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Auto transport software","url":"https://krivatechnologies.com/solutions/car-transportation"}}]}},{"@type":"WebSite","@id":"https://krivatechnologies.com/#website","name":"KRIVA Technologies","url":"https://krivatechnologies.com","inLanguage":["en","en-US","en-GB","en-AE","en-CA","en-AU"],"publisher":{"@id":"https://krivatechnologies.com/#organization"},"about":{"@id":"https://krivatechnologies.com/#organization"},"description":"KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".lede",".eyebrow"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://krivatechnologies.com/"},{"@type":"ListItem","position":2,"name":"FAQ","item":"https://krivatechnologies.com/faq"}]},{"@type":"FAQPage","@id":"https://krivatechnologies.com/faq#faq","mainEntity":[{"@type":"Question","name":"What services do you offer?","acceptedAnswer":{"@type":"Answer","text":"We build websites, mobile apps, and custom software for trucking, moving, and logistics companies: trucking software, freight broker software, fleet management software, auto transport software, and trucking and moving company websites. We also build SaaS products and QuickBooks and Xero integrations. Services include custom CRM development, mobile app development, web development, API integrations, workflow automation, product design, UI/UX design, business dashboards, and branding. We focus on these areas because we have spent years on them."}},{"@type":"Question","name":"Do you subcontract any work?","acceptedAnswer":{"@type":"Answer","text":"No. Every designer and engineer on your project is a permanent KRIVA team member. We do not use freelance marketplaces or offshore subcontractors. The team you meet on the first call is the team that builds your product."}},{"@type":"Question","name":"Do you work with startups and enterprises?","acceptedAnswer":{"@type":"Answer","text":"Both. For startups, we are used to fast timelines, limited scope, and investor-facing deliverables. For scale-ups and enterprises, we are used to compliance requirements, complex integrations, and multi-stakeholder sign-off. We scope projects accordingly."}},{"@type":"Question","name":"Can you work with our existing team?","acceptedAnswer":{"@type":"Answer","text":"Yes. We embed with in-house designers, developers, or product managers and adapt to your tools and working style."}},{"@type":"Question","name":"How long does a typical project take?","acceptedAnswer":{"@type":"Answer","text":"A focused MVP or redesign is usually 6 to 10 weeks. A full-stack SaaS platform with integrations runs 12 to 20 weeks. Discovery sprints are 1 to 2 weeks. We give an honest timeline on the first call. See our delivery process for how phases and sign-off gates work."}},{"@type":"Question","name":"How do you use AI in your delivery?","acceptedAnswer":{"@type":"Answer","text":"We use Claude for content and brief drafting, GitHub Copilot for code generation, Cursor for rapid prototyping, and Figma AI for asset generation. Every output is reviewed by a senior team member before it reaches you. AI makes us faster; people make sure it is right."}},{"@type":"Question","name":"Who owns the design files and code after the project?","acceptedAnswer":{"@type":"Answer","text":"You do. All Figma files, GitHub repositories, and documentation transfer to you at project close, or earlier if you prefer. No lock-in or vendor dependency. We help onboard your internal team on what we built."}},{"@type":"Question","name":"How is pricing structured?","acceptedAnswer":{"@type":"Answer","text":"Five scopes have published starting prices at https://krivatechnologies.com/pricing: websites from $4,800, mobile apps from $18,000, UI/UX and SaaS design from $6,500, custom software from $15,000, and QuickBooks and Xero integrations from $8,000. Each covers a defined scope. Dispatch platforms and other larger custom software are quoted after discovery. Engagements run as fixed-scope projects, monthly retainers, or sprint-based work."}},{"@type":"Question","name":"What happens after launch?","acceptedAnswer":{"@type":"Answer","text":"After go-live you can move to a monthly retainer: iteration sprints, performance monitoring, and roadmap support. You can scale the retainer up or pause it as needed. We do not vanish after handoff."}},{"@type":"Question","name":"Where are you based, and how do remote work and time zones work?","acceptedAnswer":{"@type":"Answer","text":"Headquarters is in Ahmedabad, Gujarat, India. The studio is remote-first: we overlap call hours with the US, UK, UAE, and Canada, work async between those windows, and align stand-ups to your team&rsquo;s schedule. In-person meetings are not required."}},{"@type":"Question","name":"What do you need from us to get started?","acceptedAnswer":{"@type":"Answer","text":"A brief ( we will send a template ), your timeline, and a 20-minute fit call. If you do not have a brief yet, we will write one together. Many teams arrive with a problem, not a spec."}},{"@type":"Question","name":"Do you sign NDAs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Mutual NDA available on request before sharing confidential project information."}},{"@type":"Question","name":"Should we buy a TMS instead of building one?","acceptedAnswer":{"@type":"Answer","text":"Often, yes. If your freight and workflows are standard, a boxed TMS will be cheaper and faster, and we will say so on the call. Custom software pays off when spreadsheets run your core decisions or your workflow is your edge. Many teams keep the TMS as the record and build the desk tools around it."}},{"@type":"Question","name":"How do you handle quality assurance?","acceptedAnswer":{"@type":"Answer","text":"QA runs inside every build sprint. Regression checks run before each weekly demo, integrations are tested against staging with sanitized data, and launch has a go-live checklist your team signs off."}},{"@type":"Question","name":"How do you approach security?","acceptedAnswer":{"@type":"Answer","text":"We scope role-based access and audit trails into the product where you need them, verify signed webhooks on integrations that support them. Mutual NDA available on request before sharing confidential project information. If you need a specific certification or compliance evidence from your vendors, raise it on the fit call so we can tell you plainly whether we can meet it."}},{"@type":"Question","name":"Can you connect to our ELD, TMS, or accounting software?","acceptedAnswer":{"@type":"Answer","text":"Usually, where the provider offers an API or data export. We build QuickBooks Online and Xero integrations on their public APIs, and we check what your ELD or TMS provider allows during discovery rather than assuming it."}}]}]}</script>
 <!-- KRIVA_SCHEMA_END -->
 <script src="/shared/page-inquiry.js?v=kds7" defer></script>
+<link rel="stylesheet" href="/shared/consent.css">
 </body>
 </html>

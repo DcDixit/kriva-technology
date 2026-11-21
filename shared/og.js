@@ -28,6 +28,26 @@ function assetExists(rootDir) {
   return fs.existsSync(localOgPath(rootDir));
 }
 
+/** Per-article override. A missing slug uses /brand/og-default.png. */
+const INSIGHT_OG_IMAGES = {
+  "ai-in-product-design-2026": "/brand/og/insights-ai-in-product-design-2026.png",
+  "saas-onboarding-patterns": "/brand/og/insights-saas-onboarding-patterns.png",
+  "saas-mvp-uk-guide": "/brand/og/insights-saas-mvp-uk-guide.png",
+  "no-code-vs-custom-mvp": "/brand/og/insights-no-code-vs-custom-mvp.png",
+  "trucking-dispatch-crm-guide": "/brand/og/insights-trucking-dispatch-crm-guide.png",
+  "dispatch-software-cost": "/brand/og/insights-dispatch-software-cost.png",
+  "build-vs-buy-tms": "/brand/og/insights-build-vs-buy-tms.png",
+  "quickbooks-xero-integration-guide": "/brand/og/insights-quickbooks-xero-integration-guide.png",
+  "crm-dashboard-ux-patterns": "/brand/og/insights-crm-dashboard-ux-patterns.png",
+  "choosing-a-digital-agency": "/brand/og/insights-choosing-a-digital-agency.png",
+};
+
+function insightOgImage(slug, override) {
+  const picked = (override && String(override).trim()) || INSIGHT_OG_IMAGES[slug] || "";
+  if (!picked) return `${SITE}${OG_PATH}`;
+  return /^https?:\/\//.test(picked) ? picked : `${SITE}${picked.startsWith("/") ? picked : `/${picked}`}`;
+}
+
 function ogImageMetaTags({ enabled = false } = {}) {
   if (!enabled) {
     return [
@@ -64,6 +84,8 @@ module.exports = {
   OG_MARKER_END,
   localOgPath,
   assetExists,
+  INSIGHT_OG_IMAGES,
+  insightOgImage,
   ogImageMetaTags,
   ogImageMetaTagsAuto,
 };

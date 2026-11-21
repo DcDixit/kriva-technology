@@ -9,6 +9,15 @@ const ROOT = __dirname;
 const PORT = Number(process.env.PORT || 5177);
 
 /** HTML rewrites from vercel.json, keeps local preview aligned with production. */
+const VERCEL_REDIRECTS = (() => {
+ try {
+ const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "vercel.json"), "utf8"));
+ return (cfg.redirects || []).filter((r) => r.source && r.destination && !r.has && !r.source.includes(":"));
+ } catch {
+ return [];
+ }
+})();
+
 const VERCEL_REWRITES = (() => {
  try {
  const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "vercel.json"), "utf8"));
@@ -82,6 +91,13 @@ const server = http.createServer((req, res) => {
  const raw = req.url || "/";
  const pathOnly = decodeURIComponent(raw.split("?")[0].split("#")[0]);
  const qs = raw.includes("?") ? raw.slice(raw.indexOf("?")) : "";
+ const redirect = VERCEL_REDIRECTS.find((r) => r.source === pathOnly);
+ if (redirect) {
+ const code = redirect.permanent ? 301 : 302;
+ res.writeHead(code, { Location: redirect.destination + qs });
+ res.end();
+ return;
+ }
  if (pathOnly === "/api/inquiry") {
  const inquiryPath = require.resolve("./api/inquiry.js");
  delete require.cache[inquiryPath];

@@ -4,6 +4,8 @@
  * REFERENCE-ADDENDUM (only FleetFlow has signed-off published metrics).
  * Source narrative fields are retained; outcome numeric claims are not rendered.
  * Phase 11: unique before/after H2s, honest outcome framing, no public TBD quotes.
+ * outcome_metric and outcome_label are optional. The live pages read the same
+ * fields from content/features.json (caseOutcomes) and show a strip only when both are set.
  */
 module.exports = {
   "order": [
@@ -19,6 +21,8 @@ module.exports = {
   "cases": [
     {
       "slug": "payroll-pro-saas",
+      "outcome_metric": "",
+      "outcome_label": "",
       "file": "kriva-case-payroll-pro.html",
       "shortName": "PayrollPro",
       "title": "PayrollPro: B2B SaaS onboarding",
@@ -154,6 +158,8 @@ module.exports = {
     },
     {
       "slug": "finance-sync-hub",
+      "outcome_metric": "",
+      "outcome_label": "",
       "file": "kriva-case-finance-sync.html",
       "shortName": "FinanceSync",
       "title": "FinanceSync: QuickBooks & Xero reconciliation hub",
@@ -284,6 +290,8 @@ module.exports = {
     },
     {
       "slug": "healthtrack-mobile",
+      "outcome_metric": "",
+      "outcome_label": "",
       "file": "kriva-case-healthtrack.html",
       "shortName": "HealthTrack",
       "title": "HealthTrack: patient mobile app",
@@ -374,7 +382,7 @@ module.exports = {
             "label": "Mobile app design"
           },
           {
-            "href": "/services/ui-ux-design",
+            "href": "/services/product-design",
             "label": "UI/UX design"
           },
           {
@@ -399,7 +407,7 @@ module.exports = {
           "label": "Mobile app design"
         },
         {
-          "href": "/services/ui-ux-design",
+          "href": "/services/product-design",
           "k": "Service",
           "label": "UI/UX design"
         }
@@ -413,6 +421,8 @@ module.exports = {
     },
     {
       "slug": "brandlift-ecommerce",
+      "outcome_metric": "",
+      "outcome_label": "",
       "file": "kriva-case-brandlift.html",
       "shortName": "BrandLift",
       "title": "BrandLift: D2C rebrand & storefront",
@@ -540,6 +550,8 @@ module.exports = {
     },
     {
       "slug": "crm-pulse-dashboard",
+      "outcome_metric": "",
+      "outcome_label": "",
       "file": "kriva-case-crm-pulse.html",
       "shortName": "CRMPulse",
       "title": "CRMPulse: sales dashboard",
@@ -669,6 +681,8 @@ module.exports = {
     },
     {
       "slug": "ai-support-automation",
+      "outcome_metric": "",
+      "outcome_label": "",
       "file": "kriva-case-ai-support.html",
       "shortName": "SupportAI",
       "title": "SupportAI: ticket automation",
@@ -800,6 +814,8 @@ module.exports = {
     },
     {
       "slug": "marketplace-mvp",
+      "outcome_metric": "",
+      "outcome_label": "",
       "file": "kriva-case-marketplace.html",
       "shortName": "LocalServe",
       "title": "LocalServe: marketplace MVP",

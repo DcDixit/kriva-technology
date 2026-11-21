@@ -15,7 +15,7 @@ const ROOT = __dirname;
 const TEST_PAGES = {
   core: ['/', '/about', '/process', '/contact'],
   solutions: ['/solutions/trucking-logistics', '/solutions/saas'],
-  services_design: ['/services/ui-ux-design', '/services/product-design'],
+  services_design: ['/services/product-design', '/services/product-design'],
   services_dev: ['/services/web-development', '/services/api-integrations'],
   services_strategic: ['/services/ux-research', '/services/automation-systems'],
   cases: ['/work/fleetflow-dispatch', '/work/payroll-pro-saas'],

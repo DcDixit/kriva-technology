@@ -158,7 +158,7 @@ const insightsIndexBody = `
 <header class="hero">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Insights</li>
     </ol>
     <div class="hero-grid">
@@ -434,7 +434,7 @@ const faqBody = `
 <header class="hero">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">FAQ</li>
     </ol>
     <p class="eyebrow" data-r style="margin-top:clamp(22px,3vw,40px)">FAQ</p>
@@ -513,7 +513,7 @@ const techBody = `
 <header class="hero">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">Tools &amp; stack</li>
     </ol>
     <p class="eyebrow" data-r style="margin-top:clamp(22px,3vw,40px)">Tools &amp; stack</p>
@@ -585,7 +585,7 @@ function legalPage({ crumb, h1, lede, sections, contactLine }) {
 <header class="hero">
   <div class="wrap">
     <ol class="crumbs" data-r>
-      <li><a href="/">Home</a></li><li aria-hidden="true">/</li>
+      <li><a href="/">Home</a></li><li class="crumb-sep" aria-hidden="true"></li>
       <li aria-current="page">${crumb}</li>
     </ol>
     <p class="eyebrow" data-r style="margin-top:clamp(22px,3vw,40px)">${crumb === "Privacy" ? "Privacy" : "Legal"}</p>

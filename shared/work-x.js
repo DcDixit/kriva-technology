@@ -1,5 +1,5 @@
 /* KRIVA Work · "wx" layer. /work only (body.wx).
-   Carries the page's filter (moved from the old inline script, same URLs and behaviour),
+   Carries the page's filter (moved from the old inline script, same URLs and behavior),
    plus reveals, the custom cursor, section rail, card tilt, and the live ShiftRail board.
    No libraries. Everything reads and works without JS or under reduced motion. */
 (function () {
@@ -296,7 +296,7 @@
   }
   const darks = $$('[data-dark]').filter((d) => d.closest('main'));
 
-  /* ── Scroll loop: progress, rail colour, parallax, phase line, web stagger drift ── */
+  /* ── Scroll loop: progress, rail color, parallax, phase line, web stagger drift ── */
   const bar = $('#progress');
   const pars = $$('[data-par]');
   const steps = $('[data-steps]');

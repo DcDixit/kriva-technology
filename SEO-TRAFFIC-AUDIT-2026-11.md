@@ -61,7 +61,7 @@ Verified on production, 2026-11-05:
 
 - **Tag:** a single GA4 property `G-FHG12KTF8C` on all 58 pages. There is no duplicate tag and no second property.
 - **page_view:** fires once per page on direct load and on in-site navigation, with gtag.js served from cache and with cache disabled. I first suspected cached navigations were losing page views; a controlled CDP trace showed that was a measurement artifact of my first probe, not a site bug. **No change made.**
-- **Internal traffic:** localhost and `*.vercel.app` previews are excluded in code. GPC opt-out is honoured.
+- **Internal traffic:** localhost and `*.vercel.app` previews are excluded in code. GPC opt-out is honored.
 - **Lead events:** `generate_lead` is deduplicated per page, form, and type per session. It fires only on successful submission, not on CTA click or form open (code review of `shared/analytics.js`).
 - **Microsoft Clarity** is also installed (`yjj9g3gojt`). It is a good source for session recordings on high-exit pages once GA4 shows which those are.
 
@@ -209,7 +209,7 @@ Same branch, `seo/traffic-audit-2026-11`. Not merged, not deployed. GA4 and Sear
 
 ## New findings in this pass
 
-1. **Critical: market pages are visibly broken in production.** `/markets`, `/markets/us`, `/uk`, `/uae`, `/ca`, and `/au` never loaded the shared base styles every other hub page inlines, nor `system.css` and `responsive.css`. Live, they show a "Skip to content" link in the corner, default blue underlined links, unstyled section labels, and browser-default buttons. These are the international landing pages, so this directly costs trust and enquiries. The styles were dropped in commit `829d96a` (2026-09-12).
+1. **Critical: market pages are visibly broken in production.** `/markets`, `/markets/us`, `/uk`, `/uae`, `/ca`, and `/au` never loaded the shared base styles every other hub page inlines, nor `system.css` and `responsive.css`. Live, they show a "Skip to content" link in the corner, default blue underlined links, unstyled section labels, and browser-default buttons. These are the international landing pages, so this directly costs trust and inquiries. The styles were dropped in commit `829d96a` (2026-09-12).
 2. **High: dead social profiles.** LinkedIn (`/company/kriva-technologies`), Dribbble, and X returned 404; LinkedIn was checked against a known-good control. All three were linked from the footer of every page and declared in the Organization `sameAs`. Only Instagram exists.
 3. **Name collision.** Another company called "Kriva" (Hostkro Technologies LLP, performance marketing) appears in search results. Always use the full name "KRIVA Technologies" with the domain.
 4. **Pre-existing bugs:** the insights counter showed "Showing 7 of 6", and the markets hub said "four markets" after Australia was added.
