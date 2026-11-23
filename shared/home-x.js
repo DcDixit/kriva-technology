@@ -137,7 +137,7 @@
     addEventListener('pointerover', (e) => {
       const t = e.target instanceof Element ? e.target : null;
       if (!t) return;
-      const off = t.closest('input,textarea,select,.hp-board,.nav,.sheet,.mm,.wf-path');
+      const off = t.closest('input,textarea,select,.hp-board,.nav,.sheet,.mm,.wf-path,.lf-steps');
       const lab = t.closest('[data-cursor]');
       const link = t.closest('a,button,summary,label,[role="tab"]');
       cur.classList.toggle('is-off', !!off);

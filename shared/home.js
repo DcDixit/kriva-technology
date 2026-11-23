@@ -144,6 +144,7 @@
     const count = document.getElementById('wfCount');
     const meter = document.getElementById('wfMeter');
     const playBtn = document.getElementById('wfPlay');
+    const logRows = [...document.querySelectorAll('#wfLog > li')];
     let userTouched = false;
     let playing = !reduce();
     let playTimer;
@@ -177,11 +178,14 @@
     const select = (btn, { focus = false, fromUser = false } = {}) => {
       const id = btn.getAttribute('aria-controls');
       const idx = tabs.indexOf(btn);
-      tabs.forEach((t) => {
+      const stateOf = (i) => (i < idx ? 'done' : i === idx ? 'now' : 'next');
+      tabs.forEach((t, i) => {
         const on = t === btn;
         t.setAttribute('aria-selected', String(on));
         t.tabIndex = on ? 0 : -1;
+        t.dataset.state = stateOf(i);
       });
+      logRows.forEach((r, i) => { r.dataset.state = stateOf(i); });
       panels.forEach((p) => {
         p.hidden = p.id !== id;
       });
