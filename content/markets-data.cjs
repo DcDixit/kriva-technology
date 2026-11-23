@@ -123,6 +123,64 @@ module.exports = {
       ],
     },
     {
+      slug: "de",
+      file: "kriva-market-de.html",
+      path: "/markets/de",
+      hreflang: "en-de",
+      countryCode: "DE",
+      country: "Germany",
+      card: {
+        kicker: "Germany · CET-friendly",
+        headline: "Logistics operators and SaaS founders",
+        summary:
+          "Dispatch and fleet software, B2B SaaS, and e-invoicing or DATEV-ready finance exports for German operators and founders - GDPR built into the admin panel, in English, with CET-friendly calls.",
+        tags: ["Dispatch software", "E-invoicing", "B2B SaaS"],
+        outcome: "Driving-time conflicts and e-invoice formats handled in the product, not at month-end.",
+        visual: "dispatch",
+      },
+      ogLocale: "en_GB",
+      title: "Custom Logistics & SaaS Software for German Teams | KRIVA",
+      meta:
+        "Dispatch software, B2B SaaS, and e-invoicing or DATEV-ready exports for German logistics operators and founders. English-speaking team, CET-friendly calls.",
+      eyebrow: "Germany",
+      h1: "Logistics and SaaS software for German teams.",
+      lede:
+        "Dispatch and fleet software, B2B SaaS, and finance workflows for German operators and founders - an English-speaking in-house team with CET-friendly call windows, GDPR built into the admin panel, and e-invoices and exports your Steuerberater's DATEV setup can take.",
+      focus: [
+        {
+          title: "Dispatch & fleet operations",
+          body:
+            "Tour planning, driver assignment, and exception queues for Speditionen and fleet operators running a TMS beside spreadsheets - with driving and rest times visible before a tour is assigned.",
+          href: "/solutions/trucking-logistics",
+          label: "Trucking solutions",
+        },
+        {
+          title: "B2B SaaS for the Mittelstand",
+          body:
+            "Onboarding, multi-tenant admin, and activation metrics for German B2B SaaS founders - scoped for a first paid pilot, not a feature wishlist that delays it.",
+          href: "/solutions/saas",
+          label: "SaaS solutions",
+        },
+        {
+          title: "E-invoicing & finance exports",
+          body:
+            "Invoice and payment data that leaves your product in formats German accounting can take: XRechnung and ZUGFeRD e-invoices, and DATEV-ready exports for your tax adviser.",
+          href: "/solutions/accounting-integrations",
+          label: "Finance integrations",
+        },
+      ],
+      proof: {
+        case: { href: "/work/payroll-pro-saas", label: "PayrollPro: UK and EU payroll SaaS" },
+        guide: { href: "/insights/build-vs-buy-tms", label: "Build vs buy a TMS" },
+      },
+      delivery: [
+        "CET-friendly call windows",
+        "EU hosting region and DSGVO features scoped from day one",
+        "Written scope before build starts",
+        "Handoff: Figma, GitHub, and runbooks",
+      ],
+    },
+    {
       slug: "uae",
       file: "kriva-market-uae.html",
       path: "/markets/uae",

@@ -15,6 +15,7 @@ try{
 var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
 if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
 internal=localStorage.getItem('kriva_internal')==='1';
+if(!internal&&!/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search)){var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;if(tz==='Asia/Kolkata'||tz==='Asia/Calcutta')internal=true;}
 }catch(e){}
 window.__krivaNoTrack=internal;
 window.krivaLoadAnalytics=function(){
@@ -139,6 +140,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <meta name="coverage" content="Canada">
 <link rel="alternate" hreflang="en-us" href="https://krivatechnologies.com/markets/us">
 <link rel="alternate" hreflang="en-gb" href="https://krivatechnologies.com/markets/uk">
+<link rel="alternate" hreflang="en-de" href="https://krivatechnologies.com/markets/de">
 <link rel="alternate" hreflang="en-ae" href="https://krivatechnologies.com/markets/uae">
 <link rel="alternate" hreflang="en-ca" href="https://krivatechnologies.com/markets/ca">
 <link rel="alternate" hreflang="en-au" href="https://krivatechnologies.com/markets/au">
@@ -167,7 +169,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
 
 <link rel="stylesheet" href="/shared/chrome.css?v=brand1">
 <link rel="stylesheet" href="/shared/kds.css?v=brand1">
-<link rel="stylesheet" href="/shared/markets-x.css?v=mx1">
+<link rel="stylesheet" href="/shared/markets-x.css?v=mx2">
 <!-- KRIVA_LD_START -->
 <!-- TODO(kriva): Organization legal name, street address, phone, and logo are not in the approved facts -->
 <script type="application/ld+json">
@@ -187,6 +189,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
         "addressRegion": "Gujarat",
         "addressCountry": "IN"
       },
+      "areaServed": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "Germany" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "Country", "name": "Australia" }
+      ],
       "sameAs": [
         "https://www.instagram.com/kriva_technology/",
         "https://www.linkedin.com/company/kriva-technologies"
@@ -523,12 +533,13 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <div class="mx-switch-head">
       <div>
         <p class="mx-kicker eyebrow">Markets we serve</p>
-        <h2 id="mktH" data-split>Five markets, one in-house team.</h2>
+        <h2 id="mktH" data-split>Six markets, one in-house team.</h2>
       </div>
       <p class="mx-body">Local time in each market right now. The studio works from Ahmedabad, India (<span data-tz="Asia/Kolkata">IST</span>).</p>
     </div>
     <nav class="mx-switch-grid" aria-label="Other markets"><a href="/markets/us" data-x><span class="mx-sw-code">US</span><span><span class="mx-sw-name">United States</span><span class="mx-sw-time"><span class="mx-sw-city">New York</span><span data-tz="America/New_York">local time</span></span></span></a>
       <a href="/markets/uk" data-x><span class="mx-sw-code">UK</span><span><span class="mx-sw-name">United Kingdom</span><span class="mx-sw-time"><span class="mx-sw-city">London</span><span data-tz="Europe/London">local time</span></span></span></a>
+      <a href="/markets/de" data-x><span class="mx-sw-code">DE</span><span><span class="mx-sw-name">Germany</span><span class="mx-sw-time"><span class="mx-sw-city">Berlin</span><span data-tz="Europe/Berlin">local time</span></span></span></a>
       <a href="/markets/uae" data-x><span class="mx-sw-code">UAE</span><span><span class="mx-sw-name">United Arab Emirates</span><span class="mx-sw-time"><span class="mx-sw-city">Dubai</span><span data-tz="Asia/Dubai">local time</span></span></span></a>
       <a href="/markets/ca" aria-current="page" data-x><span class="mx-sw-code">CA</span><span><span class="mx-sw-name">Canada</span><span class="mx-sw-time"><span class="mx-sw-city">Toronto</span><span data-tz="America/Toronto">local time</span></span></span></a>
       <a href="/markets/au" data-x><span class="mx-sw-code">AU</span><span><span class="mx-sw-name">Australia</span><span class="mx-sw-time"><span class="mx-sw-city">Sydney</span><span data-tz="Australia/Sydney">local time</span></span></span></a></nav>
@@ -662,6 +673,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <nav aria-label="Markets"><h3>Markets</h3><ul>
         <li><a href="/markets/us">United States</a></li>
         <li><a href="/markets/uk">United Kingdom</a></li>
+        <li><a href="/markets/de">Germany</a></li>
         <li><a href="/markets/au">Australia</a></li>
         <li><a href="/markets/uae">United Arab Emirates</a></li>
         <li><a href="/markets/ca">Canada</a></li>

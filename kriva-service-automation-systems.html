@@ -15,6 +15,7 @@ try{
 var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
 if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
 internal=localStorage.getItem('kriva_internal')==='1';
+if(!internal&&!/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search)){var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;if(tz==='Asia/Kolkata'||tz==='Asia/Calcutta')internal=true;}
 }catch(e){}
 window.__krivaNoTrack=internal;
 window.krivaLoadAnalytics=function(){
@@ -69,8 +70,8 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 <meta name="application-name" content="KRIVA Technologies">
 <link rel="llms" href="https://krivatechnologies.com/llms.txt" type="text/plain" title="KRIVA site summary for AI">
 <link rel="alternate" href="https://krivatechnologies.com/llms-full.txt" type="text/plain" title="KRIVA extended site summary">
-<meta name="target" content="US, GB, AE, CA, AU">
-<meta name="coverage" content="United States, United Kingdom, United Arab Emirates, Canada, Australia">
+<meta name="target" content="US, GB, DE, AE, CA, AU">
+<meta name="coverage" content="United States, United Kingdom, Germany, United Arab Emirates, Canada, Australia">
 <link rel="alternate" hreflang="en" href="https://krivatechnologies.com/services/automation-systems">
 <!-- KRIVA_SEO_END -->
 <meta property="og:type" content="website">
@@ -186,6 +187,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
         "addressRegion": "Gujarat",
         "addressCountry": "IN"
       },
+      "areaServed": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "Germany" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "Country", "name": "Australia" }
+      ],
       "sameAs": [
         "https://www.instagram.com/kriva_technology/",
         "https://www.linkedin.com/company/kriva-technologies"
@@ -1162,6 +1171,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <nav aria-label="Markets"><h3>Markets</h3><ul>
         <li><a href="/markets/us">United States</a></li>
         <li><a href="/markets/uk">United Kingdom</a></li>
+        <li><a href="/markets/de">Germany</a></li>
         <li><a href="/markets/au">Australia</a></li>
         <li><a href="/markets/uae">United Arab Emirates</a></li>
         <li><a href="/markets/ca">Canada</a></li>

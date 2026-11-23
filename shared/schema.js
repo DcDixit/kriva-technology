@@ -88,11 +88,13 @@ const COUNTRY_NAME = {
   AE: "United Arab Emirates",
   CA: "Canada",
   AU: "Australia",
+  DE: "Germany",
 };
 
 function areaServedForPath(path) {
   if (path === "/markets/us") return ["US"];
   if (path === "/markets/uk") return ["GB"];
+  if (path === "/markets/de") return ["DE"];
   if (path === "/markets/uae") return ["AE"];
   if (path === "/markets/ca") return ["CA"];
   return AREA_SERVED.slice();
@@ -337,6 +339,7 @@ function organizationFact() {
       addressRegion: "Gujarat",
       addressCountry: "IN",
     },
+    areaServed: AREA_SERVED.map((code) => ({ "@type": "Country", name: COUNTRY_NAME[code] || code })),
     sameAs: ORG_SAME_AS.slice(),
   };
 }
