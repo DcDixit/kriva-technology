@@ -106,7 +106,6 @@ try{
 var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
 if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
 internal=localStorage.getItem('kriva_internal')==='1';
-if(!internal&&!/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search)){var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;if(tz==='Asia/Kolkata'||tz==='Asia/Calcutta')internal=true;}
 }catch(e){}
 window.__krivaNoTrack=internal;
 window.krivaLoadAnalytics=function(){
