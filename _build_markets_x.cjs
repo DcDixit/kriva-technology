@@ -102,13 +102,13 @@ const who = (p, items) => `<section class="mx-sec mx-sec--paper" id="who" aria-l
   </div>
 </section>`;
 
-const MARKETS = [['us', 'US', 'United States', 'America/New_York', 'New York'], ['uk', 'UK', 'United Kingdom', 'Europe/London', 'London'], ['uae', 'UAE', 'United Arab Emirates', 'Asia/Dubai', 'Dubai'], ['ca', 'CA', 'Canada', 'America/Toronto', 'Toronto'], ['au', 'AU', 'Australia', 'Australia/Sydney', 'Sydney']];
+const MARKETS = [['us', 'US', 'United States', 'America/New_York', 'New York'], ['uk', 'UK', 'United Kingdom', 'Europe/London', 'London'], ['de', 'DE', 'Germany', 'Europe/Berlin', 'Berlin'], ['uae', 'UAE', 'United Arab Emirates', 'Asia/Dubai', 'Dubai'], ['ca', 'CA', 'Canada', 'America/Toronto', 'Toronto'], ['au', 'AU', 'Australia', 'Australia/Sydney', 'Sydney']];
 const sw = (cur) => `<section class="mx-switch" id="markets" aria-labelledby="mktH">
   <div class="wrap">
     <div class="mx-switch-head">
       <div>
         <p class="mx-kicker eyebrow">Markets we serve</p>
-        <h2 id="mktH" data-split>Five markets, one in-house team.</h2>
+        <h2 id="mktH" data-split>Six markets, one in-house team.</h2>
       </div>
       <p class="mx-body">Local time in each market right now. The studio works from Ahmedabad, India (<span data-tz="Asia/Kolkata">IST</span>).</p>
     </div>

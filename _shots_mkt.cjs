@@ -6,7 +6,7 @@ const path = require('path');
 const puppeteer = require('puppeteer');
 
 const BASE = 'http://localhost:5177';
-const ROUTES = { us: '/markets/us', uk: '/markets/uk', au: '/markets/au', uae: '/markets/uae', ca: '/markets/ca', ind: '/industries', home: '/' };
+const ROUTES = { us: '/markets/us', uk: '/markets/uk', de: '/markets/de', au: '/markets/au', uae: '/markets/uae', ca: '/markets/ca', ind: '/industries', home: '/' };
 const arg = (k, d) => { const a = process.argv.find((x) => x.startsWith('--' + k + '=')); return a ? a.split('=')[1] : d; };
 const pick = (process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : 'us,uk,au,uae,ca,ind').split(',');
 const OUT = arg('out', path.join('_shots', 'markets'));

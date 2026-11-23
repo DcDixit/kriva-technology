@@ -7,11 +7,11 @@ const { CONTACT_EMAIL } = require("./studio");
 const ROOT = path.join(__dirname, "..");
 const ORIGIN = "https://krivatechnologies.com";
 const ENTITY_DESCRIPTION =
-  "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Australia, UAE, and Canada.";
+  "KRIVA Technologies designs websites, mobile apps, and custom software for trucking, moving, and logistics companies, and builds B2B SaaS products and QuickBooks and Xero integrations. The studio is in Ahmedabad, India and works with teams in the United States, United Kingdom, Germany, Australia, UAE, and Canada.";
 const SAME_AS = [
   "https://www.instagram.com/kriva_technology/",
   ];
-const AREA_SERVED = ["US", "GB", "AE", "CA", "AU"];
+const AREA_SERVED = ["US", "GB", "DE", "AE", "CA", "AU"];
 const KNOWS_ABOUT = [
   "Trucking software",
   "Dispatch CRM",

@@ -15,6 +15,7 @@ try{
 var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
 if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
 internal=localStorage.getItem('kriva_internal')==='1';
+if(!internal&&!/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search)){var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;if(tz==='Asia/Kolkata'||tz==='Asia/Calcutta')internal=true;}
 }catch(e){}
 window.__krivaNoTrack=internal;
 window.krivaLoadAnalytics=function(){
@@ -59,7 +60,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 <link rel="stylesheet" href="/shared/tokens.css?v=brand1">
 <link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <title>About KRIVA Technologies | In-House Software Studio</title>
-<meta name="description" content="KRIVA is an Ahmedabad studio designing trucking software, B2B SaaS, and QuickBooks and Xero integrations for US, UK, Canada, Australia, and UAE teams.">
+<meta name="description" content="KRIVA is an Ahmedabad studio designing trucking software, B2B SaaS, and QuickBooks and Xero integrations for US, UK, Germany, Canada, Australia, and UAE teams.">
 <link rel="canonical" href="https://krivatechnologies.com/about">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -69,15 +70,15 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 <meta name="application-name" content="KRIVA Technologies">
 <link rel="llms" href="https://krivatechnologies.com/llms.txt" type="text/plain" title="KRIVA site summary for AI">
 <link rel="alternate" href="https://krivatechnologies.com/llms-full.txt" type="text/plain" title="KRIVA extended site summary">
-<meta name="target" content="US, GB, AE, CA, AU">
-<meta name="coverage" content="United States, United Kingdom, United Arab Emirates, Canada, Australia">
+<meta name="target" content="US, GB, DE, AE, CA, AU">
+<meta name="coverage" content="United States, United Kingdom, Germany, United Arab Emirates, Canada, Australia">
 <link rel="alternate" hreflang="en" href="https://krivatechnologies.com/about">
 <!-- KRIVA_SEO_END -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KRIVA Technologies">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="About KRIVA Technologies | In-House Software Studio">
-<meta property="og:description" content="KRIVA is an Ahmedabad studio designing trucking software, B2B SaaS, and QuickBooks and Xero integrations for US, UK, Canada, Australia, and UAE teams.">
+<meta property="og:description" content="KRIVA is an Ahmedabad studio designing trucking software, B2B SaaS, and QuickBooks and Xero integrations for US, UK, Germany, Canada, Australia, and UAE teams.">
 <meta property="og:url" content="https://krivatechnologies.com/about">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
@@ -86,7 +87,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 <meta property="og:image:alt" content="About KRIVA Technologies · In-house software studio in Ahmedabad">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About KRIVA Technologies | In-House Software Studio">
-<meta name="twitter:description" content="KRIVA is an Ahmedabad studio designing trucking software, B2B SaaS, and QuickBooks and Xero integrations for US, UK, Canada, Australia, and UAE teams.">
+<meta name="twitter:description" content="KRIVA is an Ahmedabad studio designing trucking software, B2B SaaS, and QuickBooks and Xero integrations for US, UK, Germany, Canada, Australia, and UAE teams.">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
 <style>
@@ -186,6 +187,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
         "addressRegion": "Gujarat",
         "addressCountry": "IN"
       },
+      "areaServed": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "Germany" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "Country", "name": "Australia" }
+      ],
       "sameAs": [
         "https://www.instagram.com/kriva_technology/",
         "https://www.linkedin.com/company/kriva-technologies"
@@ -234,7 +243,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           "name": "Where are you based, and how do time zones work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Headquarters is in Ahmedabad, Gujarat, India. We are remote-first and do not claim local offices abroad. Call hours overlap the US, UK, UAE, Canada, and Australia. We reply within one business day."
+            "text": "Headquarters is in Ahmedabad, Gujarat, India. We are remote-first and do not claim local offices abroad. Call hours overlap the US, UK, Germany, UAE, Canada, and Australia. We reply within one business day."
           }
         },
         {
@@ -424,7 +433,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <a href="/contact#book" class="btn svx-btn" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
           <a href="#story" class="svx-link"><span>Our story</span><i aria-hidden="true">→</i></a>
         </div>
-        <p class="abx-meta"><span class="abx-meta-k">Remote-first · Ahmedabad, India</span><span class="abx-meta-m"><a href="/markets/us">US</a>, <a href="/markets/uk">UK</a>, <a href="/markets/ca">Canada</a>, <a href="/markets/au">Australia</a>, and <a href="/markets/uae">UAE</a></span></p>
+        <p class="abx-meta"><span class="abx-meta-k">Remote-first · Ahmedabad, India</span><span class="abx-meta-m"><a href="/markets/us">US</a>, <a href="/markets/uk">UK</a>, <a href="/markets/de">Germany</a>, <a href="/markets/ca">Canada</a>, <a href="/markets/au">Australia</a>, and <a href="/markets/uae">UAE</a></span></p>
       </div>
       <div class="abx-thread-wrap" data-abx-tilt>
         <div class="abx-thread" data-abx-thread data-step="3" role="img" aria-label="Example of a KRIVA project thread: design and engineering in the same conversation, with a Wednesday demo on a live URL. Illustrative, not a client transcript.">
@@ -463,7 +472,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <li><strong>Founder leads design</strong><span>On the work, from the first conversation.</span></li>
         <li><strong>Nine years of experience</strong><span>What the team brings from earlier product work. The company itself started in 2025.</span></li>
         <li><strong>Permanent team</strong><span>Designers and engineers. No subcontractors.</span></li>
-        <li><strong>Ahmedabad, India</strong><span>Headquarters. Calls overlap US, UK, Canada, Australia, and UAE hours.</span></li>
+        <li><strong>Ahmedabad, India</strong><span>Headquarters. Calls overlap US, UK, Germany, Canada, Australia, and UAE hours.</span></li>
       </ol>
     </aside>
   </div>
@@ -505,7 +514,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <p class="abx-lp" data-k="0">We design and build dispatch tools, fleet software, SaaS products, and accounting integrations that operators and product teams use on a real workday.</p>
         <p class="abx-lp" data-k="1">The team spent years inside agencies and product companies watching the same pattern. Design handed off specs engineering could not build. Clients managed three vendors for one product. Interfaces looked finished in Figma and fell apart in production.</p>
         <p class="abx-lp" data-k="2">KRIVA started in 2025 so a client can hire one in-house team. The founder leads design. Nine years is the experience that team brings from earlier product work, not the age of the company.</p>
-        <p class="abx-lp" data-k="3">We work with teams in the <a href="/markets/us">United States</a>, the <a href="/markets/uk">United Kingdom</a>, the <a href="/markets/uae">UAE</a>, <a href="/markets/ca">Canada</a>, and <a href="/markets/au">Australia</a>. Headquarters is in Ahmedabad. We do not have local offices in those markets.</p>
+        <p class="abx-lp" data-k="3">We work with teams in the <a href="/markets/us">United States</a>, the <a href="/markets/uk">United Kingdom</a>, <a href="/markets/de">Germany</a>, the <a href="/markets/uae">UAE</a>, <a href="/markets/ca">Canada</a>, and <a href="/markets/au">Australia</a>. Headquarters is in Ahmedabad. We do not have local offices in those markets.</p>
         <p class="ab-sign abx-sign">KRIVA Technologies<small>Product, UI/UX, and engineering</small></p>
         <div class="abx-links">
           <a href="/work" class="svx-more"><span>See selected work</span><i aria-hidden="true">→</i></a>
@@ -523,7 +532,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
             <button type="button" class="abx-tab" data-go="2" aria-pressed="true"><i>03</i>2025</button>
             <button type="button" class="abx-tab" data-go="3" aria-pressed="false"><i>04</i>Where</button>
           </div>
-          <div class="abx-cv" role="img" aria-label="Illustration of the story in four steps: the products KRIVA builds for a real workday; three separate vendors with broken handoffs for one product; those roles merged into one in-house team in 2025; and the Ahmedabad headquarters working with the US, UK, UAE, Canada, and Australia.">
+          <div class="abx-cv" role="img" aria-label="Illustration of the story in four steps: the products KRIVA builds for a real workday; three separate vendors with broken handoffs for one product; those roles merged into one in-house team in 2025; and the Ahmedabad headquarters working with the US, UK, Germany, UAE, Canada, and Australia.">
             <svg class="abx-cv-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
               <g class="g0"><path pathLength="1" d="M24 24 L50 48"/><path pathLength="1" d="M76 24 L50 48"/><path pathLength="1" d="M24 74 L50 48"/><path pathLength="1" d="M76 74 L50 48"/></g>
               <g class="g1"><path d="M22 28 L50 28"/><path d="M50 28 L78 28"/><path d="M22 34 L46 74"/><path d="M78 34 L54 74"/><path d="M50 34 L50 70"/></g>
@@ -873,7 +882,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
           <span class="qi" aria-hidden="true"></span>
         </button></h3>
         <div class="faq-a" id="fa3" role="region" aria-labelledby="faqb3"><div><div class="faq-a-in">
-          <p>Headquarters is in Ahmedabad, Gujarat, India. We are remote-first and do not claim local offices abroad. Call hours overlap the US, UK, UAE, Canada, and Australia. We reply within one business day.</p>
+          <p>Headquarters is in Ahmedabad, Gujarat, India. We are remote-first and do not claim local offices abroad. Call hours overlap the US, UK, Germany, UAE, Canada, and Australia. We reply within one business day.</p>
         </div></div></div>
       </div>
       <div class="faq-item" data-x>
@@ -994,6 +1003,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <nav aria-label="Markets"><h3>Markets</h3><ul>
         <li><a href="/markets/us">United States</a></li>
         <li><a href="/markets/uk">United Kingdom</a></li>
+        <li><a href="/markets/de">Germany</a></li>
         <li><a href="/markets/au">Australia</a></li>
         <li><a href="/markets/uae">United Arab Emirates</a></li>
         <li><a href="/markets/ca">Canada</a></li>

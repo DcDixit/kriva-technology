@@ -15,6 +15,7 @@ try{
 var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
 if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
 internal=localStorage.getItem('kriva_internal')==='1';
+if(!internal&&!/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search)){var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;if(tz==='Asia/Kolkata'||tz==='Asia/Calcutta')internal=true;}
 }catch(e){}
 window.__krivaNoTrack=internal;
 window.krivaLoadAnalytics=function(){
@@ -122,8 +123,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
 .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--blue);z-index:95;will-change:transform}
 </style>
 <link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<title>Markets We Serve · US, UK, UAE, Canada &amp; Australia | KRIVA</title>
-<meta name="description" content="Trucking software, B2B SaaS, and integrations for the US, UK, UAE, Canada, and Australia. Book a free 20-minute fit call or explore your market.">
+<title>Markets We Serve · US, UK, Germany, UAE, Canada &amp; Australia | KRIVA</title>
+<meta name="description" content="Trucking software, B2B SaaS, and integrations for the US, UK, Germany, UAE, Canada, and Australia. Book a free 20-minute fit call or explore your market.">
 <link rel="canonical" href="https://krivatechnologies.com/markets">
 <!-- KRIVA_SEO_START -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -133,10 +134,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <meta name="application-name" content="KRIVA Technologies">
 <link rel="llms" href="https://krivatechnologies.com/llms.txt" type="text/plain" title="KRIVA site summary for AI">
 <link rel="alternate" href="https://krivatechnologies.com/llms-full.txt" type="text/plain" title="KRIVA extended site summary">
-<meta name="target" content="US, GB, AE, CA, AU">
-<meta name="coverage" content="United States, United Kingdom, United Arab Emirates, Canada, Australia">
+<meta name="target" content="US, GB, DE, AE, CA, AU">
+<meta name="coverage" content="United States, United Kingdom, Germany, United Arab Emirates, Canada, Australia">
 <link rel="alternate" hreflang="en-us" href="https://krivatechnologies.com/markets/us">
 <link rel="alternate" hreflang="en-gb" href="https://krivatechnologies.com/markets/uk">
+<link rel="alternate" hreflang="en-de" href="https://krivatechnologies.com/markets/de">
 <link rel="alternate" hreflang="en-ae" href="https://krivatechnologies.com/markets/uae">
 <link rel="alternate" hreflang="en-ca" href="https://krivatechnologies.com/markets/ca">
 <link rel="alternate" hreflang="en-au" href="https://krivatechnologies.com/markets/au">
@@ -145,19 +147,19 @@ html.js [data-s].in>*{opacity:1;transform:none}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KRIVA Technologies">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Markets We Serve · US, UK, UAE &amp; Canada | KRIVA">
-<meta property="og:description" content="Trucking software, B2B SaaS, and integrations for teams in the US, UK, UAE, and Canada. Product design and engineering, remote-first. Explore each market.">
+<meta property="og:title" content="Markets We Serve · US, UK, Germany, UAE, Canada &amp; Australia | KRIVA">
+<meta property="og:description" content="Trucking software, B2B SaaS, and integrations for teams in the US, UK, Germany, UAE, Canada, and Australia. Product design and engineering, remote-first. Explore each market.">
 <meta property="og:url" content="https://krivatechnologies.com/markets">
 <!-- KRIVA_OG_IMAGE_START -->
 <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Markets · US, UK, UAE, Canada and Australia · KRIVA Technologies">
+<meta property="og:image:alt" content="Markets · US, UK, Germany, UAE, Canada and Australia · KRIVA Technologies">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
 <!-- KRIVA_OG_IMAGE_END -->
-<meta name="twitter:title" content="Markets We Serve · US, UK, UAE &amp; Canada | KRIVA">
-<meta name="twitter:description" content="Custom trucking software, B2B SaaS, and finance integrations for teams in the US, UK, UAE, and Canada. Remote-first product design and engineering.">
+<meta name="twitter:title" content="Markets We Serve · US, UK, Germany, UAE, Canada &amp; Australia | KRIVA">
+<meta name="twitter:description" content="Custom trucking software, B2B SaaS, and finance integrations for teams in the US, UK, Germany, UAE, Canada, and Australia. Remote-first product design and engineering.">
 <link rel="stylesheet" href="/shared/inner.css?v=brand1">
 <link rel="stylesheet" href="/shared/system.css?v=brand1">
 <link rel="stylesheet" href="/shared/responsive.css?v=brand1">
@@ -187,6 +189,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
         "addressRegion": "Gujarat",
         "addressCountry": "IN"
       },
+      "areaServed": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "Germany" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "Country", "name": "Australia" }
+      ],
       "sameAs": [
         "https://www.instagram.com/kriva_technology/",
         "https://www.linkedin.com/company/kriva-technologies"
@@ -355,15 +365,15 @@ html.js [data-s].in>*{opacity:1;transform:none}
         <p class="eyebrow" data-r>Markets</p>
         <h1 class="svx-h1 d1 mask" id="h1" data-mask>
           <span><i>Built for operators</i></span>
-          <span><i>in five markets.</i></span>
+          <span><i>in six markets.</i></span>
         </h1>
-        <p class="lede" data-r>Remote-first product design and engineering for the United States, United Kingdom, United Arab Emirates, Canada, and Australia. Enter a market below for timezone overlap, finance norms, and proof that matches your desk.</p>
+        <p class="lede" data-r>Remote-first product design and engineering for the United States, United Kingdom, Germany, United Arab Emirates, Canada, and Australia. Enter a market below for timezone overlap, finance norms, and proof that matches your desk.</p>
         <div class="hero-actions" data-r>
           <a href="#markets" class="btn"><span>Find your market</span><i>→</i></a>
           <a href="/contact#book" class="btn ghost"><span>Book a free 20-minute fit call</span><i>→</i></a>
         </div>
         <p class="mkt-trust" data-r>
-          <span>Five markets</span>
+          <span>Six markets</span>
           <span>In-house team</span>
           <span>Weekly demos</span>
         </p>
@@ -422,8 +432,8 @@ html.js [data-s].in>*{opacity:1;transform:none}
     <div class="story-copy">
       <p class="eyebrow">The overlap</p>
       <h2>Same studio. The market page is the timezone and the desk.</h2>
-      <p>Remote-first product design and engineering for the United States, United Kingdom, United Arab Emirates, Canada, and Australia. Each market page covers who we work with and the overlap for a live demo.</p>
-      <ul class="story-points"><li>Five market pages</li><li>Timezone overlap for the demo</li><li>Finance norms called out per region</li></ul>
+      <p>Remote-first product design and engineering for the United States, United Kingdom, Germany, United Arab Emirates, Canada, and Australia. Each market page covers who we work with and the overlap for a live demo.</p>
+      <ul class="story-points"><li>Six market pages</li><li>Timezone overlap for the demo</li><li>Finance norms called out per region</li></ul>
       <p class="story-credit">Photograph via <a href="https://www.pexels.com/license/" rel="noopener noreferrer">Pexels License</a>. <!-- TODO(kriva): replace with own product UI --></p>
     </div>
   </div>
@@ -495,6 +505,37 @@ html.js [data-s].in>*{opacity:1;transform:none}
       </div>
     </article>
     <article class="mkt-row" data-r>
+      <div class="mkt-shot"><div class="pu" role="img" aria-label="Dispatch board: a planned tour would run over the driver's permitted driving time, flagged before assignment.">
+          <div class="pu-bar">
+            <div>
+              <p class="pu-title">Disposition</p>
+              <p class="pu-meta">Tour plan · driving time check</p>
+            </div>
+            <span class="pu-chip warn">1 conflict</span>
+          </div>
+          <ul class="pu-rows">
+            <li class="on"><b>T-2031</b><span>Hamburg &rarr; Berlin</span><em>On time</em></li>
+            <li><b>T-2032</b><span>K&ouml;ln &rarr; M&uuml;nchen</span><em>4h 12m driving</em></li>
+            <li class="risk"><b>T-2033</b><span>Break due</span><em>in 18m</em></li>
+          </ul>
+          <span class="pu-cta lime">Assign</span>
+        </div></div>
+      <div>
+        <p class="k">Germany · CET-friendly</p>
+        <h3 class="d3"><a href="/markets/de">Logistics operators and SaaS founders</a></h3>
+        <p class="body-sm">Dispatch and fleet software, B2B SaaS, and e-invoicing or DATEV-ready finance exports for German operators and founders - GDPR built into the admin panel, in English, with CET-friendly calls.</p>
+        <div class="mkt-tags"><span class="mkt-tag">Dispatch software</span>
+          <span class="mkt-tag">E-invoicing</span>
+          <span class="mkt-tag">B2B SaaS</span></div>
+        <p class="mkt-outcome"><strong>Outcome:</strong> Driving-time conflicts and e-invoice formats handled in the product, not at month-end.</p>
+        <div class="mkt-links">
+          <a class="proof" href="/work/payroll-pro-saas">Case · PayrollPro UK and EU payroll SaaS <i>→</i></a>
+          <a class="go" href="/markets/de">Explore Germany <i>→</i></a>
+          <a class="go" href="/solutions/trucking-logistics">Trucking solutions <i>→</i></a>
+        </div>
+      </div>
+    </article>
+    <article class="mkt-row flip" data-r>
       <div class="mkt-shot"><div class="pu" role="img" aria-label="Auto-transport quote: VIN, Dallas to Phoenix, enclosed, Book move.">
           <div class="pu-bar">
             <div>
@@ -527,7 +568,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         </div>
       </div>
     </article>
-    <article class="mkt-row flip quiet" data-r>
+    <article class="mkt-row quiet" data-r>
       <div class="mkt-shot"><div class="pu" role="img" aria-label="March close: unmatched invoice against QuickBooks and bank, Resolve.">
           <div class="pu-bar">
             <div>
@@ -558,7 +599,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
         </div>
       </div>
     </article>
-    <article class="mkt-row quiet" data-r>
+    <article class="mkt-row flip quiet" data-r>
       <div class="mkt-shot"><div class="pu" role="img" aria-label="Dispatch board: loads awaiting assignment in Sydney morning window.">
           <div class="pu-bar">
             <div>
@@ -704,6 +745,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
       <nav aria-label="Markets"><h3>Markets</h3><ul>
         <li><a href="/markets/us">United States</a></li>
         <li><a href="/markets/uk">United Kingdom</a></li>
+        <li><a href="/markets/de">Germany</a></li>
         <li><a href="/markets/au">Australia</a></li>
         <li><a href="/markets/uae">United Arab Emirates</a></li>
         <li><a href="/markets/ca">Canada</a></li>

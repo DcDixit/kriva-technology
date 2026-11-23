@@ -11,6 +11,7 @@ const LLMS_FULL_PATH = "/llms-full.txt";
 const REGION_LABELS = {
   US: "United States",
   GB: "United Kingdom",
+  DE: "Germany",
   AE: "United Arab Emirates",
   CA: "Canada",
   AU: "Australia",
