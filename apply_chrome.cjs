@@ -86,49 +86,57 @@ const PAGE_CURRENT = {
 };
 
 const CSS_LINK = '<link rel="stylesheet" href="/shared/chrome.css?v=brand1">\n<link rel="stylesheet" href="/shared/kds.css?v=brand1">';
-const JS_TAG = [
-  '<script src="/shared/chrome.js" defer></script>',
-  '<!-- KRIVA_GA_START -->',
-  '<link rel="preconnect" href="https://www.googletagmanager.com">',
-  '<link rel="dns-prefetch" href="https://www.google-analytics.com">',
-  '<script>',
-  'window.dataLayer=window.dataLayer||[];',
-  'function gtag(){dataLayer.push(arguments);}window.gtag=gtag;',
-  'window.__krivaNativeReplaceState=History.prototype.replaceState;',
-  "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(navigator.globalPrivacyControl===true?'denied':'granted'),functionality_storage:'granted',security_storage:'granted'});",
-  '(function(){',
-  "var id='G-FHG12KTF8C';",
-  "var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);",
-  'var gpc=navigator.globalPrivacyControl===true;',
-  'var host=location.hostname;',
-  "var local=host==='localhost'||host==='127.0.0.1'||/\\.vercel\\.app$/.test(host);",
-  "var optedOut=!!window['ga-disable-'+id]||gpc;",
-  "/* Not tracked: automated browsers (QA crawls, Lighthouse/PageSpeed, headless bots) and devices marked internal once with ?kriva_internal=1 (undo with =0). ga_debug=1 overrides both. */",
-  "var ua=navigator.userAgent||'';",
-  "var bot=navigator.webdriver===true||/HeadlessChrome|Lighthouse|PTST|GTmetrix|Pingdom|Googlebot|bingbot|AdsBot|Google-InspectionTool/i.test(ua);",
-  "var internal=false;try{var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}internal=localStorage.getItem('kriva_internal')==='1';}catch(e){}",
-  'window.__krivaNoTrack=bot||internal;',
-  "gtag('js',new Date());",
-  "if(optedOut)gtag('consent','update',{analytics_storage:'denied'});",
-  'if(optedOut||((local||window.__krivaNoTrack)&&!debug))return;',
-  "var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true,cookie_flags:'SameSite=Lax;Secure',page_location:location.origin+location.pathname+location.search};",
-  'if(debug)cfg.debug_mode=true;',
-  "gtag('config',id,cfg);",
-  '})();',
-  '</script>',
-  '<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHG12KTF8C"></script>',
-  '<script src="/shared/analytics.js" defer></script>',
-  '<!-- KRIVA_GA_END -->',
-  '<!-- KRIVA_CLARITY_START -->',
-  '<script type="text/javascript">',
-  '    (function(c,l,a,r,i,t,y){if(navigator.globalPrivacyControl===true||window.__krivaNoTrack)return;var h=location.hostname;if(h===\'localhost\'||h===\'127.0.0.1\'||/\\.vercel\\.app$/.test(h))return;',
-  '        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};',
-  '        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;',
-  '        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);',
-  '    })(window, document, "clarity", "script", "yjj9g3gojt");',
-  '</script>',
-  '<!-- KRIVA_CLARITY_END -->',
-].join('\n');
+/* Consent-gated analytics head block. It must stay byte-for-byte equal to the block on the
+   live pages; _qa_consent_chrome.cjs fails if they drift. Nothing loads on page view:
+   shared/consent.js calls window.krivaLoadAnalytics() only after the visitor accepts.
+   No preconnect to Google here, so no request reaches Google before consent. */
+const CONSENT_CSS_LINK = '<link rel="stylesheet" href="/shared/consent.css">';
+const JS_TAG = String.raw`<script src="/shared/chrome.js" defer></script>
+<!-- KRIVA_GA_START -->
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
+window.__krivaNativeReplaceState=History.prototype.replaceState;
+window.__KRIVA_GA_ID='G-FHG12KTF8C';
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+(function(){
+var internal=false;
+try{
+var m=/[?&]kriva_internal=([01])(?:&|$)/.exec(location.search);
+if(m){if(m[1]==='1')localStorage.setItem('kriva_internal','1');else localStorage.removeItem('kriva_internal');var q=location.search.replace(/([?&])kriva_internal=[01](&|$)/,function(s,a,b){return b?a:'';}).replace(/^\?$/,'');window.__krivaNativeReplaceState.call(history,history.state,'',location.pathname+q+location.hash);}
+internal=localStorage.getItem('kriva_internal')==='1';
+}catch(e){}
+window.__krivaNoTrack=internal;
+window.krivaLoadAnalytics=function(){
+if(window.__KRIVA_GA_LOADED||window.__krivaNoTrack)return;
+if(navigator.globalPrivacyControl===true)return;
+window.__KRIVA_GA_LOADED=true;
+var id=window.__KRIVA_GA_ID;
+gtag('consent','update',{analytics_storage:'granted'});
+var s=document.createElement('script');
+s.async=true;
+s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);
+document.head.appendChild(s);
+gtag('js',new Date());
+var debug=/(?:^|[?&])ga_debug=1(?:&|$)/.test(location.search);
+var cfg={allow_google_signals:false,allow_ad_personalization_signals:false,send_page_view:true};
+if(location.protocol==='https:')cfg.cookie_flags='SameSite=Lax;Secure';
+if(debug)cfg.debug_mode=true;
+gtag('config',id,cfg);
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,'clarity','script','yjj9g3gojt');
+};
+})();
+</script>
+<script src="/shared/analytics.js" defer></script>
+<script src="/shared/consent.js" defer></script>
+<!-- KRIVA_GA_END -->
+<!-- KRIVA_CLARITY_START -->
+<!-- Clarity loads from krivaLoadAnalytics after Accept. -->
+<!-- KRIVA_CLARITY_END -->`;
 
 function cur(key, name) {
   return key === name ? ' aria-current="page"' : "";
@@ -373,6 +381,10 @@ function ensureAssets(html) {
   } else {
     html = html.replace("</body>", `${JS_TAG}\n</body>`);
   }
+  // The consent banner needs its stylesheet; keep an existing link, add one if a page has none.
+  if (!html.includes('href="/shared/consent.css"')) {
+    html = html.replace("</body>", `${CONSENT_CSS_LINK}\n</body>`);
+  }
   return html;
 }
 
@@ -454,7 +466,7 @@ function main() {
   return results.every((r) => r.startsWith("OK")) ? 0 : 1;
 }
 
-module.exports = { PAGE_CURRENT, CONTACT_EMAIL, headerHtml, FOOTER_HTML, JS_TAG, applyFile, main };
+module.exports = { PAGE_CURRENT, CONTACT_EMAIL, headerHtml, FOOTER_HTML, JS_TAG, CONSENT_CSS_LINK, applyFile, main };
 
 if (require.main === module) {
   process.exit(main());
