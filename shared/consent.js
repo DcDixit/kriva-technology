@@ -34,6 +34,12 @@
   function load() {
     if (local && !debug) return;
     if (typeof window.krivaLoadAnalytics === 'function') window.krivaLoadAnalytics();
+    /* Clarity needs an explicit consent signal after Accept, or it runs without cookies for
+       EEA/UK/CH visitors. Sent only when the loader actually ran (not for bots, internal or GPC). */
+    if (window.__KRIVA_GA_LOADED && !window.__KRIVA_CLARITY_CONSENT && typeof window.clarity === 'function') {
+      window.__KRIVA_CLARITY_CONSENT = true;
+      try { window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' }); } catch (err) {}
+    }
   }
 
   /* First-party GA4 and Clarity cookies, on this host and every parent domain. */
