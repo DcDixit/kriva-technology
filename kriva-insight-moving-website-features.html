@@ -715,7 +715,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
 'use strict';
 const io = new IntersectionObserver(es=>{
   for(const e of es){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }
-},{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+},{threshold:0, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('[data-r],[data-s],[data-mask]').forEach(el=>{
   if(el.hasAttribute('data-mask')) el.classList.add('mask');
   io.observe(el);
