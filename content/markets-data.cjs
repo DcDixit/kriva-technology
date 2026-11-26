@@ -139,9 +139,9 @@ module.exports = {
         visual: "dispatch",
       },
       ogLocale: "en_GB",
-      title: "Custom Logistics & SaaS Software for German Teams | KRIVA",
+      title: "Logistics & SaaS Software Development for German Teams | KRIVA",
       meta:
-        "Dispatch software, B2B SaaS, and e-invoicing or DATEV-ready exports for German logistics operators and founders. English-speaking team, CET-friendly calls.",
+        "Custom software development for German logistics and SaaS companies: dispatch software, B2B SaaS, XRechnung e-invoicing, DATEV exports. CET-friendly calls.",
       eyebrow: "Germany",
       h1: "Logistics and SaaS software for German teams.",
       lede:

@@ -48,8 +48,13 @@ That browser then sends nothing to GA4 or Clarity, on every page, until you open
 - [ ] Open the link on each office machine, laptop and phone.
 - [ ] Alternative: Google's **Analytics Opt-out** add-on, or the browser's Global Privacy Control setting (both are respected too).
 
-### 2d. India time zone (since 2026-11-23)
-Browsers whose clock is set to the India time zone (Asia/Kolkata) send nothing to GA4 or Clarity. India is not a target market and almost all of that traffic was the team, so GA4 country and city reports now reflect the target markets only. This is set in the head snippet (`apply_chrome.cjs`, JS_TAG), the same place as `?kriva_internal`. To test tracking from the office, add `?ga_debug=1` to the URL and watch **Admin → DebugView**. To reverse it, remove the `Intl.DateTimeFormat` line from JS_TAG and run `node apply_chrome.cjs`.
+### 2d. Reporting by target market (no exclusion of real visitors)
+India is not a target market, but Indian visitors are not excluded from GA4 or Clarity: raw data stays complete, and the office is removed by 2a-2c above. Read the target markets with GA4's own tools instead:
+
+- **Comparisons (any standard report):** Reports → click **Add comparison** → Dimension *Country*, match type *exactly matches*, values *United States*, *United Kingdom*, *Germany* (one comparison each, or one combined). Comparisons stay on while you move between reports in the session.
+- **Saved segments for repeat use:** Explore → Blank → Segments → **+** → User segment → *Country* exactly matches *United States*; repeat for *United Kingdom* and *Germany*, plus one "Target markets" segment with all three. Save each segment, then build a free-form exploration with Dimensions *Session default channel group*, *Landing page + query string*, *Country* and Metrics *Active users*, *Sessions*, *Engaged sessions*, *Key events*. Segments saved in an exploration are reusable in other explorations in the same property.
+- **Audiences (optional, for the Home cards):** Admin → Audiences → New audience → *Country* exactly matches *Germany* (and one each for the US and UK). Audiences populate from the day they are created, so create them now.
+- **Search Console (source of truth for search visibility):** Performance → Search results → filter **Country** = Germany / United Kingdom / United States; export Queries and Pages to `seo/gsc/data/` as described in `seo/gsc-baseline-workflow.txt`.
 
 ### 2e. Bot traffic
 Since 2026-11-19 the site no longer sends GA4 or Clarity data from automated browsers: `navigator.webdriver` (Puppeteer, Playwright, Selenium; this covers our own QA and audit crawls), HeadlessChrome, Lighthouse and PageSpeed Insights, WebPageTest, GTmetrix, Pingdom, and Google or Bing crawlers that run JavaScript. Data-centre bots that pretend to be a normal browser can still get through. For reporting:
