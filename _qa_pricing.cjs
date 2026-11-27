@@ -18,7 +18,7 @@ const nodes = (h) => mainOf(h).replace(/<script[\s\S]*?<\/script>/g, '').split(/
 const sentences = nodes(head);
 const missing = sentences.filter((x) => !newT.includes(x));
 ok(missing.length === 0, `all ${sentences.length} text nodes from HEAD are on the page` + (missing.length ? '\n   missing: ' + missing.join('\n   missing: ') : ''));
-for (const p of ['$4,800', '$18,000', '$6,500', '$15,000', '$8,000', '1.6–2×']) ok((oldT.split(p).length) === 2 ? newT.includes(p) : true, 'price present: ' + p);
+for (const p of ['$3,600', '$13,500', '$4,875', '$11,250', '$6,000', '1.6–2×']) ok((oldT.split(p).length) === 2 ? newT.includes(p) : true, 'price present: ' + p);
 const schema = (s) => s.slice(s.indexOf('<!-- KRIVA_SCHEMA_START -->'), s.indexOf('<!-- KRIVA_SCHEMA_END -->')).replace(/\r/g, '');
 ok(schema(head) === schema(now), 'JSON-LD schema block byte-identical (OfferCatalog prices unchanged)');
 const headPart = (s) => s.slice(0, s.indexOf('<style>')).replace(/\r/g, '').replace(/<script>\(function\(d\)[\s\S]*?<\/script>|<script>document\.documentElement[^<]*<\/script>/, '');
@@ -61,11 +61,11 @@ ok(formOf(head) === formOf(now), 'inquiry form markup byte-identical');
   await page.click('.pz-est-pick button[data-i="1"]');
   await sleep(1600);
   let est = await page.evaluate(() => ({ n: document.querySelector('[data-pz-name]').textContent, p: document.querySelector('[data-pz-price]').textContent, pressed: document.querySelector('.pz-est-pick button[data-i="1"]').getAttribute('aria-pressed') }));
-  ok(est.n === 'Mobile application design and development' && est.p === '$18,000' && est.pressed === 'true', 'hero picker: Mobile app → ' + est.n + ' ' + est.p);
+  ok(est.n === 'Mobile application design and development' && est.p === '$13,500' && est.pressed === 'true', 'hero picker: Mobile app → ' + est.n + ' ' + est.p);
   await page.click('.pz-est-pick button[data-i="4"]');
   await sleep(3200);
   est = await page.evaluate(() => ({ n: document.querySelector('[data-pz-name]').textContent, p: document.querySelector('[data-pz-price]').textContent, done: document.querySelector('[data-pz-est]').classList.contains('is-done') }));
-  ok(est.n === 'QuickBooks and Xero integrations' && est.p === '$8,000' && est.done, 'hero picker: Accounting → ' + est.n + ' ' + est.p + ', quote stamped');
+  ok(est.n === 'QuickBooks and Xero integrations' && est.p === '$6,000' && est.done, 'hero picker: Accounting → ' + est.n + ' ' + est.p + ', quote stamped');
 
   // Card prices settle on the printed values after count-up
   for (const id of ['websites', 'mobile', 'design', 'software', 'accounting']) {
@@ -75,7 +75,7 @@ ok(formOf(head) === formOf(now), 'inquiry form markup byte-identical');
     ok(r.cur === '#' + id, `index marks #${id} while its card is in view; card shows ${r.shown}`);
   }
   const shown = await page.evaluate(() => [...document.querySelectorAll('[data-pz-count]')].map((e) => e.textContent).join(' '));
-  ok(shown === '$4,800 $18,000 $6,500 $15,000 $8,000', 'card prices after count-up: ' + shown);
+  ok(shown === '$3,600 $13,500 $4,875 $11,250 $6,000', 'card prices after count-up: ' + shown);
 
   // CTA pre-fill
   await page.click('#accounting .pz-go');

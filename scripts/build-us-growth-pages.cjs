@@ -10,11 +10,11 @@ const ORG =
 
 /** Published USD starting prices (defined scope on /pricing). */
 const PRICE = {
-  website: { usd: "$4,800", min: "4800" },
-  mobile: { usd: "$18,000", min: "18000" },
-  design: { usd: "$6,500", min: "6500" },
-  software: { usd: "$15,000", min: "15000" },
-  accounting: { usd: "$8,000", min: "8000" },
+  website: { usd: "$3,600", min: "3600" },
+  mobile: { usd: "$13,500", min: "13500" },
+  design: { usd: "$4,875", min: "4875" },
+  software: { usd: "$11,250", min: "11250" },
+  accounting: { usd: "$6,000", min: "6000" },
 };
 
 function attr(s) {
@@ -489,7 +489,7 @@ const truckMain = `
         <li>Authority and insurance details where a broker expects to find them</li>
         <li>On-page titles, headings, and a mobile layout</li>
       </ul>
-      <p>The list above is what a useful carrier site covers. The starting scope is $4,800 for up to six of those pages, custom design, one form, and launch. More terminals, a recruiting portal, a content editor, or a tracking page fed by your TMS is quoted from the real scope. Engineering detail sits on <a href="/services/web-development">web development</a>.</p>
+      <p>The list above is what a useful carrier site covers. The starting scope is $3,600 for up to six of those pages, custom design, one form, and launch. More terminals, a recruiting portal, a content editor, or a tracking page fed by your TMS is quoted from the real scope. Engineering detail sits on <a href="/services/web-development">web development</a>.</p>
 
       <h2 id="work">Sites we have designed</h2>
       ${proof([
@@ -554,7 +554,7 @@ const movingMain = `
         <li>Give crews a page if you are hiring</li>
         <li>Work on a phone, because that is where the search started</li>
       </ul>
-      <p>The list above is what a useful mover site covers. Website design and development starts at $4,800 for up to six of those pages and one form. A content editor, a customer booking app, an inventory checklist, or an office CRM is priced from the <a href="/pricing#mobile">mobile</a> and <a href="/pricing#software">custom software</a> starting points, then adjusted to the workflow. Feature decisions are spelled out in <a href="/insights/moving-company-website-features">what a moving company website should include</a>.</p>
+      <p>The list above is what a useful mover site covers. Website design and development starts at $3,600 for up to six of those pages and one form. A content editor, a customer booking app, an inventory checklist, or an office CRM is priced from the <a href="/pricing#mobile">mobile</a> and <a href="/pricing#software">custom software</a> starting points, then adjusted to the workflow. Feature decisions are spelled out in <a href="/insights/moving-company-website-features">what a moving company website should include</a>.</p>
 
       <h2 id="work">Moving sites we have designed</h2>
       ${proof([
@@ -600,7 +600,7 @@ ${inquiry({
 const costFaqs = [
   {
     q: "What does KRIVA charge for a trucking website?",
-    a: "A defined website of up to six pages, custom design, one form, and launch starts at $4,800. Tracking portals, driver applications with a login, and TMS connections are quoted separately.",
+    a: "A defined website of up to six pages, custom design, one form, and launch starts at $3,600. Tracking portals, driver applications with a login, and TMS connections are quoted separately.",
   },
   {
     q: "Why do other sites advertise $899 trucking websites?",
@@ -644,8 +644,8 @@ const costMain = `
       <p>Sources: <a href="https://www.digitrucksolutions.com/pricing">DigiTruck pricing</a>, <a href="https://gatorbyte.net/web-design/trucking-companies/">GatorByte</a>, <a href="https://vaylostudios.com/services/trucking-websites">Vaylo Studios</a>, and <a href="https://codeifydigital.com/trucking-company-website-cost/">Codeify Digital’s 2026 roundup</a> of other agencies’ published ranges. Read them before you treat any row as your budget. A monthly plan is not comparable to a one-time build you own.</p>
 
       <h2 id="kriva">What KRIVA’s starting price includes</h2>
-      <p>A trucking, moving, or logistics website starts at $4,800. That scope is a working session, custom design, up to six pages, a mobile layout, one quote or contact form, on-page titles and headings, and launch on your domain. Photography, extra pages, a content editor, and anything behind a login are outside it.</p>
-      <p>That price sits with the professional custom builds above, not with the $899 packages. It is lower than many US agency quotes for a multi-audience carrier site, and it is not a claim that every project lands at $4,800. The <a href="/pricing#websites">pricing page</a> lists what moves the number. The page we would build is described under <a href="/solutions/trucking-company-websites">trucking company website design</a>.</p>
+      <p>A trucking, moving, or logistics website starts at $3,600. That scope is a working session, custom design, up to six pages, a mobile layout, one quote or contact form, on-page titles and headings, and launch on your domain. Photography, extra pages, a content editor, and anything behind a login are outside it.</p>
+      <p>That price sits with the professional custom builds above, not with the $899 packages. It is lower than many US agency quotes for a multi-audience carrier site, and it is not a claim that every project lands at $3,600. The <a href="/pricing#websites">pricing page</a> lists what moves the number. The page we would build is described under <a href="/solutions/trucking-company-websites">trucking company website design</a>.</p>
 
       <h2 id="choose">How to choose a budget</h2>
       <ul>
@@ -681,7 +681,7 @@ const featureFaqs = [
   },
   {
     q: "How many pages does a mover need?",
-    a: "Enough to separate the services you sell. A local mover with packing and storage often needs a homepage, two or three service pages, a service-area page, and contact. Six pages is the scope inside KRIVA’s $4,800 starting price. A national van line is a different site.",
+    a: "Enough to separate the services you sell. A local mover with packing and storage often needs a homepage, two or three service pages, a service-area page, and contact. Six pages is the scope inside KRIVA’s $3,600 starting price. A national van line is a different site.",
   },
 ];
 
@@ -725,7 +725,7 @@ const featureMain = `
         <li>A blog you will not update</li>
         <li>A separate page for every city in the state</li>
       </ul>
-      <p>Website design for this kind of site starts at $4,800 for up to six pages. See <a href="/solutions/moving-company-websites">moving company website design</a> and the <a href="/pricing">pricing page</a>. If you are choosing a partner rather than a feature list, the practical test is whether they can show moving sites they designed and will say what the first release will not include.</p>
+      <p>Website design for this kind of site starts at $3,600 for up to six pages. See <a href="/solutions/moving-company-websites">moving company website design</a> and the <a href="/pricing">pricing page</a>. If you are choosing a partner rather than a feature list, the practical test is whether they can show moving sites they designed and will say what the first release will not include.</p>
 
       ${faqsHtml(featureFaqs)}
       <p class="art-end"><a href="/solutions/moving-company-websites">See moving company website design</a> or <a href="#inquire">get a website quote</a>.</p>
@@ -771,7 +771,7 @@ const pages = [
     title: "Trucking Company Website Design | KRIVA",
     ogTitle: "Trucking company website design for US carriers",
     description:
-      "Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $4,800.",
+      "Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $3,600.",
     imageAlt: "Trucking company website design by KRIVA Technologies",
     ogType: "website",
     bodyClass: "page-insight-truck",
@@ -790,7 +790,7 @@ const pages = [
     title: "Moving Company Website Design | KRIVA",
     ogTitle: "Moving company website design for US movers",
     description:
-      "Moving company websites that collect origin, destination, move size, and date. US movers. Design and development starts at $4,800. Booking software is quoted separately.",
+      "Moving company websites that collect origin, destination, move size, and date. US movers. Design and development starts at $3,600. Booking software is quoted separately.",
     imageAlt: "Moving company website design by KRIVA Technologies",
     ogType: "website",
     bodyClass: "page-insight-truck",
@@ -809,7 +809,7 @@ const pages = [
     title: "How Much Does a Trucking Company Website Cost? | KRIVA",
     ogTitle: "How much does a trucking company website cost?",
     description:
-      "Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $4,800 starting scope includes.",
+      "Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $3,600 starting scope includes.",
     imageAlt: "Guide to trucking company website cost",
     ogType: "article",
     section: "Trucking and logistics",
@@ -1242,7 +1242,7 @@ function patchCopy() {
         <div>
           <p class="cat">Trucking &amp; Logistics</p>
           <h3><a href="/insights/trucking-company-website-cost">How much does a trucking company website cost?</a></h3>
-          <p class="ex">Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.</p>
+          <p class="ex">Published 2026 prices from other companies, and what KRIVA’s $3,600 starting website scope includes.</p>
           <p class="rel"><a href="/solutions/trucking-company-websites">Trucking websites</a> · <a href="/pricing">Pricing</a></p>
         </div>
         <div class="meta"><span>Nov 2026</span><span>8 min read</span></div>
@@ -1288,7 +1288,7 @@ function patchCopy() {
       read: "8 min read",
       published: "November 2026",
       publishedISO: "2026-11-14",
-      excerpt: "Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.",
+      excerpt: "Published 2026 prices from other companies, and what KRIVA’s $3,600 starting website scope includes.",
       byline: "KRIVA Technologies",
       relatedSolutions: [],
       blocks: [],

@@ -8,7 +8,7 @@ module.exports = {
       read: "8 min read",
       published: "November 2026",
       publishedISO: "2026-11-14",
-      excerpt: "Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.",
+      excerpt: "Published 2026 prices from other companies, and what KRIVA’s $3,600 starting website scope includes.",
       byline: "KRIVA Technologies",
       relatedSolutions: [
         { href: "/solutions/trucking-company-websites", label: "Trucking company websites" },
