@@ -1,0 +1,712 @@
+diff --git a/_qa_pricing.cjs b/_qa_pricing.cjs
+index a3a1ff1..746f640 100644
+--- a/_qa_pricing.cjs
++++ b/_qa_pricing.cjs
+@@ -18,7 +18,7 @@ const nodes = (h) => mainOf(h).replace(/<script[\s\S]*?<\/script>/g, '').split(/
+ const sentences = nodes(head);
+ const missing = sentences.filter((x) => !newT.includes(x));
+ ok(missing.length === 0, `all ${sentences.length} text nodes from HEAD are on the page` + (missing.length ? '\n   missing: ' + missing.join('\n   missing: ') : ''));
+-for (const p of ['$4,800', '$18,000', '$6,500', '$15,000', '$8,000', '1.6–2×']) ok((oldT.split(p).length) === 2 ? newT.includes(p) : true, 'price present: ' + p);
++for (const p of ['$3,600', '$13,500', '$4,875', '$11,250', '$6,000', '1.6–2×']) ok((oldT.split(p).length) === 2 ? newT.includes(p) : true, 'price present: ' + p);
+ const schema = (s) => s.slice(s.indexOf('<!-- KRIVA_SCHEMA_START -->'), s.indexOf('<!-- KRIVA_SCHEMA_END -->')).replace(/\r/g, '');
+ ok(schema(head) === schema(now), 'JSON-LD schema block byte-identical (OfferCatalog prices unchanged)');
+ const headPart = (s) => s.slice(0, s.indexOf('<style>')).replace(/\r/g, '').replace(/<script>\(function\(d\)[\s\S]*?<\/script>|<script>document\.documentElement[^<]*<\/script>/, '');
+@@ -61,11 +61,11 @@ ok(formOf(head) === formOf(now), 'inquiry form markup byte-identical');
+   await page.click('.pz-est-pick button[data-i="1"]');
+   await sleep(1600);
+   let est = await page.evaluate(() => ({ n: document.querySelector('[data-pz-name]').textContent, p: document.querySelector('[data-pz-price]').textContent, pressed: document.querySelector('.pz-est-pick button[data-i="1"]').getAttribute('aria-pressed') }));
+-  ok(est.n === 'Mobile application design and development' && est.p === '$18,000' && est.pressed === 'true', 'hero picker: Mobile app → ' + est.n + ' ' + est.p);
++  ok(est.n === 'Mobile application design and development' && est.p === '$13,500' && est.pressed === 'true', 'hero picker: Mobile app → ' + est.n + ' ' + est.p);
+   await page.click('.pz-est-pick button[data-i="4"]');
+   await sleep(3200);
+   est = await page.evaluate(() => ({ n: document.querySelector('[data-pz-name]').textContent, p: document.querySelector('[data-pz-price]').textContent, done: document.querySelector('[data-pz-est]').classList.contains('is-done') }));
+-  ok(est.n === 'QuickBooks and Xero integrations' && est.p === '$8,000' && est.done, 'hero picker: Accounting → ' + est.n + ' ' + est.p + ', quote stamped');
++  ok(est.n === 'QuickBooks and Xero integrations' && est.p === '$6,000' && est.done, 'hero picker: Accounting → ' + est.n + ' ' + est.p + ', quote stamped');
+ 
+   // Card prices settle on the printed values after count-up
+   for (const id of ['websites', 'mobile', 'design', 'software', 'accounting']) {
+@@ -75,7 +75,7 @@ ok(formOf(head) === formOf(now), 'inquiry form markup byte-identical');
+     ok(r.cur === '#' + id, `index marks #${id} while its card is in view; card shows ${r.shown}`);
+   }
+   const shown = await page.evaluate(() => [...document.querySelectorAll('[data-pz-count]')].map((e) => e.textContent).join(' '));
+-  ok(shown === '$4,800 $18,000 $6,500 $15,000 $8,000', 'card prices after count-up: ' + shown);
++  ok(shown === '$3,600 $13,500 $4,875 $11,250 $6,000', 'card prices after count-up: ' + shown);
+ 
+   // CTA pre-fill
+   await page.click('#accounting .pz-go');
+diff --git a/content/insights-data.cjs b/content/insights-data.cjs
+index 22acc9a..f76ca12 100644
+--- a/content/insights-data.cjs
++++ b/content/insights-data.cjs
+@@ -8,7 +8,7 @@ module.exports = {
+       read: "8 min read",
+       published: "November 2026",
+       publishedISO: "2026-11-14",
+-      excerpt: "Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.",
++      excerpt: "Published 2026 prices from other companies, and what KRIVA’s $3,600 starting website scope includes.",
+       byline: "KRIVA Technologies",
+       relatedSolutions: [
+         { href: "/solutions/trucking-company-websites", label: "Trucking company websites" },
+diff --git a/feed.xml b/feed.xml
+index dc7f4ed..b6fe447 100644
+--- a/feed.xml
++++ b/feed.xml
+@@ -12,7 +12,7 @@
+       <link>https://krivatechnologies.com/insights/trucking-company-website-cost</link>
+       <guid isPermaLink="true">https://krivatechnologies.com/insights/trucking-company-website-cost</guid>
+       <pubDate>Sat, 14 Nov 2026 12:00:00 GMT</pubDate>
+-      <description>Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.</description>
++      <description>Published 2026 prices from other companies, and what KRIVA’s $3,600 starting website scope includes.</description>
+       <category>Trucking &amp; Logistics</category>
+     </item>
+     <item>
+diff --git a/kriva-faq.html b/kriva-faq.html
+index c346d47..cb4d46d 100644
+--- a/kriva-faq.html
++++ b/kriva-faq.html
+@@ -280,7 +280,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+           "name": "How is pricing structured?",
+           "acceptedAnswer": {
+             "@type": "Answer",
+-            "text": "Five scopes have published starting prices: websites from $4,800, mobile apps from $18,000, UI/UX and SaaS design from $6,500, custom software from $15,000, and QuickBooks and Xero integrations from $8,000. Each covers a defined scope. Dispatch platforms and other larger custom software are quoted after discovery. Engagements run as fixed-scope projects, monthly retainers, or sprint-based work."
++            "text": "Five scopes have published starting prices: websites from $3,600, mobile apps from $13,500, UI/UX and SaaS design from $4,875, custom software from $11,250, and QuickBooks and Xero integrations from $6,000. Each covers a defined scope. Dispatch platforms and other larger custom software are quoted after discovery. Engagements run as fixed-scope projects, monthly retainers, or sprint-based work."
+           }
+         },
+         {
+@@ -614,7 +614,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+           <span class="qi" aria-hidden="true"></span>
+         </button></h3>
+         <div class="faq-a" id="fq10" role="region" aria-labelledby="fqb10"><div><div class="faq-a-in">
+-          <p>Five scopes have <a href="/pricing">published starting prices</a>: websites from $4,800, mobile apps from $18,000, UI/UX and SaaS design from $6,500, custom software from $15,000, and QuickBooks and Xero integrations from $8,000. Each covers a defined scope. Dispatch platforms and other larger custom software are quoted after <a href="/process">discovery</a>. Engagements run as fixed-scope projects, monthly retainers, or sprint-based work.</p>
++          <p>Five scopes have <a href="/pricing">published starting prices</a>: websites from $3,600, mobile apps from $13,500, UI/UX and SaaS design from $4,875, custom software from $11,250, and QuickBooks and Xero integrations from $6,000. Each covers a defined scope. Dispatch platforms and other larger custom software are quoted after <a href="/process">discovery</a>. Engagements run as fixed-scope projects, monthly retainers, or sprint-based work.</p>
+         </div></div></div>
+       </div>
+       <div class="faq-item">
+diff --git a/kriva-insight-moving-website-features.html b/kriva-insight-moving-website-features.html
+index 327a88c..5b0e4d3 100644
+--- a/kriva-insight-moving-website-features.html
++++ b/kriva-insight-moving-website-features.html
+@@ -552,11 +552,11 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
+         <li>A blog you will not update</li>
+         <li>A separate page for every city in the state</li>
+       </ul>
+-      <p>Website design for this kind of site starts at $4,800 for up to six pages. See <a href="/solutions/moving-company-websites">moving company website design</a> and the <a href="/pricing">pricing page</a>. If you are choosing a partner rather than a feature list, the practical test is whether they can show moving sites they designed and will say what the first release will not include.</p>
++      <p>Website design for this kind of site starts at $3,600 for up to six pages. See <a href="/solutions/moving-company-websites">moving company website design</a> and the <a href="/pricing">pricing page</a>. If you are choosing a partner rather than a feature list, the practical test is whether they can show moving sites they designed and will say what the first release will not include.</p>
+ 
+       <h2 id="faq">Questions we hear before a quote</h2>
+ <h3>Should a moving site show prices?</h3><p>Show prices only when the rule is stable enough that the number on the site matches the number the coordinator quotes. Otherwise, collect the move details and price it properly. A wrong instant price creates the call you were trying to avoid.</p>
+-<h3>How many pages does a mover need?</h3><p>Enough to separate the services you sell. A local mover with packing and storage often needs a homepage, two or three service pages, a service-area page, and contact. Six pages is the scope inside KRIVA’s $4,800 starting price. A national van line is a different site.</p>
++<h3>How many pages does a mover need?</h3><p>Enough to separate the services you sell. A local mover with packing and storage often needs a homepage, two or three service pages, a service-area page, and contact. Six pages is the scope inside KRIVA’s $3,600 starting price. A national van line is a different site.</p>
+       <p class="art-end"><a href="/solutions/moving-company-websites">See moving company website design</a> or <a href="#inquire">get a website quote</a>.</p>
+     </div>
+     <nav class="rel-sol" aria-label="Related pages">
+diff --git a/kriva-insight-trucking-website-cost.html b/kriva-insight-trucking-website-cost.html
+index ab0ef7b..9e1f014 100644
+--- a/kriva-insight-trucking-website-cost.html
++++ b/kriva-insight-trucking-website-cost.html
+@@ -59,7 +59,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <link rel="stylesheet" href="/shared/tokens.css?v=brand1">
+ <link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+ <title>How Much Does a Trucking Company Website Cost? | KRIVA</title>
+-<meta name="description" content="Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $4,800 starting scope includes.">
++<meta name="description" content="Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $3,600 starting scope includes.">
+ <link rel="canonical" href="https://krivatechnologies.com/insights/trucking-company-website-cost">
+ <!-- KRIVA_SEO_START -->
+ <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+@@ -75,7 +75,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <link rel="alternate" type="application/rss+xml" title="KRIVA Insights" href="https://krivatechnologies.com/feed.xml">
+ <!-- KRIVA_SEO_END -->
+ <meta property="og:title" content="How much does a trucking company website cost?">
+-<meta property="og:description" content="Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $4,800 starting scope includes.">
++<meta property="og:description" content="Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $3,600 starting scope includes.">
+ <meta property="og:url" content="https://krivatechnologies.com/insights/trucking-company-website-cost">
+ <!-- KRIVA_OG_IMAGE_START -->
+ <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
+@@ -85,7 +85,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <meta property="og:image:alt" content="Guide to trucking company website cost">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="How much does a trucking company website cost?">
+-<meta name="twitter:description" content="Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $4,800 starting scope includes.">
++<meta name="twitter:description" content="Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $3,600 starting scope includes.">
+ <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
+ <!-- KRIVA_OG_IMAGE_END -->
+ <meta property="og:type" content="article">
+@@ -418,7 +418,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+             <span>KRIVA Technologies</span>
+           </div>
+           <div class="ix-actions">
+-            <a class="ix-btn" href="#kriva"><span>What $4,800 includes</span><i aria-hidden="true"></i></a>
++            <a class="ix-btn" href="#kriva"><span>What $3,600 includes</span><i aria-hidden="true"></i></a>
+             <a class="ix-link" href="#market"><span>Compare published prices</span><i aria-hidden="true"></i></a>
+           </div>
+         </div>
+@@ -436,7 +436,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+               <li class="ix-row"><p class="ix-row-n">Agency builds, 2026 roundup<small>About $3,000 to $9,000</small></p><div class="ix-track" aria-hidden="true"><span class="ix-bar" style="--a:43.8;--b:70.6"></span></div></li>
+               <li class="ix-row"><p class="ix-row-n">Sites with portals<small>About $7,500 to $25,000+</small></p><div class="ix-track" aria-hidden="true"><span class="ix-bar open" style="--a:66.1;--b:100"></span></div></li>
+             </ul>
+-            <div class="ix-mark" aria-hidden="true" style="--k:55.2"><span class="ix-mark-lab">KRIVA from $4,800</span><span class="ix-mark-line"></span></div>
++            <div class="ix-mark" aria-hidden="true" style="--k:48.2"><span class="ix-mark-lab">KRIVA from $3,600</span><span class="ix-mark-line"></span></div>
+           </div>
+           <div class="ix-axis" aria-hidden="true"><span style="--a:0">$500</span><span style="--a:16.9">$1k</span><span style="--a:39.3">$2.5k</span><span style="--a:73.2">$10k</span><span style="--a:95.5">$25k</span></div>
+           <figcaption id="ixSpecCap">
+@@ -463,7 +463,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+         </nav>
+         <div class="ix-toc-card">
+           <p>Starting scope</p>
+-          <b>$4,800</b>
++          <b>$3,600</b>
+           <small>Up to six pages, custom design, one form, launch on your domain.</small>
+           <a href="#inquire">Get a website quote <i aria-hidden="true">→</i></a>
+         </div>
+@@ -488,16 +488,16 @@ html.js [data-s].in>*{opacity:1;transform:none}
+             <tr><td data-label="Offer">Sites with portals</td><td data-label="Published price">About $7,500 to $25,000 or more<span class="ix-mini" aria-hidden="true"><b class="open" style="--a:66.1;--b:100"></b></span></td><td data-label="What they describe">Quote requests into dispatch, tracking, or a driver portal</td></tr>
+           </tbody>
+         </table>
+-        <p class="ix-tlegend" aria-hidden="true"><span class="ix-key"><i></i>Published range</span><span class="ix-key"><i class="m"></i>Monthly plan</span><span class="ix-key"><i class="k"></i>KRIVA starts at $4,800</span><span>Log scale, $500 to $30,000</span></p>
++        <p class="ix-tlegend" aria-hidden="true"><span class="ix-key"><i></i>Published range</span><span class="ix-key"><i class="m"></i>Monthly plan</span><span class="ix-key"><i class="k"></i>KRIVA starts at $3,600</span><span>Log scale, $500 to $30,000</span></p>
+       </div>
+       <div class="ix-note"><p>Sources: <a href="https://www.digitrucksolutions.com/pricing">DigiTruck pricing</a>, <a href="https://gatorbyte.net/web-design/trucking-companies/">GatorByte</a>, <a href="https://vaylostudios.com/services/trucking-websites">Vaylo Studios</a>, and <a href="https://codeifydigital.com/trucking-company-website-cost/">Codeify Digital’s 2026 roundup</a> of other agencies’ published ranges. Read them before you treat any row as your budget. A monthly plan is not comparable to a one-time build you own.</p></div>
+ 
+       <h2 id="kriva">What KRIVA’s starting price includes</h2>
+-      <p>A trucking, moving, or logistics website starts at $4,800. That scope is a working session, custom design, up to six pages, a mobile layout, one quote or contact form, on-page titles and headings, and launch on your domain. Photography, extra pages, a content editor, and anything behind a login are outside it.</p>
++      <p>A trucking, moving, or logistics website starts at $3,600. That scope is a working session, custom design, up to six pages, a mobile layout, one quote or contact form, on-page titles and headings, and launch on your domain. Photography, extra pages, a content editor, and anything behind a login are outside it.</p>
+       <figure class="ix-scope ix-wide" aria-label="KRIVA starting scope at a glance">
+         <div class="ix-scope-price">
+           <p class="k">Starts at</p>
+-          <p class="v">$<span data-count="4800">4,800</span></p>
++          <p class="v">$<span data-count="3600">3,600</span></p>
+           <p class="s">Trucking, moving, or logistics website</p>
+         </div>
+         <div class="ix-scope-in">
+@@ -522,7 +522,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+           </ul>
+         </div>
+       </figure>
+-      <p>That price sits with the professional custom builds above, not with the $899 packages. It is lower than many US agency quotes for a multi-audience carrier site, and it is not a claim that every project lands at $4,800. The <a href="/pricing#websites">pricing page</a> lists what moves the number. The page we would build is described under <a href="/solutions/trucking-company-websites">trucking company website design</a>.</p>
++      <p>That price sits with the professional custom builds above, not with the $899 packages. It is lower than many US agency quotes for a multi-audience carrier site, and it is not a claim that every project lands at $3,600. The <a href="/pricing#websites">pricing page</a> lists what moves the number. The page we would build is described under <a href="/solutions/trucking-company-websites">trucking company website design</a>.</p>
+ 
+       <h2 id="choose">How to choose a budget</h2>
+       <ul class="ix-ladder ix-wide">
+@@ -540,14 +540,14 @@ html.js [data-s].in>*{opacity:1;transform:none}
+ 
+       <h2 id="faq">Questions we hear before a quote</h2>
+       <div class="ix-faq ix-wide">
+-        <div class="ix-q" data-x data-spot><h3>What does KRIVA charge for a trucking website?</h3><p>A defined website of up to six pages, custom design, one form, and launch starts at $4,800. Tracking portals, driver applications with a login, and TMS connections are quoted separately.</p></div>
++        <div class="ix-q" data-x data-spot><h3>What does KRIVA charge for a trucking website?</h3><p>A defined website of up to six pages, custom design, one form, and launch starts at $3,600. Tracking portals, driver applications with a login, and TMS connections are quoted separately.</p></div>
+         <div class="ix-q" data-x data-spot style="--d:.1s"><h3>Why do other sites advertise $899 trucking websites?</h3><p>Those offers are usually a small page count, a template, or a monthly plan. They can be the right buy for an owner-operator who needs a phone number online. They are a different product from a custom site with separate shipper and driver paths.</p></div>
+       </div>
+ 
+       <div class="ix-end ix-wide" data-dark data-x>
+         <p class="ix-end-k">Next step</p>
+         <p class="art-end"><a href="/solutions/trucking-company-websites">See trucking website design</a> or <a href="#inquire">get a website quote</a>.</p>
+-        <div class="ix-end-facts" aria-hidden="true"><span>From <b>$4,800</b></span><span>Up to <b>six pages</b></span><span>You <b>own the site</b></span></div>
++        <div class="ix-end-facts" aria-hidden="true"><span>From <b>$3,600</b></span><span>Up to <b>six pages</b></span><span>You <b>own the site</b></span></div>
+       </div>
+ 
+       <nav class="ix-rel ix-wide" aria-label="Related pages">
+diff --git a/kriva-insights-index.html b/kriva-insights-index.html
+index 8f7fb6e..f761bcd 100644
+--- a/kriva-insights-index.html
++++ b/kriva-insights-index.html
+@@ -389,7 +389,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+       <div class="ix-stack" data-ix-stack>
+         <a class="ix-note" href="/insights/trucking-company-website-cost" data-cursor="Read" data-tone="amber">
+           <span class="ix-note-top"><span class="ix-pill">Trucking &amp; Logistics</span><span class="ix-tnum">Nov 2026 · 8 min</span></span>
+-          <span class="ix-note-art ix-art-site" aria-hidden="true"><span class="b"></span><span class="h"></span><span class="l"></span><span class="l s"></span><span class="tag">from $4,800</span></span>
++          <span class="ix-note-art ix-art-site" aria-hidden="true"><span class="b"></span><span class="h"></span><span class="l"></span><span class="l s"></span><span class="tag">from $3,600</span></span>
+           <strong>How much does a trucking company website cost?</strong>
+         </a>
+         <a class="ix-note" href="/insights/moving-company-website-features" data-cursor="Read" data-tone="amber">
+@@ -534,12 +534,12 @@ html.js [data-s].in>*{opacity:1;transform:none}
+       <article class="ix-card is-big" data-cat="Trucking &amp; Logistics" data-tone="amber" data-cursor="Read">
+         <div class="ix-cover" aria-hidden="true">
+           <span class="ix-no ix-tnum">01</span>
+-          <span class="ix-art ix-art-site"><span class="b"></span><span class="h"></span><span class="l"></span><span class="l s"></span><span class="cta">Get a quote</span><span class="tag">from $4,800</span></span>
++          <span class="ix-art ix-art-site"><span class="b"></span><span class="h"></span><span class="l"></span><span class="l s"></span><span class="cta">Get a quote</span><span class="tag">from $3,600</span></span>
+         </div>
+         <div class="ix-card-body">
+           <p class="ix-card-meta"><span class="ix-pill cat">Trucking &amp; Logistics</span><span class="ix-when ix-tnum">Nov 2026<i aria-hidden="true"></i>8 min read</span></p>
+           <h3><a href="/insights/trucking-company-website-cost">How much does a trucking company website cost?</a></h3>
+-          <p class="ex">Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.</p>
++          <p class="ex">Published 2026 prices from other companies, and what KRIVA’s $3,600 starting website scope includes.</p>
+           <p class="rel"><a href="/solutions/trucking-company-websites">Trucking websites</a> · <a href="/pricing">Pricing</a></p>
+           <span class="ix-read" aria-hidden="true">Read <i></i></span>
+         </div>
+diff --git a/kriva-pricing.html b/kriva-pricing.html
+index aeda46a..b7b6d41 100644
+--- a/kriva-pricing.html
++++ b/kriva-pricing.html
+@@ -436,7 +436,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+           <div class="pz-est-scope" aria-live="polite">
+             <p class="pz-est-k">Scope</p>
+             <p class="pz-est-name" data-pz-name>Website design and development</p>
+-            <p class="pz-est-price"><small>Starts at</small><span class="svx-tnum" data-pz-price>$4,800</span></p>
++            <p class="pz-est-price"><small>Starts at</small><span class="svx-tnum" data-pz-price>$3,600</span></p>
+             <p class="pz-est-bar" aria-hidden="true"><i data-pz-bar></i></p>
+           </div>
+           <ol class="pz-est-rows" aria-hidden="true">
+@@ -482,11 +482,11 @@ html.js [data-s].in>*{opacity:1;transform:none}
+       <aside class="pz-index" aria-label="Starting prices at a glance">
+         <p class="pz-index-k"><span>Scope</span><span>Starts at</span></p>
+         <ol data-pz-index>
+-          <li><a href="#websites" style="--w:.267"><b>Website design and development</b><span class="svx-tnum">$4,800</span><i aria-hidden="true"></i></a></li>
+-          <li><a href="#mobile" style="--w:1"><b>Mobile application design and development</b><span class="svx-tnum">$18,000</span><i aria-hidden="true"></i></a></li>
+-          <li><a href="#design" style="--w:.361"><b>UI/UX and SaaS product design</b><span class="svx-tnum">$6,500</span><i aria-hidden="true"></i></a></li>
+-          <li><a href="#software" style="--w:.833"><b>Custom software and dashboards</b><span class="svx-tnum">$15,000</span><i aria-hidden="true"></i></a></li>
+-          <li><a href="#accounting" style="--w:.444"><b>QuickBooks and Xero integrations</b><span class="svx-tnum">$8,000</span><i aria-hidden="true"></i></a></li>
++          <li><a href="#websites" style="--w:.267"><b>Website design and development</b><span class="svx-tnum">$3,600</span><i aria-hidden="true"></i></a></li>
++          <li><a href="#mobile" style="--w:1"><b>Mobile application design and development</b><span class="svx-tnum">$13,500</span><i aria-hidden="true"></i></a></li>
++          <li><a href="#design" style="--w:.361"><b>UI/UX and SaaS product design</b><span class="svx-tnum">$4,875</span><i aria-hidden="true"></i></a></li>
++          <li><a href="#software" style="--w:.833"><b>Custom software and dashboards</b><span class="svx-tnum">$11,250</span><i aria-hidden="true"></i></a></li>
++          <li><a href="#accounting" style="--w:.444"><b>QuickBooks and Xero integrations</b><span class="svx-tnum">$6,000</span><i aria-hidden="true"></i></a></li>
+         </ol>
+         <p class="pz-index-note">Bars are drawn to scale against the highest starting price.</p>
+       </aside>
+@@ -496,7 +496,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+           <div class="pz-card-head">
+             <p class="pz-card-n" aria-hidden="true">01</p>
+             <h3 class="pz-card-t">Website design and development</h3>
+-            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="4800">$4,800</span></p>
++            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="3600">$3,600</span></p>
+           </div>
+           <p class="pz-for">For a trucking, moving, or logistics company that needs a credible custom site, not a template with the logo swapped.</p>
+           <div class="pz-card-body">
+@@ -525,7 +525,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+           <div class="pz-card-head">
+             <p class="pz-card-n" aria-hidden="true">02</p>
+             <h3 class="pz-card-t">Mobile application design and development</h3>
+-            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="18000">$18,000</span></p>
++            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="13500">$13,500</span></p>
+           </div>
+           <p class="pz-for">For one role and one job: a driver capturing proof of delivery, or a customer checking status.</p>
+           <div class="pz-card-body">
+@@ -552,7 +552,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+           <div class="pz-card-head">
+             <p class="pz-card-n" aria-hidden="true">03</p>
+             <h3 class="pz-card-t">UI/UX and SaaS product design</h3>
+-            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="6500">$6,500</span></p>
++            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="4875">$4,875</span></p>
+           </div>
+           <p class="pz-for">For one core workflow: the screens a dispatcher, broker, or new SaaS user actually completes.</p>
+           <div class="pz-card-body">
+@@ -579,7 +579,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+           <div class="pz-card-head">
+             <p class="pz-card-n" aria-hidden="true">04</p>
+             <h3 class="pz-card-t">Custom software and dashboards</h3>
+-            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="15000">$15,000</span></p>
++            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="11250">$11,250</span></p>
+           </div>
+           <p class="pz-for">For one internal tool: one team, one workflow, one dashboard, code you own.</p>
+           <div class="pz-card-body">
+@@ -606,7 +606,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+           <div class="pz-card-head">
+             <p class="pz-card-n" aria-hidden="true">05</p>
+             <h3 class="pz-card-t">QuickBooks and Xero integrations</h3>
+-            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="8000">$8,000</span></p>
++            <p class="pz-price"><small>Starts at</small><span class="svx-tnum" data-pz-count="6000">$6,000</span></p>
+           </div>
+           <p class="pz-for">For one accounting product and a defined set of records, usually customers and invoices, or invoices and payments.</p>
+           <div class="pz-card-body">
+diff --git a/kriva-redesign.html b/kriva-redesign.html
+index 51a6bdf..ad5abf2 100644
+--- a/kriva-redesign.html
++++ b/kriva-redesign.html
+@@ -331,7 +331,6 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <nav class="x-rail" aria-label="On this page">
+  <ol>
+   <li><a href="#main" data-rail="top"><span>Start</span></a></li>
+-  <li><a href="#services" data-rail="services"><span>Services</span></a></li>
+   <li><a href="#solutions" data-rail="solutions"><span>Who we work with</span></a></li>
+   <li><a href="#workflow" data-rail="workflow"><span>Follow one load</span></a></li>
+   <li><a href="#capabilities" data-rail="capabilities"><span>What we build</span></a></li>
+@@ -339,6 +338,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+   <li><a href="#work" data-rail="work"><span>Work</span></a></li>
+   <li><a href="#why" data-rail="why"><span>Why KRIVA</span></a></li>
+   <li><a href="#process" data-rail="process"><span>How it works</span></a></li>
++  <li><a href="#services" data-rail="services"><span>Services</span></a></li>
+   <li><a href="#faq" data-rail="faq"><span>Questions</span></a></li>
+   <li><a href="#inquire" data-rail="inquire"><span>Start here</span></a></li>
+  </ol>
+@@ -433,7 +433,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    </figure>
+   </div>
+  </div>
+- <a class="x-scroll" href="#services" aria-label="Scroll to services"><span aria-hidden="true">Scroll</span><i aria-hidden="true"></i></a>
++ <a class="x-scroll" href="#solutions" aria-label="Scroll to who we work with"><span aria-hidden="true">Scroll</span><i aria-hidden="true"></i></a>
+ </section>
+ 
+ <section class="x-clients" id="clients" aria-labelledby="cl-h">
+@@ -453,26 +453,6 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  </div>
+ </section>
+ 
+-<section class="x-sec x-svc" id="services" aria-labelledby="svc-h">
+- <div class="wrap">
+-  <header class="x-head">
+-   <div class="x-head-main">
+-    <p class="k-kicker">What you can hire us for</p>
+-    <h2 id="svc-h" data-split>Five services. One team.</h2>
+-   </div>
+-   <p class="k-lede x-head-aside" data-x>Each starting price is a defined first scope. A dispatch platform, a booking system, or a multi-role product is quoted after we see the workflow.</p>
+-  </header>
+-  <ol class="x-index">
+-   <li data-x><a class="x-row" href="/services/web-development" data-cursor="View"><span class="x-row-n">01</span><h3>Websites</h3><p>The public site shippers, customers, and drivers see first. Services, coverage, and a quote form.</p><span class="x-price"><small>Starts at</small> $4,800</span><span class="x-arrow" aria-hidden="true"></span></a></li>
+-   <li data-x><a class="x-row" href="/services/mobile-applications" data-cursor="View"><span class="x-row-n">02</span><h3>Mobile app development</h3><p>The job that happens on a phone: proof of delivery, a status check, or a booking request.</p><span class="x-price"><small>Starts at</small> $18,000</span><span class="x-arrow" aria-hidden="true"></span></a></li>
+-   <li data-x><a class="x-row" href="/services/product-design" data-cursor="View"><span class="x-row-n">03</span><h3>UI/UX and SaaS design</h3><p>The screens for one workflow, decided before anyone writes the product code.</p><span class="x-price"><small>Starts at</small> $6,500</span><span class="x-arrow" aria-hidden="true"></span></a></li>
+-   <li data-x><a class="x-row" href="/pricing#software" data-cursor="View"><span class="x-row-n">04</span><h3>Custom software</h3><p>The internal tool that replaces the spreadsheet beside your TMS or office board.</p><span class="x-price"><small>Starts at</small> $15,000</span><span class="x-arrow" aria-hidden="true"></span></a></li>
+-   <li data-x><a class="x-row" href="/solutions/accounting-integrations" data-cursor="View"><span class="x-row-n">05</span><h3>QuickBooks and Xero</h3><p>Invoices and payments that stay in step with the books, with failures a person can see.</p><span class="x-price"><small>Starts at</small> $8,000</span><span class="x-arrow" aria-hidden="true"></span></a></li>
+-  </ol>
+-  <p class="k-note x-note"><a href="/pricing">See what each starting price includes</a>. Industry pages: <a href="/solutions/trucking-company-websites">trucking company websites</a> and <a href="/solutions/moving-company-websites">moving company websites</a>.</p>
+- </div>
+-</section>
+-
+ <section class="x-sec x-paths" id="solutions" aria-labelledby="sol-h">
+  <div class="wrap">
+   <header class="x-head">
+@@ -888,6 +868,26 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  </div>
+ </section>
+ 
++<section class="x-sec x-svc" id="services" aria-labelledby="svc-h">
++ <div class="wrap">
++  <header class="x-head">
++   <div class="x-head-main">
++    <p class="k-kicker">What you can hire us for</p>
++    <h2 id="svc-h" data-split>Five services. One team.</h2>
++   </div>
++   <p class="k-lede x-head-aside" data-x>Each starting price is a defined first scope. A dispatch platform, a booking system, or a multi-role product is quoted after we see the workflow.</p>
++  </header>
++  <ol class="x-index">
++   <li data-x><a class="x-row" href="/services/web-development" data-cursor="View"><span class="x-row-n">01</span><h3>Websites</h3><p>The public site shippers, customers, and drivers see first. Services, coverage, and a quote form.</p><span class="x-price"><small>Starts at</small> $3,600</span><span class="x-arrow" aria-hidden="true"></span></a></li>
++   <li data-x><a class="x-row" href="/services/mobile-applications" data-cursor="View"><span class="x-row-n">02</span><h3>Mobile app development</h3><p>The job that happens on a phone: proof of delivery, a status check, or a booking request.</p><span class="x-price"><small>Starts at</small> $13,500</span><span class="x-arrow" aria-hidden="true"></span></a></li>
++   <li data-x><a class="x-row" href="/services/product-design" data-cursor="View"><span class="x-row-n">03</span><h3>UI/UX and SaaS design</h3><p>The screens for one workflow, decided before anyone writes the product code.</p><span class="x-price"><small>Starts at</small> $4,875</span><span class="x-arrow" aria-hidden="true"></span></a></li>
++   <li data-x><a class="x-row" href="/pricing#software" data-cursor="View"><span class="x-row-n">04</span><h3>Custom software</h3><p>The internal tool that replaces the spreadsheet beside your TMS or office board.</p><span class="x-price"><small>Starts at</small> $11,250</span><span class="x-arrow" aria-hidden="true"></span></a></li>
++   <li data-x><a class="x-row" href="/solutions/accounting-integrations" data-cursor="View"><span class="x-row-n">05</span><h3>QuickBooks and Xero</h3><p>Invoices and payments that stay in step with the books, with failures a person can see.</p><span class="x-price"><small>Starts at</small> $6,000</span><span class="x-arrow" aria-hidden="true"></span></a></li>
++  </ol>
++  <p class="k-note x-note"><a href="/pricing">See what each starting price includes</a>. Industry pages: <a href="/solutions/trucking-company-websites">trucking company websites</a> and <a href="/solutions/moving-company-websites">moving company websites</a>.</p>
++ </div>
++</section>
++
+ <section class="x-sec x-faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap x-faq-grid">
+   <header class="x-faq-head">
+diff --git a/kriva-service-api-integrations.html b/kriva-service-api-integrations.html
+index 69ed5cd..1ec1db8 100644
+--- a/kriva-service-api-integrations.html
++++ b/kriva-service-api-integrations.html
+@@ -464,7 +464,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+     <h1 class="svx-h1 ai-h1"><span class="svx-l"><span>API integration services</span></span> <span class="svx-l"><span><em>that hold after the first sync</em></span></span></h1>
+     <div class="svx-hero-grid ai-hero-grid">
+       <div class="svx-hero-copy">
+-        <p class="svx-lede lede">When webhooks succeed in logs but finance still exports CSVs, the connector is not done. We map source events to idempotent writes, validation, and exception queues someone can close. A QuickBooks or Xero sync for one product and a defined set of records <a class="ai-price" href="/pricing#accounting">starts at $8,000</a>.</p>
++        <p class="svx-lede lede">When webhooks succeed in logs but finance still exports CSVs, the connector is not done. We map source events to idempotent writes, validation, and exception queues someone can close. A QuickBooks or Xero sync for one product and a defined set of records <a class="ai-price" href="/pricing#accounting">starts at $6,000</a>.</p>
+         <div class="svx-actions">
+           <a href="/contact#book" class="btn svx-btn" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+           <a href="/contact#brief" class="svx-link" data-cursor="Brief"><span>Send a project brief</span><i aria-hidden="true">→</i></a>
+diff --git a/kriva-service-dashboard-design.html b/kriva-service-dashboard-design.html
+index 1279a84..c347ded 100644
+--- a/kriva-service-dashboard-design.html
++++ b/kriva-service-dashboard-design.html
+@@ -448,7 +448,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+     <h1 class="svx-h1 dbx-h1"><span class="svx-l"><span>Fleet and business dashboards</span></span> <span class="svx-l"><span>that show <em>the late load first</em></span></span></h1>
+     <div class="svx-hero-grid dbx-hero-grid">
+       <div class="svx-hero-copy dbx-hero-copy">
+-        <p class="svx-lede lede dbx-hero-lede">Dashboard design for fleet, dispatch, and billing teams, and for SaaS admin panels. What is at risk, who owns it, and what to do next come before equal-weight charts. One internal workflow and its dashboard <a href="/pricing#software">starts at $15,000</a>. A full TMS is quoted separately.</p>
++        <p class="svx-lede lede dbx-hero-lede">Dashboard design for fleet, dispatch, and billing teams, and for SaaS admin panels. What is at risk, who owns it, and what to do next come before equal-weight charts. One internal workflow and its dashboard <a href="/pricing#software">starts at $11,250</a>. A full TMS is quoted separately.</p>
+         <div class="svx-actions">
+           <a href="/contact#book" class="btn svx-btn" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+           <a href="#inquire" class="svx-link"><span>Send a quick inquiry</span><i aria-hidden="true">→</i></a>
+diff --git a/kriva-service-mobile-applications.html b/kriva-service-mobile-applications.html
+index a7e0cc1..fbc11b1 100644
+--- a/kriva-service-mobile-applications.html
++++ b/kriva-service-mobile-applications.html
+@@ -442,7 +442,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+         <p class="svx-kicker eyebrow svx-pill"><i aria-hidden="true"></i>Driver and field mobile apps</p>
+         <h1 class="svx-h1 mb-h1" data-split>Driver and field app development that works <em>one-handed and offline</em></h1>
+         <p class="svx-lede lede mb-lede">Mobile app design and development for drivers, yard and field staff, and B2B companion apps. Accept a load, update status, capture proof of delivery, and recover cleanly when the signal drops.</p>
+-        <p class="mb-price">A focused first app, one role and one workflow on iOS and Android, <a href="/pricing#mobile" class="mb-price-link" data-cursor="Pricing">starts at $18,000</a>. A short retry when the signal drops is part of that first app. Offline use for a full day is quoted separately.</p>
++        <p class="mb-price">A focused first app, one role and one workflow on iOS and Android, <a href="/pricing#mobile" class="mb-price-link" data-cursor="Pricing">starts at $13,500</a>. A short retry when the signal drops is part of that first app. Offline use for a full day is quoted separately.</p>
+         <div class="svx-actions">
+           <a href="/contact#book" class="btn svx-btn" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+           <a href="/contact#brief" class="svx-link"><span>Send a project brief</span><i aria-hidden="true">→</i></a>
+diff --git a/kriva-service-product-design.html b/kriva-service-product-design.html
+index b60dd99..0694e09 100644
+--- a/kriva-service-product-design.html
++++ b/kriva-service-product-design.html
+@@ -436,7 +436,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+     <p class="svx-lede lede">Product design for logistics software and SaaS, mapped before code</p>
+     <div class="svx-hero-grid pdx-hero-grid">
+       <div class="svx-hero-copy">
+-        <p class="svx-lede lede pdx-hero-lede">Product design for logistics platforms and B2B SaaS: role-by-role journeys, one clickable prototype, and launch-ready UI that covers dispatch, driver, customer, and back-office surfaces together. Design for one core workflow <a href="/pricing#design">starts at $6,500</a>.</p>
++        <p class="svx-lede lede pdx-hero-lede">Product design for logistics platforms and B2B SaaS: role-by-role journeys, one clickable prototype, and launch-ready UI that covers dispatch, driver, customer, and back-office surfaces together. Design for one core workflow <a href="/pricing#design">starts at $4,875</a>.</p>
+         <div class="svx-actions">
+           <a href="#inquire" class="btn svx-btn" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+           <a href="#proof" class="svx-link" data-cursor="Case"><span>See ShiftRail</span><i aria-hidden="true">→</i></a>
+diff --git a/kriva-service-web-development.html b/kriva-service-web-development.html
+index 40104b6..f501fa8 100644
+--- a/kriva-service-web-development.html
++++ b/kriva-service-web-development.html
+@@ -59,7 +59,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <link rel="stylesheet" href="/shared/tokens.css?v=brand1">
+ <link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+ <title>Web Development for Trucking &amp; Logistics | KRIVA</title>
+-<meta name="description" content="Next.js websites for freight and B2B SaaS teams. A six-page site with one form starts at $4,800. A CMS, login, or booking system is quoted separately.">
++<meta name="description" content="Next.js websites for freight and B2B SaaS teams. A six-page site with one form starts at $3,600. A CMS, login, or booking system is quoted separately.">
+ <link rel="canonical" href="https://krivatechnologies.com/services/web-development">
+ <!-- KRIVA_SEO_START -->
+ <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+@@ -77,7 +77,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <meta property="og:site_name" content="KRIVA Technologies">
+ <meta property="og:locale" content="en_US">
+ <meta property="og:title" content="Web Development for Trucking &amp; Logistics | KRIVA">
+-<meta property="og:description" content="Next.js websites for freight and B2B SaaS. A six-page site with one form starts at $4,800. A content editor, login, or booking system is quoted separately.">
++<meta property="og:description" content="Next.js websites for freight and B2B SaaS. A six-page site with one form starts at $3,600. A content editor, login, or booking system is quoted separately.">
+ <meta property="og:url" content="https://krivatechnologies.com/services/web-development">
+ <!-- KRIVA_OG_IMAGE_START -->
+ <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
+@@ -86,7 +86,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <meta property="og:image:alt" content="Service · Web development for trucking and logistics companies">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Web Development for Trucking &amp; Logistics | KRIVA">
+-<meta name="twitter:description" content="Next.js websites for freight and B2B SaaS. A six-page site with one form starts at $4,800. A content editor, login, or booking system is quoted separately.">
++<meta name="twitter:description" content="Next.js websites for freight and B2B SaaS. A six-page site with one form starts at $3,600. A content editor, login, or booking system is quoted separately.">
+ <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
+ <!-- KRIVA_OG_IMAGE_END -->
+ <style>
+@@ -436,7 +436,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+     <p class="svx-lede lede">Web development for trucking and logistics companies</p>
+     <div class="svx-hero-grid wd-hero-grid">
+       <div class="svx-hero-copy">
+-        <p class="svx-lede lede wd-hero-lede">Next.js sites and public web surfaces for trucking, logistics, auto-transport, and B2B SaaS teams: quote requests, service pages, and the marketing site around them. <a href="/pricing#websites">The $4,800 start</a> covers up to six public pages and one form. A content editor, a customer login, or a booking system is quoted separately. Screens behind a login are designed under <a href="/services/web-application-design">web application design</a>. Industry pages: <a href="/solutions/trucking-company-websites">trucking company websites</a> and <a href="/solutions/moving-company-websites">moving company websites</a>.</p>
++        <p class="svx-lede lede wd-hero-lede">Next.js sites and public web surfaces for trucking, logistics, auto-transport, and B2B SaaS teams: quote requests, service pages, and the marketing site around them. <a href="/pricing#websites">The $3,600 start</a> covers up to six public pages and one form. A content editor, a customer login, or a booking system is quoted separately. Screens behind a login are designed under <a href="/services/web-application-design">web application design</a>. Industry pages: <a href="/solutions/trucking-company-websites">trucking company websites</a> and <a href="/solutions/moving-company-websites">moving company websites</a>.</p>
+         <div class="svx-actions">
+           <a href="/contact#book" class="btn svx-btn" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+           <a href="#scenarios" class="svx-link" data-cursor="Scroll"><span>See the scenarios</span><i aria-hidden="true">→</i></a>
+diff --git a/kriva-solution-accounting.html b/kriva-solution-accounting.html
+index 998b14a..8831512 100644
+--- a/kriva-solution-accounting.html
++++ b/kriva-solution-accounting.html
+@@ -454,7 +454,7 @@ html.js [data-s].in>*{opacity:1;transform:none}
+     <p class="sx-kicker eyebrow sx-hero-meta-row"><span class="sx-pulse" aria-hidden="true"></span>For SaaS and operations platforms with live books</p>
+     <h1 class="sx-fh1 acx-h1"><span class="sx-l"><span>QuickBooks and Xero</span></span> <span class="sx-l"><span>integrations your</span></span> <span class="sx-l sx-l--em"><span>finance team can trust</span></span></h1>
+     <div class="sx-hero-in">
+-     <p class="sx-lede lede">We design and build QuickBooks Online and Xero integrations that keep invoices, payments, and customers in step with your ledger. When a record does not match, finance sees it in an exception queue with a clear next step, not in a log file an engineer has to read. A defined sync with one accounting product <a class="acx-price" href="/pricing#accounting">starts at $8,000</a>.</p>
++     <p class="sx-lede lede">We design and build QuickBooks Online and Xero integrations that keep invoices, payments, and customers in step with your ledger. When a record does not match, finance sees it in an exception queue with a clear next step, not in a log file an engineer has to read. A defined sync with one accounting product <a class="acx-price" href="/pricing#accounting">starts at $6,000</a>.</p>
+      <div class="sx-actions">
+       <a href="/contact#book" class="sx-btn" data-magnet><span>Book a free 20-minute fit call</span><i aria-hidden="true">→</i></a>
+       <a href="/contact#brief" class="sx-link"><span>Send a project brief</span><i aria-hidden="true">→</i></a>
+diff --git a/kriva-solution-moving-websites.html b/kriva-solution-moving-websites.html
+index 24183fc..0d37aa7 100644
+--- a/kriva-solution-moving-websites.html
++++ b/kriva-solution-moving-websites.html
+@@ -59,7 +59,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <link rel="stylesheet" href="/shared/tokens.css?v=brand1">
+ <link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+ <title>Moving Company Website Design | KRIVA</title>
+-<meta name="description" content="Moving company websites that collect origin, destination, move size, and date. For US movers, from $4,800. Booking software is quoted separately.">
++<meta name="description" content="Moving company websites that collect origin, destination, move size, and date. For US movers, from $3,600. Booking software is quoted separately.">
+ <link rel="canonical" href="https://krivatechnologies.com/solutions/moving-company-websites">
+ <!-- KRIVA_SEO_START -->
+ <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+@@ -75,7 +75,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <link rel="alternate" type="application/rss+xml" title="KRIVA Insights" href="https://krivatechnologies.com/feed.xml">
+ <!-- KRIVA_SEO_END -->
+ <meta property="og:title" content="Moving company website design for US movers">
+-<meta property="og:description" content="Moving company websites that collect origin, destination, move size, and date. Design starts at $4,800. Booking software is quoted separately.">
++<meta property="og:description" content="Moving company websites that collect origin, destination, move size, and date. Design starts at $3,600. Booking software is quoted separately.">
+ <meta property="og:url" content="https://krivatechnologies.com/solutions/moving-company-websites">
+ <!-- KRIVA_OG_IMAGE_START -->
+ <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
+@@ -84,7 +84,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <meta property="og:image:alt" content="Moving company website design by KRIVA Technologies">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Moving company website design for US movers">
+-<meta name="twitter:description" content="Moving company websites that collect origin, destination, move size, and date. Design starts at $4,800. Booking software is quoted separately.">
++<meta name="twitter:description" content="Moving company websites that collect origin, destination, move size, and date. Design starts at $3,600. Booking software is quoted separately.">
+ <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
+ <!-- KRIVA_OG_IMAGE_END -->
+ <meta property="og:type" content="website">
+@@ -610,8 +610,8 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
+     <li data-x data-spot><svg class="sx-check-ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg><span class="sx-check-n" aria-hidden="true">06</span>Work on a phone, because that is where the search started</li>
+    </ul>
+    <div class="sx-price" data-x>
+-    <p class="sx-price-fig" aria-hidden="true"><small>Website design and development starts at</small>$4,800</p>
+-    <p class="sx-body sx-price-p">The list above is what a useful mover site covers. Website design and development starts at $4,800 for up to six of those pages and one form. A content editor, a customer booking app, an inventory checklist, or an office CRM is priced from the <a href="/pricing#mobile">mobile</a> and <a href="/pricing#software">custom software</a> starting points, then adjusted to the workflow. Feature decisions are spelled out in <a href="/insights/moving-company-website-features">what a moving company website should include</a>.</p>
++    <p class="sx-price-fig" aria-hidden="true"><small>Website design and development starts at</small>$3,600</p>
++    <p class="sx-body sx-price-p">The list above is what a useful mover site covers. Website design and development starts at $3,600 for up to six of those pages and one form. A content editor, a customer booking app, an inventory checklist, or an office CRM is priced from the <a href="/pricing#mobile">mobile</a> and <a href="/pricing#software">custom software</a> starting points, then adjusted to the workflow. Feature decisions are spelled out in <a href="/insights/moving-company-website-features">what a moving company website should include</a>.</p>
+    </div>
+   </div>
+  </section>
+diff --git a/kriva-solution-trucking-websites.html b/kriva-solution-trucking-websites.html
+index 6fe5615..76f928f 100644
+--- a/kriva-solution-trucking-websites.html
++++ b/kriva-solution-trucking-websites.html
+@@ -59,7 +59,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <link rel="stylesheet" href="/shared/tokens.css?v=brand1">
+ <link rel="preload" href="/brand/fonts/figtree-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+ <title>Trucking Company Website Design | KRIVA</title>
+-<meta name="description" content="Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $4,800.">
++<meta name="description" content="Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $3,600.">
+ <link rel="canonical" href="https://krivatechnologies.com/solutions/trucking-company-websites">
+ <!-- KRIVA_SEO_START -->
+ <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+@@ -75,7 +75,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <link rel="alternate" type="application/rss+xml" title="KRIVA Insights" href="https://krivatechnologies.com/feed.xml">
+ <!-- KRIVA_SEO_END -->
+ <meta property="og:title" content="Trucking company website design for US carriers">
+-<meta property="og:description" content="Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $4,800.">
++<meta property="og:description" content="Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $3,600.">
+ <meta property="og:url" content="https://krivatechnologies.com/solutions/trucking-company-websites">
+ <!-- KRIVA_OG_IMAGE_START -->
+ <meta property="og:image" content="https://krivatechnologies.com/brand/og-default.png">
+@@ -84,7 +84,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ <meta property="og:image:alt" content="Trucking company website design by KRIVA Technologies">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Trucking company website design for US carriers">
+-<meta name="twitter:description" content="Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $4,800.">
++<meta name="twitter:description" content="Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $3,600.">
+ <meta name="twitter:image" content="https://krivatechnologies.com/brand/og-default.png">
+ <!-- KRIVA_OG_IMAGE_END -->
+ <meta name="twitter:image:alt" content="Trucking company website design by KRIVA Technologies">
+@@ -620,7 +620,7 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
+     </figure>
+ 
+     <ul class="sx-tfacts">
+-     <li data-x><b>$4,800</b><span>Starting scope, design and development</span></li>
++     <li data-x><b>$3,600</b><span>Starting scope, design and development</span></li>
+      <li data-x><b>Up to 6</b><span>Pages in the starting scope</span></li>
+      <li data-x><b>1 form</b><span>A quote or recruiting form</span></li>
+      <li data-x><b>Live URL</b><span>You review the site before launch</span></li>
+@@ -712,8 +712,8 @@ body.page-insight-truck .prose h2{scroll-margin-top:96px}
+    <div class="sx-ticket" data-x>
+     <div class="sx-ticket-price">
+      <span class="sx-ticket-k">Starting scope</span>
+-     <span class="sx-ticket-fig">$4,800</span>
+-     <p>The starting scope is $4,800 for up to six of those pages, custom design, one form, and launch.</p>
++     <span class="sx-ticket-fig">$3,600</span>
++     <p>The starting scope is $3,600 for up to six of those pages, custom design, one form, and launch.</p>
+      <a class="sx-link" href="/pricing#websites"><span>See website pricing</span><i aria-hidden="true">→</i></a>
+     </div>
+     <div class="sx-ticket-cut" aria-hidden="true"></div>
+diff --git a/scripts/build-us-growth-pages.cjs b/scripts/build-us-growth-pages.cjs
+index 3702a57..e282d6b 100644
+--- a/scripts/build-us-growth-pages.cjs
++++ b/scripts/build-us-growth-pages.cjs
+@@ -10,11 +10,11 @@ const ORG =
+ 
+ /** Published USD starting prices (defined scope on /pricing). */
+ const PRICE = {
+-  website: { usd: "$4,800", min: "4800" },
+-  mobile: { usd: "$18,000", min: "18000" },
+-  design: { usd: "$6,500", min: "6500" },
+-  software: { usd: "$15,000", min: "15000" },
+-  accounting: { usd: "$8,000", min: "8000" },
++  website: { usd: "$3,600", min: "3600" },
++  mobile: { usd: "$13,500", min: "13500" },
++  design: { usd: "$4,875", min: "4875" },
++  software: { usd: "$11,250", min: "11250" },
++  accounting: { usd: "$6,000", min: "6000" },
+ };
+ 
+ function attr(s) {
+@@ -489,7 +489,7 @@ const truckMain = `
+         <li>Authority and insurance details where a broker expects to find them</li>
+         <li>On-page titles, headings, and a mobile layout</li>
+       </ul>
+-      <p>The list above is what a useful carrier site covers. The starting scope is $4,800 for up to six of those pages, custom design, one form, and launch. More terminals, a recruiting portal, a content editor, or a tracking page fed by your TMS is quoted from the real scope. Engineering detail sits on <a href="/services/web-development">web development</a>.</p>
++      <p>The list above is what a useful carrier site covers. The starting scope is $3,600 for up to six of those pages, custom design, one form, and launch. More terminals, a recruiting portal, a content editor, or a tracking page fed by your TMS is quoted from the real scope. Engineering detail sits on <a href="/services/web-development">web development</a>.</p>
+ 
+       <h2 id="work">Sites we have designed</h2>
+       ${proof([
+@@ -554,7 +554,7 @@ const movingMain = `
+         <li>Give crews a page if you are hiring</li>
+         <li>Work on a phone, because that is where the search started</li>
+       </ul>
+-      <p>The list above is what a useful mover site covers. Website design and development starts at $4,800 for up to six of those pages and one form. A content editor, a customer booking app, an inventory checklist, or an office CRM is priced from the <a href="/pricing#mobile">mobile</a> and <a href="/pricing#software">custom software</a> starting points, then adjusted to the workflow. Feature decisions are spelled out in <a href="/insights/moving-company-website-features">what a moving company website should include</a>.</p>
++      <p>The list above is what a useful mover site covers. Website design and development starts at $3,600 for up to six of those pages and one form. A content editor, a customer booking app, an inventory checklist, or an office CRM is priced from the <a href="/pricing#mobile">mobile</a> and <a href="/pricing#software">custom software</a> starting points, then adjusted to the workflow. Feature decisions are spelled out in <a href="/insights/moving-company-website-features">what a moving company website should include</a>.</p>
+ 
+       <h2 id="work">Moving sites we have designed</h2>
+       ${proof([
+@@ -600,7 +600,7 @@ ${inquiry({
+ const costFaqs = [
+   {
+     q: "What does KRIVA charge for a trucking website?",
+-    a: "A defined website of up to six pages, custom design, one form, and launch starts at $4,800. Tracking portals, driver applications with a login, and TMS connections are quoted separately.",
++    a: "A defined website of up to six pages, custom design, one form, and launch starts at $3,600. Tracking portals, driver applications with a login, and TMS connections are quoted separately.",
+   },
+   {
+     q: "Why do other sites advertise $899 trucking websites?",
+@@ -644,8 +644,8 @@ const costMain = `
+       <p>Sources: <a href="https://www.digitrucksolutions.com/pricing">DigiTruck pricing</a>, <a href="https://gatorbyte.net/web-design/trucking-companies/">GatorByte</a>, <a href="https://vaylostudios.com/services/trucking-websites">Vaylo Studios</a>, and <a href="https://codeifydigital.com/trucking-company-website-cost/">Codeify Digital’s 2026 roundup</a> of other agencies’ published ranges. Read them before you treat any row as your budget. A monthly plan is not comparable to a one-time build you own.</p>
+ 
+       <h2 id="kriva">What KRIVA’s starting price includes</h2>
+-      <p>A trucking, moving, or logistics website starts at $4,800. That scope is a working session, custom design, up to six pages, a mobile layout, one quote or contact form, on-page titles and headings, and launch on your domain. Photography, extra pages, a content editor, and anything behind a login are outside it.</p>
+-      <p>That price sits with the professional custom builds above, not with the $899 packages. It is lower than many US agency quotes for a multi-audience carrier site, and it is not a claim that every project lands at $4,800. The <a href="/pricing#websites">pricing page</a> lists what moves the number. The page we would build is described under <a href="/solutions/trucking-company-websites">trucking company website design</a>.</p>
++      <p>A trucking, moving, or logistics website starts at $3,600. That scope is a working session, custom design, up to six pages, a mobile layout, one quote or contact form, on-page titles and headings, and launch on your domain. Photography, extra pages, a content editor, and anything behind a login are outside it.</p>
++      <p>That price sits with the professional custom builds above, not with the $899 packages. It is lower than many US agency quotes for a multi-audience carrier site, and it is not a claim that every project lands at $3,600. The <a href="/pricing#websites">pricing page</a> lists what moves the number. The page we would build is described under <a href="/solutions/trucking-company-websites">trucking company website design</a>.</p>
+ 
+       <h2 id="choose">How to choose a budget</h2>
+       <ul>
+@@ -681,7 +681,7 @@ const featureFaqs = [
+   },
+   {
+     q: "How many pages does a mover need?",
+-    a: "Enough to separate the services you sell. A local mover with packing and storage often needs a homepage, two or three service pages, a service-area page, and contact. Six pages is the scope inside KRIVA’s $4,800 starting price. A national van line is a different site.",
++    a: "Enough to separate the services you sell. A local mover with packing and storage often needs a homepage, two or three service pages, a service-area page, and contact. Six pages is the scope inside KRIVA’s $3,600 starting price. A national van line is a different site.",
+   },
+ ];
+ 
+@@ -725,7 +725,7 @@ const featureMain = `
+         <li>A blog you will not update</li>
+         <li>A separate page for every city in the state</li>
+       </ul>
+-      <p>Website design for this kind of site starts at $4,800 for up to six pages. See <a href="/solutions/moving-company-websites">moving company website design</a> and the <a href="/pricing">pricing page</a>. If you are choosing a partner rather than a feature list, the practical test is whether they can show moving sites they designed and will say what the first release will not include.</p>
++      <p>Website design for this kind of site starts at $3,600 for up to six pages. See <a href="/solutions/moving-company-websites">moving company website design</a> and the <a href="/pricing">pricing page</a>. If you are choosing a partner rather than a feature list, the practical test is whether they can show moving sites they designed and will say what the first release will not include.</p>
+ 
+       ${faqsHtml(featureFaqs)}
+       <p class="art-end"><a href="/solutions/moving-company-websites">See moving company website design</a> or <a href="#inquire">get a website quote</a>.</p>
+@@ -771,7 +771,7 @@ const pages = [
+     title: "Trucking Company Website Design | KRIVA",
+     ogTitle: "Trucking company website design for US carriers",
+     description:
+-      "Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $4,800.",
++      "Custom trucking company websites for US carriers: equipment, lanes, quote requests, and driver pages. Design and development starts at $3,600.",
+     imageAlt: "Trucking company website design by KRIVA Technologies",
+     ogType: "website",
+     bodyClass: "page-insight-truck",
+@@ -790,7 +790,7 @@ const pages = [
+     title: "Moving Company Website Design | KRIVA",
+     ogTitle: "Moving company website design for US movers",
+     description:
+-      "Moving company websites that collect origin, destination, move size, and date. US movers. Design and development starts at $4,800. Booking software is quoted separately.",
++      "Moving company websites that collect origin, destination, move size, and date. US movers. Design and development starts at $3,600. Booking software is quoted separately.",
+     imageAlt: "Moving company website design by KRIVA Technologies",
+     ogType: "website",
+     bodyClass: "page-insight-truck",
+@@ -809,7 +809,7 @@ const pages = [
+     title: "How Much Does a Trucking Company Website Cost? | KRIVA",
+     ogTitle: "How much does a trucking company website cost?",
+     description:
+-      "Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $4,800 starting scope includes.",
++      "Trucking website prices published in 2026, from template packages to portal builds, and what KRIVA’s $3,600 starting scope includes.",
+     imageAlt: "Guide to trucking company website cost",
+     ogType: "article",
+     section: "Trucking and logistics",
+@@ -1242,7 +1242,7 @@ function patchCopy() {
+         <div>
+           <p class="cat">Trucking &amp; Logistics</p>
+           <h3><a href="/insights/trucking-company-website-cost">How much does a trucking company website cost?</a></h3>
+-          <p class="ex">Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.</p>
++          <p class="ex">Published 2026 prices from other companies, and what KRIVA’s $3,600 starting website scope includes.</p>
+           <p class="rel"><a href="/solutions/trucking-company-websites">Trucking websites</a> · <a href="/pricing">Pricing</a></p>
+         </div>
+         <div class="meta"><span>Nov 2026</span><span>8 min read</span></div>
+@@ -1288,7 +1288,7 @@ function patchCopy() {
+       read: "8 min read",
+       published: "November 2026",
+       publishedISO: "2026-11-14",
+-      excerpt: "Published 2026 prices from other companies, and what KRIVA’s $4,800 starting website scope includes.",
++      excerpt: "Published 2026 prices from other companies, and what KRIVA’s $3,600 starting website scope includes.",
+       byline: "KRIVA Technologies",
+       relatedSolutions: [],
+       blocks: [],

@@ -1,0 +1,27 @@
+PASS C01 before consent: banner shown
+PASS C02 before consent: GA4 and Clarity not requested
+PASS C03 before consent: GA4 consent default analytics_storage=denied
+PASS C04 before consent: no Clarity call, no analytics cookies
+PASS C05 before consent: still nothing after navigation
+PASS C06 reject: GA4 and Clarity never requested across 3 pages + reload
+PASS C07 reject: stored, banner stays closed, no Clarity calls
+PASS C08 accept: GA4 and Clarity each requested once
+PASS C09 accept: GA4 consent update analytics_storage=granted
+PASS C10 accept: Clarity consentv2 analytics granted, ads denied, sent once
+PASS C11 navigation after accept: no banner, GA4 + Clarity load again
+PASS C12 navigation after accept: Clarity consent signal sent on the new page
+PASS C13 accept: no JS errors
+PASS C14 Cookie settings reopens banner with Accept marked
+PASS C15 withdraw: Clarity told consentv2 denied + consent(false), GA4 disabled before reload
+PASS C16 withdraw: page reloads; _ga, _ga_*, _clck, _clsk deleted; other cookies kept
+PASS C17 after withdrawal: no further GA4/Clarity requests across navigation
+PASS C18 withdraw then Accept again: GA4 and Clarity load, consent granted
+PASS C19 new browser session after Accept: no banner, GA4 + Clarity load, Clarity consent granted
+PASS C20 new browser session after Reject: no banner, nothing loads
+PASS C21 automated browser (webdriver): Accept loads nothing, no Clarity consent
+PASS C22 ?kriva_internal=1: Accept loads nothing on any page
+PASS C23 Global Privacy Control: Accept loads nothing, no Clarity consent
+PASS C24 *.vercel.app preview: Accept loads nothing
+PASS C25 Accept in one tab: other open tab loads GA4 + Clarity, hides banner, sends Clarity consent
+
+25/25 consent runtime checks pass
