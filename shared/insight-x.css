@@ -151,6 +151,9 @@ html.js body.ix header.nav:not(.scrolled):not(.open) .nav-link[href="/insights"]
 
 /* ───────── Body: sticky contents + prose ───────── */
 .ix .ix-body{display:grid;grid-template-columns:236px minmax(0,1fr);gap:clamp(40px,6vw,96px);padding-block:clamp(56px,7vw,104px) clamp(64px,8vw,120px);align-items:start}
+/* No contents rail (prose comes first): stack prose, related pages and related reads in one column */
+.ix .ix-body>.ix-prose:first-child,.ix .ix-body>.ix-prose:first-child~*{grid-column:1/-1}
+@media (min-width:1081px){.ix .ix-body>.ix-prose:first-child~.related{margin-top:max(0px,calc(84px - 6vw))}}
 
 /* Contents rail */
 .ix .ix-toc{position:sticky;top:calc(var(--navh) + 28px);align-self:start}
